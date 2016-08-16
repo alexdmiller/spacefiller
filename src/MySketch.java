@@ -1,20 +1,29 @@
 import processing.core.PApplet;
+import processing.core.PGraphics;
 
 public class MySketch extends Scene {
 	@Scene.Parameter(pattern = "/thickness")
 	float thickness;
 
+
+
+
+	@Override
 	public void doSetup() {
 		System.out.println(thickness);
 	}
 
-	public void doDraw() {
+	@Override
+	public void doDraw(float mouseX, float mouseY) {
 		remote.background(0);
+
 		remote.fill(255);
-		remote.ellipse(width / 2, height / 2, thickness * 100, thickness * 100);
+		remote.ellipse(WIDTH / 2, HEIGHT / 2, thickness * 100, thickness * 100);
 	}
 
-	public static void main(String[] args) {
-		PApplet.main("MySketch");
+	@Override
+	protected void doMousePressed(float mouseX, float mouseY) {
+
+
 	}
 }
