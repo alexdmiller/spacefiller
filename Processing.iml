@@ -10,5 +10,8 @@
     <orderEntry type="library" exported="" name="core" level="project" />
     <orderEntry type="library" exported="" name="oscP5" level="project" />
     <orderEntry type="library" exported="" name="jsyphon" level="project" />
+    <orderEntry type="library" exported="" name="com.google.code.gson:gson:2.7" level="project" />
+    <orderEntry type="library" name="javax.json:javax.json-api:1.0" level="project" />
+    <orderEntry type="library" exported="" name="org.glassfish:javax.json:1.0.4" level="project" />
   </component>
 </module>
