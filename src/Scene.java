@@ -42,9 +42,8 @@ public abstract class Scene extends PApplet implements OscEventListener {
 		modulationTargets = new HashMap<>();
 
 		for (Field field : getClass().getDeclaredFields()) {
-			if (field.isAnnotationPresent(Parameter.class)) {
-				Parameter parameter = field.getAnnotation(Parameter.class);
-				modulationTargets.put(parameter.pattern(), field);
+			if (field.isAnnotationPresent(ModulationTarget.class)) {
+				modulationTargets.put("/" + this.getClass().getName() + "/" + field.getName(), field);
 			}
 		}
 
@@ -60,23 +59,24 @@ public abstract class Scene extends PApplet implements OscEventListener {
 		JsonArrayBuilder keys = Json.createArrayBuilder();
 		JsonObjectBuilder uiBuilder = Json.createObjectBuilder();
 
-		for (Field field : modulationTargets.values()) {
-			Parameter parameter = field.getAnnotation(Parameter.class);
+		for (String address : modulationTargets.keySet()) {
+			Field field = modulationTargets.get(address);
+			ModulationTarget modulationTarget = field.getAnnotation(ModulationTarget.class);
 
 			classes.add("Slider");
 			keys.add(field.getName());
 
 			try {
 				uiBuilder.add(field.getName(), Json.createObjectBuilder()
-					.add("minRange", 0)
-					.add("maxRange", 10)
+					.add("minRange", modulationTarget.min())
+					.add("maxRange", modulationTarget.max())
 					.add("val", (float) field.get(this))
 					.add("label", field.getName())
 					.add("publishNorm", false)
 					.add("sendEnabled", true)
 					.add("sndrs", Json.createArrayBuilder()
 						.add(Json.createObjectBuilder()
-							.add("msgAddress", this.getClass().getName() + "/" + field.getName())
+							.add("msgAddress", address)
 							.add("normalizeFlag", false)
 							.add("floatInvertFlag", false)
 							.add("outputPort", port)
@@ -127,7 +127,7 @@ public abstract class Scene extends PApplet implements OscEventListener {
 	}
 
 	public final void setup() {
-		canvas = createGraphics(WIDTH, HEIGHT);
+		canvas = createGraphics(WIDTH, HEIGHT, P3D);
 		server = new SyphonServer(this, "my server");
 		frameRate(60);
 		doSetup();
@@ -178,12 +178,8 @@ public abstract class Scene extends PApplet implements OscEventListener {
 	}
 
 	@Retention(RetentionPolicy.RUNTIME)
-	@interface Parameter {
-		// TODO: use variable name by default
-		String pattern();
-	}
-
-	public static void main(String[] args) {
-		PApplet.main("MySketch");
+	@interface ModulationTarget {
+		float min() default 0;
+		float max() default 1;
 	}
 }

@@ -3,33 +3,39 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Iterator;
+
+import processing.core.PApplet;
 import processing.core.PVector;
 
-public class MySketch extends Scene {
-	final int BRUSH_DENSITY = 5;
-	final float BRUSH_RADIUS = 100;
+public class Veins extends Scene {
+	public static void main(String[] args) {
+		PApplet.main("Veins");
+	}
+
+	final static int BRUSH_DENSITY = 5;
+	final static float BRUSH_RADIUS = 100;
 
 	List<PVector> attractors;
 	Tree tree;
 	boolean drawing = true;
 
-	@Scene.Parameter(pattern = "/attractor/speed")
-	float growthSpeed = 20;
+	@Scene.ModulationTarget(min=0.1f, max=50)
+	float growthSpeed = 5;
 
-	@Scene.Parameter(pattern = "/attractor/kill_radius")
-	float attractorKillRadius = 50;
+	@Scene.ModulationTarget(min=10, max=200)
+	float attractorKillRadius = 30;
 
-	@Scene.Parameter(pattern = "/attractor/influence")
-	float attractorInfluenceRadius = 200;
+	@Scene.ModulationTarget(min=10, max=1000)
+	float attractorInfluenceRadius = 60;
 
-	@Scene.Parameter(pattern = "/edge/thickness")
-	float edgeThickness = 1;
+	@Scene.ModulationTarget(min=0, max=20)
+	float edgeThickness = 5;
 
-	@Scene.Parameter(pattern = "/edge/pulse_period")
-	float pulsePeriod = 20;
+	@Scene.ModulationTarget(min=0, max=20)
+	float pulsePeriod = 10;
 
-	@Scene.Parameter(pattern = "/edge/pulse_life")
-	float pulseLife = 50;
+	@Scene.ModulationTarget(min=0, max=1000)
+	float pulseLife = 100;
 
 	@Override
 	public void doSetup() {
@@ -39,7 +45,6 @@ public class MySketch extends Scene {
 
 	@Override
 	protected void doDraw(float mouseX, float mouseY) {
-		canvas.beginDraw();
 		canvas.background(0);
 
 		if (drawing) {
@@ -84,8 +89,11 @@ public class MySketch extends Scene {
 			if (edge.age >= pulseLife) {
 				edges.remove();
 			} else {
-				canvas.strokeWeight(edgeThickness * ageToThickness(edge.age));
-				canvas.line(edge.n1.v.x, edge.n1.v.y, edge.n2.v.x, edge.n2.v.y);
+				float w = edgeThickness * ageToThickness(edge.age);
+				if (w > 0) {
+					canvas.strokeWeight(w);
+					canvas.line(edge.n1.v.x, edge.n1.v.y, edge.n2.v.x, edge.n2.v.y);
+				}
 				edge.age++;
 			}
 		}
@@ -171,9 +179,6 @@ public class MySketch extends Scene {
 
 					newNodes.add(n);
 					edges.add(new Edge(node, n));
-
-					canvas.stroke(255, 0, 0);
-					canvas.line(node.v.x, node.v.y, force.x, force.y);
 				}
 			}
 
