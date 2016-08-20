@@ -1,15 +1,16 @@
+package scenes;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Iterator;
 
-import processing.core.PApplet;
 import processing.core.PVector;
 
 public class Veins extends Scene {
 	public static void main(String[] args) {
-		PApplet.main("Veins");
+		main("Veins");
 	}
 
 	final static int BRUSH_DENSITY = 5;

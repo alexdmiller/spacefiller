@@ -1,3 +1,5 @@
+package scenes;
+
 import codeanticode.syphon.SyphonServer;
 import oscP5.OscEventListener;
 import oscP5.OscMessage;
@@ -35,8 +37,9 @@ public abstract class Scene extends PApplet implements OscEventListener {
 	private Map<String, Field> modulationTargets;
 
 	protected PGraphics canvas;
-
 	protected OscP5 oscP5;
+	protected float lastTime;
+	protected float elapsedMillis;
 
 	public Scene() {
 		modulationTargets = new HashMap<>();
@@ -136,6 +139,9 @@ public abstract class Scene extends PApplet implements OscEventListener {
 	protected abstract void doSetup();
 
 	public final void draw() {
+		float currentTime = millis();
+		elapsedMillis = currentTime - lastTime;
+
 		canvas.beginDraw();
 		doDraw(mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
 		canvas.endDraw();
@@ -146,6 +152,8 @@ public abstract class Scene extends PApplet implements OscEventListener {
 		getGraphics().text(frameRate, 10, 30);
 
 		server.sendImage(canvas);
+
+		lastTime = currentTime;
 	}
 
 	protected abstract void doDraw(float mouseX, float mouseY);

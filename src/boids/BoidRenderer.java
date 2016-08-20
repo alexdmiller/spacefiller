@@ -1,3 +1,5 @@
+package boids;
+
 import processing.core.PGraphics;
 
 public interface BoidRenderer {
