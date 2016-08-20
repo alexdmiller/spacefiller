@@ -13,5 +13,6 @@
     <orderEntry type="library" exported="" name="com.google.code.gson:gson:2.7" level="project" />
     <orderEntry type="library" name="javax.json:javax.json-api:1.0" level="project" />
     <orderEntry type="library" exported="" name="org.glassfish:javax.json:1.0.4" level="project" />
+    <orderEntry type="library" name="com.google.guava:guava:19.0-rc2" level="project" />
   </component>
 </module>

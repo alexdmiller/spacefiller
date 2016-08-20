@@ -10,11 +10,13 @@ public class LineEmitter implements Emitter {
 	private float emitChance;
 	private PVector p1;
 	private PVector p2;
+	private PVector initialVelocity;
 
 	public LineEmitter(float x1, float y1, float x2, float y2, float emitChance) {
 		this.p1 = new PVector(x1, y1);
 		this.p2 = new PVector(x2, y2);
 		this.emitChance = emitChance;
+		this.initialVelocity = new PVector(0, 0);
 	}
 
 	public PVector getP1() {
@@ -23,6 +25,14 @@ public class LineEmitter implements Emitter {
 
 	public PVector getP2() {
 		return p2;
+	}
+
+	public PVector getInitialVelocity() {
+		return initialVelocity;
+	}
+
+	public void setInitialVelocity(PVector initialVelocity) {
+		this.initialVelocity = initialVelocity;
 	}
 
 	@Override
@@ -37,6 +47,7 @@ public class LineEmitter implements Emitter {
 			delta.add(p1);
 
 			Boid b = new Boid(delta.x, delta.y);
+			b.setVelocity(initialVelocity);
 			boids.add(b);
 		}
 

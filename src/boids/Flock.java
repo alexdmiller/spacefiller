@@ -1,5 +1,7 @@
 package boids;// The Flock (a list of Boid objects)
 
+import boids.behaviors.Behavior;
+import boids.behaviors.FlockBehavior;
 import emitter.Emitter;
 import processing.core.PVector;
 
@@ -13,17 +15,25 @@ public class Flock {
 	private List<Boid> boids;
 	private List<Emitter> emitters;
 	private List<Magnet> magnets;
+	private List<Behavior> behaviors;
+	private List<FlockEventListener> eventListeners;
 
 	public Flock() {
 		boids = new ArrayList<>();
 		emitters = new ArrayList<>();
 		magnets = new ArrayList<>();
+		behaviors = new ArrayList<>();
+		eventListeners = new ArrayList<>();
 	}
 
 	public void step(float elapsedMillis) {
 		for (Emitter e : emitters) {
 			List<Boid> boids = e.emit(elapsedMillis);
 			addAllBoids(boids);
+		}
+
+		for (Behavior b : behaviors) {
+			b.apply(getBoids());
 		}
 
 		for (Boid b : boids) {
@@ -37,21 +47,27 @@ public class Flock {
 				}
 			}
 
-			b.run(boids);  // Passing the entire list of boids to each boid individually
+			b.update();
 		}
-
 	}
 
 	public void addBoid(Boid b) {
 		if (boids.size() < MAX_BOIDS) {
 			boids.add(b);
+			for (FlockEventListener listener : eventListeners) {
+				listener.boidAdded(b);
+			}
 		}
 	}
 
 	public void addAllBoids(Collection<Boid> boids) {
-		if (boids.size() + this.boids.size() <= MAX_BOIDS) {
-			this.boids.addAll(boids);
+		for (Boid b : boids) {
+			addBoid(b);
 		}
+	}
+
+	public void removeBoid(Boid b) {
+		// TODO
 	}
 
 	public List<Boid> getBoids() { return boids; }
@@ -60,13 +76,21 @@ public class Flock {
 		emitters.add(e);
 	}
 
+	public List<Emitter> getEmitters() {
+		return emitters;
+	}
+
 	public void addMagnet(Magnet m) {
 		magnets.add(m);
 	}
 
 	public List<Magnet> getMagnets() { return magnets; }
 
-	public List<Emitter> getEmitters() {
-		return emitters;
+	public void addBehavior(Behavior behavior) {
+		behaviors.add(behavior);
+	}
+
+	public void addEventListener(FlockEventListener listener) {
+		eventListeners.add(listener);
 	}
 }

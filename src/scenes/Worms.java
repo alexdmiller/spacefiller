@@ -1,24 +1,44 @@
 package scenes;
 
 import boids.*;
+import boids.behaviors.FlockBehavior;
+import boids.renderers.BoidRenderer;
+import boids.renderers.PointBoidRenderer;
+import boids.renderers.WormBoidRenderer;
 import emitter.Emitter;
 import emitter.LineEmitter;
 import emitter.PointEmitter;
+import processing.core.PVector;
 
-public class Worms extends Scene {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Worms extends Scene implements FlockEventListener {
 	public static void main(String[] args) {
 		main("scenes.Worms");
 	}
 
 	private Flock flock;
-	private BoidRenderer renderer;
+	private List<BoidRenderer> renderers;
 
 	@Override
 	public void doSetup() {
-		renderer = new PointBoidRenderer();
-		flock = new Flock();
+		renderers = new ArrayList<>();
 
-		flock.addEmitter(new LineEmitter(100, HEIGHT / 2, WIDTH - 100, HEIGHT / 2, 0.5f));
+		flock = new Flock();
+		flock.addEventListener(this);
+
+		FlockBehavior flockingBehavior = new FlockBehavior();
+		flockingBehavior.setSeparationWeight(2f);
+		flockingBehavior.setDesiredSeparation(100f);
+		flockingBehavior.setNeighborDistance(200f);
+		flock.addBehavior(flockingBehavior);
+
+		LineEmitter e = new LineEmitter(0, 0, WIDTH, 0, 0.5f);
+		e.setInitialVelocity(new PVector(0, 2));
+		flock.addEmitter(e);
+
+		canvas.noSmooth();
 	}
 
 	@Override
@@ -28,8 +48,9 @@ public class Worms extends Scene {
 		flock.step(elapsedMillis);
 
 		canvas.stroke(0, 255, 0);
+		canvas.noStroke();
 		canvas.noFill();
-		canvas.strokeWeight(5);
+		canvas.strokeWeight(2);
 		for (Emitter e : flock.getEmitters()) {
 			if (e instanceof LineEmitter) {
 				LineEmitter le = (LineEmitter) e;
@@ -45,9 +66,10 @@ public class Worms extends Scene {
 		}
 
 		canvas.stroke(255);
-		canvas.strokeWeight(10);
-		for (Boid b : flock.getBoids()) {
-			renderer.draw(b, canvas);
+		canvas.strokeWeight(5);
+		canvas.strokeCap(ROUND);
+		for (BoidRenderer renderer : renderers) {
+			renderer.draw(canvas);
 		}
 
 		canvas.noStroke();
@@ -63,6 +85,16 @@ public class Worms extends Scene {
 
 	@Override
 	protected void doMousePressed(float mouseX, float mouseY) {
-		flock.addMagnet(new Magnet(mouseX, mouseY, -20, 500));
+		flock.addMagnet(new Magnet(mouseX, mouseY, -20, 200));
+	}
+
+	@Override
+	public void boidAdded(Boid b) {
+		renderers.add(new WormBoidRenderer(b, 20));
+	}
+
+	@Override
+	public void boidRemoved(Boid b) {
+
 	}
 }
