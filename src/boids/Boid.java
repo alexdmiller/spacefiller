@@ -2,16 +2,21 @@ package boids;
 
 import processing.core.PVector;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Boid {
 	private PVector position;
 	private PVector velocity;
 	private PVector acceleration;
-	private float wiggleStep = 0;
+
+	private Map<String, Object> userData;
 
 	public Boid(float x, float y) {
 		acceleration = new PVector(0, 0);
 		velocity = new PVector(0, 0);
 		position = new PVector(x, y);
+		userData = new HashMap<>();
 	}
 
 	public PVector getPosition() {
@@ -55,21 +60,22 @@ public class Boid {
 		acceleration.add(force);
 	}
 
-	// Method to update position
+	public void setUserData(String key, Object o) {
+		userData.put(key, o);
+	}
+
+	public boolean hasUserData(String key) {
+		return userData.containsKey(key);
+	}
+
+	public Object getUserData(String key) {
+		return userData.get(key);
+	}
+
 	void update() {
-		PVector wiggleDirection = velocity.copy().rotate((float) Math.PI / 2f);
-		wiggleDirection.setMag((float) Math.sin(wiggleStep) * .5f);
-		acceleration.add(wiggleDirection);
-		wiggleStep += acceleration.mag() * 10;
-
-
-		// Update velocity
 		velocity.add(acceleration);
-
-
-		// Limit speed
-		// velocity.limit(maxspeed);
 		position.add(velocity);
+
 		// Reset accelertion to 0 each cycle
 		acceleration.mult(0);
 	}

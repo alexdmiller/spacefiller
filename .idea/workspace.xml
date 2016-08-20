@@ -7,24 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7bb3a9e-05bb-464d-967e-9bda287e8f0d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/com_google_guava_guava_19_0_rc2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/boids/FlockEventListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/boids/behaviors/Behavior.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/boids/behaviors/FlockBehavior.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Processing/boids/BoidRenderer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Processing/boids/PointBoidRenderer.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/boids/BoidRenderer.java" afterPath="$PROJECT_DIR$/src/boids/renderers/BoidRenderer.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/boids/PointBoidRenderer.java" afterPath="$PROJECT_DIR$/src/boids/renderers/PointBoidRenderer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/boids/behaviors/WiggleBehavior.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Processing/boids/Boid.class" afterPath="$PROJECT_DIR$/out/production/Processing/boids/Boid.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Processing/boids/Flock.class" afterPath="$PROJECT_DIR$/out/production/Processing/boids/Flock.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Processing/emitter/LineEmitter.class" afterPath="$PROJECT_DIR$/out/production/Processing/emitter/LineEmitter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Processing/boids/renderers/WormBoidRenderer.class" afterPath="$PROJECT_DIR$/out/production/Processing/boids/renderers/WormBoidRenderer.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Processing/scenes/Worms.class" afterPath="$PROJECT_DIR$/out/production/Processing/scenes/Worms.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Processing.iml" afterPath="$PROJECT_DIR$/Processing.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/Boid.java" afterPath="$PROJECT_DIR$/src/boids/Boid.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/Flock.java" afterPath="$PROJECT_DIR$/src/boids/Flock.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/emitter/LineEmitter.java" afterPath="$PROJECT_DIR$/src/emitter/LineEmitter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java" afterPath="$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scenes/Worms.java" afterPath="$PROJECT_DIR$/src/scenes/Worms.java" />
     </list>
     <ignored path="Processing.iws" />
@@ -51,8 +40,8 @@
       <file leaf-file-name="Veins.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scenes/Veins.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1200">
-              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+            <state relative-caret-position="-340">
+              <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -60,15 +49,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Worms.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Worms.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scenes/Worms.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="92" column="48" selection-start-line="92" selection-start-column="48" selection-end-line="92" selection-end-column="48" />
+            <state relative-caret-position="565">
+              <caret line="38" column="42" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2302#2303#0" expanded="true" />
-                <element signature="e#2351#2352#0" expanded="true" />
+                <element signature="e#2440#2441#0" expanded="true" />
+                <element signature="e#2489#2490#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -102,9 +91,43 @@
       <file leaf-file-name="Boid.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/boids/Boid.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="220">
+              <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1244#1245#0" expanded="true" />
+                <element signature="e#1271#1272#0" expanded="true" />
+                <element signature="e#1314#1315#0" expanded="true" />
+                <element signature="e#1353#1354#0" expanded="true" />
+                <element signature="e#1395#1396#0" expanded="true" />
+                <element signature="e#1426#1427#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FlockBehavior.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/boids/behaviors/FlockBehavior.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="46" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1323#1324#0" expanded="true" />
+                <element signature="e#1368#1369#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WiggleBehavior.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/boids/behaviors/WiggleBehavior.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -112,22 +135,9 @@
       <file leaf-file-name="WormBoidRenderer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+            <state relative-caret-position="420">
+              <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PVector.class" pinned="false" current-in-tab="false">
-        <entry file="jar:///Applications/Processing.app/Contents/Java/core/library/core.jar!/processing/core/PVector.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="128" column="19" selection-start-line="128" selection-start-column="19" selection-end-line="128" selection-end-column="19" />
-              <folding>
-                <element signature="e#3304#3305#0" expanded="true" />
-                <element signature="e#3362#3363#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -161,16 +171,6 @@
                 <element signature="e#1959#1960#0" expanded="true" />
                 <element signature="e#1994#1995#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Processing.iml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Processing.iml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -219,9 +219,10 @@
         <option value="$PROJECT_DIR$/src/boids/Flock.java" />
         <option value="$PROJECT_DIR$/src/boids/renderers/PointBoidRenderer.java" />
         <option value="$PROJECT_DIR$/src/boids/renderers/BoidRenderer.java" />
-        <option value="$PROJECT_DIR$/src/boids/Boid.java" />
         <option value="$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java" />
+        <option value="$PROJECT_DIR$/src/boids/Boid.java" />
         <option value="$PROJECT_DIR$/src/scenes/Worms.java" />
+        <option value="$PROJECT_DIR$/src/boids/behaviors/WiggleBehavior.java" />
       </list>
     </option>
   </component>
@@ -358,6 +359,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="renderers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Processing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Processing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="boids" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="behaviors" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1048,12 +1071,12 @@
       <workItem from="1471473817039" duration="2077000" />
       <workItem from="1471479995995" duration="3362000" />
       <workItem from="1471564492632" duration="3454000" />
-      <workItem from="1471649894488" duration="12352000" />
+      <workItem from="1471649894488" duration="14316000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48079000" />
+    <option name="totallyTimeSpent" value="50043000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-372" width="1920" height="1053" extended-state="6" />
@@ -1123,8 +1146,8 @@
           <caret line="35" column="38" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2302#2303#0" expanded="true" />
-            <element signature="e#2351#2352#0" expanded="true" />
+            <element signature="e#2440#2441#0" expanded="true" />
+            <element signature="e#2489#2490#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1162,7 +1185,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1160">
           <caret line="60" column="36" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1244#1245#0" expanded="true" />
+            <element signature="e#1271#1272#0" expanded="true" />
+            <element signature="e#1314#1315#0" expanded="true" />
+            <element signature="e#1353#1354#0" expanded="true" />
+            <element signature="e#1395#1396#0" expanded="true" />
+            <element signature="e#1426#1427#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1190,8 +1221,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2302#2303#0" expanded="true" />
-            <element signature="e#2351#2352#0" expanded="true" />
+            <element signature="e#2440#2441#0" expanded="true" />
+            <element signature="e#2489#2490#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1218,7 +1249,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1244#1245#0" expanded="true" />
+            <element signature="e#1271#1272#0" expanded="true" />
+            <element signature="e#1314#1315#0" expanded="true" />
+            <element signature="e#1353#1354#0" expanded="true" />
+            <element signature="e#1395#1396#0" expanded="true" />
+            <element signature="e#1426#1427#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1436,54 +1475,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/behaviors/FlockBehavior.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#439#440#0" expanded="true" />
-            <element signature="e#461#462#0" expanded="true" />
-            <element signature="e#505#506#0" expanded="true" />
-            <element signature="e#536#537#0" expanded="true" />
-            <element signature="e#567#568#0" expanded="true" />
-            <element signature="e#589#590#0" expanded="true" />
-            <element signature="e#633#634#0" expanded="true" />
-            <element signature="e#664#665#0" expanded="true" />
-            <element signature="e#703#704#0" expanded="true" />
-            <element signature="e#733#734#0" expanded="true" />
-            <element signature="e#793#794#0" expanded="true" />
-            <element signature="e#840#841#0" expanded="true" />
-            <element signature="e#880#881#0" expanded="true" />
-            <element signature="e#911#912#0" expanded="true" />
-            <element signature="e#973#974#0" expanded="true" />
-            <element signature="e#1022#1023#0" expanded="true" />
-            <element signature="e#1061#1062#0" expanded="true" />
-            <element signature="e#1091#1092#0" expanded="true" />
-            <element signature="e#1151#1152#0" expanded="true" />
-            <element signature="e#1198#1199#0" expanded="true" />
-            <element signature="e#1236#1237#0" expanded="true" />
-            <element signature="e#1265#1266#0" expanded="true" />
-            <element signature="e#1323#1324#0" expanded="true" />
-            <element signature="e#1368#1369#0" expanded="true" />
-            <element signature="e#1405#1406#0" expanded="true" />
-            <element signature="e#1433#1434#0" expanded="true" />
-            <element signature="e#1489#1490#0" expanded="true" />
-            <element signature="e#1532#1533#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/Veins.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1200">
-          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Applications/Processing.app/Contents/Java/core/library/core.jar!/processing/core/PVector.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="223">
@@ -1500,19 +1491,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/renderers/PointBoidRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="e#208#209#0" expanded="true" />
-            <element signature="e#226#227#0" expanded="true" />
-            <element signature="e#278#279#0" expanded="true" />
-            <element signature="e#343#344#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1542,14 +1520,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/Boid.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/boids/renderers/BoidRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -1561,22 +1531,83 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/Veins.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-340">
+          <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/behaviors/FlockBehavior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1323#1324#0" expanded="true" />
+            <element signature="e#1368#1369#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/renderers/PointBoidRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="e#208#209#0" expanded="true" />
+            <element signature="e#226#227#0" expanded="true" />
+            <element signature="e#278#279#0" expanded="true" />
+            <element signature="e#343#344#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+        <state relative-caret-position="420">
+          <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/Boid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1244#1245#0" expanded="true" />
+            <element signature="e#1271#1272#0" expanded="true" />
+            <element signature="e#1314#1315#0" expanded="true" />
+            <element signature="e#1353#1354#0" expanded="true" />
+            <element signature="e#1395#1396#0" expanded="true" />
+            <element signature="e#1426#1427#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/scenes/Worms.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="92" column="48" selection-start-line="92" selection-start-column="48" selection-end-line="92" selection-end-column="48" />
+        <state relative-caret-position="565">
+          <caret line="38" column="42" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2302#2303#0" expanded="true" />
-            <element signature="e#2351#2352#0" expanded="true" />
+            <element signature="e#2440#2441#0" expanded="true" />
+            <element signature="e#2489#2490#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/behaviors/WiggleBehavior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

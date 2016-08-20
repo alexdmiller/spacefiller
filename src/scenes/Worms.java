@@ -2,6 +2,7 @@ package scenes;
 
 import boids.*;
 import boids.behaviors.FlockBehavior;
+import boids.behaviors.WiggleBehavior;
 import boids.renderers.BoidRenderer;
 import boids.renderers.PointBoidRenderer;
 import boids.renderers.WormBoidRenderer;
@@ -33,6 +34,9 @@ public class Worms extends Scene implements FlockEventListener {
 		flockingBehavior.setDesiredSeparation(100f);
 		flockingBehavior.setNeighborDistance(200f);
 		flock.addBehavior(flockingBehavior);
+
+		WiggleBehavior wiggleBehavior = new WiggleBehavior(1, 10);
+		flock.addBehavior(wiggleBehavior);
 
 		LineEmitter e = new LineEmitter(0, 0, WIDTH, 0, 0.5f);
 		e.setInitialVelocity(new PVector(0, 2));

@@ -17,10 +17,11 @@ public class WormBoidRenderer extends BoidRenderer {
 	@Override
 	public void draw(PGraphics graphics) {
 		history.add(boid.getPosition().copy());
+
 		PVector last = null;
 		for (PVector p : history) {
 			if (last != null) {
-				graphics.line(last.x, last.y, last.z, p.x, p.y, p.z);
+				graphics.line(last.x, last.y, p.x, p.y);
 			}
 			last = p;
 		}
