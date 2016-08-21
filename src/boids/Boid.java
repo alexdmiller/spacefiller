@@ -9,7 +9,7 @@ public class Boid {
 	private PVector position;
 	private PVector velocity;
 	private PVector acceleration;
-
+	private float maxSpeed = 3;
 	private Map<String, Object> userData;
 
 	public Boid(float x, float y) {
@@ -78,5 +78,13 @@ public class Boid {
 
 		// Reset accelertion to 0 each cycle
 		acceleration.mult(0);
+	}
+
+	public float getMaxSpeed() {
+		return maxSpeed;
+	}
+
+	public void setMaxSpeed(float maxSpeed) {
+		this.maxSpeed = maxSpeed;
 	}
 }

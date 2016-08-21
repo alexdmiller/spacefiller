@@ -10,7 +10,7 @@ import processing.core.PVector;
 
 public class Veins extends Scene {
 	public static void main(String[] args) {
-		main("Veins");
+		main("scenes.Veins");
 	}
 
 	final static int BRUSH_DENSITY = 5;

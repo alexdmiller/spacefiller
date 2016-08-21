@@ -1,26 +1,19 @@
 package boids.behaviors;
 
 import boids.Boid;
+import boids.BoidUtils;
+import boids.Flock;
 import processing.core.PVector;
 
 import java.util.List;
 
-public class FlockBehavior implements Behavior {
-	private float maxSpeed = 2f;
+public class FlockBehavior extends Behavior {
 	private float maxForce = 0.03f;
 	private float neighborDistance = 50f;
 	private float desiredSeparation = 20f;
 	private float separationWeight = 1.0f;
 	private float alignmentWeight = 1.0f;
 	private float cohesionWeight = 1.0f;
-
-	public float getMaxSpeed() {
-		return maxSpeed;
-	}
-
-	public void setMaxSpeed(float maxSpeed) {
-		this.maxSpeed = maxSpeed;
-	}
 
 	public float getMaxForce() {
 		return maxForce;
@@ -123,7 +116,7 @@ public class FlockBehavior implements Behavior {
 
 			// Implement Reynolds: Steering = Desired - Velocity
 			steer.normalize();
-			steer.mult(maxSpeed);
+			steer.mult(b.getMaxSpeed());
 			steer.sub(b.getVelocity());
 			steer.limit(maxForce);
 		}
@@ -150,7 +143,7 @@ public class FlockBehavior implements Behavior {
 
 			// Implement Reynolds: Steering = Desired - Velocity
 			sum.normalize();
-			sum.mult(maxSpeed);
+			sum.mult(b.getMaxSpeed());
 			PVector steer = PVector.sub(sum, b.getVelocity());
 			steer.limit(maxForce);
 			return steer;
@@ -174,28 +167,10 @@ public class FlockBehavior implements Behavior {
 		}
 		if (count > 0) {
 			sum.div(count);
-			return seek(b, sum);  // Steer towards the position
+			return BoidUtils.seek(b, sum, b.getMaxSpeed(), maxForce);  // Steer towards the position
 		}
 		else {
 			return new PVector(0, 0);
 		}
-	}
-
-	// A method that calculates and applies a steering force towards a target
-	// STEER = DESIRED MINUS VELOCITY
-	PVector seek(Boid b, PVector target) {
-		PVector desired = PVector.sub(target, b.getPosition());  // A vector pointing from the position to the target
-		// Scale to maximum speed
-		desired.normalize();
-		desired.mult(maxSpeed);
-
-		// Above two lines of code below could be condensed with new PVector setMag() method
-		// Not using this method until Processing.js catches up
-		// desired.setMag(maxSpeed);
-
-		// Steering = Desired minus Velocity
-		PVector steer = PVector.sub(desired, b.getVelocity());
-		steer.limit(maxForce);  // Limit to maximum steering force
-		return steer;
 	}
 }

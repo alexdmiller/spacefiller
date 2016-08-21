@@ -5,23 +5,26 @@ import boids.behaviors.FlockBehavior;
 import emitter.Emitter;
 import processing.core.PVector;
 
+import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 public class Flock {
-	public static final int MAX_BOIDS = 1000;
+	public static final int MAX_BOIDS = 700;
 
+	private Rectangle bounds;
 	private List<Boid> boids;
 	private List<Emitter> emitters;
-	private List<Magnet> magnets;
 	private List<Behavior> behaviors;
 	private List<FlockEventListener> eventListeners;
 
-	public Flock() {
+	public Flock(int x, int y, int width, int height) {
+		bounds = new Rectangle(x, y, width, height);
 		boids = new ArrayList<>();
 		emitters = new ArrayList<>();
-		magnets = new ArrayList<>();
 		behaviors = new ArrayList<>();
 		eventListeners = new ArrayList<>();
 	}
@@ -32,21 +35,20 @@ public class Flock {
 			addAllBoids(boids);
 		}
 
+		Iterator<Boid> boidIterator = boids.iterator();
+		while (boidIterator.hasNext()) {
+			Boid b = boidIterator.next();
+			if (!bounds.contains(b.getPosition().x, b.getPosition().y)) {
+				boidIterator.remove();
+				notifyRemoved(b);
+			}
+		}
+
 		for (Behavior b : behaviors) {
 			b.apply(getBoids());
 		}
 
 		for (Boid b : boids) {
-			for (Magnet m : magnets) {
-				PVector delta = PVector.sub(m.position, b.getPosition());
-				float distance = delta.mag();
-				if (distance < m.attractionThreshold) {
-					delta.normalize();
-					delta.mult(m.strength / distance);
-					b.applyForce(delta);
-				}
-			}
-
 			b.update();
 		}
 	}
@@ -66,8 +68,10 @@ public class Flock {
 		}
 	}
 
-	public void removeBoid(Boid b) {
-		// TODO
+	public void notifyRemoved(Boid b) {
+		for (FlockEventListener listener : eventListeners) {
+			listener.boidRemoved(b);
+		}
 	}
 
 	public List<Boid> getBoids() { return boids; }
@@ -80,17 +84,16 @@ public class Flock {
 		return emitters;
 	}
 
-	public void addMagnet(Magnet m) {
-		magnets.add(m);
-	}
-
-	public List<Magnet> getMagnets() { return magnets; }
-
 	public void addBehavior(Behavior behavior) {
+		behavior.setFlock(this);
 		behaviors.add(behavior);
 	}
 
 	public void addEventListener(FlockEventListener listener) {
 		eventListeners.add(listener);
+	}
+
+	public Rectangle getBounds() {
+		return bounds;
 	}
 }

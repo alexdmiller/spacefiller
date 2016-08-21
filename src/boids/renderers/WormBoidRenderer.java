@@ -15,9 +15,22 @@ public class WormBoidRenderer extends BoidRenderer {
 	}
 
 	@Override
-	public void draw(PGraphics graphics) {
-		history.add(boid.getPosition().copy());
+	public void markReadyForDeath() {
+		markedForDeath = true;
+	}
 
+	@Override
+	public void draw(PGraphics graphics) {
+		if (markedForDeath) {
+			if (!history.isEmpty()) {
+				history.remove();
+			}
+			if (history.size() == 0) {
+				readyToDie = true;
+			}
+		} else {
+			history.add(boid.getPosition().copy());
+		}
 		PVector last = null;
 		for (PVector p : history) {
 			if (last != null) {

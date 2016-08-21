@@ -1,11 +1,12 @@
 package boids.behaviors;
 
 import boids.Boid;
+import boids.Flock;
 import processing.core.PVector;
 
 import java.util.List;
 
-public class WiggleBehavior implements Behavior {
+public class WiggleBehavior extends Behavior {
 	private float wiggleAmplitudeMultiplier;
 	private float wiggleStepMultiplier;
 
