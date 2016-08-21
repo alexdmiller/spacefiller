@@ -4,25 +4,20 @@ import boids.Boid;
 import boids.BoidUtils;
 import processing.core.PVector;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FollowPathBehavior extends Behavior {
-	private PVector start;
-	private PVector end;
+	private List<PVector> points;
 	private float radius;
 
-	public FollowPathBehavior(PVector start, PVector end, float radius) {
-		this.start = start;
-		this.end = end;
+	public FollowPathBehavior(float radius) {
+		this.points = new ArrayList<>();
 		this.radius = radius;
 	}
 
-	public PVector getStart() {
-		return start;
-	}
-
-	public PVector getEnd() {
-		return end;
+	public void addPoint(float x, float y) {
+		this.points.add(new PVector(x, y));
 	}
 
 	public float getRadius() {
@@ -32,24 +27,47 @@ public class FollowPathBehavior extends Behavior {
 	@Override
 	public void apply(List<Boid> boids) {
 		for (Boid boid : boids) {
-			PVector predictedPosition = PVector.add(boid.getPosition(), boid.getVelocity());
-			PVector a = PVector.sub(predictedPosition, start);
-			PVector b = PVector.sub(end, start);
-			float segmentLength = b.mag();
+			PVector last = null;
+			PVector closestNormalPoint = null;
+			float closestDistance = 0;
 
-			float theta = PVector.angleBetween(a, b);
+			for (PVector p : points) {
+				if (last != null) {
+					PVector normalPoint = getNormalPoint(last, p, boid);
+					float distance = PVector.sub(boid.getPosition(), normalPoint).mag();
+					if (closestNormalPoint == null || distance < closestDistance) {
+						closestNormalPoint = normalPoint;
+						closestDistance = distance;
+					}
+				}
 
-			float d = (float) (a.mag() * Math.cos(theta));
-			b.setMag(d);
-			b.limit(segmentLength);
+				last = p;
+			}
 
-			PVector normalPoint = PVector.add(start, b);
-			float distance = PVector.sub(boid.getPosition(), normalPoint).mag();
-
-			if (distance > radius) {
-				PVector steer = BoidUtils.seek(boid, normalPoint, boid.getMaxSpeed(), 1);
+			if (closestDistance > radius) {
+				PVector steer = BoidUtils.seek(boid, closestNormalPoint, boid.getMaxSpeed(), 0.1f);
 				boid.applyForce(steer);
 			}
 		}
+	}
+
+	private PVector getNormalPoint(PVector start, PVector end, Boid boid) {
+		PVector predictedPosition = PVector.add(boid.getPosition(), boid.getVelocity());
+		PVector a = PVector.sub(predictedPosition, start);
+		PVector b = PVector.sub(end, start);
+		float segmentLength = b.mag();
+
+		float theta = PVector.angleBetween(a, b);
+
+		float d = (float) (a.mag() * Math.cos(theta));
+		d = Math.max(Math.min(d, segmentLength), 0);
+		b.setMag(d);
+
+		PVector normalPoint = PVector.add(start, b);
+		return normalPoint;
+	}
+
+	public List<PVector> getPoints() {
+		return points;
 	}
 }

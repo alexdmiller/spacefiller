@@ -46,7 +46,7 @@ public class Worms extends Scene implements FlockEventListener {
 		magnets = new MagnetBehavior(-10, 300, 5, 5);
 		flock.addBehavior(magnets);
 
-		path = new FollowPathBehavior(new PVector(300, 300), new PVector(800, 400), 50);
+		path = new FollowPathBehavior(50);
 		flock.addBehavior(path);
 
 		LineEmitter e1 = new LineEmitter(100, 100, WIDTH - 100, 100, 0.5f);
@@ -81,6 +81,16 @@ public class Worms extends Scene implements FlockEventListener {
 			}
 		}
 
+		canvas.noFill();
+		canvas.stroke(50);
+		canvas.strokeCap(ROUND);
+		canvas.strokeWeight(path.getRadius() * 2);
+		canvas.beginShape();
+		for (PVector p : path.getPoints()) {
+			canvas.vertex(p.x, p.y);
+		}
+		canvas.endShape();
+
 		canvas.stroke(255);
 		canvas.strokeWeight(3);
 		canvas.strokeCap(ROUND);
@@ -100,14 +110,6 @@ public class Worms extends Scene implements FlockEventListener {
 			canvas.ellipse(m.x, m.y, 10, 10);
 		}
 
-//		canvas.stroke(255, 100);
-//		canvas.strokeWeight(path.getRadius() * 2);
-//		canvas.line(path.getStart().x, path.getStart().y, path.getEnd().x, path.getEnd().y);
-//
-//		canvas.stroke(255);
-//		canvas.strokeWeight(2);
-//		canvas.line(path.getStart().x, path.getStart().y, path.getEnd().x, path.getEnd().y);
-
 		canvas.stroke(255);
 		canvas.strokeWeight(2);
 		Rectangle bounds = flock.getBounds();
@@ -121,7 +123,8 @@ public class Worms extends Scene implements FlockEventListener {
 
 	@Override
 	protected void doMousePressed(float mouseX, float mouseY) {
-		magnets.addMagnet(mouseX, mouseY);
+		// magnets.addMagnet(mouseX, mouseY);
+		path.addPoint(mouseX, mouseY);
 	}
 
 	@Override
