@@ -15,6 +15,15 @@ public class FlockBehavior extends Behavior {
 	private float alignmentWeight = 1.0f;
 	private float cohesionWeight = 1.0f;
 
+	public FlockBehavior(float maxForce, float neighborDistance, float desiredSeparation, float separationWeight, float alignmentWeight, float cohesionWeight) {
+		this.maxForce = maxForce;
+		this.neighborDistance = neighborDistance;
+		this.desiredSeparation = desiredSeparation;
+		this.separationWeight = separationWeight;
+		this.alignmentWeight = alignmentWeight;
+		this.cohesionWeight = cohesionWeight;
+	}
+
 	public float getMaxForce() {
 		return maxForce;
 	}

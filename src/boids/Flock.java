@@ -96,4 +96,8 @@ public class Flock {
 	public Rectangle getBounds() {
 		return bounds;
 	}
+
+	public List<Behavior> getBehaviors() {
+		return behaviors;
+	}
 }

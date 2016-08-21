@@ -31,8 +31,8 @@ public class LineEmitter implements Emitter {
 		return initialVelocity;
 	}
 
-	public void setInitialVelocity(PVector initialVelocity) {
-		this.initialVelocity = initialVelocity;
+	public void setInitialVelocity(float x, float y) {
+		this.initialVelocity = new PVector(x, y);
 	}
 
 	@Override

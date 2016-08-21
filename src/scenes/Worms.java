@@ -5,19 +5,13 @@ import boids.behaviors.FlockBehavior;
 import boids.behaviors.FollowPathBehavior;
 import boids.behaviors.MagnetBehavior;
 import boids.behaviors.WiggleBehavior;
-import boids.renderers.BoidRenderer;
-import boids.renderers.WormBoidRenderer;
+import boids.renderers.*;
 import emitter.Emitter;
 import emitter.LineEmitter;
 import emitter.PointEmitter;
 import processing.core.PVector;
 
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-public class Worms extends Scene implements FlockEventListener {
+public class Worms extends Scene {
 	public static void main(String[] args) {
 		main("scenes.Worms");
 	}
@@ -25,19 +19,18 @@ public class Worms extends Scene implements FlockEventListener {
 	private Flock flock;
 	private MagnetBehavior magnets;
 	private FollowPathBehavior path;
-	private List<BoidRenderer> renderers;
+
+	private DebugFlockRenderer debugRenderer;
+	private BoidFlockRenderer flockRenderer;
 
 	@Override
 	public void doSetup() {
-		renderers = new ArrayList<>();
-
 		flock = new Flock(100, 100, WIDTH - 200, HEIGHT - 200);
-		flock.addEventListener(this);
 
-		FlockBehavior flockingBehavior = new FlockBehavior();
-		flockingBehavior.setSeparationWeight(2f);
-		flockingBehavior.setDesiredSeparation(50f);
-		flockingBehavior.setNeighborDistance(100f);
+		debugRenderer = new DebugFlockRenderer(flock, canvas);
+		flockRenderer = new BoidFlockRenderer(flock, canvas, WormBoidRenderer.class);
+
+		FlockBehavior flockingBehavior = new FlockBehavior(0.5f, 50, 20, 2, 1, 0.5f);
 		flock.addBehavior(flockingBehavior);
 
 		WiggleBehavior wiggleBehavior = new WiggleBehavior(1, 10);
@@ -46,16 +39,20 @@ public class Worms extends Scene implements FlockEventListener {
 		magnets = new MagnetBehavior(-10, 300, 5, 5);
 		flock.addBehavior(magnets);
 
-		path = new FollowPathBehavior(50);
+		path = new FollowPathBehavior(100, 0.5f);
 		flock.addBehavior(path);
 
-		LineEmitter e1 = new LineEmitter(100, 100, WIDTH - 100, 100, 0.5f);
-		e1.setInitialVelocity(new PVector(0, 2));
-		flock.addEmitter(e1);
+//		LineEmitter e1 = new LineEmitter(100, 100, WIDTH - 100, 100, 0.5f);
+//		e1.setInitialVelocity(0, 2);
+//		flock.addEmitter(e1);
+//
+//		LineEmitter e2 = new LineEmitter(100, HEIGHT - 101, WIDTH - 100, HEIGHT - 101, 0.5f);
+//		e2.setInitialVelocity(0, -2);
+//		flock.addEmitter(e2);
 
-		LineEmitter e2 = new LineEmitter(100, HEIGHT - 101, WIDTH - 100, HEIGHT - 101, 0.5f);
-		e2.setInitialVelocity(new PVector(0, -2));
-		flock.addEmitter(e2);
+		PointEmitter e = new PointEmitter(WIDTH / 2, 200, 1);
+		e.setInitialVelocity(0, 1);
+		flock.addEmitter(e);
 	}
 
 	@Override
@@ -64,80 +61,14 @@ public class Worms extends Scene implements FlockEventListener {
 
 		flock.step(elapsedMillis);
 
-		canvas.stroke(0, 255, 0);
-		canvas.noFill();
-		canvas.strokeWeight(2);
-		for (Emitter e : flock.getEmitters()) {
-			if (e instanceof LineEmitter) {
-				LineEmitter le = (LineEmitter) e;
-				canvas.line(le.getP1().x, le.getP1().y, le.getP2().x, le.getP2().y);
-			} else if (e instanceof PointEmitter) {
-				PointEmitter pe = (PointEmitter) e;
-				canvas.pushMatrix();
-				canvas.translate(pe.getPosition().x, pe.getPosition().y);
-				canvas.line(-10, 0, 10, 0);
-				canvas.line(0, -10, 0, 10);
-				canvas.popMatrix();
-			}
-		}
-
-		canvas.noFill();
-		canvas.stroke(50);
-		canvas.strokeCap(ROUND);
-		canvas.strokeWeight(path.getRadius() * 2);
-		canvas.beginShape();
-		for (PVector p : path.getPoints()) {
-			canvas.vertex(p.x, p.y);
-		}
-		canvas.endShape();
-
-		canvas.stroke(255);
-		canvas.strokeWeight(3);
-		canvas.strokeCap(ROUND);
-
-		Iterator<BoidRenderer> rendererIterator = renderers.iterator();
-		while (rendererIterator.hasNext()) {
-			BoidRenderer renderer = rendererIterator.next();
-			if (renderer.isReadyToDie()) {
-				rendererIterator.remove();
-			}
-			renderer.draw(canvas);
-		}
-
-		canvas.noStroke();
-		canvas.fill(255, 0, 0);
-		for (PVector m : magnets.getMagnets()) {
-			canvas.ellipse(m.x, m.y, 10, 10);
-		}
-
-		canvas.stroke(255);
-		canvas.strokeWeight(2);
-		Rectangle bounds = flock.getBounds();
-		canvas.noFill();
-		canvas.rect(bounds.x, bounds.y, bounds.width, bounds.height);
-
-		canvas.stroke(255);
-		canvas.textSize(24);
-		canvas.text(flock.getBoids().size(), 100, 100);
+		debugRenderer.render();
+		flockRenderer.render();
 	}
 
 	@Override
 	protected void doMousePressed(float mouseX, float mouseY) {
 		// magnets.addMagnet(mouseX, mouseY);
 		path.addPoint(mouseX, mouseY);
-	}
-
-	@Override
-	public void boidAdded(Boid b) {
-		BoidRenderer renderer = new WormBoidRenderer(b, 10);
-		b.setUserData("renderer", renderer);
-		renderers.add(renderer);
-	}
-
-	@Override
-	public void boidRemoved(Boid b) {
-		BoidRenderer boidRenderer = (BoidRenderer) b.getUserData("renderer");
-		boidRenderer.markReadyForDeath();
 	}
 
 	public void keyPressed() {

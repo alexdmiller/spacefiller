@@ -10,10 +10,12 @@ import java.util.List;
 public class FollowPathBehavior extends Behavior {
 	private List<PVector> points;
 	private float radius;
+	private float maxForce;
 
-	public FollowPathBehavior(float radius) {
+	public FollowPathBehavior(float radius, float maxForce) {
 		this.points = new ArrayList<>();
 		this.radius = radius;
+		this.maxForce = maxForce;
 	}
 
 	public void addPoint(float x, float y) {
@@ -45,7 +47,7 @@ public class FollowPathBehavior extends Behavior {
 			}
 
 			if (closestDistance > radius) {
-				PVector steer = BoidUtils.seek(boid, closestNormalPoint, boid.getMaxSpeed(), 0.1f);
+				PVector steer = BoidUtils.seek(boid, closestNormalPoint, boid.getMaxSpeed(), maxForce);
 				boid.applyForce(steer);
 			}
 		}
