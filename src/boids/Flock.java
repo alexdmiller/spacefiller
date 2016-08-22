@@ -1,19 +1,16 @@
 package boids;// The Flock (a list of Boid objects)
 
 import boids.behaviors.Behavior;
-import boids.behaviors.FlockBehavior;
-import emitter.Emitter;
-import processing.core.PVector;
+import boids.emitter.Emitter;
 
 import java.awt.*;
-import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
 public class Flock {
-	public static final int MAX_BOIDS = 700;
+	public static final int MAX_BOIDS = 1000;
 
 	private Rectangle bounds;
 	private List<Boid> boids;

@@ -1,4 +1,4 @@
-package emitter;
+package boids.emitter;
 
 import boids.Boid;
 

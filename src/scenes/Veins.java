@@ -24,19 +24,19 @@ public class Veins extends Scene {
 	float growthSpeed = 5;
 
 	@Scene.ModulationTarget(min=10, max=200)
-	float attractorKillRadius = 30;
+	float attractorKillRadius = 10;
 
 	@Scene.ModulationTarget(min=10, max=1000)
-	float attractorInfluenceRadius = 60;
+	float attractorInfluenceRadius = 100;
 
 	@Scene.ModulationTarget(min=0, max=20)
 	float edgeThickness = 5;
 
 	@Scene.ModulationTarget(min=0, max=20)
-	float pulsePeriod = 10;
+	float pulsePeriod = 2;
 
 	@Scene.ModulationTarget(min=0, max=1000)
-	float pulseLife = 100;
+	float pulseLife = 200;
 
 	@Override
 	public void doSetup() {

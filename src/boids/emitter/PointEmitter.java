@@ -1,4 +1,4 @@
-package emitter;
+package boids.emitter;
 
 import boids.Boid;
 import processing.core.PVector;
@@ -30,7 +30,7 @@ public class PointEmitter implements Emitter {
 		List<Boid> boids = new ArrayList<>();
 
 		if (Math.random() < emitChance) {
-			Boid b = new Boid(position.x, position.y);
+			Boid b = new Boid((float) (position.x + Math.random() - 0.5), (float) (position.y + Math.random() - 0.5));
 			b.setVelocity(initialVelocity);
 			boids.add(b);
 		}

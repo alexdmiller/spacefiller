@@ -9,66 +9,27 @@ import java.util.List;
 
 public class FlockBehavior extends Behavior {
 	private float maxForce = 0.03f;
-	private float neighborDistance = 50f;
-	private float desiredSeparation = 20f;
-	private float separationWeight = 1.0f;
-	private float alignmentWeight = 1.0f;
-	private float cohesionWeight = 1.0f;
+	private float desiredSeparation;
+	private float alignmentThreshold;
+	private float cohesionThreshold;
+	private float separationWeight;
+	private float alignmentWeight;
+	private float cohesionWeight;
 
-	public FlockBehavior(float maxForce, float neighborDistance, float desiredSeparation, float separationWeight, float alignmentWeight, float cohesionWeight) {
+	public FlockBehavior(
+			float maxForce,
+			float cohesionThreshold,
+			float alignmentThreshold,
+			float desiredSeparation,
+			float separationWeight,
+			float alignmentWeight,
+			float cohesionWeight) {
 		this.maxForce = maxForce;
-		this.neighborDistance = neighborDistance;
+		this.cohesionThreshold = cohesionThreshold;
+		this.alignmentThreshold = alignmentThreshold;
 		this.desiredSeparation = desiredSeparation;
 		this.separationWeight = separationWeight;
 		this.alignmentWeight = alignmentWeight;
-		this.cohesionWeight = cohesionWeight;
-	}
-
-	public float getMaxForce() {
-		return maxForce;
-	}
-
-	public void setMaxForce(float maxForce) {
-		this.maxForce = maxForce;
-	}
-
-	public float getNeighborDistance() {
-		return neighborDistance;
-	}
-
-	public void setNeighborDistance(float neighborDistance) {
-		this.neighborDistance = neighborDistance;
-	}
-
-	public float getDesiredSeparation() {
-		return desiredSeparation;
-	}
-
-	public void setDesiredSeparation(float desiredSeparation) {
-		this.desiredSeparation = desiredSeparation;
-	}
-
-	public float getSeparationWeight() {
-		return separationWeight;
-	}
-
-	public void setSeparationWeight(float separationWeight) {
-		this.separationWeight = separationWeight;
-	}
-
-	public float getAlignmentWeight() {
-		return alignmentWeight;
-	}
-
-	public void setAlignmentWeight(float alignmentWeight) {
-		this.alignmentWeight = alignmentWeight;
-	}
-
-	public float getCohesionWeight() {
-		return cohesionWeight;
-	}
-
-	public void setCohesionWeight(float cohesionWeight) {
 		this.cohesionWeight = cohesionWeight;
 	}
 
@@ -85,6 +46,10 @@ public class FlockBehavior extends Behavior {
 		PVector ali = align(b, boids);      // Alignment
 		PVector coh = cohesion(b, boids);   // Cohesion
 		// Arbitrarily weight these forces
+		if (sep.mag() > 0) {
+			ali.mult(0);
+			coh.mult(0);
+		}
 		sep.mult(separationWeight);
 		ali.mult(alignmentWeight);
 		coh.mult(cohesionWeight);
@@ -102,8 +67,8 @@ public class FlockBehavior extends Behavior {
 		// For every boid in the system, check if it's too close
 		for (Boid other : boids) {
 			float d = PVector.dist(b.getPosition(), other.getPosition());
-			// If the distance is greater than 0 and less than an arbitrary amount (0 when you are yourself)
-			if ((d > 0) && (d < desiredSeparation)) {
+
+			if (other != b && (d < desiredSeparation)) {
 				// Calculate vector pointing away from neighbor
 				PVector diff = PVector.sub(b.getPosition(), other.getPosition());
 				diff.normalize();
@@ -139,7 +104,7 @@ public class FlockBehavior extends Behavior {
 		int count = 0;
 		for (Boid other : boids) {
 			float d = PVector.dist(b.getPosition(), other.getPosition());
-			if ((d > 0) && (d < neighborDistance)) {
+			if ((d > 0) && (d < alignmentThreshold)) {
 				sum.add(other.getVelocity());
 				count++;
 			}
@@ -169,7 +134,7 @@ public class FlockBehavior extends Behavior {
 		int count = 0;
 		for (Boid other : boids) {
 			float d = PVector.dist(b.getPosition(), other.getPosition());
-			if ((d > 0) && (d < neighborDistance)) {
+			if ((d > 0) && (d < cohesionThreshold)) {
 				sum.add(other.getPosition()); // Add position
 				count++;
 			}

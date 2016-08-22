@@ -7,7 +7,7 @@ import processing.core.PGraphics;
 import processing.core.PVector;
 
 public class WormBoidRenderer extends BoidRenderer {
-	public static final int HISTORY_SIZE = 20;
+	public static final int HISTORY_SIZE = 10;
 	private EvictingQueue<PVector> history;
 
 	public WormBoidRenderer(Boid boid) {
