@@ -72,4 +72,8 @@ public class FollowPathBehavior extends Behavior {
 	public List<PVector> getPoints() {
 		return points;
 	}
+
+	public void clearPoints() {
+		points.clear();
+	}
 }

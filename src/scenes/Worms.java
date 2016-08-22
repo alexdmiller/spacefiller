@@ -5,8 +5,11 @@ import boids.behaviors.FlockBehavior;
 import boids.behaviors.FollowPathBehavior;
 import boids.behaviors.MagnetBehavior;
 import boids.behaviors.WiggleBehavior;
+import boids.emitter.LineEmitter;
 import boids.renderers.*;
 import boids.emitter.PointEmitter;
+import boids.tools.LineEmitterTool;
+import boids.tools.PathTool;
 import boids.tools.PointEmitterTool;
 
 public class Worms extends Scene {
@@ -16,7 +19,9 @@ public class Worms extends Scene {
 
 	public static final char PLAY_KEY = 'p';
 	public static final char EDIT_MODE_KEY = 'e';
-
+	public static final char NEXT_TOOL_KEY = 'n';
+	public static final char PREV_TOOL_KEY = 'p';
+	public static final char CLEAR_KEY = 'c';
 
 	private Flock flock;
 	private MagnetBehavior magnets;
@@ -25,7 +30,8 @@ public class Worms extends Scene {
 	private DebugFlockRenderer debugRenderer;
 	private BoidFlockRenderer flockRenderer;
 
-	private SceneTool currentTool;
+	private int currentToolIndex;
+	private SceneTool[] tools;
 
 	private boolean editing = true;
 	private boolean playing = false;
@@ -61,7 +67,13 @@ public class Worms extends Scene {
 //		e.setInitialVelocity(0, 1);
 //		flock.addEmitter(e);
 
-		currentTool = new PointEmitterTool(flock);
+		currentToolIndex = 0;
+
+		tools = new SceneTool[] {
+			new PointEmitterTool(flock),
+			new LineEmitterTool(flock),
+			new PathTool(path)
+		};
 	}
 
 	@Override
@@ -74,7 +86,6 @@ public class Worms extends Scene {
 
 		if (editing) {
 			debugRenderer.render();
-
 			canvas.pushMatrix();
 			canvas.translate(mouseX, mouseY);
 			canvas.stroke(255);
@@ -82,18 +93,16 @@ public class Worms extends Scene {
 			canvas.line(-10, 0, 10, 0);
 			canvas.line(0, -10, 0, 10);
 			canvas.popMatrix();
+			canvas.text(tools[currentToolIndex].toString(), 10, HEIGHT - 20);
 		}
 
 		flockRenderer.render();
-		currentTool.render();
+		tools[currentToolIndex].render();
 	}
 
 	@Override
 	protected void doMousePressed(float mouseX, float mouseY) {
-
-		currentTool.mousePressed(mouseX, mouseY);
-		// magnets.addMagnet(mouseX, mouseY);
-		path.addPoint(mouseX, mouseY);
+		tools[currentToolIndex].mousePressed(mouseX, mouseY);
 	}
 
 	public void keyPressed() {
@@ -101,8 +110,17 @@ public class Worms extends Scene {
 			editing = !editing;
 		} else if (key == PLAY_KEY) {
 			playing = !playing;
+		} else if (key == NEXT_TOOL_KEY) {
+			currentToolIndex = (currentToolIndex + 1) % tools.length;
+		} else if (key == PREV_TOOL_KEY) {
+			currentToolIndex = (currentToolIndex - 1) % tools.length;
+		} else if (key == CLEAR_KEY) {
+			flock.clearBoids();
+			flock.clearEmitters();
+			path.clearPoints();
+			magnets.clearMagnets();
 		} if (editing) {
-			currentTool.keyDown(key);
+			tools[currentToolIndex].keyDown(key);
 		}
 
 		// magnets.setRepelling(!magnets.isRepelling());

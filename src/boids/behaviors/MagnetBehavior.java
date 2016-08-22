@@ -79,4 +79,7 @@ public class MagnetBehavior extends Behavior {
 		}
 	}
 
+	public void clearMagnets() {
+		magnets.clear();
+	}
 }

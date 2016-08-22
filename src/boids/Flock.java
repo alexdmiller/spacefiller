@@ -65,6 +65,14 @@ public class Flock {
 		}
 	}
 
+	public void clearBoids() {
+		for (Boid b : boids) {
+			notifyRemoved(b);
+		}
+		boids.clear();
+
+	}
+
 	public void notifyRemoved(Boid b) {
 		for (FlockEventListener listener : eventListeners) {
 			listener.boidRemoved(b);
@@ -79,6 +87,10 @@ public class Flock {
 
 	public List<Emitter> getEmitters() {
 		return emitters;
+	}
+
+	public void clearEmitters() {
+		emitters.clear();
 	}
 
 	public void addBehavior(Behavior behavior) {

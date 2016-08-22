@@ -1,14 +1,17 @@
 package boids.tools;
 
 import boids.Flock;
+import boids.behaviors.FollowPathBehavior;
+import boids.emitter.LineEmitter;
 import boids.emitter.PointEmitter;
+import processing.core.PVector;
 import scenes.SceneTool;
 
-public class PointEmitterTool implements SceneTool {
-	private Flock flock;
+public class PathTool implements SceneTool {
+	private FollowPathBehavior path;
 
-	public PointEmitterTool(Flock flock) {
-		this.flock = flock;
+	public PathTool(FollowPathBehavior path) {
+		this.path = path;
 	}
 
 	@Override
@@ -18,7 +21,7 @@ public class PointEmitterTool implements SceneTool {
 
 	@Override
 	public void mousePressed(float mouseX, float mouseY) {
-		flock.addEmitter(new PointEmitter(mouseX, mouseY, 1));
+		path.addPoint(mouseX, mouseY);
 	}
 
 	@Override
@@ -28,6 +31,7 @@ public class PointEmitterTool implements SceneTool {
 
 	@Override
 	public String toString() {
-		return "Point Emitter";
+		return "Path Tool";
 	}
+
 }

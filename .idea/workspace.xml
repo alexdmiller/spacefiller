@@ -7,26 +7,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7bb3a9e-05bb-464d-967e-9bda287e8f0d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/boids/tools/PointEmitterTool.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/scenes/SceneTool.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Processing/emitter/Emitter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Processing/emitter/LineEmitter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Processing/emitter/PointEmitter.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/emitter/Emitter.java" afterPath="$PROJECT_DIR$/src/boids/emitter/Emitter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/emitter/LineEmitter.java" afterPath="$PROJECT_DIR$/src/boids/emitter/LineEmitter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/emitter/PointEmitter.java" afterPath="$PROJECT_DIR$/src/boids/emitter/PointEmitter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/boids/tools/LineEmitterTool.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/boids/tools/PathTool.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Processing/boids/Flock.class" afterPath="$PROJECT_DIR$/out/production/Processing/boids/Flock.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Processing/boids/behaviors/FlockBehavior.class" afterPath="$PROJECT_DIR$/out/production/Processing/boids/behaviors/FlockBehavior.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Processing/boids/renderers/DebugFlockRenderer.class" afterPath="$PROJECT_DIR$/out/production/Processing/boids/renderers/DebugFlockRenderer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Processing/boids/renderers/WormBoidRenderer.class" afterPath="$PROJECT_DIR$/out/production/Processing/boids/renderers/WormBoidRenderer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Processing/scenes/Veins.class" afterPath="$PROJECT_DIR$/out/production/Processing/scenes/Veins.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Processing/boids/behaviors/FollowPathBehavior.class" afterPath="$PROJECT_DIR$/out/production/Processing/boids/behaviors/FollowPathBehavior.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Processing/boids/tools/PointEmitterTool.class" afterPath="$PROJECT_DIR$/out/production/Processing/boids/tools/PointEmitterTool.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Processing/scenes/Worms.class" afterPath="$PROJECT_DIR$/out/production/Processing/scenes/Worms.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/Flock.java" afterPath="$PROJECT_DIR$/src/boids/Flock.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/behaviors/FlockBehavior.java" afterPath="$PROJECT_DIR$/src/boids/behaviors/FlockBehavior.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/renderers/DebugFlockRenderer.java" afterPath="$PROJECT_DIR$/src/boids/renderers/DebugFlockRenderer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java" afterPath="$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scenes/Veins.java" afterPath="$PROJECT_DIR$/src/scenes/Veins.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/behaviors/FollowPathBehavior.java" afterPath="$PROJECT_DIR$/src/boids/behaviors/FollowPathBehavior.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/behaviors/MagnetBehavior.java" afterPath="$PROJECT_DIR$/src/boids/behaviors/MagnetBehavior.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/tools/PointEmitterTool.java" afterPath="$PROJECT_DIR$/src/boids/tools/PointEmitterTool.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scenes/Worms.java" afterPath="$PROJECT_DIR$/src/scenes/Worms.java" />
     </list>
     <ignored path="Processing.iws" />
@@ -63,11 +54,13 @@
       <file leaf-file-name="Flock.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/boids/Flock.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="45" column="9" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+            <state relative-caret-position="497">
+              <caret line="92" column="25" selection-start-line="92" selection-start-column="25" selection-end-line="92" selection-end-column="25" />
               <folding>
-                <element signature="e#2082#2083#0" expanded="true" />
-                <element signature="e#2105#2106#0" expanded="true" />
+                <element signature="e#1919#1920#0" expanded="true" />
+                <element signature="e#1942#1943#0" expanded="true" />
+                <element signature="e#2237#2238#0" expanded="true" />
+                <element signature="e#2260#2261#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -76,14 +69,32 @@
       <file leaf-file-name="PointEmitterTool.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/boids/tools/PointEmitterTool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
+            <state relative-caret-position="640">
+              <caret line="32" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#217#218#0" expanded="true" />
                 <element signature="e#242#243#0" expanded="true" />
                 <element signature="e#350#351#0" expanded="true" />
                 <element signature="e#410#411#0" expanded="true" />
+                <element signature="e#499#500#0" expanded="true" />
+                <element signature="e#528#529#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LineEmitterTool.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/boids/tools/LineEmitterTool.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="317">
+              <caret line="26" column="19" selection-start-line="0" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#309#310#0" expanded="true" />
+                <element signature="e#334#335#0" expanded="true" />
+                <element signature="e#724#725#0" expanded="true" />
+                <element signature="e#813#814#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -92,20 +103,40 @@
       <file leaf-file-name="FlockBehavior.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/boids/behaviors/FlockBehavior.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="-828">
               <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Worms.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Worms.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scenes/Worms.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="517">
-              <caret line="103" column="24" selection-start-line="103" selection-start-column="24" selection-end-line="103" selection-end-column="24" />
+            <state relative-caret-position="437">
+              <caret line="120" column="23" selection-start-line="120" selection-start-column="23" selection-end-line="120" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2771#2772#0" expanded="true" />
+                <element signature="e#2830#2831#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PathTool.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/boids/tools/PathTool.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="177">
+              <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#334#335#0" expanded="true" />
+                <element signature="e#357#358#0" expanded="true" />
+                <element signature="e#465#466#0" expanded="true" />
+                <element signature="e#501#502#0" expanded="true" />
+                <element signature="e#590#591#0" expanded="true" />
+                <element signature="e#615#616#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -114,31 +145,26 @@
       <file leaf-file-name="FollowPathBehavior.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/boids/behaviors/FollowPathBehavior.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+            <state relative-caret-position="557">
+              <caret line="76" column="23" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1866#1867#0" expanded="true" />
+                <element signature="e#1887#1888#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WiggleBehavior.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/boids/behaviors/WiggleBehavior.java">
+      <file leaf-file-name="MagnetBehavior.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/boids/behaviors/MagnetBehavior.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SceneTool.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/scenes/SceneTool.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
-              <folding />
+            <state relative-caret-position="557">
+              <caret line="82" column="24" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="24" />
+              <folding>
+                <element signature="e#2137#2138#0" expanded="true" />
+                <element signature="e#2159#2160#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -152,16 +178,6 @@
                 <element signature="e#559#560#0" expanded="true" />
                 <element signature="e#606#607#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WormBoidRenderer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -208,12 +224,10 @@
         <option value="$PROJECT_DIR$/src/boids/BoidUtils.java" />
         <option value="$PROJECT_DIR$/src/boids/Boid.java" />
         <option value="$PROJECT_DIR$/src/boids/behaviors/WiggleBehavior.java" />
-        <option value="$PROJECT_DIR$/src/boids/behaviors/MagnetBehavior.java" />
         <option value="$PROJECT_DIR$/src/boids/renderers/DebugRenderer.java" />
         <option value="$PROJECT_DIR$/src/boids/renderers/FlockRenderer.java" />
         <option value="$PROJECT_DIR$/src/boids/renderers/BoidFlockRenderer.java" />
         <option value="$PROJECT_DIR$/src/boids/renderers/DebugFlockRenderer.java" />
-        <option value="$PROJECT_DIR$/src/boids/behaviors/FollowPathBehavior.java" />
         <option value="$PROJECT_DIR$/src/emitter/PointEmitter.java" />
         <option value="$PROJECT_DIR$/src/emitter/LineEmitter.java" />
         <option value="$PROJECT_DIR$/src/boids/emitter/Emitter.java" />
@@ -224,10 +238,14 @@
         <option value="$PROJECT_DIR$/src/scenes/Veins.java" />
         <option value="$PROJECT_DIR$/src/boids/tools/EmitterTool.java" />
         <option value="$PROJECT_DIR$/src/boids/behaviors/FlockBehavior.java" />
-        <option value="$PROJECT_DIR$/src/boids/tools/PointEmitterTool.java" />
-        <option value="$PROJECT_DIR$/src/boids/Flock.java" />
         <option value="$PROJECT_DIR$/src/boids/emitter/PointEmitter.java" />
+        <option value="$PROJECT_DIR$/src/boids/tools/PointEmitterTool.java" />
+        <option value="$PROJECT_DIR$/src/boids/tools/LineEmitterTool.java" />
+        <option value="$PROJECT_DIR$/src/boids/tools/PathTool.java" />
+        <option value="$PROJECT_DIR$/src/boids/Flock.java" />
+        <option value="$PROJECT_DIR$/src/boids/behaviors/FollowPathBehavior.java" />
         <option value="$PROJECT_DIR$/src/scenes/Worms.java" />
+        <option value="$PROJECT_DIR$/src/boids/behaviors/MagnetBehavior.java" />
       </list>
     </option>
   </component>
@@ -1099,12 +1117,12 @@
       <workItem from="1471564492632" duration="3454000" />
       <workItem from="1471649894488" duration="21063000" />
       <workItem from="1471758710423" duration="641000" />
-      <workItem from="1471796835188" duration="17804000" />
+      <workItem from="1471796835188" duration="20328000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75235000" />
+    <option name="totallyTimeSpent" value="77759000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1173" extended-state="6" />
@@ -1161,27 +1179,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/scenes/Worms.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/Flock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-          <folding>
-            <element signature="e#2082#2083#0" expanded="true" />
-            <element signature="e#2105#2106#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/boids/Boid.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -1458,19 +1455,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/behaviors/MagnetBehavior.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="68" column="51" selection-start-line="68" selection-start-column="51" selection-end-line="68" selection-end-column="51" />
-          <folding>
-            <element signature="e#720#721#0" expanded="true" />
-            <element signature="e#743#744#0" expanded="true" />
-            <element signature="e#791#792#0" expanded="true" />
-            <element signature="e#824#825#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/boids/renderers/BoidRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
@@ -1573,44 +1557,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/behaviors/FlockBehavior.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/scenes/Veins.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
           <caret line="26" column="35" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/Flock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="45" column="9" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
-          <folding>
-            <element signature="e#2082#2083#0" expanded="true" />
-            <element signature="e#2105#2106#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/tools/PointEmitterTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#217#218#0" expanded="true" />
-            <element signature="e#242#243#0" expanded="true" />
-            <element signature="e#350#351#0" expanded="true" />
-            <element signature="e#410#411#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1625,22 +1576,104 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/behaviors/FollowPathBehavior.java">
+    <entry file="file://$PROJECT_DIR$/src/boids/tools/PointEmitterTool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+        <state relative-caret-position="640">
+          <caret line="32" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#217#218#0" expanded="true" />
+            <element signature="e#242#243#0" expanded="true" />
+            <element signature="e#350#351#0" expanded="true" />
+            <element signature="e#410#411#0" expanded="true" />
+            <element signature="e#499#500#0" expanded="true" />
+            <element signature="e#528#529#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/tools/LineEmitterTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="26" column="19" selection-start-line="0" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#309#310#0" expanded="true" />
+            <element signature="e#334#335#0" expanded="true" />
+            <element signature="e#724#725#0" expanded="true" />
+            <element signature="e#813#814#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/tools/PathTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#334#335#0" expanded="true" />
+            <element signature="e#357#358#0" expanded="true" />
+            <element signature="e#465#466#0" expanded="true" />
+            <element signature="e#501#502#0" expanded="true" />
+            <element signature="e#590#591#0" expanded="true" />
+            <element signature="e#615#616#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/behaviors/FlockBehavior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-828">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/Flock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="92" column="25" selection-start-line="92" selection-start-column="25" selection-end-line="92" selection-end-column="25" />
+          <folding>
+            <element signature="e#1919#1920#0" expanded="true" />
+            <element signature="e#1942#1943#0" expanded="true" />
+            <element signature="e#2237#2238#0" expanded="true" />
+            <element signature="e#2260#2261#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/behaviors/FollowPathBehavior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="557">
+          <caret line="76" column="23" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1866#1867#0" expanded="true" />
+            <element signature="e#1887#1888#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/scenes/Worms.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
-          <caret line="103" column="24" selection-start-line="103" selection-start-column="24" selection-end-line="103" selection-end-column="24" />
+        <state relative-caret-position="437">
+          <caret line="120" column="23" selection-start-line="120" selection-start-column="23" selection-end-line="120" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2771#2772#0" expanded="true" />
+            <element signature="e#2830#2831#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/behaviors/MagnetBehavior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="557">
+          <caret line="82" column="24" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="24" />
+          <folding>
+            <element signature="e#2137#2138#0" expanded="true" />
+            <element signature="e#2159#2160#0" expanded="true" />
           </folding>
         </state>
       </provider>
