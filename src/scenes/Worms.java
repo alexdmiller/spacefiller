@@ -21,6 +21,7 @@ public class Worms extends Scene {
 
 	public static final char NEXT_TOOL_KEY = ',';
 	public static final char PREV_TOOL_KEY = '.';
+	public static final char FLIP_MAGNETS_KEY = 'm';
 	public static final char CLEAR_KEY = 'c';
 
 	private Flock flock;
@@ -45,10 +46,10 @@ public class Worms extends Scene {
 		WiggleBehavior wiggleBehavior = new WiggleBehavior(1f, 10);
 		flock.addBehavior(wiggleBehavior);
 
-		magnets = new MagnetBehavior(300, 5, 5);
+		magnets = new MagnetBehavior(300, 5);
 		flock.addBehavior(magnets);
 
-		path = new FollowPathBehavior(50, 2);
+		path = new FollowPathBehavior(50, 10);
 		flock.addBehavior(path);
 
 		currentToolIndex = 0;
@@ -94,6 +95,8 @@ public class Worms extends Scene {
 			currentToolIndex = (currentToolIndex + 1) % tools.length;
 		} else if (key == PREV_TOOL_KEY) {
 			currentToolIndex = (currentToolIndex - 1) % tools.length;
+		} else if (key == FLIP_MAGNETS_KEY) {
+			magnets.setForceMultiplier(magnets.getForceMultiplier() * -1);
 		} else if (key == CLEAR_KEY) {
 			flock.clearBoids();
 			flock.clearEmitters();

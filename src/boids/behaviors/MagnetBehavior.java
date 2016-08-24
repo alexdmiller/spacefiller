@@ -10,24 +10,15 @@ import java.util.List;
 
 public class MagnetBehavior extends Behavior {
 	private List<Magnet> magnets;
-	private boolean repelling = false;
 	private float attractionThreshold;
 	private float killRadius;
-	private float maxForce;
+	private float forceMultiplier;
 
-	public MagnetBehavior(float attractionThreshold, float killRadius, float maxForce) {
+	public MagnetBehavior(float attractionThreshold, float killRadius) {
 		this.magnets = new ArrayList<>();
 		this.attractionThreshold = attractionThreshold;
 		this.killRadius = killRadius;
-		this.maxForce = maxForce;
-	}
-
-	public boolean isRepelling() {
-		return repelling;
-	}
-
-	public void setRepelling(boolean repelling) {
-		this.repelling = repelling;
+		this.forceMultiplier = 1;
 	}
 
 	public void addMagnet(float x, float y, float strength) {
@@ -36,6 +27,14 @@ public class MagnetBehavior extends Behavior {
 
 	public List<Magnet> getMagnets() {
 		return magnets;
+	}
+
+	public float getForceMultiplier() {
+		return forceMultiplier;
+	}
+
+	public void setForceMultiplier(float forceMultiplier) {
+		this.forceMultiplier = forceMultiplier;
 	}
 
 	@Override
@@ -61,16 +60,11 @@ public class MagnetBehavior extends Behavior {
 					getFlock().notifyRemoved(b);
 					break;
 				} else if (closestDistance < attractionThreshold) {
-					if (repelling) {
-						PVector delta = PVector.sub(closest.position, b.getPosition());
-						delta.mult(-1);
-						delta.add(b.getPosition());
-						PVector steer = BoidUtils.seek(b, delta, closest.strength, maxForce);  // Steer towards the position
-						b.applyForce(steer);
-					} else {
-						PVector steer = BoidUtils.seek(b, closest.position, b.getMaxSpeed(), maxForce);  // Steer towards the position
-						b.applyForce(steer);
-					}
+					PVector delta = PVector.sub(closest.position, b.getPosition());
+
+					delta.normalize();
+					delta.mult(100 * closest.strength / closestDistance * forceMultiplier);
+					b.applyForce(delta);
 				}
 			}
 		}

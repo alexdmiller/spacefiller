@@ -57,7 +57,7 @@ public class DebugFlockRenderer extends FlockRenderer {
 
 	private void renderFollowPathBehavior(PGraphics canvas, FollowPathBehavior behavior) {
 		canvas.noFill();
-		canvas.stroke(20);
+		canvas.stroke(255, 20);
 		canvas.strokeCap(PConstants.ROUND);
 		canvas.strokeWeight(behavior.getRadius() * 2);
 		canvas.beginShape();
