@@ -26,7 +26,7 @@ public class PointEmitter implements Emitter {
 	}
 
 	@Override
-	public List<Boid> emit(float ellapsed) {
+	public List<Boid> emit() {
 		List<Boid> boids = new ArrayList<>();
 
 		if (Math.random() < emitChance) {

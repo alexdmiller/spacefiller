@@ -14,8 +14,8 @@ public class BoidFlockRenderer extends FlockRenderer implements FlockEventListen
 	private List<BoidRenderer> renderers;
 	private Class<? extends BoidRenderer> rendererClass;
 
-	public BoidFlockRenderer(Flock flock, PGraphics canvas, Class<? extends BoidRenderer> rendererClass) {
-		super(flock, canvas);
+	public BoidFlockRenderer(Flock flock, Class<? extends BoidRenderer> rendererClass) {
+		super(flock);
 		this.renderers = new ArrayList<>();
 		flock.addEventListener(this);
 
@@ -23,16 +23,16 @@ public class BoidFlockRenderer extends FlockRenderer implements FlockEventListen
 	}
 
 	@Override
-	public void render() {
-		canvas.stroke(255);
-		canvas.strokeWeight(3);
+	public void render(PGraphics graphics) {
+		graphics.stroke(255);
+		graphics.strokeWeight(3);
 		Iterator<BoidRenderer> rendererIterator = renderers.iterator();
 		while (rendererIterator.hasNext()) {
 			BoidRenderer renderer = rendererIterator.next();
 			if (renderer.isReadyToDie()) {
 				rendererIterator.remove();
 			}
-			renderer.draw(canvas);
+			renderer.draw(graphics);
 		}
 	}
 

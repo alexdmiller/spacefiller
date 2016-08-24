@@ -6,7 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Iterator;
 
+import processing.core.PGraphics;
 import processing.core.PVector;
+import processing.opengl.PGL;
 
 public class Veins extends Scene {
 	public static void main(String[] args) {
@@ -45,11 +47,11 @@ public class Veins extends Scene {
 	}
 
 	@Override
-	protected void doDraw(float mouseX, float mouseY) {
-		canvas.background(0);
+	protected void drawCanvas(PGraphics graphics, float mouseX, float mouseY) {
+		graphics.background(0);
 
 		if (drawing) {
-			drawAttractors(attractors);
+			drawAttractors(attractors, graphics);
 
 			if (mousePressed) {
 				for (int i = 0; i < BRUSH_DENSITY; i++) {
@@ -59,15 +61,15 @@ public class Veins extends Scene {
 				}
 			}
 
-			canvas.stroke(255);
-			canvas.noFill();
-			canvas.rectMode(RADIUS);
-			canvas.rect(mouseX, mouseY, BRUSH_RADIUS, BRUSH_RADIUS);
+			graphics.stroke(255);
+			graphics.noFill();
+			graphics.rectMode(RADIUS);
+			graphics.rect(mouseX, mouseY, BRUSH_RADIUS, BRUSH_RADIUS);
 		}
 
 		tree.grow(attractors);
 
-		drawTree(tree);
+		drawTree(tree, graphics);
 	}
 
 	@Override
@@ -77,12 +79,13 @@ public class Veins extends Scene {
 		}
 	}
 
-	public void keyPressed() {
+	@Override
+	protected void doKeyPressed() {
 		drawing = !drawing;
 	}
 
-	void drawTree(Tree tree) {
-		canvas.stroke(255);
+	void drawTree(Tree tree, PGraphics graphics) {
+		graphics.stroke(255);
 
 		Iterator<Edge> edges = tree.edges.iterator();
 		while (edges.hasNext()) {
@@ -92,8 +95,8 @@ public class Veins extends Scene {
 			} else {
 				float w = edgeThickness * ageToThickness(edge.age);
 				if (w > 0) {
-					canvas.strokeWeight(w);
-					canvas.line(edge.n1.v.x, edge.n1.v.y, edge.n2.v.x, edge.n2.v.y);
+					graphics.strokeWeight(w);
+					graphics.line(edge.n1.v.x, edge.n1.v.y, edge.n2.v.x, edge.n2.v.y);
 				}
 				edge.age++;
 			}
@@ -110,11 +113,11 @@ public class Veins extends Scene {
 		}
 	}
 
-	void drawAttractors(List<PVector> attractors) {
-		canvas.strokeWeight(5);
+	void drawAttractors(List<PVector> attractors, PGraphics graphics) {
+		graphics.strokeWeight(5);
 		for (PVector attractor : attractors) {
-			canvas.stroke(255);
-			canvas.point(attractor.x, attractor.y);
+			graphics.stroke(255);
+			graphics.point(attractor.x, attractor.y);
 		}
 	}
 

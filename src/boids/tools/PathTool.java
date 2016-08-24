@@ -4,6 +4,7 @@ import boids.Flock;
 import boids.behaviors.FollowPathBehavior;
 import boids.emitter.LineEmitter;
 import boids.emitter.PointEmitter;
+import processing.core.PGraphics;
 import processing.core.PVector;
 import scenes.SceneTool;
 
@@ -15,7 +16,7 @@ public class PathTool implements SceneTool {
 	}
 
 	@Override
-	public void render() {
+	public void render(PGraphics graphics) {
 
 	}
 
@@ -31,7 +32,7 @@ public class PathTool implements SceneTool {
 
 	@Override
 	public String toString() {
-		return "Path Tool";
+		return "PATH";
 	}
 
 }

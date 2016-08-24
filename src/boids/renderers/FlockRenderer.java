@@ -7,12 +7,10 @@ import java.util.ArrayList;
 
 public abstract class FlockRenderer {
 	protected Flock flock;
-	protected PGraphics canvas;
 
-	public FlockRenderer(Flock flock, PGraphics canvas) {
+	public FlockRenderer(Flock flock) {
 		this.flock = flock;
-		this.canvas = canvas;
 	}
 
-	public abstract void render();
+	public abstract void render(PGraphics canvas);
 }

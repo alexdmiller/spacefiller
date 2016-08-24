@@ -31,15 +31,15 @@ public abstract class Scene extends PApplet implements OscEventListener {
 	public static final int WIDTH = 1920;
 	public static final int HEIGHT = 1080;
 	public static final float LOCAL_WINDOW_SCALE = 0.5f;
+	public static final char PLAY_KEY = ' ';
 
-	// to both syphon canvas and local canvas.
+	private OscP5 oscP5;
+	private float lastTime;
+	private float elapsedMillis;
 	private SyphonServer server;
 	private Map<String, Field> modulationTargets;
-
-	protected PGraphics canvas;
-	protected OscP5 oscP5;
-	protected float lastTime;
-	protected float elapsedMillis;
+	private PGraphics canvas;
+	private boolean playing;
 
 	public Scene() {
 		modulationTargets = new HashMap<>();
@@ -139,30 +139,63 @@ public abstract class Scene extends PApplet implements OscEventListener {
 	protected abstract void doSetup();
 
 	public final void draw() {
+		background(0);
+
 		float currentTime = millis();
 		elapsedMillis = currentTime - lastTime;
 
-		canvas.beginDraw();
-		doDraw(mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
-		canvas.endDraw();
+		if (playing) {
+			canvas.beginDraw();
+			canvas.background(0);
+			drawCanvas(canvas, mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
+			canvas.endDraw();
+		}
 
-		getGraphics().image(canvas, 0, 0, width, height);
+		image(canvas, 0, 0, width, height);
 
-		getGraphics().textSize(24);
-		getGraphics().text(frameRate, 10, 30);
+		pushMatrix();
+		scale(LOCAL_WINDOW_SCALE);
+		drawControlPanel(getGraphics(), mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
+		popMatrix();
+
+		textSize(24);
+		text(frameRate, 10, 30);
+
+		pushMatrix();
+		translate(width / 2, height - 20);
+		noStroke();
+		if (playing) {
+			fill(0, 255, 0);
+			triangle(-10, -10, 10, 0, -10, 10);
+		} else {
+			fill(255, 0, 0);
+			rect(-10, -10, 20, 20);
+		}
+		popMatrix();
 
 		server.sendImage(canvas);
 
 		lastTime = currentTime;
 	}
 
-	protected abstract void doDraw(float mouseX, float mouseY);
+	protected abstract void drawCanvas(PGraphics graphics, float mouseX, float mouseY);
+	protected void drawControlPanel(PGraphics graphics, float mouseX, float mouseY) {}
 
 	public final void mousePressed() {
 		doMousePressed(mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
 	}
 
 	protected abstract void doMousePressed(float mouseX, float mouseY);
+
+	public final void keyPressed() {
+		if (key == PLAY_KEY) {
+			playing = !playing;
+		}
+
+		doKeyPressed();
+	}
+
+	protected abstract void doKeyPressed();
 
 	@Override
 	public void oscEvent(OscMessage oscMessage) {

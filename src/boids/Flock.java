@@ -26,9 +26,9 @@ public class Flock {
 		eventListeners = new ArrayList<>();
 	}
 
-	public void step(float elapsedMillis) {
+	public void step() {
 		for (Emitter e : emitters) {
-			List<Boid> boids = e.emit(elapsedMillis);
+			List<Boid> boids = e.emit();
 			addAllBoids(boids);
 		}
 

@@ -3,6 +3,7 @@ package boids.tools;
 import boids.Flock;
 import boids.emitter.LineEmitter;
 import boids.emitter.PointEmitter;
+import processing.core.PGraphics;
 import processing.core.PVector;
 import scenes.SceneTool;
 
@@ -15,7 +16,7 @@ public class LineEmitterTool implements SceneTool {
 	}
 
 	@Override
-	public void render() {
+	public void render(PGraphics graphics) {
 
 	}
 
@@ -36,7 +37,7 @@ public class LineEmitterTool implements SceneTool {
 
 	@Override
 	public String toString() {
-		return "Line Emitter" + (lastPoint == null ? " - first point" : " - second point");
+		return "LINE EM" + (lastPoint == null ? " - first point" : " - second point");
 	}
 
 }

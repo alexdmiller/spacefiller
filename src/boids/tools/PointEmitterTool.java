@@ -2,6 +2,7 @@ package boids.tools;
 
 import boids.Flock;
 import boids.emitter.PointEmitter;
+import processing.core.PGraphics;
 import scenes.SceneTool;
 
 public class PointEmitterTool implements SceneTool {
@@ -12,7 +13,7 @@ public class PointEmitterTool implements SceneTool {
 	}
 
 	@Override
-	public void render() {
+	public void render(PGraphics graphics) {
 
 	}
 
@@ -28,6 +29,6 @@ public class PointEmitterTool implements SceneTool {
 
 	@Override
 	public String toString() {
-		return "Point Emitter";
+		return "POINT EM";
 	}
 }
