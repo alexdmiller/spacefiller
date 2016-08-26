@@ -27,7 +27,8 @@ public class FollowPathBehavior extends Behavior {
 	}
 
 	@Override
-	public void apply(List<Boid> boids) {
+	public void apply() {
+		List<Boid> boids = getFlock().getBoids();
 		for (Boid boid : boids) {
 			PVector last = null;
 			PVector closestNormalPoint = null;

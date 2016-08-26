@@ -2,8 +2,9 @@ package scenes;
 
 import processing.core.PGraphics;
 
-public interface SceneTool {
-	void render(PGraphics graphics);
-	void mousePressed(float mouseX, float mouseY);
-	void keyDown(char key);
+public class SceneTool {
+	public void render(PGraphics graphics, float mouseX, float mouseY, boolean mousePressed) {}
+	public void mousePressed(float mouseX, float mouseY) {}
+	public void mouseReleased(float mouseX, float mouseY) {}
+	public void keyDown(char key) {}
 }

@@ -2,6 +2,7 @@ package boids.renderers;
 
 import boids.Flock;
 import boids.behaviors.Behavior;
+import boids.behaviors.EmitBehavior;
 import boids.behaviors.FollowPathBehavior;
 import boids.behaviors.MagnetBehavior;
 import boids.emitter.Emitter;
@@ -19,28 +20,13 @@ public class DebugFlockRenderer extends FlockRenderer {
 	}
 
 	public void render(PGraphics graphics) {
-		graphics.stroke(0, 255, 0);
-		graphics.noFill();
-		graphics.strokeWeight(2);
-		for (Emitter e : flock.getEmitters()) {
-			if (e instanceof LineEmitter) {
-				LineEmitter le = (LineEmitter) e;
-				graphics.line(le.getP1().x, le.getP1().y, le.getP2().x, le.getP2().y);
-			} else if (e instanceof PointEmitter) {
-				PointEmitter pe = (PointEmitter) e;
-				graphics.pushMatrix();
-				graphics.translate(pe.getPosition().x, pe.getPosition().y);
-				graphics.line(-10, 0, 10, 0);
-				graphics.line(0, -10, 0, 10);
-				graphics.popMatrix();
-			}
-		}
-
 		for (Behavior behavior : flock.getBehaviors()) {
 			if (behavior instanceof FollowPathBehavior) {
 				renderFollowPathBehavior(graphics, (FollowPathBehavior) behavior);
 			} else if (behavior instanceof MagnetBehavior) {
 				renderMagnetBehavior(graphics, (MagnetBehavior) behavior);
+			} else if (behavior instanceof EmitBehavior) {
+				renderEmitBehavior(graphics, (EmitBehavior) behavior);
 			}
 		}
 
@@ -53,6 +39,25 @@ public class DebugFlockRenderer extends FlockRenderer {
 		graphics.stroke(255);
 		graphics.textSize(24);
 		//graphics.text(flock.getBoids().size(), 100, 100);
+	}
+
+	private void renderEmitBehavior(PGraphics graphics, EmitBehavior behavior) {
+		graphics.stroke(0, 255, 0);
+		graphics.noFill();
+		graphics.strokeWeight(2);
+		for (Emitter e : behavior.getEmitters()) {
+			if (e instanceof LineEmitter) {
+				LineEmitter le = (LineEmitter) e;
+				graphics.line(le.getP1().x, le.getP1().y, le.getP2().x, le.getP2().y);
+			} else if (e instanceof PointEmitter) {
+				PointEmitter pe = (PointEmitter) e;
+				graphics.pushMatrix();
+				graphics.translate(pe.getPosition().x, pe.getPosition().y);
+				graphics.line(-10, 0, 10, 0);
+				graphics.line(0, -10, 0, 10);
+				graphics.popMatrix();
+			}
+		}
 	}
 
 	private void renderFollowPathBehavior(PGraphics canvas, FollowPathBehavior behavior) {

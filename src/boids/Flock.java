@@ -14,24 +14,17 @@ public class Flock {
 
 	private Rectangle bounds;
 	private List<Boid> boids;
-	private List<Emitter> emitters;
 	private List<Behavior> behaviors;
 	private List<FlockEventListener> eventListeners;
 
 	public Flock(int x, int y, int width, int height) {
 		bounds = new Rectangle(x, y, width, height);
 		boids = new ArrayList<>();
-		emitters = new ArrayList<>();
 		behaviors = new ArrayList<>();
 		eventListeners = new ArrayList<>();
 	}
 
 	public void step() {
-		for (Emitter e : emitters) {
-			List<Boid> boids = e.emit();
-			addAllBoids(boids);
-		}
-
 		Iterator<Boid> boidIterator = boids.iterator();
 		while (boidIterator.hasNext()) {
 			Boid b = boidIterator.next();
@@ -42,7 +35,7 @@ public class Flock {
 		}
 
 		for (Behavior b : behaviors) {
-			b.apply(getBoids());
+			b.apply();
 		}
 
 		for (Boid b : boids) {
@@ -80,18 +73,6 @@ public class Flock {
 	}
 
 	public List<Boid> getBoids() { return boids; }
-
-	public void addEmitter(Emitter e) {
-		emitters.add(e);
-	}
-
-	public List<Emitter> getEmitters() {
-		return emitters;
-	}
-
-	public void clearEmitters() {
-		emitters.clear();
-	}
 
 	public void addBehavior(Behavior behavior) {
 		behavior.setFlock(this);

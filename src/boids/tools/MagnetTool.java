@@ -4,7 +4,7 @@ import boids.behaviors.MagnetBehavior;
 import processing.core.PGraphics;
 import scenes.SceneTool;
 
-public class MagnetTool implements SceneTool {
+public class MagnetTool extends SceneTool {
 	private static final char DECREASE_STRENGTH_KEY = '<';
 	private static final char INCREASE_STRENGTH_KEY = '>';
 	private static final float STRENGTH_INCREMENT = 0.5f;
@@ -14,11 +14,6 @@ public class MagnetTool implements SceneTool {
 
 	public MagnetTool(MagnetBehavior magnets) {
 		this.magnets = magnets;
-	}
-
-	@Override
-	public void render(PGraphics graphics) {
-
 	}
 
 	@Override

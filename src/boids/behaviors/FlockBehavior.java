@@ -34,7 +34,8 @@ public class FlockBehavior extends Behavior {
 	}
 
 	@Override
-	public void apply(List<Boid> boids) {
+	public void apply() {
+		List<Boid> boids = getFlock().getBoids();
 		for (Boid b : boids) {
 			applyFlockingForces(b, boids);
 		}

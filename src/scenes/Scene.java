@@ -21,17 +21,21 @@ import java.io.IOException;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 // TODO: how to handle ports?
 // TODO: how to handle scenes?
 
-public abstract class Scene extends PApplet implements OscEventListener {
+public class Scene extends PApplet implements OscEventListener {
 	public static final int WIDTH = 1920;
 	public static final int HEIGHT = 1080;
 	public static final float LOCAL_WINDOW_SCALE = 0.5f;
 	public static final char PLAY_KEY = ' ';
+	public static final char NEXT_TOOL_KEY = ',';
+	public static final char PREV_TOOL_KEY = '.';
 
 	private OscP5 oscP5;
 	private float lastTime;
@@ -40,6 +44,8 @@ public abstract class Scene extends PApplet implements OscEventListener {
 	private Map<String, Field> modulationTargets;
 	private PGraphics canvas;
 	private boolean playing;
+	private int currentToolIndex;
+	private List<SceneTool> tools;
 
 	public Scene() {
 		modulationTargets = new HashMap<>();
@@ -55,6 +61,13 @@ public abstract class Scene extends PApplet implements OscEventListener {
 
 		oscP5 = new OscP5(this, port);
 		oscP5.addListener(this);
+
+		currentToolIndex = 0;
+		tools = new ArrayList<>();
+	}
+
+	protected void addSceneTool(SceneTool tool) {
+		tools.add(tool);
 	}
 
 	private void exportVDMXJson(int port) {
@@ -136,7 +149,7 @@ public abstract class Scene extends PApplet implements OscEventListener {
 		doSetup();
 	}
 
-	protected abstract void doSetup();
+	protected void doSetup() {}
 
 	public final void draw() {
 		background(0);
@@ -155,11 +168,14 @@ public abstract class Scene extends PApplet implements OscEventListener {
 
 		pushMatrix();
 		scale(LOCAL_WINDOW_SCALE);
+		tools.get(currentToolIndex).render(getGraphics(), mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE, mousePressed);
 		drawControlPanel(getGraphics(), mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
 		popMatrix();
 
 		textSize(24);
+		fill(255);
 		text(frameRate, 10, 30);
+		text(tools.get(currentToolIndex).toString(), 10, height - 20);
 
 		pushMatrix();
 		translate(width / 2, height - 20);
@@ -169,6 +185,7 @@ public abstract class Scene extends PApplet implements OscEventListener {
 			triangle(-10, -10, 10, 0, -10, 10);
 		} else {
 			fill(255, 0, 0);
+			rectMode(CORNER);
 			rect(-10, -10, 20, 20);
 		}
 		popMatrix();
@@ -178,24 +195,28 @@ public abstract class Scene extends PApplet implements OscEventListener {
 		lastTime = currentTime;
 	}
 
-	protected abstract void drawCanvas(PGraphics graphics, float mouseX, float mouseY);
+	protected void drawCanvas(PGraphics graphics, float mouseX, float mouseY) {}
 	protected void drawControlPanel(PGraphics graphics, float mouseX, float mouseY) {}
 
 	public final void mousePressed() {
-		doMousePressed(mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
+		tools.get(currentToolIndex).mousePressed(mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
 	}
-
-	protected abstract void doMousePressed(float mouseX, float mouseY);
 
 	public final void keyPressed() {
 		if (key == PLAY_KEY) {
 			playing = !playing;
+		} else if (key == NEXT_TOOL_KEY) {
+			currentToolIndex = (currentToolIndex + 1) % tools.size();
+		} else if (key == PREV_TOOL_KEY) {
+			currentToolIndex = (currentToolIndex - 1) % tools.size();
 		}
+
+		tools.get(currentToolIndex).keyDown(key);
 
 		doKeyPressed();
 	}
 
-	protected abstract void doKeyPressed();
+	protected void doKeyPressed() {}
 
 	@Override
 	public void oscEvent(OscMessage oscMessage) {

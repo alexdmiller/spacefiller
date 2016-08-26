@@ -9,18 +9,17 @@ import java.util.Iterator;
 import processing.core.PGraphics;
 import processing.core.PVector;
 import processing.opengl.PGL;
+import veins.Tree;
+import veins.tools.FoodTool;
+import veins.tools.VeinTool;
 
 public class Veins extends Scene {
 	public static void main(String[] args) {
 		main("scenes.Veins");
 	}
 
-	final static int BRUSH_DENSITY = 5;
-	final static float BRUSH_RADIUS = 100;
-
-	List<PVector> attractors;
-	Tree tree;
-	boolean drawing = true;
+	private List<PVector> attractors;
+	private Tree tree;
 
 	@Scene.ModulationTarget(min=0.1f, max=50)
 	float growthSpeed = 5;
@@ -35,7 +34,7 @@ public class Veins extends Scene {
 	float edgeThickness = 5;
 
 	@Scene.ModulationTarget(min=0, max=20)
-	float pulsePeriod = 2;
+	float pulsePeriod = 50;
 
 	@Scene.ModulationTarget(min=0, max=1000)
 	float pulseLife = 200;
@@ -44,52 +43,31 @@ public class Veins extends Scene {
 	public void doSetup() {
 		attractors = new ArrayList<PVector>();
 		tree = new Tree();
+
+		addSceneTool(new FoodTool(tree, attractors, 10, 100));
+		addSceneTool(new VeinTool(tree));
 	}
 
 	@Override
 	protected void drawCanvas(PGraphics graphics, float mouseX, float mouseY) {
 		graphics.background(0);
 
-		if (drawing) {
-			drawAttractors(attractors, graphics);
-
-			if (mousePressed) {
-				for (int i = 0; i < BRUSH_DENSITY; i++) {
-					attractors.add(new PVector(
-							mouseX + random(-BRUSH_RADIUS, BRUSH_RADIUS),
-							mouseY + random(-BRUSH_RADIUS, BRUSH_RADIUS)));
-				}
-			}
-
-			graphics.stroke(255);
-			graphics.noFill();
-			graphics.rectMode(RADIUS);
-			graphics.rect(mouseX, mouseY, BRUSH_RADIUS, BRUSH_RADIUS);
-		}
-
-		tree.grow(attractors);
+		tree.grow(attractors, attractorInfluenceRadius, attractorKillRadius, growthSpeed);
 
 		drawTree(tree, graphics);
 	}
 
 	@Override
-	protected void doMousePressed(float mouseX, float mouseY) {
-		if (!drawing) {
-			tree.addNode(new PVector(mouseX, mouseY));
-		}
-	}
-
-	@Override
-	protected void doKeyPressed() {
-		drawing = !drawing;
+	protected void drawControlPanel(PGraphics graphics, float mouseX, float mouseY) {
+		drawAttractors(attractors, graphics);
 	}
 
 	void drawTree(Tree tree, PGraphics graphics) {
 		graphics.stroke(255);
 
-		Iterator<Edge> edges = tree.edges.iterator();
+		Iterator<Tree.Edge> edges = tree.edges.iterator();
 		while (edges.hasNext()) {
-			Edge edge = edges.next();
+			Tree.Edge edge = edges.next();
 			if (edge.age >= pulseLife) {
 				edges.remove();
 			} else {
@@ -102,9 +80,9 @@ public class Veins extends Scene {
 			}
 		}
 
-		Iterator<Node> nodes = tree.nodes.iterator();
+		Iterator<Tree.Node> nodes = tree.nodes.iterator();
 		while (nodes.hasNext()) {
-			Node node = nodes.next();
+			Tree.Node node = nodes.next();
 			if (node.age >= pulseLife) {
 				nodes.remove();
 			} else {
@@ -123,97 +101,5 @@ public class Veins extends Scene {
 
 	float ageToThickness(int age) {
 		return Math.max(0, sin((float) age * (PI / pulsePeriod)));
-	}
-
-
-	class Tree {
-		List<Edge> edges;
-		List<Node> nodes;
-
-		Tree() {
-			edges = new ArrayList<Edge>();
-			nodes = new ArrayList<Node>();
-		}
-
-		void grow(List<PVector> attractors) {
-			Map<Node, PVector> forces = new HashMap<Node, PVector>();
-			List<PVector> attractorsToRemove = new ArrayList<PVector>();
-
-			for (PVector attractor : attractors) {
-
-				// Find the closest node to attractor.
-				Node closest = null;
-				for (Node node : nodes) {
-					float dist = attractor.dist(node.v);
-					if (dist < attractorInfluenceRadius &&
-							(closest == null ||
-									dist < attractor.dist(closest.v))) {
-						closest = node;
-					}
-
-					if (dist < attractorKillRadius) {
-						attractorsToRemove.add(attractor);
-					}
-				}
-
-				// Apply a force to the nearest node.
-				if (closest != null) {
-					if (!forces.containsKey(closest)) {
-						forces.put(closest, new PVector(0, 0));
-					}
-					PVector diff = new PVector();
-					diff.set(attractor);
-					diff.sub(closest.v);
-					diff.normalize();
-					forces.get(closest).add(diff);
-				}
-			}
-
-			attractors.removeAll(attractorsToRemove);
-
-			List<Node> newNodes = new ArrayList<Node>();
-			for (Node node : nodes) {
-				if (forces.containsKey(node)) {
-					PVector force = forces.get(node);
-					force.normalize();
-					force.mult(growthSpeed + random(-1, 1));
-					force.add(node.v);
-
-					Node n = new Node(force);
-
-					newNodes.add(n);
-					edges.add(new Edge(node, n));
-				}
-			}
-
-			nodes.addAll(newNodes);
-		}
-
-		void addNode(PVector n) {
-			nodes.add(new Node(n));
-		}
-	}
-
-	class Node {
-		PVector v;
-		int age;
-
-		Node(PVector v) {
-			this.v = v;
-		}
-
-		public String toString() {
-			return this.v.toString() + " " + String.valueOf(this.v.hashCode());
-		}
-	}
-
-	class Edge {
-		Node n1, n2;
-		int age;
-
-		Edge(Node n1, Node n2) {
-			this.n1 = n1;
-			this.n2 = n2;
-		}
 	}
 }

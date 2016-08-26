@@ -8,7 +8,7 @@ import processing.core.PGraphics;
 import processing.core.PVector;
 import scenes.SceneTool;
 
-public class PathTool implements SceneTool {
+public class PathTool extends SceneTool {
 	private FollowPathBehavior path;
 
 	public PathTool(FollowPathBehavior path) {
@@ -16,18 +16,8 @@ public class PathTool implements SceneTool {
 	}
 
 	@Override
-	public void render(PGraphics graphics) {
-
-	}
-
-	@Override
 	public void mousePressed(float mouseX, float mouseY) {
 		path.addPoint(mouseX, mouseY);
-	}
-
-	@Override
-	public void keyDown(char key) {
-
 	}
 
 	@Override

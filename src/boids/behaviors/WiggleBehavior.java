@@ -16,7 +16,9 @@ public class WiggleBehavior extends Behavior {
 	}
 
 	@Override
-	public void apply(List<Boid> boids) {
+	public void apply() {
+		List<Boid> boids = getFlock().getBoids();
+
 		for (Boid b : boids) {
 			PVector wiggleDirection = b.getVelocity().copy().rotate((float) Math.PI / 2f);
 

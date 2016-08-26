@@ -1,10 +1,7 @@
 package scenes;
 
 import boids.*;
-import boids.behaviors.FlockBehavior;
-import boids.behaviors.FollowPathBehavior;
-import boids.behaviors.MagnetBehavior;
-import boids.behaviors.WiggleBehavior;
+import boids.behaviors.*;
 import boids.emitter.LineEmitter;
 import boids.renderers.*;
 import boids.emitter.PointEmitter;
@@ -19,19 +16,16 @@ public class Worms extends Scene {
 		main("scenes.Worms");
 	}
 
-	public static final char NEXT_TOOL_KEY = ',';
-	public static final char PREV_TOOL_KEY = '.';
+
 	public static final char FLIP_MAGNETS_KEY = 'm';
 	public static final char CLEAR_KEY = 'c';
 
 	private Flock flock;
 	private MagnetBehavior magnets;
 	private FollowPathBehavior path;
+	private EmitBehavior emitters;
 	private DebugFlockRenderer debugRenderer;
 	private BoidFlockRenderer flockRenderer;
-	// TODO: refactor tools up into Scene
-	private int currentToolIndex;
-	private SceneTool[] tools;
 
 	@Override
 	public void doSetup() {
@@ -52,14 +46,13 @@ public class Worms extends Scene {
 		path = new FollowPathBehavior(50, 10);
 		flock.addBehavior(path);
 
-		currentToolIndex = 0;
+		emitters = new EmitBehavior();
+		flock.addBehavior(emitters);
 
-		tools = new SceneTool[] {
-			new PointEmitterTool(flock),
-			new LineEmitterTool(flock),
-			new PathTool(path),
-			new MagnetTool(magnets)
-		};
+		addSceneTool(new PointEmitterTool(emitters));
+		addSceneTool(new LineEmitterTool(emitters));
+		addSceneTool(new PathTool(path));
+		addSceneTool(new MagnetTool(magnets));
 	}
 
 	@Override
@@ -70,40 +63,18 @@ public class Worms extends Scene {
 
 	@Override
 	protected void drawControlPanel(PGraphics graphics, float mouseX, float mouseY) {
-		tools[currentToolIndex].render(graphics);
-
 		debugRenderer.render(graphics);
-		graphics.pushMatrix();
-		graphics.translate(mouseX, mouseY);
-		graphics.stroke(255);
-		graphics.strokeWeight(2);
-		graphics.line(-10, 0, 10, 0);
-		graphics.line(0, -10, 0, 10);
-		graphics.popMatrix();
-		graphics.textSize(40);
-		graphics.fill(0, 255, 255);
-		graphics.text(tools[currentToolIndex].toString(), 10, HEIGHT - 20);
-	}
-
-	@Override
-	protected void doMousePressed(float mouseX, float mouseY) {
-		tools[currentToolIndex].mousePressed(mouseX, mouseY);
 	}
 
 	public void doKeyPressed() {
-		if (key == NEXT_TOOL_KEY) {
-			currentToolIndex = (currentToolIndex + 1) % tools.length;
-		} else if (key == PREV_TOOL_KEY) {
-			currentToolIndex = (currentToolIndex - 1) % tools.length;
-		} else if (key == FLIP_MAGNETS_KEY) {
+		if (key == FLIP_MAGNETS_KEY) {
 			magnets.setForceMultiplier(magnets.getForceMultiplier() * -1);
 		} else if (key == CLEAR_KEY) {
 			flock.clearBoids();
-			flock.clearEmitters();
+			emitters.clearEmitters();
 			path.clearPoints();
 			magnets.clearMagnets();
 		}
 
-		tools[currentToolIndex].keyDown(key);
 	}
 }
