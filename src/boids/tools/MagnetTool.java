@@ -1,7 +1,6 @@
 package boids.tools;
 
-import boids.behaviors.MagnetBehavior;
-import processing.core.PGraphics;
+import boids.Flock;
 import scenes.SceneTool;
 
 public class MagnetTool extends SceneTool {
@@ -9,10 +8,10 @@ public class MagnetTool extends SceneTool {
 	private static final char INCREASE_STRENGTH_KEY = '>';
 	private static final float STRENGTH_INCREMENT = 0.5f;
 
-	private MagnetBehavior magnets;
+	private Flock magnets;
 	private float strength = 1;
 
-	public MagnetTool(MagnetBehavior magnets) {
+	public MagnetTool(Flock magnets) {
 		this.magnets = magnets;
 	}
 

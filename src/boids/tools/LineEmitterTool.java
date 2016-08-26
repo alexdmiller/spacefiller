@@ -2,18 +2,20 @@ package boids.tools;
 
 import boids.Flock;
 import boids.behaviors.EmitBehavior;
+import boids.emitter.Emitter;
 import boids.emitter.LineEmitter;
 import boids.emitter.PointEmitter;
 import processing.core.PGraphics;
 import processing.core.PVector;
 import scenes.SceneTool;
+import scenes.Worms;
 
 public class LineEmitterTool extends SceneTool {
-	private EmitBehavior emitBehavior;
+	private Flock flock;
 	private PVector lastPoint;
 
-	public LineEmitterTool(EmitBehavior emitBehavior) {
-		this.emitBehavior = emitBehavior;
+	public LineEmitterTool(Flock flock) {
+		this.flock = flock;
 	}
 
 	@Override
@@ -21,7 +23,7 @@ public class LineEmitterTool extends SceneTool {
 		if (lastPoint == null) {
 			lastPoint = new PVector(mouseX, mouseY);
 		} else {
-			emitBehavior.addEmitter(new LineEmitter(lastPoint.x, lastPoint.y, mouseX, mouseY, 1));
+			flock.addEmitter(new LineEmitter(lastPoint.x, lastPoint.y, mouseX, mouseY, 1));
 			lastPoint = null;
 		}
 	}
@@ -30,5 +32,4 @@ public class LineEmitterTool extends SceneTool {
 	public String toString() {
 		return "LINE EM" + (lastPoint == null ? " - first point" : " - second point");
 	}
-
 }

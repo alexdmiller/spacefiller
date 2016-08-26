@@ -1,15 +1,13 @@
 package boids.tools;
 
 import boids.Flock;
-import boids.behaviors.EmitBehavior;
 import boids.emitter.PointEmitter;
-import processing.core.PGraphics;
 import scenes.SceneTool;
 
 public class PointEmitterTool extends SceneTool {
-	private EmitBehavior emitBehavior;
+	private Flock emitBehavior;
 
-	public PointEmitterTool(EmitBehavior emitBehavior) {
+	public PointEmitterTool(Flock emitBehavior) {
 		this.emitBehavior = emitBehavior;
 	}
 

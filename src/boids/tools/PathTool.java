@@ -9,15 +9,15 @@ import processing.core.PVector;
 import scenes.SceneTool;
 
 public class PathTool extends SceneTool {
-	private FollowPathBehavior path;
+	private Flock flock;
 
-	public PathTool(FollowPathBehavior path) {
-		this.path = path;
+	public PathTool(Flock flock) {
+		this.flock = flock;
 	}
 
 	@Override
 	public void mousePressed(float mouseX, float mouseY) {
-		path.addPoint(mouseX, mouseY);
+		flock.addPathPoint(mouseX, mouseY);
 	}
 
 	@Override

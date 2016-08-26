@@ -8,19 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FollowPathBehavior extends Behavior {
-	private List<PVector> points;
 	private float radius;
 	private float maxForce;
 
 	public FollowPathBehavior(float radius, float maxForce) {
-		this.points = new ArrayList<>();
 		this.radius = radius;
 		this.maxForce = maxForce;
 	}
 
-	public void addPoint(float x, float y) {
-		this.points.add(new PVector(x, y));
-	}
 
 	public float getRadius() {
 		return radius;
@@ -34,7 +29,7 @@ public class FollowPathBehavior extends Behavior {
 			PVector closestNormalPoint = null;
 			float closestDistance = 0;
 
-			for (PVector p : points) {
+			for (PVector p : getFlock().getPathPoints()) {
 				if (last != null) {
 					PVector normalPoint = getNormalPoint(last, p, boid);
 					float distance = PVector.sub(boid.getPosition(), normalPoint).mag();
@@ -43,7 +38,6 @@ public class FollowPathBehavior extends Behavior {
 						closestDistance = distance;
 					}
 				}
-
 				last = p;
 			}
 
@@ -68,13 +62,5 @@ public class FollowPathBehavior extends Behavior {
 
 		PVector normalPoint = PVector.add(start, b);
 		return normalPoint;
-	}
-
-	public List<PVector> getPoints() {
-		return points;
-	}
-
-	public void clearPoints() {
-		points.clear();
 	}
 }
