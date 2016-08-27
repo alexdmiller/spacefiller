@@ -2,9 +2,7 @@ package scenes;
 
 import boids.*;
 import boids.behaviors.*;
-import boids.emitter.LineEmitter;
 import boids.renderers.*;
-import boids.emitter.PointEmitter;
 import boids.tools.LineEmitterTool;
 import boids.tools.MagnetTool;
 import boids.tools.PathTool;
@@ -13,7 +11,7 @@ import processing.core.PGraphics;
 
 import java.io.*;
 
-public class Worms extends Scene {
+public class Worms extends Scene implements EntityEventListener {
 	public static void main(String[] args) {
 		main("scenes.Worms");
 	}
@@ -34,6 +32,7 @@ public class Worms extends Scene {
 	@Override
 	public void doSetup() {
 		flock = new Flock(100, 100, WIDTH - 200, HEIGHT - 200);
+		flock.addEntityEventListener(this);
 
 		debugRenderer = new DebugFlockRenderer(flock);
 		flockRenderer = new BoidFlockRenderer(flock, WormBoidRenderer.class);
@@ -71,45 +70,46 @@ public class Worms extends Scene {
 	}
 
 	public void doKeyPressed() {
-		if (key == SAVE_KEY) {
-			try {
-				FileOutputStream fileOutputStream = new FileOutputStream("save" + currentSaveIndex + ".ser");
-				ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-				objectOutputStream.writeObject(flock);
-				objectOutputStream.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		} else if (key == LOAD_KEY) {
-			Flock save = null;
+		try {
+			currentSaveIndex = Integer.parseInt(String.valueOf(key));
+			Flock save;
 			try {
 				FileInputStream fileInputStream = new FileInputStream("save" + currentSaveIndex + ".ser");
 				ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 				save = (Flock) objectInputStream.readObject();
 				objectInputStream.close();
-				flock.clearBehaviors();
-				flock.addAllBehaviors(save.getBehaviors());
+				flock.copyEntitiesFrom(save);
 			} catch (FileNotFoundException e) {
-				e.printStackTrace();
+				flock.clearEntities();
 			} catch (IOException e) {
 				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}
-		}
-		else if (key == FLIP_MAGNETS_KEY) {
-			magnets.setForceMultiplier(magnets.getForceMultiplier() * -1);
-		} else if (key == CLEAR_KEY) {
-			flock.clearBoids();
-			// TODO: add back in clearing
-//			emitters.clearEmitters();
-//			path.clearPoints();
-//			magnets.clearMagnets();
+		} catch (NumberFormatException e) {
+
 		}
 
+		if (key == FLIP_MAGNETS_KEY) {
+			magnets.setForceMultiplier(magnets.getForceMultiplier() * -1);
+		} else if (key == CLEAR_KEY) {
+			flock.clearEntities();
+		}
 	}
 
 	public Flock getFlock() {
 		return flock;
+	}
+
+	@Override
+	public void entitiesUpdated() {
+		try {
+			FileOutputStream fileOutputStream = new FileOutputStream("save" + currentSaveIndex + ".ser");
+			ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+			objectOutputStream.writeObject(flock);
+			objectOutputStream.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

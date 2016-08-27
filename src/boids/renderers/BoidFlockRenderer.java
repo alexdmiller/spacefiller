@@ -2,7 +2,7 @@ package boids.renderers;
 
 import boids.Boid;
 import boids.Flock;
-import boids.FlockEventListener;
+import boids.BoidEventListener;
 import processing.core.PGraphics;
 
 import java.lang.reflect.InvocationTargetException;
@@ -10,14 +10,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class BoidFlockRenderer extends FlockRenderer implements FlockEventListener {
+public class BoidFlockRenderer extends FlockRenderer implements BoidEventListener {
 	private List<BoidRenderer> renderers;
 	private Class<? extends BoidRenderer> rendererClass;
 
 	public BoidFlockRenderer(Flock flock, Class<? extends BoidRenderer> rendererClass) {
 		super(flock);
 		this.renderers = new ArrayList<>();
-		flock.addEventListener(this);
+		flock.addBoidEventListener(this);
 
 		this.rendererClass = rendererClass;
 	}

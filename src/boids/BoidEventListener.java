@@ -1,6 +1,6 @@
 package boids;
 
-public interface FlockEventListener {
+public interface BoidEventListener {
 	void boidAdded(Boid b);
 	void boidRemoved(Boid b);
 }
