@@ -2,9 +2,9 @@ package boids.behaviors;
 
 import boids.Boid;
 import boids.BoidUtils;
+import javafx.util.Pair;
 import processing.core.PVector;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FollowPathBehavior extends Behavior {
@@ -16,7 +16,6 @@ public class FollowPathBehavior extends Behavior {
 		this.maxForce = maxForce;
 	}
 
-
 	public float getRadius() {
 		return radius;
 	}
@@ -25,24 +24,20 @@ public class FollowPathBehavior extends Behavior {
 	public void apply() {
 		List<Boid> boids = getFlock().getBoids();
 		for (Boid boid : boids) {
-			PVector last = null;
 			PVector closestNormalPoint = null;
 			float closestDistance = 0;
 
-			for (PVector p : getFlock().getPathPoints()) {
-				if (last != null) {
-					PVector normalPoint = getNormalPoint(last, p, boid);
-					float distance = PVector.sub(boid.getPosition(), normalPoint).mag();
-					if (closestNormalPoint == null || distance < closestDistance) {
-						closestNormalPoint = normalPoint;
-						closestDistance = distance;
-					}
+			for (Pair<PVector, PVector> p : getFlock().getPathSegments()) {
+				PVector normalPoint = getNormalPoint(p.getKey(), p.getValue(), boid);
+				float distance = PVector.sub(boid.getPosition(), normalPoint).mag();
+				if (closestNormalPoint == null || distance < closestDistance) {
+					closestNormalPoint = normalPoint;
+					closestDistance = distance;
 				}
-				last = p;
 			}
 
 			if (closestDistance > radius) {
-				PVector steer = BoidUtils.seek(boid, closestNormalPoint, boid.getMaxSpeed(), maxForce);
+				PVector steer = BoidUtils.seek(boid, closestNormalPoint, getFlock().getMaxSpeed(), maxForce);
 				boid.applyForce(steer);
 			}
 		}

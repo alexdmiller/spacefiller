@@ -10,6 +10,7 @@ import scenes.SceneTool;
 
 public class PathTool extends SceneTool {
 	private Flock flock;
+	private PVector lastPoint;
 
 	public PathTool(Flock flock) {
 		this.flock = flock;
@@ -17,7 +18,13 @@ public class PathTool extends SceneTool {
 
 	@Override
 	public void mousePressed(float mouseX, float mouseY) {
-		flock.addPathPoint(mouseX, mouseY);
+		lastPoint = new PVector(mouseX, mouseY);
+	}
+
+	@Override
+	public void mouseReleased(float mouseX, float mouseY) {
+		PVector point = new PVector(mouseX, mouseY);
+		flock.addPathSegment(lastPoint, point);
 	}
 
 	@Override

@@ -52,7 +52,6 @@ public class MagnetBehavior extends Behavior {
 				if (closestDistance < killRadius) {
 					boidIterator.remove();
 					getFlock().notifyRemoved(b);
-					break;
 				} else if (closestDistance < attractionThreshold) {
 					PVector delta = PVector.sub(closest.position, b.getPosition());
 

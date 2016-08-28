@@ -6,21 +6,19 @@ import oscP5.OscMessage;
 import oscP5.OscP5;
 import oscP5.OscStatus;
 import processing.core.PApplet;
+import processing.core.PConstants;
 import processing.core.PGraphics;
-import processing.core.PImage;
-import processing.data.JSONArray;
-import processing.data.JSONObject;
 import processing.opengl.PJOGL;
 
 import javax.json.*;
-import java.awt.geom.PathIterator;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-import java.lang.reflect.Field;
+import java.lang.management.MemoryManagerMXBean;
+import java.lang.reflect.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -34,25 +32,33 @@ public class Scene extends PApplet implements OscEventListener {
 	public static final int HEIGHT = 1080;
 	public static final float LOCAL_WINDOW_SCALE = 0.5f;
 	public static final char PLAY_KEY = ' ';
-	public static final char NEXT_TOOL_KEY = ',';
-	public static final char PREV_TOOL_KEY = '.';
+	public static final char NEXT_TOOL_KEY = 39;
+	public static final char PREV_TOOL_KEY = 37;
 
 	private OscP5 oscP5;
 	private float lastTime;
 	private float elapsedMillis;
 	private SyphonServer server;
-	private Map<String, Field> modulationTargets;
+	private Map<String, Field> fieldModulationTargets;
+	private Map<String, Method> methodModulationTargets;
 	private PGraphics canvas;
-	private boolean playing;
+	private boolean playing = true;
 	private int currentToolIndex;
 	private List<SceneTool> tools;
 
 	public Scene() {
-		modulationTargets = new HashMap<>();
+		fieldModulationTargets = new HashMap<>();
+		methodModulationTargets = new HashMap<>();
 
 		for (Field field : getClass().getDeclaredFields()) {
 			if (field.isAnnotationPresent(ModulationTarget.class)) {
-				modulationTargets.put("/" + this.getClass().getName() + "/" + field.getName(), field);
+				fieldModulationTargets.put("/" + this.getClass().getName() + "/" + field.getName(), field);
+			}
+		}
+
+		for (Method method : getClass().getDeclaredMethods()) {
+			if (method.isAnnotationPresent(ModulationTarget.class)) {
+				methodModulationTargets.put("/" + this.getClass().getName() + "/" + method.getName(), method);
 			}
 		}
 
@@ -70,45 +76,55 @@ public class Scene extends PApplet implements OscEventListener {
 		tools.add(tool);
 	}
 
+	private void addSlider(
+			JsonArrayBuilder classes,
+			JsonArrayBuilder keys,
+			JsonObjectBuilder uiBuilder,
+			AccessibleObject object,
+			String address,
+			int port) {
+		ModulationTarget modulationTarget = object.getAnnotation(ModulationTarget.class);
+		Member member = (Member) object;
+
+		classes.add("Slider");
+		keys.add(member.getName());
+
+		uiBuilder.add(member.getName(), Json.createObjectBuilder()
+				.add("minRange", modulationTarget.min())
+				.add("maxRange", modulationTarget.max())
+				.add("val", modulationTarget.defaultValue())
+				.add("label", member.getName())
+				.add("publishNorm", false)
+				.add("sendEnabled", true)
+				.add("sndrs", Json.createArrayBuilder()
+					.add(Json.createObjectBuilder()
+						.add("msgAddress", address)
+						.add("normalizeFlag", false)
+						.add("floatInvertFlag", false)
+						.add("outputPort", port)
+						.add("boolInvertFlag", false)
+						.add("boolThreshVal", 0.1)
+						.add("highIntVal", 100)
+						.add("outputIPAddress", "127.0.0.1")
+						.add("outputLabel", "localhost:" + port)
+						.add("dataSenderType", 2)
+						.add("lowIntVal", 0)
+						.add("enabled", true)
+						.add("intInvertFlag", false)
+						.add("senderType", 4))).build());
+	}
+
 	private void exportVDMXJson(int port) {
 		JsonArrayBuilder classes = Json.createArrayBuilder();
 		JsonArrayBuilder keys = Json.createArrayBuilder();
 		JsonObjectBuilder uiBuilder = Json.createObjectBuilder();
 
-		for (String address : modulationTargets.keySet()) {
-			Field field = modulationTargets.get(address);
-			ModulationTarget modulationTarget = field.getAnnotation(ModulationTarget.class);
+		for (String address : fieldModulationTargets.keySet()) {
+			addSlider(classes, keys, uiBuilder, fieldModulationTargets.get(address), address, port);
+		}
 
-			classes.add("Slider");
-			keys.add(field.getName());
-
-			try {
-				uiBuilder.add(field.getName(), Json.createObjectBuilder()
-					.add("minRange", modulationTarget.min())
-					.add("maxRange", modulationTarget.max())
-					.add("val", (float) field.get(this))
-					.add("label", field.getName())
-					.add("publishNorm", false)
-					.add("sendEnabled", true)
-					.add("sndrs", Json.createArrayBuilder()
-						.add(Json.createObjectBuilder()
-							.add("msgAddress", address)
-							.add("normalizeFlag", false)
-							.add("floatInvertFlag", false)
-							.add("outputPort", port)
-							.add("boolInvertFlag", false)
-							.add("boolThreshVal", 0.1)
-							.add("highIntVal", 100)
-							.add("outputIPAddress", "127.0.0.1")
-							.add("outputLabel", "localhost:" + port)
-							.add("dataSenderType", 2)
-							.add("lowIntVal", 0)
-							.add("enabled", true)
-							.add("intInvertFlag", false)
-							.add("senderType", 4))));
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			}
+		for (String address : methodModulationTargets.keySet()) {
+			addSlider(classes, keys, uiBuilder, methodModulationTargets.get(address), address, port);
 		}
 
 		JsonObject layout = Json.createObjectBuilder()
@@ -202,13 +218,17 @@ public class Scene extends PApplet implements OscEventListener {
 		tools.get(currentToolIndex).mousePressed(mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
 	}
 
+	public final void mouseReleased() {
+		tools.get(currentToolIndex).mouseReleased(mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
+	}
+
 	public final void keyPressed() {
 		if (key == PLAY_KEY) {
 			playing = !playing;
-		} else if (key == NEXT_TOOL_KEY) {
+		} else if (keyCode == NEXT_TOOL_KEY) {
 			currentToolIndex = (currentToolIndex + 1) % tools.size();
-		} else if (key == PREV_TOOL_KEY) {
-			currentToolIndex = (currentToolIndex - 1) % tools.size();
+		} else if (keyCode == PREV_TOOL_KEY) {
+			currentToolIndex = (((currentToolIndex - 1) % tools.size()) + tools.size()) % tools.size();
 		}
 
 		tools.get(currentToolIndex).keyDown(key);
@@ -220,18 +240,33 @@ public class Scene extends PApplet implements OscEventListener {
 
 	@Override
 	public void oscEvent(OscMessage oscMessage) {
-		Field target = modulationTargets.get(oscMessage.addrPattern());
-		if (target == null) {
-			System.out.println("Just received unknown modulation target: " + oscMessage.addrPattern());
+		Field fieldTarget = fieldModulationTargets.get(oscMessage.addrPattern());
+
+		if (fieldTarget != null) {
+			try {
+				// TODO: probably want to handle ints and booleans?
+				fieldTarget.setFloat(this, oscMessage.get(0).floatValue());
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			}
+
 			return;
 		}
 
-		try {
-			// TODO: probably want to handle ints and booleans?
-			target.setFloat(this, oscMessage.get(0).floatValue());
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
+		Method methodTarget = methodModulationTargets.get(oscMessage.addrPattern());
+		if (methodTarget != null) {
+			try {
+				// TODO: probably want to handle ints and booleans?
+				methodTarget.invoke(this, oscMessage.get(0).floatValue());
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				e.printStackTrace();
+			}
+
+			return;
 		}
+
 	}
 
 	@Override
@@ -243,5 +278,6 @@ public class Scene extends PApplet implements OscEventListener {
 	@interface ModulationTarget {
 		float min() default 0;
 		float max() default 1;
+		float defaultValue() default 0;
 	}
 }

@@ -33,6 +33,62 @@ public class FlockBehavior extends Behavior {
 		this.cohesionWeight = cohesionWeight;
 	}
 
+	public float getMaxForce() {
+		return maxForce;
+	}
+
+	public void setMaxForce(float maxForce) {
+		this.maxForce = maxForce;
+	}
+
+	public float getDesiredSeparation() {
+		return desiredSeparation;
+	}
+
+	public void setDesiredSeparation(float desiredSeparation) {
+		this.desiredSeparation = desiredSeparation;
+	}
+
+	public float getAlignmentThreshold() {
+		return alignmentThreshold;
+	}
+
+	public void setAlignmentThreshold(float alignmentThreshold) {
+		this.alignmentThreshold = alignmentThreshold;
+	}
+
+	public float getCohesionThreshold() {
+		return cohesionThreshold;
+	}
+
+	public void setCohesionThreshold(float cohesionThreshold) {
+		this.cohesionThreshold = cohesionThreshold;
+	}
+
+	public float getSeparationWeight() {
+		return separationWeight;
+	}
+
+	public void setSeparationWeight(float separationWeight) {
+		this.separationWeight = separationWeight;
+	}
+
+	public float getAlignmentWeight() {
+		return alignmentWeight;
+	}
+
+	public void setAlignmentWeight(float alignmentWeight) {
+		this.alignmentWeight = alignmentWeight;
+	}
+
+	public float getCohesionWeight() {
+		return cohesionWeight;
+	}
+
+	public void setCohesionWeight(float cohesionWeight) {
+		this.cohesionWeight = cohesionWeight;
+	}
+
 	@Override
 	public void apply() {
 		List<Boid> boids = getFlock().getBoids();
@@ -91,7 +147,7 @@ public class FlockBehavior extends Behavior {
 
 			// Implement Reynolds: Steering = Desired - Velocity
 			steer.normalize();
-			steer.mult(b.getMaxSpeed());
+			steer.mult(getFlock().getMaxSpeed());
 			steer.sub(b.getVelocity());
 			steer.limit(maxForce);
 		}
@@ -118,7 +174,7 @@ public class FlockBehavior extends Behavior {
 
 			// Implement Reynolds: Steering = Desired - Velocity
 			sum.normalize();
-			sum.mult(b.getMaxSpeed());
+			sum.mult(getFlock().getMaxSpeed());
 			PVector steer = PVector.sub(sum, b.getVelocity());
 			steer.limit(maxForce);
 			return steer;
@@ -142,7 +198,7 @@ public class FlockBehavior extends Behavior {
 		}
 		if (count > 0) {
 			sum.div(count);
-			return BoidUtils.seek(b, sum, b.getMaxSpeed(), maxForce);  // Steer towards the position
+			return BoidUtils.seek(b, sum, getFlock().getMaxSpeed(), maxForce);  // Steer towards the position
 		}
 		else {
 			return new PVector(0, 0);

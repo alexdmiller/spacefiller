@@ -2,10 +2,9 @@ package boids;
 
 import boids.behaviors.Behavior;
 import boids.emitter.Emitter;
+import javafx.util.Pair;
 import processing.core.PVector;
-import scenes.Worms;
 
-import javax.swing.text.html.parser.Entity;
 import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -14,7 +13,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Flock implements Serializable {
-	public static final int MAX_BOIDS = 1000;
+	public static final int MAX_BOIDS = 500;
 
 	private transient List<BoidEventListener> boidEventListeners;
 	private transient List<EntityEventListener> entityEventListeners;
@@ -23,8 +22,9 @@ public class Flock implements Serializable {
 	private transient List<Boid> boids;
 
 	private List<Emitter> emitters;
-	private List<PVector> pathPoints;
+	private List<Pair<PVector, PVector>> pathSegments;
 	private List<Magnet> magnets;
+	private float maxSpeed = 3;
 
 	public Flock(int x, int y, int width, int height) {
 		bounds = new Rectangle(x, y, width, height);
@@ -33,7 +33,7 @@ public class Flock implements Serializable {
 		boidEventListeners = new ArrayList<>();
 		entityEventListeners = new ArrayList<>();
 		emitters = new ArrayList<>();
-		pathPoints = new ArrayList<>();
+		pathSegments = new ArrayList<>();
 		magnets = new ArrayList<>();
 	}
 
@@ -52,7 +52,7 @@ public class Flock implements Serializable {
 		}
 
 		for (Boid b : boids) {
-			b.update();
+			b.update(maxSpeed);
 		}
 	}
 
@@ -76,7 +76,6 @@ public class Flock implements Serializable {
 			notifyRemoved(b);
 		}
 		boids.clear();
-
 	}
 
 	public void notifyRemoved(Boid b) {
@@ -132,12 +131,12 @@ public class Flock implements Serializable {
 		notifyEntitiesUpdated();
 	}
 
-	public List<PVector> getPathPoints() {
-		return pathPoints;
+	public List<Pair<PVector, PVector>> getPathSegments() {
+		return pathSegments;
 	}
 
-	public void addPathPoint(float x, float y) {
-		this.pathPoints.add(new PVector(x, y));
+	public void addPathSegment(PVector p1, PVector p2) {
+		this.pathSegments.add(new Pair<>(p1, p2));
 		notifyEntitiesUpdated();
 	}
 
@@ -158,7 +157,7 @@ public class Flock implements Serializable {
 
 	public void clearEntities() {
 		magnets.clear();
-		pathPoints.clear();
+		pathSegments.clear();
 		emitters.clear();
 
 		notifyEntitiesUpdated();
@@ -166,11 +165,11 @@ public class Flock implements Serializable {
 
 	public void copyEntitiesFrom(Flock other) {
 		magnets.clear();
-		pathPoints.clear();
+		pathSegments.clear();
 		emitters.clear();
 
 		magnets.addAll(other.magnets);
-		pathPoints.addAll(other.pathPoints);
+		pathSegments.addAll(other.pathSegments);
 		emitters.addAll(other.emitters);
 	}
 
@@ -178,4 +177,11 @@ public class Flock implements Serializable {
 		entityEventListeners.add(listener);
 	}
 
+	public float getMaxSpeed() {
+		return maxSpeed;
+	}
+
+	public void setMaxSpeed(float maxSpeed) {
+		this.maxSpeed = maxSpeed;
+	}
 }

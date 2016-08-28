@@ -16,8 +16,6 @@ public class Worms extends Scene implements EntityEventListener {
 		main("scenes.Worms");
 	}
 
-	private static final char SAVE_KEY = 's';
-	private static final char LOAD_KEY = 'l';
 	private static final char FLIP_MAGNETS_KEY = 'm';
 	private static final char CLEAR_KEY = 'c';
 
@@ -25,9 +23,10 @@ public class Worms extends Scene implements EntityEventListener {
 	private MagnetBehavior magnets;
 	private FollowPathBehavior path;
 	private EmitBehavior emitters;
+	private FlockBehavior flockingBehavior;
 	private DebugFlockRenderer debugRenderer;
 	private BoidFlockRenderer flockRenderer;
-	private int currentSaveIndex = 0;
+	private int currentSaveIndex = 1;
 
 	@Override
 	public void doSetup() {
@@ -37,16 +36,16 @@ public class Worms extends Scene implements EntityEventListener {
 		debugRenderer = new DebugFlockRenderer(flock);
 		flockRenderer = new BoidFlockRenderer(flock, WormBoidRenderer.class);
 
-		FlockBehavior flockingBehavior = new FlockBehavior(0.5f, 50, 50, 20, 5, 1, 0.2f);
+		flockingBehavior = new FlockBehavior(0.5f, 60, 50, 20, 1f, 1, 1);
 		flock.addBehavior(flockingBehavior);
 
-		WiggleBehavior wiggleBehavior = new WiggleBehavior(1f, 10);
+		WiggleBehavior wiggleBehavior = new WiggleBehavior(0.1f, 0.1f);
 		flock.addBehavior(wiggleBehavior);
 
-		magnets = new MagnetBehavior(300, 5);
+		magnets = new MagnetBehavior(500, 10);
 		flock.addBehavior(magnets);
 
-		path = new FollowPathBehavior(50, 10);
+		path = new FollowPathBehavior(30, 1);
 		flock.addBehavior(path);
 
 		emitters = new EmitBehavior();
@@ -56,7 +55,25 @@ public class Worms extends Scene implements EntityEventListener {
 		addSceneTool(new LineEmitterTool(flock));
 		addSceneTool(new PathTool(flock));
 		addSceneTool(new MagnetTool(flock));
+
+		loadSave(currentSaveIndex);
 	}
+
+	@ModulationTarget
+	public void setSave(float save) {
+		loadSave((int) save);
+	}
+
+	@ModulationTarget
+	public void setMaxSpeed(float newMaxSpeed) {
+		flock.setMaxSpeed(newMaxSpeed);
+	}
+
+	@ModulationTarget
+	public void setMaxForce(float newMaxForce) {
+		flockingBehavior.setMaxForce(newMaxForce);
+	}
+
 
 	@Override
 	protected void drawCanvas(PGraphics graphics, float mouseX, float mouseY) {
@@ -71,29 +88,31 @@ public class Worms extends Scene implements EntityEventListener {
 
 	public void doKeyPressed() {
 		try {
-			currentSaveIndex = Integer.parseInt(String.valueOf(key));
-			Flock save;
-			try {
-				FileInputStream fileInputStream = new FileInputStream("save" + currentSaveIndex + ".ser");
-				ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-				save = (Flock) objectInputStream.readObject();
-				objectInputStream.close();
-				flock.copyEntitiesFrom(save);
-			} catch (FileNotFoundException e) {
-				flock.clearEntities();
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-		} catch (NumberFormatException e) {
-
-		}
-
+			loadSave(Integer.parseInt(String.valueOf(key)));
+		} catch (NumberFormatException e) { }
 		if (key == FLIP_MAGNETS_KEY) {
 			magnets.setForceMultiplier(magnets.getForceMultiplier() * -1);
 		} else if (key == CLEAR_KEY) {
 			flock.clearEntities();
+		}
+	}
+
+	private void loadSave(int currentSaveIndex) {
+		// TODO: make this thread safe
+		this.currentSaveIndex = currentSaveIndex;
+		Flock save;
+		try {
+			FileInputStream fileInputStream = new FileInputStream("save" + currentSaveIndex + ".ser");
+			ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+			save = (Flock) objectInputStream.readObject();
+			objectInputStream.close();
+			flock.copyEntitiesFrom(save);
+		} catch (FileNotFoundException e) {
+			flock.clearEntities();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
 	}
 

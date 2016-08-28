@@ -2,13 +2,10 @@ package boids.renderers;
 
 import boids.Flock;
 import boids.Magnet;
-import boids.behaviors.Behavior;
-import boids.behaviors.EmitBehavior;
-import boids.behaviors.FollowPathBehavior;
-import boids.behaviors.MagnetBehavior;
 import boids.emitter.Emitter;
 import boids.emitter.LineEmitter;
 import boids.emitter.PointEmitter;
+import javafx.util.Pair;
 import processing.core.PConstants;
 import processing.core.PGraphics;
 import processing.core.PVector;
@@ -22,7 +19,7 @@ public class DebugFlockRenderer extends FlockRenderer {
 	}
 
 	public void render(PGraphics graphics) {
-		renderFollowPathBehavior(graphics, flock.getPathPoints());
+		renderFollowPathBehavior(graphics, flock.getPathSegments());
 		renderMagnetBehavior(graphics, flock.getMagnets());
 		renderEmitBehavior(graphics, flock.getEmitters());
 
@@ -56,16 +53,16 @@ public class DebugFlockRenderer extends FlockRenderer {
 		}
 	}
 
-	private void renderFollowPathBehavior(PGraphics canvas, List<PVector> pathPoints) {
+	private void renderFollowPathBehavior(PGraphics canvas, List<Pair<PVector, PVector>> pathPoints) {
 		canvas.noFill();
 		canvas.stroke(255);
 		canvas.strokeCap(PConstants.ROUND);
 		canvas.strokeWeight(5);
-		canvas.beginShape();
-		for (PVector p : pathPoints) {
-			canvas.vertex(p.x, p.y);
+		for (Pair<PVector, PVector> pair : pathPoints) {
+			PVector p1 = pair.getKey();
+			PVector p2 = pair.getValue();
+			canvas.line(p1.x, p1.y, p2.x, p2.y);
 		}
-		canvas.endShape();
 	}
 
 	private void renderMagnetBehavior(PGraphics canvas, List<Magnet> magnets) {
