@@ -5,15 +5,15 @@ import boids.emitter.PointEmitter;
 import scenes.SceneTool;
 
 public class PointEmitterTool extends SceneTool {
-	private Flock emitBehavior;
+	private Flock flock;
 
 	public PointEmitterTool(Flock emitBehavior) {
-		this.emitBehavior = emitBehavior;
+		this.flock = emitBehavior;
 	}
 
 	@Override
 	public void mousePressed(float mouseX, float mouseY) {
-		emitBehavior.addEmitter(new PointEmitter(mouseX, mouseY, 1));
+		flock.addEmitter(new PointEmitter(mouseX, mouseY, 1));
 	}
 
 	@Override

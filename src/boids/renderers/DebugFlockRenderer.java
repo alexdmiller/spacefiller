@@ -22,6 +22,7 @@ public class DebugFlockRenderer extends FlockRenderer {
 		renderFollowPathBehavior(graphics, flock.getPathSegments());
 		renderMagnetBehavior(graphics, flock.getMagnets());
 		renderEmitBehavior(graphics, flock.getEmitters());
+		renderFlowField(graphics, flock);
 
 		graphics.stroke(255);
 		graphics.strokeWeight(2);
@@ -31,7 +32,7 @@ public class DebugFlockRenderer extends FlockRenderer {
 
 		graphics.stroke(255);
 		graphics.textSize(24);
-		//graphics.text(flock.getBoids().size(), 100, 100);
+		graphics.text(flock.getBoids().size(), 100, 100);
 	}
 
 	private void renderEmitBehavior(PGraphics graphics, List<Emitter> emitters) {
@@ -70,6 +71,19 @@ public class DebugFlockRenderer extends FlockRenderer {
 		canvas.fill(255, 0, 0);
 		for (Magnet m : magnets) {
 			canvas.ellipse(m.position.x, m.position.y, 10, 10);
+		}
+	}
+
+	private void renderFlowField(PGraphics canvas, Flock flock) {
+		canvas.stroke(255);
+		for (int x = 0; x < flock.getFlowFieldWidth(); x++) {
+			for (int y = 0; y < flock.getFlowFieldHeight(); y++) {
+				PVector v = flock.getFlowVector(x, y);
+				float posX = x * Flock.FLOW_FIELD_RESOLUTION + flock.getBounds().x;
+				float posY = y * Flock.FLOW_FIELD_RESOLUTION + flock.getBounds().y;
+
+				canvas.line(posX, posY, posX + v.x, posY + v.y);
+			}
 		}
 	}
 }

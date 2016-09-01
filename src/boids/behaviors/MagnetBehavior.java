@@ -31,9 +31,7 @@ public class MagnetBehavior extends Behavior {
 
 	@Override
 	public void apply() {
-		List<Boid> boids = getFlock().getBoids();
-
-		Iterator<Boid> boidIterator = boids.iterator();
+		Iterator<Boid> boidIterator = getFlock().getBoidsIterator();
 		while (boidIterator.hasNext()) {
 			Boid b = boidIterator.next();
 

@@ -2,18 +2,18 @@ package boids;
 
 import boids.behaviors.Behavior;
 import boids.emitter.Emitter;
+import com.sun.tools.javac.comp.Flow;
 import javafx.util.Pair;
 import processing.core.PVector;
 
 import java.awt.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.*;
 import java.util.List;
 
 public class Flock implements Serializable {
-	public static final int MAX_BOIDS = 500;
+	public static final int MAX_BOIDS = 700;
+	public static final int FLOW_FIELD_RESOLUTION = 100;
 
 	private transient List<BoidEventListener> boidEventListeners;
 	private transient List<EntityEventListener> entityEventListeners;
@@ -24,36 +24,46 @@ public class Flock implements Serializable {
 	private List<Emitter> emitters;
 	private List<Pair<PVector, PVector>> pathSegments;
 	private List<Magnet> magnets;
+	private PVector[] flowField;
+	private int width;
+	private int height;
 	private float maxSpeed = 3;
 
 	public Flock(int x, int y, int width, int height) {
 		bounds = new Rectangle(x, y, width, height);
 		boids = new ArrayList<>();
-		behaviors = new ArrayList<>();
-		boidEventListeners = new ArrayList<>();
-		entityEventListeners = new ArrayList<>();
 		emitters = new ArrayList<>();
 		pathSegments = new ArrayList<>();
 		magnets = new ArrayList<>();
+		behaviors = new ArrayList<>();
+		boidEventListeners = new ArrayList<>();
+		entityEventListeners = new ArrayList<>();
+		this.width = width;
+		this.height = height;
+
+		flowField = new PVector[(width * height) / FLOW_FIELD_RESOLUTION];
+		for (int i = 0; i < flowField.length; i++) {
+			flowField[i] = new PVector(0, 0);
+		}
 	}
 
 	public void step() {
-		Iterator<Boid> boidIterator = boids.iterator();
-		while (boidIterator.hasNext()) {
-			Boid b = boidIterator.next();
-			if (!bounds.contains(b.getPosition().x, b.getPosition().y)) {
-				boidIterator.remove();
-				notifyRemoved(b);
+			Iterator<Boid> boidIterator = boids.iterator();
+			while (boidIterator.hasNext()) {
+				Boid b = boidIterator.next();
+				if (!bounds.contains(b.getPosition().x, b.getPosition().y)) {
+					boidIterator.remove();
+					notifyRemoved(b);
+				}
 			}
-		}
 
-		for (Behavior b : behaviors) {
-			b.apply();
-		}
+			for (Behavior b : behaviors) {
+				b.apply();
+			}
 
-		for (Boid b : boids) {
-			b.update(maxSpeed);
-		}
+			for (Boid b : boids) {
+				b.update(maxSpeed);
+			}
 	}
 
 	public void addBoid(Boid b) {
@@ -84,7 +94,7 @@ public class Flock implements Serializable {
 		}
 	}
 
-	public List<Boid> getBoids() { return boids; }
+	public List<Boid> getBoids() { return new ArrayList<>(boids); }
 
 	public void addBehavior(Behavior behavior) {
 		behavior.setFlock(this);
@@ -123,7 +133,7 @@ public class Flock implements Serializable {
 	}
 
 	public List<Emitter> getEmitters() {
-		return emitters;
+		return new ArrayList<>(emitters);
 	}
 
 	public void addEmitter(Emitter e) {
@@ -132,7 +142,7 @@ public class Flock implements Serializable {
 	}
 
 	public List<Pair<PVector, PVector>> getPathSegments() {
-		return pathSegments;
+		return new ArrayList<>(pathSegments);
 	}
 
 	public void addPathSegment(PVector p1, PVector p2) {
@@ -181,7 +191,30 @@ public class Flock implements Serializable {
 		return maxSpeed;
 	}
 
-	public void setMaxSpeed(float maxSpeed) {
-		this.maxSpeed = maxSpeed;
+	public Iterator<Boid> getBoidsIterator() {
+		return boids.iterator();
 	}
+
+	public PVector[] getFlowField() {
+		return flowField;
+	}
+
+	public PVector getFlowVectorUnderCoords(float x, float y) {
+		int cellX = (int) (x - bounds.x) / Flock.FLOW_FIELD_RESOLUTION;
+		int cellY = (int) (y - bounds.y) / Flock.FLOW_FIELD_RESOLUTION;
+		return getFlowVector(cellX, cellY);
+	}
+
+	public PVector getFlowVector(int x, int y) {
+		return flowField[y * bounds.width / Flock.FLOW_FIELD_RESOLUTION + x];
+	}
+
+	public int getFlowFieldWidth() {
+		return bounds.width / Flock.FLOW_FIELD_RESOLUTION;
+	}
+
+	public int getFlowFieldHeight() {
+		return bounds.height / Flock.FLOW_FIELD_RESOLUTION;
+	}
+
 }

@@ -2,13 +2,10 @@ package scenes;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Iterator;
 
 import processing.core.PGraphics;
 import processing.core.PVector;
-import processing.opengl.PGL;
 import veins.Tree;
 import veins.tools.FoodTool;
 import veins.tools.VeinTool;
@@ -21,22 +18,22 @@ public class Veins extends Scene {
 	private List<PVector> attractors;
 	private Tree tree;
 
-	@Scene.ModulationTarget(min=0.1f, max=50)
+	@Mod(min=0.1f, max=50)
 	float growthSpeed = 5;
 
-	@Scene.ModulationTarget(min=10, max=200)
+	@Mod(min=10, max=200)
 	float attractorKillRadius = 10;
 
-	@Scene.ModulationTarget(min=10, max=1000)
+	@Mod(min=10, max=1000)
 	float attractorInfluenceRadius = 100;
 
-	@Scene.ModulationTarget(min=0, max=20)
+	@Mod(min=0, max=20)
 	float edgeThickness = 5;
 
-	@Scene.ModulationTarget(min=0, max=20)
+	@Mod(min=0, max=20)
 	float pulsePeriod = 50;
 
-	@Scene.ModulationTarget(min=0, max=1000)
+	@Mod(min=0, max=1000)
 	float pulseLife = 200;
 
 	@Override

@@ -8,16 +8,16 @@ public class MagnetTool extends SceneTool {
 	private static final char INCREASE_STRENGTH_KEY = '>';
 	private static final float STRENGTH_INCREMENT = 0.5f;
 
-	private Flock magnets;
+	private Flock flock;
 	private float strength = 1;
 
-	public MagnetTool(Flock magnets) {
-		this.magnets = magnets;
+	public MagnetTool(Flock flock) {
+		this.flock = flock;
 	}
 
 	@Override
 	public void mousePressed(float mouseX, float mouseY) {
-		magnets.addMagnet(mouseX, mouseY, strength);
+		flock.addMagnet(mouseX, mouseY, strength);
 	}
 
 	@Override

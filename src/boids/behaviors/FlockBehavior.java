@@ -4,90 +4,31 @@ import boids.Boid;
 import boids.BoidUtils;
 import boids.Flock;
 import processing.core.PVector;
+import scenes.Mod;
 
 import java.util.List;
 
 public class FlockBehavior extends Behavior {
-	private float maxForce = 0.03f;
-	private float desiredSeparation;
-	private float alignmentThreshold;
-	private float cohesionThreshold;
-	private float separationWeight;
-	private float alignmentWeight;
-	private float cohesionWeight;
+	@Mod(min = 0, max = 10, defaultValue = 1)
+	public float separationWeight = 1;
 
-	public FlockBehavior(
-			float maxForce,
-			float cohesionThreshold,
-			float alignmentThreshold,
-			float desiredSeparation,
-			float separationWeight,
-			float alignmentWeight,
-			float cohesionWeight) {
-		this.maxForce = maxForce;
-		this.cohesionThreshold = cohesionThreshold;
-		this.alignmentThreshold = alignmentThreshold;
-		this.desiredSeparation = desiredSeparation;
-		this.separationWeight = separationWeight;
-		this.alignmentWeight = alignmentWeight;
-		this.cohesionWeight = cohesionWeight;
-	}
+	@Mod(min = 0, max = 10, defaultValue = 1)
+	public float alignmentWeight = 1;
 
-	public float getMaxForce() {
-		return maxForce;
-	}
+	@Mod(min = 0, max = 10, defaultValue = 1)
+	public float cohesionWeight =  1;
 
-	public void setMaxForce(float maxForce) {
-		this.maxForce = maxForce;
-	}
+	@Mod(min = 0, max = 1, defaultValue = 0.5f)
+	public float maxForce = 0.5f;
 
-	public float getDesiredSeparation() {
-		return desiredSeparation;
-	}
+	@Mod(min = 0, max = 200, defaultValue = 20)
+	public float desiredSeparation = 20;
 
-	public void setDesiredSeparation(float desiredSeparation) {
-		this.desiredSeparation = desiredSeparation;
-	}
+	@Mod(min = 0, max = 200, defaultValue = 50)
+	public float alignmentThreshold = 50;
 
-	public float getAlignmentThreshold() {
-		return alignmentThreshold;
-	}
-
-	public void setAlignmentThreshold(float alignmentThreshold) {
-		this.alignmentThreshold = alignmentThreshold;
-	}
-
-	public float getCohesionThreshold() {
-		return cohesionThreshold;
-	}
-
-	public void setCohesionThreshold(float cohesionThreshold) {
-		this.cohesionThreshold = cohesionThreshold;
-	}
-
-	public float getSeparationWeight() {
-		return separationWeight;
-	}
-
-	public void setSeparationWeight(float separationWeight) {
-		this.separationWeight = separationWeight;
-	}
-
-	public float getAlignmentWeight() {
-		return alignmentWeight;
-	}
-
-	public void setAlignmentWeight(float alignmentWeight) {
-		this.alignmentWeight = alignmentWeight;
-	}
-
-	public float getCohesionWeight() {
-		return cohesionWeight;
-	}
-
-	public void setCohesionWeight(float cohesionWeight) {
-		this.cohesionWeight = cohesionWeight;
-	}
+	@Mod(min = 0, max = 200, defaultValue = 60)
+	public float cohesionThreshold = 60;
 
 	@Override
 	public void apply() {

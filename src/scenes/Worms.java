@@ -3,10 +3,7 @@ package scenes;
 import boids.*;
 import boids.behaviors.*;
 import boids.renderers.*;
-import boids.tools.LineEmitterTool;
-import boids.tools.MagnetTool;
-import boids.tools.PathTool;
-import boids.tools.PointEmitterTool;
+import boids.tools.*;
 import processing.core.PGraphics;
 
 import java.io.*;
@@ -17,13 +14,17 @@ public class Worms extends Scene implements EntityEventListener {
 	}
 
 	private static final char FLIP_MAGNETS_KEY = 'm';
-	private static final char CLEAR_KEY = 'c';
+	private static final int CLEAR_KEY = 8;
+
+	@Mod
+	public FlockBehavior flockingBehavior;
 
 	private Flock flock;
 	private MagnetBehavior magnets;
 	private FollowPathBehavior path;
 	private EmitBehavior emitters;
-	private FlockBehavior flockingBehavior;
+	private FlowFieldBehavior flowField;
+
 	private DebugFlockRenderer debugRenderer;
 	private BoidFlockRenderer flockRenderer;
 	private int currentSaveIndex = 1;
@@ -36,44 +37,39 @@ public class Worms extends Scene implements EntityEventListener {
 		debugRenderer = new DebugFlockRenderer(flock);
 		flockRenderer = new BoidFlockRenderer(flock, WormBoidRenderer.class);
 
-		flockingBehavior = new FlockBehavior(0.5f, 60, 50, 20, 1f, 1, 1);
+		flockingBehavior = new FlockBehavior();
 		flock.addBehavior(flockingBehavior);
 
-		WiggleBehavior wiggleBehavior = new WiggleBehavior(0.1f, 0.1f);
+		WiggleBehavior wiggleBehavior = new WiggleBehavior(0.5f, 0.5f);
 		flock.addBehavior(wiggleBehavior);
 
 		magnets = new MagnetBehavior(500, 10);
 		flock.addBehavior(magnets);
 
-		path = new FollowPathBehavior(30, 1);
+		path = new FollowPathBehavior(50, 1);
 		flock.addBehavior(path);
 
 		emitters = new EmitBehavior();
 		flock.addBehavior(emitters);
 
+		flowField = new FlowFieldBehavior();
+		flock.addBehavior(flowField);
+
 		addSceneTool(new PointEmitterTool(flock));
 		addSceneTool(new LineEmitterTool(flock));
 		addSceneTool(new PathTool(flock));
 		addSceneTool(new MagnetTool(flock));
+		addSceneTool(new FlowFieldTool(flock));
 
 		loadSave(currentSaveIndex);
+
+		new OscSceneModulator(this, 12000);
 	}
 
-	@ModulationTarget
+	@Mod(min = 0, max = 9)
 	public void setSave(float save) {
 		loadSave((int) save);
 	}
-
-	@ModulationTarget
-	public void setMaxSpeed(float newMaxSpeed) {
-		flock.setMaxSpeed(newMaxSpeed);
-	}
-
-	@ModulationTarget
-	public void setMaxForce(float newMaxForce) {
-		flockingBehavior.setMaxForce(newMaxForce);
-	}
-
 
 	@Override
 	protected void drawCanvas(PGraphics graphics, float mouseX, float mouseY) {
@@ -92,13 +88,13 @@ public class Worms extends Scene implements EntityEventListener {
 		} catch (NumberFormatException e) { }
 		if (key == FLIP_MAGNETS_KEY) {
 			magnets.setForceMultiplier(magnets.getForceMultiplier() * -1);
-		} else if (key == CLEAR_KEY) {
+		} else if (keyCode == CLEAR_KEY) {
 			flock.clearEntities();
 		}
 	}
 
 	private void loadSave(int currentSaveIndex) {
-		// TODO: make this thread safe
+		System.out.println(currentSaveIndex);
 		this.currentSaveIndex = currentSaveIndex;
 		Flock save;
 		try {
