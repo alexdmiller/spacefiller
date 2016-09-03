@@ -1,6 +1,7 @@
 package boids.tools;
 
 import boids.Flock;
+import processing.core.PVector;
 import scenes.SceneTool;
 
 public class MagnetTool extends SceneTool {

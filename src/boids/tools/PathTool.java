@@ -25,6 +25,15 @@ public class PathTool extends SceneTool {
 	public void mouseReleased(float mouseX, float mouseY) {
 		PVector point = new PVector(mouseX, mouseY);
 		flock.addPathSegment(lastPoint, point);
+
+		lastPoint = null;
+	}
+
+	@Override
+	public void render(PGraphics graphics, float mouseX, float mouseY, boolean mousePressed) {
+		if (lastPoint != null) {
+			graphics.line(lastPoint.x, lastPoint.y, mouseX, mouseY);
+		}
 	}
 
 	@Override

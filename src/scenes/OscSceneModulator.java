@@ -97,10 +97,11 @@ public class OscSceneModulator implements OscEventListener {
 		classes.add("Slider");
 		keys.add(target.getName());
 
+		float val = mod.defaultValue() / (mod.max() - mod.min());
 		uiBuilder.add(target.getName(), Json.createObjectBuilder()
 				.add("minRange", mod.min())
 				.add("maxRange", mod.max())
-				.add("val", mod.defaultValue())
+				.add("val", val)
 				.add("label", target.getName())
 				.add("publishNorm", false)
 				.add("sendEnabled", true)
@@ -124,9 +125,6 @@ public class OscSceneModulator implements OscEventListener {
 
 	@Override
 	public void oscEvent(OscMessage oscMessage) {
-		System.out.println(oscMessage);
-		System.out.println(oscMessage.get(0).floatValue());
-
 		ModulationTarget target = modulationTargetRegistry.get(oscMessage.addrPattern());
 		if (target != null) {
 			target.setValue(oscMessage.get(0).floatValue());

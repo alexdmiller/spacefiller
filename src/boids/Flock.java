@@ -5,6 +5,7 @@ import boids.emitter.Emitter;
 import com.sun.tools.javac.comp.Flow;
 import javafx.util.Pair;
 import processing.core.PVector;
+import scenes.Mod;
 
 import java.awt.*;
 import java.io.Serializable;
@@ -13,7 +14,10 @@ import java.util.List;
 
 public class Flock implements Serializable {
 	public static final int MAX_BOIDS = 700;
-	public static final int FLOW_FIELD_RESOLUTION = 100;
+	public static final int FLOW_FIELD_RESOLUTION = 50;
+
+	@Mod(min = 0, max = 10, defaultValue = 3)
+	public float maxSpeed = 3;
 
 	private transient List<BoidEventListener> boidEventListeners;
 	private transient List<EntityEventListener> entityEventListeners;
@@ -27,7 +31,6 @@ public class Flock implements Serializable {
 	private PVector[] flowField;
 	private int width;
 	private int height;
-	private float maxSpeed = 3;
 
 	public Flock(int x, int y, int width, int height) {
 		bounds = new Rectangle(x, y, width, height);
@@ -170,6 +173,10 @@ public class Flock implements Serializable {
 		pathSegments.clear();
 		emitters.clear();
 
+		for (int i = 0; i < flowField.length; i++) {
+			flowField[i].set(0, 0);
+		}
+
 		notifyEntitiesUpdated();
 	}
 
@@ -177,6 +184,10 @@ public class Flock implements Serializable {
 		magnets.clear();
 		pathSegments.clear();
 		emitters.clear();
+
+		for (int i = 0; i < flowField.length; i++) {
+			flowField[i].set(other.getFlowVector(i));
+		}
 
 		magnets.addAll(other.magnets);
 		pathSegments.addAll(other.pathSegments);
@@ -209,6 +220,10 @@ public class Flock implements Serializable {
 		return flowField[y * bounds.width / Flock.FLOW_FIELD_RESOLUTION + x];
 	}
 
+	public PVector getFlowVector(int i) {
+		return flowField[i];
+	}
+
 	public int getFlowFieldWidth() {
 		return bounds.width / Flock.FLOW_FIELD_RESOLUTION;
 	}
@@ -216,5 +231,4 @@ public class Flock implements Serializable {
 	public int getFlowFieldHeight() {
 		return bounds.height / Flock.FLOW_FIELD_RESOLUTION;
 	}
-
 }

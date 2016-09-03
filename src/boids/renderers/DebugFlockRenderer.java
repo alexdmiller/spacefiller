@@ -79,10 +79,13 @@ public class DebugFlockRenderer extends FlockRenderer {
 		for (int x = 0; x < flock.getFlowFieldWidth(); x++) {
 			for (int y = 0; y < flock.getFlowFieldHeight(); y++) {
 				PVector v = flock.getFlowVector(x, y);
-				float posX = x * Flock.FLOW_FIELD_RESOLUTION + flock.getBounds().x;
-				float posY = y * Flock.FLOW_FIELD_RESOLUTION + flock.getBounds().y;
-
-				canvas.line(posX, posY, posX + v.x, posY + v.y);
+				canvas.pushMatrix();
+				float posX = x * Flock.FLOW_FIELD_RESOLUTION + flock.getBounds().x + Flock.FLOW_FIELD_RESOLUTION / 2;
+				float posY = y * Flock.FLOW_FIELD_RESOLUTION + flock.getBounds().y + Flock.FLOW_FIELD_RESOLUTION / 2;
+				canvas.translate(posX, posY);
+				canvas.rotate(v.heading());
+				canvas.line(0, 0, v.mag(), 0);
+				canvas.popMatrix();
 			}
 		}
 	}

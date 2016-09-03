@@ -4,15 +4,17 @@ import boids.Boid;
 import boids.BoidUtils;
 import javafx.util.Pair;
 import processing.core.PVector;
+import scenes.Mod;
 
 import java.util.List;
 
 public class FollowPathBehavior extends Behavior {
-	private float radius;
+	@Mod(min = 10, max = 100, defaultValue = 20)
+	public float radius = 20;
+
 	private float maxForce;
 
-	public FollowPathBehavior(float radius, float maxForce) {
-		this.radius = radius;
+	public FollowPathBehavior(float maxForce) {
 		this.maxForce = maxForce;
 	}
 

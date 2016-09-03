@@ -19,11 +19,17 @@ public class Worms extends Scene implements EntityEventListener {
 	@Mod
 	public FlockBehavior flockingBehavior;
 
-	private Flock flock;
+	@Mod
+	public FlowFieldBehavior flowField;
+
+	@Mod
+	public Flock flock;
+
+	@Mod
+	public FollowPathBehavior path;
+
 	private MagnetBehavior magnets;
-	private FollowPathBehavior path;
 	private EmitBehavior emitters;
-	private FlowFieldBehavior flowField;
 
 	private DebugFlockRenderer debugRenderer;
 	private BoidFlockRenderer flockRenderer;
@@ -46,7 +52,7 @@ public class Worms extends Scene implements EntityEventListener {
 		magnets = new MagnetBehavior(500, 10);
 		flock.addBehavior(magnets);
 
-		path = new FollowPathBehavior(50, 1);
+		path = new FollowPathBehavior(1);
 		flock.addBehavior(path);
 
 		emitters = new EmitBehavior();
@@ -94,7 +100,6 @@ public class Worms extends Scene implements EntityEventListener {
 	}
 
 	private void loadSave(int currentSaveIndex) {
-		System.out.println(currentSaveIndex);
 		this.currentSaveIndex = currentSaveIndex;
 		Flock save;
 		try {

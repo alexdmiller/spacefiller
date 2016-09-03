@@ -19,12 +19,14 @@ public class Scene extends PApplet {
 	public static final char PLAY_KEY = ' ';
 	public static final char NEXT_TOOL_KEY = 39;
 	public static final char PREV_TOOL_KEY = 37;
+	public static final char DEBUG_TOGGLE = 'd';
 
 	private float lastTime;
 	private SyphonServer server;
 
 	private PGraphics canvas;
 	private boolean playing = true;
+	private boolean debug = true;
 	private int currentToolIndex;
 	private List<SceneTool> tools;
 
@@ -44,7 +46,7 @@ public class Scene extends PApplet {
 
 	public final void setup() {
 		canvas = createGraphics(WIDTH, HEIGHT, P3D);
-		server = new SyphonServer(this, "my server");
+		server = new SyphonServer(this, this.getClass().getName());
 		frameRate(60);
 		doSetup();
 	}
@@ -57,16 +59,16 @@ public class Scene extends PApplet {
 			canvas.beginDraw();
 			canvas.background(0);
 			drawCanvas(canvas, mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
+
+			if (debug) {
+				drawControlPanel(canvas, mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
+				tools.get(currentToolIndex).render(canvas, mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE, mousePressed);
+			}
+
 			canvas.endDraw();
 		}
 
 		image(canvas, 0, 0, width, height);
-
-		pushMatrix();
-		scale(LOCAL_WINDOW_SCALE);
-		tools.get(currentToolIndex).render(getGraphics(), mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE, mousePressed);
-		drawControlPanel(getGraphics(), mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
-		popMatrix();
 
 		textSize(24);
 		fill(255);
@@ -100,6 +102,10 @@ public class Scene extends PApplet {
 		tools.get(currentToolIndex).mouseReleased(mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
 	}
 
+	public final void mouseDragged() {
+		tools.get(currentToolIndex).mouseDragged(mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
+	}
+
 	public final void keyPressed() {
 		if (key == PLAY_KEY) {
 			playing = !playing;
@@ -107,6 +113,8 @@ public class Scene extends PApplet {
 			currentToolIndex = (currentToolIndex + 1) % tools.size();
 		} else if (keyCode == PREV_TOOL_KEY) {
 			currentToolIndex = (((currentToolIndex - 1) % tools.size()) + tools.size()) % tools.size();
+		} else if (key == DEBUG_TOGGLE) {
+			debug = !debug;
 		}
 
 		tools.get(currentToolIndex).keyDown(key);
@@ -115,6 +123,4 @@ public class Scene extends PApplet {
 	}
 
 	protected void doKeyPressed() {}
-
-
 }
