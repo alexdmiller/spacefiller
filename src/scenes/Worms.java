@@ -4,6 +4,8 @@ import boids.*;
 import boids.behaviors.*;
 import boids.renderers.*;
 import boids.tools.*;
+import modulation.Mod;
+import modulation.OscSceneModulator;
 import processing.core.PGraphics;
 
 import java.io.*;
@@ -14,7 +16,6 @@ public class Worms extends Scene implements EntityEventListener {
 	}
 
 	private static final char FLIP_MAGNETS_KEY = 'm';
-	private static final int CLEAR_KEY = 8;
 
 	@Mod
 	public FlockBehavior flockingBehavior;
@@ -28,8 +29,13 @@ public class Worms extends Scene implements EntityEventListener {
 	@Mod
 	public FollowPathBehavior path;
 
+	@Mod
+	public EmitBehavior emitters;
+
+	@Mod
+	public WiggleBehavior wiggleBehavior;
+
 	private MagnetBehavior magnets;
-	private EmitBehavior emitters;
 
 	private DebugFlockRenderer debugRenderer;
 	private BoidFlockRenderer flockRenderer;
@@ -46,14 +52,15 @@ public class Worms extends Scene implements EntityEventListener {
 		flockingBehavior = new FlockBehavior();
 		flock.addBehavior(flockingBehavior);
 
-		WiggleBehavior wiggleBehavior = new WiggleBehavior(0.5f, 0.5f);
+		wiggleBehavior = new WiggleBehavior();
 		flock.addBehavior(wiggleBehavior);
 
-		magnets = new MagnetBehavior(500, 10);
+		magnets = new MagnetBehavior(10);
 		flock.addBehavior(magnets);
 
 		path = new FollowPathBehavior(1);
 		flock.addBehavior(path);
+
 
 		emitters = new EmitBehavior();
 		flock.addBehavior(emitters);
@@ -73,8 +80,8 @@ public class Worms extends Scene implements EntityEventListener {
 	}
 
 	@Mod(min = 0, max = 9)
-	public void setSave(float save) {
-		loadSave((int) save);
+	public void setSave(int save) {
+		loadSave(save);
 	}
 
 	@Override
@@ -86,6 +93,10 @@ public class Worms extends Scene implements EntityEventListener {
 	@Override
 	protected void drawControlPanel(PGraphics graphics, float mouseX, float mouseY) {
 		debugRenderer.render(graphics);
+
+		graphics.stroke(255);
+		graphics.textSize(24);
+		graphics.text(currentSaveIndex, 200, 100);
 	}
 
 	public void doKeyPressed() {
@@ -94,8 +105,6 @@ public class Worms extends Scene implements EntityEventListener {
 		} catch (NumberFormatException e) { }
 		if (key == FLIP_MAGNETS_KEY) {
 			magnets.setForceMultiplier(magnets.getForceMultiplier() * -1);
-		} else if (keyCode == CLEAR_KEY) {
-			flock.clearEntities();
 		}
 	}
 

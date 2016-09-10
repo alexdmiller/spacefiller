@@ -36,20 +36,22 @@ public class LineEmitter implements Emitter {
 	}
 
 	@Override
+	public float getEmitChance() {
+		return emitChance;
+	}
+
+	@Override
 	public List<Boid> emit() {
 		List<Boid> boids = new ArrayList<>();
+		PVector delta = PVector.sub(p2, p1);
+		float distOnLine = (float) Math.random() * delta.mag();
 
-		if (Math.random() < emitChance) {
-			PVector delta = PVector.sub(p2, p1);
-			float distOnLine = (float) Math.random() * delta.mag();
+		delta.setMag(distOnLine);
+		delta.add(p1);
 
-			delta.setMag(distOnLine);
-			delta.add(p1);
-
-			Boid b = new Boid(delta.x, delta.y);
-			b.setVelocity(initialVelocity);
-			boids.add(b);
-		}
+		Boid b = new Boid(delta.x, delta.y);
+		b.setVelocity(initialVelocity);
+		boids.add(b);
 
 		return boids;
 	}

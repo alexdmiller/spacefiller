@@ -1,9 +1,11 @@
-package scenes;
+package modulation;
 
-import oscP5.OscEventListener;
-import oscP5.OscMessage;
-import oscP5.OscP5;
-import oscP5.OscStatus;
+import com.sun.javaws.exceptions.InvalidArgumentException;
+import modulation.FieldModulationTarget;
+import modulation.MethodModulationTarget;
+import modulation.Mod;
+import modulation.ModulationTarget;
+import oscP5.*;
 
 import javax.json.*;
 import java.io.File;
@@ -19,9 +21,31 @@ public class OscSceneModulator implements OscEventListener {
 	private OscP5 oscP5;
 	private String name;
 
+	private static Map<Type, Integer> typeToVDMXType = new HashMap<>();
+	private static Map<Type, VDMXElementClass> typeToVDMXElementClass = new HashMap<>();
+
+	static {
+		typeToVDMXType.put(Integer.TYPE, 2);
+		typeToVDMXType.put(Float.TYPE, 4);
+		typeToVDMXType.put(Boolean.TYPE, 1);
+
+		typeToVDMXElementClass.put(Integer.TYPE, VDMXElementClass.SLIDER);
+		typeToVDMXElementClass.put(Float.TYPE, VDMXElementClass.SLIDER);
+		typeToVDMXElementClass.put(Boolean.TYPE, VDMXElementClass.BUTTON);
+	}
+
+	private enum VDMXElementClass {
+		BUTTON("Button"), SLIDER("Slider");
+
+		String name;
+
+		VDMXElementClass(String name) {
+			this.name = name;
+		}
+	}
+
 	public OscSceneModulator(Object object, int port) {
 		oscP5 = new OscP5(this, port);
-		oscP5.addListener(this);
 		modulationTargetRegistry = new HashMap<>();
 		registerTargetsForObject(object);
 		name = object.getClass().getName();
@@ -56,7 +80,7 @@ public class OscSceneModulator implements OscEventListener {
 		JsonObjectBuilder uiBuilder = Json.createObjectBuilder();
 
 		for (String address : modulationTargetRegistry.keySet()) {
-			addSlider(classes, keys, uiBuilder, modulationTargetRegistry.get(address), address, port);
+			addUiElement(classes, keys, uiBuilder, modulationTargetRegistry.get(address), address, port);
 		}
 
 		JsonObject layout = Json.createObjectBuilder()
@@ -85,7 +109,7 @@ public class OscSceneModulator implements OscEventListener {
 		writer.write(layout);
 	}
 
-	private void addSlider(
+	private void addUiElement(
 			JsonArrayBuilder classes,
 			JsonArrayBuilder keys,
 			JsonObjectBuilder uiBuilder,
@@ -93,8 +117,9 @@ public class OscSceneModulator implements OscEventListener {
 			String address,
 			int port) {
 		Mod mod = target.getModAnnotation();
+		VDMXElementClass elementClass = typeToVDMXElementClass.get(target.getType());
 
-		classes.add("Slider");
+		classes.add(elementClass.name);
 		keys.add(target.getName());
 
 		float val = mod.defaultValue() / (mod.max() - mod.min());
@@ -113,21 +138,31 @@ public class OscSceneModulator implements OscEventListener {
 								.add("outputPort", port)
 								.add("boolInvertFlag", false)
 								.add("boolThreshVal", 0.1)
-								.add("highIntVal", 100)
+								.add("lowIntVal", mod.min())
+								.add("highIntVal", mod.max())
 								.add("outputIPAddress", "127.0.0.1")
 								.add("outputLabel", "localhost:" + port)
 								.add("dataSenderType", 2)
-								.add("lowIntVal", 0)
 								.add("enabled", true)
 								.add("intInvertFlag", false)
-								.add("senderType", 4))).build());
+								.add("senderType", typeToVDMXType.get(target.getType())))).build());
 	}
 
 	@Override
 	public void oscEvent(OscMessage oscMessage) {
 		ModulationTarget target = modulationTargetRegistry.get(oscMessage.addrPattern());
-		if (target != null) {
-			target.setValue(oscMessage.get(0).floatValue());
+		Type type = target.getType();
+		OscArgument argument = oscMessage.get(0);
+
+		if (type == Float.TYPE) {
+			target.setValue(argument.floatValue());
+		} else if (type == Integer.TYPE) {
+			target.setValue(argument.intValue());
+		} else if (type == Boolean.TYPE) {
+			// VDMX sends boolean values by setting the type of the message to 'T' or 'F'. Because
+			// this is non-standard, it has to be handled manually.
+			byte b = oscMessage.getTypetagAsBytes()[0];
+			target.setValue(b == 'T');
 		}
 	}
 
@@ -136,68 +171,4 @@ public class OscSceneModulator implements OscEventListener {
 
 	}
 
-	private interface ModulationTarget {
-		void setValue(Object object);
-		String getName();
-		Mod getModAnnotation();
-	}
-
-	private static class FieldModulationTarget implements ModulationTarget {
-		private Object parent;
-		private Field field;
-
-		public FieldModulationTarget(Object parent, Field field) {
-			this.parent = parent;
-			this.field = field;
-		}
-
-		@Override
-		public void setValue(Object value) {
-			try {
-				field.set(parent, value);
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			}
-		}
-
-		@Override
-		public String getName() {
-			return field.getName();
-		}
-
-		@Override
-		public Mod getModAnnotation() {
-			return field.getAnnotation(Mod.class);
-		}
-	}
-
-	private static class MethodModulationTarget implements ModulationTarget {
-		private Object parent;
-		private Method method;
-
-		public MethodModulationTarget(Object parent, Method method) {
-			this.parent = parent;
-			this.method = method;
-		}
-
-		@Override
-		public void setValue(Object value) {
-			try {
-				method.invoke(parent, value);
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-			}
-		}
-
-		@Override
-		public String getName() {
-			return method.getName();
-		}
-
-		@Override
-		public Mod getModAnnotation() {
-			return method.getAnnotation(Mod.class);
-		}
-	}
 }

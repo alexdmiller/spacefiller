@@ -26,13 +26,16 @@ public class BoidFlockRenderer extends FlockRenderer implements BoidEventListene
 	public void render(PGraphics graphics) {
 		graphics.stroke(255);
 		graphics.strokeWeight(3);
-		Iterator<BoidRenderer> rendererIterator = renderers.iterator();
-		while (rendererIterator.hasNext()) {
-			BoidRenderer renderer = rendererIterator.next();
-			if (renderer.isReadyToDie()) {
-				rendererIterator.remove();
+
+		synchronized (renderers) {
+			Iterator<BoidRenderer> rendererIterator = renderers.iterator();
+			while (rendererIterator.hasNext()) {
+				BoidRenderer renderer = rendererIterator.next();
+				if (renderer.isReadyToDie()) {
+					rendererIterator.remove();
+				}
+				renderer.draw(graphics);
 			}
-			renderer.draw(graphics);
 		}
 	}
 
@@ -51,7 +54,10 @@ public class BoidFlockRenderer extends FlockRenderer implements BoidEventListene
 			e.printStackTrace();
 		}
 		b.setUserData("renderer", renderer);
-		renderers.add(renderer);
+
+		synchronized (renderers) {
+			renderers.add(renderer);
+		}
 	}
 
 	@Override

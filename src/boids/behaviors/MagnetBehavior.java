@@ -11,12 +11,10 @@ import java.util.Iterator;
 import java.util.List;
 
 public class MagnetBehavior extends Behavior {
-	private float attractionThreshold;
 	private float killRadius;
 	private float forceMultiplier;
 
-	public MagnetBehavior(float attractionThreshold, float killRadius) {
-		this.attractionThreshold = attractionThreshold;
+	public MagnetBehavior(float killRadius) {
 		this.killRadius = killRadius;
 		this.forceMultiplier = 1;
 	}
@@ -37,9 +35,18 @@ public class MagnetBehavior extends Behavior {
 
 			Magnet closest = null;
 			float closestDistance = 0;
+
 			for (Magnet m : getFlock().getMagnets()) {
 				PVector delta = PVector.sub(m.position, b.getPosition());
 				float distance = delta.mag();
+
+				if (distance < m.radius) {
+					delta.normalize();
+					delta.mult(100 * m.strength / distance * forceMultiplier);
+
+					b.applyForce(delta);
+				}
+
 				if (closest == null || distance < closestDistance) {
 					closest = m;
 					closestDistance = distance;
@@ -50,12 +57,6 @@ public class MagnetBehavior extends Behavior {
 				if (closestDistance < killRadius) {
 					boidIterator.remove();
 					getFlock().notifyRemoved(b);
-				} else if (closestDistance < attractionThreshold) {
-					PVector delta = PVector.sub(closest.position, b.getPosition());
-
-					delta.normalize();
-					delta.mult(100 * closest.strength / closestDistance * forceMultiplier);
-					b.applyForce(delta);
 				}
 			}
 		}

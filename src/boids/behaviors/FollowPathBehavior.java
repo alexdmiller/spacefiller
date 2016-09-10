@@ -4,7 +4,7 @@ import boids.Boid;
 import boids.BoidUtils;
 import javafx.util.Pair;
 import processing.core.PVector;
-import scenes.Mod;
+import modulation.Mod;
 
 import java.util.List;
 

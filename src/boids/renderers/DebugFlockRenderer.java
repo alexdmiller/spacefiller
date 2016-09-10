@@ -67,10 +67,14 @@ public class DebugFlockRenderer extends FlockRenderer {
 	}
 
 	private void renderMagnetBehavior(PGraphics canvas, List<Magnet> magnets) {
-		canvas.noStroke();
-		canvas.fill(255, 0, 0);
 		for (Magnet m : magnets) {
+			canvas.noStroke();
+			canvas.fill(255, 0, 0);
 			canvas.ellipse(m.position.x, m.position.y, 10, 10);
+
+			canvas.noFill();
+			canvas.stroke(255, 0, 0);
+			canvas.ellipse(m.position.x, m.position.y, m.radius * 2, m.radius * 2);
 		}
 	}
 

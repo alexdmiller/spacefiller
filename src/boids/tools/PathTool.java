@@ -41,4 +41,8 @@ public class PathTool extends SceneTool {
 		return "PATH";
 	}
 
+	@Override
+	public void clear() {
+		flock.clearPathSegments();
+	}
 }

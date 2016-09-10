@@ -13,15 +13,21 @@ import java.util.List;
 // TODO: how to handle scenes?
 
 public class Scene extends PApplet {
-	public static final int WIDTH = 1920;
-	public static final int HEIGHT = 1080;
-	public static final float LOCAL_WINDOW_SCALE = 0.5f;
-	public static final char PLAY_KEY = ' ';
-	public static final char NEXT_TOOL_KEY = 39;
-	public static final char PREV_TOOL_KEY = 37;
-	public static final char DEBUG_TOGGLE = 'd';
+	private static PApplet instance;
 
-	private float lastTime;
+	public static PApplet getInstance() {
+		return instance;
+	}
+
+	protected static final int WIDTH = 1920;
+	protected static final int HEIGHT = 1080;
+	private static final float LOCAL_WINDOW_SCALE = 0.5f;
+	private static final char PLAY_KEY = ' ';
+	private static final char NEXT_TOOL_KEY = 39;
+	private static final char PREV_TOOL_KEY = 37;
+	private static final char DEBUG_TOGGLE = 'd';
+	private static final int CLEAR_KEY = 8;
+
 	private SyphonServer server;
 
 	private PGraphics canvas;
@@ -33,6 +39,8 @@ public class Scene extends PApplet {
 	public Scene() {
 		currentToolIndex = 0;
 		tools = new ArrayList<>();
+
+		Scene.instance = this;
 	}
 
 	protected void addSceneTool(SceneTool tool) {
@@ -61,6 +69,13 @@ public class Scene extends PApplet {
 			drawCanvas(canvas, mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
 
 			if (debug) {
+				canvas.pushMatrix();
+				canvas.translate(mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
+				canvas.stroke(255);
+				canvas.line(-10, 0, 10, 0);
+				canvas.line(0, -10, 0, 10);
+				canvas.popMatrix();
+
 				drawControlPanel(canvas, mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
 				tools.get(currentToolIndex).render(canvas, mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE, mousePressed);
 			}
@@ -70,7 +85,7 @@ public class Scene extends PApplet {
 
 		image(canvas, 0, 0, width, height);
 
-		textSize(24);
+		textSize(16);
 		fill(255);
 		text(frameRate, 10, 30);
 		text(tools.get(currentToolIndex).toString(), 10, height - 20);
@@ -115,6 +130,8 @@ public class Scene extends PApplet {
 			currentToolIndex = (((currentToolIndex - 1) % tools.size()) + tools.size()) % tools.size();
 		} else if (key == DEBUG_TOGGLE) {
 			debug = !debug;
+		} else if (keyCode == CLEAR_KEY) {
+			tools.get(currentToolIndex).clear();
 		}
 
 		tools.get(currentToolIndex).keyDown(key);

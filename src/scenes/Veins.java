@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Iterator;
 
+import modulation.Mod;
 import processing.core.PGraphics;
 import processing.core.PVector;
+import scenes.Scene;
 import veins.Tree;
 import veins.tools.FoodTool;
 import veins.tools.VeinTool;

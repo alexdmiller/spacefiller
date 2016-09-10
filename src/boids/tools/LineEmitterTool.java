@@ -20,16 +20,30 @@ public class LineEmitterTool extends SceneTool {
 
 	@Override
 	public void mousePressed(float mouseX, float mouseY) {
-		if (lastPoint == null) {
-			lastPoint = new PVector(mouseX, mouseY);
-		} else {
-			flock.addEmitter(new LineEmitter(lastPoint.x, lastPoint.y, mouseX, mouseY, 1));
-			lastPoint = null;
+		lastPoint = new PVector(mouseX, mouseY);
+	}
+
+	@Override
+	public void mouseReleased(float mouseX, float mouseY) {
+		flock.addEmitter(new LineEmitter(lastPoint.x, lastPoint.y, mouseX, mouseY, 1));
+		lastPoint = null;
+	}
+
+	@Override
+	public void render(PGraphics graphics, float mouseX, float mouseY, boolean mousePressed) {
+		graphics.stroke(0, 255, 0);
+		if (lastPoint != null) {
+			graphics.line(lastPoint.x, lastPoint.y, mouseX, mouseY);
 		}
 	}
 
 	@Override
 	public String toString() {
-		return "LINE EM" + (lastPoint == null ? " - first point" : " - second point");
+		return "LINE";
+	}
+
+	@Override
+	public void clear() {
+		flock.clearEmitters();
 	}
 }

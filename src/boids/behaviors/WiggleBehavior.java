@@ -2,18 +2,17 @@ package boids.behaviors;
 
 import boids.Boid;
 import boids.Flock;
+import modulation.Mod;
 import processing.core.PVector;
 
 import java.util.List;
 
 public class WiggleBehavior extends Behavior {
-	private float wiggleAmplitudeMultiplier;
-	private float wiggleStepMultiplier;
+	@Mod(min = 0, max = 10, defaultValue = 1)
+	public float wiggleAmplitudeMultiplier = 1;
 
-	public WiggleBehavior(float wiggleAmplitudeMultiplier, float wiggleStepMultiplier) {
-		this.wiggleAmplitudeMultiplier = wiggleAmplitudeMultiplier;
-		this.wiggleStepMultiplier = wiggleStepMultiplier;
-	}
+	@Mod(min = 0, max = 10, defaultValue = 1)
+	public float wiggleStepMultiplier;
 
 	@Override
 	public void apply() {
@@ -29,7 +28,7 @@ public class WiggleBehavior extends Behavior {
 
 			wiggleDirection.setMag((float) Math.sin(wiggleStep) * b.getVelocity().mag() * wiggleAmplitudeMultiplier);
 			b.getPosition().add(wiggleDirection);
-			wiggleStep += b.getAcceleration().mag() * wiggleStepMultiplier;
+			wiggleStep += b.getVelocity().mag() * wiggleStepMultiplier;
 			b.setUserData("wiggleStep", wiggleStep);
 		}
 	}

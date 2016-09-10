@@ -9,32 +9,29 @@ import java.util.List;
 public class PointEmitter implements Emitter {
 	private float emitChance;
 	private PVector position;
-	private PVector initialVelocity;
+	private float initialSpeed;
 
 	public PointEmitter(float x, float y, float emitChance) {
 		this.position = new PVector(x, y);
 		this.emitChance = emitChance;
-		this.initialVelocity = new PVector(0, 0);
+		this.initialSpeed = 10;
 	}
 
-	public PVector getInitialVelocity() {
-		return initialVelocity;
-	}
-
-	public void setInitialVelocity(float x, float y) {
-		this.initialVelocity = new PVector(x, y);
+	@Override
+	public float getEmitChance() {
+		return emitChance;
 	}
 
 	@Override
 	public List<Boid> emit() {
 		List<Boid> boids = new ArrayList<>();
+		Boid b = new Boid((float) (position.x + Math.random() - 0.5), (float) (position.y + Math.random() - 0.5));
 
-		if (Math.random() < emitChance) {
-			Boid b = new Boid((float) (position.x + Math.random() - 0.5), (float) (position.y + Math.random() - 0.5));
-			b.setVelocity(initialVelocity);
-			boids.add(b);
-		}
+		PVector velocity = PVector.fromAngle((float) (Math.random() * Math.PI * 2));
+		velocity.setMag(initialSpeed);
 
+		b.setVelocity(velocity);
+		boids.add(b);
 		return boids;
 	}
 

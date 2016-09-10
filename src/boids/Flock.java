@@ -2,10 +2,9 @@ package boids;
 
 import boids.behaviors.Behavior;
 import boids.emitter.Emitter;
-import com.sun.tools.javac.comp.Flow;
 import javafx.util.Pair;
 import processing.core.PVector;
-import scenes.Mod;
+import modulation.Mod;
 
 import java.awt.*;
 import java.io.Serializable;
@@ -51,6 +50,7 @@ public class Flock implements Serializable {
 	}
 
 	public void step() {
+		synchronized (boids) {
 			Iterator<Boid> boidIterator = boids.iterator();
 			while (boidIterator.hasNext()) {
 				Boid b = boidIterator.next();
@@ -67,11 +67,14 @@ public class Flock implements Serializable {
 			for (Boid b : boids) {
 				b.update(maxSpeed);
 			}
+		}
 	}
 
 	public void addBoid(Boid b) {
 		if (boids.size() < MAX_BOIDS) {
-			boids.add(b);
+			synchronized (boids) {
+				boids.add(b);
+			}
 			for (BoidEventListener listener : boidEventListeners) {
 				listener.boidAdded(b);
 			}
@@ -85,10 +88,12 @@ public class Flock implements Serializable {
 	}
 
 	public void clearBoids() {
-		for (Boid b : boids) {
-			notifyRemoved(b);
+		synchronized (boids) {
+			for (Boid b : boids) {
+				notifyRemoved(b);
+			}
+			boids.clear();
 		}
-		boids.clear();
 	}
 
 	public void notifyRemoved(Boid b) {
@@ -157,8 +162,8 @@ public class Flock implements Serializable {
 		return magnets;
 	}
 
-	public void addMagnet(float x, float y, float strength) {
-		this.magnets.add(new Magnet(new PVector(x, y), strength));
+	public void addMagnet(Magnet magnet) {
+		this.magnets.add(magnet);
 		notifyEntitiesUpdated();
 	}
 
@@ -169,14 +174,31 @@ public class Flock implements Serializable {
 	}
 
 	public void clearEntities() {
-		magnets.clear();
-		pathSegments.clear();
-		emitters.clear();
+		clearMagnets();
+		clearPathSegments();
+		clearEmitters();
+		clearFlowField();
+	}
 
+	public void clearMagnets() {
+		magnets.clear();
+		notifyEntitiesUpdated();
+	}
+
+	public void clearPathSegments() {
+		pathSegments.clear();
+		notifyEntitiesUpdated();
+	}
+
+	public void clearEmitters() {
+		emitters.clear();
+		notifyEntitiesUpdated();
+	}
+
+	public void clearFlowField() {
 		for (int i = 0; i < flowField.length; i++) {
 			flowField[i].set(0, 0);
 		}
-
 		notifyEntitiesUpdated();
 	}
 
@@ -217,7 +239,12 @@ public class Flock implements Serializable {
 	}
 
 	public PVector getFlowVector(int x, int y) {
-		return flowField[y * bounds.width / Flock.FLOW_FIELD_RESOLUTION + x];
+		int i = y * bounds.width / Flock.FLOW_FIELD_RESOLUTION + x;
+		if (i < flowField.length && i > 0) {
+			return flowField[y * bounds.width / Flock.FLOW_FIELD_RESOLUTION + x];
+		} else {
+			return new PVector(0, 0);
+		}
 	}
 
 	public PVector getFlowVector(int i) {

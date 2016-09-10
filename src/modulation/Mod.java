@@ -1,4 +1,4 @@
-package scenes;
+package modulation;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

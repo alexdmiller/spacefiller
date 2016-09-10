@@ -2,13 +2,13 @@ package boids.behaviors;
 
 import boids.Boid;
 import processing.core.PVector;
-import scenes.Mod;
+import modulation.Mod;
 
 import java.util.List;
 
 public class FlowFieldBehavior extends Behavior {
-	@Mod(min = 0, max = 10, defaultValue = 1)
-	public float flowFieldWeight = 1;
+	@Mod(min = 0, max = 10, defaultValue = 0)
+	public float flowFieldWeight = 0;
 
 	@Mod(min = 0, max = 1, defaultValue = 0.5f)
 	public float maxFlowFieldForce = 0.5f;
