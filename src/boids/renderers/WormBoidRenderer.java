@@ -40,4 +40,9 @@ public class WormBoidRenderer extends BoidRenderer {
 			last = p;
 		}
 	}
+
+	@Override
+	public void clear() {
+		history.clear();
+	}
 }

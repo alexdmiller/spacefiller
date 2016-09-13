@@ -14,5 +14,7 @@
     <orderEntry type="library" name="javax.json:javax.json-api:1.0" level="project" />
     <orderEntry type="library" exported="" name="org.glassfish:javax.json:1.0.4" level="project" />
     <orderEntry type="library" name="com.google.guava:guava:19.0-rc2" level="project" />
+    <orderEntry type="library" name="mesh" level="project" />
+    <orderEntry type="library" name="quickhull3d.1.4" level="project" />
   </component>
 </module>

@@ -6,17 +6,17 @@ import boids.BoidEventListener;
 import processing.core.PGraphics;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class BoidFlockRenderer extends FlockRenderer implements BoidEventListener {
 	private List<BoidRenderer> renderers;
+	private Map<Boid, BoidRenderer> boidToRenderer;
 	private Class<? extends BoidRenderer> rendererClass;
 
 	public BoidFlockRenderer(Flock flock, Class<? extends BoidRenderer> rendererClass) {
 		super(flock);
 		this.renderers = new ArrayList<>();
+		this.boidToRenderer = new LinkedHashMap<>();
 		flock.addBoidEventListener(this);
 
 		this.rendererClass = rendererClass;
@@ -24,9 +24,6 @@ public class BoidFlockRenderer extends FlockRenderer implements BoidEventListene
 
 	@Override
 	public void render(PGraphics graphics) {
-		graphics.stroke(255);
-		graphics.strokeWeight(3);
-
 		synchronized (renderers) {
 			Iterator<BoidRenderer> rendererIterator = renderers.iterator();
 			while (rendererIterator.hasNext()) {
@@ -35,6 +32,17 @@ public class BoidFlockRenderer extends FlockRenderer implements BoidEventListene
 					rendererIterator.remove();
 				}
 				renderer.draw(graphics);
+			}
+		}
+	}
+
+	@Override
+	public void clear() {
+		synchronized (renderers) {
+			Iterator<BoidRenderer> rendererIterator = renderers.iterator();
+			while (rendererIterator.hasNext()) {
+				BoidRenderer renderer = rendererIterator.next();
+				renderer.clear();
 			}
 		}
 	}
@@ -53,7 +61,7 @@ public class BoidFlockRenderer extends FlockRenderer implements BoidEventListene
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
 		}
-		b.setUserData("renderer", renderer);
+		boidToRenderer.put(b, renderer);
 
 		synchronized (renderers) {
 			renderers.add(renderer);
@@ -62,7 +70,7 @@ public class BoidFlockRenderer extends FlockRenderer implements BoidEventListene
 
 	@Override
 	public void boidRemoved(Boid b) {
-		BoidRenderer boidRenderer = (BoidRenderer) b.getUserData("renderer");
+		BoidRenderer boidRenderer = boidToRenderer.get(b);
 		boidRenderer.markReadyForDeath();
 	}
 }

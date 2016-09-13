@@ -13,4 +13,9 @@ public class PointBoidRenderer extends BoidRenderer {
 	public void draw(PGraphics graphics) {
 		graphics.point(boid.getPosition().x, boid.getPosition().y);
 	}
+
+	public void markReadyForDeath() {
+		markedForDeath = true;
+		readyToDie = true;
+	}
 }

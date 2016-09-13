@@ -11,6 +11,6 @@ public abstract class FlockRenderer {
 	public FlockRenderer(Flock flock) {
 		this.flock = flock;
 	}
-
+	public void clear() {}
 	public abstract void render(PGraphics canvas);
 }

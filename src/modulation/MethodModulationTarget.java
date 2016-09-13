@@ -16,7 +16,11 @@ public class MethodModulationTarget implements ModulationTarget {
 	@Override
 	public void setValue(Object value) {
 		try {
-			method.invoke(parent, value);
+			if (method.getParameterCount() > 0) {
+				method.invoke(parent, value);
+			} else {
+				method.invoke(parent);
+			}
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
@@ -25,7 +29,11 @@ public class MethodModulationTarget implements ModulationTarget {
 
 	@Override
 	public Type getType() {
-		return method.getParameterTypes()[0];
+		if (method.getParameterCount() > 0) {
+			return method.getParameterTypes()[0];
+		} else {
+			return null;
+		}
 	}
 
 	@Override

@@ -9,12 +9,10 @@ import java.util.List;
 
 public class EmitBehavior extends Behavior {
 	@Mod
-	public void emit(boolean on) {
-		if (on) {
-			for (Emitter e : getFlock().getEmitters()) {
-				List<Boid> boids = e.emit();
-				getFlock().addAllBoids(boids);
-			}
+	public void emit() {
+		for (Emitter e : getFlock().getEmitters()) {
+			List<Boid> boids = e.emit();
+			getFlock().addAllBoids(boids);
 		}
 	}
 

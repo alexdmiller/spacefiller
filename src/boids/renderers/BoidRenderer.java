@@ -21,5 +21,7 @@ public abstract class BoidRenderer {
 		return readyToDie;
 	}
 
+	public void clear() {}
+
 	public abstract void draw(PGraphics graphics);
 }

@@ -11,11 +11,12 @@ import processing.core.PGraphics;
 import java.io.*;
 
 public class Worms extends Scene implements EntityEventListener {
+	private static final char NEXT_RENDERER_KEY = 'n';
+	private static final char FLIP_MAGNETS_KEY = 'm';
+
 	public static void main(String[] args) {
 		main("scenes.Worms");
 	}
-
-	private static final char FLIP_MAGNETS_KEY = 'm';
 
 	@Mod
 	public FlockBehavior flockingBehavior;
@@ -35,10 +36,14 @@ public class Worms extends Scene implements EntityEventListener {
 	@Mod
 	public WiggleBehavior wiggleBehavior;
 
+	@Mod(min = 0, max = 10, defaultValue = 1)
+	public float strokeWidth = 1;
+
 	private MagnetBehavior magnets;
 
 	private DebugFlockRenderer debugRenderer;
-	private BoidFlockRenderer flockRenderer;
+	private FlockRenderer[] flockRenderers;
+	private int currentRendererIndex = 0;
 	private int currentSaveIndex = 1;
 
 	@Override
@@ -47,7 +52,13 @@ public class Worms extends Scene implements EntityEventListener {
 		flock.addEntityEventListener(this);
 
 		debugRenderer = new DebugFlockRenderer(flock);
-		flockRenderer = new BoidFlockRenderer(flock, WormBoidRenderer.class);
+
+		flockRenderers = new FlockRenderer[] {
+				new BoidFlockRenderer(flock, PointBoidRenderer.class),
+				new BoidFlockRenderer(flock, WormBoidRenderer.class),
+				new MeshFlockRenderer(flock),
+				new VoronoiFlockRenderer(flock)
+		};
 
 		flockingBehavior = new FlockBehavior();
 		flock.addBehavior(flockingBehavior);
@@ -60,7 +71,6 @@ public class Worms extends Scene implements EntityEventListener {
 
 		path = new FollowPathBehavior(1);
 		flock.addBehavior(path);
-
 
 		emitters = new EmitBehavior();
 		flock.addBehavior(emitters);
@@ -84,10 +94,20 @@ public class Worms extends Scene implements EntityEventListener {
 		loadSave(save);
 	}
 
+	@Mod(min = 0, max = 4)
+	public void setRenderer(int renderer) {
+		renderer = Math.min(Math.max(renderer, 0), flockRenderers.length-1);
+		flockRenderers[currentRendererIndex].clear();
+		currentRendererIndex = renderer;
+	}
+
 	@Override
 	protected void drawCanvas(PGraphics graphics, float mouseX, float mouseY) {
 		flock.step();
-		flockRenderer.render(graphics);
+
+		graphics.strokeWeight(strokeWidth);
+		graphics.stroke(255);
+		flockRenderers[currentRendererIndex].render(graphics);
 	}
 
 	@Override
@@ -105,6 +125,8 @@ public class Worms extends Scene implements EntityEventListener {
 		} catch (NumberFormatException e) { }
 		if (key == FLIP_MAGNETS_KEY) {
 			magnets.setForceMultiplier(magnets.getForceMultiplier() * -1);
+		} else if (key == NEXT_RENDERER_KEY) {
+			setRenderer((currentRendererIndex + 1) % flockRenderers.length);
 		}
 	}
 

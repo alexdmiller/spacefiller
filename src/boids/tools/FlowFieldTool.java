@@ -2,11 +2,9 @@ package boids.tools;
 
 import boids.Flock;
 import processing.core.PVector;
-import scenes.Scene;
 import scenes.SceneTool;
 
 public class FlowFieldTool extends SceneTool {
-	private static final float NOISE_SCALE = 2;
 	private static char RANDOMIZE_FLOW_KEY = 'r';
 
 	private Flock flock;
@@ -45,20 +43,8 @@ public class FlowFieldTool extends SceneTool {
 
 	@Override
 	public void keyDown(char key) {
-		float shift = (float) Math.random() * 10;
 		if (key == RANDOMIZE_FLOW_KEY) {
-			for (int x = 0; x < flock.getFlowFieldWidth(); x++) {
-				for (int y = 0; y < flock.getFlowFieldHeight(); y++) {
-					float r = Scene.getInstance().noise(
-							(float) x / flock.getFlowFieldWidth() * NOISE_SCALE,
-							(float) y / flock.getFlowFieldHeight() * NOISE_SCALE,
-							shift);
-					float theta = (float) (r * Math.PI * 8);
-					PVector f = PVector.fromAngle(theta);
-					f.setMag(10);
-					flock.getFlowVector(x, y).set(f);
-				}
-			}
+			flock.randomizeFlowField();
 		}
 	}
 

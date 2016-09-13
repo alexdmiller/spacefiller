@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.lang.reflect.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class OscSceneModulator implements OscEventListener {
 	private Map<String, ModulationTarget> modulationTargetRegistry;
@@ -28,10 +29,12 @@ public class OscSceneModulator implements OscEventListener {
 		typeToVDMXType.put(Integer.TYPE, 2);
 		typeToVDMXType.put(Float.TYPE, 4);
 		typeToVDMXType.put(Boolean.TYPE, 1);
+		typeToVDMXType.put(null, 1);
 
 		typeToVDMXElementClass.put(Integer.TYPE, VDMXElementClass.SLIDER);
 		typeToVDMXElementClass.put(Float.TYPE, VDMXElementClass.SLIDER);
 		typeToVDMXElementClass.put(Boolean.TYPE, VDMXElementClass.BUTTON);
+		typeToVDMXElementClass.put(null, VDMXElementClass.BUTTON);
 	}
 
 	private enum VDMXElementClass {
@@ -46,7 +49,7 @@ public class OscSceneModulator implements OscEventListener {
 
 	public OscSceneModulator(Object object, int port) {
 		oscP5 = new OscP5(this, port);
-		modulationTargetRegistry = new HashMap<>();
+		modulationTargetRegistry = new TreeMap<>();
 		registerTargetsForObject(object);
 		name = object.getClass().getName();
 		exportVDMXJson(port);
@@ -69,7 +72,9 @@ public class OscSceneModulator implements OscEventListener {
 
 		for (Method method : object.getClass().getMethods()) {
 			if (method.isAnnotationPresent(Mod.class)) {
-				modulationTargetRegistry.put("/" + object.getClass().getName() + "/" + method.getName(), new MethodModulationTarget(object, method));
+				modulationTargetRegistry.put(
+						"/" + object.getClass().getName() + "/" + method.getName(),
+						new MethodModulationTarget(object, method));
 			}
 		}
 	}
@@ -163,6 +168,15 @@ public class OscSceneModulator implements OscEventListener {
 			// this is non-standard, it has to be handled manually.
 			byte b = oscMessage.getTypetagAsBytes()[0];
 			target.setValue(b == 'T');
+		} else if (type == null) {
+			// A modulation target with a null type is a method with no parameters. We should treat
+			// the same way as a boolean modulation target, but only call the method when the boolean
+			// is true.
+			byte b = oscMessage.getTypetagAsBytes()[0];
+			if (b == 'T') {
+				target.setValue(null);
+			}
+
 		}
 	}
 

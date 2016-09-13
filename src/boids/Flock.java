@@ -5,6 +5,7 @@ import boids.emitter.Emitter;
 import javafx.util.Pair;
 import processing.core.PVector;
 import modulation.Mod;
+import scenes.Scene;
 
 import java.awt.*;
 import java.io.Serializable;
@@ -12,11 +13,14 @@ import java.util.*;
 import java.util.List;
 
 public class Flock implements Serializable {
-	public static final int MAX_BOIDS = 700;
 	public static final int FLOW_FIELD_RESOLUTION = 50;
+	private static final float NOISE_SCALE = 2;
 
 	@Mod(min = 0, max = 10, defaultValue = 3)
 	public float maxSpeed = 3;
+
+	@Mod(min = 0, max = 1000, defaultValue = 700)
+	public float maxBoids = 700;
 
 	private transient List<BoidEventListener> boidEventListeners;
 	private transient List<EntityEventListener> entityEventListeners;
@@ -71,7 +75,7 @@ public class Flock implements Serializable {
 	}
 
 	public void addBoid(Boid b) {
-		if (boids.size() < MAX_BOIDS) {
+		if (boids.size() < maxBoids) {
 			synchronized (boids) {
 				boids.add(b);
 			}
@@ -257,5 +261,22 @@ public class Flock implements Serializable {
 
 	public int getFlowFieldHeight() {
 		return bounds.height / Flock.FLOW_FIELD_RESOLUTION;
+	}
+
+	@Mod
+	public void randomizeFlowField() {
+		float shift = (float) Math.random() * 10;
+		for (int x = 0; x < getFlowFieldWidth(); x++) {
+			for (int y = 0; y < getFlowFieldHeight(); y++) {
+				float r = Scene.getInstance().noise(
+						(float) x / getFlowFieldWidth() * NOISE_SCALE,
+						(float) y / getFlowFieldHeight() * NOISE_SCALE,
+						shift);
+				float theta = (float) (r * Math.PI * 8);
+				PVector f = PVector.fromAngle(theta);
+				f.setMag(10);
+				getFlowVector(x, y).set(f);
+			}
+		}
 	}
 }
