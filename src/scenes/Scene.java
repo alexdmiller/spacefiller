@@ -72,6 +72,7 @@ public class Scene extends PApplet {
 				canvas.pushMatrix();
 				canvas.translate(mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
 				canvas.stroke(255);
+				canvas.strokeWeight(5);
 				canvas.line(-10, 0, 10, 0);
 				canvas.line(0, -10, 0, 10);
 				canvas.popMatrix();

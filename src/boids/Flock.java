@@ -91,6 +91,7 @@ public class Flock implements Serializable {
 		}
 	}
 
+	@Mod
 	public void clearBoids() {
 		synchronized (boids) {
 			for (Boid b : boids) {

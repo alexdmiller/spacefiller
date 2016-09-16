@@ -30,11 +30,13 @@ public class FollowPathBehavior extends Behavior {
 			float closestDistance = 0;
 
 			for (Pair<PVector, PVector> p : getFlock().getPathSegments()) {
-				PVector normalPoint = getNormalPoint(p.getKey(), p.getValue(), boid);
-				float distance = PVector.sub(boid.getPosition(), normalPoint).mag();
-				if (closestNormalPoint == null || distance < closestDistance) {
-					closestNormalPoint = normalPoint;
-					closestDistance = distance;
+				if (p != null) {
+					PVector normalPoint = getNormalPoint(p.getKey(), p.getValue(), boid);
+					float distance = PVector.sub(boid.getPosition(), normalPoint).mag();
+					if (closestNormalPoint == null || distance < closestDistance) {
+						closestNormalPoint = normalPoint;
+						closestDistance = distance;
+					}
 				}
 			}
 
