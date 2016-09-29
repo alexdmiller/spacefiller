@@ -59,7 +59,11 @@ public class OscSceneModulator implements OscEventListener {
 		for (Field field : object.getClass().getFields()) {
 			if (field.isAnnotationPresent(Mod.class)) {
 				if (field.getType().isPrimitive()) {
-					modulationTargetRegistry.put("/" + object.getClass().getName() + "/" + field.getName(), new FieldModulationTarget(object, field));
+					Mod mod = field.getAnnotation(Mod.class);
+					String address = mod.address().isEmpty()
+							? "/" + object.getClass().getName() + "/" + field.getName()
+							: mod.address();
+					modulationTargetRegistry.put(address, new FieldModulationTarget(object, field));
 				} else {
 					try {
 						registerTargetsForObject(field.get(object));
@@ -72,9 +76,12 @@ public class OscSceneModulator implements OscEventListener {
 
 		for (Method method : object.getClass().getMethods()) {
 			if (method.isAnnotationPresent(Mod.class)) {
-				modulationTargetRegistry.put(
-						"/" + object.getClass().getName() + "/" + method.getName(),
-						new MethodModulationTarget(object, method));
+				Mod mod = method.getAnnotation(Mod.class);
+				String address = mod.address().isEmpty()
+						? "/" + object.getClass().getName() + "/" + method.getName()
+						: mod.address();
+				System.out.println(address);
+				modulationTargetRegistry.put(address, new MethodModulationTarget(object, method));
 			}
 		}
 	}
@@ -126,7 +133,7 @@ public class OscSceneModulator implements OscEventListener {
 
 		classes.add(elementClass.name);
 		keys.add(target.getName());
-
+		System.out.println(target.getName());
 		float val = mod.defaultValue() / (mod.max() - mod.min());
 		uiBuilder.add(target.getName(), Json.createObjectBuilder()
 				.add("minRange", mod.min())

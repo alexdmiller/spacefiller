@@ -78,7 +78,10 @@ public class Scene extends PApplet {
 				canvas.popMatrix();
 
 				drawControlPanel(canvas, mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
-				tools.get(currentToolIndex).render(canvas, mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE, mousePressed);
+
+				if (currentToolIndex < tools.size()) {
+					tools.get(currentToolIndex).render(canvas, mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE, mousePressed);
+				}
 			}
 
 			canvas.endDraw();
@@ -89,7 +92,10 @@ public class Scene extends PApplet {
 		textSize(16);
 		fill(255);
 		text(frameRate, 10, 30);
-		text(tools.get(currentToolIndex).toString(), 10, height - 20);
+
+		if (currentToolIndex < tools.size()) {
+			text(tools.get(currentToolIndex).toString(), 10, height - 20);
+		}
 
 		pushMatrix();
 		translate(width / 2, height - 20);
@@ -135,7 +141,9 @@ public class Scene extends PApplet {
 			tools.get(currentToolIndex).clear();
 		}
 
-		tools.get(currentToolIndex).keyDown(key);
+		if (currentToolIndex < tools.size()) {
+			tools.get(currentToolIndex).keyDown(key);
+		}
 
 		doKeyPressed();
 	}

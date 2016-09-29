@@ -8,4 +8,5 @@ public @interface Mod {
 	float min() default 0;
 	float max() default 1;
 	float defaultValue() default 0;
+	String address() default "";
 }

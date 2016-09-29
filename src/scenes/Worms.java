@@ -130,7 +130,7 @@ public class Worms extends Scene implements EntityEventListener {
 
 	@Mod(min = 0, max = 4)
 	public void setRenderer(int renderer) {
-		renderer = Math.min(Math.max(renderer, 0), flockRenderers.length-1);
+		renderer = Math.min(Math.max(renderer, 0), flockRenderers.length - 1);
 		flockRenderers[currentRendererIndex].clear();
 		currentRendererIndex = renderer;
 	}
@@ -150,7 +150,7 @@ public class Worms extends Scene implements EntityEventListener {
 
 		graphics.stroke(255);
 		graphics.textSize(24);
-		graphics.text(currentSaveIndex, 200, 100);
+		graphics.text(currentSaveCategoryIndex + " - " + currentSaveIndex, 200, 100);
 	}
 
 	public void doKeyPressed() {
