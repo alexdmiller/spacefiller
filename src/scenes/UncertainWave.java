@@ -1,19 +1,24 @@
 package scenes;
 
+import boids.renderers.*;
 import com.google.common.collect.Iterables;
 import common.Particle;
 import modulation.Mod;
 import modulation.OscSceneModulator;
 import processing.core.PGraphics;
 import processing.core.PVector;
+import waves.LineRenderer;
+import waves.OceanRenderer;
+import waves.UncertainWaveRenderer;
 
+import javax.sound.sampled.Line;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class UncertainWave extends Scene {
-	private static final int PARTICLES_PER_GROUP = 20;
-	private static final int NUM_WAVES = 20;
+	public static final int PARTICLES_PER_GROUP = 20;
+	public static final int NUM_WAVES = 20;
 
 	public static void main(String[] args) {
 		main("scenes.UncertainWave");
@@ -61,8 +66,22 @@ public class UncertainWave extends Scene {
 	@Mod(min = 0, max = 10, defaultValue = 3)
 	public float osc3Amp = 3;
 
+	@Mod(min = -1, max = 1, defaultValue = 0)
+	public float slope = 0;
+
 	private float step;
-	private List<Wave> waves;
+	public List<Wave> waves;
+
+	@Mod
+	public LineRenderer lineRenderer;
+
+	@Mod
+	public OceanRenderer oceanRenderer;
+
+	private UncertainWaveRenderer[] renderers;
+
+
+	public int currentRendererIndex = 0;
 
 	@Mod
 	public void applyJitterVertical() {
@@ -74,6 +93,12 @@ public class UncertainWave extends Scene {
 		applyJitter(0);
 	}
 
+	@Mod(min = 0, max = 2)
+	public void setRenderer(int renderer) {
+		renderer = Math.min(Math.max(renderer, 0), renderers.length - 1);
+		currentRendererIndex = renderer;
+	}
+
 	@Override
 	public void doSetup() {
 		waves = new ArrayList<>();
@@ -81,16 +106,24 @@ public class UncertainWave extends Scene {
 			waves.add(new Wave(WIDTH, PARTICLES_PER_GROUP, 1));
 		}
 
+		lineRenderer = new LineRenderer(this);
+		oceanRenderer = new OceanRenderer(this);
+
+		renderers = new UncertainWaveRenderer[] {
+				lineRenderer,
+				oceanRenderer
+		};
+
 		new OscSceneModulator(this, 12000);
 	}
 
 	private float waveFunction(float x, float y, float t) {
 		return (float) (
 				(
-						Math.sin(x * osc1X + t * osc1T) * osc1Amp +
+						Math.sin(x * osc1X + t * osc1T + y) * osc1Amp +
 						Math.sin(x * osc2X + t * osc2T) * osc2Amp
 				)
-				* Math.sin(y * osc3Y + t * osc3T) * osc3Amp);
+				+ Math.sin(y * osc3Y + t * osc3T) * osc3Amp) + x * slope;
 	}
 
 
@@ -108,22 +141,14 @@ public class UncertainWave extends Scene {
 
 	@Override
 	protected void drawCanvas(PGraphics graphics, float mouseX, float mouseY) {
+		graphics.scale(1.2f);
+		graphics.translate(-100, -100);
+
 		for (int j = 0; j < waves.size(); j++) {
 			Wave wave = waves.get(j);
-			graphics.pushMatrix();
-
-			float y = j * HEIGHT / NUM_WAVES;
-
-			graphics.translate(0, y);
-
-			graphics.fill(
-					(float) Math.sin(y) * 20,
-					(float) Math.sin(y / 90f + step) * 100 + 50,
-					(float) Math.sin(y / 100f + step) * 100 + 200);
-			graphics.noStroke();
+			float y = j * UncertainWave.HEIGHT / UncertainWave.NUM_WAVES;
 
 			for (ParticleGroup group : wave) {
-				graphics.beginShape();
 
 				List<Particle> particles = group.particles;
 				for (int i = 0; i < particles.size(); i++) {
@@ -142,19 +167,13 @@ public class UncertainWave extends Scene {
 					p.velocity.limit(maxParticleSpeed);
 
 					p.update();
-
-					graphics.curveVertex(p.position.x, p.position.y);
 				}
-				graphics.curveVertex(WIDTH, HEIGHT);
-				graphics.curveVertex(0, HEIGHT);
-				graphics.curveVertex(0, HEIGHT);
-				graphics.endShape();
 			}
-
-			graphics.popMatrix();
 		}
 
 		step += waveSpeed;
+
+		renderers[currentRendererIndex].render(graphics);
 	}
 
 	@Override
@@ -166,7 +185,7 @@ public class UncertainWave extends Scene {
 		applyJitterHorizontal();
 	}
 
-	class ParticleGroup implements Iterable<Particle> {
+	public class ParticleGroup implements Iterable<Particle> {
 		public List<Particle> particles;
 
 		public ParticleGroup(float width, int numParticles) {
@@ -183,7 +202,7 @@ public class UncertainWave extends Scene {
 		}
 	}
 
-	class Wave implements Iterable<ParticleGroup> {
+	public class Wave implements Iterable<ParticleGroup> {
 		public List<ParticleGroup> groups;
 
 		public Wave(float width, int numParticles, int numGroups) {

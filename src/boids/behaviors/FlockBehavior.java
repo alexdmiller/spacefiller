@@ -64,8 +64,8 @@ public class FlockBehavior extends Behavior {
 		// For every boid in the system, check if it's too close
 		for (Boid other : boids) {
 			float d = PVector.dist(b.getPosition(), other.getPosition());
-
-			if (other != b && (d < desiredSeparation)) {
+			float desiredSeparation2 = desiredSeparation * (b.getTeam() == 0 && other.getTeam() == 0 ? 1 : 3);
+			if (other != b && (d < desiredSeparation2)) {
 				// Calculate vector pointing away from neighbor
 				PVector diff = PVector.sub(b.getPosition(), other.getPosition());
 				diff.normalize();

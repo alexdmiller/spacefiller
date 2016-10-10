@@ -7,10 +7,12 @@ import scenes.SceneTool;
 public class PointEmitterTool extends SceneTool {
 	private static final char DECREASE_CHANCE_KEY = '[';
 	private static final char INCREASE_CHANCE_KEY = ']';
+	private static final char TOGGLE_TEAM_KEY = 't';
 	private static final float CHANCE_INCREMENT = 0.5f;
 
 	private Flock flock;
 	private float chance = 1;
+	private int team;
 
 	public PointEmitterTool(Flock emitBehavior) {
 		this.flock = emitBehavior;
@@ -18,7 +20,7 @@ public class PointEmitterTool extends SceneTool {
 
 	@Override
 	public void mousePressed(float mouseX, float mouseY) {
-		flock.addEmitter(new PointEmitter(mouseX, mouseY, chance));
+		flock.addEmitter(new PointEmitter(mouseX, mouseY, chance, team));
 	}
 
 	@Override
@@ -27,12 +29,14 @@ public class PointEmitterTool extends SceneTool {
 			chance += CHANCE_INCREMENT;
 		} else if (key == DECREASE_CHANCE_KEY) {
 			chance -= CHANCE_INCREMENT;
+		} else if (key == TOGGLE_TEAM_KEY) {
+			team = (team + 1) % 2;
 		}
 	}
 
 	@Override
 	public String toString() {
-		return "POINT (chance " + chance + ")";
+		return "POINT (chance " + chance + ", team " + team + ")";
 	}
 
 	@Override

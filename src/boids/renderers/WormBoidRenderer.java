@@ -22,6 +22,8 @@ public class WormBoidRenderer extends BoidRenderer {
 
 	@Override
 	public void draw(PGraphics graphics) {
+		graphics.stroke(boid.getTeam() == 0 ? 255 : 100);
+
 		if (markedForDeath) {
 			if (!history.isEmpty()) {
 				history.remove();

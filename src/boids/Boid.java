@@ -10,12 +10,14 @@ public class Boid {
 	private PVector velocity;
 	private PVector acceleration;
 	private Map<String, Object> userData;
+	private int team;
 
 	public Boid(float x, float y) {
 		acceleration = new PVector(0, 0);
 		velocity = new PVector(0, 0);
 		position = new PVector(x, y);
 		userData = new HashMap<>();
+		team = 0;
 	}
 
 	public PVector getPosition() {
@@ -69,6 +71,14 @@ public class Boid {
 
 	public Object getUserData(String key) {
 		return userData.get(key);
+	}
+
+	public int getTeam() {
+		return team;
+	}
+
+	public void setTeam(int team) {
+		this.team = team;
 	}
 
 	void update(float maxSpeed) {

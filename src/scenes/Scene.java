@@ -19,8 +19,9 @@ public class Scene extends PApplet {
 		return instance;
 	}
 
-	protected static final int WIDTH = 1920;
-	protected static final int HEIGHT = 1080;
+	public static final int WIDTH = 1920;
+	public static final int HEIGHT = 1080;
+
 	private static final float LOCAL_WINDOW_SCALE = 0.5f;
 	private static final char PLAY_KEY = ' ';
 	private static final char NEXT_TOOL_KEY = 39;
@@ -32,7 +33,7 @@ public class Scene extends PApplet {
 
 	private PGraphics canvas;
 	private boolean playing = true;
-	private boolean debug = true;
+	private boolean debug = false;
 	private int currentToolIndex;
 	private List<SceneTool> tools;
 
@@ -117,15 +118,21 @@ public class Scene extends PApplet {
 	protected void drawControlPanel(PGraphics graphics, float mouseX, float mouseY) {}
 
 	public final void mousePressed() {
-		tools.get(currentToolIndex).mousePressed(mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
+		if (currentToolIndex < tools.size()) {
+			tools.get(currentToolIndex).mousePressed(mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
+		}
 	}
 
 	public final void mouseReleased() {
-		tools.get(currentToolIndex).mouseReleased(mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
+		if (currentToolIndex < tools.size()) {
+			tools.get(currentToolIndex).mouseReleased(mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
+		}
 	}
 
 	public final void mouseDragged() {
-		tools.get(currentToolIndex).mouseDragged(mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
+		if (currentToolIndex < tools.size()) {
+			tools.get(currentToolIndex).mouseDragged(mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
+		}
 	}
 
 	public final void keyPressed() {
