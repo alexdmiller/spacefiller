@@ -8,7 +8,7 @@ public class ConstantPropertyField implements ScalarField {
 	}
 
 	@Mod(min = 0, max = 10, defaultValue = 3)
-	private float value;
+	public float value;
 
 	ConstantPropertyField(float value) {
 		this.value = value;

@@ -7,12 +7,12 @@ import processing.core.PGraphics;
 import processing.core.PVector;
 
 public class WormBoidRenderer extends BoidRenderer {
-	public static final int HISTORY_SIZE = 10;
+	public static final int HISTORY_SIZE = 100;
 	private EvictingQueue<PVector> history;
 
 	public WormBoidRenderer(Boid boid) {
 		super(boid);
-		this.history = EvictingQueue.create(HISTORY_SIZE);
+		this.history = EvictingQueue.create((int) (Math.random() * 20 + 5));
 	}
 
 	@Override

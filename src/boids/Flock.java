@@ -2,10 +2,7 @@ package boids;
 
 import boids.behaviors.Behavior;
 import boids.emitter.Emitter;
-import common.ConstantPropertyField;
-import common.ScalarField;
-import common.StoredVectorField;
-import common.VectorField;
+import common.*;
 import javafx.util.Pair;
 import processing.core.PVector;
 import modulation.Mod;
@@ -17,7 +14,7 @@ import java.util.List;
 
 public class Flock implements Serializable {
 	@Mod
-	public ScalarField maxSpeed = ConstantPropertyField.with(3);
+	public ScalarField maxSpeed = new WavePropertyField();
 
 	@Mod(min = 0, max = 700, defaultValue = 300)
 	public float maxBoids = 300;
