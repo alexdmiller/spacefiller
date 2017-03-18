@@ -1,32 +1,15 @@
 package scenes;
 
-import boids.*;
-import boids.behaviors.*;
-import boids.renderers.*;
-import boids.tools.*;
 import modulation.Mod;
 import modulation.OscSceneModulator;
+import processing.core.PConstants;
 import processing.core.PGraphics;
 
-import java.io.*;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import codeanticode.syphon.*;
-import oscP5.*;
-import netP5.*;
 import processing.core.PVector;
 
-import java.util.List;
-import java.util.Iterator;
 import java.util.Collections;
 
 public class Contours extends Scene {
@@ -61,7 +44,10 @@ public class Contours extends Scene {
 	public float oscYAmp = 50;
 
 	@Mod(min = -.05f, max = 0.05f, defaultValue = 0.01f)
-	public float tUpdate = 0.01f;
+	public float updateSpeed = 0.01f;
+
+	@Mod(min = -.05f, max = 0.05f, defaultValue = 0)
+	public float rotationSpeed = 0;
 
 	@Mod(min = 1, max = 100, defaultValue = 50)
 	public int gridSize = 50;
@@ -78,7 +64,14 @@ public class Contours extends Scene {
 	@Mod(min = 1, max = 20, defaultValue = 2)
 	public float thickness = 2;
 
-	private float t = 0;
+	@Mod(min = 0, max = 10, defaultValue = 1)
+	public float spacing = 1;
+
+	@Mod(min = 0, max = 255, defaultValue = 50)
+	public int colorRange = 50;
+
+	private float timeStep = 0;
+	private float rotation = 0;
 
 	public static void main(String[] args) {
 		main("scenes.Contours");
@@ -91,24 +84,27 @@ public class Contours extends Scene {
 
 	@Override
 	protected void drawCanvas(PGraphics canvas, float mouseX, float mouseY) {
-		float[][] heightMap = produceGrid(t, gridSize, gridSize);
+		float[][] heightMap = produceGrid(timeStep, gridSize, gridSize);
 
 		canvas.translate(WIDTH / 2, HEIGHT / 2);
 		canvas.scale(2);
 		canvas.rotateX(PI / 3);
-		canvas.rotateZ(t);
+		canvas.rotateZ(rotation);
 		canvas.translate(-gridSize * cellSize / 2, -gridSize * cellSize / 2);
 
 		canvas.noFill();
 		canvas.stroke(255);
 		canvas.strokeWeight(thickness);
+		canvas.colorMode(PConstants.HSB);
 
 		for (float i = 0; i < heightRange; i += heightIncrements) {
-			canvas.stroke(i / (heightRange - 50) * 100, 255, 255, 100);
-			drawGridPlaneIntersection(heightMap, i - heightRange/2, cellSize, canvas);
+			float sampleHeight = i - heightRange/2;
+			canvas.stroke(i / heightRange * colorRange, 255, 255);
+			drawGridPlaneIntersection(heightMap, sampleHeight, sampleHeight * spacing, cellSize, canvas);
 		}
 
-		t += tUpdate;
+		timeStep += updateSpeed;
+		rotation += rotationSpeed;
 	}
 
 	@Override
@@ -149,14 +145,14 @@ public class Contours extends Scene {
 		}
 	}
 
-	void drawGridPlaneIntersection(float[][] heightMap, float planeHeight, float gridSize, PGraphics canvas) {
+	void drawGridPlaneIntersection(float[][] heightMap, float planeHeight, float drawHeight, float gridSize, PGraphics canvas) {
 		for (int r = 0; r < heightMap.length - 1; r++) {
 			for (int c = 0; c < heightMap[r].length - 1; c++) {
 				PVector p1 = new PVector(c * gridSize, r * gridSize, heightMap[r][c]);
 				PVector p2 = new PVector((c + 1) * gridSize, r * gridSize, heightMap[r][c + 1]);
 				PVector p3 = new PVector((c + 1) * gridSize, (r + 1) * gridSize, heightMap[r + 1][c + 1]);
 				PVector p4 = new PVector(c * gridSize, (r + 1) * gridSize, heightMap[r + 1][c]);
-				drawRectPlaneIntersection(p1, p2, p3, p4, planeHeight, canvas);
+				drawRectPlaneIntersection(p1, p2, p3, p4, planeHeight, drawHeight, canvas);
 			}
 		}
 	}
@@ -171,19 +167,19 @@ public class Contours extends Scene {
 		return m;
 	}
 
-	void drawRectPlaneIntersection(PVector p1, PVector p2, PVector p3, PVector p4, float planeHeight, PGraphics canvas) {
+	void drawRectPlaneIntersection(PVector p1, PVector p2, PVector p3, PVector p4, float planeHeight, float drawHeight, PGraphics canvas) {
 		PVector m = average(p1, p2, p3, p4);
-		drawTrianglePlaneIntersection(p1, p2, m, planeHeight, canvas);
-		drawTrianglePlaneIntersection(p2, p3, m, planeHeight, canvas);
-		drawTrianglePlaneIntersection(p3, p4, m, planeHeight, canvas);
-		drawTrianglePlaneIntersection(p4, p1, m, planeHeight, canvas);
+		drawTrianglePlaneIntersection(p1, p2, m, planeHeight, drawHeight, canvas);
+		drawTrianglePlaneIntersection(p2, p3, m, planeHeight, drawHeight,canvas);
+		drawTrianglePlaneIntersection(p3, p4, m, planeHeight, drawHeight,canvas);
+		drawTrianglePlaneIntersection(p4, p1, m, planeHeight, drawHeight,canvas);
 	}
 
-	void drawTrianglePlaneIntersection(PVector p1, PVector p2, PVector p3, float planeHeight, PGraphics canvas) {
+	void drawTrianglePlaneIntersection(PVector p1, PVector p2, PVector p3, float planeHeight, float drawHeight, PGraphics canvas) {
 		List<PVector> intersections = new ArrayList();
-		intersections.add(intersection(p1, p2, planeHeight));
-		intersections.add(intersection(p2, p3, planeHeight));
-		intersections.add(intersection(p1, p3, planeHeight));
+		intersections.add(intersection(p1, p2, planeHeight, drawHeight));
+		intersections.add(intersection(p2, p3, planeHeight, drawHeight));
+		intersections.add(intersection(p1, p3, planeHeight, drawHeight));
 		intersections.removeAll(Collections.singleton(null));
 		if (intersections.size() == 2) {
 			PVector l1 = intersections.get(0);
@@ -192,14 +188,14 @@ public class Contours extends Scene {
 		}
 	}
 
-	PVector intersection(PVector p1, PVector p2, float planeHeight) {
+	PVector intersection(PVector p1, PVector p2, float planeHeight, float drawHeight) {
 		float t = (planeHeight - p1.z) / (p2.z - p1.z);
 		float x = (p2.x - p1.x) * t + p1.x;
 		float y = (p2.y - p1.y) * t + p1.y;
 		if (t < 0 || t > 1) {
 			return null;
 		} else {
-			return new PVector(x, y, planeHeight);
+			return new PVector(x, y, drawHeight);
 		}
 	}
 

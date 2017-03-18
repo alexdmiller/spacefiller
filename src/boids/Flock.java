@@ -2,10 +2,13 @@ package boids;
 
 import boids.behaviors.Behavior;
 import boids.emitter.Emitter;
+import common.ConstantPropertyField;
+import common.ScalarField;
+import common.StoredVectorField;
+import common.VectorField;
 import javafx.util.Pair;
 import processing.core.PVector;
 import modulation.Mod;
-import scenes.Scene;
 
 import java.awt.*;
 import java.io.Serializable;
@@ -13,14 +16,14 @@ import java.util.*;
 import java.util.List;
 
 public class Flock implements Serializable {
-	public static final int FLOW_FIELD_RESOLUTION = 50;
-	private static final float NOISE_SCALE = 2;
+	@Mod
+	public ScalarField maxSpeed = ConstantPropertyField.with(3);
 
-	@Mod(min = 0, max = 10, defaultValue = 3)
-	public float maxSpeed = 3;
+	@Mod(min = 0, max = 700, defaultValue = 300)
+	public float maxBoids = 300;
 
-	@Mod(min = 0, max = 1000, defaultValue = 700)
-	public float maxBoids = 700;
+	@Mod
+	public StoredVectorField flowField;
 
 	private transient List<BoidEventListener> boidEventListeners;
 	private transient List<EntityEventListener> entityEventListeners;
@@ -31,9 +34,8 @@ public class Flock implements Serializable {
 	private List<Emitter> emitters;
 	private List<Pair<PVector, PVector>> pathSegments;
 	private List<Magnet> magnets;
-	private PVector[] flowField;
-	private int width;
-	private int height;
+
+	private float time;
 
 	public Flock(int x, int y, int width, int height) {
 		bounds = new Rectangle(x, y, width, height);
@@ -44,16 +46,19 @@ public class Flock implements Serializable {
 		behaviors = new ArrayList<>();
 		boidEventListeners = new ArrayList<>();
 		entityEventListeners = new ArrayList<>();
-		this.width = width;
-		this.height = height;
+		flowField = new StoredVectorField(bounds, 100);
+	}
 
-		flowField = new PVector[(width * height) / FLOW_FIELD_RESOLUTION];
-		for (int i = 0; i < flowField.length; i++) {
-			flowField[i] = new PVector(0, 0);
-		}
+	public int getWidth() {
+		return bounds.width;
+	}
+
+	public int getHeight() {
+		return bounds.height;
 	}
 
 	public void step() {
+		time++;
 		synchronized (boids) {
 			Iterator<Boid> boidIterator = boids.iterator();
 			while (boidIterator.hasNext()) {
@@ -69,7 +74,7 @@ public class Flock implements Serializable {
 			}
 
 			for (Boid b : boids) {
-				b.update(maxSpeed);
+				b.update(getMaxSpeed(b.getPosition().x, b.getPosition().y));
 			}
 		}
 	}
@@ -201,9 +206,7 @@ public class Flock implements Serializable {
 	}
 
 	public void clearFlowField() {
-		for (int i = 0; i < flowField.length; i++) {
-			flowField[i].set(0, 0);
-		}
+		flowField.zero();
 		notifyEntitiesUpdated();
 	}
 
@@ -212,9 +215,7 @@ public class Flock implements Serializable {
 		pathSegments.clear();
 		emitters.clear();
 
-		for (int i = 0; i < flowField.length; i++) {
-			flowField[i].set(other.getFlowVector(i));
-		}
+		flowField.set(other.flowField);
 
 		magnets.addAll(other.magnets);
 		pathSegments.addAll(other.pathSegments);
@@ -225,59 +226,27 @@ public class Flock implements Serializable {
 		entityEventListeners.add(listener);
 	}
 
-	public float getMaxSpeed() {
-		return maxSpeed;
+	public float getMaxSpeed(float x, float y) {
+		return maxSpeed.at(x, y, time);
 	}
 
 	public Iterator<Boid> getBoidsIterator() {
 		return boids.iterator();
 	}
 
-	public PVector[] getFlowField() {
+	public VectorField getFlowField() {
 		return flowField;
 	}
 
 	public PVector getFlowVectorUnderCoords(float x, float y) {
-		int cellX = (int) (x - bounds.x) / Flock.FLOW_FIELD_RESOLUTION;
-		int cellY = (int) (y - bounds.y) / Flock.FLOW_FIELD_RESOLUTION;
-		return getFlowVector(cellX, cellY);
-	}
-
-	public PVector getFlowVector(int x, int y) {
-		int i = y * bounds.width / Flock.FLOW_FIELD_RESOLUTION + x;
-		if (i < flowField.length && i > 0) {
-			return flowField[y * bounds.width / Flock.FLOW_FIELD_RESOLUTION + x];
-		} else {
-			return new PVector(0, 0);
-		}
-	}
-
-	public PVector getFlowVector(int i) {
-		return flowField[i];
+		return flowField.at(x, y, time);
 	}
 
 	public int getFlowFieldWidth() {
-		return bounds.width / Flock.FLOW_FIELD_RESOLUTION;
+		return flowField.getGridWidth();
 	}
 
 	public int getFlowFieldHeight() {
-		return bounds.height / Flock.FLOW_FIELD_RESOLUTION;
-	}
-
-	@Mod
-	public void randomizeFlowField() {
-		float shift = (float) Math.random() * 10;
-		for (int x = 0; x < getFlowFieldWidth(); x++) {
-			for (int y = 0; y < getFlowFieldHeight(); y++) {
-				float r = Scene.getInstance().noise(
-						(float) x / getFlowFieldWidth() * NOISE_SCALE,
-						(float) y / getFlowFieldHeight() * NOISE_SCALE,
-						shift);
-				float theta = (float) (r * Math.PI * 8);
-				PVector f = PVector.fromAngle(theta);
-				f.setMag(10);
-				getFlowVector(x, y).set(f);
-			}
-		}
+		return flowField.getGridHeight();
 	}
 }

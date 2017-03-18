@@ -5,6 +5,7 @@ import boids.Magnet;
 import boids.emitter.Emitter;
 import boids.emitter.LineEmitter;
 import boids.emitter.PointEmitter;
+import common.StoredVectorField;
 import javafx.util.Pair;
 import processing.core.PConstants;
 import processing.core.PGraphics;
@@ -80,12 +81,15 @@ public class DebugFlockRenderer extends FlockRenderer {
 
 	private void renderFlowField(PGraphics canvas, Flock flock) {
 		canvas.stroke(255);
+
+		StoredVectorField field = (StoredVectorField) flock.getFlowField();
+
 		for (int x = 0; x < flock.getFlowFieldWidth(); x++) {
 			for (int y = 0; y < flock.getFlowFieldHeight(); y++) {
-				PVector v = flock.getFlowVector(x, y);
+				PVector v = field.getCell(x, y);
 				canvas.pushMatrix();
-				float posX = x * Flock.FLOW_FIELD_RESOLUTION + flock.getBounds().x + Flock.FLOW_FIELD_RESOLUTION / 2;
-				float posY = y * Flock.FLOW_FIELD_RESOLUTION + flock.getBounds().y + Flock.FLOW_FIELD_RESOLUTION / 2;
+				float posX = x * field.getCellSize() + flock.getBounds().x + field.getCellSize() / 2;
+				float posY = y * field.getCellSize() + flock.getBounds().y + field.getCellSize() / 2;
 				canvas.translate(posX, posY);
 				canvas.rotate(v.heading());
 				canvas.line(0, 0, v.mag(), 0);

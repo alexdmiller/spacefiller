@@ -15,6 +15,11 @@ public class LineRenderer extends UncertainWaveRenderer {
 	@Mod(min = 0, max = 10, defaultValue = 2)
 	public float thickness = 2;
 
+	@Mod(min = 0, max = 0.3f, defaultValue = 0.1f)
+	public float lineColorRotateSpeed = 0.1f;
+
+	private float step;
+
 	public LineRenderer(UncertainWave scene) {
 		super(scene);
 	}
@@ -32,7 +37,10 @@ public class LineRenderer extends UncertainWaveRenderer {
 			graphics.translate(0, y);
 
 			graphics.noFill();
-			graphics.stroke(255);
+			graphics.stroke(
+					(float) Math.sin(y) * 20,
+					(float) Math.sin(y / 90f + step) * 100 + 50,
+					(float) Math.sin(y / 100f + step) * 100 + 200);
 
 			for (UncertainWave.ParticleGroup group : wave) {
 				graphics.beginShape();
@@ -49,5 +57,7 @@ public class LineRenderer extends UncertainWaveRenderer {
 
 			graphics.popMatrix();
 		}
+
+		step += lineColorRotateSpeed;
 	}
 }

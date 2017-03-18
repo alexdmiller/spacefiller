@@ -56,6 +56,7 @@ public class OscSceneModulator implements OscEventListener {
 	}
 
 	private void registerTargetsForObject(Object object) {
+		// TODO: Address shouldn't just be class name -- it should also depend on nesting as well
 		for (Field field : object.getClass().getFields()) {
 			if (field.isAnnotationPresent(Mod.class)) {
 				if (field.getType().isPrimitive()) {

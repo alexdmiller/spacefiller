@@ -77,7 +77,6 @@ public class Worms extends Scene implements EntityEventListener {
 		meshLikeFlockRenderer = new MeshLikeFlockRenderer(flock);
 
 		flockRenderers = new FlockRenderer[] {
-				new BoidFlockRenderer(flock, PointBoidRenderer.class),
 				new BoidFlockRenderer(flock, WormBoidRenderer.class),
 				new MeshFlockRenderer(flock),
 				new VoronoiFlockRenderer(flock),

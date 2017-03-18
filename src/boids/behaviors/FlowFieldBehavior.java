@@ -1,6 +1,7 @@
 package boids.behaviors;
 
 import boids.Boid;
+import common.VectorField;
 import processing.core.PVector;
 import modulation.Mod;
 
@@ -17,14 +18,15 @@ public class FlowFieldBehavior extends Behavior {
 	public void apply() {
 		List<Boid> boids = getFlock().getBoids();
 		for (Boid b : boids) {
-			applyFlowField(getFlock().getFlowField(), b);
+			applyFlowField(b);
 		}
 	}
 
 	// We accumulate a new acceleration each time based on three rules
-	void applyFlowField(PVector[] flowField, Boid b) {
-		PVector desired = getFlock().getFlowVectorUnderCoords(b.getPosition().x, b.getPosition().y).copy();
-		desired.limit(getFlock().maxSpeed);
+	void applyFlowField(Boid b) {
+		PVector pos = b.getPosition();
+		PVector desired = getFlock().getFlowVectorUnderCoords(pos.x, pos.y).copy();
+		desired.limit(getFlock().getMaxSpeed(pos.x, pos.y));
 
 		PVector steer = PVector.sub(desired, b.getVelocity());
 		steer.limit(maxFlowFieldForce);

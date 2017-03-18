@@ -2,6 +2,8 @@ package common;
 
 import processing.core.PVector;
 
+import java.awt.*;
+
 /**
  * Created by miller on 9/28/16.
  */
@@ -9,12 +11,27 @@ public class Particle {
 	public PVector position;
 	public PVector velocity;
 
+	public Color color;
+
 	public PVector forces;
 
+	public Particle(float x, float y, float z, Color color) {
+		this.position = new PVector(x, y, z);
+		this.velocity = new PVector();
+		this.forces = new PVector();
+		this.color = color;
+	}
+
+	public Particle(float x, float y, float z) {
+		this.position = new PVector(x, y, z);
+		this.velocity = new PVector();
+		this.forces = new PVector();
+	}
+
 	public Particle(float x, float y) {
-		position = new PVector(x, y);
-		velocity = new PVector();
-		forces = new PVector();
+		this.position = new PVector(x, y);
+		this.velocity = new PVector();
+		this.forces = new PVector();
 	}
 
 	public void update() {

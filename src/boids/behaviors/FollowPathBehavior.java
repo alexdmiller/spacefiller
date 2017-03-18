@@ -41,7 +41,7 @@ public class FollowPathBehavior extends Behavior {
 			}
 
 			if (closestDistance > radius) {
-				PVector steer = BoidUtils.seek(boid, closestNormalPoint, getFlock().getMaxSpeed(), maxForce);
+				PVector steer = BoidUtils.seek(boid, closestNormalPoint, getFlock().getMaxSpeed(boid.getPosition().x, boid.getPosition().y), maxForce);
 				boid.applyForce(steer);
 			}
 		}

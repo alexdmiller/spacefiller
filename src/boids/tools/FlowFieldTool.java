@@ -5,8 +5,6 @@ import processing.core.PVector;
 import scenes.SceneTool;
 
 public class FlowFieldTool extends SceneTool {
-	private static char RANDOMIZE_FLOW_KEY = 'r';
-
 	private Flock flock;
 	private PVector lastMouse;
 
@@ -39,13 +37,6 @@ public class FlowFieldTool extends SceneTool {
 	public void mouseReleased(float mouseX, float mouseY) {
 		lastMouse = null;
 		flock.notifyEntitiesUpdated();
-	}
-
-	@Override
-	public void keyDown(char key) {
-		if (key == RANDOMIZE_FLOW_KEY) {
-			flock.randomizeFlowField();
-		}
 	}
 
 	@Override
