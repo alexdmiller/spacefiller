@@ -35,4 +35,13 @@ public class FieldModulationTarget implements ModulationTarget {
 	public Mod getModAnnotation() {
 		return field.getAnnotation(Mod.class);
 	}
+
+	public Object getValue() {
+		try {
+			return field.get(parent);
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

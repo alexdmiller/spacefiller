@@ -86,7 +86,7 @@ public class Contours extends Scene {
 	protected void drawCanvas(PGraphics canvas, float mouseX, float mouseY) {
 		float[][] heightMap = produceGrid(timeStep, gridSize, gridSize);
 
-		canvas.translate(WIDTH / 2, HEIGHT / 2);
+		// canvas.translate(WIDTH / 2, HEIGHT / 2);
 		canvas.scale(2);
 		canvas.rotateX(PI / 3);
 		canvas.rotateZ(rotation);

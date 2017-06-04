@@ -16,7 +16,7 @@ public class LineEmitter implements Emitter {
 		this.p1 = new PVector(x1, y1);
 		this.p2 = new PVector(x2, y2);
 		this.emitChance = emitChance;
-		this.initialVelocity = new PVector(0, 0);
+		this.initialVelocity = new PVector(0, 0, 0);
 	}
 
 	public PVector getP1() {
@@ -41,7 +41,8 @@ public class LineEmitter implements Emitter {
 	}
 
 	@Override
-	public List<Boid> emit() {
+	public List<Boid> emit(int dimension) {
+		// TODO: use dimension?
 		List<Boid> boids = new ArrayList<>();
 		PVector delta = PVector.sub(p2, p1);
 		float distOnLine = (float) Math.random() * delta.mag();
@@ -49,7 +50,7 @@ public class LineEmitter implements Emitter {
 		delta.setMag(distOnLine);
 		delta.add(p1);
 
-		Boid b = new Boid(delta.x, delta.y);
+		Boid b = new Boid(delta.x, delta.y, delta.z);
 		b.setVelocity(initialVelocity);
 		boids.add(b);
 

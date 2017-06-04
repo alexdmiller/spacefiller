@@ -33,6 +33,12 @@ public class Particle {
 		this.velocity = new PVector();
 		this.forces = new PVector();
 	}
+	
+	public Particle(PVector p) {
+		this.position = p;
+		this.velocity = new PVector();
+		this.forces = new PVector();
+	}
 
 	public void update() {
 		position.add(velocity);
@@ -42,7 +48,8 @@ public class Particle {
 		velocity.mult(friction);
 	}
 
-	public void flushForces() {
+	public void flushForces(float limit) {
+		forces.limit(limit);
 		velocity.add(forces);
 		forces.setMag(0);
 	}

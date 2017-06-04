@@ -88,7 +88,7 @@ public class FlockBehavior extends Behavior {
 
 			// Implement Reynolds: Steering = Desired - Velocity
 			steer.normalize();
-			steer.mult(getFlock().getMaxSpeed(b.getPosition().x, b.getPosition().y));
+			steer.mult(getFlock().getMaxSpeed(b.getPosition()));
 			steer.sub(b.getVelocity());
 			steer.limit(maxForce);
 		}
@@ -115,7 +115,7 @@ public class FlockBehavior extends Behavior {
 
 			// Implement Reynolds: Steering = Desired - Velocity
 			sum.normalize();
-			sum.mult(getFlock().getMaxSpeed(b.getPosition().x, b.getPosition().y));
+			sum.mult(getFlock().getMaxSpeed(b.getPosition()));
 			PVector steer = PVector.sub(sum, b.getVelocity());
 			steer.limit(maxForce);
 			return steer;
@@ -139,7 +139,7 @@ public class FlockBehavior extends Behavior {
 		}
 		if (count > 0) {
 			sum.div(count);
-			return BoidUtils.seek(b, sum, getFlock().getMaxSpeed(b.getPosition().x, b.getPosition().y), maxForce);  // Steer towards the position
+			return BoidUtils.seek(b, sum, getFlock().getMaxSpeed(b.getPosition()), maxForce);  // Steer towards the position
 		}
 		else {
 			return new PVector(0, 0);

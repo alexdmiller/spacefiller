@@ -1,0 +1,706 @@
+{
+  "classArray" : [
+    "Button",
+    "Button",
+    "Button",
+    "Slider",
+    "Slider",
+    "Slider",
+    "Slider",
+    "Slider",
+    "Slider",
+    "Slider",
+    "Slider",
+    "Slider",
+    "Slider",
+    "Slider",
+    "Slider",
+    "Slider",
+    "Slider",
+    "Slider",
+    "Slider",
+    "Slider",
+    "Slider",
+    "Slider",
+    "Slider",
+    "Slider",
+    "Slider"
+  ],
+  "keyArray" : [
+    "clearBoids",
+    "emit",
+    "randomizeFlowField",
+    "dimension",
+    "maxBoids",
+    "value",
+    "rotation",
+    "rotationSpeed",
+    "alignmentThreshold",
+    "alignmentWeight",
+    "cohesionThreshold",
+    "cohesionWeight",
+    "desiredSeparation",
+    "maxForce",
+    "separationWeight",
+    "flowFieldWeight",
+    "maxFlowFieldForce",
+    "lineThreshold",
+    "radius",
+    "setRenderer",
+    "setSaveCategory",
+    "setSaveIndex",
+    "strokeWidth",
+    "wiggleAmplitudeMultiplier",
+    "wiggleStepMultiplier"
+  ],
+  "uiBuilder" : {
+    "cohesionThreshold" : {
+      "minRange" : 0,
+      "sndrs" : [
+        {
+          "msgAddress" : "\/flockingBehavior\/cohesionThreshold",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 200,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 0,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 4
+        }
+      ],
+      "val" : 0.300000011920929,
+      "label" : "\/flockingBehavior\/cohesionThreshold",
+      "publishNorm" : false,
+      "sendEnabled" : true,
+      "maxRange" : 200
+    },
+    "rotation" : {
+      "minRange" : 0,
+      "sndrs" : [
+        {
+          "msgAddress" : "\/flock\/rotation",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 6,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 0,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 4
+        }
+      ],
+      "val" : 0,
+      "label" : "\/flock\/rotation",
+      "publishNorm" : false,
+      "sendEnabled" : true,
+      "maxRange" : 6.283185482025146
+    },
+    "clearBoids" : {
+      "sndrs" : [
+        {
+          "msgAddress" : "\/boids.Flock\/clearBoids",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 1,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 0,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 1
+        }
+      ],
+      "label" : "\/boids.Flock\/clearBoids",
+      "sendEnabled" : true,
+      "toggle" : false,
+      "mtxFlg" : false,
+      "mtxGrp" : "Button Group"
+    },
+    "radius" : {
+      "minRange" : 10,
+      "sndrs" : [
+        {
+          "msgAddress" : "\/path\/radius",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 100,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 10,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 4
+        }
+      ],
+      "val" : 0.2222222238779068,
+      "label" : "\/path\/radius",
+      "publishNorm" : false,
+      "sendEnabled" : true,
+      "maxRange" : 100
+    },
+    "rotationSpeed" : {
+      "minRange" : -0.2000000029802322,
+      "sndrs" : [
+        {
+          "msgAddress" : "\/flock\/rotationSpeed",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 0,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 0,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 4
+        }
+      ],
+      "val" : 0,
+      "label" : "\/flock\/rotationSpeed",
+      "publishNorm" : false,
+      "sendEnabled" : true,
+      "maxRange" : 0.2000000029802322
+    },
+    "setSaveCategory" : {
+      "minRange" : 0,
+      "sndrs" : [
+        {
+          "msgAddress" : "\/scenes.Worms\/setSaveCategory",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 9,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 0,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 2
+        }
+      ],
+      "val" : 0,
+      "label" : "\/scenes.Worms\/setSaveCategory",
+      "publishNorm" : false,
+      "sendEnabled" : true,
+      "maxRange" : 9
+    },
+    "alignmentWeight" : {
+      "minRange" : 0,
+      "sndrs" : [
+        {
+          "msgAddress" : "\/flockingBehavior\/alignmentWeight",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 10,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 0,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 4
+        }
+      ],
+      "val" : 0.1000000014901161,
+      "label" : "\/flockingBehavior\/alignmentWeight",
+      "publishNorm" : false,
+      "sendEnabled" : true,
+      "maxRange" : 10
+    },
+    "setSaveIndex" : {
+      "minRange" : 0,
+      "sndrs" : [
+        {
+          "msgAddress" : "\/scenes.Worms\/setSaveIndex",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 9,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 0,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 2
+        }
+      ],
+      "val" : 0,
+      "label" : "\/scenes.Worms\/setSaveIndex",
+      "publishNorm" : false,
+      "sendEnabled" : true,
+      "maxRange" : 9
+    },
+    "VVGridSize" : "{-1, -1}",
+    "separationWeight" : {
+      "minRange" : 0,
+      "sndrs" : [
+        {
+          "msgAddress" : "\/flockingBehavior\/separationWeight",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 10,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 0,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 4
+        }
+      ],
+      "val" : 0.1000000014901161,
+      "label" : "\/flockingBehavior\/separationWeight",
+      "publishNorm" : false,
+      "sendEnabled" : true,
+      "maxRange" : 10
+    },
+    "flowFieldWeight" : {
+      "minRange" : 0,
+      "sndrs" : [
+        {
+          "msgAddress" : "\/flowField\/flowFieldWeight",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 10,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 0,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 4
+        }
+      ],
+      "val" : 0,
+      "label" : "\/flowField\/flowFieldWeight",
+      "publishNorm" : false,
+      "sendEnabled" : true,
+      "maxRange" : 10
+    },
+    "wiggleAmplitudeMultiplier" : {
+      "minRange" : 0,
+      "sndrs" : [
+        {
+          "msgAddress" : "\/wiggleBehavior\/wiggleAmplitudeMultiplier",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 10,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 0,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 4
+        }
+      ],
+      "val" : 0.1000000014901161,
+      "label" : "\/wiggleBehavior\/wiggleAmplitudeMultiplier",
+      "publishNorm" : false,
+      "sendEnabled" : true,
+      "maxRange" : 10
+    },
+    "strokeWidth" : {
+      "minRange" : 0,
+      "sndrs" : [
+        {
+          "msgAddress" : "\/strokeWidth",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 50,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 0,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 4
+        }
+      ],
+      "val" : 0.01999999955296516,
+      "label" : "\/strokeWidth",
+      "publishNorm" : false,
+      "sendEnabled" : true,
+      "maxRange" : 50
+    },
+    "desiredSeparation" : {
+      "minRange" : 0,
+      "sndrs" : [
+        {
+          "msgAddress" : "\/flockingBehavior\/desiredSeparation",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 200,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 0,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 4
+        }
+      ],
+      "val" : 0.1000000014901161,
+      "label" : "\/flockingBehavior\/desiredSeparation",
+      "publishNorm" : false,
+      "sendEnabled" : true,
+      "maxRange" : 200
+    },
+    "cohesionWeight" : {
+      "minRange" : 0,
+      "sndrs" : [
+        {
+          "msgAddress" : "\/flockingBehavior\/cohesionWeight",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 10,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 0,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 4
+        }
+      ],
+      "val" : 0.1000000014901161,
+      "label" : "\/flockingBehavior\/cohesionWeight",
+      "publishNorm" : false,
+      "sendEnabled" : true,
+      "maxRange" : 10
+    },
+    "emit" : {
+      "sndrs" : [
+        {
+          "msgAddress" : "\/boids.behaviors.EmitBehavior\/emit",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 1,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 0,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 1
+        }
+      ],
+      "label" : "\/boids.behaviors.EmitBehavior\/emit",
+      "sendEnabled" : true,
+      "toggle" : false,
+      "mtxFlg" : false,
+      "mtxGrp" : "Button Group"
+    },
+    "maxBoids" : {
+      "minRange" : 0,
+      "sndrs" : [
+        {
+          "msgAddress" : "\/flock\/maxBoids",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 700,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 0,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 4
+        }
+      ],
+      "val" : 0.4285714328289032,
+      "label" : "\/flock\/maxBoids",
+      "publishNorm" : false,
+      "sendEnabled" : true,
+      "maxRange" : 700
+    },
+    "maxForce" : {
+      "minRange" : 0,
+      "sndrs" : [
+        {
+          "msgAddress" : "\/flockingBehavior\/maxForce",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 1,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 0,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 4
+        }
+      ],
+      "val" : 0.5,
+      "label" : "\/flockingBehavior\/maxForce",
+      "publishNorm" : false,
+      "sendEnabled" : true,
+      "maxRange" : 1
+    },
+    "dimension" : {
+      "minRange" : 2,
+      "sndrs" : [
+        {
+          "msgAddress" : "\/emitters\/dimension",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 4,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 2,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 2
+        }
+      ],
+      "val" : 0,
+      "label" : "\/emitters\/dimension",
+      "publishNorm" : false,
+      "sendEnabled" : true,
+      "maxRange" : 4
+    },
+    "randomizeFlowField" : {
+      "sndrs" : [
+        {
+          "msgAddress" : "\/common.StoredVectorField\/randomizeFlowField",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 1,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 0,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 1
+        }
+      ],
+      "label" : "\/common.StoredVectorField\/randomizeFlowField",
+      "sendEnabled" : true,
+      "toggle" : false,
+      "mtxFlg" : false,
+      "mtxGrp" : "Button Group"
+    },
+    "alignmentThreshold" : {
+      "minRange" : 0,
+      "sndrs" : [
+        {
+          "msgAddress" : "\/flockingBehavior\/alignmentThreshold",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 200,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 0,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 4
+        }
+      ],
+      "val" : 0.25,
+      "label" : "\/flockingBehavior\/alignmentThreshold",
+      "publishNorm" : false,
+      "sendEnabled" : true,
+      "maxRange" : 200
+    },
+    "lineThreshold" : {
+      "minRange" : 0,
+      "sndrs" : [
+        {
+          "msgAddress" : "\/meshLikeFlockRenderer\/lineThreshold",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 1000,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 0,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 4
+        }
+      ],
+      "val" : 0.1000000014901161,
+      "label" : "\/meshLikeFlockRenderer\/lineThreshold",
+      "publishNorm" : false,
+      "sendEnabled" : true,
+      "maxRange" : 1000
+    },
+    "value" : {
+      "minRange" : 0,
+      "sndrs" : [
+        {
+          "msgAddress" : "\/flock\/maxSpeed\/value",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 10,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 0,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 4
+        }
+      ],
+      "val" : 0.300000011920929,
+      "label" : "\/flock\/maxSpeed\/value",
+      "publishNorm" : false,
+      "sendEnabled" : true,
+      "maxRange" : 10
+    },
+    "setRenderer" : {
+      "minRange" : 0,
+      "sndrs" : [
+        {
+          "msgAddress" : "\/scenes.Worms\/setRenderer",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 4,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 0,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 2
+        }
+      ],
+      "val" : 0,
+      "label" : "\/scenes.Worms\/setRenderer",
+      "publishNorm" : false,
+      "sendEnabled" : true,
+      "maxRange" : 4
+    },
+    "wiggleStepMultiplier" : {
+      "minRange" : 0,
+      "sndrs" : [
+        {
+          "msgAddress" : "\/wiggleBehavior\/wiggleStepMultiplier",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 10,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 0,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 4
+        }
+      ],
+      "val" : 0.1000000014901161,
+      "label" : "\/wiggleBehavior\/wiggleStepMultiplier",
+      "publishNorm" : false,
+      "sendEnabled" : true,
+      "maxRange" : 10
+    },
+    "maxFlowFieldForce" : {
+      "minRange" : 0,
+      "sndrs" : [
+        {
+          "msgAddress" : "\/flowField\/maxFlowFieldForce",
+          "normalizeFlag" : false,
+          "floatInvertFlag" : false,
+          "outputPort" : 12002,
+          "boolInvertFlag" : false,
+          "boolThreshVal" : 0.1,
+          "highIntVal" : 1,
+          "outputIPAddress" : "127.0.0.1",
+          "outputLabel" : "Worms Output",
+          "dataSenderType" : 2,
+          "lowIntVal" : 0,
+          "enabled" : true,
+          "intInvertFlag" : false,
+          "senderType" : 4
+        }
+      ],
+      "val" : 0.5,
+      "label" : "\/flowField\/maxFlowFieldForce",
+      "publishNorm" : false,
+      "sendEnabled" : true,
+      "maxRange" : 1
+    }
+  }
+}

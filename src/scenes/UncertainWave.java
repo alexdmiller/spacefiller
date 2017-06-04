@@ -199,7 +199,7 @@ public class UncertainWave extends Scene {
 					p.velocity.add(delta);
 
 					p.applyFriction(decay);
-					p.flushForces();
+					p.flushForces(-1);
 					p.velocity.limit(maxParticleSpeed);
 
 					p.update();

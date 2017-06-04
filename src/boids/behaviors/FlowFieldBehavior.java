@@ -25,8 +25,8 @@ public class FlowFieldBehavior extends Behavior {
 	// We accumulate a new acceleration each time based on three rules
 	void applyFlowField(Boid b) {
 		PVector pos = b.getPosition();
-		PVector desired = getFlock().getFlowVectorUnderCoords(pos.x, pos.y).copy();
-		desired.limit(getFlock().getMaxSpeed(pos.x, pos.y));
+		PVector desired = getFlock().getFlowVectorUnderCoords(pos).copy();
+		desired.limit(getFlock().getMaxSpeed(pos));
 
 		PVector steer = PVector.sub(desired, b.getVelocity());
 		steer.limit(maxFlowFieldForce);

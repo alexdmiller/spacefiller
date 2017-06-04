@@ -6,6 +6,6 @@ import java.io.Serializable;
 import java.util.List;
 
 public interface Emitter extends Serializable {
-	List<Boid> emit();
+	List<Boid> emit(int dimension);
 	float getEmitChance();
 }

@@ -12,10 +12,10 @@ public class Boid {
 	private Map<String, Object> userData;
 	private int team;
 
-	public Boid(float x, float y) {
-		acceleration = new PVector(0, 0);
-		velocity = new PVector(0, 0);
-		position = new PVector(x, y);
+	public Boid(float x, float y, float z) {
+		acceleration = new PVector(0, 0, 0);
+		velocity = new PVector(0, 0, 0);
+		position = new PVector(x, y, z);
 		userData = new HashMap<>();
 		team = 0;
 	}

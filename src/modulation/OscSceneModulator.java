@@ -18,6 +18,8 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class OscSceneModulator implements OscEventListener {
+	public static final boolean DEBUG = false;
+
 	private Map<String, ModulationTarget> modulationTargetRegistry;
 	private OscP5 oscP5;
 	private String name;
@@ -50,24 +52,24 @@ public class OscSceneModulator implements OscEventListener {
 	public OscSceneModulator(Object object, int port) {
 		oscP5 = new OscP5(this, port);
 		modulationTargetRegistry = new TreeMap<>();
-		registerTargetsForObject(object);
+		registerTargetsForObject(object, "");
 		name = object.getClass().getName();
 		exportVDMXJson(port);
 	}
 
-	private void registerTargetsForObject(Object object) {
+	private void registerTargetsForObject(Object object, String targetPath) {
 		// TODO: Address shouldn't just be class name -- it should also depend on nesting as well
 		for (Field field : object.getClass().getFields()) {
 			if (field.isAnnotationPresent(Mod.class)) {
 				if (field.getType().isPrimitive()) {
 					Mod mod = field.getAnnotation(Mod.class);
 					String address = mod.address().isEmpty()
-							? "/" + object.getClass().getName() + "/" + field.getName()
+							? targetPath + "/" + field.getName()
 							: mod.address();
 					modulationTargetRegistry.put(address, new FieldModulationTarget(object, field));
 				} else {
 					try {
-						registerTargetsForObject(field.get(object));
+						registerTargetsForObject(field.get(object), targetPath + "/" + field.getName());
 					} catch (IllegalAccessException e) {
 						e.printStackTrace();
 					}
@@ -134,8 +136,23 @@ public class OscSceneModulator implements OscEventListener {
 
 		classes.add(elementClass.name);
 		keys.add(target.getName());
-		System.out.println(target.getName());
-		float val = mod.defaultValue() / (mod.max() - mod.min());
+
+		float val = 0;
+		if (target instanceof FieldModulationTarget) {
+			FieldModulationTarget fieldModulationTarget = (FieldModulationTarget) target;
+			
+			if (fieldModulationTarget.getValue() instanceof Integer) {
+				val = ((Integer) fieldModulationTarget.getValue()).floatValue(); 
+			} else {
+				val = (float) fieldModulationTarget.getValue();
+			}
+		} else {
+			val = target.getModAnnotation().defaultValue();
+		}
+
+		// Scale value so that it's between 0 and 1
+		val = (val - mod.min()) / (mod.max() - mod.min());
+
 		uiBuilder.add(target.getName(), Json.createObjectBuilder()
 				.add("minRange", mod.min())
 				.add("maxRange", mod.max())
@@ -170,13 +187,25 @@ public class OscSceneModulator implements OscEventListener {
 
 		if (type == Float.TYPE) {
 			target.setValue(argument.floatValue());
+
+			if (DEBUG) {
+				System.out.println(oscMessage.addrPattern() + ' ' + type + ' ' + argument.floatValue());
+			}
 		} else if (type == Integer.TYPE) {
 			target.setValue(argument.intValue());
+
+			if (DEBUG) {
+				System.out.println(oscMessage.addrPattern() + ' ' + type + ' ' + argument.intValue());
+			}
 		} else if (type == Boolean.TYPE) {
 			// VDMX sends boolean values by setting the type of the message to 'T' or 'F'. Because
 			// this is non-standard, it has to be handled manually.
 			byte b = oscMessage.getTypetagAsBytes()[0];
 			target.setValue(b == 'T');
+
+			if (DEBUG) {
+				System.out.println(oscMessage.addrPattern() + ' ' + type + ' ' + b);
+			}
 		} else if (type == null) {
 			// A modulation target with a null type is a method with no parameters. We should treat
 			// the same way as a boolean modulation target, but only call the method when the boolean
@@ -186,6 +215,9 @@ public class OscSceneModulator implements OscEventListener {
 				target.setValue(null);
 			}
 
+			if (DEBUG) {
+				System.out.println(oscMessage.addrPattern() + " method");
+			}
 		}
 	}
 

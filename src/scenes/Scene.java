@@ -4,6 +4,7 @@ import codeanticode.syphon.SyphonServer;
 import oscP5.OscP5;
 import processing.core.PApplet;
 import processing.core.PGraphics;
+import processing.core.PVector;
 import processing.opengl.PJOGL;
 
 import java.util.ArrayList;
@@ -19,8 +20,12 @@ public class Scene extends PApplet {
 		return instance;
 	}
 
+	// The "real" width and height of the outputted scene. Processing's
+	// internal width and height variables return the control canvas'
+	// width and height -- not the width and height of the output.
 	public static final int WIDTH = 1920;
 	public static final int HEIGHT = 1080;
+	public static final int DEPTH = HEIGHT;
 
 	private static final float LOCAL_WINDOW_SCALE = 0.5f;
 	private static final char PLAY_KEY = ' ';
@@ -62,26 +67,39 @@ public class Scene extends PApplet {
 
 	protected void doSetup() {}
 
+	/**
+	 * Overrides the PApplet draw method. Draws debug HUD and other utility things.
+	 * Makes calls to abstract methods drawCanvas and drawControlPanel which can be
+	 * overridden in child class.
+	 */
 	public final void draw() {
 		background(0);
+		
 		if (playing) {
 			canvas.beginDraw();
-			canvas.background(0);
-			drawCanvas(canvas, mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
+			canvas.translate(WIDTH / 2, HEIGHT / 2, DEPTH / 2);
 
+			canvas.background(0);
+			
+			canvas.pushMatrix();
+			drawCanvas(canvas, mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
+			canvas.popMatrix();
+			
 			if (debug) {
 				canvas.pushMatrix();
-				canvas.translate(mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
+				canvas.translate((mouseX - width / 2) / LOCAL_WINDOW_SCALE, (mouseY - height / 2) / LOCAL_WINDOW_SCALE);
 				canvas.stroke(255);
 				canvas.strokeWeight(5);
 				canvas.line(-10, 0, 10, 0);
 				canvas.line(0, -10, 0, 10);
 				canvas.popMatrix();
 
+				canvas.pushMatrix();
 				drawControlPanel(canvas, mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
+				canvas.popMatrix();
 
 				if (currentToolIndex < tools.size()) {
-					tools.get(currentToolIndex).render(canvas, mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE, mousePressed);
+					tools.get(currentToolIndex).render(canvas, (mouseX - width / 2) / LOCAL_WINDOW_SCALE, (mouseY - height / 2) / LOCAL_WINDOW_SCALE, mousePressed);
 				}
 			}
 
@@ -119,19 +137,19 @@ public class Scene extends PApplet {
 
 	public final void mousePressed() {
 		if (currentToolIndex < tools.size()) {
-			tools.get(currentToolIndex).mousePressed(mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
+			tools.get(currentToolIndex).mousePressed(mouseX / LOCAL_WINDOW_SCALE - WIDTH / 2, mouseY / LOCAL_WINDOW_SCALE - HEIGHT / 2);
 		}
 	}
 
 	public final void mouseReleased() {
 		if (currentToolIndex < tools.size()) {
-			tools.get(currentToolIndex).mouseReleased(mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
+			tools.get(currentToolIndex).mouseReleased(mouseX / LOCAL_WINDOW_SCALE - WIDTH / 2, mouseY / LOCAL_WINDOW_SCALE - HEIGHT / 2);
 		}
 	}
 
 	public final void mouseDragged() {
 		if (currentToolIndex < tools.size()) {
-			tools.get(currentToolIndex).mouseDragged(mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
+			tools.get(currentToolIndex).mouseDragged(mouseX / LOCAL_WINDOW_SCALE - WIDTH / 2, mouseY / LOCAL_WINDOW_SCALE - HEIGHT / 2);
 		}
 	}
 

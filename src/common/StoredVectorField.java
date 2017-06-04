@@ -8,48 +8,55 @@ import java.awt.*;
 import java.io.Serializable;
 
 public class StoredVectorField implements VectorField {
-	private static final float NOISE_SCALE = 2;
+	@Mod(min = 0, max = 0.1f)
+	public float noiseScale = 0.1f;
 
 	private PVector[] field;
-	private Rectangle bounds;
+	private Bounds bounds;
 	private int cellSize;
 
-	public StoredVectorField(Rectangle bounds, int cellSize) {
+	public StoredVectorField(Bounds bounds, int cellSize) {
 		this.bounds = bounds;
 		this.cellSize = cellSize;
-		field = new PVector[(bounds.width * bounds.height) / cellSize];
+
+		field = new PVector[(int) (bounds.getWidth() / cellSize * bounds.getHeight() / cellSize * bounds.getDepth() / cellSize)];
 		for (int i = 0; i < field.length; i++) {
-			field[i] = new PVector(0, 0);
+			field[i] = new PVector(0, 0, 0);
 		}
 	}
 
 	@Override
-	public PVector at(float x, float y, float t) {
-		int cellX = (int) (x - bounds.x) / cellSize;
-		int cellY = (int) (y - bounds.y) / cellSize;
-		return getCell(cellX, cellY);
+	public PVector at(float x, float y, float z, float t) {
+		int cellX = (int) (x + bounds.getWidth() / 2) / cellSize;
+		int cellY = (int) (y + bounds.getHeight() / 2) / cellSize;
+		int cellZ = (int) (z + bounds.getDepth() / 2) / cellSize;
+		return getCell(cellX, cellY, cellZ);
 	}
 
-	public PVector getCell(int cellX, int cellY) {
-		int i = cellX * bounds.width / cellSize + cellY;
+	public PVector getCell(int cellX, int cellY, int cellZ) {
+		int i = cellZ * (int) (bounds.getHeight() / cellSize * bounds.getWidth() / cellSize) + cellY * (int) bounds.getWidth() / cellSize + cellX;
 		if (i < field.length && i > 0) {
-			return field[cellY * bounds.width / cellSize + cellX];
+			return field[i];
 		} else {
-			return new PVector(0, 0);
+			return new PVector(0, 0, 0);
 		}
 	}
 
 	public int getGridWidth() {
-		return bounds.width / cellSize;
+		return (int) bounds.getWidth() / cellSize;
 	}
 
 	public int getGridHeight() {
-		return bounds.height / cellSize;
+		return (int) bounds.getHeight() / cellSize;
+	}
+
+	public int getGridDepth() {
+		return (int) bounds.getDepth() / cellSize;
 	}
 
 	public void zero() {
 		for (int i = 0; i < field.length; i++) {
-			field[i].set(0, 0);
+			field[i].set(0, 0, 0);
 		}
 	}
 
@@ -65,18 +72,44 @@ public class StoredVectorField implements VectorField {
 
 	@Mod
 	public void randomizeFlowField() {
-		float shift = (float) Math.random() * 10;
-		for (int x = 0; x < getGridWidth(); x++) {
-			for (int y = 0; y < getGridHeight(); y++) {
-				float r = Scene.getInstance().noise(
-						(float) x / getGridWidth() * NOISE_SCALE,
-						(float) y / getGridHeight() * NOISE_SCALE,
-						shift);
-				float theta = (float) (r * Math.PI * 8);
-				PVector f = PVector.fromAngle(theta);
-				f.setMag(10);
-				getCell(x, y).set(f);
+		float seed = (float) Math.random() * 100;
+		for (float x = 0; x <= getGridWidth(); x++) {
+			for (float y = 0; y <= getGridHeight(); y++) {
+				float theta = (float) (Scene.getInstance().noise(x, y, seed) * 4 * Math.PI);
+				PVector f = new PVector(
+						(float) Math.cos(theta) * 40,
+						(float) Math.sin(theta) * 40);
+				
+				for (float z = 0; z <= getGridDepth(); z++) {
+					getCell((int) x, (int) y, (int) z).set(f);
+				}
 			}
 		}
+		
+//		float shift = 0;
+//		float noiseScale = 0.5f;
+//		for (float x = 0; x <= getGridWidth(); x++) {
+//			for (float y = 0; y <= getGridHeight(); y++) {
+//				for (float z = 0; z <= getGridDepth(); z++) {
+//					float theta = x * 10 + y * 10 + z * 10; // (float) (Scene.getInstance().noise(x * noiseScale, y * noiseScale, z * noiseScale) * 3.141592653589793D * 2.0D);
+//					
+////					float vz = -1f; //(float) (Scene.getInstance().noise(x * noiseScale + shift, y * noiseScale + shift, z * noiseScale + shift) * 2.0D - 1.0D);
+////					float angle = (float) (Scene.getInstance().noise(x * noiseScale, y * noiseScale, z * noiseScale) * 3.141592653589793D * 2.0D);
+//
+////					float vz = (float) (Math.random() * 2.0D - 1.0D);
+////					float angle = (float) (Math.random() * 3.141592653589793D * 2.0D);
+//					
+//					PVector f = new PVector(
+//							(float) Math.cos(theta),
+//							(float) Math.sin(theta),
+//							(float) Math.sin(theta)
+//					);
+//					// System.out.println(f + ", " + angle);
+//
+//					f.setMag(100);
+//					getCell((int) x, (int) y, (int) z).set(f);
+//				}
+//			}
+//		}
 	}
 }

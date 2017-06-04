@@ -19,6 +19,8 @@ public class MeshLikeFlockRenderer extends FlockRenderer {
 
 	@Override
 	public void render(PGraphics graphics) {
+		graphics.rotateY(flock.getRotation());
+
 		List<Boid> boids = flock.getBoids();
 		for (int i = 0; i < boids.size(); i++) {
 			Boid b1 = boids.get(i);
@@ -28,7 +30,7 @@ public class MeshLikeFlockRenderer extends FlockRenderer {
 
 				float dist = PVector.dist(b1.getPosition(), b2.getPosition());
 				if (dist < lineThreshold) {
-					graphics.line(b1.getPosition().x, b1.getPosition().y, b2.getPosition().x, b2.getPosition().y);
+					graphics.line(b1.getPosition().x, b1.getPosition().y, b1.getPosition().z, b2.getPosition().x, b2.getPosition().y, b2.getPosition().z);
 				}
 			}
 		}

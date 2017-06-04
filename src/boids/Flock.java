@@ -7,14 +7,14 @@ import javafx.util.Pair;
 import processing.core.PVector;
 import modulation.Mod;
 
-import java.awt.*;
 import java.io.Serializable;
 import java.util.*;
 import java.util.List;
 
 public class Flock implements Serializable {
 	@Mod
-	public ScalarField maxSpeed = new WavePropertyField();
+	// public ScalarField maxSpeed = new WavePropertyField();
+	public ScalarField maxSpeed = ConstantPropertyField.with(4);
 
 	@Mod(min = 0, max = 700, defaultValue = 300)
 	public float maxBoids = 300;
@@ -22,10 +22,16 @@ public class Flock implements Serializable {
 	@Mod
 	public StoredVectorField flowField;
 
+	@Mod(min = -0.2f, max = 0.2f)
+	public float rotationSpeed = 0.0f;
+	
+	@Mod(min = 0, max = (float) (2 * Math.PI), defaultValue =  0)
+	public float rotation;
+
 	private transient List<BoidEventListener> boidEventListeners;
 	private transient List<EntityEventListener> entityEventListeners;
 	private transient List<Behavior> behaviors;
-	private transient Rectangle bounds;
+	private transient Bounds bounds;
 	private transient List<Boid> boids;
 
 	private List<Emitter> emitters;
@@ -34,8 +40,8 @@ public class Flock implements Serializable {
 
 	private float time;
 
-	public Flock(int x, int y, int width, int height) {
-		bounds = new Rectangle(x, y, width, height);
+	public Flock(float width, float height, float depth) {
+		bounds = new Bounds(width, height, depth);
 		boids = new ArrayList<>();
 		emitters = new ArrayList<>();
 		pathSegments = new ArrayList<>();
@@ -44,23 +50,22 @@ public class Flock implements Serializable {
 		boidEventListeners = new ArrayList<>();
 		entityEventListeners = new ArrayList<>();
 		flowField = new StoredVectorField(bounds, 100);
+		flowField.randomizeFlowField();
 	}
 
-	public int getWidth() {
-		return bounds.width;
-	}
-
-	public int getHeight() {
-		return bounds.height;
+	public float getRotation() {
+		return rotation;
 	}
 
 	public void step() {
 		time++;
+		rotation += rotationSpeed;
+
 		synchronized (boids) {
 			Iterator<Boid> boidIterator = boids.iterator();
 			while (boidIterator.hasNext()) {
 				Boid b = boidIterator.next();
-				if (!bounds.contains(b.getPosition().x, b.getPosition().y)) {
+				if (!bounds.contains(b.getPosition())) {
 					boidIterator.remove();
 					notifyRemoved(b);
 				}
@@ -71,7 +76,7 @@ public class Flock implements Serializable {
 			}
 
 			for (Boid b : boids) {
-				b.update(getMaxSpeed(b.getPosition().x, b.getPosition().y));
+				b.update(getMaxSpeed(b.getPosition()));
 			}
 		}
 	}
@@ -143,7 +148,7 @@ public class Flock implements Serializable {
 		boidEventListeners.add(listener);
 	}
 
-	public Rectangle getBounds() {
+	public Bounds getBounds() {
 		return bounds;
 	}
 
@@ -223,8 +228,8 @@ public class Flock implements Serializable {
 		entityEventListeners.add(listener);
 	}
 
-	public float getMaxSpeed(float x, float y) {
-		return maxSpeed.at(x, y, time);
+	public float getMaxSpeed(PVector pos) {
+		return maxSpeed.at(pos.x, pos.y, pos.z, time);
 	}
 
 	public Iterator<Boid> getBoidsIterator() {
@@ -235,8 +240,8 @@ public class Flock implements Serializable {
 		return flowField;
 	}
 
-	public PVector getFlowVectorUnderCoords(float x, float y) {
-		return flowField.at(x, y, time);
+	public PVector getFlowVectorUnderCoords(PVector pos) {
+		return flowField.at(pos.x, pos.y, pos.z, time);
 	}
 
 	public int getFlowFieldWidth() {
@@ -245,5 +250,9 @@ public class Flock implements Serializable {
 
 	public int getFlowFieldHeight() {
 		return flowField.getGridHeight();
+	}
+
+	public int getFlowFieldDepth() {
+		return flowField.getGridDepth();
 	}
 }

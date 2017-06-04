@@ -4,6 +4,7 @@ import boids.Boid;
 import boids.Flock;
 import boids.BoidEventListener;
 import boids.behaviors.Behavior;
+import common.Bounds;
 import megamu.mesh.Delaunay;
 import processing.core.PGraphics;
 
@@ -21,8 +22,9 @@ public class GravityFlockRenderer extends FlockRenderer {
 	public void render(PGraphics graphics) {
 		List<Boid> boids = flock.getBoids();
 
-		for (float i = 0; i < flock.getWidth(); i += 100) {
-			for (float j = 0; j < flock.getWidth(); j += 100) {
+		Bounds bounds = flock.getBounds();
+		for (float i = 0; i < bounds.getWidth(); i += 100) {
+			for (float j = 0; j < bounds.getWidth(); j += 100) {
 				float x = i;
 				float y = j;
 				float vx = 0;

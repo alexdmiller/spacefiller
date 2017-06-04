@@ -5,6 +5,7 @@ import boids.Magnet;
 import boids.emitter.Emitter;
 import boids.emitter.LineEmitter;
 import boids.emitter.PointEmitter;
+import common.Bounds;
 import common.StoredVectorField;
 import javafx.util.Pair;
 import processing.core.PConstants;
@@ -20,6 +21,9 @@ public class DebugFlockRenderer extends FlockRenderer {
 	}
 
 	public void render(PGraphics graphics) {
+		Bounds bounds = flock.getBounds();
+
+
 		renderFollowPathBehavior(graphics, flock.getPathSegments());
 		renderMagnetBehavior(graphics, flock.getMagnets());
 		renderEmitBehavior(graphics, flock.getEmitters());
@@ -27,9 +31,9 @@ public class DebugFlockRenderer extends FlockRenderer {
 
 		graphics.stroke(255);
 		graphics.strokeWeight(2);
-		Rectangle bounds = flock.getBounds();
 		graphics.noFill();
-		graphics.rect(bounds.x, bounds.y, bounds.width, bounds.height);
+		graphics.box(bounds.getWidth(), bounds.getHeight(), bounds.getDepth());
+
 
 		graphics.stroke(255);
 		graphics.textSize(24);
@@ -48,8 +52,7 @@ public class DebugFlockRenderer extends FlockRenderer {
 				PointEmitter pe = (PointEmitter) e;
 				graphics.pushMatrix();
 				graphics.translate(pe.getPosition().x, pe.getPosition().y);
-				graphics.line(-10, 0, 10, 0);
-				graphics.line(0, -10, 0, 10);
+				graphics.sphere(10);
 				graphics.popMatrix();
 			}
 		}
@@ -83,17 +86,22 @@ public class DebugFlockRenderer extends FlockRenderer {
 		canvas.stroke(255);
 
 		StoredVectorField field = (StoredVectorField) flock.getFlowField();
+		Bounds bounds = flock.getBounds();
 
 		for (int x = 0; x < flock.getFlowFieldWidth(); x++) {
 			for (int y = 0; y < flock.getFlowFieldHeight(); y++) {
-				PVector v = field.getCell(x, y);
-				canvas.pushMatrix();
-				float posX = x * field.getCellSize() + flock.getBounds().x + field.getCellSize() / 2;
-				float posY = y * field.getCellSize() + flock.getBounds().y + field.getCellSize() / 2;
-				canvas.translate(posX, posY);
-				canvas.rotate(v.heading());
-				canvas.line(0, 0, v.mag(), 0);
-				canvas.popMatrix();
+				for (int z = 0; z < flock.getFlowFieldDepth(); z++) {
+					PVector v = field.getCell(x, y, z);
+					canvas.pushMatrix();
+					float posX = x * field.getCellSize() + field.getCellSize() / 2 - bounds.getWidth() / 2;
+					float posY = y * field.getCellSize() + field.getCellSize() / 2 - bounds.getHeight() / 2;
+					float posZ = z * field.getCellSize() + field.getCellSize() / 2 - bounds.getDepth() / 2;
+
+					v = PVector.div(v, 5);
+					canvas.translate(posX, posY, posZ);
+					canvas.line(0, 0, 0, v.x, v.y, v.z);
+					canvas.popMatrix();
+				}
 			}
 		}
 	}

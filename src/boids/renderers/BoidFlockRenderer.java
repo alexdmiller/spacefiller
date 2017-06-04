@@ -8,6 +8,11 @@ import processing.core.PGraphics;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
+/**
+ * A FlockRenderer that delegates rendering individual boids to a BoidRenderer class.
+ * New BoidRenderers are created and destroyed as boids are added / removed from the
+ * flock.
+ */
 public class BoidFlockRenderer extends FlockRenderer implements BoidEventListener {
 	private List<BoidRenderer> renderers;
 	private Map<Boid, BoidRenderer> boidToRenderer;
@@ -24,6 +29,8 @@ public class BoidFlockRenderer extends FlockRenderer implements BoidEventListene
 
 	@Override
 	public void render(PGraphics graphics) {
+		graphics.rotateY(flock.getRotation());
+
 		synchronized (renderers) {
 			Iterator<BoidRenderer> rendererIterator = renderers.iterator();
 			while (rendererIterator.hasNext()) {

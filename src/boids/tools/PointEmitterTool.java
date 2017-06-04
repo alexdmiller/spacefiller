@@ -2,6 +2,7 @@ package boids.tools;
 
 import boids.Flock;
 import boids.emitter.PointEmitter;
+import common.Bounds;
 import scenes.SceneTool;
 
 public class PointEmitterTool extends SceneTool {
@@ -20,7 +21,8 @@ public class PointEmitterTool extends SceneTool {
 
 	@Override
 	public void mousePressed(float mouseX, float mouseY) {
-		flock.addEmitter(new PointEmitter(mouseX, mouseY, chance, team));
+		Bounds b = flock.getBounds();
+		flock.addEmitter(new PointEmitter(mouseX, mouseY, 0, chance, team));
 	}
 
 	@Override

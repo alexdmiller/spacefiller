@@ -7,12 +7,12 @@ import processing.core.PGraphics;
 import processing.core.PVector;
 
 public class WormBoidRenderer extends BoidRenderer {
-	public static final int HISTORY_SIZE = 100;
+	public static final int HISTORY_SIZE = 30;
 	private EvictingQueue<PVector> history;
 
 	public WormBoidRenderer(Boid boid) {
 		super(boid);
-		this.history = EvictingQueue.create((int) (Math.random() * 20 + 5));
+		this.history = EvictingQueue.create(HISTORY_SIZE);
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class WormBoidRenderer extends BoidRenderer {
 		PVector last = null;
 		for (PVector p : history) {
 			if (last != null) {
-				graphics.line(last.x, last.y, p.x, p.y);
+				graphics.line(last.x, last.y, last.z, p.x, p.y, p.z);
 			}
 			last = p;
 		}

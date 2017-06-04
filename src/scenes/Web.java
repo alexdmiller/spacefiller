@@ -131,7 +131,7 @@ public class Web extends Scene {
 				p.applyForce(PVector.mult(copy.normalize(), -0.1f));
 			}
 
-			p.flushForces();
+			p.flushForces(-1);
 			p.applyFriction(friction);
 			p.update();
 		}

@@ -4,6 +4,7 @@ import boids.*;
 import boids.behaviors.*;
 import boids.renderers.*;
 import boids.tools.*;
+import common.Bounds;
 import modulation.Mod;
 import modulation.OscSceneModulator;
 import processing.core.PGraphics;
@@ -55,7 +56,7 @@ public class Worms extends Scene implements EntityEventListener {
 
 	@Mod
 	public MeshLikeFlockRenderer meshLikeFlockRenderer;
-
+	
 	private MagnetBehavior magnets;
 
 	private DebugFlockRenderer debugRenderer;
@@ -69,7 +70,7 @@ public class Worms extends Scene implements EntityEventListener {
 	public void doSetup() {
 		fileCache = new byte[SAVE_CATEGORY_COUNT][SAVE_PER_CATEGORY][];
 
-		flock = new Flock(100, 100, WIDTH - 200, HEIGHT - 200);
+		flock = new Flock((float) WIDTH, (float) HEIGHT, (float) DEPTH);
 		flock.addEntityEventListener(this);
 
 		debugRenderer = new DebugFlockRenderer(flock);
@@ -144,11 +145,11 @@ public class Worms extends Scene implements EntityEventListener {
 
 	@Override
 	protected void drawControlPanel(PGraphics graphics, float mouseX, float mouseY) {
-		debugRenderer.render(graphics);
-
 		graphics.stroke(255);
 		graphics.textSize(24);
 		graphics.text(currentSaveCategoryIndex + " - " + currentSaveIndex, 200, 100);
+
+		debugRenderer.render(graphics);
 	}
 
 	public void doKeyPressed() {

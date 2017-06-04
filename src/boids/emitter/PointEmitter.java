@@ -12,8 +12,8 @@ public class PointEmitter implements Emitter {
 	private float initialSpeed;
 	private int team;
 
-	public PointEmitter(float x, float y, float emitChance, int team) {
-		this.position = new PVector(x, y);
+	public PointEmitter(float x, float y, float z, float emitChance, int team) {
+		this.position = new PVector(x, y, z);
 		this.emitChance = emitChance;
 		this.initialSpeed = 10;
 		this.team = team;
@@ -25,15 +25,30 @@ public class PointEmitter implements Emitter {
 	}
 
 	@Override
-	public List<Boid> emit() {
+	public List<Boid> emit(int dimension) {
 		List<Boid> boids = new ArrayList<>();
-		Boid b = new Boid((float) (position.x + Math.random() - 0.5), (float) (position.y + Math.random() - 0.5));
+
+		Boid b = null;
+		if (dimension == 2) {
+			b = new Boid(
+					(float) (position.x + Math.random() - 0.5),
+					(float) (position.y + Math.random() - 0.5),
+					0);
+			PVector velocity = PVector.random2D();
+			velocity.setMag(initialSpeed);
+			b.setVelocity(velocity);
+		} else {
+			b = new Boid(
+					(float) (position.x + Math.random() - 0.5),
+					(float) (position.y + Math.random() - 0.5),
+					(float) (position.z + Math.random() - 0.5));
+			PVector velocity = PVector.random3D();
+			velocity.setMag(initialSpeed);
+			b.setVelocity(velocity);
+
+		}
 		b.setTeam(team);
 
-		PVector velocity = PVector.fromAngle((float) (Math.random() * Math.PI * 2));
-		velocity.setMag(initialSpeed);
-
-		b.setVelocity(velocity);
 		boids.add(b);
 		return boids;
 	}

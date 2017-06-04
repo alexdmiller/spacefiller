@@ -15,7 +15,7 @@ public class ConstantPropertyField implements ScalarField {
 	}
 
 	@Override
-	public float at(float x, float y, float t) {
+	public float at(float x, float y, float z, float t) {
 		return value;
 	}
 }
