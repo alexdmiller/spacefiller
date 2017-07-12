@@ -34,16 +34,16 @@ public class Flows extends Scene {
 
 	@Mod(min = -1, max = 1)
 	public float lineSparsity = 0.6f;
-	
+
 	@Mod(min = 1, max = 10)
 	public float lineThickness = 2;
-	
+
 	@Mod(min = 0, max = 1)
 	public float interpolation = 0f;
-	
+
 	@Mod(min = 0, max = 500)
 	public float circleRadius = 100;
-	
+
 	@Mod(min = 1, max = 1000)
 	public int numPoints = 50;
 
@@ -54,19 +54,19 @@ public class Flows extends Scene {
 	float scramble = 0;
 	float noise1Pos = 0;
 	float noise2Pos = 0;
-	
+
 	@Override
 	public void doSetup() {
-		new OscSceneModulator(this, 12005);
+		new OscSceneModulator(this, 8888);
 	}
-	
+
 	@Override
 	protected void drawCanvas(PGraphics graphics, float mouseX, float mouseY) {
 		timeStep += 0.01;
 		scramble += scrambleSpeed;
 		noise1Pos += noiseSpeed1;
 		noise2Pos += noiseSpeed2;
-		
+
 		graphics.background(0);
 		graphics.stroke(255);
 		graphics.strokeWeight(lineThickness);
@@ -96,7 +96,7 @@ public class Flows extends Scene {
 		float angle = noise(x / noiseScale, y / noiseScale - noise1Pos, noise2Pos) * PI * 6;
 		return PVector.fromAngle(angle).setMag(flowForce);
 	}
-	
+
 	PVector position1(int i) {
 		return new PVector(((float) WIDTH / numPoints) * i - WIDTH / 2, -HEIGHT / 2);
 	}
@@ -104,12 +104,12 @@ public class Flows extends Scene {
 	PVector position2(int i) {
 		float theta = 2 * PI * (float) i / numPoints + timeStep;
 		PVector p = new PVector(
-			cos(theta) * circleRadius,
-			sin(theta) * circleRadius
+				cos(theta) * circleRadius,
+				sin(theta) * circleRadius
 		);
 		return p;
 	}
-	
+
 	PVector position3(int i) {
 		PVector p = new PVector(
 				Scene.getInstance().noise(i, 0, scramble) * WIDTH - WIDTH / 2,
@@ -117,7 +117,7 @@ public class Flows extends Scene {
 		);
 		return p;
 	}
-	
+
 	@Override
 	protected void drawControlPanel(PGraphics graphics, float mouseX, float mouseY) {
 

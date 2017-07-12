@@ -7,43 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7bb3a9e-05bb-464d-967e-9bda287e8f0d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/common/Bounds.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/scenes/Flows.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lusio/SceneGenerator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/scenes/Lusio.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/scenes/SpaceFiller.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scenes.Contours.json" afterPath="$PROJECT_DIR$/scenes.Contours.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scenes.Worms.json" afterPath="$PROJECT_DIR$/scenes.Worms.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/Boid.java" afterPath="$PROJECT_DIR$/src/boids/Boid.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/Flock.java" afterPath="$PROJECT_DIR$/src/boids/Flock.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/behaviors/EmitBehavior.java" afterPath="$PROJECT_DIR$/src/boids/behaviors/EmitBehavior.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/behaviors/FlockBehavior.java" afterPath="$PROJECT_DIR$/src/boids/behaviors/FlockBehavior.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/behaviors/FlowFieldBehavior.java" afterPath="$PROJECT_DIR$/src/boids/behaviors/FlowFieldBehavior.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/behaviors/FollowPathBehavior.java" afterPath="$PROJECT_DIR$/src/boids/behaviors/FollowPathBehavior.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/emitter/Emitter.java" afterPath="$PROJECT_DIR$/src/boids/emitter/Emitter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/emitter/LineEmitter.java" afterPath="$PROJECT_DIR$/src/boids/emitter/LineEmitter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/emitter/PointEmitter.java" afterPath="$PROJECT_DIR$/src/boids/emitter/PointEmitter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/renderers/BoidFlockRenderer.java" afterPath="$PROJECT_DIR$/src/boids/renderers/BoidFlockRenderer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/renderers/DebugFlockRenderer.java" afterPath="$PROJECT_DIR$/src/boids/renderers/DebugFlockRenderer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/renderers/GravityFlockRenderer.java" afterPath="$PROJECT_DIR$/src/boids/renderers/GravityFlockRenderer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/renderers/MeshLikeFlockRenderer.java" afterPath="$PROJECT_DIR$/src/boids/renderers/MeshLikeFlockRenderer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java" afterPath="$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/tools/FlowFieldTool.java" afterPath="$PROJECT_DIR$/src/boids/tools/FlowFieldTool.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/tools/PointEmitterTool.java" afterPath="$PROJECT_DIR$/src/boids/tools/PointEmitterTool.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/ConstantPropertyField.java" afterPath="$PROJECT_DIR$/src/common/ConstantPropertyField.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/Particle.java" afterPath="$PROJECT_DIR$/src/common/Particle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/ScalarField.java" afterPath="$PROJECT_DIR$/src/common/ScalarField.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/StoredVectorField.java" afterPath="$PROJECT_DIR$/src/common/StoredVectorField.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/VectorField.java" afterPath="$PROJECT_DIR$/src/common/VectorField.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/WavePropertyField.java" afterPath="$PROJECT_DIR$/src/common/WavePropertyField.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/modulation/FieldModulationTarget.java" afterPath="$PROJECT_DIR$/src/modulation/FieldModulationTarget.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/modulation/OscSceneModulator.java" afterPath="$PROJECT_DIR$/src/modulation/OscSceneModulator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scenes/Contours.java" afterPath="$PROJECT_DIR$/src/scenes/Contours.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scenes/Scene.java" afterPath="$PROJECT_DIR$/src/scenes/Scene.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scenes/UncertainWave.java" afterPath="$PROJECT_DIR$/src/scenes/UncertainWave.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scenes/Web.java" afterPath="$PROJECT_DIR$/src/scenes/Web.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scenes/Worms.java" afterPath="$PROJECT_DIR$/src/scenes/Worms.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/start-contour.sh" afterPath="$PROJECT_DIR$/start-contour.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/start-worms.sh" afterPath="$PROJECT_DIR$/start-worms.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scenes.Flows.json" afterPath="$PROJECT_DIR$/scenes.Flows.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scenes.Web.json" afterPath="$PROJECT_DIR$/scenes.Web.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scenes/Flows.java" afterPath="$PROJECT_DIR$/src/scenes/Flows.java" />
     </list>
     <ignored path="Processing.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,107 +35,88 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Flows.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scenes/Flows.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="13" column="11" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SpaceFiller.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scenes/SpaceFiller.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2120">
+              <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Worms.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scenes/Worms.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-40">
-              <caret line="170" column="51" lean-forward="false" selection-start-line="170" selection-start-column="51" selection-end-line="170" selection-end-column="51" />
+            <state relative-caret-position="70">
+              <caret line="31" column="22" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FlockBehavior.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/boids/behaviors/FlockBehavior.java">
+      <file leaf-file-name="Lusio.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scenes/Lusio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="90" column="61" lean-forward="false" selection-start-line="90" selection-start-column="61" selection-end-line="90" selection-end-column="61" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FlowFieldBehavior.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/boids/behaviors/FlowFieldBehavior.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="27" column="50" lean-forward="true" selection-start-line="27" selection-start-column="50" selection-end-line="27" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Flock.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/boids/Flock.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="52" column="22" lean-forward="false" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
+            <state relative-caret-position="277">
+              <caret line="24" column="39" lean-forward="true" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
               <folding>
-                <element signature="e#5162#5163#0" expanded="true" />
-                <element signature="e#5215#5216#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StoredVectorField.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/common/StoredVectorField.java">
+      <file leaf-file-name="SceneGenerator.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/lusio/SceneGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="30" column="16" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Contours.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/scenes/Contours.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Flows.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/scenes/Flows.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="35" column="24" lean-forward="false" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+            <state relative-caret-position="149">
+              <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
               <folding>
-                <element signature="e#243#244#0" expanded="true" />
-                <element signature="e#270#271#0" expanded="true" />
+                <element signature="e#380#381#0" expanded="true" />
+                <element signature="e#399#400#0" expanded="true" />
+                <element signature="e#428#429#0" expanded="true" />
+                <element signature="e#448#449#0" expanded="true" />
+                <element signature="e#472#473#0" expanded="true" />
+                <element signature="e#487#488#0" expanded="true" />
+                <element signature="e#517#518#0" expanded="true" />
+                <element signature="e#534#535#0" expanded="true" />
+                <element signature="e#558#559#0" expanded="true" />
+                <element signature="e#573#574#0" expanded="true" />
+                <element signature="e#603#604#0" expanded="true" />
+                <element signature="e#620#621#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UncertainWave.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/scenes/UncertainWave.java">
+      <file leaf-file-name="Scene.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scenes/Scene.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="201" column="36" lean-forward="false" selection-start-line="201" selection-start-column="36" selection-end-line="201" selection-end-column="36" />
+            <state relative-caret-position="131">
+              <caret line="38" column="29" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="38" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Web.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/scenes/Web.java">
+      <file leaf-file-name="SceneTool.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scenes/SceneTool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="547">
-              <caret line="137" column="34" lean-forward="true" selection-start-line="137" selection-start-column="34" selection-end-line="137" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Particle.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/common/Particle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+            <state relative-caret-position="80">
+              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -218,10 +169,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Untitled.json" />
-        <option value="$PROJECT_DIR$/src/scenes/SceneTool.java" />
-        <option value="$PROJECT_DIR$/src/boids/tools/LineEmitterTool.java" />
-        <option value="$PROJECT_DIR$/src/boids/tools/MagnetTool.java" />
         <option value="$PROJECT_DIR$/src/boids/tools/PathTool.java" />
         <option value="$PROJECT_DIR$/src/boids/behaviors/WiggleBehavior.java" />
         <option value="$PROJECT_DIR$/src/boids/renderers/MeshFlockRenderer.java" />
@@ -257,18 +204,22 @@
         <option value="$PROJECT_DIR$/src/boids/renderers/GravityFlockRenderer.java" />
         <option value="$PROJECT_DIR$/src/boids/renderers/DebugFlockRenderer.java" />
         <option value="$PROJECT_DIR$/src/modulation/OscSceneModulator.java" />
-        <option value="$PROJECT_DIR$/src/boids/Flock.java" />
         <option value="$PROJECT_DIR$/src/boids/renderers/BoidFlockRenderer.java" />
         <option value="$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java" />
         <option value="$PROJECT_DIR$/src/boids/tools/PointEmitterTool.java" />
-        <option value="$PROJECT_DIR$/src/scenes/Worms.java" />
         <option value="$PROJECT_DIR$/src/scenes/Scene.java" />
         <option value="$PROJECT_DIR$/src/common/StoredVectorField.java" />
         <option value="$PROJECT_DIR$/src/scenes/Contours.java" />
         <option value="$PROJECT_DIR$/src/common/Particle.java" />
         <option value="$PROJECT_DIR$/src/scenes/UncertainWave.java" />
         <option value="$PROJECT_DIR$/src/scenes/Web.java" />
+        <option value="$PROJECT_DIR$/src/boids/Flock.java" />
         <option value="$PROJECT_DIR$/src/scenes/Flows.java" />
+        <option value="$PROJECT_DIR$/src/scenes/SpaceFiller.java" />
+        <option value="$PROJECT_DIR$/src/scenes/Worms.java" />
+        <option value="$PROJECT_DIR$/src/lusio/SceneObject.java" />
+        <option value="$PROJECT_DIR$/src/scenes/Lusio.java" />
+        <option value="$PROJECT_DIR$/src/lusio/SceneGenerator.java" />
       </list>
     </option>
   </component>
@@ -279,9 +230,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
+    <option name="x" value="1920" />
+    <option name="y" value="-359" />
     <option name="width" value="1920" />
-    <option name="height" value="1173" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -298,7 +250,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -339,70 +290,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="scenes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Processing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Processing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Processing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Processing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="boids" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Processing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Processing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="boids" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="behaviors" />
+              <option name="myItemId" value="lusio" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
@@ -443,7 +337,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Flows">
+  <component name="RunManager" selected="Application.Lusio">
     <configuration default="false" name="Veins" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="scenes.Veins" />
@@ -1118,14 +1012,51 @@
       <envs />
       <method />
     </configuration>
-    <list size="7">
+    <configuration default="false" name="SpaceFiller" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="scenes.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="scenes.SpaceFiller" />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Processing" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Lusio" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="scenes.Lusio" />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Processing" />
+      <envs />
+      <method />
+    </configuration>
+    <list size="9">
       <item index="0" class="java.lang.String" itemvalue="Application.Contours" />
       <item index="1" class="java.lang.String" itemvalue="Application.Web" />
       <item index="2" class="java.lang.String" itemvalue="Application.Flows" />
-      <item index="3" class="java.lang.String" itemvalue="Application.Veins" />
-      <item index="4" class="java.lang.String" itemvalue="Application.Worms" />
-      <item index="5" class="java.lang.String" itemvalue="Application.Wave" />
-      <item index="6" class="java.lang.String" itemvalue="Application.UncertainWave" />
+      <item index="3" class="java.lang.String" itemvalue="Application.SpaceFiller" />
+      <item index="4" class="java.lang.String" itemvalue="Application.Lusio" />
+      <item index="5" class="java.lang.String" itemvalue="Application.Veins" />
+      <item index="6" class="java.lang.String" itemvalue="Application.Worms" />
+      <item index="7" class="java.lang.String" itemvalue="Application.Wave" />
+      <item index="8" class="java.lang.String" itemvalue="Application.UncertainWave" />
     </list>
     <recent_temporary>
       <list size="4">
@@ -1293,15 +1224,20 @@
       <workItem from="1492447098192" duration="5000" />
       <workItem from="1496197921939" duration="7646000" />
       <workItem from="1496243802534" duration="6136000" />
-      <workItem from="1496522954470" duration="10121000" />
+      <workItem from="1496522954470" duration="10550000" />
+      <workItem from="1496871012049" duration="74000" />
+      <workItem from="1497587219730" duration="2952000" />
+      <workItem from="1499195797098" duration="1549000" />
+      <workItem from="1499727647462" duration="1498000" />
+      <workItem from="1499869056193" duration="1700000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="383226000" />
+    <option name="totallyTimeSpent" value="391428000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="1173" extended-state="6" />
+    <frame x="1920" y="-359" width="1920" height="1057" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1319,14 +1255,14 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39542145" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3257024" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32562444" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12858464" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3284974" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26730564" sideWeight="0.7003222" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34078807" sideWeight="0.7003222" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18376069" sideWeight="0.29967776" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1400,27 +1336,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/src.zip!/java/awt/Rectangle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="118" column="38" lean-forward="false" selection-start-line="118" selection-start-column="38" selection-end-line="118" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/src.zip!/java/awt/geom/Rectangle2D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="661" column="19" lean-forward="false" selection-start-line="661" selection-start-column="19" selection-end-line="661" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/src.zip!/java/util/Iterator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="91" column="17" lean-forward="false" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/common/Bounds.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
@@ -1580,7 +1495,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1588,7 +1502,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1603,10 +1516,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#149#150#0" expanded="false" />
-            <element signature="e#198#199#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1614,7 +1523,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1629,13 +1537,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9460">
           <caret line="498" column="6" lean-forward="false" selection-start-line="498" selection-start-column="6" selection-end-line="498" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#30785#0" expanded="false" />
-            <element signature="e#19697#19698#0" expanded="false" />
-            <element signature="e#19738#19739#0" expanded="false" />
-            <element signature="e#30707#30708#0" expanded="false" />
-            <element signature="e#30781#30782#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1643,7 +1544,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1196">
           <caret line="72" column="24" lean-forward="false" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1651,6 +1551,115 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/tools/PointEmitterTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-71">
+          <caret line="7" column="41" lean-forward="false" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/tools/LineEmitterTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="41" column="12" lean-forward="false" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/behaviors/EmitBehavior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="15" column="33" lean-forward="false" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/renderers/DebugFlockRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1620">
+          <caret line="96" column="69" lean-forward="false" selection-start-line="96" selection-start-column="69" selection-end-line="96" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/tools/FlowFieldTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="27" column="20" lean-forward="false" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/Contours.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="987">
+          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/StoredVectorField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="30" column="16" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/behaviors/FlowFieldBehavior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="27" column="50" lean-forward="false" selection-start-line="27" selection-start-column="50" selection-end-line="27" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/behaviors/FlockBehavior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1700">
+          <caret line="90" column="61" lean-forward="false" selection-start-line="90" selection-start-column="61" selection-end-line="90" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/UncertainWave.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="987">
+          <caret line="201" column="36" lean-forward="false" selection-start-line="201" selection-start-column="36" selection-end-line="201" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/Web.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="987">
+          <caret line="137" column="34" lean-forward="false" selection-start-line="137" selection-start-column="34" selection-end-line="137" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/Particle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/Flock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/Flows.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="13" column="11" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/SpaceFiller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2120">
+          <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1662,149 +1671,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/tools/PointEmitterTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-71">
-          <caret line="7" column="41" lean-forward="false" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/tools/LineEmitterTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="41" column="12" lean-forward="false" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/scenes/Scene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2420">
-          <caret line="133" column="0" lean-forward="false" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/behaviors/EmitBehavior.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="15" column="33" lean-forward="false" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/renderers/DebugFlockRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1620">
-          <caret line="96" column="69" lean-forward="false" selection-start-line="96" selection-start-column="69" selection-end-line="96" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#487#488#0" expanded="false" />
-            <element signature="e#506#507#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/tools/FlowFieldTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="27" column="20" lean-forward="false" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#233#234#0" expanded="false" />
-            <element signature="e#258#259#0" expanded="false" />
-            <element signature="e#423#424#0" expanded="false" />
-            <element signature="e#443#444#0" expanded="false" />
-            <element signature="e#478#479#0" expanded="false" />
-            <element signature="e#507#508#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/behaviors/FlockBehavior.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="90" column="61" lean-forward="false" selection-start-line="90" selection-start-column="61" selection-end-line="90" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/behaviors/FlowFieldBehavior.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="27" column="50" lean-forward="true" selection-start-line="27" selection-start-column="50" selection-end-line="27" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/Flock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="52" column="22" lean-forward="false" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
-          <folding>
-            <element signature="e#5162#5163#0" expanded="true" />
-            <element signature="e#5215#5216#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/StoredVectorField.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="30" column="16" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/Contours.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/Particle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/UncertainWave.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="201" column="36" lean-forward="false" selection-start-line="201" selection-start-column="36" selection-end-line="201" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/Web.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="137" column="34" lean-forward="true" selection-start-line="137" selection-start-column="34" selection-end-line="137" selection-end-column="34" />
+        <state relative-caret-position="131">
+          <caret line="38" column="29" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="38" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/scenes/Worms.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-40">
-          <caret line="170" column="51" lean-forward="false" selection-start-line="170" selection-start-column="51" selection-end-line="170" selection-end-column="51" />
+        <state relative-caret-position="70">
+          <caret line="31" column="22" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/Flows.java">
+    <entry file="file://$PROJECT_DIR$/src/scenes/Lusio.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="35" column="24" lean-forward="false" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+        <state relative-caret-position="277">
+          <caret line="24" column="39" lean-forward="true" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
           <folding>
-            <element signature="e#243#244#0" expanded="true" />
-            <element signature="e#270#271#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lusio/SceneGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+          <folding>
+            <element signature="e#380#381#0" expanded="true" />
+            <element signature="e#399#400#0" expanded="true" />
+            <element signature="e#428#429#0" expanded="true" />
+            <element signature="e#448#449#0" expanded="true" />
+            <element signature="e#472#473#0" expanded="true" />
+            <element signature="e#487#488#0" expanded="true" />
+            <element signature="e#517#518#0" expanded="true" />
+            <element signature="e#534#535#0" expanded="true" />
+            <element signature="e#558#559#0" expanded="true" />
+            <element signature="e#573#574#0" expanded="true" />
+            <element signature="e#603#604#0" expanded="true" />
+            <element signature="e#620#621#0" expanded="true" />
           </folding>
         </state>
       </provider>
