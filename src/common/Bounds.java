@@ -23,6 +23,40 @@ public class Bounds implements Serializable {
 		return contains(p.x, p.y, p.z);
 	}
 
+	public void constrain(Particle p) {
+		if (p.position.x < -width / 2) {
+			p.position.x = -width / 2;
+			p.velocity.x *= -1;
+		} else if (p.position.x > width / 2) {
+			p.position.x = width / 2;
+			p.velocity.x *= -1;
+		}
+
+		if (p.position.y < -height / 2) {
+			p.position.y = -height / 2;
+			p.velocity.y *= -1;
+		} else if (p.position.y > height / 2) {
+			p.position.y = height / 2;
+			p.velocity.y *= -1;
+		}
+
+		if (p.position.z < -depth / 2) {
+			p.position.z = -depth / 2;
+			p.velocity.z *= -1;
+		} else if (p.position.z > depth / 2) {
+			p.position.z = depth / 2;
+			p.velocity.z *= -1;
+		}
+
+	}
+
+	public PVector getRandomPointInside() {
+		return new PVector(
+				(float) Math.random() * width - width / 2,
+				(float) Math.random() * height - height / 2,
+				(float) Math.random() * height - height / 2);
+	}
+
 	public float getWidth() {
 		return width;
 	}

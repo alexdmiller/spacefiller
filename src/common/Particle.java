@@ -22,6 +22,12 @@ public class Particle {
 		this.color = color;
 	}
 
+	public Particle() {
+		this.position = new PVector();
+		this.velocity = new PVector();
+		this.forces = new PVector();
+	}
+
 	public Particle(float x, float y, float z) {
 		this.position = new PVector(x, y, z);
 		this.velocity = new PVector();
@@ -33,7 +39,7 @@ public class Particle {
 		this.velocity = new PVector();
 		this.forces = new PVector();
 	}
-	
+
 	public Particle(PVector p) {
 		this.position = p;
 		this.velocity = new PVector();
@@ -56,5 +62,10 @@ public class Particle {
 
 	public void applyForce(PVector force) {
 		forces.add(force);
+	}
+
+	public void setRandomVelocity(float min, float max) {
+		this.velocity = PVector.random3D();
+		this.velocity.setMag((float) Math.random() * (max - min) + min);
 	}
 }
