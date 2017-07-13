@@ -2,7 +2,7 @@ package boids.tools;
 
 import boids.Flock;
 import boids.emitter.PointEmitter;
-import common.Bounds;
+import particles.Bounds;
 import scenes.SceneTool;
 
 public class PointEmitterTool extends SceneTool {

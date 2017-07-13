@@ -1,8 +1,6 @@
 package scenes;
 
-import boids.renderers.*;
-import com.google.common.collect.Iterables;
-import common.Particle;
+import particles.Particle;
 import modulation.Mod;
 import modulation.OscSceneModulator;
 import processing.core.PGraphics;
@@ -11,12 +9,9 @@ import waves.LineRenderer;
 import waves.OceanRenderer;
 import waves.UncertainWaveRenderer;
 
-import javax.sound.sampled.Line;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class UncertainWave extends Scene {
 	public static final int PARTICLES_PER_GROUP = 20;

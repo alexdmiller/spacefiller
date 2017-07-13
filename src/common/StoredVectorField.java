@@ -1,11 +1,9 @@
 package common;
 
 import modulation.Mod;
+import particles.Bounds;
 import processing.core.PVector;
 import scenes.Scene;
-
-import java.awt.*;
-import java.io.Serializable;
 
 public class StoredVectorField implements VectorField {
 	@Mod(min = 0, max = 0.1f)
@@ -79,26 +77,26 @@ public class StoredVectorField implements VectorField {
 				PVector f = new PVector(
 						(float) Math.cos(theta) * 40,
 						(float) Math.sin(theta) * 40);
-				
+
 				for (float z = 0; z <= getGridDepth(); z++) {
 					getCell((int) x, (int) y, (int) z).set(f);
 				}
 			}
 		}
-		
+
 //		float shift = 0;
 //		float noiseScale = 0.5f;
 //		for (float x = 0; x <= getGridWidth(); x++) {
 //			for (float y = 0; y <= getGridHeight(); y++) {
 //				for (float z = 0; z <= getGridDepth(); z++) {
 //					float theta = x * 10 + y * 10 + z * 10; // (float) (Scene.getInstance().noise(x * noiseScale, y * noiseScale, z * noiseScale) * 3.141592653589793D * 2.0D);
-//					
+//
 ////					float vz = -1f; //(float) (Scene.getInstance().noise(x * noiseScale + shift, y * noiseScale + shift, z * noiseScale + shift) * 2.0D - 1.0D);
 ////					float angle = (float) (Scene.getInstance().noise(x * noiseScale, y * noiseScale, z * noiseScale) * 3.141592653589793D * 2.0D);
 //
 ////					float vz = (float) (Math.random() * 2.0D - 1.0D);
 ////					float angle = (float) (Math.random() * 3.141592653589793D * 2.0D);
-//					
+//
 //					PVector f = new PVector(
 //							(float) Math.cos(theta),
 //							(float) Math.sin(theta),

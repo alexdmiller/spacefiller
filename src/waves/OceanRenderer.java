@@ -1,9 +1,8 @@
 package waves;
 
-import common.Particle;
+import particles.Particle;
 import modulation.Mod;
 import processing.core.PGraphics;
-import processing.core.PVector;
 import scenes.UncertainWave;
 
 import java.util.List;

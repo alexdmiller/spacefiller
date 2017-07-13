@@ -5,14 +5,13 @@ import boids.Magnet;
 import boids.emitter.Emitter;
 import boids.emitter.LineEmitter;
 import boids.emitter.PointEmitter;
-import common.Bounds;
+import particles.Bounds;
 import common.StoredVectorField;
 import javafx.util.Pair;
 import processing.core.PConstants;
 import processing.core.PGraphics;
 import processing.core.PVector;
 
-import java.awt.*;
 import java.util.List;
 
 public class DebugFlockRenderer extends FlockRenderer {

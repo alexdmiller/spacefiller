@@ -1,6 +1,6 @@
 package scenes;
 
-import common.Particle;
+import particles.Particle;
 import modulation.Mod;
 import modulation.OscSceneModulator;
 import processing.core.PGraphics;

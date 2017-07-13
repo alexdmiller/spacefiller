@@ -4,6 +4,7 @@ import boids.behaviors.Behavior;
 import boids.emitter.Emitter;
 import common.*;
 import javafx.util.Pair;
+import particles.Bounds;
 import processing.core.PVector;
 import modulation.Mod;
 
@@ -24,7 +25,7 @@ public class Flock implements Serializable {
 
 	@Mod(min = -0.2f, max = 0.2f)
 	public float rotationSpeed = 0.0f;
-	
+
 	@Mod(min = 0, max = (float) (2 * Math.PI), defaultValue =  0)
 	public float rotation;
 

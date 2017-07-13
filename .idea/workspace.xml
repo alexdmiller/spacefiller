@@ -7,12 +7,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7bb3a9e-05bb-464d-967e-9bda287e8f0d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lusio/generators/MeshGenerator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/lusio/SceneGenerator.java" afterPath="$PROJECT_DIR$/src/lusio/generators/SceneGenerator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/scenes/Lusio.java" afterPath="$PROJECT_DIR$/src/lusio/Lusio.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/particles/ParticleSystem.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/particles/ParticleUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/particles/behaviors/AttractParticles.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/particles/behaviors/BoundParticles.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/particles/behaviors/FlockParticles.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/particles/behaviors/ParticleBehavior.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/particles/behaviors/ParticleFriction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/particles/behaviors/RepelParticles.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/particles/renderers/ParticleDotRenderer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/particles/renderers/ParticleRenderer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/particles/renderers/ParticleWebRenderer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/common/Bounds.java" afterPath="$PROJECT_DIR$/src/particles/Bounds.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/common/Particle.java" afterPath="$PROJECT_DIR$/src/particles/Particle.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/lusio/generators/MeshGenerator.java" afterPath="$PROJECT_DIR$/src/lusio/generators/ParticleGenerator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/Bounds.java" afterPath="$PROJECT_DIR$/src/common/Bounds.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/Particle.java" afterPath="$PROJECT_DIR$/src/common/Particle.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/Flock.java" afterPath="$PROJECT_DIR$/src/boids/Flock.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/renderers/DebugFlockRenderer.java" afterPath="$PROJECT_DIR$/src/boids/renderers/DebugFlockRenderer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/renderers/GravityFlockRenderer.java" afterPath="$PROJECT_DIR$/src/boids/renderers/GravityFlockRenderer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boids/tools/PointEmitterTool.java" afterPath="$PROJECT_DIR$/src/boids/tools/PointEmitterTool.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/StoredVectorField.java" afterPath="$PROJECT_DIR$/src/common/StoredVectorField.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lusio/Lusio.java" afterPath="$PROJECT_DIR$/src/lusio/Lusio.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lusio/generators/SceneGenerator.java" afterPath="$PROJECT_DIR$/src/lusio/generators/SceneGenerator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scenes/Flows.java" afterPath="$PROJECT_DIR$/src/scenes/Flows.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scenes/UncertainWave.java" afterPath="$PROJECT_DIR$/src/scenes/UncertainWave.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scenes/Web.java" afterPath="$PROJECT_DIR$/src/scenes/Web.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scenes/Worms.java" afterPath="$PROJECT_DIR$/src/scenes/Worms.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/waves/LineRenderer.java" afterPath="$PROJECT_DIR$/src/waves/LineRenderer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/waves/OceanRenderer.java" afterPath="$PROJECT_DIR$/src/waves/OceanRenderer.java" />
     </list>
     <ignored path="Processing.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,58 +56,78 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="AttractParticles.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/particles/behaviors/AttractParticles.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="31" selection-end-column="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FlockParticles.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/particles/behaviors/FlockParticles.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="233">
+              <caret line="28" column="3" lean-forward="true" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BoidUtils.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/boids/BoidUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ParticleUtils.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/particles/ParticleUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="67">
+              <caret line="7" column="28" lean-forward="false" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FlockBehavior.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/boids/behaviors/FlockBehavior.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="251">
+              <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="36" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Behavior.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/boids/behaviors/Behavior.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="9" column="22" lean-forward="false" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="SceneGenerator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lusio/generators/SceneGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="13" column="10" lean-forward="true" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#338#339#0" expanded="true" />
-                <element signature="e#361#362#0" expanded="true" />
-                <element signature="e#403#404#0" expanded="true" />
-                <element signature="e#433#434#0" expanded="true" />
-                <element signature="e#458#459#0" expanded="true" />
-                <element signature="e#476#477#0" expanded="true" />
-                <element signature="e#507#508#0" expanded="true" />
-                <element signature="e#527#528#0" expanded="true" />
-                <element signature="e#552#553#0" expanded="true" />
-                <element signature="e#570#571#0" expanded="true" />
-                <element signature="e#601#602#0" expanded="true" />
-                <element signature="e#621#622#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MeshGenerator.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/lusio/generators/MeshGenerator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="533">
-              <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+            <state relative-caret-position="183">
+              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Bounds.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/common/Bounds.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="732">
-              <caret line="47" column="18" lean-forward="false" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Particle.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/common/Particle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="51" column="0" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -93,8 +135,32 @@
       <file leaf-file-name="Lusio.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lusio/Lusio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-78">
-              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+            <state relative-caret-position="90">
+              <caret line="65" column="25" lean-forward="false" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ParticleGenerator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/lusio/generators/ParticleGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="283">
+              <caret line="38" column="33" lean-forward="false" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ParticleSystem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/particles/ParticleSystem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="30" column="18" lean-forward="false" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -149,20 +215,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/boids/renderers/FlockRenderer.java" />
-        <option value="$PROJECT_DIR$/src/boids/renderers/BoidRenderer.java" />
-        <option value="$PROJECT_DIR$/src/modulation/MethodModulationTarget.java" />
-        <option value="$PROJECT_DIR$/src/boids/renderers/MeshLikeRenderer.java" />
-        <option value="$PROJECT_DIR$/src/scenes/Wave.java" />
-        <option value="$PROJECT_DIR$/src/waves/UncertainWaveRenderer.java" />
-        <option value="$PROJECT_DIR$/src/waves/OceanRenderer.java" />
-        <option value="$PROJECT_DIR$/src/boids/renderers/PointBoidRenderer.java" />
-        <option value="$PROJECT_DIR$/src/waves/LineRenderer.java" />
-        <option value="$PROJECT_DIR$/src/common/PropertyField.java" />
-        <option value="$PROJECT_DIR$/src/boids/Boid.java" />
-        <option value="$PROJECT_DIR$/src/common/VectorField.java" />
-        <option value="$PROJECT_DIR$/src/boids/tools/FlowFieldTool.java" />
-        <option value="$PROJECT_DIR$/src/boids/renderers/MeshLikeFlockRenderer.java" />
         <option value="$PROJECT_DIR$/src/boids/emitter/Emitter.java" />
         <option value="$PROJECT_DIR$/src/boids/emitter/LineEmitter.java" />
         <option value="$PROJECT_DIR$/src/boids/emitter/PointEmitter.java" />
@@ -195,11 +247,25 @@
         <option value="$PROJECT_DIR$/src/scenes/Lusio.java" />
         <option value="$PROJECT_DIR$/src/lusio/SceneGenerator.java" />
         <option value="$PROJECT_DIR$/src/lusio/generators/FlockGenerator.java" />
-        <option value="$PROJECT_DIR$/src/lusio/generators/SceneGenerator.java" />
-        <option value="$PROJECT_DIR$/src/lusio/Lusio.java" />
         <option value="$PROJECT_DIR$/src/common/Particle.java" />
         <option value="$PROJECT_DIR$/src/common/Bounds.java" />
+        <option value="$PROJECT_DIR$/src/common/ParticleWebRenderer.java" />
+        <option value="$PROJECT_DIR$/src/common/renderers/ParticleRenderer.java" />
         <option value="$PROJECT_DIR$/src/lusio/generators/MeshGenerator.java" />
+        <option value="$PROJECT_DIR$/src/common/renderers/ParticleDotRenderer.java" />
+        <option value="$PROJECT_DIR$/src/common/renderers/ParticleWebRenderer.java" />
+        <option value="$PROJECT_DIR$/src/particles/behaviors/Behavior.java" />
+        <option value="$PROJECT_DIR$/src/particles/behaviors/BoundParticles.java" />
+        <option value="$PROJECT_DIR$/src/lusio/generators/SceneGenerator.java" />
+        <option value="$PROJECT_DIR$/src/particles/behaviors/ParticleBehavior.java" />
+        <option value="$PROJECT_DIR$/src/particles/ParticleSystem.java" />
+        <option value="$PROJECT_DIR$/src/particles/behaviors/ParticleFriction.java" />
+        <option value="$PROJECT_DIR$/src/lusio/generators/ParticleGenerator.java" />
+        <option value="$PROJECT_DIR$/src/particles/behaviors/RepelParticles.java" />
+        <option value="$PROJECT_DIR$/src/particles/behaviors/AttractParticles.java" />
+        <option value="$PROJECT_DIR$/src/particles/ParticleUtils.java" />
+        <option value="$PROJECT_DIR$/src/lusio/Lusio.java" />
+        <option value="$PROJECT_DIR$/src/particles/behaviors/FlockParticles.java" />
       </list>
     </option>
   </component>
@@ -287,6 +353,46 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="particles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Processing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Processing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="particles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="behaviors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Processing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Processing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="lusio" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -328,6 +434,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Processing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Processing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="boids" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Processing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Processing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="boids" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="behaviors" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1266,12 +1412,12 @@
       <workItem from="1497587219730" duration="2952000" />
       <workItem from="1499195797098" duration="1549000" />
       <workItem from="1499727647462" duration="1498000" />
-      <workItem from="1499869056193" duration="6645000" />
+      <workItem from="1499869056193" duration="13417000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="396373000" />
+    <option name="totallyTimeSpent" value="403145000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1053" extended-state="6" />
@@ -1297,7 +1443,7 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11238293" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33714882" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34078807" sideWeight="0.7003222" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1373,105 +1519,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/boids/renderers/BoidRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="7" column="37" lean-forward="false" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/emitter/PointEmitter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="41" column="21" lean-forward="false" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/renderers/MeshFlockRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="30" column="23" lean-forward="false" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/renderers/MeshLikeFlockRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="20" column="41" lean-forward="false" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/emitter/Emitter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scenes.Worms.out.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-70">
-          <caret line="497" column="14" lean-forward="false" selection-start-line="497" selection-start-column="5" selection-end-line="497" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scenes.Worms.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="12994" lean-forward="false" selection-start-line="0" selection-start-column="12994" selection-end-line="0" selection-end-column="12994" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/src.zip!/java/lang/reflect/Field.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="62" column="6" lean-forward="false" selection-start-line="62" selection-start-column="6" selection-end-line="62" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/modulation/MethodModulationTarget.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/modulation/Mod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="9" column="34" lean-forward="false" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/modulation/FieldModulationTarget.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="5" column="48" lean-forward="false" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/modulation/ModulationTarget.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/ScalarField.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/VectorField.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/boids/behaviors/FollowPathBehavior.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
@@ -1626,13 +1673,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/behaviors/FlockBehavior.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1700">
-          <caret line="90" column="61" lean-forward="false" selection-start-line="90" selection-start-column="61" selection-end-line="90" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/scenes/UncertainWave.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="987">
@@ -1704,17 +1744,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lusio/Lusio.java">
+    <entry file="file://$PROJECT_DIR$/src/particles/renderers/ParticleDotRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-78">
-          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        <state relative-caret-position="320">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#290#291#0" expanded="true" />
+            <element signature="e#322#323#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/particles/renderers/ParticleRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="26" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/Bounds.java">
+    <entry file="file://$PROJECT_DIR$/src/particles/Bounds.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="732">
           <caret line="47" column="18" lean-forward="false" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
@@ -1722,29 +1774,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lusio/generators/SceneGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="13" column="10" lean-forward="true" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#338#339#0" expanded="true" />
-            <element signature="e#361#362#0" expanded="true" />
-            <element signature="e#403#404#0" expanded="true" />
-            <element signature="e#433#434#0" expanded="true" />
-            <element signature="e#458#459#0" expanded="true" />
-            <element signature="e#476#477#0" expanded="true" />
-            <element signature="e#507#508#0" expanded="true" />
-            <element signature="e#527#528#0" expanded="true" />
-            <element signature="e#552#553#0" expanded="true" />
-            <element signature="e#570#571#0" expanded="true" />
-            <element signature="e#601#602#0" expanded="true" />
-            <element signature="e#621#622#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/Particle.java">
+    <entry file="file://$PROJECT_DIR$/src/particles/Particle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="433">
           <caret line="51" column="0" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
@@ -1752,10 +1782,156 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lusio/generators/MeshGenerator.java">
+    <entry file="file://$PROJECT_DIR$/src/particles/renderers/ParticleWebRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        <state relative-caret-position="517">
+          <caret line="28" column="9" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="28" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/behaviors/MagnetBehavior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/particles/behaviors/ParticleFriction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="9" lean-forward="false" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#249#250#0" expanded="true" />
+            <element signature="e#283#284#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/particles/behaviors/BoundParticles.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="13" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/particles/behaviors/ParticleBehavior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" column="33" lean-forward="false" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#276#277#0" expanded="true" />
+            <element signature="e#307#308#0" expanded="true" />
+            <element signature="e#373#374#0" expanded="true" />
+            <element signature="e#419#420#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/particles/behaviors/RepelParticles.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lusio/generators/SceneGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/particles/behaviors/AttractParticles.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="31" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/behaviors/Behavior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="9" column="22" lean-forward="false" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/BoidUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/behaviors/FlockBehavior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="36" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lusio/Lusio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="65" column="25" lean-forward="false" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lusio/generators/ParticleGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="38" column="33" lean-forward="false" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/particles/ParticleUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="7" column="28" lean-forward="false" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/particles/ParticleSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="30" column="18" lean-forward="false" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/particles/behaviors/FlockParticles.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="28" column="3" lean-forward="true" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

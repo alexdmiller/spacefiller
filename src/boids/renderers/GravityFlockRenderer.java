@@ -2,15 +2,9 @@ package boids.renderers;
 
 import boids.Boid;
 import boids.Flock;
-import boids.BoidEventListener;
-import boids.behaviors.Behavior;
-import common.Bounds;
-import megamu.mesh.Delaunay;
+import particles.Bounds;
 import processing.core.PGraphics;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class GravityFlockRenderer extends FlockRenderer {
