@@ -13,6 +13,12 @@ public class Bounds implements Serializable {
 		this.depth = depth;
 	}
 
+	public Bounds(float size) {
+		this.width = size;
+		this.height = size;
+		this.depth = size;
+	}
+
 	public boolean contains(float x, float y, float z) {
 		return 	(x > -width/2 && x < width/2) &&
 				(y > -height/2 && y < height/2) &&

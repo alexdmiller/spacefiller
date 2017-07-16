@@ -17,6 +17,7 @@ public class ParticleGenerator extends SceneGenerator {
   private float maxForce;
   private float angle;
 
+  // TODO: why does this need to have a max force?
   public ParticleGenerator(int numParticles, float maxForce, Bounds bounds) {
     this.maxForce = maxForce;
     this.numParticles = numParticles;
@@ -27,16 +28,13 @@ public class ParticleGenerator extends SceneGenerator {
   }
 
   @Override
-  public void setup() {}
-
-  @Override
   public void draw(PGraphics graphics) {
     particleSystem.update();
 
-    angle += 0.01;
+    angle += 0.005;
 
     graphics.strokeWeight(1);
-    graphics.rotateX(0.5f + angle);
+    graphics.rotateX(0.5f);
     graphics.rotateY((float) Math.PI / 5 + angle);
 
     Bounds bounds = particleSystem.getBounds();

@@ -10,7 +10,6 @@ public abstract class SceneGenerator {
   private float x;
   private float y;
 
-  public abstract void setup();
   public abstract void draw(PGraphics graphics);
 
   public float getX() {

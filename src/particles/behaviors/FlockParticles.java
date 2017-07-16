@@ -1,5 +1,6 @@
 package particles.behaviors;
 
+import boids.Flock;
 import particles.Particle;
 import particles.ParticleUtils;
 import processing.core.PVector;
@@ -18,7 +19,23 @@ public class FlockParticles extends ParticleBehavior {
   private float maxForce = 1;
   private float maxSpeed = 10;
 
-  public FlockParticles() {
+  public FlockParticles(
+      float separationWeight,
+      float alignmentWeight,
+      float cohesionWeight,
+      float desiredSeparation,
+      float alignmentThreshold,
+      float cohesionThreshold,
+      float maxForce,
+      float maxSpeed) {
+    this.separationWeight = separationWeight;
+    this.alignmentWeight = alignmentWeight;
+    this.cohesionWeight = cohesionWeight;
+    this.desiredSeparation = desiredSeparation;
+    this.alignmentThreshold = alignmentThreshold;
+    this.cohesionThreshold = cohesionThreshold;
+    this.maxForce = maxForce;
+    this.maxSpeed = maxSpeed;
   }
 
   @Override

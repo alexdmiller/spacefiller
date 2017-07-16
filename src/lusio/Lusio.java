@@ -1,6 +1,7 @@
 package lusio;
 
 import codeanticode.syphon.SyphonServer;
+import lusio.generators.GraphGenerator;
 import particles.Bounds;
 import particles.behaviors.*;
 import particles.renderers.ParticleDotRenderer;
@@ -29,49 +30,43 @@ public class Lusio extends PApplet {
     Lusio.instance = this;
     generators = new ArrayList<>();
 
-    ParticleGenerator gen = new ParticleGenerator(10, 10,
-        new Bounds(200, 100, 200));
-    gen.setPos(300, 300);
-    gen.addRenderer(new ParticleDotRenderer(10));
-    gen.addBehavior(new BoundParticles());
-    generators.add(gen);
+//    ParticleGenerator gen = new ParticleGenerator(10, 10,
+//        new Bounds(200, 100, 200));
+//    gen.setPos(300, 300);
+//    gen.addRenderer(new ParticleDotRenderer(10));
+//    gen.addBehavior(new BoundParticles());
+//    generators.add(gen);
+//
+//    ParticleGenerator gen2 = new ParticleGenerator(500, 10,
+//        new Bounds(200, 100, 100));
+//    gen2.setPos(600, 300);
+//    gen2.addRenderer(new ParticleDotRenderer(2));
+//    generators.add(gen2);
+//
+//    ParticleGenerator gen3 = new ParticleGenerator(200, 10,
+//        new Bounds(150, 150, 150));
+//    gen3.setPos(300, 600);
+//    gen3.addRenderer(new ParticleWebRenderer(20, 1));
+//    generators.add(gen3);
+//
+//    ParticleGenerator gen4 = new ParticleGenerator(50, 10,
+//        new Bounds(100, 200, 100));
+//    gen4.setPos(600, 600);
+//    gen4.addRenderer(new ParticleDotRenderer(6));
+//    gen4.addRenderer(new ParticleWebRenderer(50, 3));
+//    generators.add(gen4);
+//
+//    ParticleGenerator gen5 = new ParticleGenerator(50, 10,
+//        new Bounds(200, 200, 200));
+//    gen5.setPos(900, 300);
+//    gen5.addRenderer(new ParticleDotRenderer(6));
+//    gen5.addRenderer(new ParticleWebRenderer(50, 1));
+//    gen5.addBehavior(new AttractParticles(100, 0.01f));
+//    gen5.addBehavior(new RepelParticles(50, 0.2f));
+//    gen5.addBehavior(new ParticleFriction(0.9f));
+//    generators.add(gen5);
 
-    ParticleGenerator gen2 = new ParticleGenerator(500, 10,
-        new Bounds(200, 100, 100));
-    gen2.setPos(600, 300);
-    gen2.addRenderer(new ParticleDotRenderer(2));
-    generators.add(gen2);
 
-    ParticleGenerator gen3 = new ParticleGenerator(200, 10,
-        new Bounds(150, 150, 150));
-    gen3.setPos(300, 600);
-    gen3.addRenderer(new ParticleWebRenderer(20, 1));
-    generators.add(gen3);
-
-    ParticleGenerator gen4 = new ParticleGenerator(50, 10,
-        new Bounds(100, 200, 100));
-    gen4.setPos(600, 600);
-    gen4.addRenderer(new ParticleDotRenderer(6));
-    gen4.addRenderer(new ParticleWebRenderer(50, 3));
-    generators.add(gen4);
-
-    ParticleGenerator gen5 = new ParticleGenerator(50, 10,
-        new Bounds(200, 200, 200));
-    gen5.setPos(900, 300);
-    gen5.addRenderer(new ParticleDotRenderer(6));
-    gen5.addRenderer(new ParticleWebRenderer(50, 1));
-    gen5.addBehavior(new AttractParticles(100, 0.01f));
-    gen5.addBehavior(new RepelParticles(50, 0.2f));
-    gen5.addBehavior(new ParticleFriction(0.9f));
-    generators.add(gen5);
-
-    ParticleGenerator gen6 = new ParticleGenerator(50, 10,
-        new Bounds(200, 200, 200));
-    gen6.setPos(900, 600);
-    gen6.addRenderer(new ParticleDotRenderer(6));
-    gen6.addBehavior(new FlockParticles());
-    gen6.addBehavior(new ParticleFriction(0.9f));
-    generators.add(gen6);
   }
 
   public void settings() {
@@ -84,9 +79,34 @@ public class Lusio extends PApplet {
     canvas.smooth();
     server = new SyphonServer(this, this.getClass().getName());
 
-    for (SceneGenerator generator : generators) {
-      generator.setup();
-    }
+//    ParticleGenerator gen = new ParticleGenerator(10, 10,
+//    new Bounds(200, 100, 200));
+//    gen.setPos(width/2 - 100, height/2 - 100);
+//    gen.addRenderer(new ParticleDotRenderer(10));
+//    gen.addBehavior(new BoundParticles());
+//    generators.add(gen);
+//
+//    ParticleGenerator gen4 = new ParticleGenerator(50, 10,
+//        new Bounds(100, 200, 100));
+//    gen4.setPos(width/2 + 100, height/2 + 100);
+//    gen4.addRenderer(new ParticleWebRenderer(50, 1));
+//    gen4.addBehavior(new AttractParticles(100, 0.01f));
+//    gen4.addBehavior(new RepelParticles(40, 0.2f));
+//    gen4.addBehavior(new ParticleFriction(0.99f));
+//    generators.add(gen4);
+//
+//    ParticleGenerator gen6 = new ParticleGenerator(500, 10,
+//        new Bounds(500));
+//    gen6.setPos(width / 2, height / 2);
+//    gen6.addRenderer(new ParticleDotRenderer(2));
+//    gen6.addRenderer(new ParticleWebRenderer(50, 1));
+//    gen6.addBehavior(new FlockParticles(2, 1, 0.5f, 40, 80, 100, 0.5f, 10));
+//    // gen6.addBehavior(new ParticleFriction(0.5f));
+//    generators.add(gen6);
+
+
+    GraphGenerator graphGen = new GraphGenerator();
+    generators.add(graphGen);
   }
 
   private void drawGenerators() {
