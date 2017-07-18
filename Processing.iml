@@ -16,5 +16,14 @@
     <orderEntry type="library" name="com.google.guava:guava:19.0-rc2" level="project" />
     <orderEntry type="library" name="mesh" level="project" />
     <orderEntry type="library" name="quickhull3d.1.4" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Documents/Processing3/libraries/controlP5/library/controlP5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

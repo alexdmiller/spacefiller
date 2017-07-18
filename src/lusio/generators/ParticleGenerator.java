@@ -49,7 +49,6 @@ public class ParticleGenerator extends SceneGenerator {
   public void addRenderer(ParticleRenderer renderer) {
     renderers.add(renderer);
   }
-
   public void addBehavior(ParticleBehavior behavior) {
     particleSystem.addBehavior(behavior);
   }

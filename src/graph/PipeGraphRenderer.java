@@ -10,11 +10,12 @@ import java.util.List;
 /**
  * Created by miller on 7/16/17.
  */
-public class AnimatedFillGraphRenderer implements GraphRenderer {
+public class PipeGraphRenderer implements GraphRenderer {
   private List<AnimationInfo> currentlyAnimating;
-  private float fillSpeed = 20f;
+  private float chance = 0.5f;
+  private int maxPerEdge = 10;
 
-  public AnimatedFillGraphRenderer() {
+  public PipeGraphRenderer() {
     currentlyAnimating = new ArrayList<>();
   }
 
@@ -24,22 +25,17 @@ public class AnimatedFillGraphRenderer implements GraphRenderer {
     graphics.strokeWeight(1);
     graphics.stroke(255);
 
-    for (Node n : graph.getNodes()) {
-      graphics.ellipse(n.position.x, n.position.y, 20, 20);
-    }
-
     List<Edge> edges = graph.getEdges();
-    for (Edge e : edges) {
-      graphics.line(e.n1.position.x, e.n1.position.y, e.n2.position.x, e.n2.position.y);
-    }
 
-    if (currentlyAnimating.isEmpty()) {
-      Edge e = edges.get(0);
-      AnimationInfo a = new AnimationInfo(e, e.n1, e.n2);
+    float maxPoints = maxPerEdge * edges.size();
+
+    if (currentlyAnimating.size() < maxPoints) {
+      Edge e = edges.get((int) Math.floor(edges.size() * Math.random()));
+      AnimationInfo a = new AnimationInfo(e, e.n1, e.n2, (float) Math.random() * 3 + 1);
       currentlyAnimating.add(a);
     }
 
-    graphics.strokeWeight(5);
+    graphics.strokeWeight(1);
 
     List<AnimationInfo> newAnimations = new ArrayList<>();
 
@@ -48,17 +44,19 @@ public class AnimatedFillGraphRenderer implements GraphRenderer {
       AnimationInfo a = itr.next();
 
       float distance = PVector.dist(a.start.position, a.end.position);
-      if (a.fillAmount < distance) {
-        a.fillAmount = a.fillAmount + fillSpeed;
+      if (a.point < distance) {
+        a.point = a.point + a.speed;
 
-        if (a.fillAmount > distance) {
-          a.fillAmount = distance;
+        if (a.point > distance) {
+          a.point = distance;
         }
 
       } else if (!a.finished) {
         // This block is entered once: right when a line is finished animating.
         // Set the finished flag to true so it doesn't run again.
         a.finished = true;
+
+        itr.remove();
 
         // In order to choose the next animated edge, we need to select from
         // available edges that have not already been animated yet. To do this,
@@ -69,27 +67,23 @@ public class AnimatedFillGraphRenderer implements GraphRenderer {
         //   3. Any edges that are in the "newAnimations" list. This list will be
         //      added to "currentlyAnimating" at the end of the frame.
         List<Edge> connections = new ArrayList<>(a.end.connections);
-        connections.remove(a.edge);
-        for (AnimationInfo a2 : currentlyAnimating) {
-          if (connections.contains(a2.edge) || newAnimations.contains(a2.edge)) {
-            connections.remove(a2.edge);
-          }
-        }
 
         // Pick a new edge from the filtered list and start animating it.
-        for (Edge e : connections) {
+        Edge e = connections.get((int) Math.floor(connections.size() * Math.random()));
+        if (edges.size() < maxPoints) {
           Node start = a.end;
           Node end = a.end != e.n1 ? e.n1 : e.n2;
-          AnimationInfo newAnimation = new AnimationInfo(e, start, end);
+          AnimationInfo newAnimation = new AnimationInfo(e, start, end, (float) Math.random() * 3 + 1);
           newAnimations.add(newAnimation);
         }
       }
 
+      graphics.strokeWeight(3);
       PVector delta = PVector.sub(a.end.position, a.start.position);
       graphics.pushMatrix();
       graphics.translate(a.start.position.x, a.start.position.y);
       graphics.rotate(delta.heading());
-      graphics.line(0, 0, a.fillAmount, 0);
+      graphics.point(a.point, (float) (Math.sin(a.point / 10 + a.shift) * 3));
       graphics.popMatrix();
     }
 
@@ -100,18 +94,17 @@ public class AnimatedFillGraphRenderer implements GraphRenderer {
     public Node start;
     public Node end;
     public Edge edge;
-    public float fillAmount;
-    public boolean finished;
+    public float point;
+    public float speed;
+    public float shift;
+    boolean finished;
 
-    public AnimationInfo(Edge e, Node start, Node end) {
+    public AnimationInfo(Edge e, Node start, Node end, float speed) {
       edge = e;
       this.start = start;
       this.end = end;
-    }
-
-    @Override
-    public String toString() {
-      return start + " -> " + end + " / " + finished;
+      this.speed = speed;
+      this.shift = (float) (Math.random() * 2 * Math.PI);
     }
   }
 }

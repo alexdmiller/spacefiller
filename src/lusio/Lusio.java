@@ -1,19 +1,26 @@
 package lusio;
 
 import codeanticode.syphon.SyphonServer;
-import lusio.generators.GraphGenerator;
-import particles.Bounds;
-import particles.behaviors.*;
-import particles.renderers.ParticleDotRenderer;
-import particles.renderers.ParticleWebRenderer;
-import lusio.generators.ParticleGenerator;
+import controlP5.ControlEvent;
+import controlP5.ControlP5;
+import controlP5.DropdownList;
+import controlP5.Textfield;
+import graph.BasicGraphRenderer;
+import graph.Graph;
+import graph.GraphRenderer;
+import graph.Node;
 import lusio.generators.SceneGenerator;
+import lusio.scenes.Scene;
+import lusio.scenes.SceneOne;
 import processing.core.PApplet;
 import processing.core.PGraphics;
+import processing.core.PVector;
 import processing.opengl.PJOGL;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Lusio extends PApplet {
   private static PApplet instance;
@@ -24,49 +31,19 @@ public class Lusio extends PApplet {
 
   private SyphonServer server;
   private PGraphics canvas;
-  private List<SceneGenerator> generators;
+  private Scene[] scenes = {new SceneOne()};
+
+  private Map<String, Graph> graphs;
+  private Graph selectedGraph;
+  private ControlP5 controlP5;
+  private Textfield graphNameField;
+  private Node selectedNode;
+  private boolean creatingEdge;
 
   public Lusio() {
     Lusio.instance = this;
     generators = new ArrayList<>();
-
-//    ParticleGenerator gen = new ParticleGenerator(10, 10,
-//        new Bounds(200, 100, 200));
-//    gen.setPos(300, 300);
-//    gen.addRenderer(new ParticleDotRenderer(10));
-//    gen.addBehavior(new BoundParticles());
-//    generators.add(gen);
-//
-//    ParticleGenerator gen2 = new ParticleGenerator(500, 10,
-//        new Bounds(200, 100, 100));
-//    gen2.setPos(600, 300);
-//    gen2.addRenderer(new ParticleDotRenderer(2));
-//    generators.add(gen2);
-//
-//    ParticleGenerator gen3 = new ParticleGenerator(200, 10,
-//        new Bounds(150, 150, 150));
-//    gen3.setPos(300, 600);
-//    gen3.addRenderer(new ParticleWebRenderer(20, 1));
-//    generators.add(gen3);
-//
-//    ParticleGenerator gen4 = new ParticleGenerator(50, 10,
-//        new Bounds(100, 200, 100));
-//    gen4.setPos(600, 600);
-//    gen4.addRenderer(new ParticleDotRenderer(6));
-//    gen4.addRenderer(new ParticleWebRenderer(50, 3));
-//    generators.add(gen4);
-//
-//    ParticleGenerator gen5 = new ParticleGenerator(50, 10,
-//        new Bounds(200, 200, 200));
-//    gen5.setPos(900, 300);
-//    gen5.addRenderer(new ParticleDotRenderer(6));
-//    gen5.addRenderer(new ParticleWebRenderer(50, 1));
-//    gen5.addBehavior(new AttractParticles(100, 0.01f));
-//    gen5.addBehavior(new RepelParticles(50, 0.2f));
-//    gen5.addBehavior(new ParticleFriction(0.9f));
-//    generators.add(gen5);
-
-
+    graphs = new HashMap<>();
   }
 
   public void settings() {
@@ -79,34 +56,23 @@ public class Lusio extends PApplet {
     canvas.smooth();
     server = new SyphonServer(this, this.getClass().getName());
 
-//    ParticleGenerator gen = new ParticleGenerator(10, 10,
-//    new Bounds(200, 100, 200));
-//    gen.setPos(width/2 - 100, height/2 - 100);
-//    gen.addRenderer(new ParticleDotRenderer(10));
-//    gen.addBehavior(new BoundParticles());
-//    generators.add(gen);
-//
-//    ParticleGenerator gen4 = new ParticleGenerator(50, 10,
-//        new Bounds(100, 200, 100));
-//    gen4.setPos(width/2 + 100, height/2 + 100);
-//    gen4.addRenderer(new ParticleWebRenderer(50, 1));
-//    gen4.addBehavior(new AttractParticles(100, 0.01f));
-//    gen4.addBehavior(new RepelParticles(40, 0.2f));
-//    gen4.addBehavior(new ParticleFriction(0.99f));
-//    generators.add(gen4);
-//
-//    ParticleGenerator gen6 = new ParticleGenerator(500, 10,
-//        new Bounds(500));
-//    gen6.setPos(width / 2, height / 2);
-//    gen6.addRenderer(new ParticleDotRenderer(2));
-//    gen6.addRenderer(new ParticleWebRenderer(50, 1));
-//    gen6.addBehavior(new FlockParticles(2, 1, 0.5f, 40, 80, 100, 0.5f, 10));
-//    // gen6.addBehavior(new ParticleFriction(0.5f));
-//    generators.add(gen6);
+    controlP5 = new ControlP5(this);
+    controlP5.addButton("New Graph")
+        .setId(1)
+        .setPosition(200, 20)
+        .setSize(100, 20);
 
+    graphNameField = controlP5.addTextfield("graphName")
+        .setPosition(350,20)
+        .setSize(200,20)
+        .setFocus(true)
+        .setColor(color(255,0,0));
 
-    GraphGenerator graphGen = new GraphGenerator();
-    generators.add(graphGen);
+    DropdownList dropdownList = controlP5.addDropdownList("Scene")
+        .setId(2)
+        .setPosition(20,20)
+        .addItem("Scene One", 0)
+        .addItem("Scene Two", 1);
   }
 
   private void drawGenerators() {
@@ -128,7 +94,78 @@ public class Lusio extends PApplet {
 
     drawGenerators();
 
+    GraphRenderer renderer = new BasicGraphRenderer();
+    for (Graph g : graphs.values()) {
+      renderer.render(canvas, g);
+    }
+
+    if (selectedNode != null && creatingEdge) {
+      canvas.strokeWeight(1);
+      canvas.color(255);
+      canvas.line(selectedNode.position.x, selectedNode.position.y, mouseX, mouseY);
+    }
+
     image(canvas, 0, 0);
     canvas.endDraw();
+  }
+
+  public void controlEvent(ControlEvent event) {
+    if (event.getId() == 1) {
+      System.out.println("HELLO");
+      Graph g = new Graph();
+      selectedGraph = g;
+      graphs.put(graphNameField.getStringValue(), g);
+    } else if (event.getId() == 2) {
+      System.out.println(event.getController().getValue());
+    }
+  }
+
+  public final void mousePressed() {
+    selectedNode = null;
+    creatingEdge = false;
+
+    if (keyPressed && keyCode == SHIFT) {
+      creatingEdge = true;
+    }
+
+    if (selectedGraph != null) {
+      // Is the click near a node that already exists? If so, select the node.
+      for (Node n : selectedGraph.getNodes()) {
+        if (PVector.dist(n.position, new PVector(mouseX, mouseY)) < 20) {
+          selectedNode = n;
+        }
+      }
+
+      if (selectedNode == null && !creatingEdge) {
+        selectedNode = selectedGraph.createNode(mouseX, mouseY);
+      }
+    }
+  }
+
+  public final void mouseReleased() {
+    if (selectedNode != null) {
+      if (creatingEdge) {
+        for (Node n : selectedGraph.getNodes()) {
+          if (PVector.dist(n.position, new PVector(mouseX, mouseY)) < 20) {
+            selectedGraph.createEdge(selectedNode, n);
+          }
+        }
+      }
+      selectedNode = null;
+    }
+  }
+
+  public final void mouseDragged() {
+    if (selectedNode != null) {
+      if (creatingEdge) {
+
+      } else {
+        selectedNode.position.set(mouseX, mouseY);
+      }
+    }
+  }
+
+  public void switchScene(Scene scene) {
+    scene.setup(graphs);
   }
 }
