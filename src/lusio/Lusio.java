@@ -9,17 +9,15 @@ import graph.BasicGraphRenderer;
 import graph.Graph;
 import graph.GraphRenderer;
 import graph.Node;
-import lusio.generators.SceneGenerator;
 import lusio.scenes.Scene;
 import lusio.scenes.SceneOne;
+import lusio.scenes.SceneTwo;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 import processing.core.PVector;
 import processing.opengl.PJOGL;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Lusio extends PApplet {
@@ -31,7 +29,8 @@ public class Lusio extends PApplet {
 
   private SyphonServer server;
   private PGraphics canvas;
-  private Scene[] scenes = {new SceneOne()};
+  private Scene[] scenes = { new SceneOne(), new SceneTwo() };
+  private Scene currentScene;
 
   private Map<String, Graph> graphs;
   private Graph selectedGraph;
@@ -42,7 +41,6 @@ public class Lusio extends PApplet {
 
   public Lusio() {
     Lusio.instance = this;
-    generators = new ArrayList<>();
     graphs = new HashMap<>();
   }
 
@@ -75,24 +73,12 @@ public class Lusio extends PApplet {
         .addItem("Scene Two", 1);
   }
 
-  private void drawGenerators() {
-    canvas.ortho();
-    for (SceneGenerator generator : generators) {
-      canvas.pushMatrix();
-      canvas.translate(generator.getX(), generator.getY());
-      generator.draw(canvas);
-      canvas.popMatrix();
-    }
-  }
-
   public final void draw() {
     canvas.beginDraw();
 
     canvas.background(0);
     canvas.noFill();
     canvas.stroke(255);
-
-    drawGenerators();
 
     GraphRenderer renderer = new BasicGraphRenderer();
     for (Graph g : graphs.values()) {
@@ -105,18 +91,23 @@ public class Lusio extends PApplet {
       canvas.line(selectedNode.position.x, selectedNode.position.y, mouseX, mouseY);
     }
 
+    canvas.ortho();
+
+    if (currentScene != null) {
+      currentScene.draw(canvas);
+    }
+
     image(canvas, 0, 0);
     canvas.endDraw();
   }
 
   public void controlEvent(ControlEvent event) {
     if (event.getId() == 1) {
-      System.out.println("HELLO");
       Graph g = new Graph();
       selectedGraph = g;
       graphs.put(graphNameField.getStringValue(), g);
     } else if (event.getId() == 2) {
-      System.out.println(event.getController().getValue());
+      switchScene((int) event.getController().getValue());
     }
   }
 
@@ -165,7 +156,14 @@ public class Lusio extends PApplet {
     }
   }
 
-  public void switchScene(Scene scene) {
+  public void switchScene(int sceneIndex) {
+    if (currentScene != null) {
+      currentScene.teardown();
+    }
+
+    Scene scene = scenes[sceneIndex];
+    // TODO: transition old scene out; new scene in.k
     scene.setup(graphs);
+    currentScene = scene;
   }
 }

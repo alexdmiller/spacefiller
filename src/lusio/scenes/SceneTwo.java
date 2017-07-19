@@ -5,20 +5,19 @@ import lusio.generators.ParticleGenerator;
 import particles.Bounds;
 import particles.Particle;
 import particles.renderers.ParticleDotRenderer;
+import particles.renderers.ParticleWebRenderer;
 import processing.core.PGraphics;
 
 import java.util.Map;
 
-public class SceneOne extends Scene {
+public class SceneTwo extends Scene {
   @Override
   public void setup(Map<String, Graph> graphs) {
     Graph graph = graphs.get("window");
 
     ParticleGenerator gen = new ParticleGenerator(50, 10, new Bounds(100));
-    gen.setPos(500, 500);
-    gen.addRenderer(new ParticleDotRenderer(2));
+    gen.setPos(800, 500);
+    gen.addRenderer(new ParticleWebRenderer(10, 1));
     generators.add(gen);
   }
-
-
 }

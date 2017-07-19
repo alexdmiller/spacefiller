@@ -15,11 +15,18 @@ public class Scene {
     generators = new ArrayList<>();
   }
 
-  public void setup(Map<String, Graph> graphs) {
+  public void setup(Map<String, Graph> graphs) { }
 
+  public void teardown() {
+    generators.clear();
   }
 
   public void draw(PGraphics graphics) {
-
+    for (SceneGenerator generator : generators) {
+      graphics.pushMatrix();
+      graphics.translate(generator.getX(), generator.getY());
+      generator.draw(graphics);
+      graphics.popMatrix();
+    }
   }
 }
