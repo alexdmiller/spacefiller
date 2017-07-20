@@ -7,7 +7,6 @@ public class BasicGraphRenderer implements GraphRenderer {
   public void render(PGraphics graphics, Graph graph) {
     graphics.noFill();
     graphics.strokeWeight(1);
-    graphics.stroke(255);
 
     for (Node n : graph.getNodes()) {
       graphics.ellipse(n.position.x, n.position.y, 20, 20);

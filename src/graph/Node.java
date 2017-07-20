@@ -2,10 +2,11 @@ package graph;
 
 import processing.core.PVector;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Node {
+public class Node implements Serializable {
   public PVector position;
   public List<Edge> connections;
 

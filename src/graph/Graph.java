@@ -1,12 +1,13 @@
 package graph;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by miller on 7/16/17.
  */
-public class Graph {
+public class Graph implements Serializable {
   private List<Node> nodes;
   private List<Edge> edges;
 

@@ -17,7 +17,10 @@ import processing.core.PGraphics;
 import processing.core.PVector;
 import processing.opengl.PJOGL;
 
+import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Lusio extends PApplet {
@@ -33,15 +36,19 @@ public class Lusio extends PApplet {
   private Scene currentScene;
 
   private Map<String, Graph> graphs;
-  private Graph selectedGraph;
+  private int selectedGraphIndex;
+  private List<String> graphNames;
+
   private ControlP5 controlP5;
   private Textfield graphNameField;
   private Node selectedNode;
   private boolean creatingEdge;
+  private boolean graphsVisible = true;
 
   public Lusio() {
     Lusio.instance = this;
     graphs = new HashMap<>();
+    graphNames = new ArrayList<>();
   }
 
   public void settings() {
@@ -55,6 +62,8 @@ public class Lusio extends PApplet {
     server = new SyphonServer(this, this.getClass().getName());
 
     controlP5 = new ControlP5(this);
+    controlP5.hide();
+
     controlP5.addButton("New Graph")
         .setId(1)
         .setPosition(200, 20)
@@ -70,7 +79,15 @@ public class Lusio extends PApplet {
         .setId(2)
         .setPosition(20,20)
         .addItem("Scene One", 0)
-        .addItem("Scene Two", 1);
+        .addItem("Scene Two", 1)
+        .close();
+
+    controlP5.addButton("Delete Graph")
+        .setId(3)
+        .setPosition(600, 20)
+        .setSize(100, 20);
+
+    loadGraphs();
   }
 
   public final void draw() {
@@ -80,9 +97,17 @@ public class Lusio extends PApplet {
     canvas.noFill();
     canvas.stroke(255);
 
-    GraphRenderer renderer = new BasicGraphRenderer();
-    for (Graph g : graphs.values()) {
-      renderer.render(canvas, g);
+    if (graphsVisible) {
+      GraphRenderer renderer = new BasicGraphRenderer();
+      for (int i = 0; i < graphNames.size(); i++) {
+        Graph g = graphs.get(graphNames.get(i));
+        if (i == selectedGraphIndex) {
+          canvas.stroke(255);
+        } else {
+          canvas.stroke(100);
+        }
+        renderer.render(canvas, g);
+      }
     }
 
     if (selectedNode != null && creatingEdge) {
@@ -101,17 +126,50 @@ public class Lusio extends PApplet {
     canvas.endDraw();
   }
 
+  public Graph selectedGraph() {
+    return graphs.get(graphNames.get(selectedGraphIndex));
+  }
+
   public void controlEvent(ControlEvent event) {
     if (event.getId() == 1) {
       Graph g = new Graph();
-      selectedGraph = g;
-      graphs.put(graphNameField.getStringValue(), g);
+      graphs.put(graphNameField.getText(), g);
+      graphNames.add(graphNameField.getText());
+      selectedGraphIndex = graphNames.size() - 1;
+      saveGraphs();
     } else if (event.getId() == 2) {
       switchScene((int) event.getController().getValue());
+    } else if (event.getId() == 3) {
+      graphs.remove(graphNames.get(selectedGraphIndex));
+      graphNames.remove(selectedGraphIndex);
+      selectedGraphIndex = 0;
+      saveGraphs();
+    }
+  }
+
+  public final void keyPressed() {
+    if (keyCode == CONTROL) {
+      if (controlP5.isVisible()) {
+        controlP5.hide();
+      } else {
+        controlP5.show();
+      }
+    }
+
+    if (keyCode == ALT) {
+      graphsVisible = !graphsVisible;
+    }
+
+    if (keyCode == RIGHT) {
+      selectedGraphIndex = (selectedGraphIndex + 1) % graphs.size();
     }
   }
 
   public final void mousePressed() {
+    if (controlP5.isVisible() || !graphsVisible) {
+      return;
+    }
+
     selectedNode = null;
     creatingEdge = false;
 
@@ -119,16 +177,16 @@ public class Lusio extends PApplet {
       creatingEdge = true;
     }
 
-    if (selectedGraph != null) {
+    if (selectedGraph() != null) {
       // Is the click near a node that already exists? If so, select the node.
-      for (Node n : selectedGraph.getNodes()) {
+      for (Node n : selectedGraph().getNodes()) {
         if (PVector.dist(n.position, new PVector(mouseX, mouseY)) < 20) {
           selectedNode = n;
         }
       }
 
       if (selectedNode == null && !creatingEdge) {
-        selectedNode = selectedGraph.createNode(mouseX, mouseY);
+        selectedNode = selectedGraph().createNode(mouseX, mouseY);
       }
     }
   }
@@ -136,24 +194,26 @@ public class Lusio extends PApplet {
   public final void mouseReleased() {
     if (selectedNode != null) {
       if (creatingEdge) {
-        for (Node n : selectedGraph.getNodes()) {
+        for (Node n : selectedGraph().getNodes()) {
           if (PVector.dist(n.position, new PVector(mouseX, mouseY)) < 20) {
-            selectedGraph.createEdge(selectedNode, n);
+            selectedGraph().createEdge(selectedNode, n);
           }
         }
       }
       selectedNode = null;
     }
+    saveGraphs();
   }
 
   public final void mouseDragged() {
     if (selectedNode != null) {
       if (creatingEdge) {
-
+        // do nothing?
       } else {
         selectedNode.position.set(mouseX, mouseY);
       }
     }
+    saveGraphs();
   }
 
   public void switchScene(int sceneIndex) {
@@ -162,8 +222,41 @@ public class Lusio extends PApplet {
     }
 
     Scene scene = scenes[sceneIndex];
-    // TODO: transition old scene out; new scene in.k
+    // TODO: transition old scene out; new scene in.
+    System.out.println(graphs);
     scene.setup(graphs);
+
+
     currentScene = scene;
+  }
+
+  private void saveGraphs() {
+    try {
+      FileOutputStream fileOut =
+          new FileOutputStream("lusio-graphs.ser");
+      ObjectOutputStream out = new ObjectOutputStream(fileOut);
+      out.writeObject(graphs);
+      out.close();
+      fileOut.close();
+    } catch (IOException i) {
+      i.printStackTrace();
+    }
+  }
+
+  private void loadGraphs() {
+    try {
+      FileInputStream fileIn = new FileInputStream("lusio-graphs.ser");
+      ObjectInputStream in = new ObjectInputStream(fileIn);
+      graphs = (Map<String, Graph>) in.readObject();
+      graphNames = new ArrayList<>(graphs.keySet());
+      in.close();
+      fileIn.close();
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    } catch (IOException i) {
+      i.printStackTrace();
+    } catch (ClassNotFoundException c) {
+      c.printStackTrace();
+    }
   }
 }
