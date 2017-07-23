@@ -1,6 +1,7 @@
 package lusio;
 
 import codeanticode.syphon.SyphonServer;
+import toxi.geom.*;
 import controlP5.ControlEvent;
 import controlP5.ControlP5;
 import controlP5.DropdownList;
@@ -32,8 +33,11 @@ public class Lusio extends PApplet {
 
   private SyphonServer server;
   private PGraphics canvas;
+
   private Scene[] scenes = { new SceneOne(), new SceneTwo() };
+
   private Scene currentScene;
+  private int currentSceneIndex;
 
   private Map<String, Graph> graphs;
   private int selectedGraphIndex;
@@ -45,10 +49,15 @@ public class Lusio extends PApplet {
   private boolean creatingEdge;
   private boolean graphsVisible = true;
 
+  private float switchTimer = 0;
+  private float timeUntilSwitch = 40;
+  private float switchThreshold = (float) (Math.PI - 0.1);
+  private boolean transitionOut = false;
+
+  private Lightcube lightcube;
+
   public Lusio() {
     Lusio.instance = this;
-    graphs = new HashMap<>();
-    graphNames = new ArrayList<>();
   }
 
   public void settings() {
@@ -57,6 +66,10 @@ public class Lusio extends PApplet {
   }
 
   public final void setup() {
+    graphs = new HashMap<>();
+    graphNames = new ArrayList<>();
+    lightcube = new Lightcube("/dev/cu.usbmodem1411");
+
     canvas = createGraphics(1920, 1080, P3D);
     canvas.smooth();
     server = new SyphonServer(this, this.getClass().getName());
@@ -88,14 +101,39 @@ public class Lusio extends PApplet {
         .setSize(100, 20);
 
     loadGraphs();
+
+    switchScene(0);
   }
 
   public final void draw() {
     canvas.beginDraw();
-
     canvas.background(0);
+
+    lightcube.update();
+    lightcube.drawDebug(canvas, 100, 100);
+
     canvas.noFill();
     canvas.stroke(255);
+
+    if (selectedNode != null && creatingEdge) {
+      canvas.strokeWeight(1);
+      canvas.color(255);
+      canvas.line(selectedNode.position.x, selectedNode.position.y, mouseX, mouseY);
+    }
+
+    canvas.ortho();
+
+    if (currentScene != null) {
+      if (transitionOut) {
+        if (currentScene.transitionOut()) {
+          transitionOut = false;
+          // TODO: be smarter about assigning the zero point?
+          switchScene((currentSceneIndex + 1) % scenes.length);
+        }
+      }
+
+      currentScene.draw(lightcube.getQuaterion(), canvas);
+    }
 
     if (graphsVisible) {
       GraphRenderer renderer = new BasicGraphRenderer();
@@ -108,18 +146,9 @@ public class Lusio extends PApplet {
         }
         renderer.render(canvas, g);
       }
-    }
 
-    if (selectedNode != null && creatingEdge) {
-      canvas.strokeWeight(1);
-      canvas.color(255);
-      canvas.line(selectedNode.position.x, selectedNode.position.y, mouseX, mouseY);
-    }
-
-    canvas.ortho();
-
-    if (currentScene != null) {
-      currentScene.draw(canvas);
+      canvas.fill(255);
+      canvas.rect(0, height - 20, (switchTimer / timeUntilSwitch) * width, height);
     }
 
     image(canvas, 0, 0);
@@ -154,6 +183,10 @@ public class Lusio extends PApplet {
       } else {
         controlP5.show();
       }
+    }
+
+    if (key == 'U') {
+      selectedGraph().getNodes().remove(selectedGraph().getNodes().size() - 1);
     }
 
     if (keyCode == ALT) {
@@ -222,10 +255,10 @@ public class Lusio extends PApplet {
     }
 
     Scene scene = scenes[sceneIndex];
-    // TODO: transition old scene out; new scene in.
-    System.out.println(graphs);
-    scene.setup(graphs);
+    currentSceneIndex = sceneIndex;
 
+    // TODO: transition old scene out; new scene in.
+    scene.setup(graphs);
 
     currentScene = scene;
   }

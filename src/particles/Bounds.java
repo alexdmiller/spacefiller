@@ -14,9 +14,7 @@ public class Bounds implements Serializable {
 	}
 
 	public Bounds(float size) {
-		this.width = size;
-		this.height = size;
-		this.depth = size;
+		width = height = depth = size;
 	}
 
 	public boolean contains(float x, float y, float z) {
@@ -73,5 +71,9 @@ public class Bounds implements Serializable {
 
 	public float getDepth() {
 		return depth;
+	}
+
+	public void setSize(float newSize) {
+		width = height = depth = newSize;
 	}
 }

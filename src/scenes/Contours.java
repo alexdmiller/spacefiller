@@ -95,7 +95,7 @@ public class Contours extends Scene {
 		canvas.noFill();
 		canvas.stroke(255);
 		canvas.strokeWeight(thickness);
-		canvas.colorMode(PConstants.HSB);
+		// canvas.colorMode(PConstants.HSB);
 
 		for (float i = 0; i < heightRange; i += heightIncrements) {
 			float sampleHeight = i - heightRange/2;

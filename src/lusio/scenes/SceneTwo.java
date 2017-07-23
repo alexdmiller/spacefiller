@@ -10,20 +10,34 @@ import particles.Particle;
 import particles.renderers.ParticleDotRenderer;
 import particles.renderers.ParticleWebRenderer;
 import processing.core.PGraphics;
+import toxi.geom.Quaternion;
 
 import java.util.Map;
 
 public class SceneTwo extends Scene {
+  ParticleGenerator particleGenerator;
+
   @Override
   public void setup(Map<String, Graph> graphs) {
-    ParticleGenerator gen = new ParticleGenerator(50, 10, new Bounds(100));
-    gen.setPos(800, 500);
-    gen.addRenderer(new ParticleWebRenderer(10, 1));
-    generators.add(gen);
+    particleGenerator = new ParticleGenerator(50, new Bounds(100));
+    particleGenerator.setPos(800, 500);
+    particleGenerator.addRenderer(new ParticleWebRenderer(10, 1));
+    addGenerator(particleGenerator);
 
     Graph graph = graphs.get("window");
     System.out.println("graph " + graph);
     GraphGenerator graphGen = new GraphGenerator(graph, new SinGraphRenderer());
-    generators.add(graphGen);
+    addGenerator(graphGen);
+  }
+
+  @Override
+  public void draw(Quaternion quaternion, PGraphics graphics) {
+    particleGenerator.setRotation(quaternion);
+    super.draw(quaternion, graphics);
+  }
+
+  @Override
+  public boolean transitionOut() {
+    return true;
   }
 }

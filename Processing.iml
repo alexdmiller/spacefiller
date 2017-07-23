@@ -25,5 +25,8 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="jssc" level="project" />
+    <orderEntry type="library" name="serial" level="project" />
+    <orderEntry type="library" name="toxiclibs" level="project" />
   </component>
 </module>

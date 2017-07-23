@@ -140,9 +140,9 @@ public class OscSceneModulator implements OscEventListener {
 		float val = 0;
 		if (target instanceof FieldModulationTarget) {
 			FieldModulationTarget fieldModulationTarget = (FieldModulationTarget) target;
-			
+
 			if (fieldModulationTarget.getValue() instanceof Integer) {
-				val = ((Integer) fieldModulationTarget.getValue()).floatValue(); 
+				val = ((Integer) fieldModulationTarget.getValue()).floatValue();
 			} else {
 				val = (float) fieldModulationTarget.getValue();
 			}

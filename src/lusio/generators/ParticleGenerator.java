@@ -6,21 +6,18 @@ import particles.ParticleSystem;
 import particles.behaviors.ParticleBehavior;
 import particles.renderers.ParticleRenderer;
 import processing.core.PGraphics;
+import toxi.geom.Quaternion;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ParticleGenerator extends SceneGenerator {
   private ParticleSystem particleSystem;
-  private int numParticles;
   private List<ParticleRenderer> renderers;
-  private float maxForce;
-  private float angle;
+  private Quaternion quaternion;
 
   // TODO: why does this need to have a max force?
-  public ParticleGenerator(int numParticles, float maxForce, Bounds bounds) {
-    this.maxForce = maxForce;
-    this.numParticles = numParticles;
+  public ParticleGenerator(int numParticles, Bounds bounds) {
     this.renderers = new ArrayList<>();
 
     this.particleSystem = ParticleSystem.boundedSystem(bounds);
@@ -31,11 +28,9 @@ public class ParticleGenerator extends SceneGenerator {
   public void draw(PGraphics graphics) {
     particleSystem.update();
 
-    angle += 0.005;
-
     graphics.strokeWeight(1);
-    graphics.rotateX(0.5f);
-    graphics.rotateY((float) Math.PI / 5 + angle);
+    float[] axis = quaternion.toAxisAngle();
+    graphics.rotate(axis[0], -axis[1], axis[3], axis[2]);
 
     Bounds bounds = particleSystem.getBounds();
     graphics.box(bounds.getWidth(), bounds.getHeight(), bounds.getDepth());
@@ -51,5 +46,17 @@ public class ParticleGenerator extends SceneGenerator {
   }
   public void addBehavior(ParticleBehavior behavior) {
     particleSystem.addBehavior(behavior);
+  }
+
+  public void setRotation(Quaternion quaternion) {
+    this.quaternion = quaternion;
+  }
+
+  public Bounds getBounds() {
+    return this.particleSystem.getBounds();
+  }
+
+  public void setBounds(Bounds bounds) {
+    this.particleSystem.setBounds(bounds);
   }
 }

@@ -3,13 +3,14 @@ package lusio.scenes;
 import graph.Graph;
 import lusio.generators.SceneGenerator;
 import processing.core.PGraphics;
+import toxi.geom.Quaternion;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class Scene {
-  public List<SceneGenerator> generators;
+  private List<SceneGenerator> generators;
 
   public Scene() {
     generators = new ArrayList<>();
@@ -17,11 +18,19 @@ public class Scene {
 
   public void setup(Map<String, Graph> graphs) { }
 
+  public boolean transitionOut() {
+    return true;
+  }
+
   public void teardown() {
     generators.clear();
   }
 
-  public void draw(PGraphics graphics) {
+  public void addGenerator(SceneGenerator generator) {
+    generators.add(generator);
+  }
+
+  public void draw(Quaternion quaternion, PGraphics graphics) {
     for (SceneGenerator generator : generators) {
       graphics.pushMatrix();
       graphics.translate(generator.getX(), generator.getY());
