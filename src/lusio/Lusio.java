@@ -1,7 +1,6 @@
 package lusio;
 
 import codeanticode.syphon.SyphonServer;
-import toxi.geom.*;
 import controlP5.ControlEvent;
 import controlP5.ControlP5;
 import controlP5.DropdownList;
@@ -152,7 +151,7 @@ public class Lusio extends PApplet {
 
     canvas.pushMatrix();
     canvas.translate(width / 2, height / 2);
-    canvas.fill(255, 255, 255, lightcube.flipAmount() * 255);
+    canvas.fill(255, 255, 255, lightcube.getFlipAmount() * 255);
     canvas.noStroke();
     canvas.ellipse(0, 0, switchTimer / timeUntilSwitch * width * 1.2f, switchTimer / timeUntilSwitch * width * 1.2f);
     canvas.popMatrix();
@@ -162,7 +161,7 @@ public class Lusio extends PApplet {
   }
 
   private final void updateSwitchTimer() {
-    if (lightcube.flipAmount() > switchThreshold) {
+    if (lightcube.getFlipAmount() > switchThreshold) {
       switchTimer++;
     } else if (switchTimer > 0) {
       switchTimer -= 5;
@@ -171,6 +170,7 @@ public class Lusio extends PApplet {
     }
 
     if (switchTimer > timeUntilSwitch) {
+      lightcube.flipOrientation();
       switchTimer = 0;
 
       int nextSceneIndex = (currentSceneIndex + 1) % scenes.length;

@@ -18,7 +18,7 @@ public class Lightcube extends PApplet {
   private Quaternion quaternion = new Quaternion(1, 0, 0, 0);
   private Quaternion previousQuaternion;
   private float rotationalVelocity;
-  private Quaternion up = Quaternion.createFromEuler(0, 0, 0);
+  private Vec3D up = new Vec3D(0, -1, 0);
 
   private float decay = 0.9f;
 
@@ -108,16 +108,18 @@ public class Lightcube extends PApplet {
     };
   }
 
-  public float flipAmount() {
+  public float getFlipAmount() {
     float[] axis = quaternion.toAxisAngle();
     Vec3D a = new Vec3D(-axis[1], axis[3], axis[2]);
     Quaternion q2 = Quaternion.createFromAxisAngle(a, axis[0]);
     Vec3D transformed = new Vec3D(0, 1, 0);
     q2.applyTo(transformed);
 
-    Vec3D yAxis = new Vec3D(0, -1, 0);
+    return (up.dot(transformed) + 1) / 2f;
+  }
 
-    return (yAxis.dot(transformed) + 1) / 2f;
+  public void flipOrientation() {
+    up.rotateX((float) Math.PI);
   }
 
   public float getRotationalVelocity() {
@@ -136,8 +138,8 @@ public class Lightcube extends PApplet {
     graphics.translate(x, y);
 
     graphics.pushMatrix();
-    float[] axis = up.toAxisAngle();
-    graphics.rotate(axis[0], -axis[1], axis[3], axis[2]);
+
+    graphics.rotateX(up.headingYZ());
     graphics.stroke(255, 0, 255, 255);
     graphics.line(0, size / 2, 0, 0, -size / 2, 0);
     graphics.line(-10, -size / 2 + 10, 0, 0, -size / 2, 0);
@@ -146,7 +148,7 @@ public class Lightcube extends PApplet {
 
     graphics.pushMatrix();
     graphics.stroke(255);
-    axis = quaternion.toAxisAngle();
+    float[] axis = quaternion.toAxisAngle();
     graphics.rotate(axis[0], -axis[1], axis[3], axis[2]);
     graphics.box(size * 2);
     graphics.line(0, size / 2, 0, 0, -size / 2, 0);
@@ -154,7 +156,7 @@ public class Lightcube extends PApplet {
     graphics.line(10, -size / 2 + 10, 0, 0, -size / 2, 0);
     graphics.popMatrix();
 
-    float flip = flipAmount();
+    float flip = getFlipAmount();
     graphics.translate(-50, size + 20);
     graphics.noFill();
     graphics.rect(0, 0, 100, 10);

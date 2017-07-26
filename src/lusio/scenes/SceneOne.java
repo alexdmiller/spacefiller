@@ -61,8 +61,8 @@ public class SceneOne extends Scene {
     particleGenerator2.setRotation(cube.getQuaternion());
     contourGenerator.setRotation(cube.getQuaternion());
 
-    flockParticles.setMaxSpeed(Math.max(cube.getRotationalVelocity() + 0.5f, cube.flipAmount() * 50));
-    flockParticles.setDesiredSeparation(Math.max(cube.getRotationalVelocity() + 20, cube.flipAmount() * 150));
+    flockParticles.setMaxSpeed(Math.max(cube.getRotationalVelocity() + 0.5f, cube.getFlipAmount() * 50));
+    flockParticles.setDesiredSeparation(Math.max(cube.getRotationalVelocity() + 20, cube.getFlipAmount() * 150));
 
     // contourGenerator.setUpdateSpeed(cube.getRotationalVelocity() / 10f + 0.01f);
     contourGenerator.setNoiseAmplitude(cube.getRotationalVelocity() * 10 + 10);

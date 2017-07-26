@@ -23,13 +23,13 @@ public class SceneTwo extends Scene {
 
   @Override
   public void setup(Map<String, Graph> graphs) {
-    particleGenerator = new ParticleGenerator(50, new Bounds(300));
+    particleGenerator = new ParticleGenerator(70, new Bounds(300));
     particleGenerator.setPos(900, 500);
     webRenderer = new ParticleWebRenderer(50, 1);
     particleGenerator.addRenderer(webRenderer);
     dotRenderer = new ParticleDotRenderer(10);
     particleGenerator.addRenderer(dotRenderer);
-    flockParticles = new FlockParticles(1, 0.5f, 1f, 30, 100, 100, 1, 10);
+    flockParticles = new FlockParticles(1, 0.5f, 1f, 30, 50, 70, 2, 10);
     particleGenerator.addBehavior(flockParticles);
     addGenerator(particleGenerator);
 
@@ -52,18 +52,18 @@ public class SceneTwo extends Scene {
   @Override
   public void draw(Lightcube cube, PGraphics graphics) {
     particleGenerator.setRotation(cube.getQuaternion());
-    webRenderer.setLineThreshold(cube.flipAmount() * 200 + 10);
-    flockParticles.setDesiredSeparation(cube.flipAmount() * 100 + 40);
-    dotRenderer.setDotSize(cube.flipAmount() * 10 + 2);
+    webRenderer.setLineThreshold(cube.getFlipAmount() * 200 + 10);
+    flockParticles.setDesiredSeparation(cube.getFlipAmount() * 100 + 10);
+    dotRenderer.setDotSize(cube.getFlipAmount() * 10 + 3);
 
-    perlinFlowGenerator.setLineSparsity(cube.flipAmount());
+    perlinFlowGenerator.setLineSparsity(cube.getFlipAmount());
     perlinFlowGenerator.setFlowForce(Math.abs(cube.getEulerRotation()[1]) * 5);
     perlinFlowGenerator.setNoiseScale(1000 - Math.abs(cube.getEulerRotation()[2]) * 200);
     perlinFlowGenerator.setNoiseSpeed1(cube.getRotationalVelocity() / 1000 + 0.01f);
     perlinFlowGenerator.setNoiseSpeed2(cube.getRotationalVelocity() / 1000 + 0.01f);
-    perlinFlowGenerator.setLineLength(cube.flipAmount() * 100 + 20);
+    perlinFlowGenerator.setLineLength(cube.getFlipAmount() * 100 + 20);
     perlinFlowGenerator.setFallSpeed(cube.getEulerRotation()[0]);
-    perlinFlowGenerator.setCircleRadius(200 + cube.flipAmount() * 400);
+    perlinFlowGenerator.setCircleRadius(200 + cube.getFlipAmount() * 400);
 
     super.draw(cube, graphics);
   }
