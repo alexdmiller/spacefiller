@@ -50,8 +50,8 @@ public class Lusio extends PApplet {
   private boolean graphsVisible = true;
 
   private float switchTimer = 0;
-  private float timeUntilSwitch = 40;
-  private float switchThreshold = (float) (Math.PI - 0.1);
+  private float timeUntilSwitch = 50;
+  private float switchThreshold = 0.9f;
   private boolean transitionOut = false;
 
   private Lightcube lightcube;
@@ -112,6 +112,8 @@ public class Lusio extends PApplet {
     lightcube.update();
     lightcube.drawDebug(canvas, 100, 100);
 
+    updateSwitchTimer();
+
     canvas.noFill();
     canvas.stroke(255);
 
@@ -146,13 +148,43 @@ public class Lusio extends PApplet {
         }
         renderer.render(canvas, g);
       }
-
-      canvas.fill(255);
-      canvas.rect(0, height - 20, (switchTimer / timeUntilSwitch) * width, height);
     }
+
+    canvas.pushMatrix();
+    canvas.translate(width / 2, height / 2);
+    canvas.fill(255, 255, 255, lightcube.flipAmount() * 255);
+    canvas.noStroke();
+    canvas.ellipse(0, 0, switchTimer / timeUntilSwitch * width * 1.2f, switchTimer / timeUntilSwitch * width * 1.2f);
+    canvas.popMatrix();
 
     image(canvas, 0, 0);
     canvas.endDraw();
+  }
+
+  private final void updateSwitchTimer() {
+    if (lightcube.flipAmount() > switchThreshold) {
+      switchTimer++;
+    } else if (switchTimer > 0) {
+      switchTimer -= 5;
+    } else {
+      switchTimer = 0;
+    }
+
+    if (switchTimer > timeUntilSwitch) {
+      switchTimer = 0;
+
+      int nextSceneIndex = (currentSceneIndex + 1) % scenes.length;
+      switchScene(nextSceneIndex);
+    }
+
+    canvas.pushMatrix();
+    canvas.translate(50, 220);
+    canvas.noFill();
+    canvas.stroke(255);
+    canvas.rect(0, 0, 100, 10);
+    canvas.fill(255);
+    canvas.rect(0, 0, switchTimer / timeUntilSwitch * 100, 10);
+    canvas.popMatrix();
   }
 
   public Graph selectedGraph() {

@@ -167,8 +167,7 @@ public class PerlinFlowGenerator extends SceneGenerator {
         p.x += v.x;
         p.y += v.y + fallSpeed;
 
-        if (bounds.contains(p.x, p.y) &&
-            Math.sin(i + (Lusio.instance.noise((float) j) * 100.0) + timeStep * scrollSpeed) - lineSparsity < 0) {
+        if (Math.sin(i + (Lusio.instance.noise((float) j) * 100.0) + timeStep * scrollSpeed) - lineSparsity < 0) {
           graphics.line(oldX, oldY, p.x, p.y);
         }
       }

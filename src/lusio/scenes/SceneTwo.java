@@ -7,6 +7,8 @@ import lusio.generators.GraphGenerator;
 import lusio.generators.ParticleGenerator;
 import lusio.generators.PerlinFlowGenerator;
 import particles.Bounds;
+import particles.behaviors.FlockParticles;
+import particles.renderers.ParticleDotRenderer;
 import particles.renderers.ParticleWebRenderer;
 import processing.core.PGraphics;
 
@@ -15,19 +17,29 @@ import java.util.Map;
 public class SceneTwo extends Scene {
   ParticleGenerator particleGenerator;
   PerlinFlowGenerator perlinFlowGenerator;
+  FlockParticles flockParticles;
+  ParticleWebRenderer webRenderer;
+  ParticleDotRenderer dotRenderer;
 
   @Override
   public void setup(Map<String, Graph> graphs) {
-    particleGenerator = new ParticleGenerator(50, new Bounds(200));
-    particleGenerator.setPos(800, 800);
-    particleGenerator.addRenderer(new ParticleWebRenderer(100, 1));
-//    addGenerator(particleGenerator);
+    particleGenerator = new ParticleGenerator(50, new Bounds(300));
+    particleGenerator.setPos(900, 500);
+    webRenderer = new ParticleWebRenderer(50, 1);
+    particleGenerator.addRenderer(webRenderer);
+    dotRenderer = new ParticleDotRenderer(10);
+    particleGenerator.addRenderer(dotRenderer);
+    flockParticles = new FlockParticles(1, 0.5f, 1f, 30, 100, 100, 1, 10);
+    particleGenerator.addBehavior(flockParticles);
+    addGenerator(particleGenerator);
 
     perlinFlowGenerator = new PerlinFlowGenerator(new Bounds(1000));
     perlinFlowGenerator.setPos(900, 500);
     perlinFlowGenerator.setFallSpeed(0.5f);
     perlinFlowGenerator.setNumPoints(100);
     perlinFlowGenerator.setLineSparsity(1);
+    perlinFlowGenerator.setCircleRadius(300);
+    perlinFlowGenerator.setLineThickness(1);
     addGenerator(perlinFlowGenerator);
 
     Graph graph = graphs.get("window");
@@ -40,13 +52,18 @@ public class SceneTwo extends Scene {
   @Override
   public void draw(Lightcube cube, PGraphics graphics) {
     particleGenerator.setRotation(cube.getQuaternion());
+    webRenderer.setLineThreshold(cube.flipAmount() * 200 + 10);
+    flockParticles.setDesiredSeparation(cube.flipAmount() * 100 + 40);
+    dotRenderer.setDotSize(cube.flipAmount() * 10 + 2);
 
-    perlinFlowGenerator.setInterpolation((float) (cube.getEulerRotation()[0] / Math.PI));
+    perlinFlowGenerator.setLineSparsity(cube.flipAmount());
     perlinFlowGenerator.setFlowForce(Math.abs(cube.getEulerRotation()[1]) * 5);
     perlinFlowGenerator.setNoiseScale(1000 - Math.abs(cube.getEulerRotation()[2]) * 200);
     perlinFlowGenerator.setNoiseSpeed1(cube.getRotationalVelocity() / 1000 + 0.01f);
     perlinFlowGenerator.setNoiseSpeed2(cube.getRotationalVelocity() / 1000 + 0.01f);
-    perlinFlowGenerator.setLineLength(cube.flipAmount() * 200);
+    perlinFlowGenerator.setLineLength(cube.flipAmount() * 100 + 20);
+    perlinFlowGenerator.setFallSpeed(cube.getEulerRotation()[0]);
+    perlinFlowGenerator.setCircleRadius(200 + cube.flipAmount() * 400);
 
     super.draw(cube, graphics);
   }

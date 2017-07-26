@@ -30,4 +30,8 @@ public class ParticleWebRenderer implements ParticleRenderer {
       }
     }
   }
+
+  public void setLineThreshold(float lineThreshold) {
+    this.lineThreshold = lineThreshold;
+  }
 }

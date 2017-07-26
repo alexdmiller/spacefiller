@@ -22,4 +22,8 @@ public class ParticleDotRenderer implements ParticleRenderer {
       graphics.point(p.position.x, p.position.y, p.position.z);
     }
   }
+
+  public void setDotSize(float dotSize) {
+    this.dotSize = dotSize;
+  }
 }
