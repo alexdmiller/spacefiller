@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Lusio extends PApplet {
-  private static PApplet instance;
+  public static PApplet instance;
 
   public static void main(String[] args) {
     main("lusio.Lusio");
@@ -102,7 +102,7 @@ public class Lusio extends PApplet {
 
     loadGraphs();
 
-    switchScene(0);
+    switchScene(1);
   }
 
   public final void draw() {
@@ -132,7 +132,7 @@ public class Lusio extends PApplet {
         }
       }
 
-      currentScene.draw(lightcube.getQuaterion(), canvas);
+      currentScene.draw(lightcube, canvas);
     }
 
     if (graphsVisible) {

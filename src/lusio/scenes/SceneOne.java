@@ -1,26 +1,24 @@
 package lusio.scenes;
 
-import graph.AnimatedFillGraphRenderer;
 import graph.Graph;
 import graph.PipeGraphRenderer;
+import lusio.Lightcube;
 import lusio.generators.ContourGenerator;
 import lusio.generators.GraphGenerator;
 import lusio.generators.ParticleGenerator;
-import modulation.Mod;
 import particles.Bounds;
-import particles.Particle;
 import particles.behaviors.FlockParticles;
 import particles.behaviors.JitterParticles;
 import particles.renderers.ParticleDotRenderer;
 import particles.renderers.ParticleWebRenderer;
 import processing.core.PGraphics;
-import toxi.geom.Quaternion;
 
 import java.util.Map;
 
 public class SceneOne extends Scene {
   ParticleGenerator particleGenerator;
   JitterParticles jitterParticles;
+  FlockParticles flockParticles;
   ParticleGenerator particleGenerator2;
   ContourGenerator contourGenerator;
 
@@ -35,32 +33,42 @@ public class SceneOne extends Scene {
     particleGenerator.setPos(500, 500);
     particleGenerator.addRenderer(new ParticleDotRenderer(2));
     particleGenerator.addBehavior(jitterParticles);
-    addGenerator(particleGenerator);
+    // addGenerator(particleGenerator);
 
     particleGenerator2 = new ParticleGenerator(50, new Bounds(300));
-    particleGenerator2.setPos(800, 300);
+    particleGenerator2.setPos(400, 400);
     particleGenerator2.addRenderer(new ParticleDotRenderer(1));
     particleGenerator2.addRenderer(new ParticleWebRenderer(100, 1));
     particleGenerator2.addBehavior(jitterParticles);
-    particleGenerator2.addBehavior(
-        new FlockParticles(1, 1, 0.5f, 20, 100, 100, 1, 10));
+    flockParticles = new FlockParticles(1, 2, 0.5f, 50, 200, 100, 1, 10);
+    particleGenerator2.addBehavior(flockParticles);
     addGenerator(particleGenerator2);
 
     Graph graph = graphs.get("window");
-    GraphGenerator graphGen = new GraphGenerator(graph, new PipeGraphRenderer());
-    addGenerator(graphGen);
+    if (graph != null) {
+      GraphGenerator graphGen = new GraphGenerator(graph, new PipeGraphRenderer());
+      addGenerator(graphGen);
+    }
 
-    ContourGenerator contourGenerator = new ContourGenerator();
-    contourGenerator.setPos(400, 400);
+    contourGenerator = new ContourGenerator(new Bounds(500));
+    contourGenerator.setPos(1000, 500);
     addGenerator(contourGenerator);
   }
 
   @Override
-  public void draw(Quaternion quaternion, PGraphics graphics) {
-    particleGenerator.setRotation(quaternion.getConjugate());
-    particleGenerator2.setRotation(quaternion);
+  public void draw(Lightcube cube, PGraphics graphics) {
+    particleGenerator.setRotation(cube.getQuaternion());
+    particleGenerator2.setRotation(cube.getQuaternion());
+    contourGenerator.setRotation(cube.getQuaternion());
 
-    super.draw(quaternion, graphics);
+    flockParticles.setMaxSpeed(Math.max(cube.getRotationalVelocity() + 0.5f, cube.flipAmount() * 50));
+    flockParticles.setDesiredSeparation(Math.max(cube.getRotationalVelocity() + 20, cube.flipAmount() * 150));
+
+    // contourGenerator.setUpdateSpeed(cube.getRotationalVelocity() / 10f + 0.01f);
+    contourGenerator.setNoiseAmplitude(cube.getRotationalVelocity() * 10 + 10);
+    contourGenerator.setXSpeed(cube.getRotationalVelocity() / 100f);
+
+    super.draw(cube, graphics);
   }
 
   @Override

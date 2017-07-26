@@ -38,6 +38,22 @@ public class FlockParticles extends ParticleBehavior {
     this.maxSpeed = maxSpeed;
   }
 
+  public float getMaxForce() {
+    return maxForce;
+  }
+
+  public void setMaxSpeed(float maxSpeed) {
+    this.maxSpeed = maxSpeed;
+  }
+
+  public float getDesiredSeparation() {
+    return desiredSeparation;
+  }
+
+  public void setDesiredSeparation(float desiredSeparation) {
+    this.desiredSeparation = desiredSeparation;
+  }
+
   @Override
   public void apply(List<Particle> particles) {
     for (Particle p : particles) {

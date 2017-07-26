@@ -17,6 +17,11 @@ public class Bounds implements Serializable {
 		width = height = depth = size;
 	}
 
+	public boolean contains(float x, float y) {
+		return 	(x > -width/2 && x < width/2) &&
+				(y > -height/2 && y < height/2);
+	}
+
 	public boolean contains(float x, float y, float z) {
 		return 	(x > -width/2 && x < width/2) &&
 				(y > -height/2 && y < height/2) &&

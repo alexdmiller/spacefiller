@@ -1,9 +1,13 @@
 package lusio.generators;
 
+import lusio.Lusio;
 import modulation.Mod;
+import particles.Bounds;
+import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PGraphics;
 import processing.core.PVector;
+import toxi.geom.Quaternion;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,100 +17,91 @@ import java.util.List;
  * Created by miller on 7/22/17.
  */
 public class ContourGenerator extends SceneGenerator {
-  @Mod(min = 0, max = 500, defaultValue = 0)
-  public float noiseAmplitude = 0;
+  private float noiseAmplitude = 0;
 
-  @Mod(min = 0, max = 10, defaultValue = 2)
-  public float noiseResolution = 2;
+  private float updateSpeed = 0.01f;
+  private float xSpeed = 0f;
+  private float ySpeed = 0f;
 
-  @Mod(min = -10, max = 10, defaultValue = 1)
-  public float noiseXSpeed = 1;
-
-  @Mod(min = -10, max = 10, defaultValue = 1)
-  public float noiseYSpeed = 1;
-
-  @Mod(min = 0, max = 10, defaultValue = 1)
-  public float oscX = 1;
-
-  @Mod(min = 0, max = 10, defaultValue = 1)
-  public float oscXT = 1;
-
-  @Mod(min = 0, max = 100, defaultValue = 50)
-  public float oscXAmp = 50;
-
-  @Mod(min = 0, max = 10, defaultValue = 1)
-  public float oscY = 1;
-
-  @Mod(min = 0, max = 10, defaultValue = 1)
-  public float oscYT = 1;
-
-  @Mod(min = 0, max = 50, defaultValue = 50)
-  public float oscYAmp = 50;
-
-  @Mod(min = -.05f, max = 0.05f, defaultValue = 0.01f)
-  public float updateSpeed = 0.01f;
-
-  @Mod(min = -.05f, max = 0.05f, defaultValue = 0)
-  public float rotationSpeed = 0;
-
-  @Mod(min = 1, max = 100, defaultValue = 50)
-  public int gridSize = 50;
-
-  @Mod(min = 5, max = 100, defaultValue = 20)
-  public float cellSize = 20;
-
-  @Mod(min = 2, max = 50, defaultValue = 5)
-  public float heightIncrements = 5;
-
-  @Mod(min = 1, max = 1000, defaultValue = 200)
-  public float heightRange = 200;
-
-  @Mod(min = 1, max = 20, defaultValue = 2)
-  public float thickness = 2;
-
-  @Mod(min = 0, max = 10, defaultValue = 1)
-  public float spacing = 1;
-
-  @Mod(min = 0, max = 255, defaultValue = 50)
-  public int colorRange = 50;
+  private float cellSize = 20;
+  private float heightIncrements = 2;
+  private float heightRange = 100;
+  private float spacing = 4;
+  private int colorRange = 50;
 
   private float timeStep = 0;
-  private float rotation = 0;
+  private float xTimeStep = 0;
+  private float yTimeStep = 0;
+
+  private Bounds bounds;
+  private Quaternion quaternion;
+
+  public ContourGenerator(Bounds bounds) {
+    this.bounds = bounds;
+  }
+
+  public void setRotation(Quaternion quaternion) {
+    this.quaternion = quaternion;
+  }
 
   @Override
   public void draw(PGraphics graphics) {
-    float[][] heightMap = produceGrid(timeStep, gridSize, gridSize);
+    float[][] heightMap = produceGrid(
+        timeStep,
+        (int) (this.bounds.getWidth() / cellSize),
+        (int) (this.bounds.getHeight() / cellSize));
 
-    graphics.rotateX((float) (Math.PI / 3));
-    graphics.rotateZ(rotation);
-    // graphics.translate(getX() - gridSize * cellSize / 2, getY() - gridSize * cellSize / 2);
-    graphics.translate(getX(), getY());
+    graphics.pushMatrix();
+    float[] axis = quaternion.toAxisAngle();
+    graphics.rotate(axis[0], -axis[1], axis[3], axis[2]);
+
+    graphics.stroke(255);
+    graphics.strokeWeight(1);
+    // graphics.box(bounds.getWidth());
 
     graphics.noFill();
     graphics.stroke(255);
-    graphics.strokeWeight(thickness);
+    graphics.strokeWeight(1);
     graphics.colorMode(PConstants.HSB);
-    graphics.box(100);
 
-    for (float i = 0; i < heightRange; i += heightIncrements) {
-      float sampleHeight = i - heightRange/2;
-      graphics.stroke(i / heightRange * colorRange, 255, 255);
+    graphics.translate(-bounds.getWidth() / 2, -bounds.getWidth() / 2);
+
+    for (float i = 0; i < bounds.getHeight(); i += heightIncrements) {
+      float sampleHeight = i - bounds.getHeight()/2;
+      graphics.stroke(i / bounds.getHeight() * colorRange, 255, 255);
       drawGridPlaneIntersection(heightMap, sampleHeight, sampleHeight * spacing, cellSize, graphics);
     }
 
     timeStep += updateSpeed;
-    rotation += rotationSpeed;
+    xTimeStep += xSpeed;
+    yTimeStep += ySpeed;
+
+    graphics.popMatrix();
+  }
+
+  public void setUpdateSpeed(float updateSpeed) {
+    this.updateSpeed = updateSpeed;
+  }
+
+  public void setNoiseAmplitude(float noiseAmplitude) {
+    this.noiseAmplitude = noiseAmplitude;
+  }
+
+  public void setXSpeed(float xSpeed) {
+    this.xSpeed = xSpeed;
+  }
+
+  public void setYSpeed(float ySpeed) {
+    this.ySpeed = ySpeed;
   }
 
   float[][] produceGrid(float t, int rows, int cols) {
     float[][] grid = new float[rows][cols];
     for (int r = 0; r < grid.length; r++) {
       for (int c = 0; c < grid[r].length; c++) {
-        float x = (float) (r / rows * Math.PI);
-        float y = (float) (c / cols * Math.PI);
-        grid[r][c] = (float) (
-            Math.sin(x * oscX + t * oscXT) * 100
-        );
+        float x = (float) r / rows * (float) Math.PI;
+        float y = (float) c / cols * (float) Math.PI;
+        grid[r][c] = (Lusio.instance.noise(x + xTimeStep, y + yTimeStep, t) * noiseAmplitude) - noiseAmplitude / 2;
       }
     }
     return grid;

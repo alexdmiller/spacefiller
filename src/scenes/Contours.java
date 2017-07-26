@@ -62,7 +62,7 @@ public class Contours extends Scene {
 	public float heightRange = 200;
 
 	@Mod(min = 1, max = 20, defaultValue = 2)
-	public float thickness = 2;
+	public float thickness = 1;
 
 	@Mod(min = 0, max = 10, defaultValue = 1)
 	public float spacing = 1;

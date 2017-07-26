@@ -33,7 +33,7 @@ public class ParticleGenerator extends SceneGenerator {
     graphics.rotate(axis[0], -axis[1], axis[3], axis[2]);
 
     Bounds bounds = particleSystem.getBounds();
-    graphics.box(bounds.getWidth(), bounds.getHeight(), bounds.getDepth());
+    // graphics.box(bounds.getWidth(), bounds.getHeight(), bounds.getDepth());
 
     graphics.strokeWeight(1);
     for (ParticleRenderer r : renderers) {

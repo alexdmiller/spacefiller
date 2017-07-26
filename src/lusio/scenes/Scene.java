@@ -1,6 +1,7 @@
 package lusio.scenes;
 
 import graph.Graph;
+import lusio.Lightcube;
 import lusio.generators.SceneGenerator;
 import processing.core.PGraphics;
 import toxi.geom.Quaternion;
@@ -30,7 +31,7 @@ public class Scene {
     generators.add(generator);
   }
 
-  public void draw(Quaternion quaternion, PGraphics graphics) {
+  public void draw(Lightcube cube, PGraphics graphics) {
     for (SceneGenerator generator : generators) {
       graphics.pushMatrix();
       graphics.translate(generator.getX(), generator.getY());

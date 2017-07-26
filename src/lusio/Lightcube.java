@@ -15,24 +15,36 @@ public class Lightcube extends PApplet {
   private int interval = 0;
 
   private float[] q = new float[4];
-  private Quaternion quat = new Quaternion(1, 0, 0, 0);
+  private Quaternion quaternion = new Quaternion(1, 0, 0, 0);
+  private Quaternion previousQuaternion;
+  private float rotationalVelocity;
   private Quaternion up = Quaternion.createFromEuler(0, 0, 0);
 
+  private float decay = 0.9f;
+
   public Lightcube(String portName) {
-    port = new Serial(this, portName, 115200);
-    port.write('r');
+    try {
+      port = new Serial(this, portName, 115200);
+      port.write('r');
+    } catch (RuntimeException e) {
+      port = null;
+    }
   }
 
   public void update() {
-    if (millis() - interval > 1000) {
-      // resend single character to trigger DMP init/start
-      // in case the MPU is halted/reset while applet is running
-      port.write('r');
-      interval = millis();
+    if (port != null) {
+      if (millis() - interval > 1000) {
+        // resend single character to trigger DMP init/start
+        // in case the MPU is halted/reset while applet is running
+        port.write('r');
+        interval = millis();
+      }
     }
 
-    if (flipAmount() < 0.1) {
-
+    if (rotationalVelocity > 0) {
+      rotationalVelocity = rotationalVelocity * decay;
+    } else {
+      rotationalVelocity = 0;
     }
   }
 
@@ -69,28 +81,47 @@ public class Lightcube extends PApplet {
             q[3] = ((teapotPacket[8] << 8) | teapotPacket[9]) / 16384.0f;
             for (int i = 0; i < 4; i++) if (q[i] >= 2) q[i] = -4 + q[i];
 
-            // set our toxilibs quaternion to new data
-            quat.set(q[0], q[1], q[2], q[3]);
+
+            previousQuaternion = quaternion;
+            quaternion = new Quaternion(q[0], q[1], q[2], q[3]);
+
+            rotationalVelocity = Math.max(quaternion.sub(previousQuaternion).magnitude() * 500, rotationalVelocity);
           }
         }
       }
     }
   }
 
-  public Quaternion getQuaterion() {
-    return quat;
+  public Quaternion getQuaternion() {
+    return quaternion;
+  }
+
+  public float[] getEulerRotation() {
+    return new float[] {
+        (float) Math.atan2(
+            2 * quaternion.y * quaternion.w - 2 * quaternion.x * quaternion.z,
+            1 - 2 * quaternion.y * quaternion.y - 2 * quaternion.z * quaternion.z),
+        (float) Math.asin(2 * quaternion.x * quaternion.y + 2 * quaternion.z * quaternion.w),
+        (float) Math.atan2(
+            2 * quaternion.x * quaternion.w - 2 * quaternion.y * quaternion.z,
+            1 - 2 * quaternion.x * quaternion.x - 2 * quaternion.z * quaternion.z)
+    };
   }
 
   public float flipAmount() {
-    float[] axis = quat.toAxisAngle();
+    float[] axis = quaternion.toAxisAngle();
     Vec3D a = new Vec3D(-axis[1], axis[3], axis[2]);
     Quaternion q2 = Quaternion.createFromAxisAngle(a, axis[0]);
-    Vec3D transformed = new Vec3D(0, -1, 0);
+    Vec3D transformed = new Vec3D(0, 1, 0);
     q2.applyTo(transformed);
 
     Vec3D yAxis = new Vec3D(0, -1, 0);
 
     return (yAxis.dot(transformed) + 1) / 2f;
+  }
+
+  public float getRotationalVelocity() {
+    return rotationalVelocity;
   }
 
   public void drawDebug(PGraphics graphics, float x, float y) {
@@ -115,7 +146,7 @@ public class Lightcube extends PApplet {
 
     graphics.pushMatrix();
     graphics.stroke(255);
-    axis = quat.toAxisAngle();
+    axis = quaternion.toAxisAngle();
     graphics.rotate(axis[0], -axis[1], axis[3], axis[2]);
     graphics.box(size * 2);
     graphics.line(0, size / 2, 0, 0, -size / 2, 0);
@@ -129,6 +160,13 @@ public class Lightcube extends PApplet {
     graphics.rect(0, 0, 100, 10);
     graphics.fill(255);
     graphics.rect(0, 0, 100 * flip, 10);
+
+    float velocity = getRotationalVelocity();
+    graphics.translate(0, 20);
+    graphics.noFill();
+    graphics.rect(0, 0, 100, 10);
+    graphics.fill(255);
+    graphics.rect(0, 0, velocity, 10);
 
     graphics.popMatrix();
   }
