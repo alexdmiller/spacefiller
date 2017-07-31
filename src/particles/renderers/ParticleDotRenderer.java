@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by miller on 7/12/17.
  */
-public class ParticleDotRenderer implements ParticleRenderer {
+public class ParticleDotRenderer extends ParticleRenderer {
   private float dotSize;
 
   public ParticleDotRenderer(float dotSize) {
@@ -16,22 +16,13 @@ public class ParticleDotRenderer implements ParticleRenderer {
   }
 
   @Override
-  public void render(PGraphics graphics, List<Particle> particles) {
+  public void render(PGraphics graphics) {
     graphics.strokeWeight(this.dotSize);
     for (Particle p : particles) {
       graphics.point(p.position.x, p.position.y, p.position.z);
     }
   }
 
-  @Override
-  public void particleAdded(Particle particle) {
-
-  }
-
-  @Override
-  public void particleRemoved(Particle particle) {
-
-  }
 
   public void setDotSize(float dotSize) {
     this.dotSize = dotSize;

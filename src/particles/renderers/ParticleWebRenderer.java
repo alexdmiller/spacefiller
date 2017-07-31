@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by miller on 7/12/17.
  */
-public class ParticleWebRenderer implements ParticleRenderer {
+public class ParticleWebRenderer extends ParticleRenderer {
   private float lineThreshold;
   private float lineSize;
 
@@ -17,7 +17,7 @@ public class ParticleWebRenderer implements ParticleRenderer {
     this.lineSize = lineSize;
   }
 
-  public void render(PGraphics graphics, List<Particle> particles) {
+  public void render(PGraphics graphics) {
     graphics.strokeWeight(lineSize);
     for (Particle p1 : particles) {
       for (Particle p2 : particles) {
@@ -29,16 +29,6 @@ public class ParticleWebRenderer implements ParticleRenderer {
         }
       }
     }
-  }
-
-  @Override
-  public void particleAdded(Particle particle) {
-
-  }
-
-  @Override
-  public void particleRemoved(Particle particle) {
-
   }
 
   public void setLineThreshold(float lineThreshold) {

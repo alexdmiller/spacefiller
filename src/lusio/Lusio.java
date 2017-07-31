@@ -31,7 +31,7 @@ public class Lusio extends PApplet {
   private SyphonServer server;
   private PGraphics canvas;
 
-  private Scene[] scenes = { new SceneThree(), new SceneFour(), new SceneOne(), new SceneTwo() };
+  private Scene[] scenes = { new SceneFour(), new SceneThree(),  new SceneOne(), new SceneTwo() };
 
   private Scene currentScene;
   private int currentSceneIndex;

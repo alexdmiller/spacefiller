@@ -42,13 +42,16 @@ public class ParticleGenerator extends SceneGenerator {
 
     graphics.strokeWeight(1);
     for (ParticleRenderer r : renderers) {
-      r.render(graphics, particleSystem.getParticles());
+      r.render(graphics);
     }
   }
 
   public void addRenderer(ParticleRenderer renderer) {
     renderers.add(renderer);
+    renderer.setParticles(particleSystem.getParticles());
+    particleSystem.registerEventListener(renderer);
   }
+
   public void addBehavior(ParticleBehavior behavior) {
     particleSystem.addBehavior(behavior);
   }
@@ -63,5 +66,9 @@ public class ParticleGenerator extends SceneGenerator {
 
   public void setBounds(Bounds bounds) {
     this.particleSystem.setBounds(bounds);
+  }
+
+  public ParticleSystem getParticleSystem() {
+    return particleSystem;
   }
 }

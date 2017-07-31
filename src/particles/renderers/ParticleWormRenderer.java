@@ -13,18 +13,27 @@ import java.util.List;
 /**
  * Created by miller on 7/28/17.
  */
-public class ParticleWormRenderer implements ParticleRenderer {
+public class ParticleWormRenderer extends ParticleRenderer {
   private List<IndividualWormRenderer> individualWormRenderers;
+  private int wormLength;
 
-  public ParticleWormRenderer() {
+  public ParticleWormRenderer(int wormLength) {
     individualWormRenderers = new ArrayList<>();
+    this.wormLength = wormLength;
   }
 
   @Override
-  public void render(PGraphics graphics, List<Particle> particles) {
+  public void render(PGraphics graphics) {
     for (IndividualWormRenderer r : individualWormRenderers) {
       r.draw(graphics);
     }
+  }
+
+  public void setParticles(List<Particle> particles) {
+    for (Particle p : particles) {
+      particleAdded(p);
+    }
+    super.setParticles(particles);
   }
 
   @Override
@@ -32,20 +41,18 @@ public class ParticleWormRenderer implements ParticleRenderer {
     individualWormRenderers.add(new IndividualWormRenderer(particle));
   }
 
-  @Override
   public void particleRemoved(Particle particle) {
-
+    // TODO
   }
 
   public class IndividualWormRenderer {
-    public static final int HISTORY_SIZE = 30;
     private EvictingQueue<PVector> history;
     private boolean markedForDeath;
     private boolean readyToDie;
     private Particle particle;
 
     public IndividualWormRenderer(Particle particle) {
-      this.history = EvictingQueue.create(HISTORY_SIZE);
+      this.history = EvictingQueue.create(wormLength);
       this.particle = particle;
     }
 
