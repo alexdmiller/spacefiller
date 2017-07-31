@@ -59,11 +59,11 @@ public class Bounds implements Serializable {
 
 	}
 
-	public PVector getRandomPointInside() {
+	public PVector getRandomPointInside(int dimension) {
 		return new PVector(
 				(float) Math.random() * width - width / 2,
 				(float) Math.random() * height - height / 2,
-				(float) Math.random() * height - height / 2);
+				dimension == 3 ? (float) Math.random() * height - height / 2 : 0);
 	}
 
 	public float getWidth() {

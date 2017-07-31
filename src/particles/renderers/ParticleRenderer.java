@@ -10,4 +10,6 @@ import java.util.List;
  */
 public interface ParticleRenderer {
   void render(PGraphics graphics, List<Particle> particles);
+  void particleAdded(Particle particle);
+  void particleRemoved(Particle particle);
 }

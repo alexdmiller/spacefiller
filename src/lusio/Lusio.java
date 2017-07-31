@@ -9,9 +9,7 @@ import graph.BasicGraphRenderer;
 import graph.Graph;
 import graph.GraphRenderer;
 import graph.Node;
-import lusio.scenes.Scene;
-import lusio.scenes.SceneOne;
-import lusio.scenes.SceneTwo;
+import lusio.scenes.*;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 import processing.core.PVector;
@@ -33,7 +31,7 @@ public class Lusio extends PApplet {
   private SyphonServer server;
   private PGraphics canvas;
 
-  private Scene[] scenes = { new SceneOne(), new SceneTwo() };
+  private Scene[] scenes = { new SceneThree(), new SceneFour(), new SceneOne(), new SceneTwo() };
 
   private Scene currentScene;
   private int currentSceneIndex;
@@ -60,6 +58,7 @@ public class Lusio extends PApplet {
   }
 
   public void settings() {
+    // fullScreen(2);
     size(1920, 1080, P3D);
     PJOGL.profile = 1;
   }
@@ -67,7 +66,7 @@ public class Lusio extends PApplet {
   public final void setup() {
     graphs = new HashMap<>();
     graphNames = new ArrayList<>();
-    lightcube = new Lightcube("/dev/cu.usbmodem1411");
+    lightcube = Lightcube.wireless();
 
     canvas = createGraphics(1920, 1080, P3D);
     canvas.smooth();
@@ -101,7 +100,7 @@ public class Lusio extends PApplet {
 
     loadGraphs();
 
-    switchScene(1);
+    switchScene(0);
   }
 
   public final void draw() {

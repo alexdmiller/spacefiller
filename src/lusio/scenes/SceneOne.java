@@ -12,6 +12,7 @@ import particles.behaviors.JitterParticles;
 import particles.renderers.ParticleDotRenderer;
 import particles.renderers.ParticleWebRenderer;
 import processing.core.PGraphics;
+import toxi.geom.Quaternion;
 
 import java.util.Map;
 
@@ -42,7 +43,7 @@ public class SceneOne extends Scene {
     particleGenerator2.addBehavior(jitterParticles);
     flockParticles = new FlockParticles(1, 2, 0.5f, 50, 200, 100, 1, 10);
     particleGenerator2.addBehavior(flockParticles);
-    addGenerator(particleGenerator2);
+    //addGenerator(particleGenerator2);
 
     Graph graph = graphs.get("window");
     if (graph != null) {
@@ -50,8 +51,13 @@ public class SceneOne extends Scene {
       addGenerator(graphGen);
     }
 
-    contourGenerator = new ContourGenerator(new Bounds(500));
+    contourGenerator = new ContourGenerator(new Bounds(1500));
     contourGenerator.setPos(1000, 500);
+    contourGenerator.setRotation(Quaternion.createFromEuler(0, 0 , -2f));
+    contourGenerator.setCellSize(75);
+    contourGenerator.setNoiseScale(5);
+    contourGenerator.setUpdateSpeed(0);
+
     addGenerator(contourGenerator);
   }
 
@@ -59,14 +65,12 @@ public class SceneOne extends Scene {
   public void draw(Lightcube cube, PGraphics graphics) {
     particleGenerator.setRotation(cube.getQuaternion());
     particleGenerator2.setRotation(cube.getQuaternion());
-    contourGenerator.setRotation(cube.getQuaternion());
+    // contourGenerator.setRotation(cube.getQuaternion());
 
     flockParticles.setMaxSpeed(Math.max(cube.getRotationalVelocity() + 0.5f, cube.getFlipAmount() * 50));
     flockParticles.setDesiredSeparation(Math.max(cube.getRotationalVelocity() + 20, cube.getFlipAmount() * 150));
-
-    // contourGenerator.setUpdateSpeed(cube.getRotationalVelocity() / 10f + 0.01f);
-    contourGenerator.setNoiseAmplitude(cube.getRotationalVelocity() * 10 + 10);
-    contourGenerator.setXSpeed(cube.getRotationalVelocity() / 100f);
+    contourGenerator.setXSpeed(cube.getEulerRotation()[0] / 40f);
+    contourGenerator.setNoiseAmplitude(cube.getFlipAmount() * 1000 + 50);
 
     super.draw(cube, graphics);
   }

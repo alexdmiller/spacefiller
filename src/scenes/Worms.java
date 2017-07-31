@@ -210,10 +210,11 @@ public class Worms extends Scene implements EntityEventListener {
 		try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*.ser")) {
 			for (Path filePath : stream) {
 				Matcher matcher = pattern.matcher(filePath.getFileName().toString());
-				matcher.find();
-				int categoryIndex = Integer.parseInt(matcher.group(1));
-				int saveIndex = Integer.parseInt(matcher.group(2));
-				fileCache[categoryIndex][saveIndex] = Files.readAllBytes(filePath);
+				if (matcher.find()) {
+					int categoryIndex = Integer.parseInt(matcher.group(1));
+					int saveIndex = Integer.parseInt(matcher.group(2));
+					fileCache[categoryIndex][saveIndex] = Files.readAllBytes(filePath);
+				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

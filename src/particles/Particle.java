@@ -64,8 +64,13 @@ public class Particle {
 		forces.add(force);
 	}
 
-	public void setRandomVelocity(float min, float max) {
-		this.velocity = PVector.random3D();
-		this.velocity.setMag((float) Math.random() * (max - min) + min);
+	public void setRandomVelocity(float min, float max, int dimension) {
+		if (dimension == 3) {
+			this.velocity = PVector.random3D();
+			this.velocity.setMag((float) Math.random() * (max - min) + min);
+		} else if (dimension == 2) {
+			this.velocity = PVector.random2D();
+			this.velocity.setMag((float) Math.random() * (max - min) + min);
+		}
 	}
 }

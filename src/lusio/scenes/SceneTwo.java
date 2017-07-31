@@ -25,7 +25,7 @@ public class SceneTwo extends Scene {
   public void setup(Map<String, Graph> graphs) {
     particleGenerator = new ParticleGenerator(70, new Bounds(300));
     particleGenerator.setPos(900, 500);
-    webRenderer = new ParticleWebRenderer(50, 1);
+    webRenderer = new ParticleWebRenderer(50, 2);
     particleGenerator.addRenderer(webRenderer);
     dotRenderer = new ParticleDotRenderer(10);
     particleGenerator.addRenderer(dotRenderer);
@@ -39,7 +39,7 @@ public class SceneTwo extends Scene {
     perlinFlowGenerator.setNumPoints(100);
     perlinFlowGenerator.setLineSparsity(1);
     perlinFlowGenerator.setCircleRadius(300);
-    perlinFlowGenerator.setLineThickness(1);
+    perlinFlowGenerator.setLineThickness(2);
     addGenerator(perlinFlowGenerator);
 
     Graph graph = graphs.get("window");
@@ -53,16 +53,15 @@ public class SceneTwo extends Scene {
   public void draw(Lightcube cube, PGraphics graphics) {
     particleGenerator.setRotation(cube.getQuaternion());
     webRenderer.setLineThreshold(cube.getFlipAmount() * 200 + 10);
-    flockParticles.setDesiredSeparation(cube.getFlipAmount() * 100 + 10);
-    dotRenderer.setDotSize(cube.getFlipAmount() * 10 + 3);
+    flockParticles.setDesiredSeparation(cube.getFlipAmount() * 100 + 30);
+    dotRenderer.setDotSize(cube.getFlipAmount() * 10 + 10);
 
-    perlinFlowGenerator.setLineSparsity(cube.getFlipAmount());
     perlinFlowGenerator.setFlowForce(Math.abs(cube.getEulerRotation()[1]) * 5);
     perlinFlowGenerator.setNoiseScale(1000 - Math.abs(cube.getEulerRotation()[2]) * 200);
     perlinFlowGenerator.setNoiseSpeed1(cube.getRotationalVelocity() / 1000 + 0.01f);
     perlinFlowGenerator.setNoiseSpeed2(cube.getRotationalVelocity() / 1000 + 0.01f);
     perlinFlowGenerator.setLineLength(cube.getFlipAmount() * 100 + 20);
-    perlinFlowGenerator.setFallSpeed(cube.getEulerRotation()[0]);
+    perlinFlowGenerator.setFallSpeed(Math.abs(cube.getEulerRotation()[0]));
     perlinFlowGenerator.setCircleRadius(200 + cube.getFlipAmount() * 400);
 
     super.draw(cube, graphics);

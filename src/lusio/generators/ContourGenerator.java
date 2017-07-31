@@ -32,9 +32,10 @@ public class ContourGenerator extends SceneGenerator {
   private float timeStep = 0;
   private float xTimeStep = 0;
   private float yTimeStep = 0;
+  private float noiseScale = 1;
 
   private Bounds bounds;
-  private Quaternion quaternion;
+  private Quaternion quaternion = Quaternion.createFromEuler(0, 0, 0);
 
   public ContourGenerator(Bounds bounds) {
     this.bounds = bounds;
@@ -42,6 +43,14 @@ public class ContourGenerator extends SceneGenerator {
 
   public void setRotation(Quaternion quaternion) {
     this.quaternion = quaternion;
+  }
+
+  public void setCellSize(float cellSize) {
+    this.cellSize = cellSize;
+  }
+
+  public void setNoiseScale(float noiseScale) {
+    this.noiseScale = noiseScale;
   }
 
   @Override
@@ -68,7 +77,8 @@ public class ContourGenerator extends SceneGenerator {
 
     for (float i = 0; i < bounds.getHeight(); i += heightIncrements) {
       float sampleHeight = i - bounds.getHeight()/2;
-      graphics.stroke(i / bounds.getHeight() * colorRange, 255, 255);
+      // graphics.stroke(i / bounds.getHeight() * colorRange, 255, 255);
+      graphics.stroke(255);
       drawGridPlaneIntersection(heightMap, sampleHeight, sampleHeight * spacing, cellSize, graphics);
     }
 
@@ -101,7 +111,7 @@ public class ContourGenerator extends SceneGenerator {
       for (int c = 0; c < grid[r].length; c++) {
         float x = (float) r / rows * (float) Math.PI;
         float y = (float) c / cols * (float) Math.PI;
-        grid[r][c] = (Lusio.instance.noise(x + xTimeStep, y + yTimeStep, t) * noiseAmplitude) - noiseAmplitude / 2;
+        grid[r][c] = (Lusio.instance.noise((x + xTimeStep) / noiseScale, (y + yTimeStep) / noiseScale, t) * noiseAmplitude) - noiseAmplitude / 2;
       }
     }
     return grid;

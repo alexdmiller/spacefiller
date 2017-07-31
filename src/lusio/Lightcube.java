@@ -22,11 +22,25 @@ public class Lightcube extends PApplet {
 
   private float decay = 0.9f;
 
-  public Lightcube(String portName) {
+
+  private static final int BAUD_RATE = 9600;
+  private static final String USB_PORT_NAME = "/dev/cu.usbmodem1411";
+  private static final String XBEE_PORT_NAME = "/dev/tty.SLAB_USBtoUART";
+
+  public static Lightcube usb() {
+    return new Lightcube(USB_PORT_NAME, BAUD_RATE);
+  }
+
+  public static Lightcube wireless() {
+    return new Lightcube(XBEE_PORT_NAME, BAUD_RATE );
+  }
+
+  public Lightcube(String portName, int baudRate) {
     try {
-      port = new Serial(this, portName, 115200);
-      port.write('r');
+      System.out.println("Opening port " + portName + " with baud rate " + baudRate);
+      port = new Serial(this, portName, baudRate);
     } catch (RuntimeException e) {
+      System.out.println(e);
       port = null;
     }
   }
@@ -36,7 +50,7 @@ public class Lightcube extends PApplet {
       if (millis() - interval > 1000) {
         // resend single character to trigger DMP init/start
         // in case the MPU is halted/reset while applet is running
-        port.write('r');
+        // port.write('r');
         interval = millis();
       }
     }
@@ -90,6 +104,7 @@ public class Lightcube extends PApplet {
         }
       }
     }
+
   }
 
   public Quaternion getQuaternion() {

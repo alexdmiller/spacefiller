@@ -23,6 +23,16 @@ public class ParticleDotRenderer implements ParticleRenderer {
     }
   }
 
+  @Override
+  public void particleAdded(Particle particle) {
+
+  }
+
+  @Override
+  public void particleRemoved(Particle particle) {
+
+  }
+
   public void setDotSize(float dotSize) {
     this.dotSize = dotSize;
   }

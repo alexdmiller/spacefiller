@@ -27,10 +27,10 @@ public class ParticleSystem {
     this.behaviors = new ArrayList<>();
   }
 
-  public void fillWithParticles(int numParticles) {
+  public void fillWithParticles(int numParticles, int dimension) {
     for (int i = 0; i < numParticles; i++) {
-      Particle p = new Particle(bounds.getRandomPointInside());
-      p.setRandomVelocity(1, 2);
+      Particle p = new Particle(bounds.getRandomPointInside(dimension));
+      p.setRandomVelocity(1, 2, dimension);
       particles.add(p);
     }
   }
