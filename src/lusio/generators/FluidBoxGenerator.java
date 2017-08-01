@@ -36,13 +36,13 @@ import java.util.List;
 
 public class FluidBoxGenerator extends SceneGenerator {
   int NUM_PARTICLES = 200;
-  float REST_LENGTH=375;
-  int DIM=200;
+  private float restLength = 300;
+  int DIM=250;
 
-  int GRID=18;
+  int GRID=20;
   float VS=2*DIM/GRID;
   Vec3D SCALE=new Vec3D(DIM,DIM,DIM).scale(2);
-  float isoThreshold=3;
+  float isoThreshold=5;
 
   int numP;
   VerletPhysics3D physics;
@@ -54,28 +54,48 @@ public class FluidBoxGenerator extends SceneGenerator {
 
   TriangleMesh mesh = new TriangleMesh("fluid");
 
-  boolean showPhysics=false;
-  boolean isWireFrame=false;
-  boolean isClosed=true;
-  boolean useBoundary=false;
+  private boolean showPhysics=false;
+  private boolean isWireFrame=false;
+  private boolean isClosed=true;
+  private boolean useBoundary=true;
 
   Vec3D colAmp=new Vec3D(400, 200, 200);
 
-  private Quaternion quaternion = new Quaternion();
+  private Quaternion quaternion;
+
+  private float drawScale = 2;
 
   // TODO: why does this need to have a max force?
   public FluidBoxGenerator() {
     initPhysics();
-    volume=new VolumetricSpaceArray(SCALE,GRID,GRID,GRID);
-    surface=new ArrayIsoSurface(volume);
+    volume = new VolumetricSpaceArray(SCALE,GRID,GRID,GRID);
+    surface = new ArrayIsoSurface(volume);
   }
 
   public void setRotation(Quaternion quaternion) {
     this.quaternion = quaternion;
   }
 
+  public void setIsoThreshold(float isoThreshold) {
+    this.isoThreshold = isoThreshold;
+  }
+
+  public void setRestLength(float restLength) {
+    this.restLength = restLength;
+  }
+
+  public void setDrawScale(float drawScale) {
+    this.drawScale = drawScale;
+  }
+
+  public void setWireFrame(boolean wireFrame) {
+    isWireFrame = wireFrame;
+  }
+
   @Override
   public void draw(PGraphics canvas) {
+    canvas.pushMatrix();
+    canvas.scale(drawScale);
     updateParticles();
     computeVolume();
     canvas.pushMatrix();
@@ -86,7 +106,8 @@ public class FluidBoxGenerator extends SceneGenerator {
     canvas.noFill();
     canvas.stroke(255,192);
     canvas.strokeWeight(1);
-    canvas.box(physics.getWorldBounds().getExtent().x*2);
+    // canvas.box(physics.getWorldBounds().getExtent().x*2);
+
 
     if (showPhysics) {
       canvas.strokeWeight(4);
@@ -120,6 +141,7 @@ public class FluidBoxGenerator extends SceneGenerator {
     }
     canvas.popMatrix();
     canvas.noLights();
+    canvas.popMatrix();
   }
 
   void toggleBoundary() {
@@ -176,7 +198,8 @@ public class FluidBoxGenerator extends SceneGenerator {
   }
 
   void drawWireMesh(PGraphics canvas) {
-    canvas.noFill();
+    canvas.fill(0);
+    canvas.strokeWeight(4);
     int num=mesh.getNumFaces();
     for(int i=0; i<num; i++) {
       Face f=mesh.faces.get(i);
@@ -213,7 +236,11 @@ public class FluidBoxGenerator extends SceneGenerator {
   }
 
   void updateParticles() {
-    Vec3D grav=Vec3D.Y_AXIS.copy();
+    Vec3D grav = new Vec3D(0,0.5f,0);
+
+    float[] axisAngle = quaternion.toAxisAngle();
+    grav.rotateAroundAxis(new Vec3D(axisAngle[1], axisAngle[2], axisAngle[3]), -axisAngle[0]);
+
     gravity.setForce(grav.scaleSelf(2));
     numP=physics.particles.size();
     if (Math.random()<0.8 && numP<NUM_PARTICLES) {
@@ -223,17 +250,17 @@ public class FluidBoxGenerator extends SceneGenerator {
     }
     if (numP>10 && physics.springs.size()<1400) {
       for(int i=0; i<60; i++) {
-        if (Math.random()<0.04) {
+        if (Math.random()<0.1) {
           VerletParticle3D q=physics.particles.get((int) (Math.random() * numP));
           VerletParticle3D r=q;
           while(q==r) {
             r=physics.particles.get((int) (Math.random() * numP));
           }
-          physics.addSpring(new VerletSpring3D(q,r,REST_LENGTH, (float) 0.0002));
+          physics.addSpring(new VerletSpring3D(q,r,restLength, (float) 0.01));
         }
       }
     }
-    float len=(float)numP/NUM_PARTICLES*REST_LENGTH;
+    float len=(float)numP/NUM_PARTICLES*restLength;
     for(VerletSpring3D s : physics.springs) {
       s.setRestLength((float) ((Math.random() * .2 + 0.9)*len));
     }

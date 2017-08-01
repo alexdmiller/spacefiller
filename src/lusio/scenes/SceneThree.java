@@ -3,6 +3,7 @@ package lusio.scenes;
 import graph.Graph;
 import graph.SinGraphRenderer;
 import lusio.Lightcube;
+import lusio.Lusio;
 import lusio.generators.*;
 import particles.Bounds;
 import particles.behaviors.FlockParticles;
@@ -28,13 +29,19 @@ public class SceneThree extends Scene {
 //    addGenerator(perlinLine);
 
     fluidBoxGenerator = new FluidBoxGenerator();
-    fluidBoxGenerator.setPos(800, 500);
+    fluidBoxGenerator.setPos(Lusio.WIDTH / 2, Lusio.HEIGHT / 2);
+    fluidBoxGenerator.setIsoThreshold(5);
+    fluidBoxGenerator.setWireFrame(false);
     addGenerator(fluidBoxGenerator);
   }
 
   @Override
   public void draw(Lightcube cube, PGraphics graphics) {
     fluidBoxGenerator.setRotation(cube.getQuaternion());
+    fluidBoxGenerator.setRestLength(Math.max(cube.getRotationalVelocity(), 1) * 30 + 15);
+
+    // fluidBoxGenerator.setDrawScale(cube.getFlipAmount() * 0.5f + 2);
+    // fluidBoxGenerator.setWireFrame(cube.getFlipAmount() > 0.5);
 
     super.draw(cube, graphics);
   }

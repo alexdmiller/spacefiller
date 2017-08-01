@@ -35,7 +35,7 @@ public class ParticleGenerator extends SceneGenerator {
 
     graphics.strokeWeight(1);
     float[] axis = quaternion.toAxisAngle();
-    graphics.rotate(axis[0], -axis[1], axis[3], axis[2]);
+    graphics.rotate(axis[0], axis[1], axis[3], axis[2]);
 
     Bounds bounds = particleSystem.getBounds();
     graphics.box(bounds.getWidth(), bounds.getHeight(), bounds.getDepth());

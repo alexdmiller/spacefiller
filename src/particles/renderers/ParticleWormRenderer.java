@@ -16,10 +16,12 @@ import java.util.List;
 public class ParticleWormRenderer extends ParticleRenderer {
   private List<IndividualWormRenderer> individualWormRenderers;
   private int wormLength;
+  private float lineThickness;
 
-  public ParticleWormRenderer(int wormLength) {
+  public ParticleWormRenderer(int wormLength, float lineThickness) {
     individualWormRenderers = new ArrayList<>();
     this.wormLength = wormLength;
+    this.lineThickness = lineThickness;
   }
 
   @Override
@@ -61,7 +63,7 @@ public class ParticleWormRenderer extends ParticleRenderer {
     }
 
     public void draw(PGraphics graphics) {
-
+      graphics.strokeWeight(lineThickness);
       if (markedForDeath) {
         if (!history.isEmpty()) {
           history.remove();

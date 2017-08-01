@@ -13,6 +13,11 @@ public class Bounds implements Serializable {
 		this.depth = depth;
 	}
 
+	public Bounds(float width, float height) {
+		this.width = width;
+		this.height = height;
+	}
+
 	public Bounds(float size) {
 		width = height = depth = size;
 	}

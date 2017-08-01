@@ -22,7 +22,6 @@ public class Lightcube extends PApplet {
 
   private float decay = 0.9f;
 
-
   private static final int BAUD_RATE = 9600;
   private static final String USB_PORT_NAME = "/dev/cu.usbmodem1411";
   private static final String XBEE_PORT_NAME = "/dev/tty.SLAB_USBtoUART";
@@ -95,7 +94,6 @@ public class Lightcube extends PApplet {
             q[3] = ((teapotPacket[8] << 8) | teapotPacket[9]) / 16384.0f;
             for (int i = 0; i < 4; i++) if (q[i] >= 2) q[i] = -4 + q[i];
 
-
             previousQuaternion = quaternion;
             quaternion = new Quaternion(q[0], q[1], q[2], q[3]);
 
@@ -104,7 +102,11 @@ public class Lightcube extends PApplet {
         }
       }
     }
+  }
 
+  public int getColor() {
+    float[] euler = getEulerRotation();
+    return color(abs(euler[0] / PI) * 255, abs(euler[1] / PI) * 255, abs(euler[2] / PI) * 255);
   }
 
   public Quaternion getQuaternion() {

@@ -31,7 +31,7 @@ public class Lusio extends PApplet {
   private SyphonServer server;
   private PGraphics canvas;
 
-  private Scene[] scenes = { new SceneFour(), new SceneThree(),  new SceneOne(), new SceneTwo() };
+  private Scene[] scenes = { new CubeScene(), new SceneThree(), new SceneFour(), new SceneOne(), new SceneTwo() };
 
   private Scene currentScene;
   private int currentSceneIndex;
@@ -53,12 +53,15 @@ public class Lusio extends PApplet {
 
   private Lightcube lightcube;
 
+  public static int WIDTH = 1920;
+  public static int HEIGHT = 1080;
+
   public Lusio() {
     Lusio.instance = this;
   }
 
   public void settings() {
-    // fullScreen(2);
+    fullScreen(2);
     size(1920, 1080, P3D);
     PJOGL.profile = 1;
   }
