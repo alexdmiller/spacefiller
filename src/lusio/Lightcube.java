@@ -6,10 +6,12 @@ import toxi.geom.*;
 import processing.core.PApplet;
 import processing.serial.*;
 
+import java.util.Arrays;
+
 public class Lightcube extends PApplet {
   Serial port;
 
-  private char[] teapotPacket = new char[14];  // InvenSense Teapot packet
+  private char[] teapotPacket = new char[17];  // InvenSense Teapot packet
   private int serialCount = 0;                 // current packet byte position
   private int aligned = 0;
   private int interval = 0;
@@ -22,7 +24,9 @@ public class Lightcube extends PApplet {
 
   private float decay = 0.9f;
 
-  private static final int BAUD_RATE = 9600;
+  private int color = 0x000000;
+
+  private static final int BAUD_RATE = 57600;
   private static final String USB_PORT_NAME = "/dev/cu.usbmodem1411";
   private static final String XBEE_PORT_NAME = "/dev/tty.SLAB_USBtoUART";
 
@@ -36,6 +40,7 @@ public class Lightcube extends PApplet {
 
   public Lightcube(String portName, int baudRate) {
     try {
+      System.out.println(Arrays.toString(Serial.list()));
       System.out.println("Opening port " + portName + " with baud rate " + baudRate);
       port = new Serial(this, portName, baudRate);
     } catch (RuntimeException e) {
@@ -64,27 +69,31 @@ public class Lightcube extends PApplet {
   public void serialEvent(Serial port) {
     interval = millis();
 
+    /**
+     * Packet structure:
+     * { '$', 0x02, 0,0, 0,0, 0,0, 0,0, 0x00, 0x00, 0, 0, 0, '\r', '\n' };
+     */
     while (port.available() > 0) {
       int ch = port.read();
       if (ch == '$') {serialCount = 0;} // this will help with alignment
       if (aligned < 4) {
-        // make sure we are properly aligned on a 14-byte packet
+        // make sure we are properly aligned on a 17-byte packet
         if (serialCount == 0) {
           if (ch == '$') aligned++; else aligned = 0;
         } else if (serialCount == 1) {
           if (ch == 2) aligned++; else aligned = 0;
-        } else if (serialCount == 12) {
+        } else if (serialCount == 15) {
           if (ch == '\r') aligned++; else aligned = 0;
-        } else if (serialCount == 13) {
+        } else if (serialCount == 16) {
           if (ch == '\n') aligned++; else aligned = 0;
         }
         //println(ch + " " + aligned + " " + serialCount);
         serialCount++;
-        if (serialCount == 14) serialCount = 0;
+        if (serialCount == 17) serialCount = 0;
       } else {
         if (serialCount > 0 || ch == '$') {
           teapotPacket[serialCount++] = (char)ch;
-          if (serialCount == 14) {
+          if (serialCount == 17) {
             serialCount = 0; // restart packet byte position
 
             // get quaternion from data packet
@@ -98,6 +107,9 @@ public class Lightcube extends PApplet {
             quaternion = new Quaternion(q[0], q[1], q[2], q[3]);
 
             rotationalVelocity = Math.max(quaternion.sub(previousQuaternion).magnitude() * 500, rotationalVelocity);
+
+            // get color from data packet
+            color = Lusio.instance.color(teapotPacket[12], teapotPacket[13], teapotPacket[14]);
           }
         }
       }
@@ -105,8 +117,7 @@ public class Lightcube extends PApplet {
   }
 
   public int getColor() {
-    float[] euler = getEulerRotation();
-    return color(abs(euler[0] / PI) * 255, abs(euler[1] / PI) * 255, abs(euler[2] / PI) * 255);
+    return color;
   }
 
   public Quaternion getQuaternion() {

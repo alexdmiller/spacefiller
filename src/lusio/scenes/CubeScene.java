@@ -29,6 +29,7 @@ public class CubeScene extends Scene {
 
   @Override
   public void draw(Lightcube cube, PGraphics graphics) {
+    graphics.stroke(cube.getColor());
     history[0].set(cube.getQuaternion());
     sizeHistory[0] = cube.getFlipAmount() * cube.getFlipAmount() * 2 + 0.5f;
 

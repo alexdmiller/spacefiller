@@ -61,7 +61,7 @@ public class Lusio extends PApplet {
   }
 
   public void settings() {
-    fullScreen(2);
+    // fullScreen(2);
     size(1920, 1080, P3D);
     PJOGL.profile = 1;
   }
