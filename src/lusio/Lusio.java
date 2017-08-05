@@ -1,6 +1,5 @@
 package lusio;
 
-import codeanticode.syphon.SyphonServer;
 import controlP5.ControlEvent;
 import controlP5.ControlP5;
 import controlP5.DropdownList;
@@ -28,10 +27,9 @@ public class Lusio extends PApplet {
     main("lusio.Lusio");
   }
 
-  private SyphonServer server;
   private PGraphics canvas;
 
-  private Scene[] scenes = { new CubeScene(), new SceneThree(), new SceneFour(), new SceneOne(), new SceneTwo() };
+  private Scene[] scenes = { new FlockScene(), new FluidScene(), new CubeScene(), new SceneOne(), new SceneTwo() };
 
   private Scene currentScene;
   private int currentSceneIndex;
@@ -69,11 +67,10 @@ public class Lusio extends PApplet {
   public final void setup() {
     graphs = new HashMap<>();
     graphNames = new ArrayList<>();
-    lightcube = Lightcube.wireless();
+    lightcube = Lightcube.usb();
 
     canvas = createGraphics(1920, 1080, P3D);
     canvas.smooth();
-    server = new SyphonServer(this, this.getClass().getName());
 
     controlP5 = new ControlP5(this);
     controlP5.hide();
@@ -111,7 +108,6 @@ public class Lusio extends PApplet {
     canvas.background(0);
 
     lightcube.update();
-    lightcube.drawDebug(canvas, 100, 100);
 
     updateSwitchTimer();
 
@@ -158,6 +154,8 @@ public class Lusio extends PApplet {
     canvas.ellipse(0, 0, switchTimer / timeUntilSwitch * width * 1.2f, switchTimer / timeUntilSwitch * width * 1.2f);
     canvas.popMatrix();
 
+    lightcube.drawDebug(canvas, 200, 100);
+
     image(canvas, 0, 0);
     canvas.endDraw();
   }
@@ -179,14 +177,14 @@ public class Lusio extends PApplet {
       switchScene(nextSceneIndex);
     }
 
-    canvas.pushMatrix();
-    canvas.translate(50, 220);
-    canvas.noFill();
-    canvas.stroke(255);
-    canvas.rect(0, 0, 100, 10);
-    canvas.fill(255);
-    canvas.rect(0, 0, switchTimer / timeUntilSwitch * 100, 10);
-    canvas.popMatrix();
+//    canvas.pushMatrix();
+//    canvas.translate(50, 220);
+//    canvas.noFill();
+//    canvas.stroke(255);
+//    canvas.rect(0, 0, 100, 10);
+//    canvas.fill(255);
+//    canvas.rect(0, 0, switchTimer / timeUntilSwitch * 100, 10);
+//    canvas.popMatrix();
   }
 
   public Graph selectedGraph() {

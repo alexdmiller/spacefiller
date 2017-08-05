@@ -35,7 +35,7 @@ public class Lightcube extends PApplet {
   }
 
   public static Lightcube wireless() {
-    return new Lightcube(XBEE_PORT_NAME, BAUD_RATE );
+    return new Lightcube(XBEE_PORT_NAME, BAUD_RATE);
   }
 
   public Lightcube(String portName, int baudRate) {
@@ -159,45 +159,59 @@ public class Lightcube extends PApplet {
 
     graphics.pushMatrix();
 
-    graphics.colorMode(PConstants.RGB);
-    graphics.noFill();
-    graphics.stroke(255);
-    graphics.strokeWeight(1);
-    graphics.translate(x, y);
+    {
+      graphics.colorMode(PConstants.RGB);
+      graphics.noFill();
+      graphics.stroke(255);
+      graphics.strokeWeight(1);
+      graphics.translate(x, y);
 
-    graphics.pushMatrix();
+      graphics.pushMatrix();
+      {
+        graphics.rotateX(up.headingYZ());
+        graphics.stroke(255, 0, 255, 255);
+        graphics.line(0, size / 2, 0, 0, -size / 2, 0);
+        graphics.line(-10, -size / 2 + 10, 0, 0, -size / 2, 0);
+        graphics.line(10, -size / 2 + 10, 0, 0, -size / 2, 0);
+      }
+      graphics.popMatrix();
 
-    graphics.rotateX(up.headingYZ());
-    graphics.stroke(255, 0, 255, 255);
-    graphics.line(0, size / 2, 0, 0, -size / 2, 0);
-    graphics.line(-10, -size / 2 + 10, 0, 0, -size / 2, 0);
-    graphics.line(10, -size / 2 + 10, 0, 0, -size / 2, 0);
-    graphics.popMatrix();
+      graphics.pushMatrix();
+      {
+//        graphics.rotateX((float) -(Math.PI / 4));
+//        graphics.rotateY((float) (Math.PI / 4));
+        graphics.stroke(255);
 
-    graphics.pushMatrix();
-    graphics.stroke(255);
-    float[] axis = quaternion.toAxisAngle();
-    graphics.rotate(axis[0], -axis[1], axis[3], axis[2]);
-    graphics.box(size * 2);
-    graphics.line(0, size / 2, 0, 0, -size / 2, 0);
-    graphics.line(-10, -size / 2 + 10, 0, 0, -size / 2, 0);
-    graphics.line(10, -size / 2 + 10, 0, 0, -size / 2, 0);
-    graphics.popMatrix();
+        graphics.pushMatrix();
+        {
+          float[] axis = quaternion.toAxisAngle();
+          graphics.rotate(axis[0], -axis[1], axis[3], axis[2]);
+          graphics.box(size * 2);
+          graphics.line(0, size / 2, 0, 0, -size / 2, 0);
+          graphics.line(-10, -size / 2 + 10, 0, 0, -size / 2, 0);
+          graphics.line(10, -size / 2 + 10, 0, 0, -size / 2, 0);
+        }
+        graphics.popMatrix();
 
-    float flip = getFlipAmount();
-    graphics.translate(-50, size + 20);
-    graphics.noFill();
-    graphics.rect(0, 0, 100, 10);
-    graphics.fill(255);
-    graphics.rect(0, 0, 100 * flip, 10);
-
-    float velocity = getRotationalVelocity();
-    graphics.translate(0, 20);
-    graphics.noFill();
-    graphics.rect(0, 0, 100, 10);
-    graphics.fill(255);
-    graphics.rect(0, 0, velocity, 10);
-
+        graphics.noFill();
+        graphics.translate(0, size * 3);
+        graphics.box(size * 3);
+      }
+      graphics.popMatrix();
+//      float flip = getFlipAmount();
+//      graphics.translate(-50, size + 500);
+//      graphics.noFill();
+//      graphics.rect(0, 0, 100, 10);
+//      graphics.fill(255);
+//      graphics.rect(0, 0, 100 * flip, 10);
+//
+//      float velocity = getRotationalVelocity();
+//      graphics.translate(0, 20);
+//      graphics.noFill();
+//      graphics.rect(0, 0, 100, 10);
+//      graphics.fill(255);
+//      graphics.rect(0, 0, velocity, 10);
+    }
     graphics.popMatrix();
   }
 }

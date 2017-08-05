@@ -3,7 +3,6 @@
 #include "MPU6050_6Axis_MotionApps20.h"
 #include <FastLED.h>;
 
-
 MPU6050 mpu;
 
 #define PIN 6
@@ -37,14 +36,22 @@ float ypr[3];           // [yaw, pitch, roll]   yaw/pitch/roll container and gra
 uint8_t teapotPacket[17] = { '$', 0x02, 0,0, 0,0, 0,0, 0,0, 0x00, 0x00, 0, 0, 0, '\r', '\n' };
 uint8_t color[3] = { 0, 0, 0 };
 
-uint8_t primaryColor[3] = { 255, 255, 0 };
-uint8_t secondaryColor[3] = { 0, 255, 255 };
+uint8_t currentColorIndex = 0;
+uint8_t colors[][2][3] = {
+  { { 255, 255, 0 }, { 0, 255, 255 } },
+  { { 255, 0, 255 }, { 100, 50, 255 } },
+  { { 0, 255, 0 }, { 0, 0, 255 } }
+};
+
+uint16_t flipTimer = 0;
+uint16_t timeUntilSwitch = 1000;
+uint8_t mode = 0;
+uint8_t lightIndex = 0;
 
 unsigned long previousMillis = 0;        // will store last time LED was updated
 const long interval = 100;
 
 CRGB leds[NUM_PIXELS];
-
 
 // ================================================================
 // ===               INTERRUPT DETECTION ROUTINE                ===
@@ -56,90 +63,62 @@ void dmpDataReady() {
 }
 
 
-
 // ================================================================
 // ===                      INITIAL SETUP                       ===
 // ================================================================
 
 void setup() {
-    up = VectorFloat(0, 0, -1);
+  up = VectorFloat(0, 0, -1);
 
-    FastLED.addLeds<NEOPIXEL, PIN>(leds, NUM_PIXELS);
-    FastLED.setBrightness(150);
+  FastLED.addLeds<NEOPIXEL, PIN>(leds, NUM_PIXELS);
+  FastLED.setBrightness(100);
 
-    // join I2C bus (I2Cdev library doesn't do this automatically)
-    #if I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE
-        Wire.begin();
-        TWBR = 24; // 400kHz I2C clock (200kHz if CPU is 8MHz)
-    #elif I2CDEV_IMPLEMENTATION == I2CDEV_BUILTIN_FASTWIRE
-        Fastwire::setup(400, true);
-    #endif  
+  // join I2C bus (I2Cdev library doesn't do this automatically)
+  #if I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE
+      Wire.begin();
+      TWBR = 24; // 400kHz I2C clock (200kHz if CPU is 8MHz)
+  #elif I2CDEV_IMPLEMENTATION == I2CDEV_BUILTIN_FASTWIRE
+      Fastwire::setup(400, true);
+  #endif  
 
-    // initialize serial communication
-    // (115200 chosen because it is required for Teapot Demo output, but it's 
-    // really up to you depending on your project)
-    Serial.begin(57600);
-    while (!Serial); // wait for Leonardo enumeration, others continue immediately
+  // initialize serial communication
+  // (115200 chosen because it is required for Teapot Demo output, but it's 
+  // really up to you depending on your project)
+  Serial.begin(57600);
+  while (!Serial); // wait for Leonardo enumeration, others continue immediately
 
-    // NOTE: 8MHz or slower host processors, like the Teensy @ 3.3v or Ardunio
-    // Pro Mini running at 3.3v, cannot handle this baud rate reliably due to
-    // the baud timing being too misaligned with processor ticks. You must use
-    // 38400 or slower in these cases, or use some kind of external separate
-    // crystal solution for the UART timer.
+  mpu.initialize();
 
-    // initialize device
-//    Serial.println(F("Initializing I2C devices..."));
-    mpu.initialize();
+  devStatus = mpu.dmpInitialize();
 
-    // verify connection
-//    Serial.println(F("Testing device connections..."));
-    //Serial.println(mpu.testConnection() ? F("MPU6050 connection successful") : F("MPU6050 connection failed"));
+  mpu.setXGyroOffset(0);
+  mpu.setYGyroOffset(0);
+  mpu.setZGyroOffset(0);
+  mpu.setZAccelOffset(1788); // 1688 factory default for my test chip
 
-    // wait for ready
-//    Serial.println(F("\nSend any character to begin DMP programming and demo: "));
-//    while (Serial.available() && Serial.read()); // empty buffer
-//    while (!Serial.available());                 // wait for data
-//    while (Serial.available() && Serial.read()); // empty buffer again
+  // make sure it worked (returns 0 if so)
+  if (devStatus == 0) {
+    // turn on the DMP, now that it's ready
+    //Serial.println(F("Enabling DMP..."));
+    mpu.setDMPEnabled(true);
 
-    // load and configure the DMP
-    //Serial.println(F("Initializing DMP..."));
-    devStatus = mpu.dmpInitialize();
+    // enable Arduino interrupt detection
+    //Serial.println(F("Enabling interrupt detection (Arduino external interrupt 0)..."));
+    attachInterrupt(0, dmpDataReady, RISING);
+    mpuIntStatus = mpu.getIntStatus();
 
-    // supply your own gyro offsets here, scaled for min sensitivity
-    mpu.setXGyroOffset(0);
-    mpu.setYGyroOffset(0);
-    mpu.setZGyroOffset(0);
-    mpu.setZAccelOffset(1788); // 1688 factory default for my test chip
+    // set our DMP Ready flag so the main loop() function knows it's okay to use it
+    //Serial.println(F("DMP ready! Waiting for first interrupt..."));
+    dmpReady = true;
 
-    // make sure it worked (returns 0 if so)
-    if (devStatus == 0) {
-        // turn on the DMP, now that it's ready
-        //Serial.println(F("Enabling DMP..."));
-        mpu.setDMPEnabled(true);
+    // get expected DMP packet size for later comparison
+    packetSize = mpu.dmpGetFIFOPacketSize();
+  } else {
+    // ERROR!
+  }
 
-        // enable Arduino interrupt detection
-        //Serial.println(F("Enabling interrupt detection (Arduino external interrupt 0)..."));
-        attachInterrupt(0, dmpDataReady, RISING);
-        mpuIntStatus = mpu.getIntStatus();
-
-        // set our DMP Ready flag so the main loop() function knows it's okay to use it
-        //Serial.println(F("DMP ready! Waiting for first interrupt..."));
-        dmpReady = true;
-
-        // get expected DMP packet size for later comparison
-        packetSize = mpu.dmpGetFIFOPacketSize();
-    } else {
-        // ERROR!
-        // 1 = initial memory load failed
-        // 2 = DMP configuration updates failed
-        // (if it's going to break, usually the code will be 1)
-        //Serial.print(F("DMP Initialization failed (code "));
-        //Serial.print(devStatus);
-        //Serial.println(F(")"));
-    }
-
-    // configure LED for output
-    pinMode(LED_PIN, OUTPUT);
+  // configure LED for output
+  pinMode(LED_PIN, OUTPUT);
 }
 
 
@@ -149,97 +128,140 @@ void setup() {
 // ================================================================
 
 void loop() {
-    // if programming failed, don't try to do anything
-    if (!dmpReady) return;
+  // if programming failed, don't try to do anything
+  if (!dmpReady) return;
 
-    // wait for MPU interrupt or extra packet(s) available
-    while (!mpuInterrupt && fifoCount < packetSize) {
-        // other program behavior stuff here
-        // .
-        // .
-        // .
-        // if you are really paranoid you can frequently test in between other
-        // stuff to see if mpuInterrupt is true, and if so, "break;" from the
-        // while() loop to immediately process the MPU data
-        // .
-        // .
-        // .
-    }
+  // wait for MPU interrupt or extra packet(s) available
+  while (!mpuInterrupt && fifoCount < packetSize) {
+      // other program behavior stuff here
+      // .
+      // .
+      // .
+      // if you are really paranoid you can frequently test in between other
+      // stuff to see if mpuInterrupt is true, and if so, "break;" from the
+      // while() loop to immediately process the MPU data
+      // .
+      // .
+      // .
+  }
 
-    // reset interrupt flag and get INT_STATUS byte
-    mpuInterrupt = false;
-    mpuIntStatus = mpu.getIntStatus();
+  // reset interrupt flag and get INT_STATUS byte
+  mpuInterrupt = false;
+  mpuIntStatus = mpu.getIntStatus();
 
-    // get current FIFO count
-    fifoCount = mpu.getFIFOCount();
+  // get current FIFO count
+  fifoCount = mpu.getFIFOCount();
 
-    // check for overflow (this should never happen unless our code is too inefficient)
-    if ((mpuIntStatus & 0x10) || fifoCount == 1024) {
-        // reset so we can continue cleanly
-        mpu.resetFIFO();
-        // Serial.println(F("FIFO overflow!"));
+  // check for overflow (this should never happen unless our code is too inefficient)
+  if ((mpuIntStatus & 0x10) || fifoCount == 1024) {
+      // reset so we can continue cleanly
+      mpu.resetFIFO();
+      // Serial.println(F("FIFO overflow!"));
 
-    // otherwise, check for DMP data ready interrupt (this should happen frequently)
-    } else if (mpuIntStatus & 0x02) {
-        // wait for correct available data length, should be a VERY short wait
-        while (fifoCount < packetSize) fifoCount = mpu.getFIFOCount();
+  // otherwise, check for DMP data ready interrupt (this should happen frequently)
+  } else if (mpuIntStatus & 0x02) {
+    // wait for correct available data length, should be a VERY short wait
+    while (fifoCount < packetSize) fifoCount = mpu.getFIFOCount();
 
-        // read a packet from FIFO
-        mpu.getFIFOBytes(fifoBuffer, packetSize);
-        
-        // track FIFO count here in case there is > 1 packet available
-        // (this lets us immediately read more without waiting for an interrupt)
-        fifoCount -= packetSize;
-
-        // display quaternion values in InvenSense Teapot demo format:
-        teapotPacket[2] = fifoBuffer[0];
-        teapotPacket[3] = fifoBuffer[1];
-        teapotPacket[4] = fifoBuffer[4];
-        teapotPacket[5] = fifoBuffer[5];
-        teapotPacket[6] = fifoBuffer[8];
-        teapotPacket[7] = fifoBuffer[9];
-        teapotPacket[8] = fifoBuffer[12];
-        teapotPacket[9] = fifoBuffer[13];
-        // 10 - blank?
-        // 11 - counter?
-        teapotPacket[12] = color[0];
-        teapotPacket[13] = color[1];
-        teapotPacket[14] = color[2];
-        Serial.write(teapotPacket, 17);
-        teapotPacket[11]++; // packetCount, loops at 0xFF on purpose
-
-        // blink LED to indicate activity
-        blinkState = !blinkState;
-        digitalWrite(LED_PIN, blinkState);
-    }
-
-    unsigned long currentMillis = millis();
-
-    if (currentMillis - previousMillis > interval) {
-      previousMillis = currentMillis;
-
-      mpu.dmpGetQuaternion(&quat, fifoBuffer);
-      mpu.dmpGetEuler(euler, &quat);
-
-      transformed = VectorFloat(up);
-      transformed.rotate(&quat);
-
-      float flipAmount = (dot(up, transformed) + 1) / 2;
-
-      color[0] = primaryColor[0] + (secondaryColor[0] - primaryColor[0]) * flipAmount;
-      color[1] = primaryColor[1] + (secondaryColor[1] - primaryColor[1]) * flipAmount;
-      color[2] = primaryColor[2] + (secondaryColor[2] - primaryColor[2]) * flipAmount;
-      
-      for (int i = 0; i < NUM_PIXELS; i++) {
-        leds[i].setRGB(color[0], color[1], color[2]);
-      }
+    // read a packet from FIFO
+    mpu.getFIFOBytes(fifoBuffer, packetSize);
     
-      FastLED.show();
+    // track FIFO count here in case there is > 1 packet available
+    // (this lets us immediately read more without waiting for an interrupt)
+    fifoCount -= packetSize;
+
+    // display quaternion values in InvenSense Teapot demo format:
+    teapotPacket[2] = fifoBuffer[0];
+    teapotPacket[3] = fifoBuffer[1];
+    teapotPacket[4] = fifoBuffer[4];
+    teapotPacket[5] = fifoBuffer[5];
+    teapotPacket[6] = fifoBuffer[8];
+    teapotPacket[7] = fifoBuffer[9];
+    teapotPacket[8] = fifoBuffer[12];
+    teapotPacket[9] = fifoBuffer[13];
+    // 10 - blank?
+    // 11 - counter?
+    teapotPacket[12] = color[0];
+    teapotPacket[13] = color[1];
+    teapotPacket[14] = color[2];
+    Serial.write(teapotPacket, 17);
+    teapotPacket[11]++; // packetCount, loops at 0xFF on purpose
+
+    // blink LED to indicate activity
+    blinkState = !blinkState;
+    digitalWrite(LED_PIN, blinkState);
+  }
+
+  mpu.dmpGetQuaternion(&quat, fifoBuffer);
+  mpu.dmpGetEuler(euler, &quat);
+
+  transformed = VectorFloat(up);
+  transformed.rotate(&quat);
+
+  float flipAmount = (dot(up, transformed) + 1) / 2;
+  
+  if (mode == 0) {
+    if (flipAmount < 0.1) {
+      // switch to power up mode
+      mode = 1;
     }
+
+    // stable mode
+    setColor(flipAmount);
+    sendColorToLEDs();
+  } else if (mode == 1) {
+    flipTimer++;
+
+    if (flipTimer > timeUntilSwitch) {
+      flipTimer = 0;
+      mode = 2;
+      
+      FastLED.clear();
+    }
+    
+    // power up mode
+    color[0] = sin8(flipTimer * 10);
+    color[1] = sin8(flipTimer * 10);
+    color[2] = sin8(flipTimer * 10);
+
+    sendColorToLEDs();
+  } else if (mode == 2) {
+    // transition mode
+    // uint8_t nextPrimaryColor[3] = colors[(currentColorIndex + 1) % sizeof(colors)][0];
+    uint8_t * nextPrimaryColor = colors[(currentColorIndex + 1) % sizeof(colors)][0];
+    leds[lightIndex].setRGB(nextPrimaryColor[0], nextPrimaryColor[1], nextPrimaryColor[2]);
+    lightIndex++;
+
+    if (lightIndex == NUM_PIXELS) {
+      mode = 0;
+    }
+  }
 }
 
 float dot(VectorFloat v1, VectorFloat v2) {
   return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
+}
+
+float setColor(float flipAmount) {
+  uint8_t * primaryColor = colors[currentColorIndex][0];
+  uint8_t * secondaryColor = colors[currentColorIndex][1];
+  color[0] = primaryColor[0] + (secondaryColor[0] - primaryColor[0]) * flipAmount;
+  color[1] = primaryColor[1] + (secondaryColor[1] - primaryColor[1]) * flipAmount;
+  color[2] = primaryColor[2] + (secondaryColor[2] - primaryColor[2]) * flipAmount;
+}
+
+void sendColorToLEDs() {
+  unsigned long currentMillis = millis();
+
+  if (currentMillis - previousMillis > interval) {
+    previousMillis = currentMillis;
+    
+    for (int i = 0; i < NUM_PIXELS; i++) {
+      leds[i].setRGB(color[0], color[1], color[2]);
+    }
+  
+    FastLED.show();
+  }
 }
 
 

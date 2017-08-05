@@ -35,7 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FluidBoxGenerator extends SceneGenerator {
-  int NUM_PARTICLES = 200;
+  int NUM_PARTICLES = 100;
   private float restLength = 300;
   int DIM=250;
 
