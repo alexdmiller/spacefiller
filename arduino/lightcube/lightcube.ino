@@ -44,7 +44,7 @@ uint8_t colors[][2][3] = {
 };
 
 uint16_t flipTimer = 0;
-uint16_t timeUntilSwitch = 1000;
+uint16_t timeUntilSwitch = 300;
 uint8_t mode = 0;
 uint8_t lightIndex = 0;
 
@@ -195,13 +195,13 @@ void loop() {
   mpu.dmpGetQuaternion(&quat, fifoBuffer);
   mpu.dmpGetEuler(euler, &quat);
 
-  transformed = VectorFloat(up);
+  transformed = VectorFloat(0, 0, -1);
   transformed.rotate(&quat);
 
   float flipAmount = (dot(up, transformed) + 1) / 2;
-  
+
   if (mode == 0) {
-    if (flipAmount < 0.1) {
+    if (flipAmount < 0.05) {
       // switch to power up mode
       mode = 1;
     }
@@ -215,7 +215,6 @@ void loop() {
     if (flipTimer > timeUntilSwitch) {
       flipTimer = 0;
       mode = 2;
-      
       FastLED.clear();
     }
     
@@ -226,15 +225,19 @@ void loop() {
 
     sendColorToLEDs();
   } else if (mode == 2) {
+    mode = 0;
+    up = VectorFloat(0, 0, up.z * -1);
+
+    /*
     // transition mode
-    // uint8_t nextPrimaryColor[3] = colors[(currentColorIndex + 1) % sizeof(colors)][0];
     uint8_t * nextPrimaryColor = colors[(currentColorIndex + 1) % sizeof(colors)][0];
     leds[lightIndex].setRGB(nextPrimaryColor[0], nextPrimaryColor[1], nextPrimaryColor[2]);
     lightIndex++;
 
     if (lightIndex == NUM_PIXELS) {
-      mode = 0;
+      
     }
+    */
   }
 }
 

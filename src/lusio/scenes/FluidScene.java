@@ -29,9 +29,10 @@ public class FluidScene extends Scene {
 
   @Override
   public void draw(Lightcube cube, PGraphics graphics) {
+    fluidBoxGenerator.setColor(cube.getColor());
     fluidBoxGenerator.setRotation(cube.getQuaternion());
     fluidBoxGenerator.setRestLength(Math.max(cube.getRotationalVelocity(), 1) * 4 + 200);
-    fluidBoxGenerator.setIsoThreshold(cube.getRotationalVelocity() / 30 + 2.5f);
+    fluidBoxGenerator.setIsoThreshold(cube.getRotationalVelocity() / 100 + 2.5f);
 
     super.draw(cube, graphics);
   }

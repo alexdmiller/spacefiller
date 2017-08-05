@@ -22,7 +22,7 @@ public class Lightcube extends PApplet {
   private float rotationalVelocity;
   private Vec3D up = new Vec3D(0, -1, 0);
 
-  private float decay = 0.9f;
+  private float decay = 0.95f;
 
   private int color = 0x000000;
 

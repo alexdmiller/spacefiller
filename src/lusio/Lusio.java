@@ -29,7 +29,7 @@ public class Lusio extends PApplet {
 
   private PGraphics canvas;
 
-  private Scene[] scenes = { new FlockScene(), new FluidScene(), new CubeScene(), new SceneOne(), new SceneTwo() };
+  private Scene[] scenes = { new FluidScene(), new FlockScene(), new CubeScene(), new SceneOne(), new SceneTwo() };
 
   private Scene currentScene;
   private int currentSceneIndex;

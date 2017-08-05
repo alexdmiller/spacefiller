@@ -58,8 +58,9 @@ public class FluidBoxGenerator extends SceneGenerator {
   private boolean isWireFrame=false;
   private boolean isClosed=true;
   private boolean useBoundary=true;
+  private int color;
 
-  Vec3D colAmp=new Vec3D(400, 200, 200);
+  Vec3D colAmp=new Vec3D(0, 0, 0);
 
   private Quaternion quaternion;
 
@@ -92,6 +93,10 @@ public class FluidBoxGenerator extends SceneGenerator {
     isWireFrame = wireFrame;
   }
 
+  public void setColor(int color) {
+    this.color = color;
+  }
+
   @Override
   public void draw(PGraphics canvas) {
     canvas.pushMatrix();
@@ -106,8 +111,6 @@ public class FluidBoxGenerator extends SceneGenerator {
     canvas.noFill();
     canvas.stroke(255,192);
     canvas.strokeWeight(1);
-    // canvas.box(physics.getWorldBounds().getExtent().x*2);
-
 
     if (showPhysics) {
       canvas.strokeWeight(4);
@@ -183,15 +186,15 @@ public class FluidBoxGenerator extends SceneGenerator {
     for(int i=0; i<num; i++) {
       Face f=mesh.faces.get(i);
       Vec3D col=f.a.add(colAmp).scaleSelf(0.5f);
-      canvas.fill(col.x,col.y,col.z);
+      canvas.fill(color);
       normal(canvas, f.a.normal);
       vertex(canvas, f.a);
       col=f.b.add(colAmp).scaleSelf(0.5f);
-      canvas.fill(col.x,col.y,col.z);
+      // canvas.fill(col.x,col.y,col.z);
       normal(canvas, f.b.normal);
       vertex(canvas, f.b);
       col=f.c.add(colAmp).scaleSelf(0.5f);
-      canvas.fill(col.x,col.y,col.z);
+      // canvas.fill(col.x,col.y,col.z);
       normal(canvas, f.c.normal);
       vertex(canvas, f.c);
     }
