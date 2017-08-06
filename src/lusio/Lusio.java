@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Lusio extends PApplet {
-  public static PApplet instance;
+  public static Lusio instance;
 
   public static void main(String[] args) {
     main("lusio.Lusio");
@@ -43,11 +43,6 @@ public class Lusio extends PApplet {
   private Node selectedNode;
   private boolean creatingEdge;
   private boolean graphsVisible = true;
-
-  private float switchTimer = 0;
-  private float timeUntilSwitch = 50;
-  private float switchThreshold = 0.9f;
-  private boolean transitionOut = false;
 
   private Lightcube lightcube;
 
@@ -105,7 +100,11 @@ public class Lusio extends PApplet {
 
   public final void draw() {
     canvas.beginDraw();
-    canvas.background(0);
+    if (lightcube.getMode() == 1) {
+      canvas.background(255 - red(lightcube.getColor()), 255 - red(lightcube.getColor()), 255 - red(lightcube.getColor()));
+    } else {
+      canvas.background(0);
+    }
 
     lightcube.update();
 
@@ -123,12 +122,9 @@ public class Lusio extends PApplet {
     canvas.ortho();
 
     if (currentScene != null) {
-      if (transitionOut) {
-        if (currentScene.transitionOut()) {
-          transitionOut = false;
-          // TODO: be smarter about assigning the zero point?
-          switchScene((currentSceneIndex + 1) % scenes.length);
-        }
+      if (lightcube.readTransitionScene()) {
+        lightcube.flipOrientation();
+        switchScene((currentSceneIndex + 1) % scenes.length);
       }
 
       currentScene.draw(lightcube, canvas);
@@ -147,13 +143,6 @@ public class Lusio extends PApplet {
       }
     }
 
-    canvas.pushMatrix();
-    canvas.translate(width / 2, height / 2);
-    canvas.fill(255, 255, 255, lightcube.getFlipAmount() * 255);
-    canvas.noStroke();
-    canvas.ellipse(0, 0, switchTimer / timeUntilSwitch * width * 1.2f, switchTimer / timeUntilSwitch * width * 1.2f);
-    canvas.popMatrix();
-
     lightcube.drawDebug(canvas, 200, 100);
 
     image(canvas, 0, 0);
@@ -161,21 +150,21 @@ public class Lusio extends PApplet {
   }
 
   private final void updateSwitchTimer() {
-    if (lightcube.getFlipAmount() > switchThreshold) {
-      switchTimer++;
-    } else if (switchTimer > 0) {
-      switchTimer -= 5;
-    } else {
-      switchTimer = 0;
-    }
-
-    if (switchTimer > timeUntilSwitch) {
-      lightcube.flipOrientation();
-      switchTimer = 0;
-
-      int nextSceneIndex = (currentSceneIndex + 1) % scenes.length;
-      switchScene(nextSceneIndex);
-    }
+//    if (lightcube.getFlipAmount() > switchThreshold) {
+//      switchTimer++;
+//    } else if (switchTimer > 0) {
+//      switchTimer -= 5;
+//    } else {
+//      switchTimer = 0;
+//    }
+//
+//    if (switchTimer > timeUntilSwitch) {
+//      lightcube.flipOrientation();
+//      switchTimer = 0;
+//
+//      int nextSceneIndex = (currentSceneIndex + 1) % scenes.length;
+//      switchScene(nextSceneIndex);
+//    }
 
 //    canvas.pushMatrix();
 //    canvas.translate(50, 220);
@@ -322,6 +311,14 @@ public class Lusio extends PApplet {
       i.printStackTrace();
     } catch (ClassNotFoundException c) {
       c.printStackTrace();
+    }
+  }
+
+  public int getColor(int x) {
+    if (x % 3 == 0) {
+      return lightcube.getColor();
+    } else {
+      return color(255);
     }
   }
 }

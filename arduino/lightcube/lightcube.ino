@@ -33,7 +33,8 @@ float euler[3];         // [psi, theta, phi]    Euler angle container
 float ypr[3];           // [yaw, pitch, roll]   yaw/pitch/roll container and gravity vector
 
 // packet structure for InvenSense teapot demo
-uint8_t teapotPacket[17] = { '$', 0x02, 0,0, 0,0, 0,0, 0,0, 0x00, 0x00, 0, 0, 0, '\r', '\n' };
+//                                      orientation                     color    mode
+uint8_t teapotPacket[18] = { '$', 0x02, 0,0, 0,0, 0,0, 0,0, 0x00, 0x00, 0, 0, 0, 0, '\r', '\n' };
 uint8_t color[3] = { 0, 0, 0 };
 
 uint8_t currentColorIndex = 0;
@@ -184,7 +185,8 @@ void loop() {
     teapotPacket[12] = color[0];
     teapotPacket[13] = color[1];
     teapotPacket[14] = color[2];
-    Serial.write(teapotPacket, 17);
+    teapotPacket[15] = mode;
+    Serial.write(teapotPacket, 18);
     teapotPacket[11]++; // packetCount, loops at 0xFF on purpose
 
     // blink LED to indicate activity
@@ -206,11 +208,19 @@ void loop() {
       mode = 1;
     }
 
+    if (flipTimer > 0) {
+      flipTimer--;
+    }
+
     // stable mode
     setColor(flipAmount);
     sendColorToLEDs();
   } else if (mode == 1) {
     flipTimer++;
+
+    if (flipAmount > 0.1) {
+      mode = 0;
+    }
 
     if (flipTimer > timeUntilSwitch) {
       flipTimer = 0;
@@ -219,9 +229,9 @@ void loop() {
     }
     
     // power up mode
-    color[0] = sin8(flipTimer * 10);
-    color[1] = sin8(flipTimer * 10);
-    color[2] = sin8(flipTimer * 10);
+    float a = (float) flipTimer / timeUntilSwitch;
+    uint8_t c = cos8(flipTimer * flipTimer * 0.05f);
+    color[0] = color[1] = color[2] = c;
 
     sendColorToLEDs();
   } else if (mode == 2) {

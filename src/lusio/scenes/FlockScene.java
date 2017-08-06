@@ -42,10 +42,8 @@ public class FlockScene extends Scene {
 
   @Override
   public void draw(Lightcube cube, PGraphics graphics) {
-    graphics.stroke(cube.getColor());
-
-    // particleGenerator.setRotation(Quaternion.createFromEuler(0f, (float) Math.PI/ 2, 0));
     flockParticles.setDesiredSeparation(cube.getRotationalVelocity() + 20);
+    flockParticles.setMaxSpeed(cube.getRotationalVelocity());
     particleWebRenderer.setLineThreshold(cube.getRotationalVelocity() * 3 + 20);
 
     super.draw(cube, graphics);

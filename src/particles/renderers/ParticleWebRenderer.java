@@ -1,5 +1,6 @@
 package particles.renderers;
 
+import lusio.Lusio;
 import particles.Particle;
 import processing.core.PGraphics;
 
@@ -19,7 +20,9 @@ public class ParticleWebRenderer extends ParticleRenderer {
 
   public void render(PGraphics graphics) {
     graphics.strokeWeight(lineSize);
+    int i = 0;
     for (Particle p1 : particles) {
+      graphics.stroke(Lusio.instance.getColor(i));
       for (Particle p2 : particles) {
         float dist = p1.position.dist(p2.position);
         if (dist < lineThreshold) {
@@ -28,6 +31,7 @@ public class ParticleWebRenderer extends ParticleRenderer {
               p2.position.x, p2.position.y, p2.position.z);
         }
       }
+      i++;
     }
   }
 

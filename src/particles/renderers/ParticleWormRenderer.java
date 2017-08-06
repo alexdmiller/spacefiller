@@ -3,6 +3,7 @@ package particles.renderers;
 import boids.Boid;
 import boids.renderers.BoidRenderer;
 import com.google.common.collect.EvictingQueue;
+import lusio.Lusio;
 import particles.Particle;
 import processing.core.PGraphics;
 import processing.core.PVector;
@@ -26,9 +27,13 @@ public class ParticleWormRenderer extends ParticleRenderer {
 
   @Override
   public void render(PGraphics graphics) {
+    int i = 0;
     for (IndividualWormRenderer r : individualWormRenderers) {
+      graphics.stroke(Lusio.instance.getColor(i));
       r.draw(graphics);
+      i++;
     }
+
   }
 
   public void setParticles(List<Particle> particles) {

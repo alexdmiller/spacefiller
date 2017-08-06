@@ -1,14 +1,9 @@
 package lusio.scenes;
 
 import graph.Graph;
-import graph.SinGraphRenderer;
 import lusio.Lightcube;
 import lusio.Lusio;
 import lusio.generators.*;
-import particles.Bounds;
-import particles.behaviors.FlockParticles;
-import particles.renderers.ParticleDotRenderer;
-import particles.renderers.ParticleWebRenderer;
 import processing.core.PGraphics;
 
 import java.util.Map;
@@ -31,8 +26,8 @@ public class FluidScene extends Scene {
   public void draw(Lightcube cube, PGraphics graphics) {
     fluidBoxGenerator.setColor(cube.getColor());
     fluidBoxGenerator.setRotation(cube.getQuaternion());
-    fluidBoxGenerator.setRestLength(Math.max(cube.getRotationalVelocity(), 1) * 4 + 200);
-    fluidBoxGenerator.setIsoThreshold(cube.getRotationalVelocity() / 100 + 2.5f);
+    fluidBoxGenerator.setRestLength(Math.max(cube.getRotationalVelocity(), 1) * 4 + 250);
+    fluidBoxGenerator.setIsoThreshold(cube.getRotationalVelocity() / 100 + 3.0f);
 
     super.draw(cube, graphics);
   }

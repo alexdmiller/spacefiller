@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class Lightcube extends PApplet {
   Serial port;
 
-  private char[] teapotPacket = new char[17];  // InvenSense Teapot packet
+  private char[] teapotPacket = new char[18];  // InvenSense Teapot packet
   private int serialCount = 0;                 // current packet byte position
   private int aligned = 0;
   private int interval = 0;
@@ -25,6 +25,8 @@ public class Lightcube extends PApplet {
   private float decay = 0.95f;
 
   private int color = 0x000000;
+  private int mode = 0;
+  private boolean transitionScene = false;
 
   private static final int BAUD_RATE = 57600;
   private static final String USB_PORT_NAME = "/dev/cu.usbmodem1411";
@@ -66,12 +68,22 @@ public class Lightcube extends PApplet {
     }
   }
 
+  public char[] getTeapotPacket() {
+    return teapotPacket;
+  }
+
+  public boolean readTransitionScene() {
+    boolean value = transitionScene;
+    transitionScene = false;
+    return value;
+  }
+
   public void serialEvent(Serial port) {
     interval = millis();
 
     /**
      * Packet structure:
-     * { '$', 0x02, 0,0, 0,0, 0,0, 0,0, 0x00, 0x00, 0, 0, 0, '\r', '\n' };
+     * { '$', 0x02, 0,0, 0,0, 0,0, 0,0, 0x00, 0x00, 0, 0, 0, 0, '\r', '\n' };
      */
     while (port.available() > 0) {
       int ch = port.read();
@@ -82,18 +94,18 @@ public class Lightcube extends PApplet {
           if (ch == '$') aligned++; else aligned = 0;
         } else if (serialCount == 1) {
           if (ch == 2) aligned++; else aligned = 0;
-        } else if (serialCount == 15) {
-          if (ch == '\r') aligned++; else aligned = 0;
         } else if (serialCount == 16) {
+          if (ch == '\r') aligned++; else aligned = 0;
+        } else if (serialCount == 17) {
           if (ch == '\n') aligned++; else aligned = 0;
         }
         //println(ch + " " + aligned + " " + serialCount);
         serialCount++;
-        if (serialCount == 17) serialCount = 0;
+        if (serialCount == 18) serialCount = 0;
       } else {
         if (serialCount > 0 || ch == '$') {
           teapotPacket[serialCount++] = (char)ch;
-          if (serialCount == 17) {
+          if (serialCount == 18) {
             serialCount = 0; // restart packet byte position
 
             // get quaternion from data packet
@@ -110,6 +122,11 @@ public class Lightcube extends PApplet {
 
             // get color from data packet
             color = Lusio.instance.color(teapotPacket[12], teapotPacket[13], teapotPacket[14]);
+
+            if (mode == 2 && teapotPacket[15] == 0) {
+              transitionScene = true;
+            }
+            mode = teapotPacket[15];
           }
         }
       }
@@ -118,6 +135,10 @@ public class Lightcube extends PApplet {
 
   public int getColor() {
     return color;
+  }
+
+  public int getMode() {
+    return mode;
   }
 
   public Quaternion getQuaternion() {

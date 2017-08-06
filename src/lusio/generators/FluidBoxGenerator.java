@@ -39,7 +39,7 @@ public class FluidBoxGenerator extends SceneGenerator {
   private float restLength = 300;
   int DIM=250;
 
-  int GRID=20;
+  int GRID=30;
   float VS=2*DIM/GRID;
   Vec3D SCALE=new Vec3D(DIM,DIM,DIM).scale(2);
   float isoThreshold=5;
@@ -55,7 +55,7 @@ public class FluidBoxGenerator extends SceneGenerator {
   TriangleMesh mesh = new TriangleMesh("fluid");
 
   private boolean showPhysics=false;
-  private boolean isWireFrame=false;
+  private boolean isWireFrame=true;
   private boolean isClosed=true;
   private boolean useBoundary=true;
   private int color;
