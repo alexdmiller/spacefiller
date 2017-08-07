@@ -29,7 +29,7 @@ public class Lusio extends PApplet {
 
   private PGraphics canvas;
 
-  private Scene[] scenes = { new FluidScene(), new FlockScene(), new CubeScene(), new SceneOne(), new SceneTwo() };
+  private Scene[] scenes = { new CubeScene(), new FluidScene(), new FlockScene(), new ContourScene(), new NoiseCircle() };
 
   private Scene currentScene;
   private int currentSceneIndex;
@@ -54,7 +54,7 @@ public class Lusio extends PApplet {
   }
 
   public void settings() {
-    // fullScreen(2);
+    fullScreen(2);
     size(1920, 1080, P3D);
     PJOGL.profile = 1;
   }
@@ -108,8 +108,6 @@ public class Lusio extends PApplet {
 
     lightcube.update();
 
-    updateSwitchTimer();
-
     canvas.noFill();
     canvas.stroke(255);
 
@@ -143,37 +141,10 @@ public class Lusio extends PApplet {
       }
     }
 
-    lightcube.drawDebug(canvas, 200, 100);
+    // lightcube.drawDebug(canvas, 200, 100);
 
     image(canvas, 0, 0);
     canvas.endDraw();
-  }
-
-  private final void updateSwitchTimer() {
-//    if (lightcube.getFlipAmount() > switchThreshold) {
-//      switchTimer++;
-//    } else if (switchTimer > 0) {
-//      switchTimer -= 5;
-//    } else {
-//      switchTimer = 0;
-//    }
-//
-//    if (switchTimer > timeUntilSwitch) {
-//      lightcube.flipOrientation();
-//      switchTimer = 0;
-//
-//      int nextSceneIndex = (currentSceneIndex + 1) % scenes.length;
-//      switchScene(nextSceneIndex);
-//    }
-
-//    canvas.pushMatrix();
-//    canvas.translate(50, 220);
-//    canvas.noFill();
-//    canvas.stroke(255);
-//    canvas.rect(0, 0, 100, 10);
-//    canvas.fill(255);
-//    canvas.rect(0, 0, switchTimer / timeUntilSwitch * 100, 10);
-//    canvas.popMatrix();
   }
 
   public Graph selectedGraph() {

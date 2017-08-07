@@ -16,7 +16,7 @@ import toxi.geom.Quaternion;
 
 import java.util.Map;
 
-public class SceneOne extends Scene {
+public class ContourScene extends Scene {
   ParticleGenerator particleGenerator;
   JitterParticles jitterParticles;
   FlockParticles flockParticles;
@@ -65,7 +65,6 @@ public class SceneOne extends Scene {
   public void draw(Lightcube cube, PGraphics graphics) {
     particleGenerator.setRotation(cube.getQuaternion());
     particleGenerator2.setRotation(cube.getQuaternion());
-    // contourGenerator.setRotation(cube.getQuaternion());
 
     flockParticles.setMaxSpeed(Math.max(cube.getRotationalVelocity() + 0.5f, cube.getFlipAmount() * 50));
     flockParticles.setDesiredSeparation(Math.max(cube.getRotationalVelocity() + 20, cube.getFlipAmount() * 150));

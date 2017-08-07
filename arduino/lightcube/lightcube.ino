@@ -33,15 +33,18 @@ float euler[3];         // [psi, theta, phi]    Euler angle container
 float ypr[3];           // [yaw, pitch, roll]   yaw/pitch/roll container and gravity vector
 
 // packet structure for InvenSense teapot demo
-//                                      orientation                     color    mode
-uint8_t teapotPacket[18] = { '$', 0x02, 0,0, 0,0, 0,0, 0,0, 0x00, 0x00, 0, 0, 0, 0, '\r', '\n' };
+//                                      orientation                     color     mode    counter
+uint8_t teapotPacket[19] = { '$', 0x02, 0,0, 0,0, 0,0, 0,0, 0x00, 0x00, 0, 0, 0,  0,      0,       '\r', '\n' };
 uint8_t color[3] = { 0, 0, 0 };
 
 uint8_t currentColorIndex = 0;
-uint8_t colors[][2][3] = {
-  { { 255, 255, 0 }, { 0, 255, 255 } },
-  { { 255, 0, 255 }, { 100, 50, 255 } },
-  { { 0, 255, 0 }, { 0, 0, 255 } }
+
+const uint8_t numColors = 2;
+uint8_t colors[numColors][2][3] = {
+  // { { 255, 255, 0 }, { 0, 255, 255 } },
+  { { 0, 200, 255 }, { 20, 0, 255 } },
+  { { 255, 0, 187 }, { 255, 119, 0 } },
+  // { { 0, 255, 0 }, { 255, 0, 0 } }
 };
 
 uint16_t flipTimer = 0;
@@ -186,7 +189,8 @@ void loop() {
     teapotPacket[13] = color[1];
     teapotPacket[14] = color[2];
     teapotPacket[15] = mode;
-    Serial.write(teapotPacket, 18);
+    teapotPacket[16] = ((float) flipTimer / timeUntilSwitch) * 255;
+    Serial.write(teapotPacket, 19);
     teapotPacket[11]++; // packetCount, loops at 0xFF on purpose
 
     // blink LED to indicate activity
@@ -203,7 +207,9 @@ void loop() {
   float flipAmount = (dot(up, transformed) + 1) / 2;
 
   if (mode == 0) {
-    if (flipAmount < 0.05) {
+    // STABLE MODE: transition between two colors as you flip
+    
+    if (flipAmount < 0.02) {
       // switch to power up mode
       mode = 1;
     }
@@ -214,8 +220,10 @@ void loop() {
 
     // stable mode
     setColor(flipAmount);
-    sendColorToLEDs();
+    setStableColor(flipAmount);
   } else if (mode == 1) {
+    // POWER UP MODE: color wipe that speeds up
+    
     flipTimer++;
 
     if (flipAmount > 0.1) {
@@ -229,14 +237,16 @@ void loop() {
     }
     
     // power up mode
-    float a = (float) flipTimer / timeUntilSwitch;
     uint8_t c = cos8(flipTimer * flipTimer * 0.05f);
     color[0] = color[1] = color[2] = c;
 
-    sendColorToLEDs();
+    colorWipe();
   } else if (mode == 2) {
+    // TRANSITION MODE: nothing here yet
+    
     mode = 0;
     up = VectorFloat(0, 0, up.z * -1);
+    currentColorIndex = (currentColorIndex + 1) % numColors;
 
     /*
     // transition mode
@@ -263,14 +273,36 @@ float setColor(float flipAmount) {
   color[2] = primaryColor[2] + (secondaryColor[2] - primaryColor[2]) * flipAmount;
 }
 
-void sendColorToLEDs() {
+void setStableColor(float flipAmount) {
+  unsigned long currentMillis = millis();
+
+  if (currentMillis - previousMillis > interval) {
+    uint8_t * primaryColor = colors[currentColorIndex][0];
+    uint8_t * secondaryColor = colors[currentColorIndex][1];
+
+    previousMillis = currentMillis;
+    
+    for (int i = 0; i < NUM_PIXELS; i++) {
+      float interpolation = constrain(flipAmount + (float) (cos8(i * 5 + currentMillis / 5.0) / 255.0 - 0.5), 0, 1);
+      leds[i].setRGB(
+        primaryColor[0] + (secondaryColor[0] - primaryColor[0]) * interpolation,
+        primaryColor[1] + (secondaryColor[1] - primaryColor[1]) * interpolation,
+        primaryColor[2] + (secondaryColor[2] - primaryColor[2]) * interpolation);
+    }
+  
+    FastLED.show();
+  }
+}
+
+void colorWipe() {
   unsigned long currentMillis = millis();
 
   if (currentMillis - previousMillis > interval) {
     previousMillis = currentMillis;
     
     for (int i = 0; i < NUM_PIXELS; i++) {
-      leds[i].setRGB(color[0], color[1], color[2]);
+      uint8_t v = cos8((float) i * 10 + flipTimer * flipTimer / 15);
+      leds[i].setRGB(v, v, v);
     }
   
     FastLED.show();

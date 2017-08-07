@@ -23,7 +23,7 @@ public class FlockScene extends Scene {
 
   @Override
   public void setup(Map<String, Graph> graphs) {
-    particleGenerator = new ParticleGenerator(200, new Bounds(Lusio.WIDTH, Lusio.HEIGHT), 2);
+    particleGenerator = new ParticleGenerator(300, new Bounds(Lusio.WIDTH, Lusio.HEIGHT), 2);
     particleGenerator.setPos(Lusio.WIDTH / 2, Lusio.HEIGHT / 2);
     particleGenerator.addRenderer(new ParticleWormRenderer(20, 2));
 
@@ -42,9 +42,13 @@ public class FlockScene extends Scene {
 
   @Override
   public void draw(Lightcube cube, PGraphics graphics) {
-    flockParticles.setDesiredSeparation(cube.getRotationalVelocity() + 20);
-    flockParticles.setMaxSpeed(cube.getRotationalVelocity());
-    particleWebRenderer.setLineThreshold(cube.getRotationalVelocity() * 3 + 20);
+    if (cube.getMode() == 1) {
+
+    } else {
+      flockParticles.setDesiredSeparation(cube.getRotationalVelocity() + 50);
+      flockParticles.setMaxSpeed(cube.getRotationalVelocity() + 3);
+      particleWebRenderer.setLineThreshold(cube.getRotationalVelocity() * 3 + 20);
+    }
 
     super.draw(cube, graphics);
   }

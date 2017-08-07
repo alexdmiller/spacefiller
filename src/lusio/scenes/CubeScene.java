@@ -15,10 +15,10 @@ import toxi.geom.Quaternion;
 import java.util.Map;
 
 public class CubeScene extends Scene {
-  float cubeSize = 100;
+  float cubeSize = 200;
   float padding = 50;
-  Quaternion[] history = new Quaternion[100];
-  float[] sizeHistory = new float[100];
+  Quaternion[] history = new Quaternion[50];
+  float[] sizeHistory = new float[50];
 
   @Override
   public void setup(Map<String, Graph> graphs) {
@@ -30,7 +30,7 @@ public class CubeScene extends Scene {
   @Override
   public void draw(Lightcube cube, PGraphics graphics) {
     history[0].set(cube.getQuaternion());
-    sizeHistory[0] = cube.getFlipAmount() * cube.getFlipAmount() * 2 + 0.5f;
+    sizeHistory[0] = cube.getFlipAmount() * cube.getFlipAmount() * 0.5f + 0.5f;
 
     for (int i = history.length - 1; i >= 1; i--) {
       history[i].set(history[i - 1]);
@@ -41,7 +41,8 @@ public class CubeScene extends Scene {
     }
 
     for (int i = 0; i < history.length; i++) {
-      graphics.strokeWeight(3);
+      graphics.stroke(Lusio.instance.getColor(i));
+      graphics.strokeWeight(5);
       graphics.pushMatrix();
       graphics.translate((i * (cubeSize + padding)) % Lusio.WIDTH, ((int) (i * (cubeSize + padding)) / Lusio.WIDTH) * (cubeSize + padding));
       float[] axis = history[i].toAxisAngle();

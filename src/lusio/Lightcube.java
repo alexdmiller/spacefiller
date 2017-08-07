@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class Lightcube extends PApplet {
   Serial port;
 
-  private char[] teapotPacket = new char[18];  // InvenSense Teapot packet
+  private char[] teapotPacket = new char[19];  // InvenSense Teapot packet
   private int serialCount = 0;                 // current packet byte position
   private int aligned = 0;
   private int interval = 0;
@@ -26,6 +26,7 @@ public class Lightcube extends PApplet {
 
   private int color = 0x000000;
   private int mode = 0;
+  private int counter = 0;
   private boolean transitionScene = false;
 
   private static final int BAUD_RATE = 57600;
@@ -94,18 +95,18 @@ public class Lightcube extends PApplet {
           if (ch == '$') aligned++; else aligned = 0;
         } else if (serialCount == 1) {
           if (ch == 2) aligned++; else aligned = 0;
-        } else if (serialCount == 16) {
-          if (ch == '\r') aligned++; else aligned = 0;
         } else if (serialCount == 17) {
+          if (ch == '\r') aligned++; else aligned = 0;
+        } else if (serialCount == 18) {
           if (ch == '\n') aligned++; else aligned = 0;
         }
         //println(ch + " " + aligned + " " + serialCount);
         serialCount++;
-        if (serialCount == 18) serialCount = 0;
+        if (serialCount == 19) serialCount = 0;
       } else {
         if (serialCount > 0 || ch == '$') {
           teapotPacket[serialCount++] = (char)ch;
-          if (serialCount == 18) {
+          if (serialCount == 19) {
             serialCount = 0; // restart packet byte position
 
             // get quaternion from data packet
@@ -127,6 +128,7 @@ public class Lightcube extends PApplet {
               transitionScene = true;
             }
             mode = teapotPacket[15];
+            counter = teapotPacket[16];
           }
         }
       }

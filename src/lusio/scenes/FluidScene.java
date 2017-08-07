@@ -26,8 +26,15 @@ public class FluidScene extends Scene {
   public void draw(Lightcube cube, PGraphics graphics) {
     fluidBoxGenerator.setColor(cube.getColor());
     fluidBoxGenerator.setRotation(cube.getQuaternion());
-    fluidBoxGenerator.setRestLength(Math.max(cube.getRotationalVelocity(), 1) * 4 + 250);
     fluidBoxGenerator.setIsoThreshold(cube.getRotationalVelocity() / 100 + 3.0f);
+    fluidBoxGenerator.setDrawScale(1);
+
+    if (cube.getMode() == 1) {
+      fluidBoxGenerator.setRestLength(400);
+      fluidBoxGenerator.setDrawScale(2);
+    } else {
+      fluidBoxGenerator.setRestLength(Math.max(cube.getRotationalVelocity(), 1) * 4 + 250);
+    }
 
     super.draw(cube, graphics);
   }

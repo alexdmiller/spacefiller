@@ -71,7 +71,7 @@ public class ContourGenerator extends SceneGenerator {
     graphics.noFill();
     graphics.stroke(255);
     graphics.strokeWeight(1);
-    graphics.colorMode(PConstants.HSB);
+    //graphics.colorMode(PConstants.HSB);
 
     graphics.translate(-bounds.getWidth() / 2, -bounds.getWidth() / 2);
 
@@ -85,6 +85,8 @@ public class ContourGenerator extends SceneGenerator {
     timeStep += updateSpeed;
     xTimeStep += xSpeed;
     yTimeStep += ySpeed;
+
+    //graphics.colorMode(PConstants.RGB);
 
     graphics.popMatrix();
   }

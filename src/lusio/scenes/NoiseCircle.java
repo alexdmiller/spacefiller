@@ -14,7 +14,7 @@ import processing.core.PGraphics;
 
 import java.util.Map;
 
-public class SceneTwo extends Scene {
+public class NoiseCircle extends Scene {
   ParticleGenerator particleGenerator;
   PerlinFlowGenerator perlinFlowGenerator;
   FlockParticles flockParticles;

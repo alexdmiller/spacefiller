@@ -7,18 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7bb3a9e-05bb-464d-967e-9bda287e8f0d" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/lusio/scenes/SceneOne.java" afterPath="$PROJECT_DIR$/src/lusio/scenes/ContourScene.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/lusio/scenes/SceneTwo.java" afterPath="$PROJECT_DIR$/src/lusio/scenes/NoiseCircle.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/arduino/lightcube/lightcube.ino" afterPath="$PROJECT_DIR$/arduino/lightcube/lightcube.ino" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lusio/Lightcube.java" afterPath="$PROJECT_DIR$/src/lusio/Lightcube.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lusio/Lusio.java" afterPath="$PROJECT_DIR$/src/lusio/Lusio.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lusio/generators/FluidBoxGenerator.java" afterPath="$PROJECT_DIR$/src/lusio/generators/FluidBoxGenerator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lusio/generators/ParticleGenerator.java" afterPath="$PROJECT_DIR$/src/lusio/generators/ParticleGenerator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lusio/generators/ContourGenerator.java" afterPath="$PROJECT_DIR$/src/lusio/generators/ContourGenerator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lusio/scenes/CubeScene.java" afterPath="$PROJECT_DIR$/src/lusio/scenes/CubeScene.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lusio/scenes/FlockScene.java" afterPath="$PROJECT_DIR$/src/lusio/scenes/FlockScene.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lusio/scenes/FluidScene.java" afterPath="$PROJECT_DIR$/src/lusio/scenes/FluidScene.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/particles/renderers/ParticleDotRenderer.java" afterPath="$PROJECT_DIR$/src/particles/renderers/ParticleDotRenderer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/particles/renderers/ParticleWebRenderer.java" afterPath="$PROJECT_DIR$/src/particles/renderers/ParticleWebRenderer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/particles/renderers/ParticleWormRenderer.java" afterPath="$PROJECT_DIR$/src/particles/renderers/ParticleWormRenderer.java" />
     </list>
     <ignored path="Processing.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,44 +38,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Lightcube.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/lusio/Lightcube.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="827">
-              <caret line="169" column="29" lean-forward="false" selection-start-line="169" selection-start-column="14" selection-end-line="169" selection-end-column="29" />
-              <folding>
-                <element signature="e#4285#4286#0" expanded="true" />
-                <element signature="e#4307#4308#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ContourGenerator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lusio/generators/ContourGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="60" column="52" lean-forward="true" selection-start-line="60" selection-start-column="52" selection-end-line="60" selection-end-column="52" />
+            <state relative-caret-position="573">
+              <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SceneOne.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/lusio/scenes/SceneOne.java">
+      <file leaf-file-name="Contours.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scenes/Contours.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="18" column="17" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="21" />
+            <state relative-caret-position="0">
+              <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SceneTwo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/lusio/scenes/SceneTwo.java">
+      <file leaf-file-name="ContourScene.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/lusio/scenes/ContourScene.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="33" column="12" lean-forward="false" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
+            <state relative-caret-position="368">
+              <caret line="67" column="0" lean-forward="true" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NoiseCircle.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/lusio/scenes/NoiseCircle.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="163">
+              <caret line="40" column="45" lean-forward="true" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -96,8 +91,8 @@
       <file leaf-file-name="CubeScene.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lusio/scenes/CubeScene.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state relative-caret-position="400">
+              <caret line="32" column="71" lean-forward="false" selection-start-line="32" selection-start-column="71" selection-end-line="32" selection-end-column="71" />
               <folding />
             </state>
           </provider>
@@ -106,9 +101,11 @@
       <file leaf-file-name="FluidScene.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lusio/scenes/FluidScene.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="5" column="26" lean-forward="true" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-              <folding />
+            <state relative-caret-position="432">
+              <caret line="25" column="56" lean-forward="true" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="56" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -116,8 +113,8 @@
       <file leaf-file-name="FlockScene.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lusio/scenes/FlockScene.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="30" column="23" lean-forward="false" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
+            <state relative-caret-position="420">
+              <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -126,8 +123,8 @@
       <file leaf-file-name="FluidBoxGenerator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lusio/generators/FluidBoxGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="593">
-              <caret line="140" column="29" lean-forward="true" selection-start-line="140" selection-start-column="29" selection-end-line="140" selection-end-column="29" />
+            <state relative-caret-position="1104">
+              <caret line="140" column="29" lean-forward="true" selection-start-line="140" selection-start-column="8" selection-end-line="140" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -138,8 +135,8 @@
       <file leaf-file-name="Lusio.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/lusio/Lusio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="124" column="44" lean-forward="true" selection-start-line="124" selection-start-column="44" selection-end-line="124" selection-end-column="44" />
+            <state relative-caret-position="-327">
+              <caret line="59" column="3" lean-forward="true" selection-start-line="59" selection-start-column="3" selection-end-line="59" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -159,11 +156,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getQua</find>
-      <find>getQ</find>
-      <find>updateswit</find>
-      <find>teapot</find>
-      <find>ali</find>
       <find>gravity</find>
       <find>drawScale</find>
       <find>scale</find>
@@ -182,13 +174,18 @@
       <find>rect</find>
       <find>wireles</find>
       <find>fill</find>
-      <find>usb</find>
-      <find>wireless</find>
       <find>switchScene</find>
       <find>read</find>
       <find>color</find>
       <find>flipOrientation</find>
       <find>isWireFrame</find>
+      <find>fullscreen</find>
+      <find>drawDebug</find>
+      <find>c</find>
+      <find>colorMode</find>
+      <find>usb</find>
+      <find>wireless</find>
+      <find>fullsc</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -202,8 +199,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/particles/behaviors/BoundParticles.java" />
-        <option value="$PROJECT_DIR$/src/particles/behaviors/ParticleBehavior.java" />
         <option value="$PROJECT_DIR$/src/particles/behaviors/ParticleFriction.java" />
         <option value="$PROJECT_DIR$/src/particles/behaviors/RepelParticles.java" />
         <option value="$PROJECT_DIR$/src/particles/ParticleUtils.java" />
@@ -231,7 +226,6 @@
         <option value="$PROJECT_DIR$/src/lusio/generators/PerlinFlowGenerator.java" />
         <option value="$PROJECT_DIR$/src/scenes/Worms.java" />
         <option value="$PROJECT_DIR$/src/lusio/scenes/SceneTwo.java" />
-        <option value="$PROJECT_DIR$/src/lusio/generators/ContourGenerator.java" />
         <option value="$PROJECT_DIR$/src/lusio/generators/OscillatorGenerator.java" />
         <option value="$PROJECT_DIR$/src/lusio/generators/PerlinLine.java" />
         <option value="$PROJECT_DIR$/src/particles/Particle.java" />
@@ -240,18 +234,21 @@
         <option value="$PROJECT_DIR$/src/particles/Source.java" />
         <option value="$PROJECT_DIR$/src/particles/ParticleSystem.java" />
         <option value="$PROJECT_DIR$/src/particles/Bounds.java" />
-        <option value="$PROJECT_DIR$/src/lusio/scenes/SceneOne.java" />
         <option value="$PROJECT_DIR$/src/lusio/scenes/SceneThree.java" />
         <option value="$PROJECT_DIR$/src/lusio/scenes/SceneFour.java" />
         <option value="$PROJECT_DIR$/src/lusio/generators/ParticleGenerator.java" />
         <option value="$PROJECT_DIR$/src/particles/renderers/ParticleDotRenderer.java" />
-        <option value="$PROJECT_DIR$/src/lusio/scenes/CubeScene.java" />
         <option value="$PROJECT_DIR$/src/particles/renderers/ParticleWormRenderer.java" />
         <option value="$PROJECT_DIR$/src/particles/renderers/ParticleWebRenderer.java" />
-        <option value="$PROJECT_DIR$/src/lusio/Lightcube.java" />
-        <option value="$PROJECT_DIR$/src/lusio/scenes/FluidScene.java" />
-        <option value="$PROJECT_DIR$/src/lusio/scenes/FlockScene.java" />
         <option value="$PROJECT_DIR$/src/lusio/generators/FluidBoxGenerator.java" />
+        <option value="$PROJECT_DIR$/src/lusio/scenes/SceneOne.java" />
+        <option value="$PROJECT_DIR$/src/lusio/Lightcube.java" />
+        <option value="$PROJECT_DIR$/src/lusio/scenes/CubeScene.java" />
+        <option value="$PROJECT_DIR$/src/lusio/scenes/FlockScene.java" />
+        <option value="$PROJECT_DIR$/src/lusio/scenes/ContourScene.java" />
+        <option value="$PROJECT_DIR$/src/lusio/generators/ContourGenerator.java" />
+        <option value="$PROJECT_DIR$/src/lusio/scenes/NoiseCircle.java" />
+        <option value="$PROJECT_DIR$/src/lusio/scenes/FluidScene.java" />
         <option value="$PROJECT_DIR$/src/lusio/Lusio.java" />
       </list>
     </option>
@@ -263,9 +260,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
     <option name="width" value="1920" />
-    <option name="height" value="1173" />
+    <option name="height" value="1196" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -1353,15 +1349,15 @@
       <workItem from="1501046728425" duration="4117000" />
       <workItem from="1501190608693" duration="1667000" />
       <workItem from="1501205922324" duration="128809000" />
-      <workItem from="1502054772105" duration="5387000" />
+      <workItem from="1502054772105" duration="16497000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="682196000" />
+    <option name="totallyTimeSpent" value="693306000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="1173" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1196" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1384,9 +1380,10 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13405797" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.171459" sideWeight="0.7003222" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953367" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18300654" sideWeight="0.29967776" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1395,7 +1392,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" x="1540" y="-272" width="1720" height="853" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953367" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1457,13 +1453,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="820">
           <caret line="54" column="3" lean-forward="false" selection-start-line="54" selection-start-column="3" selection-end-line="54" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/Contours.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1820">
-          <caret line="105" column="28" lean-forward="false" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -1825,6 +1814,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/lusio/Lightcube.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="26" column="31" lean-forward="true" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lusio/scenes/CubeScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="32" column="71" lean-forward="false" selection-start-line="32" selection-start-column="71" selection-end-line="32" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/Contours.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lusio/scenes/ContourScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="67" column="0" lean-forward="true" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/lusio/generators/ParticleGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="507">
@@ -1833,79 +1854,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lusio/scenes/CubeScene.java">
+    <entry file="file://$PROJECT_DIR$/src/lusio/scenes/NoiseCircle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state relative-caret-position="163">
+          <caret line="40" column="45" lean-forward="true" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lusio/scenes/FluidScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="26" lean-forward="true" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lusio/scenes/FlockScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="30" column="23" lean-forward="false" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lusio/scenes/SceneTwo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="33" column="12" lean-forward="false" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lusio/scenes/SceneOne.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="18" column="17" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lusio/generators/ContourGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="60" column="52" lean-forward="true" selection-start-line="60" selection-start-column="52" selection-end-line="60" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lusio/generators/FluidBoxGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="593">
-          <caret line="140" column="29" lean-forward="true" selection-start-line="140" selection-start-column="29" selection-end-line="140" selection-end-column="29" />
+        <state relative-caret-position="432">
+          <caret line="25" column="56" lean-forward="true" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lusio/Lightcube.java">
+    <entry file="file://$PROJECT_DIR$/src/lusio/scenes/FlockScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="827">
-          <caret line="169" column="29" lean-forward="false" selection-start-line="169" selection-start-column="14" selection-end-line="169" selection-end-column="29" />
+        <state relative-caret-position="420">
+          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lusio/generators/FluidBoxGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1104">
+          <caret line="140" column="29" lean-forward="true" selection-start-line="140" selection-start-column="8" selection-end-line="140" selection-end-column="29" />
           <folding>
-            <element signature="e#4285#4286#0" expanded="true" />
-            <element signature="e#4307#4308#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lusio/generators/ContourGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="573">
+          <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lusio/Lusio.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="124" column="44" lean-forward="true" selection-start-line="124" selection-start-column="44" selection-end-line="124" selection-end-column="44" />
+        <state relative-caret-position="-327">
+          <caret line="59" column="3" lean-forward="true" selection-start-line="59" selection-start-column="3" selection-end-line="59" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
