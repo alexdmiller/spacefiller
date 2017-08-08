@@ -159,6 +159,18 @@ public class Lightcube extends PApplet {
     };
   }
 
+  public float[] getNormalizedEuler() {
+    return new float[] {
+        (float) (Math.atan2(
+            2 * quaternion.y * quaternion.w - 2 * quaternion.x * quaternion.z,
+            1 - 2 * quaternion.y * quaternion.y - 2 * quaternion.z * quaternion.z) / Math.PI + 1) / 2,
+        (float) (Math.asin(2 * quaternion.x * quaternion.y + 2 * quaternion.z * quaternion.w) / Math.PI + 1) / 2,
+        (float) (Math.atan2(
+            2 * quaternion.x * quaternion.w - 2 * quaternion.y * quaternion.z,
+            1 - 2 * quaternion.x * quaternion.x - 2 * quaternion.z * quaternion.z) / Math.PI + 1) / 2
+    };
+  }
+
   public float getFlipAmount() {
     float[] axis = quaternion.toAxisAngle();
     Vec3D a = new Vec3D(-axis[1], axis[3], axis[2]);
@@ -174,7 +186,7 @@ public class Lightcube extends PApplet {
   }
 
   public float getRotationalVelocity() {
-    return rotationalVelocity;
+    return Math.min(rotationalVelocity, 100);
   }
 
   public void drawDebug(PGraphics graphics, float x, float y) {

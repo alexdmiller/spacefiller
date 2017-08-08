@@ -25,7 +25,7 @@ public class ParticleGenerator extends SceneGenerator {
   public ParticleGenerator(int numParticles, Bounds bounds, int dimension) {
     this.renderers = new ArrayList<>();
 
-    this.particleSystem = ParticleSystem.boundedSystem(bounds);
+    this.particleSystem = ParticleSystem.boundedSystem(bounds, numParticles);
     this.particleSystem.fillWithParticles(numParticles, dimension);
   }
 

@@ -11,8 +11,8 @@ import java.util.List;
  * Created by miller on 7/13/17.
  */
 public class ParticleSystem {
-  public static ParticleSystem boundedSystem(Bounds bounds) {
-    ParticleSystem system = new ParticleSystem(bounds);
+  public static ParticleSystem boundedSystem(Bounds bounds, int maxParticles) {
+    ParticleSystem system = new ParticleSystem(bounds, maxParticles);
     system.addBehavior(new BoundParticles());
     return system;
   }
@@ -25,12 +25,17 @@ public class ParticleSystem {
   private List<ParticleEventListener> particleEventListeners;
   private int maxParticles = 200;
 
-  public ParticleSystem(Bounds bounds) {
+  public ParticleSystem(Bounds bounds, int maxParticles) {
+    this.maxParticles = maxParticles;
     this.bounds = bounds;
     this.particles = new ArrayList<>();
     this.behaviors = new ArrayList<>();
     this.particleEventListeners = new ArrayList<>();
     this.sources = new ArrayList<>();
+  }
+
+  public void setMaxParticles(int maxParticles) {
+    this.maxParticles = maxParticles;
   }
 
   public void registerEventListener(ParticleEventListener particleEventListener) {
@@ -40,13 +45,14 @@ public class ParticleSystem {
 
   public void fillWithParticles(int numParticles, int dimension) {
     for (int i = 0; i < numParticles; i++) {
-      Particle p = createParticle(bounds.getRandomPointInside(dimension));
+      Particle p = createParticle(bounds.getRandomPointInside(dimension), dimension);
       p.setRandomVelocity(1, 2, dimension);
     }
   }
 
-  public Particle createParticle(PVector position) {
+  public Particle createParticle(PVector position, int dimension) {
     Particle p = new Particle(position);
+    p.setRandomVelocity(1, 2, dimension);
     particles.add(p);
 
     for (ParticleEventListener eventListener : particleEventListeners) {
@@ -56,14 +62,14 @@ public class ParticleSystem {
     return p;
   }
 
-  public void createSource(float x, float y, int spawnRate) {
-    sources.add(new Source(new PVector(x, y), spawnRate));
+  public void createSource(float x, float y, int spawnRate, int dimension) {
+    sources.add(new Source(new PVector(x, y), spawnRate, dimension));
   }
 
   public void update() {
     for (Source source : sources) {
       for (int i = 0; i < source.getSpawnRate() && particles.size() < maxParticles; i++) {
-        createParticle(source.getPosition().copy());
+        createParticle(source.getPosition().copy(), source.getDimension());
       }
     }
 

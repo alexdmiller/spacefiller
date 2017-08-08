@@ -54,6 +54,14 @@ public class FlockParticles extends ParticleBehavior {
     this.desiredSeparation = desiredSeparation;
   }
 
+  public void setCohesionThreshold(float cohesionThreshold) {
+    this.cohesionThreshold = cohesionThreshold;
+  }
+
+  public void setCohesionWeight(float cohesionWeight) {
+    this.cohesionWeight = cohesionWeight;
+  }
+
   @Override
   public void apply(List<Particle> particles) {
     for (Particle p : particles) {

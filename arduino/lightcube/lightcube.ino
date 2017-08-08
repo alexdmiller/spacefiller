@@ -19,6 +19,7 @@ uint16_t packetSize;    // expected DMP packet size (default is 42 bytes)
 uint16_t fifoCount;     // count of all bytes currently in FIFO
 uint8_t fifoBuffer[64]; // FIFO storage buffer
 
+
 int t = 0;
 
 // orientation/motion vars
@@ -40,11 +41,9 @@ uint8_t color[3] = { 0, 0, 0 };
 uint8_t currentColorIndex = 0;
 
 const uint8_t numColors = 2;
-uint8_t colors[numColors][2][3] = {
-  // { { 255, 255, 0 }, { 0, 255, 255 } },
-  { { 0, 200, 255 }, { 20, 0, 255 } },
-  { { 255, 0, 187 }, { 255, 119, 0 } },
-  // { { 0, 255, 0 }, { 255, 0, 0 } }
+uint8_t colors[numColors][4][3] = {
+  { { 0, 255, 255 }, { 100, 100, 255 }, { 255, 255, 0 }, { 255, 50, 200 } },
+  { { 255, 0, 255 }, { 100, 100, 255 }, { 255, 100, 50 }, { 240, 255, 95 } },
 };
 
 uint16_t flipTimer = 0;
@@ -53,7 +52,8 @@ uint8_t mode = 0;
 uint8_t lightIndex = 0;
 
 unsigned long previousMillis = 0;        // will store last time LED was updated
-const long interval = 100;
+const long interval = 200;
+bool sendColors = false;
 
 CRGB leds[NUM_PIXELS];
 
@@ -132,6 +132,8 @@ void setup() {
 // ================================================================
 
 void loop() {
+  unsigned long currentMillis = millis();
+  
   // if programming failed, don't try to do anything
   if (!dmpReady) return;
 
@@ -198,6 +200,7 @@ void loop() {
     digitalWrite(LED_PIN, blinkState);
   }
 
+  
   mpu.dmpGetQuaternion(&quat, fifoBuffer);
   mpu.dmpGetEuler(euler, &quat);
 
@@ -214,10 +217,6 @@ void loop() {
       mode = 1;
     }
 
-    if (flipTimer > 0) {
-      flipTimer--;
-    }
-
     // stable mode
     setColor(flipAmount);
     setStableColor(flipAmount);
@@ -228,6 +227,7 @@ void loop() {
 
     if (flipAmount > 0.1) {
       mode = 0;
+      flipTimer = 0;
     }
 
     if (flipTimer > timeUntilSwitch) {
@@ -247,17 +247,6 @@ void loop() {
     mode = 0;
     up = VectorFloat(0, 0, up.z * -1);
     currentColorIndex = (currentColorIndex + 1) % numColors;
-
-    /*
-    // transition mode
-    uint8_t * nextPrimaryColor = colors[(currentColorIndex + 1) % sizeof(colors)][0];
-    leds[lightIndex].setRGB(nextPrimaryColor[0], nextPrimaryColor[1], nextPrimaryColor[2]);
-    lightIndex++;
-
-    if (lightIndex == NUM_PIXELS) {
-      
-    }
-    */
   }
 }
 
@@ -267,7 +256,7 @@ float dot(VectorFloat v1, VectorFloat v2) {
 
 float setColor(float flipAmount) {
   uint8_t * primaryColor = colors[currentColorIndex][0];
-  uint8_t * secondaryColor = colors[currentColorIndex][1];
+  uint8_t * secondaryColor = colors[currentColorIndex][2];
   color[0] = primaryColor[0] + (secondaryColor[0] - primaryColor[0]) * flipAmount;
   color[1] = primaryColor[1] + (secondaryColor[1] - primaryColor[1]) * flipAmount;
   color[2] = primaryColor[2] + (secondaryColor[2] - primaryColor[2]) * flipAmount;
@@ -277,21 +266,36 @@ void setStableColor(float flipAmount) {
   unsigned long currentMillis = millis();
 
   if (currentMillis - previousMillis > interval) {
-    uint8_t * primaryColor = colors[currentColorIndex][0];
-    uint8_t * secondaryColor = colors[currentColorIndex][1];
+//    uint8_t * primaryColor1 = colors[currentColorIndex][0];
+//    uint8_t * primaryColor2 = colors[currentColorIndex][1];
+//    uint8_t * secondaryColor1 = colors[currentColorIndex][2];
+//    uint8_t * secondaryColor2 = colors[currentColorIndex][3];
+//
+//    uint8_t color1[3];
+//    uint8_t color2[3];
+//    uint8_t finalColor[3];
 
-    previousMillis = currentMillis;
+    // interpolate(flipAmount, primaryColor1, secondaryColor1, color1);
+    // interpolate(flipAmount, primaryColor2, secondaryColor2, color2);
+
+    previousMillis = currentMillis; 
+
+    int offset = currentMillis / 5.0;
     
     for (int i = 0; i < NUM_PIXELS; i++) {
-      float interpolation = constrain(flipAmount + (float) (cos8(i * 5 + currentMillis / 5.0) / 255.0 - 0.5), 0, 1);
-      leds[i].setRGB(
-        primaryColor[0] + (secondaryColor[0] - primaryColor[0]) * interpolation,
-        primaryColor[1] + (secondaryColor[1] - primaryColor[1]) * interpolation,
-        primaryColor[2] + (secondaryColor[2] - primaryColor[2]) * interpolation);
+      // float interpolation = cos8(i * 5 + offset) / 255.0;
+      // interpolate(interpolation, color1, color2, finalColor);
+      leds[i].setRGB(color[0], color[1], color[2]);
     }
   
     FastLED.show();
   }
+}
+
+void interpolate(float amount, uint8_t * a, uint8_t * b, uint8_t * result) {
+  result[0] = a[0] + (b[0] - a[0]) * amount;
+  result[1] = a[1] + (b[1] - a[1]) * amount;
+  result[2] = a[2] + (b[2] - a[2]) * amount;
 }
 
 void colorWipe() {

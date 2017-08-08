@@ -8,14 +8,16 @@ import processing.core.PVector;
 public class Source {
   private PVector position;
   private int spawnRate;
+  private int dimension;
 
-  public Source(float x, float y, int spawnRate) {
-    this(new PVector(x, y), spawnRate);
+  public Source(float x, float y, int spawnRate, int dimension) {
+    this(new PVector(x, y), spawnRate, dimension);
   }
 
-  public Source(PVector position, int spawnRate) {
+  public Source(PVector position, int spawnRate, int dimension) {
     this.position = position;
     this.spawnRate = spawnRate;
+    this.dimension = dimension;
   }
 
   public PVector getPosition() {
@@ -32,5 +34,9 @@ public class Source {
 
   public void setSpawnRate(int spawnRate) {
     this.spawnRate = spawnRate;
+  }
+
+  public int getDimension() {
+    return dimension;
   }
 }

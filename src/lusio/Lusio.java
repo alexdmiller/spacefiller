@@ -29,7 +29,7 @@ public class Lusio extends PApplet {
 
   private PGraphics canvas;
 
-  private Scene[] scenes = { new CubeScene(), new FluidScene(), new FlockScene(), new ContourScene(), new NoiseCircle() };
+  private Scene[] scenes = { new FlockScene(), new NestedCubeScene(), new FluidScene(), new CubeScene(), new ContourScene(), new NoiseCircle() };
 
   private Scene currentScene;
   private int currentSceneIndex;
@@ -54,7 +54,7 @@ public class Lusio extends PApplet {
   }
 
   public void settings() {
-    fullScreen(2);
+    // fullScreen(2);
     size(1920, 1080, P3D);
     PJOGL.profile = 1;
   }
@@ -62,7 +62,7 @@ public class Lusio extends PApplet {
   public final void setup() {
     graphs = new HashMap<>();
     graphNames = new ArrayList<>();
-    lightcube = Lightcube.usb();
+    lightcube = Lightcube.wireless();
 
     canvas = createGraphics(1920, 1080, P3D);
     canvas.smooth();
@@ -141,7 +141,7 @@ public class Lusio extends PApplet {
       }
     }
 
-    // lightcube.drawDebug(canvas, 200, 100);
+    lightcube.drawDebug(canvas, 200, 100);
 
     image(canvas, 0, 0);
     canvas.endDraw();

@@ -1,18 +1,5 @@
 package lusio.generators;
 
-import toxi.physics3d.*;
-import toxi.physics3d.behaviors.*;
-import toxi.physics3d.constraints.*;
-import toxi.geom.*;
-import toxi.geom.mesh.*;
-import toxi.math.*;
-import toxi.volume.*;
-import lusio.Lusio;
-import particles.Bounds;
-import particles.Particle;
-import particles.ParticleSystem;
-import particles.behaviors.ParticleBehavior;
-import particles.renderers.ParticleRenderer;
 import processing.core.PConstants;
 import processing.core.PGraphics;
 import toxi.geom.AABB;
@@ -39,7 +26,7 @@ public class FluidBoxGenerator extends SceneGenerator {
   private float restLength = 300;
   int DIM=250;
 
-  int GRID=30;
+  int GRID=20;
   float VS=2*DIM/GRID;
   Vec3D SCALE=new Vec3D(DIM,DIM,DIM).scale(2);
   float isoThreshold=5;
@@ -55,7 +42,7 @@ public class FluidBoxGenerator extends SceneGenerator {
   TriangleMesh mesh = new TriangleMesh("fluid");
 
   private boolean showPhysics=false;
-  private boolean isWireFrame=true;
+  private boolean isWireFrame=false;
   private boolean isClosed=true;
   private boolean useBoundary=true;
   private int color;
@@ -122,9 +109,8 @@ public class FluidBoxGenerator extends SceneGenerator {
       }
     }
     else {
-      canvas.ambientLight(216, 216, 216);
-      canvas.directionalLight(255, 255, 255, 0, 1, 0);
-      canvas.directionalLight(96, 96, 96, 1, 1, -1);
+      canvas.ambientLight(255, 255, 255);
+      canvas.directionalLight(255, 255, 255, 0, -1, 0);
       if (isWireFrame) {
         canvas.stroke(255);
         canvas.noFill();
@@ -246,7 +232,7 @@ public class FluidBoxGenerator extends SceneGenerator {
 
     gravity.setForce(grav.scaleSelf(2));
     numP=physics.particles.size();
-    if (Math.random()<0.8 && numP<NUM_PARTICLES) {
+    if (Math.random()<0.5 && numP<NUM_PARTICLES) {
       VerletParticle3D p=new VerletParticle3D(new Vec3D((float) Math.random()*20-10,-DIM, (float) Math.random()*20-10));
       if (useBoundary) p.addConstraint(boundingSphere);
       physics.addParticle(p);
