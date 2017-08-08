@@ -212,7 +212,7 @@ void loop() {
   if (mode == 0) {
     // STABLE MODE: transition between two colors as you flip
     
-    if (flipAmount < 0.02) {
+    if (flipAmount < 0.1  ) {
       // switch to power up mode
       mode = 1;
     }
@@ -222,9 +222,6 @@ void loop() {
     setStableColor(flipAmount);
   } else if (mode == 1) {
     // POWER UP MODE: color wipe that speeds up
-    
-    flipTimer++;
-
     if (flipAmount > 0.1) {
       mode = 0;
       flipTimer = 0;
@@ -240,6 +237,8 @@ void loop() {
     uint8_t c = cos8(flipTimer * flipTimer * 0.05f);
     color[0] = color[1] = color[2] = c;
 
+    flipTimer++;
+
     colorWipe();
   } else if (mode == 2) {
     // TRANSITION MODE: nothing here yet
@@ -248,6 +247,12 @@ void loop() {
     up = VectorFloat(0, 0, up.z * -1);
     currentColorIndex = (currentColorIndex + 1) % numColors;
   }
+
+//  Serial.println("--------");
+//  Serial.println(mode);
+//  Serial.println(flipAmount);
+//  Serial.println(flipTimer);
+//  Serial.println(sin8(flipTimer * flipTimer * 0.05f));
 }
 
 float dot(VectorFloat v1, VectorFloat v2) {
