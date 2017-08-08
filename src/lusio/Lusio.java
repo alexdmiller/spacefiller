@@ -29,7 +29,7 @@ public class Lusio extends PApplet {
 
   private PGraphics canvas;
 
-  private Scene[] scenes = { new FlockScene(), new NestedCubeScene(), new FluidScene(), new CubeScene(), new ContourScene(), new NoiseCircle() };
+  private Scene[] scenes = { new ContourScene(), new FluidScene(), new FlockScene(), new NestedCubeScene(), new CubeScene(), new NoiseCircle() };
 
   private Scene currentScene;
   private int currentSceneIndex;
@@ -48,6 +48,8 @@ public class Lusio extends PApplet {
 
   public static int WIDTH = 1920;
   public static int HEIGHT = 1080;
+
+  private boolean modeSwitchFlag = false;
 
   public Lusio() {
     Lusio.instance = this;
@@ -101,9 +103,16 @@ public class Lusio extends PApplet {
   public final void draw() {
     canvas.beginDraw();
     if (lightcube.getMode() == 1) {
-      canvas.background(255 - red(lightcube.getColor()), 255 - red(lightcube.getColor()), 255 - red(lightcube.getColor()));
+      if (!modeSwitchFlag) {
+        modeSwitchFlag = true;
+        canvas.background(0, 0, 0);
+      } else {
+        canvas.background(255 - red(lightcube.getColor()), 255 - red(lightcube.getColor()), 255 - red(lightcube.getColor()));
+      }
+
     } else {
       canvas.background(0);
+      modeSwitchFlag = false;
     }
 
     lightcube.update();
@@ -141,7 +150,7 @@ public class Lusio extends PApplet {
       }
     }
 
-    lightcube.drawDebug(canvas, 200, 100);
+    // lightcube.drawDebug(canvas, 200, 100);
 
     image(canvas, 0, 0);
     canvas.endDraw();

@@ -28,9 +28,9 @@ public class FluidScene extends Scene {
     fluidBoxGenerator.setIsoThreshold(cube.getEulerRotation()[1] + 4);
 
     if (cube.getMode() == 1) {
-      fluidBoxGenerator.setRestLength(400);
+      fluidBoxGenerator.setRestLength(300);
     } else {
-      fluidBoxGenerator.setRestLength(Math.max(cube.getRotationalVelocity(), 1) * 10 + 200);
+      fluidBoxGenerator.setRestLength(cube.getRotationalVelocity() * 10 + 200);
     }
 
     super.draw(cube, graphics);

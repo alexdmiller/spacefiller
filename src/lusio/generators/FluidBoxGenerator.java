@@ -26,7 +26,7 @@ public class FluidBoxGenerator extends SceneGenerator {
   private float restLength = 300;
   int DIM=250;
 
-  int GRID=20;
+  int GRID=30;
   float VS=2*DIM/GRID;
   Vec3D SCALE=new Vec3D(DIM,DIM,DIM).scale(2);
   float isoThreshold=5;
@@ -109,7 +109,7 @@ public class FluidBoxGenerator extends SceneGenerator {
       }
     }
     else {
-      canvas.ambientLight(255, 255, 255);
+      canvas.ambientLight(150, 150, 150);
       canvas.directionalLight(255, 255, 255, 0, -1, 0);
       if (isWireFrame) {
         canvas.stroke(255);

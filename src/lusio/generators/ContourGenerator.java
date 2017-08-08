@@ -23,16 +23,18 @@ public class ContourGenerator extends SceneGenerator {
   private float xSpeed = 0f;
   private float ySpeed = 0f;
 
-  private float cellSize = 20;
+  private float cellSize = 30;
   private float heightIncrements = 2;
-  private float heightRange = 100;
-  private float spacing = 4;
-  private int colorRange = 50;
+  private float spacing = 10;
+  private int colorRange = 500;
 
   private float timeStep = 0;
   private float xTimeStep = 0;
   private float yTimeStep = 0;
   private float noiseScale = 1;
+  private float lineSize = 1;
+
+  private int color;
 
   private Bounds bounds;
   private Quaternion quaternion = Quaternion.createFromEuler(0, 0, 0);
@@ -70,15 +72,16 @@ public class ContourGenerator extends SceneGenerator {
 
     graphics.noFill();
     graphics.stroke(255);
-    graphics.strokeWeight(1);
-    //graphics.colorMode(PConstants.HSB);
+    graphics.strokeWeight(lineSize);
 
     graphics.translate(-bounds.getWidth() / 2, -bounds.getWidth() / 2);
 
     for (float i = 0; i < bounds.getHeight(); i += heightIncrements) {
       float sampleHeight = i - bounds.getHeight()/2;
-      // graphics.stroke(i / bounds.getHeight() * colorRange, 255, 255);
-      graphics.stroke(255);
+      graphics.stroke(Lusio.instance.lerpColor(
+          color,
+          Lusio.instance.color(200, 200,  200),
+          (float) (Math.sin(i / 10 + timeStep * 100) + 1) / 2));
       drawGridPlaneIntersection(heightMap, sampleHeight, sampleHeight * spacing, cellSize, graphics);
     }
 
@@ -86,9 +89,11 @@ public class ContourGenerator extends SceneGenerator {
     xTimeStep += xSpeed;
     yTimeStep += ySpeed;
 
-    //graphics.colorMode(PConstants.RGB);
-
     graphics.popMatrix();
+  }
+
+  public void setLineSize(float lineSize) {
+    this.lineSize = lineSize;
   }
 
   public void setUpdateSpeed(float updateSpeed) {
@@ -105,6 +110,10 @@ public class ContourGenerator extends SceneGenerator {
 
   public void setYSpeed(float ySpeed) {
     this.ySpeed = ySpeed;
+  }
+
+  public void setColor(int color) {
+    this.color = color;
   }
 
   float[][] produceGrid(float t, int rows, int cols) {
