@@ -21,16 +21,14 @@ import java.util.Map;
 
 public class ContourScene extends Scene {
   ContourGenerator contourGenerator;
-
-  private float transitionOutTimer;
-  private float transitionDuration = 20;
+  private float height;
 
   @Override
   public void setup(Map<String, Graph> graphs) {
     contourGenerator = new ContourGenerator(new Bounds(2000));
     contourGenerator.setPos(Lusio.WIDTH / 2, Lusio.HEIGHT / 2);
     contourGenerator.setRotation(Quaternion.createFromAxisAngle(new Vec3D(-1, 0, 0), 1f));
-    contourGenerator.setCellSize(200);
+    contourGenerator.setCellSize(150);
     contourGenerator.setNoiseScale(2);
     contourGenerator.setLineSize(3);
     contourGenerator.setUpdateSpeed(0);
@@ -40,14 +38,23 @@ public class ContourScene extends Scene {
 
   @Override
   public void draw(Lightcube cube, PGraphics graphics) {
+    if (cube.getFlipAmount() > 0.5 && height < 500) {
+      height += cube.getFlipAmount() * 5;
+    } else if (height > 20) {
+      height--;
+    } else if (height <= 20){
+      height = 20;
+    }
+
     float euler[] = cube.getEulerRotation();
     graphics.pushMatrix();
     graphics.translate(0, -200, 0);
     contourGenerator.setColor(cube.getColor());
-    contourGenerator.setYSpeed(-euler[0] * -0.01f);
-    contourGenerator.setXSpeed(euler[2] * -0.01f);
-    contourGenerator.setNoiseAmplitude(cube.getFlipAmount() * 50 + 300);
-    // contourGenerator.setRotation(Quaternion.createFromEuler(0, euler[1], 0));
+    contourGenerator.setXSpeed(-euler[0] * -0.01f);
+    contourGenerator.setYSpeed(euler[2] * -0.01f);
+    contourGenerator.setNoiseAmplitude(height);
+    contourGenerator.setUpdateSpeed(cube.getRotationalVelocity() * 0.0001f);
+    contourGenerator.setRotation(Quaternion.createFromEuler(0, euler[1], 0));
 
     graphics.perspective();
     super.draw(cube, graphics);

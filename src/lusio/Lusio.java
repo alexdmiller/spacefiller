@@ -30,12 +30,13 @@ public class Lusio extends PApplet {
   private PGraphics canvas;
 
   private Scene[] scenes = {
-      new ThreeDeeFlockScene(),
+      new FlockScene(),
+      new FancyParticles(),
+      new EdgeScene(),
       new ContourScene(),
+      new ThreeDeeFlockScene(),
       new NoiseSpace(),
       new NoiseCircle(),
-      new EdgeScene(),
-      new FlockScene(),
       new FluidScene(),
       new NestedCubeScene(),
       new CubeScene()

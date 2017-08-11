@@ -18,12 +18,14 @@ public class EdgeScene extends Scene {
   SinGraphRenderer sinGraphRenderer;
   PipeGraphRenderer pipeGraphRenderer;
   AnimatedFillGraphRenderer animatedFillGraphRenderer;
+  DottedLineGraphRenderer dottedLineGraphRenderer;
 
   @Override
   public void setup(Map<String, Graph> graphs) {
     Graph windowGraph = graphs.get("window");
     Graph poleGraph = graphs.get("pole");
     Graph sideGraph = graphs.get("side");
+    Graph smallGraph = graphs.get("small");
 
     if (windowGraph != null) {
       sinGraphRenderer = new SinGraphRenderer();
@@ -44,6 +46,12 @@ public class EdgeScene extends Scene {
       animatedFillGraphRenderer.setThickness(10);
       addGenerator(new GraphGenerator(sideGraph, animatedFillGraphRenderer));
     }
+
+    if (smallGraph != null) {
+      dottedLineGraphRenderer = new DottedLineGraphRenderer();
+      dottedLineGraphRenderer.setThickness(3);
+      addGenerator(new GraphGenerator(smallGraph, dottedLineGraphRenderer));
+    }
   }
 
   @Override
@@ -59,6 +67,9 @@ public class EdgeScene extends Scene {
     pipeGraphRenderer.setColor(cube.getColor());
 
     animatedFillGraphRenderer.setFillSpeed(cube.getRotationalVelocity());
+
+    dottedLineGraphRenderer.setScrollSpeed(cube.getRotationalVelocity() / 5);
+    dottedLineGraphRenderer.setColor(cube.getColor());
 
     super.draw(cube, graphics);
   }

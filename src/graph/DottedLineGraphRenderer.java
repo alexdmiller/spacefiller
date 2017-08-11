@@ -8,12 +8,15 @@ public class DottedLineGraphRenderer implements GraphRenderer {
   private float spacing = 40;
   private float size = 20;
   private float scrollSpeed = 0.5f;
+  private float thickness = 2;
+  private int color;
 
   @Override
   public void render(PGraphics graphics, Graph graph) {
     time += scrollSpeed;
 
-    graphics.strokeWeight(1);
+    graphics.strokeWeight(thickness);
+    graphics.stroke(color);
     for (Edge e : graph.getEdges()) {
       PVector delta = PVector.sub(e.n2.position, e.n1.position);
       graphics.pushMatrix();
@@ -34,5 +37,21 @@ public class DottedLineGraphRenderer implements GraphRenderer {
       graphics.strokeWeight(4);
       graphics.point(n.position.x, n.position.y);
     }
+  }
+
+  public void setColor(int color) {
+    this.color = color;
+  }
+
+  public void setThickness(float thickness) {
+    this.thickness = thickness;
+  }
+
+  public void setScrollSpeed(float scrollSpeed) {
+    this.scrollSpeed = scrollSpeed;
+  }
+
+  public void setSize(float size) {
+    this.size = size;
   }
 }
