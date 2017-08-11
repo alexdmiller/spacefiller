@@ -3,10 +3,16 @@ package graph;
 import processing.core.PGraphics;
 
 public class BasicGraphRenderer implements GraphRenderer {
+  private float thickness;
+
+  public BasicGraphRenderer(float thickness) {
+    this.thickness = thickness;
+  }
+
   @Override
   public void render(PGraphics graphics, Graph graph) {
     graphics.noFill();
-    graphics.strokeWeight(1);
+    graphics.strokeWeight(thickness);
 
     for (Node n : graph.getNodes()) {
       graphics.ellipse(n.position.x, n.position.y, 20, 20);

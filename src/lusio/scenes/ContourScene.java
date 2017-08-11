@@ -30,11 +30,10 @@ public class ContourScene extends Scene {
     contourGenerator = new ContourGenerator(new Bounds(2000));
     contourGenerator.setPos(Lusio.WIDTH / 2, Lusio.HEIGHT / 2);
     contourGenerator.setRotation(Quaternion.createFromAxisAngle(new Vec3D(-1, 0, 0), 1f));
-    contourGenerator.setCellSize(100);
+    contourGenerator.setCellSize(200);
     contourGenerator.setNoiseScale(2);
-    contourGenerator.setLineSize(2);
-    contourGenerator.setUpdateSpeed(0.001f);
-
+    contourGenerator.setLineSize(3);
+    contourGenerator.setUpdateSpeed(0);
 
     addGenerator(contourGenerator);
   }
@@ -45,9 +44,10 @@ public class ContourScene extends Scene {
     graphics.pushMatrix();
     graphics.translate(0, -200, 0);
     contourGenerator.setColor(cube.getColor());
-    contourGenerator.setXSpeed(euler[0] * -0.1f);
-    contourGenerator.setYSpeed(euler[2] * -0.1f);
-    contourGenerator.setNoiseAmplitude(cube.getRotationalVelocity() * 10 + 300);
+    contourGenerator.setYSpeed(-euler[0] * -0.01f);
+    contourGenerator.setXSpeed(euler[2] * -0.01f);
+    contourGenerator.setNoiseAmplitude(cube.getFlipAmount() * 50 + 300);
+    // contourGenerator.setRotation(Quaternion.createFromEuler(0, euler[1], 0));
 
     graphics.perspective();
     super.draw(cube, graphics);

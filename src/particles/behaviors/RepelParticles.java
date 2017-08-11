@@ -14,6 +14,10 @@ public class RepelParticles extends ParticleBehavior {
     this.repelStrength = repelStrength;
   }
 
+  public void setRepelThreshold(float repelThreshold) {
+    this.repelThreshold = repelThreshold;
+  }
+
   @Override
   public void apply(List<Particle> particles) {
     for (Particle p1 : particles) {

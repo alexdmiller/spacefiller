@@ -9,12 +9,15 @@ public class SinGraphRenderer implements GraphRenderer {
   private float spacing = 5;
   private float size = 5;
   private float freq = 10;
+  private float thickness = 3;
+  private int color;
 
   @Override
   public void render(PGraphics graphics, Graph graph) {
     time += speed;
 
-    graphics.strokeWeight(1);
+    graphics.strokeWeight(thickness);
+    graphics.stroke(color);
     for (Edge e : graph.getEdges()) {
       PVector delta = PVector.sub(e.n2.position, e.n1.position);
       graphics.pushMatrix();
@@ -34,7 +37,23 @@ public class SinGraphRenderer implements GraphRenderer {
     }
   }
 
+  public void setSize(float size) {
+    this.size = size;
+  }
+
+  public void setSpeed(float speed) {
+    this.speed = speed;
+  }
+
+  public void setFreq(float freq) {
+    this.freq = freq;
+  }
+
   float func(float t, float total) {
     return (float) (Math.sin(t / freq + time) * size * Math.sin(t / total * Math.PI));
+  }
+
+  public void setColor(int color) {
+    this.color = color;
   }
 }

@@ -29,34 +29,40 @@ public class Lusio extends PApplet {
 
   private PGraphics canvas;
 
-  private Scene[] scenes = { new ContourScene(), new FluidScene(), new FlockScene(), new NestedCubeScene(), new CubeScene(), new NoiseCircle() };
+  private Scene[] scenes = {
+      new ThreeDeeFlockScene(),
+      new ContourScene(),
+      new NoiseSpace(),
+      new NoiseCircle(),
+      new EdgeScene(),
+      new FlockScene(),
+      new FluidScene(),
+      new NestedCubeScene(),
+      new CubeScene()
+  };
 
   private Scene currentScene;
   private int currentSceneIndex;
-
   private Map<String, Graph> graphs;
   private int selectedGraphIndex;
   private List<String> graphNames;
-
   private ControlP5 controlP5;
   private Textfield graphNameField;
   private Node selectedNode;
   private boolean creatingEdge;
-  private boolean graphsVisible = true;
-
+  private boolean graphsVisible = false;
   private Lightcube lightcube;
+  private boolean modeSwitchFlag = false;
 
   public static int WIDTH = 1920;
   public static int HEIGHT = 1080;
-
-  private boolean modeSwitchFlag = false;
 
   public Lusio() {
     Lusio.instance = this;
   }
 
   public void settings() {
-    // fullScreen(2);
+    fullScreen(2);
     size(1920, 1080, P3D);
     PJOGL.profile = 1;
   }
@@ -138,7 +144,7 @@ public class Lusio extends PApplet {
     }
 
     if (graphsVisible) {
-      GraphRenderer renderer = new BasicGraphRenderer();
+      GraphRenderer renderer = new BasicGraphRenderer(1);
       for (int i = 0; i < graphNames.size(); i++) {
         Graph g = graphs.get(graphNames.get(i));
         if (i == selectedGraphIndex) {

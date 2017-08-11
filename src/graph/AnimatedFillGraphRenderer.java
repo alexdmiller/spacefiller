@@ -1,5 +1,6 @@
 package graph;
 
+import lusio.Lusio;
 import processing.core.PGraphics;
 import processing.core.PVector;
 
@@ -13,38 +14,42 @@ import java.util.List;
 public class AnimatedFillGraphRenderer implements GraphRenderer {
   private List<AnimationInfo> currentlyAnimating;
   private float fillSpeed = 20f;
+  private float thickness = 5;
 
   public AnimatedFillGraphRenderer() {
     currentlyAnimating = new ArrayList<>();
   }
 
+  public void setFillSpeed(float fillSpeed) {
+    this.fillSpeed = fillSpeed;
+  }
+
+  public void setThickness(float thickness) {
+    this.thickness = thickness;
+  }
+
   @Override
   public void render(PGraphics graphics, Graph graph) {
     graphics.noFill();
-    graphics.strokeWeight(1);
+    graphics.strokeWeight(2);
     graphics.stroke(255);
 
-    for (Node n : graph.getNodes()) {
-      graphics.ellipse(n.position.x, n.position.y, 20, 20);
-    }
-
     List<Edge> edges = graph.getEdges();
-    for (Edge e : edges) {
-      graphics.line(e.n1.position.x, e.n1.position.y, e.n2.position.x, e.n2.position.y);
-    }
 
     if (currentlyAnimating.isEmpty()) {
-      Edge e = edges.get(0);
+      Edge e = edges.get((int) (Math.random() * edges.size()));
       AnimationInfo a = new AnimationInfo(e, e.n1, e.n2);
       currentlyAnimating.add(a);
     }
 
-    graphics.strokeWeight(5);
+    graphics.strokeWeight(thickness);
 
     List<AnimationInfo> newAnimations = new ArrayList<>();
 
     Iterator<AnimationInfo> itr = currentlyAnimating.iterator();
+    int i = 0;
     while (itr.hasNext()) {
+      i++;
       AnimationInfo a = itr.next();
 
       float distance = PVector.dist(a.start.position, a.end.position);
@@ -89,11 +94,22 @@ public class AnimatedFillGraphRenderer implements GraphRenderer {
       graphics.pushMatrix();
       graphics.translate(a.start.position.x, a.start.position.y);
       graphics.rotate(delta.heading());
+      graphics.stroke(Lusio.instance.getColor(i));
       graphics.line(0, 0, a.fillAmount, 0);
       graphics.popMatrix();
     }
 
     currentlyAnimating.addAll(newAnimations);
+
+    // if everything is finished animating, restart
+    boolean allFinished = true;
+    for (AnimationInfo info : currentlyAnimating) {
+      allFinished &= info.finished;
+    }
+
+    if (allFinished) {
+      currentlyAnimating.clear();
+    }
   }
 
   private class AnimationInfo {

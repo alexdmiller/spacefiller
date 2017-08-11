@@ -47,6 +47,8 @@ public class FlockScene extends Scene {
 
     flockParticles.setMaxSpeed(cube.getFlipAmount() * 20 + 5);
     flockParticles.setDesiredSeparation(euler[1] * 100 + 10);
+    flockParticles.setCohesionThreshold(euler[0] * 100 + 10);
+    particleWebRenderer.setLineThreshold(Math.min(cube.getRotationalVelocity() * 10, 100));
 
     super.draw(cube, graphics);
   }

@@ -1,5 +1,6 @@
 package graph;
 
+import lusio.Lusio;
 import processing.core.PGraphics;
 import processing.core.PVector;
 
@@ -14,16 +15,38 @@ public class PipeGraphRenderer implements GraphRenderer {
   private List<AnimationInfo> currentlyAnimating;
   private float chance = 0.5f;
   private int maxPerEdge = 10;
+  private float dotSize = 2;
+  private float freq = 1;
+  private float deviation = 3;
+  private int color;
 
   public PipeGraphRenderer() {
     currentlyAnimating = new ArrayList<>();
   }
 
+  public void setDotSize(float dotSize) {
+    this.dotSize = dotSize;
+  }
+
+  public void setFreq(float freq) {
+    this.freq = freq;
+  }
+
+  public void setDeviation(float deviation) {
+    this.deviation = deviation;
+  }
+
+  public void setMaxPerEdge(int maxPerEdge) {
+    this.maxPerEdge = maxPerEdge;
+  }
+
+  public void setColor(int color) {
+    this.color = color;
+  }
+
   @Override
   public void render(PGraphics graphics, Graph graph) {
     graphics.noFill();
-    graphics.strokeWeight(1);
-    graphics.stroke(255);
 
     List<Edge> edges = graph.getEdges();
 
@@ -35,12 +58,14 @@ public class PipeGraphRenderer implements GraphRenderer {
       currentlyAnimating.add(a);
     }
 
-    graphics.strokeWeight(1);
+    graphics.strokeWeight(dotSize);
 
     List<AnimationInfo> newAnimations = new ArrayList<>();
 
     Iterator<AnimationInfo> itr = currentlyAnimating.iterator();
+    int i = 0;
     while (itr.hasNext()) {
+      i++;
       AnimationInfo a = itr.next();
 
       float distance = PVector.dist(a.start.position, a.end.position);
@@ -78,12 +103,12 @@ public class PipeGraphRenderer implements GraphRenderer {
         }
       }
 
-      graphics.strokeWeight(3);
       PVector delta = PVector.sub(a.end.position, a.start.position);
       graphics.pushMatrix();
       graphics.translate(a.start.position.x, a.start.position.y);
       graphics.rotate(delta.heading());
-      graphics.point(a.point, (float) (Math.sin(a.point / 10 + a.shift) * 3));
+      graphics.stroke(Lusio.instance.getColor(i));
+      graphics.point(a.point, (float) (Math.sin(a.point / freq + a.shift) * deviation));
       graphics.popMatrix();
     }
 

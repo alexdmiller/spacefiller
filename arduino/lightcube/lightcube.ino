@@ -52,7 +52,7 @@ uint8_t mode = 0;
 uint8_t lightIndex = 0;
 
 unsigned long previousMillis = 0;        // will store last time LED was updated
-const long interval = 200;
+const long interval = 60;
 bool sendColors = false;
 
 CRGB leds[NUM_PIXELS];
@@ -279,17 +279,17 @@ void setStableColor(float flipAmount) {
 //    uint8_t color1[3];
 //    uint8_t color2[3];
 //    uint8_t finalColor[3];
-
-    // interpolate(flipAmount, primaryColor1, secondaryColor1, color1);
-    // interpolate(flipAmount, primaryColor2, secondaryColor2, color2);
+//
+//     interpolate(flipAmount, primaryColor1, secondaryColor1, color1);
+//     interpolate(flipAmount, primaryColor2, secondaryColor2, color2);
 
     previousMillis = currentMillis; 
 
     int offset = currentMillis / 5.0;
     
     for (int i = 0; i < NUM_PIXELS; i++) {
-      // float interpolation = cos8(i * 5 + offset) / 255.0;
-      // interpolate(interpolation, color1, color2, finalColor);
+//       float interpolation = cos8(i * 5 + offset) / 255.0;
+//       interpolate(interpolation, color1, color2, finalColor);
       leds[i].setRGB(color[0], color[1], color[2]);
     }
   

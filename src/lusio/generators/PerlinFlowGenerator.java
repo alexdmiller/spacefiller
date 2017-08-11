@@ -26,6 +26,7 @@ public class PerlinFlowGenerator extends SceneGenerator {
   private float circleRadius = 100;
   private int numPoints = 50;
   private float scrambleSpeed = 0.01f;
+  private float mainSpeed = 0.1f;
 
   float timeStep;
   float scramble = 0;
@@ -142,10 +143,14 @@ public class PerlinFlowGenerator extends SceneGenerator {
     this.scrambleSpeed = scrambleSpeed;
   }
 
+  public void setMainSpeed(float mainSpeed) {
+    this.mainSpeed = mainSpeed;
+  }
+
   @Override
   public void draw(PGraphics graphics) {
     graphics.pushMatrix();
-    timeStep += 0.01;
+    timeStep += mainSpeed;
     scramble += scrambleSpeed;
     noise1Pos += noiseSpeed1;
     noise2Pos += noiseSpeed2;
@@ -154,6 +159,8 @@ public class PerlinFlowGenerator extends SceneGenerator {
     graphics.strokeWeight(lineThickness);
 
     for (int j = 0; j < numPoints; j++) {
+      graphics.stroke(Lusio.instance.getColor(j));
+
       PVector p = PVector.add(
           PVector.mult(position3(j), interpolation),
           PVector.mult(position2(j), (1 - interpolation)));

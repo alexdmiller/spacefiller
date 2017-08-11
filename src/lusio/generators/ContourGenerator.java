@@ -80,8 +80,8 @@ public class ContourGenerator extends SceneGenerator {
       float sampleHeight = i - bounds.getHeight()/2;
       graphics.stroke(Lusio.instance.lerpColor(
           color,
-          Lusio.instance.color(200, 200,  200),
-          (float) (Math.sin(i / 10 + timeStep * 100) + 1) / 2));
+          Lusio.instance.color(255, 255, 255),
+          (float) (Math.sin(i / 5 + timeStep * 100) + 1) / 2));
       drawGridPlaneIntersection(heightMap, sampleHeight, sampleHeight * spacing, cellSize, graphics);
     }
 
