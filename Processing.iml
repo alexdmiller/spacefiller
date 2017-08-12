@@ -28,5 +28,15 @@
     <orderEntry type="library" name="jssc" level="project" />
     <orderEntry type="library" name="serial" level="project" />
     <orderEntry type="library" name="toxiclibs" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$USER_HOME$/Documents/Processing3/libraries/themidibus/library" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$USER_HOME$/Documents/Processing3/libraries/themidibus/library" recursive="false" />
+      </library>
+    </orderEntry>
   </component>
 </module>

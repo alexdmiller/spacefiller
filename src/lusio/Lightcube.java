@@ -9,59 +9,31 @@ import processing.serial.*;
 import java.util.Arrays;
 
 public class Lightcube extends PApplet {
-  Serial port;
-
-  private char[] teapotPacket = new char[19];  // InvenSense Teapot packet
-  private int serialCount = 0;                 // current packet byte position
-  private int aligned = 0;
-  private int interval = 0;
-
-  private float[] q = new float[4];
-  private Quaternion quaternion = new Quaternion(1, 0, 0, 0);
-  private Quaternion previousQuaternion;
-  private float rotationalVelocity;
-  private Vec3D up = new Vec3D(0, -1, 0);
-
-  private float decay = 0.95f;
-
-  private int color = 0x000000;
-  private int mode = 0;
-  private int counter = 0;
-  private boolean transitionScene = false;
-
   private static final int BAUD_RATE = 57600;
   private static final String USB_PORT_NAME = "/dev/cu.usbmodem1411";
   private static final String XBEE_PORT_NAME = "/dev/tty.SLAB_USBtoUART";
 
   public static Lightcube usb() {
-    return new Lightcube(USB_PORT_NAME, BAUD_RATE);
+    return new SerialLightcube(USB_PORT_NAME, BAUD_RATE);
   }
-
   public static Lightcube wireless() {
-    return new Lightcube(XBEE_PORT_NAME, BAUD_RATE);
+    return new SerialLightcube(XBEE_PORT_NAME, BAUD_RATE);
   }
 
-  public Lightcube(String portName, int baudRate) {
-    try {
-      System.out.println(Arrays.toString(Serial.list()));
-      System.out.println("Opening port " + portName + " with baud rate " + baudRate);
-      port = new Serial(this, portName, baudRate);
-    } catch (RuntimeException e) {
-      System.out.println(e);
-      port = null;
-    }
-  }
+  public static Lightcube midi() { return new MidiLightcube(); }
+
+  protected Quaternion quaternion = new Quaternion(1, 0, 0, 0);
+  protected Quaternion previousQuaternion;
+  protected float rotationalVelocity;
+  protected Vec3D up = new Vec3D(0, -1, 0);
+  protected int color = 0x000000;
+  protected int mode = 0;
+  protected boolean transitionScene = false;
+  protected int counter = 0;
+
+  private float decay = 0.95f;
 
   public void update() {
-    if (port != null) {
-      if (millis() - interval > 1000) {
-        // resend single character to trigger DMP init/start
-        // in case the MPU is halted/reset while applet is running
-        // port.write('r');
-        interval = millis();
-      }
-    }
-
     if (rotationalVelocity > 0) {
       rotationalVelocity = rotationalVelocity * decay;
     } else {
@@ -69,70 +41,10 @@ public class Lightcube extends PApplet {
     }
   }
 
-  public char[] getTeapotPacket() {
-    return teapotPacket;
-  }
-
   public boolean readTransitionScene() {
     boolean value = transitionScene;
     transitionScene = false;
     return value;
-  }
-
-  public void serialEvent(Serial port) {
-    interval = millis();
-
-    /**
-     * Packet structure:
-     * { '$', 0x02, 0,0, 0,0, 0,0, 0,0, 0x00, 0x00, 0, 0, 0, 0, '\r', '\n' };
-     */
-    while (port.available() > 0) {
-      int ch = port.read();
-      if (ch == '$') {serialCount = 0;} // this will help with alignment
-      if (aligned < 4) {
-        // make sure we are properly aligned on a 17-byte packet
-        if (serialCount == 0) {
-          if (ch == '$') aligned++; else aligned = 0;
-        } else if (serialCount == 1) {
-          if (ch == 2) aligned++; else aligned = 0;
-        } else if (serialCount == 17) {
-          if (ch == '\r') aligned++; else aligned = 0;
-        } else if (serialCount == 18) {
-          if (ch == '\n') aligned++; else aligned = 0;
-        }
-        //println(ch + " " + aligned + " " + serialCount);
-        serialCount++;
-        if (serialCount == 19) serialCount = 0;
-      } else {
-        if (serialCount > 0 || ch == '$') {
-          teapotPacket[serialCount++] = (char)ch;
-          if (serialCount == 19) {
-            serialCount = 0; // restart packet byte position
-
-            // get quaternion from data packet
-            q[0] = ((teapotPacket[2] << 8) | teapotPacket[3]) / 16384.0f;
-            q[1] = ((teapotPacket[4] << 8) | teapotPacket[5]) / 16384.0f;
-            q[2] = ((teapotPacket[6] << 8) | teapotPacket[7]) / 16384.0f;
-            q[3] = ((teapotPacket[8] << 8) | teapotPacket[9]) / 16384.0f;
-            for (int i = 0; i < 4; i++) if (q[i] >= 2) q[i] = -4 + q[i];
-
-            previousQuaternion = quaternion;
-            quaternion = new Quaternion(q[0], q[1], q[2], q[3]);
-
-            rotationalVelocity = Math.max(quaternion.sub(previousQuaternion).magnitude() * 500, rotationalVelocity);
-
-            // get color from data packet
-            color = Lusio.instance.color(teapotPacket[12], teapotPacket[13], teapotPacket[14]);
-
-            if (mode == 2 && teapotPacket[15] == 0) {
-              transitionScene = true;
-            }
-            mode = teapotPacket[15];
-            counter = teapotPacket[16];
-          }
-        }
-      }
-    }
   }
 
   public int getColor() {
