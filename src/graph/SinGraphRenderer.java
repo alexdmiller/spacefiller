@@ -12,6 +12,10 @@ public class SinGraphRenderer implements GraphRenderer {
   private float thickness = 3;
   private int color;
 
+  public void setThickness(float thickness) {
+    this.thickness = thickness;
+  }
+
   @Override
   public void render(PGraphics graphics, Graph graph) {
     time += speed;

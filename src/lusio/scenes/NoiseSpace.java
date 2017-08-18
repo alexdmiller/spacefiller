@@ -30,7 +30,7 @@ public class NoiseSpace extends Scene {
     perlinFlowGenerator.setLineSparsity(0f);
     perlinFlowGenerator.setScrollSpeed(1);
     perlinFlowGenerator.setCircleRadius(300);
-    perlinFlowGenerator.setLineThickness(3);
+    perlinFlowGenerator.setLineThickness(6);
     perlinFlowGenerator.setInterpolation(1);
     perlinFlowGenerator.setNoiseSpeed1(0);
     perlinFlowGenerator.setNoiseSpeed2(0);

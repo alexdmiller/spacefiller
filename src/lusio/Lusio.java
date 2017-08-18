@@ -64,7 +64,7 @@ public class Lusio extends PApplet {
   }
 
   public void settings() {
-    // fullScreen(2);
+    fullScreen(2);
     size(1920, 1080, P3D);
     PJOGL.profile = 1;
   }
@@ -72,7 +72,7 @@ public class Lusio extends PApplet {
   public final void setup() {
     graphs = new HashMap<>();
     graphNames = new ArrayList<>();
-    lightcube = Lightcube.midi();
+    lightcube = Lightcube.wireless();
 
     canvas = createGraphics(1920, 1080, P3D);
     canvas.smooth();
@@ -204,6 +204,10 @@ public class Lusio extends PApplet {
 
     if (keyCode == RIGHT) {
       selectedGraphIndex = (selectedGraphIndex + 1) % graphs.size();
+    }
+
+    if (keyCode == DOWN) {
+      switchScene((currentSceneIndex + 1) % scenes.length);
     }
   }
 

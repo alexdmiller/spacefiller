@@ -25,7 +25,7 @@ public class FlockScene extends Scene {
 
   @Override
   public void setup(Map<String, Graph> graphs) {
-    particleGenerator = new ParticleGenerator(50, new Bounds(Lusio.HEIGHT), 3);
+    particleGenerator = new ParticleGenerator(100, new Bounds(Lusio.HEIGHT), 3);
     particleGenerator.setPos(Lusio.WIDTH / 2, Lusio.HEIGHT / 2);
 
     // particleGenerator.addRenderer(new DelaunayRenderer(2));

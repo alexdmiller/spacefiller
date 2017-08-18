@@ -23,6 +23,7 @@ public class NagyLineScene extends Scene {
 
     if (nagyGraph != null) {
       sinGraphRenderer = new SinGraphRenderer();
+      sinGraphRenderer.setThickness(6);
       addGenerator(new GraphGenerator(nagyGraph, sinGraphRenderer));
 
 //      pipeGraphRenderer = new PipeGraphRenderer();

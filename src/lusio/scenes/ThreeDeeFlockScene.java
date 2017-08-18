@@ -34,25 +34,13 @@ public class ThreeDeeFlockScene extends Scene {
 
   @Override
   public void setup(Map<String, Graph> graphs) {
-    particleGenerator = new ParticleGenerator(50, new Bounds(Lusio.HEIGHT), 3);
-    particleGenerator.setPos(Lusio.WIDTH / 2, Lusio.HEIGHT / 2);
-
-    particleGenerator.addRenderer(new ParticleDotRenderer(5));
-    particleWebRenderer = new ParticleWebRenderer(150, 2);
-    particleGenerator.addRenderer(particleWebRenderer);
-    particleGenerator.getParticleSystem().setMaxParticles(200);
-    particleGenerator.getParticleSystem().createSource(0, 0, 1, 3);
-
-    flockParticles = new FlockParticles(5, 1f, 1f, 100, 300, 200, 1f, 20);
-
-    particleGenerator.addBehavior(flockParticles);
-    // addGenerator(particleGenerator);
 
 
-    particleGenerator2 = new ParticleGenerator(200, new Bounds(Lusio.HEIGHT/2), 3);
+
+    particleGenerator2 = new ParticleGenerator(200, new Bounds(Lusio.HEIGHT), 3);
     particleGenerator2.setPos(Lusio.WIDTH / 2, Lusio.HEIGHT / 2);
     particleGenerator2.addRenderer(new ParticleDotRenderer(10));
-    particleGenerator2.addRenderer(new ParticleWormRenderer(10, 3));
+    particleGenerator2.addRenderer(new ParticleWormRenderer(20, 5));
     repelBehavior = new RepelParticles(50, 2);
     particleGenerator2.addBehavior(repelBehavior);
     particleGenerator2.addBehavior(new AttractParticles(100, 0.5f));
@@ -62,15 +50,11 @@ public class ThreeDeeFlockScene extends Scene {
 
   @Override
   public void draw(Lightcube cube, PGraphics graphics) {
-    particleGenerator.setRotation(cube.getQuaternion());
     particleGenerator2.setRotation(cube.getQuaternion().multiply(Quaternion.createFromEuler(-1, -1, -1)));
 
     speed += cube.getRotationalVelocity();
     speed *= 0.9;
 
-    flockParticles.setMaxSpeed(speed + 1);
-    flockParticles.setDesiredSeparation(cube.getFlipAmount() * 100 + 100);
-    particleWebRenderer.setLineThreshold(cube.getFlipAmount() * 100 + 120);
 
     repelBehavior.setRepelThreshold(cube.getRotationalVelocity() * 100);
 

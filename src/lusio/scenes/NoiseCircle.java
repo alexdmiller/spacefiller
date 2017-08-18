@@ -25,7 +25,7 @@ public class NoiseCircle extends Scene {
     perlinFlowGenerator.setNumPoints(100);
     perlinFlowGenerator.setLineSparsity(1);
     perlinFlowGenerator.setCircleRadius(300);
-    perlinFlowGenerator.setLineThickness(3);
+    perlinFlowGenerator.setLineThickness(6);
     addGenerator(perlinFlowGenerator);
   }
 

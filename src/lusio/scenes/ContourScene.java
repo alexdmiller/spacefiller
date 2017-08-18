@@ -30,7 +30,7 @@ public class ContourScene extends Scene {
     contourGenerator.setRotation(Quaternion.createFromAxisAngle(new Vec3D(-1, 0, 0), 1f));
     contourGenerator.setCellSize(150);
     contourGenerator.setNoiseScale(2);
-    contourGenerator.setLineSize(3);
+    contourGenerator.setLineSize(6);
     contourGenerator.setUpdateSpeed(0);
 
     addGenerator(contourGenerator);
