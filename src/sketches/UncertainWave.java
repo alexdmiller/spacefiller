@@ -1,4 +1,4 @@
-package scenes;
+package sketches;
 
 import particles.Particle;
 import modulation.Mod;
@@ -18,7 +18,7 @@ public class UncertainWave extends Scene {
 	public static final int NUM_WAVES = 50;
 
 	public static void main(String[] args) {
-		main("scenes.UncertainWave");
+		main("sketches.UncertainWave");
 	}
 
 	@Mod(min = -1, max = 1, defaultValue = 0.05f)

@@ -1,28 +1,29 @@
 package lusio.scenes;
 
 import graph.Graph;
-import lusio.Lightcube;
+import lightcube.Lightcube;
 import lusio.Lusio;
-import lusio.generators.*;
+import lusio.components.*;
 import processing.core.PGraphics;
+import scene.Scene;
 
 import java.util.Map;
 
-public class FluidScene extends Scene {
-  FluidBoxGenerator fluidBoxGenerator;
+public class FluidScene extends LusioScene {
+  FluidBoxComponent fluidBoxGenerator;
 
   @Override
-  public void setup(Map<String, Graph> graphs) {
-    fluidBoxGenerator = new FluidBoxGenerator();
+  public void setup() {
+    fluidBoxGenerator = new FluidBoxComponent();
     fluidBoxGenerator.setPos(Lusio.WIDTH / 2, Lusio.HEIGHT / 2);
     fluidBoxGenerator.setIsoThreshold(3);
     fluidBoxGenerator.setWireFrame(false);
     fluidBoxGenerator.setDrawScale(3);
-    addGenerator(fluidBoxGenerator);
+    addComponent(fluidBoxGenerator);
   }
 
   @Override
-  public void draw(Lightcube cube, PGraphics graphics) {
+  public void draw(PGraphics graphics) {
     fluidBoxGenerator.setColor(cube.getColor());
     fluidBoxGenerator.setRotation(cube.getQuaternion());
     fluidBoxGenerator.setIsoThreshold(cube.getEulerRotation()[1] + 4);
@@ -33,7 +34,7 @@ public class FluidScene extends Scene {
       fluidBoxGenerator.setRestLength(cube.getRotationalVelocity() * 10 + 200);
     }
 
-    super.draw(cube, graphics);
+    super.draw(graphics);
   }
 
   @Override

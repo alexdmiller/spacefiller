@@ -1,16 +1,17 @@
-package lusio.generators;
+package lusio.components;
 
 import graph.*;
 import processing.core.PGraphics;
+import scene.SceneComponent;
 
 /**
  * Created by miller on 7/16/17.
  */
-public class GraphGenerator extends SceneGenerator {
+public class GraphComponent extends SceneComponent {
   private Graph graph;
   private GraphRenderer renderer;
 
-  public GraphGenerator(Graph graph, GraphRenderer renderer) {
+  public GraphComponent(Graph graph, GraphRenderer renderer) {
     this.graph = graph;
     this.renderer = renderer;
   }

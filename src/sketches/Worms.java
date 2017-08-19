@@ -1,4 +1,4 @@
-package scenes;
+package sketches;
 
 import boids.*;
 import boids.behaviors.*;
@@ -25,7 +25,7 @@ public class Worms extends Scene implements EntityEventListener {
 	private static final int SAVE_PER_CATEGORY = 10;
 
 	public static void main(String[] args) {
-		main("scenes.Worms");
+		main("sketches.Worms");
 	}
 
 	@Mod

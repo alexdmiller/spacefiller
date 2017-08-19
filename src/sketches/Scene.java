@@ -1,17 +1,15 @@
-package scenes;
+package sketches;
 
 import codeanticode.syphon.SyphonServer;
-import oscP5.OscP5;
 import processing.core.PApplet;
 import processing.core.PGraphics;
-import processing.core.PVector;
 import processing.opengl.PJOGL;
 
 import java.util.ArrayList;
 import java.util.List;
 
 // TODO: how to handle ports?
-// TODO: how to handle scenes?
+// TODO: how to handle sketches?
 
 public class Scene extends PApplet {
 	private static PApplet instance;
@@ -74,17 +72,17 @@ public class Scene extends PApplet {
 	 */
 	public final void draw() {
 		background(0);
-		
+
 		if (playing) {
 			canvas.beginDraw();
 			canvas.translate(WIDTH / 2, HEIGHT / 2, DEPTH / 2);
 
 			canvas.background(0);
-			
+
 			canvas.pushMatrix();
 			drawCanvas(canvas, mouseX / LOCAL_WINDOW_SCALE, mouseY / LOCAL_WINDOW_SCALE);
 			canvas.popMatrix();
-			
+
 			if (debug) {
 				canvas.pushMatrix();
 				canvas.translate((mouseX - width / 2) / LOCAL_WINDOW_SCALE, (mouseY - height / 2) / LOCAL_WINDOW_SCALE);

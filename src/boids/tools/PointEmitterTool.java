@@ -3,7 +3,7 @@ package boids.tools;
 import boids.Flock;
 import boids.emitter.PointEmitter;
 import particles.Bounds;
-import scenes.SceneTool;
+import sketches.SceneTool;
 
 public class PointEmitterTool extends SceneTool {
 	private static final char DECREASE_CHANCE_KEY = '[';

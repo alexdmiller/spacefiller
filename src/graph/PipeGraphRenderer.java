@@ -1,5 +1,6 @@
 package graph;
 
+import color.ColorProvider;
 import lusio.Lusio;
 import processing.core.PGraphics;
 import processing.core.PVector;
@@ -18,7 +19,7 @@ public class PipeGraphRenderer implements GraphRenderer {
   private float dotSize = 2;
   private float freq = 1;
   private float deviation = 3;
-  private int color;
+  private ColorProvider colorProvider;
 
   public PipeGraphRenderer() {
     currentlyAnimating = new ArrayList<>();
@@ -40,8 +41,8 @@ public class PipeGraphRenderer implements GraphRenderer {
     this.maxPerEdge = maxPerEdge;
   }
 
-  public void setColor(int color) {
-    this.color = color;
+  public void setColorProvider(ColorProvider colorProvider) {
+    this.colorProvider = colorProvider;
   }
 
   @Override
@@ -107,7 +108,7 @@ public class PipeGraphRenderer implements GraphRenderer {
       graphics.pushMatrix();
       graphics.translate(a.start.position.x, a.start.position.y);
       graphics.rotate(delta.heading());
-      graphics.stroke(Lusio.instance.getColor(i));
+      graphics.stroke(colorProvider.getColor(i));
       graphics.point(a.point, (float) (Math.sin(a.point / freq + a.shift) * deviation));
       graphics.popMatrix();
     }

@@ -1,14 +1,13 @@
-package lusio.generators;
+package scene;
 
+import color.ColorProvider;
 import particles.Bounds;
 import processing.core.PGraphics;
 
-/**
- * Created by miller on 7/12/17.
- */
-public abstract class SceneGenerator {
+public abstract class SceneComponent {
   private float x;
   private float y;
+  private ColorProvider colorProvider;
 
   public abstract void draw(PGraphics graphics);
 
@@ -31,5 +30,13 @@ public abstract class SceneGenerator {
   public void setPos(float x, float y) {
     this.x = x;
     this.y = y;
+  }
+
+  public ColorProvider getColorProvider() {
+    return colorProvider;
+  }
+
+  public void setColorProvider(ColorProvider colorProvider) {
+    this.colorProvider = colorProvider;
   }
 }

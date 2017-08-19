@@ -1,12 +1,9 @@
 package boids.tools;
 
 import boids.Flock;
-import boids.behaviors.FollowPathBehavior;
-import boids.emitter.LineEmitter;
-import boids.emitter.PointEmitter;
 import processing.core.PGraphics;
 import processing.core.PVector;
-import scenes.SceneTool;
+import sketches.SceneTool;
 
 public class PathTool extends SceneTool {
 	private Flock flock;

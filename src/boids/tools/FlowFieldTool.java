@@ -2,7 +2,7 @@ package boids.tools;
 
 import boids.Flock;
 import processing.core.PVector;
-import scenes.SceneTool;
+import sketches.SceneTool;
 
 public class FlowFieldTool extends SceneTool {
 	private Flock flock;

@@ -1,14 +1,10 @@
 package boids.tools;
 
 import boids.Flock;
-import boids.behaviors.EmitBehavior;
-import boids.emitter.Emitter;
 import boids.emitter.LineEmitter;
-import boids.emitter.PointEmitter;
 import processing.core.PGraphics;
 import processing.core.PVector;
-import scenes.SceneTool;
-import scenes.Worms;
+import sketches.SceneTool;
 
 public class LineEmitterTool extends SceneTool {
 	private Flock flock;

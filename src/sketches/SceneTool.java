@@ -1,4 +1,4 @@
-package scenes;
+package sketches;
 
 import processing.core.PGraphics;
 

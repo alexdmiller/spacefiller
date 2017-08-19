@@ -1,5 +1,6 @@
-package lusio;
+package lightcube;
 
+import lusio.Lusio;
 import themidibus.MidiBus;
 import toxi.geom.Quaternion;
 
@@ -15,6 +16,11 @@ public class MidiLightcube extends Lightcube {
   public MidiLightcube() {
     bus = new MidiBus(this, "Launch Control XL 8", 1);
     values = new int[3];
+
+    color = Lusio.instance.color(
+        color1[0] + (color2[0] - color1[0]) * getFlipAmount(),
+        color1[1] + (color2[1] - color1[1]) * getFlipAmount(),
+        color1[2] + (color2[2] - color1[2]) * getFlipAmount());
   }
 
   public void noteOn(int channel, int pitch, int velocity) {

@@ -1,5 +1,6 @@
 package graph;
 
+import color.ColorProvider;
 import lusio.Lusio;
 import processing.core.PGraphics;
 import processing.core.PVector;
@@ -15,6 +16,7 @@ public class AnimatedFillGraphRenderer implements GraphRenderer {
   private List<AnimationInfo> currentlyAnimating;
   private float fillSpeed = 20f;
   private float thickness = 5;
+  private ColorProvider colorProvider;
 
   public AnimatedFillGraphRenderer() {
     currentlyAnimating = new ArrayList<>();
@@ -26,6 +28,10 @@ public class AnimatedFillGraphRenderer implements GraphRenderer {
 
   public void setThickness(float thickness) {
     this.thickness = thickness;
+  }
+
+  public void setColorProvider(ColorProvider colorProvider) {
+    this.colorProvider = colorProvider;
   }
 
   @Override
@@ -94,7 +100,7 @@ public class AnimatedFillGraphRenderer implements GraphRenderer {
       graphics.pushMatrix();
       graphics.translate(a.start.position.x, a.start.position.y);
       graphics.rotate(delta.heading());
-      graphics.stroke(Lusio.instance.getColor(i));
+      graphics.stroke(colorProvider.getColor(i));
       graphics.line(0, 0, a.fillAmount, 0);
       graphics.popMatrix();
     }

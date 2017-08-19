@@ -1,4 +1,4 @@
-package scenes;
+package sketches;
 
 import modulation.Mod;
 import modulation.OscSceneModulator;
@@ -7,7 +7,7 @@ import processing.core.PVector;
 
 public class Flows extends Scene {
 	public static void main(String[] args) {
-		main("scenes.Flows");
+		main("sketches.Flows");
 	}
 
 	@Mod(min = 0, max = 20)

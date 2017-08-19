@@ -1,19 +1,11 @@
-package lusio.generators;
+package lusio.components;
 
 import lusio.Lusio;
-import particles.Bounds;
-import particles.Particle;
-import particles.ParticleSystem;
-import particles.behaviors.ParticleBehavior;
-import particles.renderers.ParticleRenderer;
 import processing.core.PGraphics;
 import processing.core.PVector;
-import toxi.geom.Quaternion;
+import scene.SceneComponent;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class PerlinLine extends SceneGenerator {
+public class PerlinLine extends SceneComponent {
   private float t;
   private float updateSpeed = 0.01f;
 

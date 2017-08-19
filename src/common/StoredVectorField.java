@@ -3,7 +3,7 @@ package common;
 import modulation.Mod;
 import particles.Bounds;
 import processing.core.PVector;
-import scenes.Scene;
+import sketches.Scene;
 
 public class StoredVectorField implements VectorField {
 	@Mod(min = 0, max = 0.1f)

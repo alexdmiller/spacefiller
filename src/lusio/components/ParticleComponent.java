@@ -1,28 +1,28 @@
-package lusio.generators;
+package lusio.components;
 
 import particles.Bounds;
-import particles.Particle;
 import particles.ParticleSystem;
 import particles.behaviors.ParticleBehavior;
 import particles.renderers.ParticleRenderer;
 import processing.core.PGraphics;
+import scene.SceneComponent;
 import toxi.geom.Quaternion;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParticleGenerator extends SceneGenerator {
+public class ParticleComponent extends SceneComponent {
   private ParticleSystem particleSystem;
   private List<ParticleRenderer> renderers;
   private Quaternion quaternion = new Quaternion();
 
   // TODO: why does this need to have a max force?
 
-  public ParticleGenerator(int numParticles, Bounds bounds) {
+  public ParticleComponent(int numParticles, Bounds bounds) {
     this(numParticles, bounds, 3);
   }
 
-  public ParticleGenerator(int numParticles, Bounds bounds, int dimension) {
+  public ParticleComponent(int numParticles, Bounds bounds, int dimension) {
     this.renderers = new ArrayList<>();
 
     this.particleSystem = ParticleSystem.boundedSystem(bounds, numParticles);

@@ -4,7 +4,7 @@ import boids.Flock;
 import boids.Magnet;
 import processing.core.PGraphics;
 import processing.core.PVector;
-import scenes.SceneTool;
+import sketches.SceneTool;
 
 public class MagnetTool extends SceneTool {
 	private static final char DECREASE_STRENGTH_KEY = '[';

@@ -1,24 +1,8 @@
-package scenes;
+package sketches;
 
-import boids.*;
-import boids.behaviors.*;
-import boids.renderers.*;
-import boids.tools.*;
 import modulation.Mod;
 import modulation.OscSceneModulator;
 import processing.core.PGraphics;
-
-import java.io.*;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Wave extends Scene {
 	private static final float WAVE_INCREMENTS = 100;
@@ -33,7 +17,7 @@ public class Wave extends Scene {
 	private int note = 0;
 
 	public static void main(String[] args) {
-		main("scenes.Wave");
+		main("sketches.Wave");
 	}
 
 	private float step;

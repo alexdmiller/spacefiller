@@ -1,5 +1,7 @@
 package lusio;
 
+import color.ColorProvider;
+import color.TwoColorProvider;
 import controlP5.ControlEvent;
 import controlP5.ControlP5;
 import controlP5.DropdownList;
@@ -8,11 +10,14 @@ import graph.BasicGraphRenderer;
 import graph.Graph;
 import graph.GraphRenderer;
 import graph.Node;
+import lightcube.Lightcube;
 import lusio.scenes.*;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 import processing.core.PVector;
 import processing.opengl.PJOGL;
+import scene.Scene;
+import scene.SceneApplet;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -20,7 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Lusio extends PApplet {
+public class Lusio extends SceneApplet implements ColorProvider {
   public static Lusio instance;
 
   public static void main(String[] args) {
@@ -29,7 +34,7 @@ public class Lusio extends PApplet {
 
   private PGraphics canvas;
 
-  private Scene[] scenes = {
+  private LusioScene[] scenes = {
       new ThreeDeeFlockScene(),
       new NagyLineScene(),
       new FlockScene(),
@@ -43,8 +48,6 @@ public class Lusio extends PApplet {
       new CubeScene()
   };
 
-  private Scene currentScene;
-  private int currentSceneIndex;
   private Map<String, Graph> graphs;
   private int selectedGraphIndex;
   private List<String> graphNames;
@@ -59,12 +62,14 @@ public class Lusio extends PApplet {
   public static int WIDTH = 1920;
   public static int HEIGHT = 1080;
 
+  private TwoColorProvider twoColorProvider;
+
   public Lusio() {
     Lusio.instance = this;
   }
 
   public void settings() {
-    fullScreen(2);
+    // fullScreen(2);
     size(1920, 1080, P3D);
     PJOGL.profile = 1;
   }
@@ -72,7 +77,7 @@ public class Lusio extends PApplet {
   public final void setup() {
     graphs = new HashMap<>();
     graphNames = new ArrayList<>();
-    lightcube = Lightcube.wireless();
+    lightcube = Lightcube.midi();
 
     canvas = createGraphics(1920, 1080, P3D);
     canvas.smooth();
@@ -105,7 +110,25 @@ public class Lusio extends PApplet {
 
     loadGraphs();
 
+    twoColorProvider = new TwoColorProvider(0xFFFFFFFF, 0x00000000, 3);
+
     switchScene(0);
+  }
+
+  public void switchScene(int sceneIndex) {
+    if (currentScene != null) {
+      currentScene.teardown();
+    }
+
+    LusioScene scene = scenes[sceneIndex];
+    currentSceneIndex = sceneIndex;
+
+    // TODO: transition old scene out; new scene in.
+    scene.setCube(lightcube);
+    scene.setGraphs(graphs);
+    scene.setup();
+
+    currentScene = scene;
   }
 
   public final void draw() {
@@ -142,7 +165,7 @@ public class Lusio extends PApplet {
         switchScene((currentSceneIndex + 1) % scenes.length);
       }
 
-      currentScene.draw(lightcube, canvas);
+      currentScene.draw(this.canvas);
     }
 
     if (graphsVisible) {
@@ -262,20 +285,6 @@ public class Lusio extends PApplet {
     saveGraphs();
   }
 
-  public void switchScene(int sceneIndex) {
-    if (currentScene != null) {
-      currentScene.teardown();
-    }
-
-    Scene scene = scenes[sceneIndex];
-    currentSceneIndex = sceneIndex;
-
-    // TODO: transition old scene out; new scene in.
-    scene.setup(graphs);
-
-    currentScene = scene;
-  }
-
   private void saveGraphs() {
     try {
       FileOutputStream fileOut =
@@ -306,11 +315,9 @@ public class Lusio extends PApplet {
     }
   }
 
-  public int getColor(int x) {
-    if (x % 3 == 0) {
-      return lightcube.getColor();
-    } else {
-      return color(255);
-    }
+  @Override
+  public int getColor(int index) {
+    twoColorProvider.setColor2(this.lightcube.getColor());
+    return twoColorProvider.getColor(index);
   }
 }

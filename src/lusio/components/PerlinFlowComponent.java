@@ -1,18 +1,15 @@
-package lusio.generators;
+package lusio.components;
 
-import graph.*;
 import lusio.Lusio;
-import modulation.Mod;
-import modulation.OscSceneModulator;
 import particles.Bounds;
 import processing.core.PGraphics;
 import processing.core.PVector;
-import scenes.Scene;
+import scene.SceneComponent;
 
 /**
  * Created by miller on 7/16/17.
  */
-public class PerlinFlowGenerator extends SceneGenerator {
+public class PerlinFlowComponent extends SceneComponent {
   private float flowForce = 20;
   private float noiseScale = 500f;
   private float noiseSpeed1 = 0.01f;
@@ -35,7 +32,7 @@ public class PerlinFlowGenerator extends SceneGenerator {
 
   private Bounds bounds;
 
-  public PerlinFlowGenerator(Bounds bounds) {
+  public PerlinFlowComponent(Bounds bounds) {
     this.bounds = bounds;
   }
 
@@ -159,7 +156,7 @@ public class PerlinFlowGenerator extends SceneGenerator {
     graphics.strokeWeight(lineThickness);
 
     for (int j = 0; j < numPoints; j++) {
-      graphics.stroke(Lusio.instance.getColor(j));
+      graphics.stroke(getColorProvider().getColor(j));
 
       PVector p = PVector.add(
           PVector.mult(position3(j), interpolation),

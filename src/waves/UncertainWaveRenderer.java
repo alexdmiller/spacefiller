@@ -1,9 +1,7 @@
 package waves;
 
 import processing.core.PGraphics;
-import scenes.UncertainWave;
-
-import java.util.ArrayList;
+import sketches.UncertainWave;
 
 public abstract class UncertainWaveRenderer {
 	protected UncertainWave scene;

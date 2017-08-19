@@ -1,12 +1,9 @@
-package lusio;
+package lightcube;
 
 import processing.core.PConstants;
 import processing.core.PGraphics;
 import toxi.geom.*;
 import processing.core.PApplet;
-import processing.serial.*;
-
-import java.util.Arrays;
 
 public class Lightcube extends PApplet {
   private static final int BAUD_RATE = 57600;

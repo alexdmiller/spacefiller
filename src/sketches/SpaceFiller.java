@@ -1,14 +1,13 @@
-package scenes;
+package sketches;
 
 import modulation.Mod;
 import modulation.OscSceneModulator;
 import processing.core.PGraphics;
-import processing.core.PVector;
 
 public class SpaceFiller extends Scene {
 	@Mod(min = 1, max = 100)
 	public int stepX = 20;
-	
+
 	@Mod(min = 1, max = 100)
 	public int stepY = 40;
 
@@ -17,7 +16,7 @@ public class SpaceFiller extends Scene {
 
 	@Mod(min = 1, max = 100)
 	public int RectSize = 20;
-	
+
 
 
 	////////////////////
@@ -44,9 +43,9 @@ public class SpaceFiller extends Scene {
 
 	int[] XCheck = {};
 	int[] YCheck = {};
-	
+
 	public static void main(String[] args) {
-		main("scenes.SpaceFiller");
+		main("sketches.SpaceFiller");
 	}
 
 	@Override
@@ -58,7 +57,7 @@ public class SpaceFiller extends Scene {
 	protected void drawCanvas(PGraphics graphics, float mouseX, float mouseY) {
 		XCheck = new int[0];
 		YCheck = new int[0];
-		
+
 		appendCoord(SX.length, SX, SY, 3, 4);
 		appendCoord(PX.length, PX, PY, 8, 4);
 		appendCoord(AX.length, AX, AY, 13, 4);
@@ -70,7 +69,7 @@ public class SpaceFiller extends Scene {
 		appendCoord(LX.length, LX, LY, 18, 14);
 		appendCoord(EX.length, EX, EY, 23, 14 );
 		appendCoord(RX.length, RX, RY, 28, 14);
-		
+
 		graphics.translate(-width / 2, -height / 2);
 		for(int j = 0; j < height; j += 5){
 			graphics.stroke(0,255,0);

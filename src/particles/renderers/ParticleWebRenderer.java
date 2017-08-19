@@ -22,7 +22,7 @@ public class ParticleWebRenderer extends ParticleRenderer {
     graphics.strokeWeight(lineSize);
     int i = 0;
     for (Particle p1 : particles) {
-      graphics.stroke(Lusio.instance.getColor(i));
+      graphics.stroke(colorProvider.getColor(i));
       for (Particle p2 : particles) {
         float dist = p1.position.dist(p2.position);
         if (dist < lineThreshold) {

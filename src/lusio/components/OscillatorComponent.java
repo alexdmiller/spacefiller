@@ -1,24 +1,16 @@
-package lusio.generators;
+package lusio.components;
 
 import lusio.Lusio;
-import particles.Bounds;
-import particles.Particle;
-import particles.ParticleSystem;
-import particles.behaviors.ParticleBehavior;
-import particles.renderers.ParticleRenderer;
 import processing.core.PGraphics;
-import toxi.geom.Quaternion;
+import scene.SceneComponent;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class OscillatorGenerator extends SceneGenerator {
+public class OscillatorComponent extends SceneComponent {
   private float t;
   private float updateSpeed = 0.1f;
   private int divisions = 100;
 
   // TODO: why does this need to have a max force?
-  public OscillatorGenerator() {
+  public OscillatorComponent() {
   }
 
   @Override

@@ -1,7 +1,8 @@
-package lusio.generators;
+package lusio.components;
 
 import processing.core.PConstants;
 import processing.core.PGraphics;
+import scene.SceneComponent;
 import toxi.geom.AABB;
 import toxi.geom.Quaternion;
 import toxi.geom.Sphere;
@@ -18,10 +19,7 @@ import toxi.volume.ArrayIsoSurface;
 import toxi.volume.IsoSurface;
 import toxi.volume.VolumetricSpaceArray;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class FluidBoxGenerator extends SceneGenerator {
+public class FluidBoxComponent extends SceneComponent {
   int NUM_PARTICLES = 100;
   private float restLength = 300;
   int DIM=250;
@@ -54,7 +52,7 @@ public class FluidBoxGenerator extends SceneGenerator {
   private float drawScale = 2;
 
   // TODO: why does this need to have a max force?
-  public FluidBoxGenerator() {
+  public FluidBoxComponent() {
     initPhysics();
     volume = new VolumetricSpaceArray(SCALE,GRID,GRID,GRID);
     surface = new ArrayIsoSurface(volume);

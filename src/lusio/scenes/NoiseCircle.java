@@ -1,36 +1,33 @@
 package lusio.scenes;
 
 import graph.Graph;
-import graph.SinGraphRenderer;
-import lusio.Lightcube;
-import lusio.generators.GraphGenerator;
-import lusio.generators.ParticleGenerator;
-import lusio.generators.PerlinFlowGenerator;
+import lightcube.Lightcube;
+import lusio.Lusio;
+import lusio.components.PerlinFlowComponent;
 import particles.Bounds;
-import particles.behaviors.FlockParticles;
-import particles.renderers.ParticleDotRenderer;
-import particles.renderers.ParticleWebRenderer;
 import processing.core.PGraphics;
+import scene.Scene;
 
 import java.util.Map;
 
-public class NoiseCircle extends Scene {
-  PerlinFlowGenerator perlinFlowGenerator;
+public class NoiseCircle extends LusioScene {
+  PerlinFlowComponent perlinFlowGenerator;
 
   @Override
-  public void setup(Map<String, Graph> graphs) {
-    perlinFlowGenerator = new PerlinFlowGenerator(new Bounds(1000));
+  public void setup() {
+    perlinFlowGenerator = new PerlinFlowComponent(new Bounds(1000));
     perlinFlowGenerator.setPos(900, 500);
     perlinFlowGenerator.setFallSpeed(0.5f);
     perlinFlowGenerator.setNumPoints(100);
     perlinFlowGenerator.setLineSparsity(1);
     perlinFlowGenerator.setCircleRadius(300);
     perlinFlowGenerator.setLineThickness(6);
-    addGenerator(perlinFlowGenerator);
+    perlinFlowGenerator.setColorProvider(Lusio.instance);
+    addComponent(perlinFlowGenerator);
   }
 
   @Override
-  public void draw(Lightcube cube, PGraphics graphics) {
+  public void draw(PGraphics graphics) {
     perlinFlowGenerator.setFlowForce(Math.abs(cube.getEulerRotation()[1]) * 5);
     perlinFlowGenerator.setNoiseScale(1000 - Math.abs(cube.getEulerRotation()[2]) * 200);
     perlinFlowGenerator.setNoiseSpeed1(cube.getRotationalVelocity() / 1000 + 0.01f);
@@ -39,7 +36,7 @@ public class NoiseCircle extends Scene {
     perlinFlowGenerator.setFallSpeed(Math.abs(cube.getEulerRotation()[0]));
     perlinFlowGenerator.setCircleRadius(200 + cube.getFlipAmount() * 400);
 
-    super.draw(cube, graphics);
+    super.draw(graphics);
   }
 
   @Override

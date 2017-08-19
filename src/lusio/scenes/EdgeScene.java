@@ -1,27 +1,22 @@
 package lusio.scenes;
 
 import graph.*;
-import lusio.Lightcube;
-import lusio.generators.GraphGenerator;
-import lusio.generators.ParticleGenerator;
-import lusio.generators.PerlinFlowGenerator;
-import particles.Bounds;
-import particles.behaviors.FlockParticles;
-import particles.renderers.ParticleDotRenderer;
-import particles.renderers.ParticleWebRenderer;
+import lightcube.Lightcube;
+import lusio.Lusio;
+import lusio.components.GraphComponent;
 import processing.core.PGraphics;
+import scene.Scene;
 
-import java.nio.channels.Pipe;
 import java.util.Map;
 
-public class EdgeScene extends Scene {
+public class EdgeScene extends LusioScene {
   SinGraphRenderer sinGraphRenderer;
   PipeGraphRenderer pipeGraphRenderer;
   AnimatedFillGraphRenderer animatedFillGraphRenderer;
   DottedLineGraphRenderer dottedLineGraphRenderer;
 
   @Override
-  public void setup(Map<String, Graph> graphs) {
+  public void setup() {
     Graph windowGraph = graphs.get("window");
     Graph poleGraph = graphs.get("pole");
     Graph sideGraph = graphs.get("side");
@@ -29,33 +24,35 @@ public class EdgeScene extends Scene {
 
     if (windowGraph != null) {
       sinGraphRenderer = new SinGraphRenderer();
-      addGenerator(new GraphGenerator(windowGraph, sinGraphRenderer));
+      addComponent(new GraphComponent(windowGraph, sinGraphRenderer));
     }
 
     if (poleGraph != null) {
       pipeGraphRenderer = new PipeGraphRenderer();
+      pipeGraphRenderer.setColorProvider(Lusio.instance);
       pipeGraphRenderer.setMaxPerEdge(50);
-      addGenerator(new GraphGenerator(poleGraph, pipeGraphRenderer));
+      addComponent(new GraphComponent(poleGraph, pipeGraphRenderer));
 
       BasicGraphRenderer basicGraphRenderer = new BasicGraphRenderer(2);
-      addGenerator(new GraphGenerator(poleGraph, basicGraphRenderer));
+      addComponent(new GraphComponent(poleGraph, basicGraphRenderer));
     }
 
     if (sideGraph != null) {
       animatedFillGraphRenderer = new AnimatedFillGraphRenderer();
+      animatedFillGraphRenderer.setColorProvider(Lusio.instance);
       animatedFillGraphRenderer.setThickness(10);
-      addGenerator(new GraphGenerator(sideGraph, animatedFillGraphRenderer));
+      addComponent(new GraphComponent(sideGraph, animatedFillGraphRenderer));
     }
 
     if (smallGraph != null) {
       dottedLineGraphRenderer = new DottedLineGraphRenderer();
       dottedLineGraphRenderer.setThickness(3);
-      addGenerator(new GraphGenerator(smallGraph, dottedLineGraphRenderer));
+      addComponent(new GraphComponent(smallGraph, dottedLineGraphRenderer));
     }
   }
 
   @Override
-  public void draw(Lightcube cube, PGraphics graphics) {
+  public void draw(PGraphics graphics) {
     sinGraphRenderer.setSize(cube.getFlipAmount() * 50 + 2);
     sinGraphRenderer.setFreq(cube.getFlipAmount() * 20);
     sinGraphRenderer.setSpeed(cube.getRotationalVelocity() * 0.1f);
@@ -64,14 +61,12 @@ public class EdgeScene extends Scene {
     pipeGraphRenderer.setDeviation(cube.getFlipAmount() * 10 + 4);
     pipeGraphRenderer.setDotSize(cube.getRotationalVelocity() * 0.1f + 5);
     pipeGraphRenderer.setFreq(100 - cube.getFlipAmount() * 100);
-    pipeGraphRenderer.setColor(cube.getColor());
-
     animatedFillGraphRenderer.setFillSpeed(cube.getRotationalVelocity());
 
     dottedLineGraphRenderer.setScrollSpeed(cube.getRotationalVelocity() / 5);
     dottedLineGraphRenderer.setColor(cube.getColor());
 
-    super.draw(cube, graphics);
+    super.draw(graphics);
   }
 
   @Override

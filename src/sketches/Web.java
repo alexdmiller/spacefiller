@@ -1,4 +1,4 @@
-package scenes;
+package sketches;
 
 import particles.Particle;
 import modulation.Mod;
@@ -14,7 +14,7 @@ public class Web extends Scene {
 	private static int NUM_PARTICLES = 1000;
 
 	public static void main(String[] args) {
-		main("scenes.Web");
+		main("sketches.Web");
 	}
 
 	@Mod(min = 0, max = 500, defaultValue = 100)

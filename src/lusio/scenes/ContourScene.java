@@ -1,31 +1,24 @@
 package lusio.scenes;
 
 import graph.Graph;
-import graph.PipeGraphRenderer;
-import lusio.Lightcube;
+import lightcube.Lightcube;
 import lusio.Lusio;
-import lusio.generators.ContourGenerator;
-import lusio.generators.GraphGenerator;
-import lusio.generators.ParticleGenerator;
+import lusio.components.ContourComponent;
 import particles.Bounds;
-import particles.behaviors.FlockParticles;
-import particles.behaviors.JitterParticles;
-import particles.renderers.ParticleDotRenderer;
-import particles.renderers.ParticleWebRenderer;
 import processing.core.PGraphics;
+import scene.Scene;
 import toxi.geom.Quaternion;
 import toxi.geom.Vec3D;
 
-import java.util.Arrays;
 import java.util.Map;
 
-public class ContourScene extends Scene {
-  ContourGenerator contourGenerator;
+public class ContourScene extends LusioScene {
+  ContourComponent contourGenerator;
   private float height;
 
   @Override
-  public void setup(Map<String, Graph> graphs) {
-    contourGenerator = new ContourGenerator(new Bounds(2000));
+  public void setup() {
+    contourGenerator = new ContourComponent(new Bounds(2000));
     contourGenerator.setPos(Lusio.WIDTH / 2, Lusio.HEIGHT / 2);
     contourGenerator.setRotation(Quaternion.createFromAxisAngle(new Vec3D(-1, 0, 0), 1f));
     contourGenerator.setCellSize(150);
@@ -33,11 +26,11 @@ public class ContourScene extends Scene {
     contourGenerator.setLineSize(6);
     contourGenerator.setUpdateSpeed(0);
 
-    addGenerator(contourGenerator);
+    addComponent(contourGenerator);
   }
 
   @Override
-  public void draw(Lightcube cube, PGraphics graphics) {
+  public void draw(PGraphics graphics) {
     if (cube.getFlipAmount() > 0.5 && height < 500) {
       height += cube.getFlipAmount() * 5;
     } else if (height > 20) {
@@ -57,7 +50,7 @@ public class ContourScene extends Scene {
     contourGenerator.setRotation(Quaternion.createFromEuler(0, euler[1], 0));
 
     graphics.perspective();
-    super.draw(cube, graphics);
+    super.draw(graphics);
     graphics.popMatrix();
   }
 }

@@ -3,7 +3,7 @@ package waves;
 import particles.Particle;
 import modulation.Mod;
 import processing.core.PGraphics;
-import scenes.UncertainWave;
+import sketches.UncertainWave;
 
 import java.util.List;
 

@@ -14,7 +14,7 @@
     <orderEntry type="library" name="javax.json:javax.json-api:1.0" level="project" />
     <orderEntry type="library" exported="" name="org.glassfish:javax.json:1.0.4" level="project" />
     <orderEntry type="library" name="com.google.guava:guava:19.0-rc2" level="project" />
-    <orderEntry type="library" name="mesh" level="project" />
+    <orderEntry type="library" exported="" name="mesh" level="project" />
     <orderEntry type="library" name="quickhull3d.1.4" level="project" />
     <orderEntry type="module-library" exported="">
       <library>
@@ -25,9 +25,9 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="jssc" level="project" />
-    <orderEntry type="library" name="serial" level="project" />
-    <orderEntry type="library" name="toxiclibs" level="project" />
+    <orderEntry type="library" exported="" name="jssc" level="project" />
+    <orderEntry type="library" exported="" name="serial" level="project" />
+    <orderEntry type="library" exported="" name="toxiclibs" level="project" />
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
@@ -38,5 +38,6 @@
         <jarDirectory url="file://$USER_HOME$/Documents/Processing3/libraries/themidibus/library" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="controlP5" level="project" />
   </component>
 </module>

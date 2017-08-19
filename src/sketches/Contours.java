@@ -1,8 +1,7 @@
-package scenes;
+package sketches;
 
 import modulation.Mod;
 import modulation.OscSceneModulator;
-import processing.core.PConstants;
 import processing.core.PGraphics;
 
 import java.util.ArrayList;
@@ -74,7 +73,7 @@ public class Contours extends Scene {
 	private float rotation = 0;
 
 	public static void main(String[] args) {
-		main("scenes.Contours");
+		main("sketches.Contours");
 	}
 
 	@Override

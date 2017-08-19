@@ -1,11 +1,8 @@
 package veins.tools;
 
-import processing.core.PGraphics;
 import processing.core.PVector;
-import scenes.SceneTool;
+import sketches.SceneTool;
 import veins.Tree;
-
-import java.util.List;
 
 public class VeinTool extends SceneTool {
 	private Tree tree;

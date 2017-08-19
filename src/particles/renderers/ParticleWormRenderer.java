@@ -2,6 +2,7 @@ package particles.renderers;
 
 import boids.Boid;
 import boids.renderers.BoidRenderer;
+import color.ColorProvider;
 import com.google.common.collect.EvictingQueue;
 import lusio.Lusio;
 import particles.Particle;
@@ -19,17 +20,18 @@ public class ParticleWormRenderer extends ParticleRenderer {
   private int wormLength;
   private float lineThickness;
 
-  public ParticleWormRenderer(int wormLength, float lineThickness) {
+  public ParticleWormRenderer(int wormLength, float lineThickness, ColorProvider colorProvider) {
     individualWormRenderers = new ArrayList<>();
     this.wormLength = wormLength;
     this.lineThickness = lineThickness;
+    this.colorProvider = colorProvider;
   }
 
   @Override
   public void render(PGraphics graphics) {
     int i = 0;
     for (IndividualWormRenderer r : individualWormRenderers) {
-      graphics.stroke(Lusio.instance.getColor(i));
+      graphics.stroke(colorProvider.getColor(i));
       r.draw(graphics);
       i++;
     }

@@ -1,5 +1,6 @@
-package lusio;
+package lightcube;
 
+import lusio.Lusio;
 import processing.serial.Serial;
 import toxi.geom.Quaternion;
 

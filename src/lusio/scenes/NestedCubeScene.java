@@ -1,34 +1,29 @@
 package lusio.scenes;
 
 import graph.Graph;
-import graph.SinGraphRenderer;
-import lusio.Lightcube;
+import lightcube.Lightcube;
 import lusio.Lusio;
-import lusio.generators.*;
-import particles.Bounds;
-import particles.behaviors.FlockParticles;
-import particles.renderers.ParticleDotRenderer;
-import particles.renderers.ParticleWebRenderer;
 import processing.core.PGraphics;
+import scene.Scene;
 import toxi.geom.Quaternion;
 
 import java.util.Map;
 
-public class NestedCubeScene extends Scene {
+public class NestedCubeScene extends LusioScene {
   float cubeSize = 200;
   float padding = 50;
   Quaternion[] history = new Quaternion[20];
   float[] sizeHistory = new float[20];
 
   @Override
-  public void setup(Map<String, Graph> graphs) {
+  public void setup() {
     for (int i = 0; i < history.length; i++) {
       history[i] = new Quaternion();
     }
   }
 
   @Override
-  public void draw(Lightcube cube, PGraphics graphics) {
+  public void draw(PGraphics graphics) {
     history[0].set(cube.getQuaternion());
     sizeHistory[0] = cube.getFlipAmount() * cube.getFlipAmount() * 0.5f + 0.5f;
 
@@ -51,7 +46,7 @@ public class NestedCubeScene extends Scene {
       graphics.popMatrix();
     }
 
-    super.draw(cube, graphics);
+    super.draw(graphics);
   }
 
   @Override

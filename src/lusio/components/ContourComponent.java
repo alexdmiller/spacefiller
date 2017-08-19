@@ -1,12 +1,10 @@
-package lusio.generators;
+package lusio.components;
 
 import lusio.Lusio;
-import modulation.Mod;
 import particles.Bounds;
-import processing.core.PApplet;
-import processing.core.PConstants;
 import processing.core.PGraphics;
 import processing.core.PVector;
+import scene.SceneComponent;
 import toxi.geom.Quaternion;
 
 import java.util.ArrayList;
@@ -16,7 +14,7 @@ import java.util.List;
 /**
  * Created by miller on 7/22/17.
  */
-public class ContourGenerator extends SceneGenerator {
+public class ContourComponent extends SceneComponent {
   private float noiseAmplitude = 0;
 
   private float updateSpeed = 0.01f;
@@ -39,7 +37,7 @@ public class ContourGenerator extends SceneGenerator {
   private Bounds bounds;
   private Quaternion quaternion = Quaternion.createFromEuler(0, 0, 0);
 
-  public ContourGenerator(Bounds bounds) {
+  public ContourComponent(Bounds bounds) {
     this.bounds = bounds;
   }
 

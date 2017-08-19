@@ -1,16 +1,17 @@
 package lusio.scenes;
 
 import graph.*;
-import lusio.Lightcube;
-import lusio.generators.GraphGenerator;
+import lightcube.Lightcube;
+import lusio.components.GraphComponent;
 import processing.core.PGraphics;
+import scene.Scene;
 
 import java.util.Map;
 
 /**
  * Created by miller on 8/11/17.
  */
-public class NagyLineScene extends Scene {
+public class NagyLineScene extends LusioScene {
 //  BasicGraphRenderer sinGraphRenderer;
   PipeGraphRenderer pipeGraphRenderer;
   AnimatedFillGraphRenderer animatedFillGraphRenderer;
@@ -18,26 +19,26 @@ public class NagyLineScene extends Scene {
   SinGraphRenderer sinGraphRenderer;
 
   @Override
-  public void setup(Map<String, Graph> graphs) {
+  public void setup() {
     Graph nagyGraph = graphs.get("nagy3");
 
     if (nagyGraph != null) {
       sinGraphRenderer = new SinGraphRenderer();
       sinGraphRenderer.setThickness(6);
-      addGenerator(new GraphGenerator(nagyGraph, sinGraphRenderer));
+      addComponent(new GraphComponent(nagyGraph, sinGraphRenderer));
 
 //      pipeGraphRenderer = new PipeGraphRenderer();
 //      pipeGraphRenderer.setDotSize(3);
 //      pipeGraphRenderer.setFreq(10);
-//      addGenerator(new GraphGenerator(nagyGraph, pipeGraphRenderer));
+//      addComponent(new GraphComponent(nagyGraph, pipeGraphRenderer));
 
 //      dottedLineGraphRenderer = new DottedLineGraphRenderer();
-//      addGenerator(new GraphGenerator(nagyGraph, dottedLineGraphRenderer));
+//      addComponent(new GraphComponent(nagyGraph, dottedLineGraphRenderer));
     }
   }
 
   @Override
-  public void draw(Lightcube cube, PGraphics graphics) {
+  public void draw(PGraphics graphics) {
     sinGraphRenderer.setSize(cube.getFlipAmount() * 20);
     // sinGraphRenderer.setFreq(cube.getFlipAmount() * 10);
     // sinGraphRenderer.setSpeed(cube.getRotationalVelocity() * 0.1f);
@@ -57,6 +58,6 @@ public class NagyLineScene extends Scene {
 
     // sinGraphRenderer.setColor(cube.getColor());
 
-    super.draw(cube, graphics);
+    super.draw(graphics);
   }
 }

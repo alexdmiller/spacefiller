@@ -1,5 +1,6 @@
 package particles.renderers;
 
+import color.ColorProvider;
 import particles.Particle;
 import particles.ParticleEventListener;
 import processing.core.PGraphics;
@@ -11,6 +12,7 @@ import java.util.List;
  */
 public abstract class ParticleRenderer implements ParticleEventListener {
   protected List<Particle> particles;
+  protected ColorProvider colorProvider;
 
   abstract public void render(PGraphics graphics);
 
@@ -20,4 +22,8 @@ public abstract class ParticleRenderer implements ParticleEventListener {
 
   public void particleAdded(Particle particle) {}
   public void particleRemoved(Particle particle) {}
+
+  public void setColorProvider(ColorProvider colorProvider) {
+    this.colorProvider = colorProvider;
+  }
 }
