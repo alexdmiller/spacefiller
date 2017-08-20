@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class AnimatedFillGraphRenderer implements GraphRenderer {
   private List<AnimationInfo> currentlyAnimating;
-  private float fillSpeed = 20f;
+  private float fillSpeed = 50f;
   private float thickness = 5;
   private ColorProvider colorProvider;
 
@@ -88,7 +88,15 @@ public class AnimatedFillGraphRenderer implements GraphRenderer {
         }
 
         // Pick a new edge from the filtered list and start animating it.
-        for (Edge e : connections) {
+//        for (Edge e : connections) {
+//          Node start = a.end;
+//          Node end = a.end != e.n1 ? e.n1 : e.n2;
+//          AnimationInfo newAnimation = new AnimationInfo(e, start, end);
+//          newAnimations.add(newAnimation);
+//        }
+
+        if (connections.size() > 0) {
+          Edge e = connections.get((int) (Math.random() * connections.size()));
           Node start = a.end;
           Node end = a.end != e.n1 ? e.n1 : e.n2;
           AnimationInfo newAnimation = new AnimationInfo(e, start, end);

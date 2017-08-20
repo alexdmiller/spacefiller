@@ -32,22 +32,6 @@ public class Lusio extends SceneApplet implements ColorProvider {
     main("lusio.Lusio");
   }
 
-  private PGraphics canvas;
-
-  private LusioScene[] scenes = {
-      new ThreeDeeFlockScene(),
-      new NagyLineScene(),
-      new FlockScene(),
-      new FancyParticles(),
-      new EdgeScene(),
-      new ContourScene(),
-      new NoiseSpace(),
-      new NoiseCircle(),
-      new FluidScene(),
-      new NestedCubeScene(),
-      new CubeScene()
-  };
-
   private Map<String, Graph> graphs;
   private int selectedGraphIndex;
   private List<String> graphNames;
@@ -74,13 +58,39 @@ public class Lusio extends SceneApplet implements ColorProvider {
     PJOGL.profile = 1;
   }
 
-  public final void setup() {
+  @Override
+  public void setup() {
     graphs = new HashMap<>();
     graphNames = new ArrayList<>();
     lightcube = Lightcube.midi();
 
-    canvas = createGraphics(1920, 1080, P3D);
+    loadGraphs();
+
+    PGraphics canvas = createGraphics(1920, 1080, P3D);
     canvas.smooth();
+    setCanvas(canvas);
+
+    LusioScene[] lusioScenes = new LusioScene[] {
+        new NagyLineScene(),
+        new ThreeDeeFlockScene(),
+        new NagyLineScene(),
+        new FlockScene(),
+        new FancyParticles(),
+        new EdgeScene(),
+        new ContourScene(),
+        new NoiseSpace(),
+        new NoiseCircle(),
+        new FluidScene(),
+        new NestedCubeScene(),
+        new CubeScene()
+    };
+
+    for (int i = 0; i < lusioScenes.length; i++) {
+      lusioScenes[i].setGraphs(graphs);
+      lusioScenes[i].setCube(lightcube);
+    }
+
+    addAllScenes(lusioScenes);
 
     controlP5 = new ControlP5(this);
     controlP5.hide();
@@ -108,31 +118,17 @@ public class Lusio extends SceneApplet implements ColorProvider {
         .setPosition(600, 20)
         .setSize(100, 20);
 
-    loadGraphs();
-
     twoColorProvider = new TwoColorProvider(0xFFFFFFFF, 0x00000000, 3);
 
-    switchScene(0);
+    super.setup();
   }
 
-  public void switchScene(int sceneIndex) {
-    if (currentScene != null) {
-      currentScene.teardown();
-    }
-
-    LusioScene scene = scenes[sceneIndex];
-    currentSceneIndex = sceneIndex;
-
-    // TODO: transition old scene out; new scene in.
-    scene.setCube(lightcube);
-    scene.setGraphs(graphs);
-    scene.setup();
-
-    currentScene = scene;
-  }
-
+  @Override
   public final void draw() {
     canvas.beginDraw();
+
+    super.draw();
+
     if (lightcube.getMode() == 1) {
       if (!modeSwitchFlag) {
         modeSwitchFlag = true;
@@ -162,10 +158,8 @@ public class Lusio extends SceneApplet implements ColorProvider {
     if (currentScene != null) {
       if (lightcube.readTransitionScene()) {
         lightcube.flipOrientation();
-        switchScene((currentSceneIndex + 1) % scenes.length);
+        gotoNextScene();
       }
-
-      currentScene.draw(this.canvas);
     }
 
     if (graphsVisible) {
@@ -230,7 +224,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
     }
 
     if (keyCode == DOWN) {
-      switchScene((currentSceneIndex + 1) % scenes.length);
+      gotoNextScene();
     }
   }
 
