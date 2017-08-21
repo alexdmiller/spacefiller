@@ -39,5 +39,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="controlP5" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>

@@ -2,10 +2,7 @@ package algoplex2.scenes;
 
 import color.ColorProvider;
 import color.ConstantColorProvider;
-import graph.AnimatedFillGraphRenderer;
-import graph.DottedLineGraphRenderer;
-import graph.Graph;
-import graph.SinGraphRenderer;
+import graph.*;
 import lightcube.Lightcube;
 import lusio.Lusio;
 import lusio.components.ContourComponent;
@@ -38,9 +35,15 @@ public class BasicGridScene extends Scene {
     dottedLineGraphRenderer.setColor(0xFFFFFFFF);
 
     AnimatedFillGraphRenderer animatedFillGraphRenderer = new AnimatedFillGraphRenderer();
+    animatedFillGraphRenderer.setThickness(2);
+    animatedFillGraphRenderer.setFillSpeed(20);
     animatedFillGraphRenderer.setColorProvider(new ConstantColorProvider(0xFFFFFFFF));
 
-    addComponent(new GraphComponent(grid, animatedFillGraphRenderer));
+    BasicGraphRenderer basicGraphRenderer = new BasicGraphRenderer(2);
+    basicGraphRenderer.setColor(0xFFFFFFFF);
+
+    GraphComponent graphComponent = new GraphComponent(grid, dottedLineGraphRenderer);
+    addComponent(graphComponent);
   }
 
   @Override

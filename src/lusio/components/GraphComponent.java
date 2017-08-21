@@ -18,6 +18,9 @@ public class GraphComponent extends SceneComponent {
 
   @Override
   public void draw(PGraphics graphics) {
+    graphics.pushMatrix();
+    graphics.translate(getX(), getY());
     renderer.render(graphics, graph);
+    graphics.popMatrix();
   }
 }

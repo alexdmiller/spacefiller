@@ -45,12 +45,14 @@ public class SceneApplet extends PApplet {
       currentScene.teardown();
     }
 
-    Scene scene = scenes.get(sceneIndex);
-    currentSceneIndex = sceneIndex;
+    if (sceneIndex < scenes.size()) {
+      Scene scene = scenes.get(sceneIndex);
+      currentSceneIndex = sceneIndex;
 
-    scene.setup();
+      scene.setup();
 
-    currentScene = scene;
+      currentScene = scene;
+    }
   }
 
   public final void gotoNextScene() {
