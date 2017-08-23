@@ -5,17 +5,12 @@
       <artifact name="lusio:jar" />
     </artifacts-to-build>
   </component>
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/algoplex2/Algoplex2.java" line="48" mnemonic="8" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="b7bb3a9e-05bb-464d-967e-9bda287e8f0d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/algoplex2/Grid.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/GridScene.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algoplex2/Algoplex2.java" afterPath="$PROJECT_DIR$/src/algoplex2/Algoplex2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algoplex2/scenes/BasicGridScene.java" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/BasicGridScene.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scene/SceneApplet.java" afterPath="$PROJECT_DIR$/src/scene/SceneApplet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algoplex2/GraphTransformer.java" afterPath="$PROJECT_DIR$/src/algoplex2/GraphTransformer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algoplex2/Grid.java" afterPath="$PROJECT_DIR$/src/algoplex2/Grid.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algoplex2/Quad.java" afterPath="$PROJECT_DIR$/src/algoplex2/Quad.java" />
     </list>
     <ignored path="Processing.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -83,8 +78,8 @@
       <file leaf-file-name="Algoplex2.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algoplex2/Algoplex2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="633">
-              <caret line="132" column="20" lean-forward="true" selection-start-line="132" selection-start-column="20" selection-end-line="132" selection-end-column="20" />
+            <state relative-caret-position="620">
+              <caret line="87" column="49" lean-forward="false" selection-start-line="87" selection-start-column="49" selection-end-line="87" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -92,28 +87,46 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Grid.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Quad.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/algoplex2/Quad.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1507#1508#0" expanded="true" />
+                <element signature="e#1590#1591#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Lusio.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/lusio/Lusio.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="478">
+              <caret line="310" column="0" lean-forward="true" selection-start-line="281" selection-start-column="0" selection-end-line="310" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Grid.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algoplex2/Grid.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="27" column="9" lean-forward="false" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+            <state relative-caret-position="666">
+              <caret line="44" column="41" lean-forward="true" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#541#542#0" expanded="true" />
-                <element signature="e#591#592#0" expanded="true" />
-                <element signature="e#695#696#0" expanded="true" />
-                <element signature="e#719#720#0" expanded="true" />
+                <element signature="e#571#572#0" expanded="true" />
+                <element signature="e#621#622#0" expanded="true" />
+                <element signature="e#725#726#0" expanded="true" />
+                <element signature="e#749#750#0" expanded="true" />
+                <element signature="e#784#785#0" expanded="true" />
+                <element signature="e#813#814#0" expanded="true" />
+                <element signature="e#865#866#0" expanded="true" />
+                <element signature="e#907#908#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SceneApplet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/scene/SceneApplet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -131,21 +144,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Graph.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/graph/Graph.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="42" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="GraphTransformer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algoplex2/GraphTransformer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="582">
-              <caret line="91" column="26" lean-forward="false" selection-start-line="91" selection-start-column="26" selection-end-line="91" selection-end-column="26" />
+            <state relative-caret-position="137">
+              <caret line="17" column="39" lean-forward="false" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -165,7 +168,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>behaviors</find>
       <find>getrotationalVelocity</find>
       <find>maxPartic</find>
       <find>debug</find>
@@ -195,6 +197,7 @@
       <find>hello</find>
       <find>fullscreen</find>
       <find>addScene</find>
+      <find>save</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -252,13 +255,13 @@
         <option value="$PROJECT_DIR$/src/graph/AnimatedFillGraphRenderer.java" />
         <option value="$PROJECT_DIR$/src/lusio/components/GraphComponent.java" />
         <option value="$PROJECT_DIR$/src/graph/BasicGraphRenderer.java" />
-        <option value="$PROJECT_DIR$/src/algoplex2/Quad.java" />
-        <option value="$PROJECT_DIR$/src/algoplex2/GraphTransformer.java" />
         <option value="$PROJECT_DIR$/src/scene/SceneApplet.java" />
         <option value="$PROJECT_DIR$/src/algoplex2/scenes/GridScene.java" />
-        <option value="$PROJECT_DIR$/src/algoplex2/Algoplex2.java" />
         <option value="$PROJECT_DIR$/src/algoplex2/scenes/BasicGridScene.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/GraphTransformer.java" />
         <option value="$PROJECT_DIR$/src/algoplex2/Grid.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/Algoplex2.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/Quad.java" />
       </list>
     </option>
   </component>
@@ -1348,12 +1351,12 @@
       <workItem from="1502578610680" duration="4992000" />
       <workItem from="1503059191032" duration="18973000" />
       <workItem from="1503274330960" duration="19775000" />
-      <workItem from="1503522668564" duration="2077000" />
+      <workItem from="1503522668564" duration="3192000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="809038000" />
+    <option name="totallyTimeSpent" value="810153000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1173" extended-state="0" />
@@ -1374,7 +1377,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39492753" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2804878" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28029603" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1445,6 +1448,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="e#371#372#0" expanded="false" />
+            <element signature="e#407#408#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1623,17 +1630,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lusio/Lusio.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="737">
-          <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="70" selection-end-column="22" />
-          <folding>
-            <element signature="e#1293#1294#0" expanded="false" />
-            <element signature="e#1324#1325#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/lusio/scenes/NagyLineScene.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-197">
@@ -1663,6 +1659,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-373">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1708,22 +1705,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algoplex2/Quad.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="70" column="77" lean-forward="false" selection-start-line="70" selection-start-column="77" selection-end-line="70" selection-end-column="77" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#529#530#0" expanded="true" />
-            <element signature="e#626#627#0" expanded="true" />
-            <element signature="e#1372#1373#0" expanded="true" />
-            <element signature="e#1412#1413#0" expanded="true" />
-            <element signature="e#1454#1455#0" expanded="true" />
-            <element signature="e#1537#1538#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/graph/BasicGraphRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
@@ -1748,6 +1729,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar:///Applications/Processing.app/Contents/Java/core/library/core.jar!/processing/core/PApplet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="1775" column="46" lean-forward="true" selection-start-line="1775" selection-start-column="46" selection-end-line="1775" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/BasicGridScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="548">
+          <caret line="69" column="7" lean-forward="true" selection-start-line="69" selection-start-column="7" selection-end-line="69" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lusio/Lusio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="310" column="0" lean-forward="true" selection-start-line="281" selection-start-column="0" selection-end-line="310" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/GridScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="1" lean-forward="false" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#228#229#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/lusio/components/GraphComponent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -1764,47 +1780,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Applications/Processing.app/Contents/Java/core/library/core.jar!/processing/core/PApplet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="1775" column="46" lean-forward="true" selection-start-line="1775" selection-start-column="46" selection-end-line="1775" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/algoplex2/GraphTransformer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="582">
-          <caret line="91" column="26" lean-forward="false" selection-start-line="91" selection-start-column="26" selection-end-line="91" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/BasicGridScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="548">
-          <caret line="69" column="7" lean-forward="true" selection-start-line="69" selection-start-column="7" selection-end-line="69" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/GridScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="14" column="1" lean-forward="false" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#228#229#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algoplex2/Algoplex2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="633">
-          <caret line="132" column="20" lean-forward="true" selection-start-line="132" selection-start-column="20" selection-end-line="132" selection-end-column="20" />
+        <state relative-caret-position="137">
+          <caret line="17" column="39" lean-forward="false" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1813,14 +1792,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algoplex2/Grid.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="27" column="9" lean-forward="false" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+        <state relative-caret-position="666">
+          <caret line="44" column="41" lean-forward="true" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#541#542#0" expanded="true" />
-            <element signature="e#591#592#0" expanded="true" />
-            <element signature="e#695#696#0" expanded="true" />
-            <element signature="e#719#720#0" expanded="true" />
+            <element signature="e#571#572#0" expanded="true" />
+            <element signature="e#621#622#0" expanded="true" />
+            <element signature="e#725#726#0" expanded="true" />
+            <element signature="e#749#750#0" expanded="true" />
+            <element signature="e#784#785#0" expanded="true" />
+            <element signature="e#813#814#0" expanded="true" />
+            <element signature="e#865#866#0" expanded="true" />
+            <element signature="e#907#908#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/Algoplex2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="87" column="49" lean-forward="false" selection-start-line="87" selection-start-column="49" selection-end-line="87" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/Quad.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1507#1508#0" expanded="true" />
+            <element signature="e#1590#1591#0" expanded="true" />
           </folding>
         </state>
       </provider>

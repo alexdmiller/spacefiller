@@ -12,6 +12,10 @@ import processing.opengl.PJOGL;
 import scene.Scene;
 import scene.SceneApplet;
 
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Map;
+
 public class Algoplex2 extends SceneApplet {
   public static Algoplex2 instance;
 
@@ -38,16 +42,16 @@ public class Algoplex2 extends SceneApplet {
   }
 
   public final void setup() {
-    grid = createGrid(ROWS, COLS, SPACING);
+    loadGraphs();
+
+    if (grid == null) {
+      grid = createGrid(ROWS, COLS, SPACING);
+    }
 
     graphRenderer = new BasicGraphRenderer(1);
     graphRenderer.setColor(0xFFFFFF00);
 
-    graphTransformer = new GraphTransformer(grid, new Quad(
-        new PVector(0, 0),
-        new PVector(COLS * SPACING, 0),
-        new PVector(COLS * SPACING, ROWS * SPACING),
-        new PVector(0, ROWS * SPACING)));
+    graphTransformer = new GraphTransformer(grid, grid.getBoundingQuad());
 
     BasicGridScene gridScene = new BasicGridScene();
     addGridScene(gridScene);
@@ -76,6 +80,12 @@ public class Algoplex2 extends SceneApplet {
         }
       }
     }
+
+    grid.setBoundingQuad(new Quad(
+        nodes[0][0].position.copy(),
+        nodes[0][cols - 1].position.copy(),
+        nodes[rows - 1][0].position.copy(),
+        nodes[rows - 1][cols - 1].position.copy()));
 
     for (int row = 0; row < rows; row += 2) {
       for (int col = 0; col < cols; col++) {
@@ -210,6 +220,7 @@ public class Algoplex2 extends SceneApplet {
   @Override
   public void mouseReleased() {
     graphTransformer.mouseUp(mouseX, mouseY);
+    saveGraphs();
   }
 
   @Override
@@ -221,4 +232,35 @@ public class Algoplex2 extends SceneApplet {
     gridScene.setGrid(grid);
     addScene(gridScene);
   }
+
+
+  private void saveGraphs() {
+    try {
+      FileOutputStream fileOut =
+          new FileOutputStream("algoplex2.ser");
+      ObjectOutputStream out = new ObjectOutputStream(fileOut);
+      out.writeObject(grid);
+      out.close();
+      fileOut.close();
+    } catch (IOException i) {
+      i.printStackTrace();
+    }
+  }
+
+  private void loadGraphs() {
+    try {
+      FileInputStream fileIn = new FileInputStream("algoplex2.ser");
+      ObjectInputStream in = new ObjectInputStream(fileIn);
+      grid = (Grid) in.readObject();
+      in.close();
+      fileIn.close();
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    } catch (IOException i) {
+      i.printStackTrace();
+    } catch (ClassNotFoundException c) {
+      c.printStackTrace();
+    }
+  }
+
 }

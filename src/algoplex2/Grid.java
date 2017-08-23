@@ -14,6 +14,8 @@ public class Grid extends Graph {
   private List<Node[]> triangles;
   private List<Node[]> squares;
 
+  private Quad boundingQuad;
+
   public Grid() {
     super();
     triangles = new ArrayList<>();
@@ -34,5 +36,13 @@ public class Grid extends Graph {
 
   public List<Node[]> getSquares() {
     return squares;
+  }
+
+  public Quad getBoundingQuad() {
+    return boundingQuad;
+  }
+
+  public void setBoundingQuad(Quad boundingQuad) {
+    this.boundingQuad = boundingQuad;
   }
 }

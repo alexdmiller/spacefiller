@@ -65,9 +65,6 @@ public class GraphTransformer {
       selected.x = mouseX;
       selected.y = mouseY;
 
-//      System.out.println(oldQuad);
-//      System.out.println(quad);
-
       PerspectiveTransform transform = PerspectiveTransform.getQuadToQuad(
           oldQuad.getTopLeft().x, oldQuad.getTopLeft().y,
           oldQuad.getTopRight().x, oldQuad.getTopRight().y,

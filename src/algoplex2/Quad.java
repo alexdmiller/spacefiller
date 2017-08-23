@@ -2,13 +2,14 @@ package algoplex2;
 
 import processing.core.PVector;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by miller on 8/21/17.
  */
-public class Quad {
+public class Quad implements Serializable {
   private PVector topLeft;
   private PVector topRight;
   private PVector bottomLeft;
