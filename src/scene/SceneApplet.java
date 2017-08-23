@@ -59,7 +59,7 @@ public class SceneApplet extends PApplet {
     switchScene((currentSceneIndex + 1) % scenes.size());
   }
 
-  public final void addScene(Scene scene) {
+  public void addScene(Scene scene) {
     scenes.add(scene);
   }
 

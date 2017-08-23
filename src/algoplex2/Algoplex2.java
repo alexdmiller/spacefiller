@@ -1,6 +1,7 @@
 package algoplex2;
 
 import algoplex2.scenes.BasicGridScene;
+import algoplex2.scenes.GridScene;
 import graph.BasicGraphRenderer;
 import graph.Graph;
 import graph.Node;
@@ -18,7 +19,7 @@ public class Algoplex2 extends SceneApplet {
     main("algoplex2.Algoplex2");
   }
 
-  private Graph grid;
+  private Grid grid;
   private GraphTransformer graphTransformer;
   private BasicGraphRenderer graphRenderer;
 
@@ -49,20 +50,19 @@ public class Algoplex2 extends SceneApplet {
         new PVector(0, ROWS * SPACING)));
 
     BasicGridScene gridScene = new BasicGridScene();
-    gridScene.setGrid(grid);
-    addScene(gridScene);
+    addGridScene(gridScene);
 
     super.setup();
   }
 
-  private Graph createGrid(int rows, int cols, float spacing) {
+  private Grid createGrid(int rows, int cols, float spacing) {
     rows *= 2;
 
     rows += 1;
     cols += 1;
 
     Node[][] nodes = new Node[rows][cols];
-    Graph grid = new Graph();
+    Grid grid = new Grid();
 
     for (int row = 0; row < rows; row += 2) {
       float yPos = row/2 * spacing;
@@ -107,6 +107,30 @@ public class Algoplex2 extends SceneApplet {
           if (row < rows - 2 && col < cols - 1) {
             grid.createEdge(nodes[row + 1][col], nodes[row + 2][col + 1]);
           }
+        }
+
+        if (col < cols - 1 && row < nodes.length - 1 && nodes[row + 1][col] != null) {
+          // top triangle
+          grid.addTriangle(nodes[row][col], nodes[row][col + 1], nodes[row + 1][col]);
+        }
+
+        if (col < cols - 1 && row < rows - 2) {
+          // bottom triangle
+          grid.addTriangle(nodes[row + 2][col], nodes[row + 1][col], nodes[row + 2][col + 1]);
+        }
+
+        if (col < cols - 1 && row < rows - 2 && nodes[row + 1][col] != null) {
+          // right triangle
+          grid.addTriangle(nodes[row][col + 1], nodes[row + 2][col + 1], nodes[row + 1][col]);
+        }
+
+        if (row < rows - 2 && nodes[row + 1][col] != null) {
+          // left triangle
+          grid.addTriangle(nodes[row][col], nodes[row + 2][col], nodes[row + 1][col]);
+        }
+
+        if (row < rows - 2 && col < cols - 1) {
+          grid.addSquare(nodes[row][col], nodes[row][col + 1], nodes[row + 2][col + 1], nodes[row + 2][col]);
         }
       }
     }
@@ -193,4 +217,8 @@ public class Algoplex2 extends SceneApplet {
     graphTransformer.mouseDragged(mouseX, mouseY);
   }
 
+  public void addGridScene(GridScene gridScene) {
+    gridScene.setGrid(grid);
+    addScene(gridScene);
+  }
 }
