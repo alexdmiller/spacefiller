@@ -22,8 +22,8 @@ public class Algoplex2 extends SceneApplet {
   private GraphTransformer graphTransformer;
   private BasicGraphRenderer graphRenderer;
 
-  private static int ROWS = 3;
-  private static int COLS = 3;
+  private static int ROWS = 4;
+  private static int COLS = 6;
   private static int SPACING = 50;
 
   public Algoplex2() {
@@ -31,7 +31,7 @@ public class Algoplex2 extends SceneApplet {
   }
 
   public void settings() {
-    // fullScreen(2);
+    fullScreen(1);
     size(1920, 1080, P3D);
     PJOGL.profile = 1;
   }
@@ -48,9 +48,9 @@ public class Algoplex2 extends SceneApplet {
         new PVector(COLS * SPACING, ROWS * SPACING),
         new PVector(0, ROWS * SPACING)));
 
-//    BasicGridScene gridScene = new BasicGridScene();
-//    gridScene.setGrid(grid);
-//    addScene(gridScene);
+    BasicGridScene gridScene = new BasicGridScene();
+    gridScene.setGrid(grid);
+    addScene(gridScene);
 
     super.setup();
   }
@@ -174,8 +174,8 @@ public class Algoplex2 extends SceneApplet {
   public void draw() {
     super.draw();
 
-    graphRenderer.render(getGraphics(), grid);
-    graphTransformer.draw(getGraphics());
+    // graphRenderer.render(getGraphics(), grid);
+    //graphTransformer.draw(getGraphics());
   }
 
   @Override

@@ -35,15 +35,26 @@ public class BasicGridScene extends Scene {
     dottedLineGraphRenderer.setColor(0xFFFFFFFF);
 
     AnimatedFillGraphRenderer animatedFillGraphRenderer = new AnimatedFillGraphRenderer();
-    animatedFillGraphRenderer.setThickness(2);
-    animatedFillGraphRenderer.setFillSpeed(20);
+    animatedFillGraphRenderer.setThickness(5);
+    animatedFillGraphRenderer.setFillSpeed(30);
     animatedFillGraphRenderer.setColorProvider(new ConstantColorProvider(0xFFFFFFFF));
 
     BasicGraphRenderer basicGraphRenderer = new BasicGraphRenderer(2);
-    basicGraphRenderer.setColor(0xFFFFFFFF);
+    basicGraphRenderer.setColor(0x11FFFFFF);
 
-    GraphComponent graphComponent = new GraphComponent(grid, dottedLineGraphRenderer);
+    PipeGraphRenderer pipeGraphRenderer = new PipeGraphRenderer();
+    pipeGraphRenderer.setColorProvider(new ConstantColorProvider(0xFFFFFFFF));
+    pipeGraphRenderer.setMaxPerEdge(50);
+    pipeGraphRenderer.setDotSize(4);
+    pipeGraphRenderer.setFreq(10);
+    addComponent(new GraphComponent(grid, pipeGraphRenderer));
+
+    GraphComponent graphComponent = new GraphComponent(grid, basicGraphRenderer);
     addComponent(graphComponent);
+
+//    GraphComponent graphComponent = new GraphComponent(grid, sinGraphRenderer);
+//    addComponent(graphComponent);
+
   }
 
   @Override
