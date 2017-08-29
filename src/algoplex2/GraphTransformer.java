@@ -1,7 +1,6 @@
 package algoplex2;
 
 import graph.Edge;
-import graph.Graph;
 import graph.Node;
 import processing.core.*;
 
@@ -13,17 +12,17 @@ import java.util.Map;
  * Created by miller on 8/21/17.
  */
 public class GraphTransformer {
-  private Grid originalGrid;
-  private Quad originalQuad;
-  private Grid grid;
-  private Quad quad;
+  private Grid preTransformGrid;
+  private Quad preTransformQuad;
+  private Grid postTransformGrid;
+  private Quad postTransformQuad;
   private PVector selected;
-  private Map<Node, Node> oldToNew;
+  private Map<Node, Node> postToPre;
 
   public GraphTransformer(Grid grid) {
-    this.grid = grid;
-    this.quad = grid.getBoundingQuad();
-    this.oldToNew = new HashMap<>();
+    this.postTransformGrid = grid;
+    this.postTransformQuad = grid.getBoundingQuad();
+    this.postToPre = new HashMap<>();
     makeGraphCopy();
   }
 
@@ -33,12 +32,12 @@ public class GraphTransformer {
 
     graphics.strokeWeight(2);
     graphics.beginShape();
-    for (PVector node : quad.getVertices()) {
+    for (PVector node : postTransformQuad.getVertices()) {
       graphics.vertex(node.x, node.y);
     }
     graphics.endShape(PConstants.CLOSE);
 
-    for (PVector node : quad.getVertices()) {
+    for (PVector node : postTransformQuad.getVertices()) {
       if (node == selected) {
         graphics.fill(255, 0, 0);
       } else {
@@ -52,7 +51,7 @@ public class GraphTransformer {
   public void mouseDown(float mouseX, float mouseY) {
     PVector mouse = new PVector(mouseX, mouseY);
 
-    for (PVector node : quad.getVertices()) {
+    for (PVector node : postTransformQuad.getVertices()) {
       float dist = PVector.dist(node, mouse);
       if (dist < 50) {
         selected = node;
@@ -71,30 +70,30 @@ public class GraphTransformer {
       selected.y = mouseY;
 
       PerspectiveTransform transform = PerspectiveTransform.getQuadToQuad(
-          originalQuad.getTopLeft().x, originalQuad.getTopLeft().y,
-          originalQuad.getTopRight().x, originalQuad.getTopRight().y,
-          originalQuad.getBottomRight().x, originalQuad.getBottomRight().y,
-          originalQuad.getBottomLeft().x, originalQuad.getBottomLeft().y,
-          quad.getTopLeft().x, quad.getTopLeft().y,
-          quad.getTopRight().x, quad.getTopRight().y,
-          quad.getBottomRight().x, quad.getBottomRight().y,
-          quad.getBottomLeft().x, quad.getBottomLeft().y);
+          preTransformQuad.getTopLeft().x, preTransformQuad.getTopLeft().y,
+          preTransformQuad.getTopRight().x, preTransformQuad.getTopRight().y,
+          preTransformQuad.getBottomRight().x, preTransformQuad.getBottomRight().y,
+          preTransformQuad.getBottomLeft().x, preTransformQuad.getBottomLeft().y,
+          postTransformQuad.getTopLeft().x, postTransformQuad.getTopLeft().y,
+          postTransformQuad.getTopRight().x, postTransformQuad.getTopRight().y,
+          postTransformQuad.getBottomRight().x, postTransformQuad.getBottomRight().y,
+          postTransformQuad.getBottomLeft().x, postTransformQuad.getBottomLeft().y);
 
-      float[] srcPoints = new float[grid.getNodes().size() * 2];
+      float[] srcPoints = new float[postTransformGrid.getNodes().size() * 2];
 
       int i = 0;
-      for (Node node : originalGrid.getNodes()) {
+      for (Node node : preTransformGrid.getNodes()) {
         srcPoints[i] = node.position.x;
         srcPoints[i + 1] = node.position.y;
         i += 2;
       }
 
-      float[] destPoints = new float[grid.getNodes().size() * 2];
+      float[] destPoints = new float[postTransformGrid.getNodes().size() * 2];
 
-      transform.transform(srcPoints, 0, destPoints, 0, grid.getNodes().size());
+      transform.transform(srcPoints, 0, destPoints, 0, postTransformGrid.getNodes().size());
 
       i = 0;
-      for (Node node : grid.getNodes()) {
+      for (Node node : postTransformGrid.getNodes()) {
         node.position.x = destPoints[i];
         node.position.y = destPoints[i + 1];
         i += 2;
@@ -102,30 +101,34 @@ public class GraphTransformer {
     }
   }
 
-  private void transformGraph() {
-
-  }
-
   public void drawImage(PGraphics graphics, PImage texture) {
     graphics.beginShape(PApplet.TRIANGLES);
     graphics.texture(texture);
-    // for (Node[] triangle : gr)
+    for (Node[] triangle : postTransformGrid.getTriangles()) {
+      for (int i = 0; i < triangle.length; i++) {
+        Node preNode = postToPre.get(triangle[i]);
+        graphics.vertex(
+            triangle[i].position.x, triangle[i].position.y,
+            preNode.position.x, preNode.position.y);
+      }
+    }
+    graphics.endShape(PConstants.CLOSE);
   }
 
   public void makeGraphCopy() {
-    originalGrid = new Grid();
+    preTransformGrid = new Grid();
 
-    for (Node n : grid.getNodes()) {
-      Node originalNode = originalGrid.createNode(n.position.x, n.position.y);
-      oldToNew.put(n, originalNode);
+    for (Node postNode : postTransformGrid.getNodes()) {
+      Node preNode = preTransformGrid.createNode(postNode.position.x, postNode.position.y);
+      postToPre.put(postNode, preNode);
     }
 
-    for (Edge e : grid.getEdges()) {
-      Node n1 = oldToNew.get(e.n1);
-      Node n2 = oldToNew.get(e.n2);
-      originalGrid.createEdge(n1, n2);
+    for (Edge e : postTransformGrid.getEdges()) {
+      Node n1 = postToPre.get(e.n1);
+      Node n2 = postToPre.get(e.n2);
+      preTransformGrid.createEdge(n1, n2);
     }
 
-    originalQuad = quad.copy();
+    preTransformQuad = postTransformQuad.copy();
   }
 }

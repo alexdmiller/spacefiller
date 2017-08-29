@@ -31,25 +31,25 @@ public class PsychScene extends GridScene {
 //          triangle[1].position.x, triangle[1].position.y,
 //          triangle[2].position.x, triangle[2].position.y);
 //    }
-
-    graphics.noFill();
-    graphics.stroke(255);
-    graphics.rectMode(PConstants.CENTER);
-    graphics.strokeWeight(2);
-
-    float s = t * 50;
-    for (Quad square : grid.getSquares()) {
-      float totalWidth = (square.getTopRight().x - square.getTopLeft().x) * 1.5f;
-      float totalHeight = square.getBottomLeft().y - square.getTopLeft().y;
-      for (int j = 0; j < NUM_SQUARES; j++) {
-        graphics.stroke(Algoplex2.instance.noise(j + t) * 255, Algoplex2.instance.noise(0, j + t) * 255, Algoplex2.instance.noise(0, 0, j + t) * 255);
-        graphics.pushMatrix();
-        graphics.translate(square.getCenter().x, square.getCenter().y);
-        graphics.ellipse(0, 0, ((((float) j / NUM_SQUARES) * totalWidth) + s) % totalWidth, ((((float) j / NUM_SQUARES) * totalWidth) + s) % totalWidth);
-        graphics.popMatrix();
-      }
-    }
-    graphics.rectMode(PConstants.CORNER);
+//
+//    graphics.noFill();
+//    graphics.stroke(255);
+//    graphics.rectMode(PConstants.CENTER);
+//    graphics.strokeWeight(2);
+//
+//    float s = t * 50;
+//    for (Quad square : grid.getSquares()) {
+//      float totalWidth = (square.getTopRight().x - square.getTopLeft().x) * 1.5f;
+//      float totalHeight = square.getBottomLeft().y - square.getTopLeft().y;
+//      for (int j = 0; j < NUM_SQUARES; j++) {
+//        graphics.stroke(Algoplex2.instance.noise(j + t) * 255, Algoplex2.instance.noise(0, j + t) * 255, Algoplex2.instance.noise(0, 0, j + t) * 255);
+//        graphics.pushMatrix();
+//        graphics.translate(square.getCenter().x, square.getCenter().y);
+//        graphics.ellipse(0, 0, ((((float) j / NUM_SQUARES) * totalWidth) + s) % totalWidth, ((((float) j / NUM_SQUARES) * totalWidth) + s) % totalWidth);
+//        graphics.popMatrix();
+//      }
+//    }
+//    graphics.rectMode(PConstants.CORNER);
     super.draw(graphics);
   }
 }

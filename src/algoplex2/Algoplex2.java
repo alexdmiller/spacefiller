@@ -7,6 +7,7 @@ import graph.BasicGraphRenderer;
 import graph.Graph;
 import graph.Node;
 import megamu.mesh.Delaunay;
+import processing.core.PGraphics;
 import processing.opengl.PJOGL;
 import scene.SceneApplet;
 import deadpixel.keystone.*;
@@ -15,6 +16,9 @@ import java.io.*;
 
 public class Algoplex2 extends SceneApplet {
   public static Algoplex2 instance;
+  private static int ROWS = 4;
+  private static int COLS = 6;
+  private static int SPACING = 50;
 
   public static void main(String[] args) {
     main("algoplex2.Algoplex2");
@@ -23,10 +27,7 @@ public class Algoplex2 extends SceneApplet {
   private Grid grid;
   private GraphTransformer graphTransformer;
   private BasicGraphRenderer graphRenderer;
-
-  private static int ROWS = 4;
-  private static int COLS = 6;
-  private static int SPACING = 50;
+  private PGraphics transformed;
 
   public Algoplex2() {
     Algoplex2.instance = this;
@@ -60,8 +61,86 @@ public class Algoplex2 extends SceneApplet {
     PsychScene psychScene = new PsychScene();
     addGridScene(psychScene);
 
+    transformed = createGraphics(COLS * SPACING, ROWS * SPACING, P3D);
+
     super.setup();
   }
+
+  @Override
+  public void draw() {
+    super.draw();
+
+    transformed.beginDraw();
+    transformed.stroke(255);
+    transformed.noFill();
+    transformed.strokeWeight(4);
+    transformed.rect(100, 100, 400, 400);
+    transformed.endDraw();
+
+//    getGraphics().beginShape();
+//    getGraphics().texture(transformed);
+//    getGraphics().vertex(0, 0, 0, 0);
+//    getGraphics().vertex(COLS * SPACING, 0, COLS * SPACING, 0);
+//    getGraphics().vertex(COLS * SPACING, ROWS * SPACING, COLS * SPACING, ROWS * SPACING);
+//    getGraphics().vertex(0, ROWS * SPACING, 0, ROWS * SPACING);
+//    getGraphics().endShape();
+
+    graphTransformer.drawImage(getGraphics(), transformed);
+
+    //graphRenderer.render(getGraphics(), grid);
+    graphTransformer.draw(getGraphics());
+  }
+
+  @Override
+  public void mousePressed() {
+    graphTransformer.mouseDown(mouseX, mouseY);
+  }
+
+  @Override
+  public void mouseReleased() {
+    graphTransformer.mouseUp(mouseX, mouseY);
+    saveGraphs();
+  }
+
+  @Override
+  public void mouseDragged() {
+    graphTransformer.mouseDragged(mouseX, mouseY);
+  }
+
+  public void addGridScene(GridScene gridScene) {
+    gridScene.setGrid(grid);
+    addScene(gridScene);
+  }
+
+  private void saveGraphs() {
+    try {
+      FileOutputStream fileOut =
+          new FileOutputStream("algoplex2.ser");
+      ObjectOutputStream out = new ObjectOutputStream(fileOut);
+      out.writeObject(grid);
+      out.close();
+      fileOut.close();
+    } catch (IOException i) {
+      i.printStackTrace();
+    }
+  }
+
+  private void loadGraphs() {
+    try {
+      FileInputStream fileIn = new FileInputStream("algoplex2.ser");
+      ObjectInputStream in = new ObjectInputStream(fileIn);
+      grid = (Grid) in.readObject();
+      in.close();
+      fileIn.close();
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    } catch (IOException i) {
+      i.printStackTrace();
+    } catch (ClassNotFoundException c) {
+      c.printStackTrace();
+    }
+  }
+
 
   private Grid createGrid(int rows, int cols, float spacing) {
     rows *= 2;
@@ -175,95 +254,4 @@ public class Algoplex2 extends SceneApplet {
 
     return grid;
   }
-
-  private Graph createDenseGrid(int rows, int cols, float spacing) {
-    Graph grid = new Graph();
-
-    float[][] points = new float[(rows * 2) * cols][2];
-    Node[] nodes = new Node[(rows * 2) * cols];
-
-    int i = 0;
-    for (int row = 0; row < rows; row++) {
-      for (int col = 0; col < cols; col++) {
-        points[i][0] = col * spacing;
-        points[i][1] = row * spacing;
-        nodes[i] = grid.createNode(points[i][0], points[i][1]);
-        i++;
-
-        points[i][0] = col * spacing + spacing / 2;
-        points[i][1] = row * spacing + spacing / 2;
-        nodes[i] = grid.createNode(points[i][0], points[i][1]);
-        i++;
-      }
-    }
-    Delaunay delaunay = new Delaunay(points);
-    float[][] myEdges = delaunay.getEdges();
-
-    int[][] links = delaunay.getLinks();
-
-    for (int j = 0; j < links.length; j++) {
-      grid.createEdge(nodes[links[j][0]], nodes[links[j][1]]);
-    }
-
-    return grid;
-  }
-
-  @Override
-  public void draw() {
-    super.draw();
-
-    graphRenderer.render(getGraphics(), grid);
-    graphTransformer.draw(getGraphics());
-  }
-
-  @Override
-  public void mousePressed() {
-    graphTransformer.mouseDown(mouseX, mouseY);
-  }
-
-  @Override
-  public void mouseReleased() {
-    graphTransformer.mouseUp(mouseX, mouseY);
-    saveGraphs();
-  }
-
-  @Override
-  public void mouseDragged() {
-    graphTransformer.mouseDragged(mouseX, mouseY);
-  }
-
-  public void addGridScene(GridScene gridScene) {
-    gridScene.setGrid(grid);
-    addScene(gridScene);
-  }
-
-  private void saveGraphs() {
-    try {
-      FileOutputStream fileOut =
-          new FileOutputStream("algoplex2.ser");
-      ObjectOutputStream out = new ObjectOutputStream(fileOut);
-      out.writeObject(grid);
-      out.close();
-      fileOut.close();
-    } catch (IOException i) {
-      i.printStackTrace();
-    }
-  }
-
-  private void loadGraphs() {
-    try {
-      FileInputStream fileIn = new FileInputStream("algoplex2.ser");
-      ObjectInputStream in = new ObjectInputStream(fileIn);
-      grid = (Grid) in.readObject();
-      in.close();
-      fileIn.close();
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
-    } catch (IOException i) {
-      i.printStackTrace();
-    } catch (ClassNotFoundException c) {
-      c.printStackTrace();
-    }
-  }
-
 }
