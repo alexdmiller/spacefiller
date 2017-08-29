@@ -9,8 +9,17 @@ import scene.Scene;
  */
 public class GridScene extends Scene {
   protected Grid grid;
+  private boolean transformed = false;
 
   public void setGrid(Grid grid) {
     this.grid = grid;
+  }
+
+  public void fitToGrid() {
+    transformed = true;
+  }
+
+  public boolean isTransformed() {
+    return transformed;
   }
 }

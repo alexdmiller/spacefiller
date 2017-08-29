@@ -5,19 +5,24 @@ import graph.Node;
 import processing.core.*;
 
 import javax.media.jai.PerspectiveTransform;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by miller on 8/21/17.
- */
-public class GraphTransformer {
+public class GraphTransformer implements Serializable {
+  // This grid stores the original node positions, before a perspective transformation
+  // is applied.
   private Grid preTransformGrid;
   private Quad preTransformQuad;
+
+  // And this grid stores the nodes after the transformation has been applied.
   private Grid postTransformGrid;
   private Quad postTransformQuad;
-  private PVector selected;
+
+  // Maps the post-transform nodes to pre-transform nodes
   private Map<Node, Node> postToPre;
+
+  private PVector selected;
 
   public GraphTransformer(Grid grid) {
     this.postTransformGrid = grid;
@@ -58,6 +63,14 @@ public class GraphTransformer {
         return;
       }
     }
+  }
+
+  public Grid getPreTransformGrid() {
+    return preTransformGrid;
+  }
+
+  public Grid getPostTransformGrid() {
+    return postTransformGrid;
   }
 
   public void mouseUp(float mouseX, float mouseY) {
@@ -103,6 +116,7 @@ public class GraphTransformer {
 
   public void drawImage(PGraphics graphics, PImage texture) {
     graphics.beginShape(PApplet.TRIANGLES);
+    graphics.noStroke();
     graphics.texture(texture);
     for (Node[] triangle : postTransformGrid.getTriangles()) {
       for (int i = 0; i < triangle.length; i++) {
@@ -115,7 +129,7 @@ public class GraphTransformer {
     graphics.endShape(PConstants.CLOSE);
   }
 
-  public void makeGraphCopy() {
+  private void makeGraphCopy() {
     preTransformGrid = new Grid();
 
     for (Node postNode : postTransformGrid.getNodes()) {
@@ -128,6 +142,8 @@ public class GraphTransformer {
       Node n2 = postToPre.get(e.n2);
       preTransformGrid.createEdge(n1, n2);
     }
+
+    preTransformGrid.setBoundingQuad(postTransformQuad.copy());
 
     preTransformQuad = postTransformQuad.copy();
   }

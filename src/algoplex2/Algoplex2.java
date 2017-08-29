@@ -1,12 +1,10 @@
 package algoplex2;
 
-import algoplex2.scenes.BasicGridScene;
+import algoplex2.scenes.BasicGridFitScene;
 import algoplex2.scenes.GridScene;
 import algoplex2.scenes.PsychScene;
 import graph.BasicGraphRenderer;
-import graph.Graph;
 import graph.Node;
-import megamu.mesh.Delaunay;
 import processing.core.PGraphics;
 import processing.opengl.PJOGL;
 import scene.SceneApplet;
@@ -24,16 +22,13 @@ public class Algoplex2 extends SceneApplet {
     main("algoplex2.Algoplex2");
   }
 
-  private Grid grid;
   private GraphTransformer graphTransformer;
   private BasicGraphRenderer graphRenderer;
-  private PGraphics transformed;
+  private PGraphics transformedCanvas;
 
   public Algoplex2() {
     Algoplex2.instance = this;
   }
-
-  private Keystone keystone;
 
   public void settings() {
     fullScreen(1);
@@ -44,51 +39,54 @@ public class Algoplex2 extends SceneApplet {
   public final void setup() {
     loadGraphs();
 
-    keystone = new Keystone(this);
-
-    if (grid == null) {
-      grid = createGrid(ROWS, COLS, SPACING);
+    if (graphTransformer == null) {
+      graphTransformer = createGrid(ROWS, COLS, SPACING);
     }
 
     graphRenderer = new BasicGraphRenderer(1);
     graphRenderer.setColor(0xFFFFFF00);
 
-    graphTransformer = new GraphTransformer(grid);
-
 //    BasicGridScene gridScene = new BasicGridScene();
 //    addGridScene(gridScene);
 
-    PsychScene psychScene = new PsychScene();
-    addGridScene(psychScene);
+//    PsychScene psychScene = new PsychScene();
+//    addGridScene(psychScene);
 
-    transformed = createGraphics(COLS * SPACING, ROWS * SPACING, P3D);
+    BasicGridFitScene basicGridFitScene = new BasicGridFitScene();
+    addGridScene(basicGridFitScene);
+
+    transformedCanvas = createGraphics(COLS * SPACING, ROWS * SPACING, P3D);
 
     super.setup();
   }
 
   @Override
   public void draw() {
-    super.draw();
+    this.canvas.background(0);
 
-    transformed.beginDraw();
-    transformed.stroke(255);
-    transformed.noFill();
-    transformed.strokeWeight(4);
-    transformed.rect(100, 100, 400, 400);
-    transformed.endDraw();
+    if (currentScene != null) {
+      GridScene gridScene = (GridScene) currentScene;
+      if (!gridScene.isTransformed()) {
+        currentScene.draw(this.canvas);
+      }
+    }
 
-//    getGraphics().beginShape();
-//    getGraphics().texture(transformed);
-//    getGraphics().vertex(0, 0, 0, 0);
-//    getGraphics().vertex(COLS * SPACING, 0, COLS * SPACING, 0);
-//    getGraphics().vertex(COLS * SPACING, ROWS * SPACING, COLS * SPACING, ROWS * SPACING);
-//    getGraphics().vertex(0, ROWS * SPACING, 0, ROWS * SPACING);
-//    getGraphics().endShape();
-
-    graphTransformer.drawImage(getGraphics(), transformed);
 
     //graphRenderer.render(getGraphics(), grid);
-    graphTransformer.draw(getGraphics());
+    graphTransformer.draw(this.canvas);
+
+    this.transformedCanvas.beginDraw();
+    this.transformedCanvas.background(0);
+    if (currentScene != null) {
+      GridScene gridScene = (GridScene) currentScene;
+      if (gridScene.isTransformed()) {
+        currentScene.draw(this.transformedCanvas);
+      }
+    }
+    this.transformedCanvas.endDraw();
+
+    graphTransformer.drawImage(this.canvas, this.transformedCanvas);
+
   }
 
   @Override
@@ -108,7 +106,12 @@ public class Algoplex2 extends SceneApplet {
   }
 
   public void addGridScene(GridScene gridScene) {
-    gridScene.setGrid(grid);
+    if (gridScene.isTransformed()) {
+      gridScene.setGrid(graphTransformer.getPreTransformGrid());
+    } else {
+      gridScene.setGrid(graphTransformer.getPostTransformGrid());
+    }
+
     addScene(gridScene);
   }
 
@@ -117,7 +120,7 @@ public class Algoplex2 extends SceneApplet {
       FileOutputStream fileOut =
           new FileOutputStream("algoplex2.ser");
       ObjectOutputStream out = new ObjectOutputStream(fileOut);
-      out.writeObject(grid);
+      out.writeObject(graphTransformer);
       out.close();
       fileOut.close();
     } catch (IOException i) {
@@ -129,7 +132,7 @@ public class Algoplex2 extends SceneApplet {
     try {
       FileInputStream fileIn = new FileInputStream("algoplex2.ser");
       ObjectInputStream in = new ObjectInputStream(fileIn);
-      grid = (Grid) in.readObject();
+      graphTransformer = (GraphTransformer) in.readObject();
       in.close();
       fileIn.close();
     } catch (FileNotFoundException e) {
@@ -142,7 +145,7 @@ public class Algoplex2 extends SceneApplet {
   }
 
 
-  private Grid createGrid(int rows, int cols, float spacing) {
+  private GraphTransformer createGrid(int rows, int cols, float spacing) {
     rows *= 2;
 
     rows += 1;
@@ -228,30 +231,6 @@ public class Algoplex2 extends SceneApplet {
       }
     }
 
-//    for (int row = 0; row < rows; row++) {
-//      for (int col = 0; col < cols; col++) {
-//        if (row < rows - 1) {
-//          if (col > 0) {
-//            // south west
-//            grid.createEdge(nodes[row][col], nodes[row + 1][col - 1]);
-//          }
-//
-//          // south
-//          grid.createEdge(nodes[row][col], nodes[row + 1][col]);
-//
-//          // south east
-//          if (col < cols - 1) {
-//            grid.createEdge(nodes[row][col], nodes[row + 1][col + 1]);
-//          }
-//        }
-//
-//        // east
-//        if (col < cols - 1) {
-//          grid.createEdge(nodes[row][col], nodes[row][col + 1]);
-//        }
-//      }
-//    }
-
-    return grid;
+    return new GraphTransformer(grid);
   }
 }

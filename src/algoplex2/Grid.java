@@ -44,6 +44,14 @@ public class Grid extends Graph {
     return boundingQuad;
   }
 
+  public float getWidth() {
+    return boundingQuad.getTopRight().x - boundingQuad.getTopLeft().x;
+  }
+
+  public float getHeight() {
+    return boundingQuad.getBottomLeft().y - boundingQuad.getTopLeft().y;
+  }
+
   public void setBoundingQuad(Quad boundingQuad) {
     this.boundingQuad = boundingQuad;
   }
