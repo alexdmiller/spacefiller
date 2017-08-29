@@ -22,7 +22,8 @@ public class GraphTransformer implements Serializable {
   // Maps the post-transform nodes to pre-transform nodes
   private Map<Node, Node> postToPre;
 
-  private PVector selected;
+  private PVector selectedQuadPoint;
+  private Node selectedNode;
 
   public GraphTransformer(Grid grid) {
     this.postTransformGrid = grid;
@@ -31,7 +32,7 @@ public class GraphTransformer implements Serializable {
     makeGraphCopy();
   }
 
-  public void draw(PGraphics graphics) {
+  public void drawUI(PGraphics graphics) {
     graphics.stroke(255);
     graphics.noFill();
 
@@ -43,7 +44,7 @@ public class GraphTransformer implements Serializable {
     graphics.endShape(PConstants.CLOSE);
 
     for (PVector node : postTransformQuad.getVertices()) {
-      if (node == selected) {
+      if (node == selectedQuadPoint) {
         graphics.fill(255, 0, 0);
       } else {
         graphics.noFill();
@@ -51,15 +52,33 @@ public class GraphTransformer implements Serializable {
       graphics.strokeWeight(3);
       graphics.ellipse(node.x, node.y, 25, 25);
     }
+
+    for (Node node : postTransformGrid.getNodes()) {
+      graphics.noFill();
+      graphics.ellipse(node.position.x, node.position.y, 10, 10);
+    }
+
+    for (Edge e : postTransformGrid.getEdges()) {
+      graphics.strokeWeight(1);
+      graphics.line(e.n1.position.x, e.n1.position.y, e.n2.position.x, e.n2.position.y);
+    }
   }
 
   public void mouseDown(float mouseX, float mouseY) {
     PVector mouse = new PVector(mouseX, mouseY);
 
-    for (PVector node : postTransformQuad.getVertices()) {
-      float dist = PVector.dist(node, mouse);
-      if (dist < 50) {
-        selected = node;
+    for (PVector quadPoint : postTransformQuad.getVertices()) {
+      float dist = PVector.dist(quadPoint, mouse);
+      if (dist < 10) {
+        selectedQuadPoint = quadPoint;
+        return;
+      }
+    }
+
+    for (Node node : postTransformGrid.getNodes()) {
+      float dist = PVector.dist(node.position, mouse);
+      if (dist < 10) {
+        selectedNode = node;
         return;
       }
     }
@@ -74,13 +93,14 @@ public class GraphTransformer implements Serializable {
   }
 
   public void mouseUp(float mouseX, float mouseY) {
-    selected = null;
+    selectedQuadPoint = null;
+    selectedNode = null;
   }
 
   public void mouseDragged(float mouseX, float mouseY) {
-    if (selected != null) {
-      selected.x = mouseX;
-      selected.y = mouseY;
+    if (selectedQuadPoint != null) {
+      selectedQuadPoint.x = mouseX;
+      selectedQuadPoint.y = mouseY;
 
       PerspectiveTransform transform = PerspectiveTransform.getQuadToQuad(
           preTransformQuad.getTopLeft().x, preTransformQuad.getTopLeft().y,
@@ -111,6 +131,9 @@ public class GraphTransformer implements Serializable {
         node.position.y = destPoints[i + 1];
         i += 2;
       }
+    } else if (selectedNode != null) {
+      selectedNode.position.x = mouseX;
+      selectedNode.position.y = mouseY;
     }
   }
 

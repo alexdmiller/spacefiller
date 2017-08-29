@@ -2,21 +2,19 @@ package algoplex2;
 
 import algoplex2.scenes.BasicGridFitScene;
 import algoplex2.scenes.GridScene;
-import algoplex2.scenes.PsychScene;
 import graph.BasicGraphRenderer;
 import graph.Node;
 import processing.core.PGraphics;
 import processing.opengl.PJOGL;
 import scene.SceneApplet;
-import deadpixel.keystone.*;
 
 import java.io.*;
 
 public class Algoplex2 extends SceneApplet {
   public static Algoplex2 instance;
-  private static int ROWS = 4;
-  private static int COLS = 6;
-  private static int SPACING = 50;
+  private static int ROWS = 5;
+  private static int COLS = 8;
+  private static int SPACING = 200;
 
   public static void main(String[] args) {
     main("algoplex2.Algoplex2");
@@ -71,9 +69,7 @@ public class Algoplex2 extends SceneApplet {
       }
     }
 
-
     //graphRenderer.render(getGraphics(), grid);
-    graphTransformer.draw(this.canvas);
 
     this.transformedCanvas.beginDraw();
     this.transformedCanvas.background(0);
@@ -86,6 +82,8 @@ public class Algoplex2 extends SceneApplet {
     this.transformedCanvas.endDraw();
 
     graphTransformer.drawImage(this.canvas, this.transformedCanvas);
+
+    graphTransformer.drawUI(this.canvas);
 
   }
 
