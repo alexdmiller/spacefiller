@@ -1,6 +1,7 @@
 package algoplex2.scenes;
 
 import algoplex2.Algoplex2;
+import algoplex2.Quad;
 import color.ColorProvider;
 import color.ConstantColorProvider;
 import graph.*;
@@ -11,6 +12,7 @@ import lusio.components.GraphComponent;
 import particles.Bounds;
 import processing.core.PConstants;
 import processing.core.PGraphics;
+import processing.core.PVector;
 import scene.Scene;
 import toxi.geom.Quaternion;
 import toxi.geom.Vec3D;
@@ -45,39 +47,39 @@ public class BasicGridScene extends GridScene {
     pipeGraphRenderer.setMaxPerEdge(50);
     pipeGraphRenderer.setDotSize(4);
     pipeGraphRenderer.setFreq(10);
-    // addComponent(new GraphComponent(grid, pipeGraphRenderer));
+    //addComponent(new GraphComponent(grid, pipeGraphRenderer));
 
-    GraphComponent graphComponent = new GraphComponent(grid, animatedFillGraphRenderer);
-    addComponent(graphComponent);
-
-//    GraphComponent graphComponent = new GraphComponent(grid, sinGraphRenderer);
+//    GraphComponent graphComponent = new GraphComponent(grid, animatedFillGraphRenderer);
 //    addComponent(graphComponent);
+
+    //GraphComponent graphComponent = new GraphComponent(grid, sinGraphRenderer);
+    //addComponent(graphComponent);
 
   }
 
   @Override
   public void draw(PGraphics graphics) {
-    t += 0.01f;
+    t += 0.005f;
     graphics.noStroke();
     int i = 0;
-//    for (Node[] triangle : grid.getTriangles()) {
-//      i++;
-//      graphics.fill(Algoplex2.instance.noise(i + t) * 255, Algoplex2.instance.noise(0, i + t) * 255, Algoplex2.instance.noise(0, 0, i + t) * 255);
-//      graphics.triangle(
-//          triangle[0].position.x, triangle[0].position.y,
-//          triangle[1].position.x, triangle[1].position.y,
-//          triangle[2].position.x, triangle[2].position.y);
-//    }
-
-    for (Node[] square : grid.getSquares()) {
+    for (Node[] triangle : grid.getTriangles()) {
       i++;
       graphics.fill(Algoplex2.instance.noise(i + t) * 255, Algoplex2.instance.noise(0, i + t) * 255, Algoplex2.instance.noise(0, 0, i + t) * 255);
-      graphics.beginShape();
-      for (Node node : square) {
-        graphics.vertex(node.position.x, node.position.y);
-      }
-      graphics.endShape(PConstants.CLOSE);
+      graphics.triangle(
+          triangle[0].position.x, triangle[0].position.y,
+          triangle[1].position.x, triangle[1].position.y,
+          triangle[2].position.x, triangle[2].position.y);
     }
+
+//    for (Quad square : grid.getSquares()) {
+//      i++;
+//      graphics.fill(Algoplex2.instance.noise(i + t) * 255); //, Algoplex2.instance.noise(0, i + t) * 255, Algoplex2.instance.noise(0, 0, i + t) * 255);
+//      graphics.beginShape();
+//      for (PVector position : square.getVertices()) {
+//        graphics.vertex(position.x, position.y);
+//      }
+//      graphics.endShape(PConstants.CLOSE);
+//    }
     super.draw(graphics);
   }
 }

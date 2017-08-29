@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class Grid extends Graph {
   private List<Node[]> triangles;
-  private List<Node[]> squares;
+  private List<Quad> squares;
 
   private Quad boundingQuad;
 
@@ -26,15 +26,17 @@ public class Grid extends Graph {
     triangles.add(new Node[] {n1, n2, n3});
   }
 
-  public void addSquare(Node tl, Node tr, Node br, Node bl) {
-    squares.add(new Node[] {tl, tr, br, bl});
+  public void addSquare(Node tl, Node tr, Node br, Node bl, Node center) {
+    Quad quad = new Quad(tl.position, tr.position, br.position, bl.position);
+    quad.setCenter(center.position);
+    squares.add(quad);
   }
 
   public List<Node[]> getTriangles() {
     return triangles;
   }
 
-  public List<Node[]> getSquares() {
+  public List<Quad> getSquares() {
     return squares;
   }
 
@@ -44,5 +46,19 @@ public class Grid extends Graph {
 
   public void setBoundingQuad(Quad boundingQuad) {
     this.boundingQuad = boundingQuad;
+  }
+
+  public Grid copy() {
+    Graph newGraph = super.copy();
+    Grid newGrid = new Grid();
+
+    newGrid.nodes = newGraph.getNodes();
+    newGrid.edges = newGraph.getEdges();
+
+    for (Node[] triangle : triangles) {
+
+    }
+
+    return newGrid;
   }
 }

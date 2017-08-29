@@ -40,5 +40,6 @@
     </orderEntry>
     <orderEntry type="library" name="controlP5" level="project" />
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="keystone" level="project" />
   </component>
 </module>

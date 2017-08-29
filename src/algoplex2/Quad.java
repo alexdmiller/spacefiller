@@ -14,6 +14,7 @@ public class Quad implements Serializable {
   private PVector topRight;
   private PVector bottomLeft;
   private PVector bottomRight;
+  private PVector center;
 
   public Quad(PVector topLeft, PVector topRight, PVector bottomLeft, PVector bottomRight) {
     this.topLeft = topLeft;
@@ -26,12 +27,12 @@ public class Quad implements Serializable {
     return new Quad(topLeft.copy(), topRight.copy(), bottomLeft.copy(), bottomRight.copy());
   }
 
-  public List<PVector> getNodes() {
+  public List<PVector> getVertices() {
     List<PVector> list = new ArrayList<>();
     list.add(topLeft);
     list.add(topRight);
-    list.add(bottomLeft);
     list.add(bottomRight);
+    list.add(bottomLeft);
     return list;
   }
 
@@ -65,6 +66,14 @@ public class Quad implements Serializable {
 
   public void setBottomRight(PVector bottomRight) {
     this.bottomRight = bottomRight;
+  }
+
+  public PVector getCenter() {
+    return center;
+  }
+
+  public void setCenter(PVector center) {
+    this.center = center;
   }
 
   @Override

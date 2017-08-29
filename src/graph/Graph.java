@@ -2,14 +2,16 @@ package graph;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by miller on 7/16/17.
  */
 public class Graph implements Serializable {
-  private List<Node> nodes;
-  private List<Edge> edges;
+  protected List<Node> nodes;
+  protected List<Edge> edges;
 
   public Graph() {
     nodes = new ArrayList<>();
@@ -40,5 +42,22 @@ public class Graph implements Serializable {
     n2.connections.add(e);
 
     return e;
+  }
+
+  public Graph copy() {
+    Map<Node, Node> oldToNew = new HashMap<>();
+    Graph newGraph = new Graph();
+    for (Node n : nodes) {
+      Node newNode = newGraph.createNode(n.position.x, n.position.y);
+      oldToNew.put(n, newNode);
+    }
+
+    for (Edge e : edges) {
+      Node n1 = oldToNew.get(e.n1);
+      Node n2 = oldToNew.get(e.n2);
+      newGraph.createEdge(n1, n2);
+    }
+
+    return newGraph;
   }
 }

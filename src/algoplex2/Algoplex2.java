@@ -2,19 +2,16 @@ package algoplex2;
 
 import algoplex2.scenes.BasicGridScene;
 import algoplex2.scenes.GridScene;
+import algoplex2.scenes.PsychScene;
 import graph.BasicGraphRenderer;
 import graph.Graph;
 import graph.Node;
 import megamu.mesh.Delaunay;
-import processing.core.PApplet;
-import processing.core.PVector;
 import processing.opengl.PJOGL;
-import scene.Scene;
 import scene.SceneApplet;
+import deadpixel.keystone.*;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Map;
 
 public class Algoplex2 extends SceneApplet {
   public static Algoplex2 instance;
@@ -35,6 +32,8 @@ public class Algoplex2 extends SceneApplet {
     Algoplex2.instance = this;
   }
 
+  private Keystone keystone;
+
   public void settings() {
     fullScreen(1);
     size(1920, 1080, P3D);
@@ -44,6 +43,8 @@ public class Algoplex2 extends SceneApplet {
   public final void setup() {
     loadGraphs();
 
+    keystone = new Keystone(this);
+
     if (grid == null) {
       grid = createGrid(ROWS, COLS, SPACING);
     }
@@ -51,10 +52,13 @@ public class Algoplex2 extends SceneApplet {
     graphRenderer = new BasicGraphRenderer(1);
     graphRenderer.setColor(0xFFFFFF00);
 
-    graphTransformer = new GraphTransformer(grid, grid.getBoundingQuad());
+    graphTransformer = new GraphTransformer(grid);
 
-    BasicGridScene gridScene = new BasicGridScene();
-    addGridScene(gridScene);
+//    BasicGridScene gridScene = new BasicGridScene();
+//    addGridScene(gridScene);
+
+    PsychScene psychScene = new PsychScene();
+    addGridScene(psychScene);
 
     super.setup();
   }
@@ -140,7 +144,7 @@ public class Algoplex2 extends SceneApplet {
         }
 
         if (row < rows - 2 && col < cols - 1) {
-          grid.addSquare(nodes[row][col], nodes[row][col + 1], nodes[row + 2][col + 1], nodes[row + 2][col]);
+          grid.addSquare(nodes[row][col], nodes[row][col + 1], nodes[row + 2][col + 1], nodes[row + 2][col], nodes[row + 1][col]);
         }
       }
     }
@@ -208,8 +212,8 @@ public class Algoplex2 extends SceneApplet {
   public void draw() {
     super.draw();
 
-    // graphRenderer.render(getGraphics(), grid);
-    //graphTransformer.draw(getGraphics());
+    graphRenderer.render(getGraphics(), grid);
+    graphTransformer.draw(getGraphics());
   }
 
   @Override
@@ -232,7 +236,6 @@ public class Algoplex2 extends SceneApplet {
     gridScene.setGrid(grid);
     addScene(gridScene);
   }
-
 
   private void saveGraphs() {
     try {
