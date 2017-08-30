@@ -1,7 +1,6 @@
 package algoplex2;
 
-import algoplex2.scenes.BasicGridFitScene;
-import algoplex2.scenes.GridScene;
+import algoplex2.scenes.*;
 import graph.BasicGraphRenderer;
 import graph.Node;
 import processing.core.PGraphics;
@@ -12,17 +11,19 @@ import java.io.*;
 
 public class Algoplex2 extends SceneApplet {
   public static Algoplex2 instance;
-  private static int ROWS = 5;
-  private static int COLS = 8;
-  private static int SPACING = 200;
+  private static int ROWS = 4;
+  private static int COLS = 6;
+  private static int SPACING = 100;
 
   public static void main(String[] args) {
     main("algoplex2.Algoplex2");
   }
 
+  private Controller controller;
   private GraphTransformer graphTransformer;
   private BasicGraphRenderer graphRenderer;
   private PGraphics transformedCanvas;
+  private boolean showUI = false;
 
   public Algoplex2() {
     Algoplex2.instance = this;
@@ -35,6 +36,8 @@ public class Algoplex2 extends SceneApplet {
   }
 
   public final void setup() {
+    controller = new Controller();
+
     loadGraphs();
 
     if (graphTransformer == null) {
@@ -44,16 +47,20 @@ public class Algoplex2 extends SceneApplet {
     graphRenderer = new BasicGraphRenderer(1);
     graphRenderer.setColor(0xFFFFFF00);
 
-//    BasicGridScene gridScene = new BasicGridScene();
-//    addGridScene(gridScene);
+    BasicGridScene gridScene = new BasicGridScene();
+    addGridScene(gridScene);
 
-//    PsychScene psychScene = new PsychScene();
-//    addGridScene(psychScene);
+    PsychScene psychScene = new PsychScene();
+    addGridScene(psychScene);
 
     BasicGridFitScene basicGridFitScene = new BasicGridFitScene();
     addGridScene(basicGridFitScene);
 
+    LightScene lightScene = new LightScene();
+    addGridScene(lightScene);
+
     transformedCanvas = createGraphics(COLS * SPACING, ROWS * SPACING, P3D);
+
 
     super.setup();
   }
@@ -83,8 +90,20 @@ public class Algoplex2 extends SceneApplet {
 
     graphTransformer.drawImage(this.canvas, this.transformedCanvas);
 
-    graphTransformer.drawUI(this.canvas);
+    if (showUI) {
+      graphTransformer.drawUI(this.canvas);
+    }
+  }
 
+  @Override
+  public void keyPressed() {
+    if (key == ' ') {
+      showUI = !showUI;
+    }
+
+    if (keyCode == RIGHT) {
+      gotoNextScene();
+    }
   }
 
   @Override
@@ -109,6 +128,8 @@ public class Algoplex2 extends SceneApplet {
     } else {
       gridScene.setGrid(graphTransformer.getPostTransformGrid());
     }
+
+    gridScene.setController(controller);
 
     addScene(gridScene);
   }
@@ -166,10 +187,10 @@ public class Algoplex2 extends SceneApplet {
     }
 
     grid.setBoundingQuad(new Quad(
-        nodes[0][0].position.copy(),
-        nodes[0][cols - 1].position.copy(),
-        nodes[rows - 1][0].position.copy(),
-        nodes[rows - 1][cols - 1].position.copy()));
+        nodes[0][0].copy(),
+        nodes[0][cols - 1].copy(),
+        nodes[rows - 1][0].copy(),
+        nodes[rows - 1][cols - 1].copy()));
 
     for (int row = 0; row < rows; row += 2) {
       for (int col = 0; col < cols; col++) {

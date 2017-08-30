@@ -15,6 +15,12 @@ public class Node implements Serializable {
     connections = new ArrayList<>();
   }
 
+  public Node copy() {
+    Node n = new Node();
+    n.position = this.position.copy();
+    return n;
+  }
+
   @Override
   public String toString() {
     return position.toString();

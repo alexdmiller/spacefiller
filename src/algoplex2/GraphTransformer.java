@@ -13,11 +13,9 @@ public class GraphTransformer implements Serializable {
   // This grid stores the original node positions, before a perspective transformation
   // is applied.
   private Grid preTransformGrid;
-  private Quad preTransformQuad;
 
   // And this grid stores the nodes after the transformation has been applied.
   private Grid postTransformGrid;
-  private Quad postTransformQuad;
 
   // Maps the post-transform nodes to pre-transform nodes
   private Map<Node, Node> postToPre;
@@ -27,7 +25,6 @@ public class GraphTransformer implements Serializable {
 
   public GraphTransformer(Grid grid) {
     this.postTransformGrid = grid;
-    this.postTransformQuad = grid.getBoundingQuad();
     this.postToPre = new HashMap<>();
     makeGraphCopy();
   }
@@ -38,12 +35,12 @@ public class GraphTransformer implements Serializable {
 
     graphics.strokeWeight(2);
     graphics.beginShape();
-    for (PVector node : postTransformQuad.getVertices()) {
+    for (PVector node : postTransformGrid.getBoundingQuad().getVertices()) {
       graphics.vertex(node.x, node.y);
     }
     graphics.endShape(PConstants.CLOSE);
 
-    for (PVector node : postTransformQuad.getVertices()) {
+    for (PVector node : postTransformGrid.getBoundingQuad().getVertices()) {
       if (node == selectedQuadPoint) {
         graphics.fill(255, 0, 0);
       } else {
@@ -67,7 +64,7 @@ public class GraphTransformer implements Serializable {
   public void mouseDown(float mouseX, float mouseY) {
     PVector mouse = new PVector(mouseX, mouseY);
 
-    for (PVector quadPoint : postTransformQuad.getVertices()) {
+    for (PVector quadPoint : postTransformGrid.getBoundingQuad().getVertices()) {
       float dist = PVector.dist(quadPoint, mouse);
       if (dist < 10) {
         selectedQuadPoint = quadPoint;
@@ -102,15 +99,18 @@ public class GraphTransformer implements Serializable {
       selectedQuadPoint.x = mouseX;
       selectedQuadPoint.y = mouseY;
 
+      Quad postQuad = postTransformGrid.getBoundingQuad();
+      Quad preQuad = preTransformGrid.getBoundingQuad();
+
       PerspectiveTransform transform = PerspectiveTransform.getQuadToQuad(
-          preTransformQuad.getTopLeft().x, preTransformQuad.getTopLeft().y,
-          preTransformQuad.getTopRight().x, preTransformQuad.getTopRight().y,
-          preTransformQuad.getBottomRight().x, preTransformQuad.getBottomRight().y,
-          preTransformQuad.getBottomLeft().x, preTransformQuad.getBottomLeft().y,
-          postTransformQuad.getTopLeft().x, postTransformQuad.getTopLeft().y,
-          postTransformQuad.getTopRight().x, postTransformQuad.getTopRight().y,
-          postTransformQuad.getBottomRight().x, postTransformQuad.getBottomRight().y,
-          postTransformQuad.getBottomLeft().x, postTransformQuad.getBottomLeft().y);
+          preQuad.getTopLeft().position.x, preQuad.getTopLeft().position.y,
+          preQuad.getTopRight().position.x, preQuad.getTopRight().position.y,
+          preQuad.getBottomRight().position.x, preQuad.getBottomRight().position.y,
+          preQuad.getBottomLeft().position.x, preQuad.getBottomLeft().position.y,
+          postQuad.getTopLeft().position.x, postQuad.getTopLeft().position.y,
+          postQuad.getTopRight().position.x, postQuad.getTopRight().position.y,
+          postQuad.getBottomRight().position.x, postQuad.getBottomRight().position.y,
+          postQuad.getBottomLeft().position.x, postQuad.getBottomLeft().position.y);
 
       float[] srcPoints = new float[postTransformGrid.getNodes().size() * 2];
 
@@ -166,8 +166,28 @@ public class GraphTransformer implements Serializable {
       preTransformGrid.createEdge(n1, n2);
     }
 
-    preTransformGrid.setBoundingQuad(postTransformQuad.copy());
+    preTransformGrid.setBoundingQuad(postTransformGrid.getBoundingQuad().copy());
 
-    preTransformQuad = postTransformQuad.copy();
+    for (Node[] triangle : postTransformGrid.getTriangles()) {
+      Node[] newTriangle = new Node[3];
+      for (int i = 0; i < triangle.length; i++) {
+        newTriangle[i] = postToPre.get(triangle[i]);
+      }
+      preTransformGrid.addTriangle(newTriangle);
+    }
+
+    for (Quad quad : postTransformGrid.getSquares()) {
+      preTransformGrid.addSquare(copyQuad(quad));
+    }
+  }
+
+  private Quad copyQuad(Quad quad) {
+    return new Quad(
+        postToPre.get(quad.getTopLeft()),
+        postToPre.get(quad.getTopRight()),
+        postToPre.get(quad.getBottomRight()),
+        postToPre.get(quad.getBottomLeft()),
+        postToPre.get(quad.getCenter())
+    );
   }
 }

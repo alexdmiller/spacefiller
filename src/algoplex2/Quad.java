@@ -1,5 +1,6 @@
 package algoplex2;
 
+import graph.Node;
 import processing.core.PVector;
 
 import java.io.Serializable;
@@ -10,70 +11,94 @@ import java.util.List;
  * Created by miller on 8/21/17.
  */
 public class Quad implements Serializable {
-  private PVector topLeft;
-  private PVector topRight;
-  private PVector bottomLeft;
-  private PVector bottomRight;
-  private PVector center;
+  private Node topLeft;
+  private Node topRight;
+  private Node bottomLeft;
+  private Node bottomRight;
+  private Node center;
+  private Node[][] triangles;
 
-  public Quad(PVector topLeft, PVector topRight, PVector bottomLeft, PVector bottomRight) {
+  public Quad(Node topLeft, Node topRight, Node bottomLeft, Node bottomRight) {
     this.topLeft = topLeft;
     this.topRight = topRight;
     this.bottomLeft = bottomLeft;
     this.bottomRight = bottomRight;
   }
 
-  public Quad copy() {
-    return new Quad(topLeft.copy(), topRight.copy(), bottomLeft.copy(), bottomRight.copy());
+  public Quad(Node topLeft, Node topRight, Node bottomLeft, Node bottomRight, Node center) {
+    this.topLeft = topLeft;
+    this.topRight = topRight;
+    this.bottomLeft = bottomLeft;
+    this.bottomRight = bottomRight;
+    this.center = center;
+    computeTriangles();
+  }
+
+  private void computeTriangles() {
+    this.triangles = new Node[4][3];
+    triangles[0] = new Node[] { topLeft, topRight, center };
+    triangles[1] = new Node[] { topRight, bottomRight, center };
+    triangles[2] = new Node[] { bottomRight, bottomLeft, center };
+    triangles[3] = new Node[] { bottomLeft, topLeft, center };
   }
 
   public List<PVector> getVertices() {
     List<PVector> list = new ArrayList<>();
-    list.add(topLeft);
-    list.add(topRight);
-    list.add(bottomRight);
-    list.add(bottomLeft);
+    list.add(topLeft.position);
+    list.add(topRight.position);
+    list.add(bottomRight.position);
+    list.add(bottomLeft.position);
     return list;
   }
 
-  public PVector getTopLeft() {
+  public Node getTopLeft() {
     return topLeft;
   }
 
-  public void setTopLeft(PVector topLeft) {
+  public void setTopLeft(Node topLeft) {
     this.topLeft = topLeft;
   }
 
-  public PVector getTopRight() {
+  public Node getTopRight() {
     return topRight;
   }
 
-  public void setTopRight(PVector topRight) {
+  public void setTopRight(Node topRight) {
     this.topRight = topRight;
   }
 
-  public PVector getBottomLeft() {
+  public Node getBottomLeft() {
     return bottomLeft;
   }
 
-  public void setBottomLeft(PVector bottomLeft) {
+  public void setBottomLeft(Node bottomLeft) {
     this.bottomLeft = bottomLeft;
   }
 
-  public PVector getBottomRight() {
+  public Node getBottomRight() {
     return bottomRight;
   }
 
-  public void setBottomRight(PVector bottomRight) {
+  public void setBottomRight(Node bottomRight) {
     this.bottomRight = bottomRight;
   }
 
-  public PVector getCenter() {
+  public Node getCenter() {
     return center;
   }
 
-  public void setCenter(PVector center) {
+  public void setCenter(Node center) {
     this.center = center;
+  }
+
+  public Quad copy() {
+    return new Quad(
+        topLeft.copy(), topRight.copy(), bottomLeft.copy(), bottomRight.copy(), center != null ? center.copy() : null
+    );
+  }
+
+  public Node[][] getTriangles() {
+    return triangles;
   }
 
   @Override

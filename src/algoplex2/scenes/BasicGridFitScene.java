@@ -1,12 +1,7 @@
 package algoplex2.scenes;
 
-import algoplex2.Algoplex2;
-import graph.Node;
 import processing.core.PGraphics;
 
-/**
- * Created by miller on 8/29/17.
- */
 public class BasicGridFitScene extends GridScene {
   float t = 0;
 
@@ -16,10 +11,10 @@ public class BasicGridFitScene extends GridScene {
 
   @Override
   public void draw(PGraphics graphics) {
-    t += 2;
+    t += 1;
 
     graphics.stroke(255);
-    graphics.strokeWeight(2);
+    graphics.strokeWeight(1);
     for (float y = 0; y < grid.getHeight() * 2; y += 20) {
       float ny = (y + t) % grid.getHeight();
 

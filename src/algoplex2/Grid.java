@@ -23,12 +23,19 @@ public class Grid extends Graph {
   }
 
   public void addTriangle(Node n1, Node n2, Node n3) {
-    triangles.add(new Node[] {n1, n2, n3});
+    addTriangle(new Node[] {n1, n2, n3});
+  }
+
+  public void addTriangle(Node[] nodes) {
+    triangles.add(nodes);
   }
 
   public void addSquare(Node tl, Node tr, Node br, Node bl, Node center) {
-    Quad quad = new Quad(tl.position, tr.position, br.position, bl.position);
-    quad.setCenter(center.position);
+    Quad quad = new Quad(tl, tr, br, bl, center);
+    addSquare(quad);
+  }
+
+  public void addSquare(Quad quad) {
     squares.add(quad);
   }
 
@@ -45,28 +52,14 @@ public class Grid extends Graph {
   }
 
   public float getWidth() {
-    return boundingQuad.getTopRight().x - boundingQuad.getTopLeft().x;
+    return boundingQuad.getTopRight().position.x - boundingQuad.getTopLeft().position.x;
   }
 
   public float getHeight() {
-    return boundingQuad.getBottomLeft().y - boundingQuad.getTopLeft().y;
+    return boundingQuad.getBottomLeft().position.y - boundingQuad.getTopLeft().position.y;
   }
 
   public void setBoundingQuad(Quad boundingQuad) {
     this.boundingQuad = boundingQuad;
-  }
-
-  public Grid copy() {
-    Graph newGraph = super.copy();
-    Grid newGrid = new Grid();
-
-    newGrid.nodes = newGraph.getNodes();
-    newGrid.edges = newGraph.getEdges();
-
-    for (Node[] triangle : triangles) {
-
-    }
-
-    return newGrid;
   }
 }

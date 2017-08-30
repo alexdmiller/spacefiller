@@ -1,5 +1,6 @@
 package algoplex2.scenes;
 
+import algoplex2.Controller;
 import algoplex2.Grid;
 import graph.Graph;
 import scene.Scene;
@@ -9,10 +10,15 @@ import scene.Scene;
  */
 public class GridScene extends Scene {
   protected Grid grid;
-  private boolean transformed = false;
+  protected Controller controller;
+  private boolean transformed = true;
 
   public void setGrid(Grid grid) {
     this.grid = grid;
+  }
+
+  public void setController(Controller controller) {
+    this.controller = controller;
   }
 
   public void fitToGrid() {

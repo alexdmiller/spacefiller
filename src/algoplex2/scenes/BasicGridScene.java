@@ -22,6 +22,9 @@ import java.util.Map;
 public class BasicGridScene extends GridScene {
   SinGraphRenderer sinGraphRenderer;
   float t;
+  public BasicGridScene() {
+    fitToGrid();
+  }
 
   @Override
   public void setup() {

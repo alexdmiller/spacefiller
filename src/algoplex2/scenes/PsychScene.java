@@ -15,6 +15,10 @@ public class PsychScene extends GridScene {
   private float t;
   private static int NUM_SQUARES = 5;
 
+  public PsychScene() {
+    fitToGrid();
+  }
+
   @Override
   public void draw(PGraphics graphics) {
     t += 0.01f;
@@ -32,23 +36,23 @@ public class PsychScene extends GridScene {
 //          triangle[2].position.x, triangle[2].position.y);
 //    }
 //
-//    graphics.noFill();
-//    graphics.stroke(255);
-//    graphics.rectMode(PConstants.CENTER);
-//    graphics.strokeWeight(2);
-//
-//    float s = t * 50;
-//    for (Quad square : grid.getSquares()) {
-//      float totalWidth = (square.getTopRight().x - square.getTopLeft().x) * 1.5f;
-//      float totalHeight = square.getBottomLeft().y - square.getTopLeft().y;
-//      for (int j = 0; j < NUM_SQUARES; j++) {
-//        graphics.stroke(Algoplex2.instance.noise(j + t) * 255, Algoplex2.instance.noise(0, j + t) * 255, Algoplex2.instance.noise(0, 0, j + t) * 255);
-//        graphics.pushMatrix();
-//        graphics.translate(square.getCenter().x, square.getCenter().y);
-//        graphics.ellipse(0, 0, ((((float) j / NUM_SQUARES) * totalWidth) + s) % totalWidth, ((((float) j / NUM_SQUARES) * totalWidth) + s) % totalWidth);
-//        graphics.popMatrix();
-//      }
-//    }
+    graphics.noFill();
+    graphics.stroke(255);
+    graphics.rectMode(PConstants.CENTER);
+    graphics.strokeWeight(5);
+
+    float s = t * 50;
+    for (Quad square : grid.getSquares()) {
+      float totalWidth = (square.getTopRight().position.x - square.getTopLeft().position.x);
+      float totalHeight = square.getBottomLeft().position.y - square.getTopLeft().position.y;
+      for (int j = 0; j < NUM_SQUARES; j++) {
+        graphics.stroke(Algoplex2.instance.noise(j + t) * 255, Algoplex2.instance.noise(0, j + t) * 255, Algoplex2.instance.noise(0, 0, j + t) * 255);
+        graphics.pushMatrix();
+        graphics.translate(square.getCenter().position.x, square.getCenter().position.y);
+        graphics.rect(0, 0, ((((float) j / NUM_SQUARES) * totalWidth) + s) % totalWidth, ((((float) j / NUM_SQUARES) * totalWidth) + s) % totalWidth);
+        graphics.popMatrix();
+      }
+    }
 //    graphics.rectMode(PConstants.CORNER);
     super.draw(graphics);
   }
