@@ -1,5 +1,6 @@
 package common;
 
+import algoplex2.Algoplex2;
 import modulation.Mod;
 import particles.Bounds;
 import processing.core.PVector;
@@ -12,22 +13,34 @@ public class StoredVectorField implements VectorField {
 	private PVector[] field;
 	private Bounds bounds;
 	private int cellSize;
+	private PVector origin;
 
 	public StoredVectorField(Bounds bounds, int cellSize) {
 		this.bounds = bounds;
 		this.cellSize = cellSize;
 
-		field = new PVector[(int) (bounds.getWidth() / cellSize * bounds.getHeight() / cellSize * bounds.getDepth() / cellSize)];
+		if (bounds.getDepth() == 0) {
+			field = new PVector[(int) (bounds.getWidth() / cellSize * bounds.getHeight() / cellSize)];
+		} else {
+			field = new PVector[(int) (bounds.getWidth() / cellSize * bounds.getHeight() / cellSize * bounds.getDepth() / cellSize)];
+		}
+
 		for (int i = 0; i < field.length; i++) {
 			field[i] = new PVector(0, 0, 0);
 		}
+
+		this.origin = new PVector(bounds.getWidth() / 2, bounds.getHeight() / 2, bounds.getDepth() / 2);
+	}
+
+	public void setOrigin(PVector origin) {
+		this.origin = origin;
 	}
 
 	@Override
 	public PVector at(float x, float y, float z, float t) {
-		int cellX = (int) (x + bounds.getWidth() / 2) / cellSize;
-		int cellY = (int) (y + bounds.getHeight() / 2) / cellSize;
-		int cellZ = (int) (z + bounds.getDepth() / 2) / cellSize;
+		int cellX = (int) (x + origin.x) / cellSize;
+		int cellY = (int) (y + origin.y) / cellSize;
+		int cellZ = (int) (z + origin.z) / cellSize;
 		return getCell(cellX, cellY, cellZ);
 	}
 
@@ -73,7 +86,7 @@ public class StoredVectorField implements VectorField {
 		float seed = (float) Math.random() * 100;
 		for (float x = 0; x <= getGridWidth(); x++) {
 			for (float y = 0; y <= getGridHeight(); y++) {
-				float theta = (float) (Scene.getInstance().noise(x, y, seed) * 4 * Math.PI);
+				float theta = (float) (Algoplex2.instance.noise(x, y, seed) * 4 * Math.PI);
 				PVector f = new PVector(
 						(float) Math.cos(theta) * 40,
 						(float) Math.sin(theta) * 40);

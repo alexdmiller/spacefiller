@@ -62,6 +62,10 @@ public class FlockParticles extends ParticleBehavior {
     this.cohesionWeight = cohesionWeight;
   }
 
+  public void setAlignmentThreshold(float alignmentThreshold) {
+    this.alignmentThreshold = alignmentThreshold;
+  }
+
   @Override
   public void apply(List<Particle> particles) {
     for (Particle p : particles) {

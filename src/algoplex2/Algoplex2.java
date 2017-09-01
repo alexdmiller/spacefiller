@@ -30,7 +30,7 @@ public class Algoplex2 extends SceneApplet {
   }
 
   public void settings() {
-    fullScreen(1);
+    // fullScreen(2);
     size(1920, 1080, P3D);
     PJOGL.profile = 1;
   }
@@ -47,6 +47,9 @@ public class Algoplex2 extends SceneApplet {
     graphRenderer = new BasicGraphRenderer(1);
     graphRenderer.setColor(0xFFFFFF00);
 
+    ParticleScene particleScene = new ParticleScene();
+    addGridScene(particleScene);
+
     BasicGridScene gridScene = new BasicGridScene();
     addGridScene(gridScene);
 
@@ -60,7 +63,6 @@ public class Algoplex2 extends SceneApplet {
     addGridScene(lightScene);
 
     transformedCanvas = createGraphics(COLS * SPACING, ROWS * SPACING, P3D);
-
 
     super.setup();
   }

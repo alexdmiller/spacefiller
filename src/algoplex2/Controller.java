@@ -3,6 +3,8 @@ package algoplex2;
 import themidibus.MidiBus;
 import themidibus.SimpleMidiListener;
 
+import java.util.Arrays;
+
 /**
  * Created by miller on 8/30/17.
  */
@@ -14,6 +16,7 @@ public class Controller implements SimpleMidiListener {
 
   public Controller() {
     this.values = new float[NUM_VALUES];
+    Arrays.fill(values, 0.2f);
     this.bus = new MidiBus(this, "Launch Control XL 8", 1);
   }
 
@@ -29,6 +32,8 @@ public class Controller implements SimpleMidiListener {
 
   @Override
   public void controllerChange(int channel, int number, int value) {
-    values[number - 13] = value / 255f;
+    if (number - 13 < values.length) {
+      values[number - 13] = value / 255f;
+    }
   }
 }
