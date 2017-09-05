@@ -13,6 +13,7 @@ import java.util.List;
 public class Grid extends Graph {
   private List<Node[]> triangles;
   private List<Quad> squares;
+  private float cellSize;
 
   private Quad boundingQuad;
 
@@ -61,5 +62,13 @@ public class Grid extends Graph {
 
   public void setBoundingQuad(Quad boundingQuad) {
     this.boundingQuad = boundingQuad;
+  }
+
+  public void setCellSize(float cellSize) {
+    this.cellSize = cellSize;
+  }
+
+  public float getCellSize() {
+    return cellSize;
   }
 }

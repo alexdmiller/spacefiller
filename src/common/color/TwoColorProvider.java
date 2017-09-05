@@ -1,4 +1,4 @@
-package color;
+package common.color;
 
 /**
  * Created by miller on 8/18/17.

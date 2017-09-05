@@ -1,12 +1,8 @@
 package particles.renderers;
 
-import color.ColorProvider;
-import lusio.Lusio;
+import common.color.ColorProvider;
 import particles.Particle;
 import processing.core.PGraphics;
-
-import java.awt.*;
-import java.util.List;
 
 /**
  * Created by miller on 7/12/17.

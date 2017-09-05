@@ -1,7 +1,7 @@
 package lusio;
 
-import color.ColorProvider;
-import color.TwoColorProvider;
+import common.color.ColorProvider;
+import common.color.TwoColorProvider;
 import controlP5.ControlEvent;
 import controlP5.ControlP5;
 import controlP5.DropdownList;
@@ -12,11 +12,9 @@ import graph.GraphRenderer;
 import graph.Node;
 import lightcube.Lightcube;
 import lusio.scenes.*;
-import processing.core.PApplet;
 import processing.core.PGraphics;
 import processing.core.PVector;
 import processing.opengl.PJOGL;
-import scene.Scene;
 import scene.SceneApplet;
 
 import java.io.*;

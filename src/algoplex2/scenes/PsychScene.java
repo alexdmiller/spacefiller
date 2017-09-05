@@ -46,7 +46,7 @@ public class PsychScene extends GridScene {
       float totalWidth = (square.getTopRight().position.x - square.getTopLeft().position.x);
       float totalHeight = square.getBottomLeft().position.y - square.getTopLeft().position.y;
       for (int j = 0; j < NUM_SQUARES; j++) {
-        graphics.stroke(Algoplex2.instance.noise(j + t) * 255, Algoplex2.instance.noise(0, j + t) * 255, Algoplex2.instance.noise(0, 0, j + t) * 255);
+        graphics.stroke(255);
         graphics.pushMatrix();
         graphics.translate(square.getCenter().position.x, square.getCenter().position.y);
         graphics.rect(0, 0, ((((float) j / NUM_SQUARES) * totalWidth) + s) % totalWidth, ((((float) j / NUM_SQUARES) * totalWidth) + s) % totalWidth);

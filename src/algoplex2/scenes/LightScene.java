@@ -1,23 +1,8 @@
 package algoplex2.scenes;
 
-import algoplex2.Algoplex2;
 import algoplex2.Quad;
-import color.ColorProvider;
-import color.ConstantColorProvider;
 import graph.*;
-import lightcube.Lightcube;
-import lusio.Lusio;
-import lusio.components.ContourComponent;
-import lusio.components.GraphComponent;
-import particles.Bounds;
-import processing.core.PConstants;
 import processing.core.PGraphics;
-import processing.core.PVector;
-import scene.Scene;
-import toxi.geom.Quaternion;
-import toxi.geom.Vec3D;
-
-import java.util.Map;
 
 public class LightScene extends GridScene {
   private float t = 0;

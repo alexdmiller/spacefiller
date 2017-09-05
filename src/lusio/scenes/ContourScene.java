@@ -1,16 +1,11 @@
 package lusio.scenes;
 
-import graph.Graph;
-import lightcube.Lightcube;
 import lusio.Lusio;
-import lusio.components.ContourComponent;
+import common.components.ContourComponent;
 import particles.Bounds;
 import processing.core.PGraphics;
-import scene.Scene;
 import toxi.geom.Quaternion;
 import toxi.geom.Vec3D;
-
-import java.util.Map;
 
 public class ContourScene extends LusioScene {
   ContourComponent contourGenerator;

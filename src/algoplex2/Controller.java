@@ -9,15 +9,13 @@ import java.util.Arrays;
  * Created by miller on 8/30/17.
  */
 public class Controller implements SimpleMidiListener {
-  public static final int NUM_VALUES = 6;
+  public static final int NUM_VALUES = 32;
 
   private float values[];
-  private MidiBus bus;
 
   public Controller() {
     this.values = new float[NUM_VALUES];
-    Arrays.fill(values, 0.2f);
-    this.bus = new MidiBus(this, "Launch Control XL 8", 1);
+    new MidiBus(this, "Launch Control XL 8", 1);
   }
 
   public float getValue(int index) {

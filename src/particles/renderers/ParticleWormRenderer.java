@@ -1,10 +1,7 @@
 package particles.renderers;
 
-import boids.Boid;
-import boids.renderers.BoidRenderer;
-import color.ColorProvider;
+import common.color.ColorProvider;
 import com.google.common.collect.EvictingQueue;
-import lusio.Lusio;
 import particles.Particle;
 import processing.core.PGraphics;
 import processing.core.PVector;

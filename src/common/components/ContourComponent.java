@@ -1,11 +1,12 @@
-package lusio.components;
+package common.components;
 
-import lusio.Lusio;
+import modulation.Mod;
 import particles.Bounds;
 import processing.core.PGraphics;
 import processing.core.PVector;
 import scene.SceneComponent;
 import toxi.geom.Quaternion;
+import toxi.math.noise.PerlinNoise;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,30 +16,53 @@ import java.util.List;
  * Created by miller on 7/22/17.
  */
 public class ContourComponent extends SceneComponent {
-  private float noiseAmplitude = 0;
+  @Mod(min = 0, max = 5000)
+  public float noiseAmplitude = 0;
 
-  private float updateSpeed = 0.01f;
-  private float xSpeed = 0f;
-  private float ySpeed = 0f;
+  @Mod(min = 0, max = 0.1f)
+  public float updateSpeed = 0.01f;
 
-  private float cellSize = 30;
-  private float heightIncrements = 2;
+  @Mod(min = 0, max = 0.1f)
+  public float xSpeed = 0f;
+
+  @Mod(min = 0, max = 0.1f)
+  public float ySpeed = 0f;
+
+  public float cellSize = 30;
+
+  @Mod(min = 0, max = 20)
+  public float heightIncrements = 2;
   private float spacing = 10;
   private int colorRange = 500;
 
   private float timeStep = 0;
+  private float stripeTimeStep = 0;
+
   private float xTimeStep = 0;
   private float yTimeStep = 0;
-  private float noiseScale = 1;
-  private float lineSize = 1;
+
+  @Mod(min = 0, max = 10)
+  public float noiseScale = 1;
+
+  @Mod(min = 0, max = 10)
+  public float lineSize = 1;
 
   private int color;
 
   private Bounds bounds;
   private Quaternion quaternion = Quaternion.createFromEuler(0, 0, 0);
 
+  private PerlinNoise perlin;
+
+  @Mod(min = 0.001f, max = 0.1f)
+  public float stripeSize;
+
+  @Mod(min = -0.1f, max = 0.1f)
+  public float stripeUpdateSpeed;
+
   public ContourComponent(Bounds bounds) {
     this.bounds = bounds;
+    this.perlin = new PerlinNoise();
   }
 
   public void setRotation(Quaternion quaternion) {
@@ -72,18 +96,19 @@ public class ContourComponent extends SceneComponent {
     graphics.stroke(255);
     graphics.strokeWeight(lineSize);
 
-    graphics.translate(-bounds.getWidth() / 2, -bounds.getWidth() / 2);
+    //graphics.translate(-bounds.getWidth() / 2, -bounds.getWidth() / 2);
 
     for (float i = 0; i < bounds.getHeight(); i += heightIncrements) {
       float sampleHeight = i - bounds.getHeight()/2;
-      graphics.stroke(Lusio.instance.lerpColor(
+      graphics.stroke(graphics.lerpColor(
           color,
-          Lusio.instance.color(255, 255, 255),
-          (float) (Math.sin(i / 5 + timeStep * 100) + 1) / 2));
+          0xFFFFFFFF,
+          (float) (Math.sin(i * stripeSize + stripeTimeStep) + 1) / 2));
       drawGridPlaneIntersection(heightMap, sampleHeight, sampleHeight * spacing, cellSize, graphics);
     }
 
     timeStep += updateSpeed;
+    stripeTimeStep += stripeUpdateSpeed;
     xTimeStep += xSpeed;
     yTimeStep += ySpeed;
 
@@ -114,13 +139,17 @@ public class ContourComponent extends SceneComponent {
     this.color = color;
   }
 
+  public void setHeightIncrements(float heightIncrements) {
+    this.heightIncrements = heightIncrements;
+  }
+
   float[][] produceGrid(float t, int rows, int cols) {
     float[][] grid = new float[rows][cols];
     for (int r = 0; r < grid.length; r++) {
       for (int c = 0; c < grid[r].length; c++) {
         float x = (float) r / rows * (float) Math.PI;
         float y = (float) c / cols * (float) Math.PI;
-        grid[r][c] = (Lusio.instance.noise((x + xTimeStep) / noiseScale, (y + yTimeStep) / noiseScale, t) * noiseAmplitude) - noiseAmplitude / 2;
+        grid[r][c] = (this.perlin.noise((x + xTimeStep) / noiseScale, (y + yTimeStep) / noiseScale, t) * noiseAmplitude) - noiseAmplitude / 2;
       }
     }
     return grid;

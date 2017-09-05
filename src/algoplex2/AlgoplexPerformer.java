@@ -1,81 +1,96 @@
 package algoplex2;
 
 import algoplex2.scenes.*;
+import algoplex2.scenes.ContourScene;
+import codeanticode.syphon.SyphonServer;
+import common.Integrator;
+import common.Integrators;
 import graph.BasicGraphRenderer;
 import graph.Node;
+import modulation.Mod;
+import modulation.OscSceneModulator;
 import processing.core.PGraphics;
 import processing.core.PVector;
 import processing.opengl.PJOGL;
 import scene.SceneApplet;
 
-import java.io.*;
-
-public class Algoplex2 extends SceneApplet {
-  public static Algoplex2 instance;
-  private static int ROWS = 4;
-  private static int COLS = 6;
-  private static int SPACING = 150;
+public class AlgoplexPerformer extends SceneApplet {
+  public static AlgoplexPerformer instance;
+  private static int SPACING = 200;
 
   public static void main(String[] args) {
-    main("algoplex2.Algoplex2");
+    main("algoplex2.AlgoplexPerformer");
   }
+
+  @Mod
+  public ContourScene contourScene = new ContourScene();
+
+  @Mod
+  public ParticleScene particleScene = new ParticleScene();
+
+  @Mod
+  public PsychScene psychScene = new PsychScene();
+
+  @Mod
+  public LightScene lightScene = new LightScene();
+
+  public GridScene[] gridScenes = new GridScene[] {
+      contourScene,
+      particleScene,
+      psychScene,
+      lightScene
+  };
 
   private Controller controller;
   private GraphTransformer graphTransformer;
   private BasicGraphRenderer graphRenderer;
   private PGraphics transformedCanvas;
-  private boolean showUI = false;
-  private float t;
+  private boolean showUI = true;
+  private SyphonServer server;
 
-  public Algoplex2() {
-    Algoplex2.instance = this;
+  private Integrators integrators = new Integrators();
+  private Integrator perlinT = integrators.create();
+  private Integrator waveTX = integrators.create();
+  private Integrator waveTY = integrators.create();
+
+  public AlgoplexPerformer() {
+    AlgoplexPerformer.instance = this;
   }
 
   public void settings() {
-    fullScreen(2);
-    size(1920, 1080, P3D);
+    //fullScreen(2);
+    size(WIDTH, HEIGHT, P3D);
     PJOGL.profile = 1;
   }
 
   public final void setup() {
+    server = new SyphonServer(this, this.getClass().getName());
+
     controller = new Controller();
 
-    loadGraphs();
+    int cols = WIDTH / SPACING + 2;
+    int rows = HEIGHT / SPACING + 2;
 
-    if (graphTransformer == null) {
-      graphTransformer = createGrid(ROWS, COLS, SPACING);
-    }
+    graphTransformer = createGrid(rows, cols, SPACING);
 
     graphRenderer = new BasicGraphRenderer(1);
     graphRenderer.setColor(0xFFFFFF00);
 
-    ContourScene contourScene = new ContourScene();
-    addGridScene(contourScene);
+    addGridScenes(gridScenes);
 
-    PyramidScene pyramidScene = new PyramidScene();
-    addGridScene(pyramidScene);
+    transformedCanvas = createGraphics(cols * SPACING, rows * SPACING, P3D);
+    canvas = createGraphics(WIDTH, HEIGHT, P3D);
 
-    ParticleScene particleScene = new ParticleScene();
-    addGridScene(particleScene);
+    switchScene(0);
 
-    PsychScene psychScene = new PsychScene();
-    addGridScene(psychScene);
-
-    BasicGridFitScene basicGridFitScene = new BasicGridFitScene();
-    addGridScene(basicGridFitScene);
-
-    LightScene lightScene = new LightScene();
-    addGridScene(lightScene);
-
-    transformedCanvas = createGraphics(COLS * SPACING, ROWS * SPACING, P3D);
-
-    super.setup();
+    new OscSceneModulator(this, 9999);
   }
 
   @Override
   public void draw() {
-    t += 0.01f;
+    this.canvas.beginDraw();
     this.canvas.background(0);
+    this.canvas.translate(-SPACING / 2, -SPACING / 2);
 
     if (currentScene != null) {
       GridScene gridScene = (GridScene) currentScene;
@@ -83,8 +98,6 @@ public class Algoplex2 extends SceneApplet {
         currentScene.draw(this.canvas);
       }
     }
-
-    //graphRenderer.render(getGraphics(), grid);
 
     this.transformedCanvas.beginDraw();
     this.transformedCanvas.background(0);
@@ -102,11 +115,48 @@ public class Algoplex2 extends SceneApplet {
       graphTransformer.drawUI(this.canvas);
     }
 
-//    for (Node n : graphTransformer.getPostTransformGrid().getNodes()) {
-//      PVector original = graphTransformer.getPreNode(n).position;
-//      n.position.x = (float) (original.x + (noise(original.x, 0, t) - 0.5) * controller.getValue(0) * 1000);
-//      n.position.y = (float) (original.y + (noise(original.y, 1, t) - 0.5) * controller.getValue(0) * 1000);
-//    }
+    updateGlobalParameters();
+
+    this.canvas.endDraw();
+
+    // getGraphics().image(canvas, 0, 0, WIDTH, HEIGHT);
+    server.sendImage(canvas);
+  }
+
+  private void updateGlobalParameters() {
+    integrators.update();
+
+    float jitterAmount = controller.getValue(16) * 2000;
+    perlinT.setSpeed(controller.getValue(17) / 10f);
+    float xScale = controller.getValue(18) / 100f;
+    float yScale = controller.getValue(19) / 100f;
+
+    float xWaveAmount = controller.getValue(20) * 1000;
+    float yWaveAmount = controller.getValue(21) * 1000;
+    waveTX.setSpeed(controller.getValue(22) / 10);
+    waveTY.setSpeed(controller.getValue(23) / 10);
+
+    for (Node n : graphTransformer.getPostTransformGrid().getNodes()) {
+      PVector original = graphTransformer.getPreNode(n).position;
+
+      float noiseX = (float) ((noise(
+                original.x * xScale,
+                original.y * yScale,
+                perlinT.getValue()) - 0.5) * jitterAmount);
+      float noiseY = (float) ((noise(
+          original.x * xScale,
+          original.y * yScale,
+          perlinT.getValue() + 100) - 0.5) * jitterAmount);
+
+      float xTheta = waveTX.getValue() + original.x;
+      float yTheta = waveTY.getValue() + original.y;
+
+      float circleX = cos(xTheta) * xWaveAmount + cos(yTheta) * yWaveAmount;
+      float circleY = sin(xTheta) * xWaveAmount + sin(yTheta) * yWaveAmount;
+
+      n.position.x = original.x + noiseX + circleX;
+      n.position.y = original.y + noiseY + circleY;
+    }
   }
 
   @Override
@@ -120,20 +170,10 @@ public class Algoplex2 extends SceneApplet {
     }
   }
 
-  @Override
-  public void mousePressed() {
-    graphTransformer.mouseDown(mouseX, mouseY);
-  }
-
-  @Override
-  public void mouseReleased() {
-    graphTransformer.mouseUp(mouseX, mouseY);
-    saveGraphs();
-  }
-
-  @Override
-  public void mouseDragged() {
-    graphTransformer.mouseDragged(mouseX, mouseY);
+  public void addGridScenes(GridScene[] gridScenes) {
+    for (GridScene scene : gridScenes) {
+      addGridScene(scene);
+    }
   }
 
   public void addGridScene(GridScene gridScene) {
@@ -147,36 +187,6 @@ public class Algoplex2 extends SceneApplet {
 
     addScene(gridScene);
   }
-
-  private void saveGraphs() {
-    try {
-      FileOutputStream fileOut =
-          new FileOutputStream("algoplex2.ser");
-      ObjectOutputStream out = new ObjectOutputStream(fileOut);
-      out.writeObject(graphTransformer);
-      out.close();
-      fileOut.close();
-    } catch (IOException i) {
-      i.printStackTrace();
-    }
-  }
-
-  private void loadGraphs() {
-    try {
-      FileInputStream fileIn = new FileInputStream("algoplex2.ser");
-      ObjectInputStream in = new ObjectInputStream(fileIn);
-      graphTransformer = (GraphTransformer) in.readObject();
-      in.close();
-      fileIn.close();
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
-    } catch (IOException i) {
-      i.printStackTrace();
-    } catch (ClassNotFoundException c) {
-      c.printStackTrace();
-    }
-  }
-
 
   private GraphTransformer createGrid(int rows, int cols, float spacing) {
     rows *= 2;

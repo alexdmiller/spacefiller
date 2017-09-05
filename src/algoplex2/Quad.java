@@ -105,4 +105,12 @@ public class Quad implements Serializable {
   public String toString() {
     return topLeft + ", " + topRight + ", " + bottomRight + ", " + bottomLeft;
   }
+
+  public float getWidth() {
+    return topRight.position.x - topLeft.position.x;
+  }
+
+  public float getHeight() {
+    return topRight.position.x - topLeft.position.x;
+  }
 }

@@ -89,6 +89,10 @@ public class GraphTransformer implements Serializable {
     return postTransformGrid;
   }
 
+  public Node getPreNode(Node postNode) {
+    return postToPre.get(postNode);
+  }
+
   public void mouseUp(float mouseX, float mouseY) {
     selectedQuadPoint = null;
     selectedNode = null;
@@ -154,6 +158,8 @@ public class GraphTransformer implements Serializable {
 
   private void makeGraphCopy() {
     preTransformGrid = new Grid();
+
+    preTransformGrid.setCellSize(postTransformGrid.getCellSize());
 
     for (Node postNode : postTransformGrid.getNodes()) {
       Node preNode = preTransformGrid.createNode(postNode.position.x, postNode.position.y);

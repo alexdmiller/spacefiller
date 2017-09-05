@@ -1,7 +1,6 @@
 package graph;
 
-import color.ColorProvider;
-import lusio.Lusio;
+import common.color.ColorProvider;
 import processing.core.PGraphics;
 import processing.core.PVector;
 
