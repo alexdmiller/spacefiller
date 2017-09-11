@@ -1,7 +1,7 @@
 package sketches;
 
-import modulation.Mod;
-import modulation.OscSceneModulator;
+import spacefiller.remote.Mod;
+import spacefiller.remote.OscRemoteControl;
 import processing.core.PGraphics;
 
 import java.util.ArrayList;
@@ -78,7 +78,7 @@ public class Contours extends Scene {
 
 	@Override
 	public void doSetup() {
-		new OscSceneModulator(this, 12001);
+		new OscRemoteControl(this, 12001);
 	}
 
 	@Override

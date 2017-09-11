@@ -13,6 +13,16 @@ public class GridScene extends Scene {
   protected Controller controller;
   private boolean transformed = true;
 
+  public void preSetup(Grid grid) {
+    setGrid(grid);
+  }
+
+  @Override
+  public void teardown() {
+    // Don't clear components
+  }
+
+
   public void setGrid(Grid grid) {
     this.grid = grid;
   }

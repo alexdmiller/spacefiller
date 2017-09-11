@@ -6,7 +6,7 @@ import common.*;
 import javafx.util.Pair;
 import particles.Bounds;
 import processing.core.PVector;
-import modulation.Mod;
+import spacefiller.remote.Mod;
 
 import java.io.Serializable;
 import java.util.*;

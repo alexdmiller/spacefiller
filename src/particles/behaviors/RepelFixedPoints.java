@@ -1,5 +1,6 @@
 package particles.behaviors;
 
+import spacefiller.remote.Mod;
 import particles.Particle;
 import processing.core.PVector;
 
@@ -12,8 +13,12 @@ import processing.core.PVector;
 import java.util.List;
 
 public class RepelFixedPoints extends ParticleBehavior {
-  private float repelThreshold;
-  private float repelStrength;
+  @Mod(min = 0, max = 200)
+  public float repelThreshold;
+
+  @Mod(min = 0, max = 10)
+  public float repelStrength;
+
   private List<PVector> fixedPoints;
 
   public RepelFixedPoints (float repelThreshold, float repelStrength) {

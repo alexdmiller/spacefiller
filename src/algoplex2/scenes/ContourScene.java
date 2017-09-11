@@ -1,11 +1,12 @@
 package algoplex2.scenes;
 
 import algoplex2.Algoplex2;
+import algoplex2.Grid;
 import common.color.ConstantColorProvider;
 import common.components.ContourComponent;
 import graph.*;
 import lusio.Lusio;
-import modulation.Mod;
+import spacefiller.remote.Mod;
 import particles.Bounds;
 import processing.core.PGraphics;
 import toxi.geom.Quaternion;
@@ -18,8 +19,11 @@ public class ContourScene extends GridScene {
   @Mod
   public float stripes;
 
+
   @Override
-  public void setup() {
+  public void preSetup(Grid grid) {
+    super.preSetup(grid);
+
     contourComponent = new ContourComponent(
         new Bounds(grid.getHeight() + grid.getCellSize() * 4, grid.getWidth() + grid.getCellSize()));
     contourComponent.setColor(0xFFFFFFFF);

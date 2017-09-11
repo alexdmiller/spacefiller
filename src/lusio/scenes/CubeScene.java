@@ -36,6 +36,7 @@ public class CubeScene extends LusioScene {
     }
 
     for (int i = 0; i < history.length; i++) {
+      graphics.noFill();
       graphics.stroke(Lusio.instance.getColor(i));
       graphics.strokeWeight(5);
       graphics.pushMatrix();

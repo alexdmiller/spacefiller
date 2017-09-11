@@ -2,7 +2,7 @@ package boids.behaviors;
 
 import boids.Boid;
 import boids.Flock;
-import modulation.Mod;
+import spacefiller.remote.Mod;
 import processing.core.PVector;
 
 import java.util.List;

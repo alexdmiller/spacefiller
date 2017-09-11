@@ -4,7 +4,7 @@ import boids.Boid;
 import boids.BoidUtils;
 import javafx.util.Pair;
 import processing.core.PVector;
-import modulation.Mod;
+import spacefiller.remote.Mod;
 
 import java.util.List;
 

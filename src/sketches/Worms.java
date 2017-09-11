@@ -4,8 +4,8 @@ import boids.*;
 import boids.behaviors.*;
 import boids.renderers.*;
 import boids.tools.*;
-import modulation.Mod;
-import modulation.OscSceneModulator;
+import spacefiller.remote.Mod;
+import spacefiller.remote.OscRemoteControl;
 import processing.core.PGraphics;
 
 import java.io.*;
@@ -107,7 +107,7 @@ public class Worms extends Scene implements EntityEventListener {
 
 		loadSave();
 
-		new OscSceneModulator(this, 12002);
+		new OscRemoteControl(this, 12002);
 	}
 
 	@Mod(min = 0, max = 9)

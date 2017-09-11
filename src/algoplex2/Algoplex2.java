@@ -6,7 +6,9 @@ import graph.Node;
 import processing.core.PGraphics;
 import processing.core.PVector;
 import processing.opengl.PJOGL;
+import scene.Scene;
 import scene.SceneApplet;
+import spacefiller.remote.MidiRemoteControl;
 
 import java.io.*;
 
@@ -20,7 +22,7 @@ public class Algoplex2 extends SceneApplet {
     main("algoplex2.Algoplex2");
   }
 
-  private Controller controller;
+  private MidiRemoteControl remote;
   private GraphTransformer graphTransformer;
   private BasicGraphRenderer graphRenderer;
   private PGraphics transformedCanvas;
@@ -38,8 +40,6 @@ public class Algoplex2 extends SceneApplet {
   }
 
   public final void setup() {
-    controller = new Controller();
-
     loadGraphs();
 
     if (graphTransformer == null) {
@@ -49,14 +49,17 @@ public class Algoplex2 extends SceneApplet {
     graphRenderer = new BasicGraphRenderer(1);
     graphRenderer.setColor(0xFFFFFF00);
 
-    ContourScene contourScene = new ContourScene();
-    addGridScene(contourScene);
+    LightScene lightScene = new LightScene();
+    addGridScene(lightScene);
+
+//    ContourScene contourScene = new ContourScene();
+//    addGridScene(contourScene);
 
     PyramidScene pyramidScene = new PyramidScene();
     addGridScene(pyramidScene);
 
-    ParticleScene particleScene = new ParticleScene();
-    addGridScene(particleScene);
+//    ParticleScene particleScene = new ParticleScene();
+//    addGridScene(particleScene);
 
     PsychScene psychScene = new PsychScene();
     addGridScene(psychScene);
@@ -64,12 +67,24 @@ public class Algoplex2 extends SceneApplet {
     BasicGridFitScene basicGridFitScene = new BasicGridFitScene();
     addGridScene(basicGridFitScene);
 
-    LightScene lightScene = new LightScene();
-    addGridScene(lightScene);
-
     transformedCanvas = createGraphics(COLS * SPACING, ROWS * SPACING, P3D);
 
+    setCanvas(getGraphics());
+    setupRemote();
+
     super.setup();
+  }
+
+  private void setupRemote() {
+    remote = new MidiRemoteControl("Launch Control XL 8");
+    for (Scene scene : scenes) {
+      remote.register(scene);
+    }
+
+    remote.patchMidi(13, "/LightScene/mod1");
+
+    System.out.println(remote.getAddresses());
+
   }
 
   @Override
@@ -142,8 +157,6 @@ public class Algoplex2 extends SceneApplet {
     } else {
       gridScene.setGrid(graphTransformer.getPostTransformGrid());
     }
-
-    gridScene.setController(controller);
 
     addScene(gridScene);
   }

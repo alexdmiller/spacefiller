@@ -1,6 +1,6 @@
 package common.components;
 
-import modulation.Mod;
+import spacefiller.remote.Mod;
 import particles.Bounds;
 import processing.core.PGraphics;
 import processing.core.PVector;

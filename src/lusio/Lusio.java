@@ -69,18 +69,18 @@ public class Lusio extends SceneApplet implements ColorProvider {
     setCanvas(canvas);
 
     LusioScene[] lusioScenes = new LusioScene[] {
-        new NagyLineScene(),
         new ThreeDeeFlockScene(),
-        new NagyLineScene(),
         new FlockScene(),
         new FancyParticles(),
-        new EdgeScene(),
         new ContourScene(),
         new NoiseSpace(),
         new NoiseCircle(),
         new FluidScene(),
         new NestedCubeScene(),
-        new CubeScene()
+        new CubeScene(),
+        new NagyLineScene(),
+        new EdgeScene()
+
     };
 
     for (int i = 0; i < lusioScenes.length; i++) {
@@ -125,8 +125,6 @@ public class Lusio extends SceneApplet implements ColorProvider {
   public final void draw() {
     canvas.beginDraw();
 
-    super.draw();
-
     if (lightcube.getMode() == 1) {
       if (!modeSwitchFlag) {
         modeSwitchFlag = true;
@@ -140,6 +138,9 @@ public class Lusio extends SceneApplet implements ColorProvider {
       modeSwitchFlag = false;
     }
 
+    canvas.ortho();
+    super.draw();
+
     lightcube.update();
 
     canvas.noFill();
@@ -151,7 +152,6 @@ public class Lusio extends SceneApplet implements ColorProvider {
       canvas.line(selectedNode.position.x, selectedNode.position.y, mouseX, mouseY);
     }
 
-    canvas.ortho();
 
     if (currentScene != null) {
       if (lightcube.readTransitionScene()) {
@@ -173,7 +173,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
       }
     }
 
-    // lightcube.drawDebug(canvas, 200, 100);
+    lightcube.drawDebug(canvas, 200, 100);
 
     image(canvas, 0, 0);
     canvas.endDraw();

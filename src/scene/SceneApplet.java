@@ -2,6 +2,7 @@ package scene;
 
 import com.google.common.collect.Lists;
 import lusio.scenes.LusioScene;
+import spacefiller.remote.Mod;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 import processing.opengl.PJOGL;
@@ -29,7 +30,6 @@ public class SceneApplet extends PApplet {
   }
 
   public void setup() {
-    setCanvas(getGraphics());
     switchScene(0);
   }
 
@@ -55,6 +55,7 @@ public class SceneApplet extends PApplet {
     }
   }
 
+  @Mod
   public final void gotoNextScene() {
     switchScene((currentSceneIndex + 1) % scenes.size());
   }

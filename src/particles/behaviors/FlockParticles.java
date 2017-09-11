@@ -1,6 +1,7 @@
 package particles.behaviors;
 
 import boids.Flock;
+import spacefiller.remote.Mod;
 import particles.Particle;
 import particles.ParticleUtils;
 import processing.core.PVector;
@@ -8,16 +9,28 @@ import processing.core.PVector;
 import java.util.List;
 
 public class FlockParticles extends ParticleBehavior {
-  private float separationWeight = 1;
-  private float alignmentWeight = 1;
-  private float cohesionWeight = 1;
+  @Mod
+  public float separationWeight = 1;
 
-  private float desiredSeparation = 50;
-  private float alignmentThreshold = 100;
-  private float cohesionThreshold = 100;
+  @Mod
+  public float alignmentWeight = 1;
+
+  @Mod
+  public float cohesionWeight = 1;
+
+  @Mod(min = 0, max = 300)
+  public float desiredSeparation = 50;
+
+  @Mod(min = 0, max = 300)
+  public float alignmentThreshold = 100;
+
+  @Mod(min = 0, max = 300)
+  public float cohesionThreshold = 100;
 
   private float maxForce = 1;
-  private float maxSpeed = 10;
+
+  @Mod(min = 0, max = 50)
+  public float maxSpeed = 10;
 
   public FlockParticles(
       float separationWeight,

@@ -1,14 +1,22 @@
 package graph;
 
+import spacefiller.remote.Mod;
 import processing.core.PGraphics;
 import processing.core.PVector;
 
 public class SinGraphRenderer implements GraphRenderer {
+
+  @Mod(min = -0.5f, max = 0.5f)
+  public float speed = 0.1f;
+
+  @Mod(min = 0, max = 10)
+  public float size = 5;
+
+  @Mod(min = 0, max = 20)
+  public float freq = 10;
+
   private float time;
-  private float speed = 0.1f;
   private float spacing = 5;
-  private float size = 5;
-  private float freq = 10;
   private float thickness = 3;
   private int color;
 

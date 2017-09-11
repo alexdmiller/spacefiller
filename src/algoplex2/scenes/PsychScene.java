@@ -4,6 +4,7 @@ import algoplex2.Algoplex2;
 import algoplex2.Grid;
 import algoplex2.Quad;
 import graph.Node;
+import spacefiller.remote.Mod;
 import processing.core.PConstants;
 import processing.core.PGraphics;
 import processing.core.PVector;
@@ -13,7 +14,15 @@ import processing.core.PVector;
  */
 public class PsychScene extends GridScene {
   private float t;
-  private static int NUM_SQUARES = 5;
+
+  @Mod(min = 0, max = 20)
+  public float lineThickness;
+
+  @Mod(min = 0, max = 20)
+  public int numSquares = 5;
+
+  @Mod(min = -0.05f, max = 0.05f)
+  public float squareSpeed = 0;
 
   public PsychScene() {
     fitToGrid();
@@ -21,7 +30,11 @@ public class PsychScene extends GridScene {
 
   @Override
   public void draw(PGraphics graphics) {
-    t += 0.01f;
+    numSquares = (int) (controller.getValue(0) * 10);
+    squareSpeed = controller.getValue(1) * 10;
+    lineThickness = controller.getValue(2) * 4;
+
+    t += squareSpeed;
     graphics.noStroke();
 //
 //
@@ -39,17 +52,16 @@ public class PsychScene extends GridScene {
     graphics.noFill();
     graphics.stroke(255);
     graphics.rectMode(PConstants.CENTER);
-    graphics.strokeWeight(5);
+    graphics.strokeWeight(lineThickness);
 
     float s = t * 50;
     for (Quad square : grid.getSquares()) {
       float totalWidth = (square.getTopRight().position.x - square.getTopLeft().position.x);
-      float totalHeight = square.getBottomLeft().position.y - square.getTopLeft().position.y;
-      for (int j = 0; j < NUM_SQUARES; j++) {
+      for (int j = 0; j < numSquares; j++) {
         graphics.stroke(255);
         graphics.pushMatrix();
         graphics.translate(square.getCenter().position.x, square.getCenter().position.y);
-        graphics.rect(0, 0, ((((float) j / NUM_SQUARES) * totalWidth) + s) % totalWidth, ((((float) j / NUM_SQUARES) * totalWidth) + s) % totalWidth);
+        graphics.rect(0, 0, ((((float) j / numSquares) * totalWidth) + s) % totalWidth, ((((float) j / numSquares) * totalWidth) + s) % totalWidth);
         graphics.popMatrix();
       }
     }

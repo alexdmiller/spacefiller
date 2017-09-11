@@ -1,6 +1,7 @@
 package particles.behaviors;
 
 import common.VectorField;
+import spacefiller.remote.Mod;
 import particles.Particle;
 import processing.core.PVector;
 
@@ -14,9 +15,15 @@ import java.util.List;
 
 public class FlowParticles extends ParticleBehavior {
   private VectorField field;
-  private float weight;
-  private float maxForce;
-  private float t;
+
+  @Mod
+  public float weight;
+
+  @Mod(min = 0, max = 10)
+  public float maxForce;
+
+  @Mod(min = 0, max = 100)
+  public float t;
 
   public FlowParticles(VectorField field) {
     this.field = field;

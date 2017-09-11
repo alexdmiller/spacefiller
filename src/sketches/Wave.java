@@ -1,7 +1,7 @@
 package sketches;
 
-import modulation.Mod;
-import modulation.OscSceneModulator;
+import spacefiller.remote.Mod;
+import spacefiller.remote.OscRemoteControl;
 import processing.core.PGraphics;
 
 public class Wave extends Scene {
@@ -24,7 +24,7 @@ public class Wave extends Scene {
 
 	@Override
 	public void doSetup() {
-		new OscSceneModulator(this, 12000);
+		new OscRemoteControl(this, 12000);
 	}
 
 	@Mod(address = "/Velocity1")

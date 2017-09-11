@@ -1,8 +1,8 @@
 package sketches;
 
 import particles.Particle;
-import modulation.Mod;
-import modulation.OscSceneModulator;
+import spacefiller.remote.Mod;
+import spacefiller.remote.OscRemoteControl;
 import processing.core.PGraphics;
 import processing.core.PVector;
 import waves.LineRenderer;
@@ -130,7 +130,7 @@ public class UncertainWave extends Scene {
 				oceanRenderer
 		};
 
-		new OscSceneModulator(this, 12000);
+		new OscRemoteControl(this, 12000);
 	}
 
 	private float waveFunction(float x, float y, float t) {

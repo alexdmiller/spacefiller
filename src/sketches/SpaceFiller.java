@@ -1,7 +1,7 @@
 package sketches;
 
-import modulation.Mod;
-import modulation.OscSceneModulator;
+import spacefiller.remote.Mod;
+import spacefiller.remote.OscRemoteControl;
 import processing.core.PGraphics;
 
 public class SpaceFiller extends Scene {
@@ -50,7 +50,7 @@ public class SpaceFiller extends Scene {
 
 	@Override
 	public void doSetup() {
-		new OscSceneModulator(this, 8888);
+		new OscRemoteControl(this, 8888);
 	}
 
 	@Override

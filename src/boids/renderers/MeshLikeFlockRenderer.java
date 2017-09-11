@@ -3,7 +3,7 @@ package boids.renderers;
 import boids.Boid;
 import boids.Flock;
 import megamu.mesh.Delaunay;
-import modulation.Mod;
+import spacefiller.remote.Mod;
 import processing.core.PGraphics;
 import processing.core.PVector;
 

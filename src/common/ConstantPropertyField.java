@@ -1,6 +1,6 @@
 package common;
 
-import modulation.Mod;
+import spacefiller.remote.Mod;
 
 public class ConstantPropertyField implements ScalarField {
 	public static ScalarField with(float constant) {

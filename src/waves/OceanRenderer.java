@@ -1,7 +1,7 @@
 package waves;
 
 import particles.Particle;
-import modulation.Mod;
+import spacefiller.remote.Mod;
 import processing.core.PGraphics;
 import sketches.UncertainWave;
 

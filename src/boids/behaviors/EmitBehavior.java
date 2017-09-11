@@ -2,7 +2,7 @@ package boids.behaviors;
 
 import boids.Boid;
 import boids.emitter.Emitter;
-import modulation.Mod;
+import spacefiller.remote.Mod;
 
 import java.util.ArrayList;
 import java.util.List;

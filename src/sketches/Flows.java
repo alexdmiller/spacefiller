@@ -1,7 +1,7 @@
 package sketches;
 
-import modulation.Mod;
-import modulation.OscSceneModulator;
+import spacefiller.remote.Mod;
+import spacefiller.remote.OscRemoteControl;
 import processing.core.PGraphics;
 import processing.core.PVector;
 
@@ -56,7 +56,7 @@ public class Flows extends Scene {
 
 	@Override
 	public void doSetup() {
-		new OscSceneModulator(this, 8888);
+		new OscRemoteControl(this, 12005);
 	}
 
 	@Override

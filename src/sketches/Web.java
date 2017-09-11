@@ -1,8 +1,8 @@
 package sketches;
 
 import particles.Particle;
-import modulation.Mod;
-import modulation.OscSceneModulator;
+import spacefiller.remote.Mod;
+import spacefiller.remote.OscRemoteControl;
 import processing.core.PGraphics;
 import processing.core.PVector;
 
@@ -59,7 +59,7 @@ public class Web extends Scene {
 
 	@Override
 	public void doSetup() {
-		new OscSceneModulator(this, 12003);
+		new OscRemoteControl(this, 12003);
 		particles = new ArrayList<>();
 
 		for (int i = 0; i < NUM_PARTICLES; i++) {

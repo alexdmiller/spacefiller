@@ -1,10 +1,9 @@
 package common;
 
 import algoplex2.Algoplex2;
-import modulation.Mod;
+import spacefiller.remote.Mod;
 import particles.Bounds;
 import processing.core.PVector;
-import sketches.Scene;
 
 public class StoredVectorField implements VectorField {
 	@Mod(min = 0, max = 0.1f)

@@ -41,5 +41,14 @@
     <orderEntry type="library" name="controlP5" level="project" />
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="keystone" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/Processing_Remote_Control_jar/Processing Remote Control.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

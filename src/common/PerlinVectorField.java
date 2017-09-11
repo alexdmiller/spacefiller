@@ -17,7 +17,7 @@ public class PerlinVectorField implements VectorField {
   public PVector at(float x, float y, float z, float t) {
     x = (float) Math.floor(x / cellSize) * cellSize;
     y = (float) Math.floor(y / cellSize) * cellSize;
-    float theta = (float) (perlin.noise(x, y, t) * 4 * Math.PI);
+    float theta = (float) (perlin.noise(x, y, t) * 2 * Math.PI * 4);
     PVector f = new PVector(
         (float) Math.cos(theta) * 40,
         (float) Math.sin(theta) * 40);
