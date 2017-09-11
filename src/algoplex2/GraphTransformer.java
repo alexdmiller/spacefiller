@@ -160,6 +160,8 @@ public class GraphTransformer implements Serializable {
     preTransformGrid = new Grid();
 
     preTransformGrid.setCellSize(postTransformGrid.getCellSize());
+    preTransformGrid.setColumns(postTransformGrid.getColumns());
+    preTransformGrid.setRows(postTransformGrid.getRows());
 
     for (Node postNode : postTransformGrid.getNodes()) {
       Node preNode = preTransformGrid.createNode(postNode.position.x, postNode.position.y);

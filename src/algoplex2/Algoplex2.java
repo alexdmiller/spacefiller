@@ -2,9 +2,7 @@ package algoplex2;
 
 import algoplex2.scenes.*;
 import graph.BasicGraphRenderer;
-import graph.Node;
 import processing.core.PGraphics;
-import processing.core.PVector;
 import processing.opengl.PJOGL;
 import scene.Scene;
 import scene.SceneApplet;
@@ -14,8 +12,8 @@ import java.io.*;
 
 public class Algoplex2 extends SceneApplet {
   public static Algoplex2 instance;
-  private static int ROWS = 4;
-  private static int COLS = 6;
+  private static int ROWS = 5;
+  private static int COLS = 8;
   private static int SPACING = 150;
 
   public static void main(String[] args) {
@@ -34,7 +32,7 @@ public class Algoplex2 extends SceneApplet {
   }
 
   public void settings() {
-    fullScreen(2);
+    //fullScreen(2);
     size(1920, 1080, P3D);
     PJOGL.profile = 1;
   }
@@ -43,14 +41,14 @@ public class Algoplex2 extends SceneApplet {
     loadGraphs();
 
     if (graphTransformer == null) {
-      graphTransformer = createGrid(ROWS, COLS, SPACING);
+      graphTransformer = GridUtils.createGrid(ROWS, COLS, SPACING);
     }
 
     graphRenderer = new BasicGraphRenderer(1);
     graphRenderer.setColor(0xFFFFFF00);
 
-    LightScene lightScene = new LightScene();
-    addGridScene(lightScene);
+    TriangleScene triangleScene = new TriangleScene();
+    addGridScene(triangleScene);
 
 //    ContourScene contourScene = new ContourScene();
 //    addGridScene(contourScene);
@@ -81,14 +79,17 @@ public class Algoplex2 extends SceneApplet {
       remote.register(scene);
     }
 
-    remote.patchMidi(13, "/LightScene/mod1");
-
-    System.out.println(remote.getAddresses());
-
+    remote.controller(13).smooth(0.2f).patchTo(remote.target("/TriangleScene/xMod"));
+    remote.controller(14).smooth(0.2f).patchTo(remote.target("/TriangleScene/yMod"));
+    remote.controller(15).smooth(0.1f).patchTo(remote.target("/TriangleScene/triangleMod"));
+    remote.controller(16).smooth(0.05f).patchTo(remote.target("/TriangleScene/shiftAmount"));
+    remote.controller(17).patchTo(remote.target("/TriangleScene/speed"));
   }
 
   @Override
   public void draw() {
+    remote.update();
+
     t += 0.01f;
     this.canvas.background(0);
 
@@ -188,97 +189,5 @@ public class Algoplex2 extends SceneApplet {
     } catch (ClassNotFoundException c) {
       c.printStackTrace();
     }
-  }
-
-
-  private GraphTransformer createGrid(int rows, int cols, float spacing) {
-    rows *= 2;
-
-    rows += 1;
-    cols += 1;
-
-    Node[][] nodes = new Node[rows][cols];
-    Grid grid = new Grid();
-
-    grid.setCellSize(spacing);
-
-    for (int row = 0; row < rows; row += 2) {
-      float yPos = row/2 * spacing;
-      for (int col = 0; col < cols; col++) {
-        nodes[row][col] = grid.createNode(col * spacing, yPos);
-      }
-
-      if (row < rows - 2) {
-        for (int col = 0; col < cols - 1; col++) {
-          nodes[row + 1][col] = grid.createNode(col * spacing + spacing / 2, yPos + spacing / 2);
-        }
-      }
-    }
-
-    grid.setBoundingQuad(new Quad(
-        nodes[0][0].copy(),
-        nodes[0][cols - 1].copy(),
-        nodes[rows - 1][0].copy(),
-        nodes[rows - 1][cols - 1].copy()));
-
-    for (int row = 0; row < rows; row += 2) {
-      for (int col = 0; col < cols; col++) {
-        // top left to top right
-        if (col < cols - 1) {
-          grid.createEdge(nodes[row][col], nodes[row][col + 1]);
-        }
-
-        // top left to bottom left
-        if (row < rows - 2) {
-          grid.createEdge(nodes[row][col], nodes[row + 2][col]);
-        }
-
-        if (row < nodes.length - 1 && nodes[row + 1][col] != null) {
-          // middle to top left
-          grid.createEdge(nodes[row + 1][col], nodes[row][col]);
-
-          // middle to top right
-          if (col < cols - 1) {
-            grid.createEdge(nodes[row + 1][col], nodes[row][col + 1]);
-          }
-
-          // middle to bottom left
-          if (row < rows - 2) {
-            grid.createEdge(nodes[row + 1][col], nodes[row + 2][col]);
-          }
-
-          // middle to bottom right
-          if (row < rows - 2 && col < cols - 1) {
-            grid.createEdge(nodes[row + 1][col], nodes[row + 2][col + 1]);
-          }
-        }
-
-        if (col < cols - 1 && row < nodes.length - 1 && nodes[row + 1][col] != null) {
-          // top triangle
-          grid.addTriangle(nodes[row][col], nodes[row][col + 1], nodes[row + 1][col]);
-        }
-
-        if (col < cols - 1 && row < rows - 2) {
-          // bottom triangle
-          grid.addTriangle(nodes[row + 2][col], nodes[row + 1][col], nodes[row + 2][col + 1]);
-        }
-
-        if (col < cols - 1 && row < rows - 2 && nodes[row + 1][col] != null) {
-          // right triangle
-          grid.addTriangle(nodes[row][col + 1], nodes[row + 2][col + 1], nodes[row + 1][col]);
-        }
-
-        if (row < rows - 2 && nodes[row + 1][col] != null) {
-          // left triangle
-          grid.addTriangle(nodes[row][col], nodes[row + 2][col], nodes[row + 1][col]);
-        }
-
-        if (row < rows - 2 && col < cols - 1) {
-          grid.addSquare(nodes[row][col], nodes[row][col + 1], nodes[row + 2][col + 1], nodes[row + 2][col], nodes[row + 1][col]);
-        }
-      }
-    }
-
-    return new GraphTransformer(grid);
   }
 }

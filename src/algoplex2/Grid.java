@@ -14,6 +14,8 @@ public class Grid extends Graph {
   private List<Node[]> triangles;
   private List<Quad> squares;
   private float cellSize;
+  private int columns;
+  private int rows;
 
   private Quad boundingQuad;
 
@@ -58,6 +60,22 @@ public class Grid extends Graph {
 
   public float getHeight() {
     return boundingQuad.getBottomLeft().position.y - boundingQuad.getTopLeft().position.y;
+  }
+
+  public int getColumns() {
+    return columns;
+  }
+
+  public void setColumns(int columns) {
+    this.columns = columns;
+  }
+
+  public int getRows() {
+    return rows;
+  }
+
+  public void setRows(int rows) {
+    this.rows = rows;
   }
 
   public void setBoundingQuad(Quad boundingQuad) {

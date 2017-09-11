@@ -32,13 +32,13 @@ public class AlgoplexPerformer extends SceneApplet {
   public PsychScene psychScene = new PsychScene();
 
   @Mod
-  public LightScene lightScene = new LightScene();
+  public TriangleScene triangleScene = new TriangleScene();
 
   public GridScene[] gridScenes = new GridScene[] {
       contourScene,
       particleScene,
       // psychScene,
-      lightScene
+      triangleScene
   };
 
   private GraphTransformer graphTransformer;
@@ -107,7 +107,7 @@ public class AlgoplexPerformer extends SceneApplet {
     int cols = WIDTH / SPACING + 2;
     int rows = HEIGHT / SPACING + 2;
 
-    graphTransformer = createGrid(rows, cols, SPACING);
+    graphTransformer = GridUtils.createGrid(rows, cols, SPACING);
 
     //graphRenderer = new BasicGraphRenderer(1);
     graphRenderer = new SinGraphRenderer();
@@ -222,96 +222,5 @@ public class AlgoplexPerformer extends SceneApplet {
       gridScene.preSetup(graphTransformer.getPostTransformGrid());
     }
     addScene(gridScene);
-  }
-
-  private GraphTransformer createGrid(int rows, int cols, float spacing) {
-    rows *= 2;
-
-    rows += 1;
-    cols += 1;
-
-    Node[][] nodes = new Node[rows][cols];
-    Grid grid = new Grid();
-
-    grid.setCellSize(spacing);
-
-    for (int row = 0; row < rows; row += 2) {
-      float yPos = row/2 * spacing;
-      for (int col = 0; col < cols; col++) {
-        nodes[row][col] = grid.createNode(col * spacing, yPos);
-      }
-
-      if (row < rows - 2) {
-        for (int col = 0; col < cols - 1; col++) {
-          nodes[row + 1][col] = grid.createNode(col * spacing + spacing / 2, yPos + spacing / 2);
-        }
-      }
-    }
-
-    grid.setBoundingQuad(new Quad(
-        nodes[0][0].copy(),
-        nodes[0][cols - 1].copy(),
-        nodes[rows - 1][0].copy(),
-        nodes[rows - 1][cols - 1].copy()));
-
-    for (int row = 0; row < rows; row += 2) {
-      for (int col = 0; col < cols; col++) {
-        // top left to top right
-        if (col < cols - 1) {
-          grid.createEdge(nodes[row][col], nodes[row][col + 1]);
-        }
-
-        // top left to bottom left
-        if (row < rows - 2) {
-          grid.createEdge(nodes[row][col], nodes[row + 2][col]);
-        }
-
-        if (row < nodes.length - 1 && nodes[row + 1][col] != null) {
-          // middle to top left
-          grid.createEdge(nodes[row + 1][col], nodes[row][col]);
-
-          // middle to top right
-          if (col < cols - 1) {
-            grid.createEdge(nodes[row + 1][col], nodes[row][col + 1]);
-          }
-
-          // middle to bottom left
-          if (row < rows - 2) {
-            grid.createEdge(nodes[row + 1][col], nodes[row + 2][col]);
-          }
-
-          // middle to bottom right
-          if (row < rows - 2 && col < cols - 1) {
-            grid.createEdge(nodes[row + 1][col], nodes[row + 2][col + 1]);
-          }
-        }
-
-        if (col < cols - 1 && row < nodes.length - 1 && nodes[row + 1][col] != null) {
-          // top triangle
-          grid.addTriangle(nodes[row][col], nodes[row][col + 1], nodes[row + 1][col]);
-        }
-
-        if (col < cols - 1 && row < rows - 2) {
-          // bottom triangle
-          grid.addTriangle(nodes[row + 2][col], nodes[row + 1][col], nodes[row + 2][col + 1]);
-        }
-
-        if (col < cols - 1 && row < rows - 2 && nodes[row + 1][col] != null) {
-          // right triangle
-          grid.addTriangle(nodes[row][col + 1], nodes[row + 2][col + 1], nodes[row + 1][col]);
-        }
-
-        if (row < rows - 2 && nodes[row + 1][col] != null) {
-          // left triangle
-          grid.addTriangle(nodes[row][col], nodes[row + 2][col], nodes[row + 1][col]);
-        }
-
-        if (row < rows - 2 && col < cols - 1) {
-          grid.addSquare(nodes[row][col], nodes[row][col + 1], nodes[row + 2][col + 1], nodes[row + 2][col], nodes[row + 1][col]);
-        }
-      }
-    }
-
-    return new GraphTransformer(grid);
   }
 }

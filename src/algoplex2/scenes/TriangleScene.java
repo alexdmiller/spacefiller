@@ -1,0 +1,94 @@
+package algoplex2.scenes;
+
+import algoplex2.Quad;
+import graph.*;
+import spacefiller.remote.Mod;
+import processing.core.PGraphics;
+
+public class TriangleScene extends GridScene {
+  private float t = 0;
+
+  @Mod(min = 0, max = 20)
+  public float shiftAmount = 0;
+
+  @Mod(min = 0, max = 10)
+  public float yMod = 0;
+
+  @Mod(min = 0, max = 10)
+  public float xMod = 0;
+
+  @Mod(min = 0, max = 10)
+  public float triangleMod = 0;
+
+  @Mod(min = -0.1f, max = 0.1f)
+  public float speed = 0.01f;
+
+  @Override
+  public void draw(PGraphics graphics) {
+    t += speed;
+
+    float shift = t + shiftAmount;
+
+    graphics.noStroke();
+    graphics.noFill();
+    int quadIndex = 0;
+    for (Quad quad : grid.getSquares()) {
+      float row = quadIndex / grid.getColumns() - grid.getRows() / 2f;
+      float col = quadIndex % grid.getColumns() - grid.getColumns() / 2f;
+
+      int triangleIndex = 0;
+      for (Node[] triangle : quad.getTriangles()) {
+        float v = (float) ((Math.sin(
+            row * yMod + col * xMod +
+            triangleIndex / 4f * Math.PI * 2 * triangleMod
+            + shift) + 1) / 2);
+
+        graphics.fill(v * v * 255);
+        graphics.beginShape();
+        for (Node n : triangle) {
+          graphics.vertex(n.position.x, n.position.y);
+        }
+        graphics.endShape();
+
+        triangleIndex++;
+      }
+
+      quadIndex++;
+    }
+
+    super.draw(graphics);
+  }
+
+//  @Override
+//  public void draw(PGraphics graphics) {
+//    t += speed;
+//
+//    float shift = t + shiftAmount;
+//
+//    graphics.noStroke();
+//    graphics.noFill();
+//    int quadIndex = 0;
+//    for (Quad quad : grid.getSquares()) {
+//      int triangleIndex = 0;
+//      for (Node[] triangle : quad.getTriangles()) {
+//        float v = (float) ((Math.sin(
+//            quadIndex * squareMod +
+//                triangleIndex / 4f * Math.PI * 2 * triangleMod
+//                + shift) + 1) / 2);
+//
+//        graphics.fill(v * v * 255);
+//        graphics.beginShape();
+//        for (Node n : triangle) {
+//          graphics.vertex(n.position.x, n.position.y);
+//        }
+//        graphics.endShape();
+//
+//        triangleIndex++;
+//      }
+//
+//      quadIndex++;
+//    }
+//
+//    super.draw(graphics);
+//  }
+}
