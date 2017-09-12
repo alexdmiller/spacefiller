@@ -32,16 +32,17 @@ public class ContourScene extends GridScene {
     contourComponent.setCellSize(grid.getCellSize() * 2);
     contourComponent.setNoiseScale(0.5f);
     contourComponent.setLineSize(3);
-    contourComponent.setNoiseAmplitude(1000);
+    contourComponent.setNoiseAmplitude(5000);
     contourComponent.setUpdateSpeed(0.001f);
-    contourComponent.setHeightIncrements(10);
+    contourComponent.setHeightIncrements(2);
+
     addComponent(contourComponent);
   }
 
   @Override
   public void draw(PGraphics graphics) {
     graphics.ortho();
-    contourComponent.setColor((int) (stripes * 0xFFFFFFFF));
+//    contourComponent.setColor(0xffffffff);
 //    contourComponent.setNoiseAmplitude(controller.getValue(0) * 5000);
 //    contourComponent.setNoiseScale(controller.getValue(1) * 10 + 0.01f);
 //    contourComponent.setUpdateSpeed(controller.getValue(2) / 10f);

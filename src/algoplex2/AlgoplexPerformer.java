@@ -13,6 +13,7 @@ import processing.core.PGraphics;
 import processing.core.PVector;
 import processing.opengl.PJOGL;
 import scene.SceneApplet;
+import spacefiller.remote.VDMXWriter;
 
 public class AlgoplexPerformer extends SceneApplet {
   public static AlgoplexPerformer instance;
@@ -124,6 +125,7 @@ public class AlgoplexPerformer extends SceneApplet {
     perlinT.setSpeed(0.1f);
 
     OscRemoteControl remote = new OscRemoteControl(this);
+    VDMXWriter.exportVDMXJson("algoplex-performer", remote.getTargetMap(), 9998);
     remote.listen(9998);
   }
 
@@ -131,7 +133,6 @@ public class AlgoplexPerformer extends SceneApplet {
   public void setBorderThickness(float thickness) {
     graphRenderer.setThickness(thickness);
   }
-
 
   @Override
   public void draw() {

@@ -22,7 +22,7 @@ public class Scene {
   }
 
   public void teardown() {
-    components.clear();
+
   }
 
   public void addComponent(SceneComponent component) {

@@ -11,13 +11,13 @@ public class TriangleScene extends GridScene {
   @Mod(min = 0, max = 20)
   public float shiftAmount = 0;
 
-  @Mod(min = 0, max = 10)
+  @Mod(min = 0, max = 5)
   public float yMod = 0;
 
-  @Mod(min = 0, max = 10)
+  @Mod(min = 0, max = 5)
   public float xMod = 0;
 
-  @Mod(min = 0, max = 10)
+  @Mod(min = 0, max = 5)
   public float triangleMod = 0;
 
   @Mod(min = -0.1f, max = 0.1f)

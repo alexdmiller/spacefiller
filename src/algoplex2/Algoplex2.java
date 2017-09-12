@@ -47,6 +47,9 @@ public class Algoplex2 extends SceneApplet {
     graphRenderer = new BasicGraphRenderer(1);
     graphRenderer.setColor(0xFFFFFF00);
 
+    ContourScene contourScene = new ContourScene();
+    addGridScene(contourScene);
+
     TriangleScene triangleScene = new TriangleScene();
     addGridScene(triangleScene);
 
@@ -79,11 +82,15 @@ public class Algoplex2 extends SceneApplet {
       remote.register(scene);
     }
 
-    remote.controller(13).smooth(0.2f).patchTo(remote.target("/TriangleScene/xMod"));
-    remote.controller(14).smooth(0.2f).patchTo(remote.target("/TriangleScene/yMod"));
-    remote.controller(15).smooth(0.1f).patchTo(remote.target("/TriangleScene/triangleMod"));
-    remote.controller(16).smooth(0.05f).patchTo(remote.target("/TriangleScene/shiftAmount"));
-    remote.controller(17).patchTo(remote.target("/TriangleScene/speed"));
+    remote.printAddresses();
+
+    remote.controller(13).smooth(0.2f).send(remote.target("/TriangleScene/xMod"));
+    remote.controller(14).smooth(0.2f).send(remote.target("/TriangleScene/yMod"));
+    remote.controller(15).smooth(0.1f).send(remote.target("/TriangleScene/triangleMod"));
+    remote.controller(16).smooth(0.05f).send(remote.target("/TriangleScene/shiftAmount"));
+    remote.controller(17).send(remote.target("/TriangleScene/speed"));
+
+    remote.controller(13).send(remote.target("/ContourScene/contourComponent/noiseAmplitude"));
   }
 
   @Override
@@ -154,11 +161,10 @@ public class Algoplex2 extends SceneApplet {
 
   public void addGridScene(GridScene gridScene) {
     if (gridScene.isTransformed()) {
-      gridScene.setGrid(graphTransformer.getPreTransformGrid());
+      gridScene.preSetup(graphTransformer.getPreTransformGrid());
     } else {
-      gridScene.setGrid(graphTransformer.getPostTransformGrid());
+      gridScene.preSetup(graphTransformer.getPostTransformGrid());
     }
-
     addScene(gridScene);
   }
 
