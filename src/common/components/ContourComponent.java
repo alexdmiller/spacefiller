@@ -9,6 +9,7 @@ import toxi.geom.Quaternion;
 import toxi.math.noise.PerlinNoise;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class ContourComponent extends SceneComponent {
 
   @Mod(min = 0, max = 20)
   public float heightIncrements = 2;
-  private float spacing = 10;
+
   private int colorRange = 500;
 
   private float timeStep = 0;
@@ -47,12 +48,18 @@ public class ContourComponent extends SceneComponent {
   @Mod(min = 0, max = 10)
   public float lineSize = 1;
 
+  public int slices = 5;
+
   private int color;
 
   private Bounds bounds;
   private Quaternion quaternion = Quaternion.createFromEuler(0, 0, 0);
 
   private PerlinNoise perlin;
+
+
+  public int resolution = 10;
+
 
   @Mod(min = 0.001f, max = 0.1f)
   public float stripeSize;
@@ -79,41 +86,79 @@ public class ContourComponent extends SceneComponent {
 
   @Override
   public void draw(PGraphics graphics) {
-    float[][] heightMap = produceGrid(
-        timeStep,
-        (int) (this.bounds.getWidth() / cellSize),
-        (int) (this.bounds.getHeight() / cellSize));
-
-    graphics.pushMatrix();
-    float[] axis = quaternion.toAxisAngle();
-    graphics.rotate(axis[0], -axis[1], axis[3], axis[2]);
-
-    graphics.stroke(255);
-    graphics.strokeWeight(1);
-    // graphics.box(bounds.getWidth());
-
-    graphics.noFill();
-    graphics.stroke(255);
-    graphics.strokeWeight(lineSize);
-
-    //graphics.translate(-bounds.getWidth() / 2, -bounds.getWidth() / 2);
-
-    for (float i = 0; i < bounds.getHeight(); i += heightIncrements) {
-      float sampleHeight = i - bounds.getHeight()/2;
-      graphics.stroke(graphics.lerpColor(
-          color,
-          0xFFFFFFFF,
-          (float) (Math.sin(i * stripeSize + stripeTimeStep) + 1) / 2));
-      drawGridPlaneIntersection(heightMap, sampleHeight, sampleHeight * spacing, cellSize, graphics);
-    }
-
     timeStep += updateSpeed;
     stripeTimeStep += stripeUpdateSpeed;
     xTimeStep += xSpeed;
     yTimeStep += ySpeed;
 
+    float[][] heightMap = produceGrid(
+        timeStep,
+        (int) (resolution / bounds.getWidth() * bounds.getHeight()),
+        resolution);
+
+    // drawGrid(heightMap, bounds.getWidth() / resolution, graphics);
+
+    for (int i = 0; i < slices; i++) {
+      graphics.strokeWeight(2);
+      graphics.stroke(255);
+      drawSlice(
+          heightMap, (float) i / slices, bounds.getDepth() * i/ slices, bounds.getWidth() / resolution, graphics);
+    }
+
+    graphics.pushMatrix();
+    graphics.noFill();
+    graphics.translate(bounds.getWidth()/2, bounds.getHeight()/2, bounds.getDepth()/2);
+    graphics.box(bounds.getWidth(), bounds.getHeight(), bounds.getDepth());
     graphics.popMatrix();
+
+    /*
+    for # of slices:
+      draw a slice
+        sample height = 1 / # of slices
+        draw height = sample height * depth
+        cell size = width
+      translate up by depth/slice
+    */
   }
+
+//  @Override
+//  public void draw(PGraphics graphics) {
+//    float[][] heightMap = produceGrid(
+//        timeStep,
+//        (int) (this.bounds.getWidth() / cellSize),
+//        (int) (this.bounds.getHeight() / cellSize));
+//
+//    graphics.pushMatrix();
+//    float[] axis = quaternion.toAxisAngle();
+//    graphics.rotate(axis[0], axis[1], axis[2], axis[3]);
+//
+//    graphics.stroke(255);
+//    graphics.strokeWeight(1);
+//
+
+//
+//    graphics.noFill();
+//    graphics.stroke(255);
+//    graphics.strokeWeight(lineSize);
+//
+//    //graphics.translate(-bounds.getWidth() / 2, -bounds.getWidth() / 2);
+//
+//    for (float i = 0; i < bounds.getHeight(); i += heightIncrements) {
+//      float sampleHeight = i - bounds.getHeight()/2;
+//      graphics.stroke(graphics.lerpColor(
+//          color,
+//          0xFFFFFFFF,
+//          (float) (Math.sin(i * stripeSize + stripeTimeStep) + 1) / 2));
+//      drawSlice(heightMap, sampleHeight, sampleHeight * 20, cellSize, graphics);
+//    }
+//
+//    timeStep += updateSpeed;
+//    stripeTimeStep += stripeUpdateSpeed;
+//    xTimeStep += xSpeed;
+//    yTimeStep += ySpeed;
+//
+//    graphics.popMatrix();
+//  }
 
   public void setLineSize(float lineSize) {
     this.lineSize = lineSize;
@@ -156,6 +201,8 @@ public class ContourComponent extends SceneComponent {
   }
 
   void drawGrid(float[][] heightMap, float gridSize, PGraphics canvas) {
+    canvas.strokeWeight(10);
+    canvas.stroke(255);
     for (int r = 0; r < heightMap.length - 1; r++) {
       for (int c = 0; c < heightMap[r].length - 1; c++) {
         PVector p1 = new PVector(c * gridSize, r * gridSize, heightMap[r][c]);
@@ -168,7 +215,7 @@ public class ContourComponent extends SceneComponent {
     }
   }
 
-  void drawGridPlaneIntersection(float[][] heightMap, float planeHeight, float drawHeight, float gridSize, PGraphics canvas) {
+  void drawSlice(float[][] heightMap, float planeHeight, float drawHeight, float gridSize, PGraphics canvas) {
     for (int r = 0; r < heightMap.length - 1; r++) {
       for (int c = 0; c < heightMap[r].length - 1; c++) {
         PVector p1 = new PVector(c * gridSize, r * gridSize, heightMap[r][c]);

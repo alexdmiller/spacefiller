@@ -20,6 +20,7 @@ public class ContourScene extends LusioScene {
     contourGenerator.setNoiseScale(2);
     contourGenerator.setLineSize(6);
     contourGenerator.setUpdateSpeed(0);
+    // contourGenerator.setMiddleOrigin();
 
     addComponent(contourGenerator);
   }

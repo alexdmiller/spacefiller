@@ -3,6 +3,7 @@ package algoplex2;
 import algoplex2.scenes.*;
 import algoplex2.scenes.ContourScene;
 import codeanticode.syphon.SyphonServer;
+import graph.GridUtils;
 import common.Integrator;
 import common.Integrators;
 import graph.Node;
@@ -97,7 +98,7 @@ public class AlgoplexPerformer extends SceneApplet {
   }
 
   public void settings() {
-    // fullScreen(2);
+    fullScreen(2);
     size(WIDTH, HEIGHT, P3D);
     PJOGL.profile = 1;
   }
@@ -108,7 +109,7 @@ public class AlgoplexPerformer extends SceneApplet {
     int cols = WIDTH / SPACING + 2;
     int rows = HEIGHT / SPACING + 2;
 
-    graphTransformer = GridUtils.createGrid(rows, cols, SPACING);
+      graphTransformer = GridUtils.createGraphTransformer(rows, cols, SPACING);
 
     //graphRenderer = new BasicGraphRenderer(1);
     graphRenderer = new SinGraphRenderer();

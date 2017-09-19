@@ -1,12 +1,16 @@
-package algoplex2;
+package graph;
 
+import algoplex2.GraphTransformer;
+import algoplex2.Grid;
+import algoplex2.Quad;
 import graph.Node;
 
-/**
- * Created by miller on 9/11/17.
- */
 public class GridUtils {
-  public static GraphTransformer createGrid(int rows, int cols, float spacing) {
+  public static GraphTransformer createGraphTransformer(int rows, int cols, float spacing) {
+    return new GraphTransformer(createGrid(rows, cols, spacing));
+  }
+
+  public static Grid createGrid(int rows, int cols, float spacing) {
     int originalRows = rows;
     int originalCols = cols;
 
@@ -36,8 +40,8 @@ public class GridUtils {
     grid.setBoundingQuad(new Quad(
         nodes[0][0].copy(),
         nodes[0][cols - 1].copy(),
-        nodes[rows - 1][0].copy(),
-        nodes[rows - 1][cols - 1].copy()));
+        nodes[rows - 1][cols - 1].copy(),
+        nodes[rows - 1][0].copy()));
 
     for (int row = 0; row < rows; row += 2) {
       for (int col = 0; col < cols; col++) {
@@ -97,6 +101,6 @@ public class GridUtils {
       }
     }
 
-    return new GraphTransformer(grid);
+    return grid;
   }
 }

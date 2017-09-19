@@ -51,7 +51,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
   }
 
   public void settings() {
-    // fullScreen(2);
+    fullScreen(2);
     size(1920, 1080, P3D);
     PJOGL.profile = 1;
   }
@@ -60,7 +60,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
   public void setup() {
     graphs = new HashMap<>();
     graphNames = new ArrayList<>();
-    lightcube = Lightcube.midi();
+    lightcube = Lightcube.wireless();
 
     loadGraphs();
 
@@ -69,18 +69,18 @@ public class Lusio extends SceneApplet implements ColorProvider {
     setCanvas(canvas);
 
     LusioScene[] lusioScenes = new LusioScene[] {
+        new TriangleScene(),
+        new ContourScene(),
         new ThreeDeeFlockScene(),
         new FlockScene(),
         new FancyParticles(),
-        new ContourScene(),
         new NoiseSpace(),
         new NoiseCircle(),
         new FluidScene(),
         new NestedCubeScene(),
         new CubeScene(),
-        new NagyLineScene(),
-        new EdgeScene()
-
+        // new NagyLineScene(),
+        // new TriangleScene()
     };
 
     for (int i = 0; i < lusioScenes.length; i++) {
@@ -132,7 +132,6 @@ public class Lusio extends SceneApplet implements ColorProvider {
       } else {
         canvas.background(255 - red(lightcube.getColor()), 255 - red(lightcube.getColor()), 255 - red(lightcube.getColor()));
       }
-
     } else {
       canvas.background(0);
       modeSwitchFlag = false;
@@ -173,14 +172,31 @@ public class Lusio extends SceneApplet implements ColorProvider {
       }
     }
 
-    lightcube.drawDebug(canvas, 200, 100);
+    // lightcube.drawDebug(canvas, 200, 100);
 
     image(canvas, 0, 0);
+
+    drawFlipGuide(200, 200, 200);
     canvas.endDraw();
   }
 
   public Graph selectedGraph() {
     return graphs.get(graphNames.get(selectedGraphIndex));
+  }
+
+  private void drawFlipGuide(float x, float y, float radius) {
+    canvas.translate(x, y);
+    canvas.stroke(255);
+    canvas.strokeWeight(5);
+    canvas.ellipse(0, 0, radius, radius);
+    canvas.noStroke();
+    if (lightcube.getMode() == 1) {
+      canvas.fill(lightcube.getColor());
+    } else {
+      canvas.fill(255);
+    }
+    float innerRadius = lightcube.getFlipAmount() * 200;
+    canvas.ellipse(0, 0, innerRadius, innerRadius);
   }
 
   public void controlEvent(ControlEvent event) {
@@ -223,6 +239,10 @@ public class Lusio extends SceneApplet implements ColorProvider {
 
     if (keyCode == DOWN) {
       gotoNextScene();
+    }
+
+    if (key == ' ') {
+      lightcube.flipOrientation();
     }
   }
 

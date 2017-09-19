@@ -16,16 +16,14 @@ public class ContourScene extends GridScene {
   @Mod
   public ContourComponent contourComponent;
 
-  @Mod
-  public float stripes;
-
-
   @Override
   public void preSetup(Grid grid) {
     super.preSetup(grid);
 
+    System.out.println(grid.getWidth());
+    System.out.println(grid.getHeight());
     contourComponent = new ContourComponent(
-        new Bounds(grid.getHeight() + grid.getCellSize() * 4, grid.getWidth() + grid.getCellSize()));
+        new Bounds(grid.getWidth(), grid.getHeight()));
     contourComponent.setColor(0xFFFFFFFF);
     contourComponent.setPos(0, 0);
     // contourComponent.setRotation(Quaternion.createFromEuler((float) (Math.PI / 2), 0, 0));

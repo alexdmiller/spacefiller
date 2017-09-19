@@ -35,6 +35,7 @@ public class NestedCubeScene extends LusioScene {
       sizeHistory[i] = sizeHistory[i - 1];
     }
 
+    graphics.noFill();
     for (int i = 0; i < history.length; i++) {
       graphics.stroke(Lusio.instance.getColor(i));
       graphics.strokeWeight(5);

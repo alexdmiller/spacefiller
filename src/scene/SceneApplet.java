@@ -30,11 +30,11 @@ public class SceneApplet extends PApplet {
   }
 
   public void setup() {
+    setCanvas(getGraphics());
     switchScene(0);
   }
 
   public void draw() {
-    this.canvas.background(0);
     if (currentScene != null) {
       currentScene.draw(this.canvas);
     }

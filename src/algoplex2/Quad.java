@@ -5,6 +5,7 @@ import processing.core.PVector;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,14 +19,14 @@ public class Quad implements Serializable {
   private Node center;
   private Node[][] triangles;
 
-  public Quad(Node topLeft, Node topRight, Node bottomLeft, Node bottomRight) {
+  public Quad(Node topLeft, Node topRight, Node bottomRight, Node bottomLeft) {
     this.topLeft = topLeft;
     this.topRight = topRight;
     this.bottomLeft = bottomLeft;
     this.bottomRight = bottomRight;
   }
 
-  public Quad(Node topLeft, Node topRight, Node bottomLeft, Node bottomRight, Node center) {
+  public Quad(Node topLeft, Node topRight, Node bottomRight, Node bottomLeft, Node center) {
     this.topLeft = topLeft;
     this.topRight = topRight;
     this.bottomLeft = bottomLeft;
@@ -93,7 +94,7 @@ public class Quad implements Serializable {
 
   public Quad copy() {
     return new Quad(
-        topLeft.copy(), topRight.copy(), bottomLeft.copy(), bottomRight.copy(), center != null ? center.copy() : null
+        topLeft.copy(), topRight.copy(), bottomRight.copy(), bottomLeft.copy(), center != null ? center.copy() : null
     );
   }
 

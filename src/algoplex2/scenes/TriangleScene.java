@@ -44,11 +44,10 @@ public class TriangleScene extends GridScene {
             + shift) + 1) / 2);
 
         graphics.fill(v * v * 255);
-        graphics.beginShape();
-        for (Node n : triangle) {
-          graphics.vertex(n.position.x, n.position.y);
-        }
-        graphics.endShape();
+        graphics.triangle(
+            triangle[0].position.x, triangle[0].position.y,
+            triangle[1].position.x, triangle[1].position.y,
+            triangle[2].position.x, triangle[2].position.y);
 
         triangleIndex++;
       }

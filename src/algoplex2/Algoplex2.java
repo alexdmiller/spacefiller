@@ -1,6 +1,7 @@
 package algoplex2;
 
 import algoplex2.scenes.*;
+import graph.GridUtils;
 import graph.BasicGraphRenderer;
 import processing.core.PGraphics;
 import processing.opengl.PJOGL;
@@ -12,9 +13,9 @@ import java.io.*;
 
 public class Algoplex2 extends SceneApplet {
   public static Algoplex2 instance;
-  private static int ROWS = 5;
-  private static int COLS = 8;
-  private static int SPACING = 150;
+  private static int ROWS = 4;
+  private static int COLS = 6;
+  private static int SPACING = 170;
 
   public static void main(String[] args) {
     main("algoplex2.Algoplex2");
@@ -25,14 +26,13 @@ public class Algoplex2 extends SceneApplet {
   private BasicGraphRenderer graphRenderer;
   private PGraphics transformedCanvas;
   private boolean showUI = false;
-  private float t;
 
   public Algoplex2() {
     Algoplex2.instance = this;
   }
 
   public void settings() {
-    //fullScreen(2);
+    fullScreen(2);
     size(1920, 1080, P3D);
     PJOGL.profile = 1;
   }
@@ -41,7 +41,7 @@ public class Algoplex2 extends SceneApplet {
     loadGraphs();
 
     if (graphTransformer == null) {
-      graphTransformer = GridUtils.createGrid(ROWS, COLS, SPACING);
+      graphTransformer = GridUtils.createGraphTransformer(ROWS, COLS, SPACING);
     }
 
     graphRenderer = new BasicGraphRenderer(1);
@@ -59,8 +59,8 @@ public class Algoplex2 extends SceneApplet {
     PyramidScene pyramidScene = new PyramidScene();
     addGridScene(pyramidScene);
 
-//    ParticleScene particleScene = new ParticleScene();
-//    addGridScene(particleScene);
+    ParticleScene particleScene = new ParticleScene();
+    addGridScene(particleScene);
 
     PsychScene psychScene = new PsychScene();
     addGridScene(psychScene);
@@ -82,22 +82,31 @@ public class Algoplex2 extends SceneApplet {
       remote.register(scene);
     }
 
+    remote.register(this);
+
     remote.printAddresses();
 
-    remote.controller(13).smooth(0.2f).send(remote.target("/TriangleScene/xMod"));
-    remote.controller(14).smooth(0.2f).send(remote.target("/TriangleScene/yMod"));
-    remote.controller(15).smooth(0.1f).send(remote.target("/TriangleScene/triangleMod"));
-    remote.controller(16).smooth(0.05f).send(remote.target("/TriangleScene/shiftAmount"));
-    remote.controller(17).send(remote.target("/TriangleScene/speed"));
+//    remote.controller(13).smooth(0.2f).send(remote.target("/TriangleScene/xMod"));
+//    remote.controller(14).smooth(0.2f).send(remote.target("/TriangleScene/yMod"));
+//    remote.controller(15).smooth(0.1f).send(remote.target("/TriangleScene/triangleMod"));
+//    remote.controller(16).smooth(0.05f).send(remote.target("/TriangleScene/shiftAmount"));
+    remote.controller(13).send(remote.target("/TriangleScene/xMod"));
+    remote.controller(14).send(remote.target("/TriangleScene/yMod"));
+    remote.controller(15).send(remote.target("/TriangleScene/triangleMod"));
+    remote.controller(16).smooth(0.1f).send(remote.target("/TriangleScene/shiftAmount"));
 
+    remote.controller(17).send(remote.target("/TriangleScene/speed"));
     remote.controller(13).send(remote.target("/ContourScene/contourComponent/noiseAmplitude"));
+
+    remote.controller(13).send(remote.target("/PyramidScene/speed"));
+    remote.controller(14).send(remote.target("/PyramidScene/amplitude"));
+    // remote.controller(15).send(remote.target("/PyramidScene/rotZ"));
   }
 
   @Override
   public void draw() {
     remote.update();
 
-    t += 0.01f;
     this.canvas.background(0);
 
     if (currentScene != null) {

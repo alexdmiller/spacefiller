@@ -7,14 +7,30 @@ import graph.Node;
 import processing.core.PConstants;
 import processing.core.PGraphics;
 import processing.core.PVector;
+import spacefiller.remote.Mod;
 
 public class PyramidScene extends GridScene {
   private float t;
   private static int NUM_SQUARES = 5;
 
+  @Mod(min = 0, max = (float) Math.PI / 10)
+  public float rotX;
+
+  @Mod(min = 0, max = (float) Math.PI / 10)
+  public float rotY;
+
+  @Mod(min = 0, max = (float) Math.PI / 10)
+  public float rotZ;
+
+  @Mod(min = 0, max = 100)
+  public float amplitude = 0;
+
+  @Mod(min = 0, max = 0.05f)
+  public float speed = 0.01f;
+
   @Override
   public void draw(PGraphics graphics) {
-    t += 0.01f;
+    t += speed;
     graphics.stroke(255);
     graphics.noFill();
     graphics.ortho();
@@ -23,28 +39,30 @@ public class PyramidScene extends GridScene {
       graphics.pushMatrix();
 
       graphics.translate(square.getCenter().position.x, square.getCenter().position.y);
-      graphics.rotateX((float) (controller.getValue(0) * Math.PI * 2));
-      graphics.rotateY((float) (controller.getValue(1) * Math.PI * 2));
-      graphics.rotateZ((float) (controller.getValue(2) * Math.PI * 2));
-
+      graphics.rotateX(rotX);
+      graphics.rotateY(rotY);
+      graphics.rotateZ(rotZ);
 
       float size = square.getWidth() / 2;
+
+      PVector center = new PVector((float) (Math.cos(t) * amplitude), (float) (Math.sin(t) * amplitude), 0);
+
       graphics.beginShape();
       graphics.vertex(-size, -size, -size);
       graphics.vertex(size, -size, -size);
-      graphics.vertex(0, 0, size);
+      graphics.vertex(center.x, center.y, size);
 
       graphics.vertex(size, -size, -size);
       graphics.vertex(size, size, -size);
-      graphics.vertex(0, 0, size);
+      graphics.vertex(center.x, center.y, size);
 
       graphics.vertex(size, size, -size);
       graphics.vertex(-size, size, -size);
-      graphics.vertex(0, 0, size);
+      graphics.vertex(center.x, center.y, size);
 
       graphics.vertex(-size, size, -size);
       graphics.vertex(-size, -size, -size);
-      graphics.vertex(0, 0, size);
+      graphics.vertex(center.x, center.y, size);
       graphics.endShape();
       graphics.popMatrix();
     }
