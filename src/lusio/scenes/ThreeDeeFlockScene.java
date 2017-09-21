@@ -28,7 +28,6 @@ public class ThreeDeeFlockScene extends LusioScene {
 
   private float speed;
 
-
   @Override
   public void setup() {
     particleGenerator2 = new ParticleComponent(200, new Bounds(Lusio.HEIGHT), 3);

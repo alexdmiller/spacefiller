@@ -22,15 +22,15 @@ public class TestContourScene extends Scene {
         new Bounds(600, 400, 200));
     contourComponent.setColor(0xFFFFFFFF);
     contourComponent.setPos(0, 0);
-    // contourComponent.setRotation(Quaternion.createFromEuler((float) (Math.PI / 2), 0, 0));
-    contourComponent.setCellSize(100);
+    contourComponent.setRotation(Quaternion.createFromEuler(0, 0, 0));
+    //contourComponent.setCellSize(100);
     contourComponent.setNoiseScale(0.5f);
     contourComponent.setLineSize(3);
     contourComponent.setNoiseAmplitude(5000);
     contourComponent.setUpdateSpeed(0.001f);
-    contourComponent.setHeightIncrements(50);
+    //contourComponent.setHeightIncrements(50);
     //contourComponent.setXSpeed(0.1f);
-    contourComponent.setPos(TestSceneApplet.WIDTH / 2 - 800/2, TestSceneApplet.HEIGHT / 2 - 400/2);
+    contourComponent.setPos(TestSceneApplet.WIDTH / 2, TestSceneApplet.HEIGHT / 2);
     //contourComponent.setRotation(Quaternion.createFromEuler(0f, 0,  0.1f));
 
     addComponent(contourComponent);
@@ -39,7 +39,7 @@ public class TestContourScene extends Scene {
   @Override
   public void draw(PGraphics graphics) {
     //graphics.ortho();
-    graphics.rotateY(0.5f);
+    //graphics.rotateY(0.5f);
     super.draw(graphics);
   }
 }

@@ -29,13 +29,6 @@ public class ContourComponent extends SceneComponent {
   @Mod(min = 0, max = 0.1f)
   public float ySpeed = 0f;
 
-  public float cellSize = 30;
-
-  @Mod(min = 0, max = 20)
-  public float heightIncrements = 2;
-
-  private int colorRange = 500;
-
   private float timeStep = 0;
   private float stripeTimeStep = 0;
 
@@ -72,12 +65,12 @@ public class ContourComponent extends SceneComponent {
     this.perlin = new PerlinNoise();
   }
 
-  public void setRotation(Quaternion quaternion) {
-    this.quaternion = quaternion;
+  public Bounds getBounds() {
+    return bounds;
   }
 
-  public void setCellSize(float cellSize) {
-    this.cellSize = cellSize;
+  public void setRotation(Quaternion quaternion) {
+    this.quaternion = quaternion;
   }
 
   public void setNoiseScale(float noiseScale) {
@@ -98,17 +91,38 @@ public class ContourComponent extends SceneComponent {
 
     // drawGrid(heightMap, bounds.getWidth() / resolution, graphics);
 
+    graphics.pushMatrix();
+
+    float[] axis = quaternion.toAxisAngle();
+    graphics.rotate(axis[0], -axis[2], axis[1], axis[3]);
+
+    graphics.translate(-bounds.getWidth() / 2, -bounds.getHeight() / 2, -bounds.getDepth() / 2);
+
     for (int i = 0; i < slices; i++) {
-      graphics.strokeWeight(2);
-      graphics.stroke(255);
+      graphics.strokeWeight(lineSize);
+      //graphics.stroke(255);
+
+      // TODO: figure out color!
+//      graphics.stroke(graphics.lerpColor(
+//          color,
+//          0xFFFFFFFF,
+//          (float) (Math.sin(i * stripeSize + stripeTimeStep) + 1) / 2));
+
+      graphics.stroke(graphics.lerpColor(
+          color,
+          0xFFFFFFFF,
+          (float) i / slices));
+
       drawSlice(
-          heightMap, (float) i / slices, bounds.getDepth() * i/ slices, bounds.getWidth() / resolution, graphics);
+          heightMap, (float) i / slices, bounds.getDepth() * i / slices, bounds.getWidth() / resolution, graphics);
     }
 
     graphics.pushMatrix();
     graphics.noFill();
     graphics.translate(bounds.getWidth()/2, bounds.getHeight()/2, bounds.getDepth()/2);
-    graphics.box(bounds.getWidth(), bounds.getHeight(), bounds.getDepth());
+    //graphics.box(bounds.getWidth(), bounds.getHeight(), bounds.getDepth());
+    graphics.popMatrix();
+
     graphics.popMatrix();
 
     /*
@@ -182,10 +196,6 @@ public class ContourComponent extends SceneComponent {
 
   public void setColor(int color) {
     this.color = color;
-  }
-
-  public void setHeightIncrements(float heightIncrements) {
-    this.heightIncrements = heightIncrements;
   }
 
   float[][] produceGrid(float t, int rows, int cols) {

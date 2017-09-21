@@ -13,8 +13,8 @@ import java.io.*;
 
 public class Algoplex2 extends SceneApplet {
   public static Algoplex2 instance;
-  private static int ROWS = 4;
-  private static int COLS = 6;
+  private static int ROWS = 2;
+  private static int COLS = 2;
   private static int SPACING = 170;
 
   public static void main(String[] args) {
@@ -101,6 +101,11 @@ public class Algoplex2 extends SceneApplet {
     remote.controller(13).send(remote.target("/PyramidScene/speed"));
     remote.controller(14).send(remote.target("/PyramidScene/amplitude"));
     // remote.controller(15).send(remote.target("/PyramidScene/rotZ"));
+
+
+    remote.controller(13).send(remote.target("/PsychScene/lineThickness"));
+    remote.controller(14).send(remote.target("/PsychScene/numSquares"));
+    remote.controller(15).send(remote.target("/PsychScene/squareSpeed"));
   }
 
   @Override

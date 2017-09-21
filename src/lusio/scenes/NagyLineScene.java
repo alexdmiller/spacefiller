@@ -20,7 +20,7 @@ public class NagyLineScene extends LusioScene {
 
   @Override
   public void setup() {
-    Graph nagyGraph = graphs.get("nagy3");
+    Graph nagyGraph = graphs.get("nagy1");
 
     if (nagyGraph != null) {
       sinGraphRenderer = new SinGraphRenderer();

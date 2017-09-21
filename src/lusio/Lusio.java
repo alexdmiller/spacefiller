@@ -51,7 +51,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
   }
 
   public void settings() {
-    fullScreen(2);
+    //fullScreen(2);
     size(1920, 1080, P3D);
     PJOGL.profile = 1;
   }
@@ -69,6 +69,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
     setCanvas(canvas);
 
     LusioScene[] lusioScenes = new LusioScene[] {
+        new NagyLineScene(),
         new TriangleScene(),
         new ContourScene(),
         new ThreeDeeFlockScene(),
@@ -78,8 +79,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
         new NoiseCircle(),
         new FluidScene(),
         new NestedCubeScene(),
-        new CubeScene(),
-        // new NagyLineScene(),
+        new CubeScene()
         // new TriangleScene()
     };
 
@@ -91,7 +91,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
     addAllScenes(lusioScenes);
 
     controlP5 = new ControlP5(this);
-    controlP5.hide();
+    controlP5.show();
 
     controlP5.addButton("New Graph")
         .setId(1)
@@ -123,7 +123,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
 
   @Override
   public final void draw() {
-    canvas.beginDraw();
+    //canvas.beginDraw();
 
     if (lightcube.getMode() == 1) {
       if (!modeSwitchFlag) {
@@ -172,12 +172,12 @@ public class Lusio extends SceneApplet implements ColorProvider {
       }
     }
 
-    // lightcube.drawDebug(canvas, 200, 100);
+    //lightcube.drawDebug(canvas, 200, 100);
 
-    image(canvas, 0, 0);
+    //image(canvas, 0, 0);
 
     drawFlipGuide(200, 200, 200);
-    canvas.endDraw();
+    //canvas.endDraw();
   }
 
   public Graph selectedGraph() {

@@ -19,7 +19,7 @@ public class PsychScene extends GridScene {
   public float lineThickness;
 
   @Mod(min = 0, max = 20)
-  public int numSquares = 5;
+  public float numSquares = 5;
 
   @Mod(min = -0.05f, max = 0.05f)
   public float squareSpeed = 0;
@@ -30,10 +30,6 @@ public class PsychScene extends GridScene {
 
   @Override
   public void draw(PGraphics graphics) {
-    numSquares = (int) (controller.getValue(0) * 10);
-    squareSpeed = controller.getValue(1) * 10;
-    lineThickness = controller.getValue(2) * 4;
-
     t += squareSpeed;
     graphics.noStroke();
 //

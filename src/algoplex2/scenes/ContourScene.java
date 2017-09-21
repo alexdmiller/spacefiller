@@ -27,12 +27,12 @@ public class ContourScene extends GridScene {
     contourComponent.setColor(0xFFFFFFFF);
     contourComponent.setPos(0, 0);
     // contourComponent.setRotation(Quaternion.createFromEuler((float) (Math.PI / 2), 0, 0));
-    contourComponent.setCellSize(grid.getCellSize() * 2);
+    //contourComponent.setCellSize(grid.getCellSize() * 2);
     contourComponent.setNoiseScale(0.5f);
     contourComponent.setLineSize(3);
     contourComponent.setNoiseAmplitude(5000);
     contourComponent.setUpdateSpeed(0.001f);
-    contourComponent.setHeightIncrements(2);
+    //contourComponent.setHeightIncrements(2);
 
     addComponent(contourComponent);
   }
