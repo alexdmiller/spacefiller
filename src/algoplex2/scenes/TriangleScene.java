@@ -4,6 +4,7 @@ import algoplex2.Quad;
 import graph.*;
 import spacefiller.remote.Mod;
 import processing.core.PGraphics;
+import toxi.math.noise.PerlinNoise;
 
 public class TriangleScene extends GridScene {
   private float t = 0;
@@ -23,6 +24,12 @@ public class TriangleScene extends GridScene {
   @Mod(min = -0.1f, max = 0.1f)
   public float speed = 0.01f;
 
+  private PerlinNoise perlin;
+
+  public TriangleScene() {
+    perlin = new PerlinNoise();
+  }
+
   @Override
   public void draw(PGraphics graphics) {
     t += speed;
@@ -38,12 +45,17 @@ public class TriangleScene extends GridScene {
 
       int triangleIndex = 0;
       for (Node[] triangle : quad.getTriangles()) {
-        float v = (float) ((Math.sin(
-            row * yMod + col * xMod +
-            triangleIndex / 4f * Math.PI * 2 * triangleMod
-            + shift) + 1) / 2);
+//        float v = (float) ((Math.sin(
+//            row * yMod + col * xMod +
+//            triangleIndex / 4f * Math.PI * 2 * triangleMod
+//            + shift) + 1) / 2);
+//
+//        graphics.fill(v * v * 255);
 
-        graphics.fill(v * v * 255);
+        graphics.fill(
+            perlin.noise(row + col + triangleIndex, t) * 255,
+            perlin.noise(row + col + triangleIndex + 100, t) * 255,
+            perlin.noise(row + col + triangleIndex + 200, t) * 255);
         graphics.triangle(
             triangle[0].position.x, triangle[0].position.y,
             triangle[1].position.x, triangle[1].position.y,

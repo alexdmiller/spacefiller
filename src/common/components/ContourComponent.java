@@ -94,7 +94,7 @@ public class ContourComponent extends SceneComponent {
     graphics.pushMatrix();
 
     float[] axis = quaternion.toAxisAngle();
-    graphics.rotate(axis[0], -axis[2], axis[1], axis[3]);
+    graphics.rotate(axis[0], axis[1], axis[3], axis[2]);
 
     graphics.translate(-bounds.getWidth() / 2, -bounds.getHeight() / 2, -bounds.getDepth() / 2);
 

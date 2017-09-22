@@ -12,7 +12,9 @@ import graph.GraphRenderer;
 import graph.Node;
 import lightcube.Lightcube;
 import lusio.scenes.*;
+import processing.core.PFont;
 import processing.core.PGraphics;
+import processing.core.PImage;
 import processing.core.PVector;
 import processing.opengl.PJOGL;
 import scene.SceneApplet;
@@ -45,6 +47,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
   public static int HEIGHT = 1080;
 
   private TwoColorProvider twoColorProvider;
+  private PImage logoImage;  // Declare variable "a" of type PImage
 
   public Lusio() {
     Lusio.instance = this;
@@ -60,7 +63,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
   public void setup() {
     graphs = new HashMap<>();
     graphNames = new ArrayList<>();
-    lightcube = Lightcube.wireless();
+    lightcube = Lightcube.usb();
 
     loadGraphs();
 
@@ -69,6 +72,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
     setCanvas(canvas);
 
     LusioScene[] lusioScenes = new LusioScene[] {
+        new MillerLineScene(),
         new NagyLineScene(),
         new TriangleScene(),
         new ContourScene(),
@@ -80,7 +84,6 @@ public class Lusio extends SceneApplet implements ColorProvider {
         new FluidScene(),
         new NestedCubeScene(),
         new CubeScene()
-        // new TriangleScene()
     };
 
     for (int i = 0; i < lusioScenes.length; i++) {
@@ -91,7 +94,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
     addAllScenes(lusioScenes);
 
     controlP5 = new ControlP5(this);
-    controlP5.show();
+    controlP5.hide();
 
     controlP5.addButton("New Graph")
         .setId(1)
@@ -118,12 +121,16 @@ public class Lusio extends SceneApplet implements ColorProvider {
 
     twoColorProvider = new TwoColorProvider(0xFFFFFFFF, 0x00000000, 3);
 
-    super.setup();
+    switchScene(0);
+    // super.setup();
+
+    logoImage = loadImage("logo.png");
+
   }
 
   @Override
   public final void draw() {
-    //canvas.beginDraw();
+    canvas.beginDraw();
 
     if (lightcube.getMode() == 1) {
       if (!modeSwitchFlag) {
@@ -160,13 +167,13 @@ public class Lusio extends SceneApplet implements ColorProvider {
     }
 
     if (graphsVisible) {
-      GraphRenderer renderer = new BasicGraphRenderer(1);
+      BasicGraphRenderer renderer = new BasicGraphRenderer(1);
       for (int i = 0; i < graphNames.size(); i++) {
         Graph g = graphs.get(graphNames.get(i));
         if (i == selectedGraphIndex) {
-          canvas.stroke(255);
+          renderer.setColor(255);
         } else {
-          canvas.stroke(100);
+          renderer.setColor(100);
         }
         renderer.render(canvas, g);
       }
@@ -174,10 +181,12 @@ public class Lusio extends SceneApplet implements ColorProvider {
 
     //lightcube.drawDebug(canvas, 200, 100);
 
-    //image(canvas, 0, 0);
+    image(canvas, 0, 0);
 
     drawFlipGuide(200, 200, 200);
-    //canvas.endDraw();
+
+    image(logoImage, WIDTH - logoImage.width - 40, HEIGHT - logoImage.height - 20);
+    canvas.endDraw();
   }
 
   public Graph selectedGraph() {

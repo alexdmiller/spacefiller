@@ -54,4 +54,8 @@ public class DottedLineGraphRenderer implements GraphRenderer {
   public void setSize(float size) {
     this.size = size;
   }
+
+  public void setSpacing(float spacing) {
+    this.spacing = spacing;
+  }
 }

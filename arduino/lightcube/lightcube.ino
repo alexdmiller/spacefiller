@@ -234,7 +234,8 @@ void loop() {
     }
     
     // power up mode
-    uint8_t c = cos8(flipTimer * flipTimer * 0.05f);
+    uint8_t c = cos8(flipTimer * flipTimer * 0.01f);
+    //uint8_t c = cos8(flipTimer * 10);
     color[0] = color[1] = color[2] = c;
 
     flipTimer++;

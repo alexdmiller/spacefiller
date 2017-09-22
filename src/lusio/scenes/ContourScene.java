@@ -14,10 +14,11 @@ public class ContourScene extends LusioScene {
   @Override
   public void setup() {
     contourGenerator = new ContourComponent(new Bounds(2000));
+    contourGenerator.resolution = 50;
     contourGenerator.setPos(Lusio.WIDTH / 2, Lusio.HEIGHT / 2);
     contourGenerator.setRotation(Quaternion.createFromAxisAngle(new Vec3D(-1, 0, 0), 1f));
-    contourGenerator.setNoiseScale(2);
-    contourGenerator.setLineSize(6);
+    contourGenerator.setNoiseScale(0.5f);
+    contourGenerator.setLineSize(3);
     contourGenerator.setUpdateSpeed(0);
 
     addComponent(contourGenerator);
@@ -39,14 +40,14 @@ public class ContourScene extends LusioScene {
     contourGenerator.setColor(cube.getColor());
     contourGenerator.setXSpeed(-euler[0] * -0.01f);
     contourGenerator.setYSpeed(euler[2] * -0.01f);
-    contourGenerator.setNoiseAmplitude(height);
+    contourGenerator.setNoiseAmplitude(2);
     contourGenerator.setUpdateSpeed(cube.getRotationalVelocity() * 0.0001f);
     contourGenerator.setRotation(Quaternion.createFromEuler(0, euler[1], 0));
 
-    // contourGenerator.slices = (int) (cube.getFlipAmount() * 20 + 5);
+    contourGenerator.slices = 50;
 
 
-    contourGenerator.getBounds().setDepth(cube.getFlipAmount() * 100);
+    contourGenerator.getBounds().setDepth(cube.getFlipAmount() * 2000);
     //contourGenerator.set
 
     graphics.perspective();

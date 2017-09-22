@@ -23,15 +23,18 @@ public class ContourScene extends GridScene {
     System.out.println(grid.getWidth());
     System.out.println(grid.getHeight());
     contourComponent = new ContourComponent(
-        new Bounds(grid.getWidth(), grid.getHeight()));
+        new Bounds(grid.getWidth() * 2, grid.getHeight() * 2));
+    contourComponent.resolution = 100;
     contourComponent.setColor(0xFFFFFFFF);
     contourComponent.setPos(0, 0);
     // contourComponent.setRotation(Quaternion.createFromEuler((float) (Math.PI / 2), 0, 0));
     //contourComponent.setCellSize(grid.getCellSize() * 2);
+    contourComponent.setNoiseScale(1f);
+    contourComponent.setLineSize(1);
+    contourComponent.setNoiseAmplitude(1);
+    contourComponent.setUpdateSpeed(0.01f);
     contourComponent.setNoiseScale(0.5f);
-    contourComponent.setLineSize(3);
-    contourComponent.setNoiseAmplitude(5000);
-    contourComponent.setUpdateSpeed(0.001f);
+    contourComponent.slices = 20;
     //contourComponent.setHeightIncrements(2);
 
     addComponent(contourComponent);
