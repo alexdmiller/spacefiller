@@ -20,18 +20,17 @@ public class ContourScene extends GridScene {
   public void preSetup(Grid grid) {
     super.preSetup(grid);
 
-    System.out.println(grid.getWidth());
-    System.out.println(grid.getHeight());
     contourComponent = new ContourComponent(
-        new Bounds(grid.getWidth() * 2, grid.getHeight() * 2));
-    contourComponent.resolution = 100;
+        new Bounds(grid.getWidth(), grid.getHeight(), 100));
+    contourComponent.resolution = grid.getColumns();
+
     contourComponent.setColor(0xFFFFFFFF);
-    contourComponent.setPos(0, 0);
+    contourComponent.setPos(grid.getWidth() / 2, grid.getHeight() / 2);
     // contourComponent.setRotation(Quaternion.createFromEuler((float) (Math.PI / 2), 0, 0));
     //contourComponent.setCellSize(grid.getCellSize() * 2);
     contourComponent.setNoiseScale(1f);
     contourComponent.setLineSize(1);
-    contourComponent.setNoiseAmplitude(1);
+    contourComponent.setNoiseAmplitude(5);
     contourComponent.setUpdateSpeed(0.01f);
     contourComponent.setNoiseScale(0.5f);
     contourComponent.slices = 20;
@@ -43,6 +42,7 @@ public class ContourScene extends GridScene {
   @Override
   public void draw(PGraphics graphics) {
     graphics.ortho();
+    System.out.println(contourComponent.resolution);
 //    contourComponent.setColor(0xffffffff);
 //    contourComponent.setNoiseAmplitude(controller.getValue(0) * 5000);
 //    contourComponent.setNoiseScale(controller.getValue(1) * 10 + 0.01f);

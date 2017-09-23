@@ -1,6 +1,7 @@
 package algoplex2;
 
 import algoplex2.scenes.*;
+import com.sun.tools.javac.comp.Flow;
 import graph.GridUtils;
 import graph.BasicGraphRenderer;
 import processing.core.PGraphics;
@@ -13,8 +14,8 @@ import java.io.*;
 
 public class Algoplex2 extends SceneApplet {
   public static Algoplex2 instance;
-  private static int ROWS = 2;
-  private static int COLS = 2;
+  private static int ROWS = 5;
+  private static int COLS = 8;
   private static int SPACING = 170;
 
   public static void main(String[] args) {
@@ -46,6 +47,9 @@ public class Algoplex2 extends SceneApplet {
 
     graphRenderer = new BasicGraphRenderer(1);
     graphRenderer.setColor(0xFFFFFF00);
+
+    FlowScene flowScene = new FlowScene();
+    addGridScene(flowScene);
 
     ContourScene contourScene = new ContourScene();
     addGridScene(contourScene);
@@ -86,6 +90,10 @@ public class Algoplex2 extends SceneApplet {
 
     remote.printAddresses();
 
+    remote.controller(13).send(remote.target("/ContourScene/contourComponent/resolution"));
+    remote.controller(14).send(remote.target("/ContourScene/contourComponent/noiseAmplitude"));
+    remote.controller(15).send(remote.target("/ContourScene/contourComponent/noiseScale"));
+
 //    remote.controller(13).smooth(0.2f).send(remote.target("/TriangleScene/xMod"));
 //    remote.controller(14).smooth(0.2f).send(remote.target("/TriangleScene/yMod"));
 //    remote.controller(15).smooth(0.1f).send(remote.target("/TriangleScene/triangleMod"));
@@ -96,7 +104,6 @@ public class Algoplex2 extends SceneApplet {
     remote.controller(16).smooth(0.1f).send(remote.target("/TriangleScene/shiftAmount"));
 
     remote.controller(17).send(remote.target("/TriangleScene/speed"));
-    remote.controller(13).send(remote.target("/ContourScene/contourComponent/noiseAmplitude"));
 
     remote.controller(13).send(remote.target("/PyramidScene/speed"));
     remote.controller(14).send(remote.target("/PyramidScene/amplitude"));

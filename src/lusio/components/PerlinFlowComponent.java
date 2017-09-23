@@ -5,6 +5,7 @@ import particles.Bounds;
 import processing.core.PGraphics;
 import processing.core.PVector;
 import scene.SceneComponent;
+import toxi.math.noise.PerlinNoise;
 
 /**
  * Created by miller on 7/16/17.
@@ -31,9 +32,11 @@ public class PerlinFlowComponent extends SceneComponent {
   float noise2Pos = 0;
 
   private Bounds bounds;
+  private PerlinNoise perlin;
 
   public PerlinFlowComponent(Bounds bounds) {
     this.bounds = bounds;
+    this.perlin = new PerlinNoise();
   }
 
   public float getFlowForce() {
@@ -171,7 +174,7 @@ public class PerlinFlowComponent extends SceneComponent {
         p.x += v.x;
         p.y += v.y + fallSpeed;
 
-        if (Math.sin(i + (Lusio.instance.noise((float) j) * 100.0) + timeStep * scrollSpeed) - lineSparsity < 0) {
+        if (Math.sin(i + (perlin.noise((float) j) * 100.0) + timeStep * scrollSpeed) - lineSparsity < 0) {
           graphics.line(oldX, oldY, p.x, p.y);
         }
       }
@@ -180,7 +183,7 @@ public class PerlinFlowComponent extends SceneComponent {
   }
 
   PVector getFlow(float x, float y) {
-    float angle = (float) (Lusio.instance.noise(x / noiseScale, y / noiseScale - noise1Pos, noise2Pos) * Math.PI * 6);
+    float angle = (float) (perlin.noise(x / noiseScale, y / noiseScale - noise1Pos, noise2Pos) * Math.PI * 6);
     return PVector.fromAngle(angle).setMag(flowForce);
   }
 
@@ -199,8 +202,8 @@ public class PerlinFlowComponent extends SceneComponent {
 
   PVector position3(int i) {
     PVector p = new PVector(
-        Lusio.instance.noise(i, 0, scramble) * bounds.getWidth() - bounds.getWidth()/ 2,
-        Lusio.instance.noise(i, 1, scramble) * bounds.getHeight() - bounds.getHeight() / 2
+        perlin.noise(i, 0, scramble) * bounds.getWidth() - bounds.getWidth()/ 2,
+        perlin.noise(i, 1, scramble) * bounds.getHeight() - bounds.getHeight() / 2
     );
     return p;
   }

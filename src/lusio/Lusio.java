@@ -54,7 +54,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
   }
 
   public void settings() {
-    //fullScreen(2);
+    fullScreen(2);
     size(1920, 1080, P3D);
     PJOGL.profile = 1;
   }
@@ -63,7 +63,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
   public void setup() {
     graphs = new HashMap<>();
     graphNames = new ArrayList<>();
-    lightcube = Lightcube.usb();
+    lightcube = Lightcube.wireless();
 
     loadGraphs();
 
@@ -124,7 +124,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
     switchScene(0);
     // super.setup();
 
-    logoImage = loadImage("logo.png");
+    logoImage = loadImage("logo-2.png");
 
   }
 
@@ -185,7 +185,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
 
     drawFlipGuide(200, 200, 200);
 
-    image(logoImage, WIDTH - logoImage.width - 40, HEIGHT - logoImage.height - 20);
+    image(logoImage, WIDTH - logoImage.width - 30, HEIGHT - logoImage.height - 20);
     canvas.endDraw();
   }
 

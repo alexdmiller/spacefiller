@@ -17,7 +17,7 @@ import java.util.List;
  * Created by miller on 7/22/17.
  */
 public class ContourComponent extends SceneComponent {
-  @Mod(min = 0, max = 5000)
+  @Mod(min = 0, max = 5)
   public float noiseAmplitude = 0;
 
   @Mod(min = 0, max = 0.1f)
@@ -50,15 +50,16 @@ public class ContourComponent extends SceneComponent {
 
   private PerlinNoise perlin;
 
-
+  @Mod(min = 0, max = 50)
   public int resolution = 10;
-
 
   @Mod(min = 0.001f, max = 0.1f)
   public float stripeSize;
 
   @Mod(min = -0.1f, max = 0.1f)
   public float stripeUpdateSpeed;
+
+  public boolean drawGrid = false;
 
   public ContourComponent(Bounds bounds) {
     this.bounds = bounds;
@@ -84,10 +85,12 @@ public class ContourComponent extends SceneComponent {
     xTimeStep += xSpeed;
     yTimeStep += ySpeed;
 
+
     float[][] heightMap = produceGrid(
         timeStep,
-        (int) (resolution / bounds.getWidth() * bounds.getHeight()),
-        resolution);
+        (int) (resolution / bounds.getWidth() * bounds.getHeight()) + 1,
+        resolution + 1);
+
 
     // drawGrid(heightMap, bounds.getWidth() / resolution, graphics);
 
@@ -117,62 +120,18 @@ public class ContourComponent extends SceneComponent {
           heightMap, (float) i / slices, bounds.getDepth() * i / slices, bounds.getWidth() / resolution, graphics);
     }
 
-    graphics.pushMatrix();
-    graphics.noFill();
-    graphics.translate(bounds.getWidth()/2, bounds.getHeight()/2, bounds.getDepth()/2);
-    //graphics.box(bounds.getWidth(), bounds.getHeight(), bounds.getDepth());
-    graphics.popMatrix();
+    if (drawGrid) {
+      graphics.pushMatrix();
+      graphics.noFill();
+      graphics.translate(bounds.getWidth() / 2, bounds.getHeight() / 2, bounds.getDepth() / 2);
+      graphics.box(bounds.getWidth(), bounds.getHeight(), bounds.getDepth());
+      graphics.popMatrix();
+
+      drawGrid(heightMap, bounds.getWidth() / resolution, graphics);
+    }
 
     graphics.popMatrix();
-
-    /*
-    for # of slices:
-      draw a slice
-        sample height = 1 / # of slices
-        draw height = sample height * depth
-        cell size = width
-      translate up by depth/slice
-    */
   }
-
-//  @Override
-//  public void draw(PGraphics graphics) {
-//    float[][] heightMap = produceGrid(
-//        timeStep,
-//        (int) (this.bounds.getWidth() / cellSize),
-//        (int) (this.bounds.getHeight() / cellSize));
-//
-//    graphics.pushMatrix();
-//    float[] axis = quaternion.toAxisAngle();
-//    graphics.rotate(axis[0], axis[1], axis[2], axis[3]);
-//
-//    graphics.stroke(255);
-//    graphics.strokeWeight(1);
-//
-
-//
-//    graphics.noFill();
-//    graphics.stroke(255);
-//    graphics.strokeWeight(lineSize);
-//
-//    //graphics.translate(-bounds.getWidth() / 2, -bounds.getWidth() / 2);
-//
-//    for (float i = 0; i < bounds.getHeight(); i += heightIncrements) {
-//      float sampleHeight = i - bounds.getHeight()/2;
-//      graphics.stroke(graphics.lerpColor(
-//          color,
-//          0xFFFFFFFF,
-//          (float) (Math.sin(i * stripeSize + stripeTimeStep) + 1) / 2));
-//      drawSlice(heightMap, sampleHeight, sampleHeight * 20, cellSize, graphics);
-//    }
-//
-//    timeStep += updateSpeed;
-//    stripeTimeStep += stripeUpdateSpeed;
-//    xTimeStep += xSpeed;
-//    yTimeStep += ySpeed;
-//
-//    graphics.popMatrix();
-//  }
 
   public void setLineSize(float lineSize) {
     this.lineSize = lineSize;
