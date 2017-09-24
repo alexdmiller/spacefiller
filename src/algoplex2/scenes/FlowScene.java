@@ -25,22 +25,24 @@ public class FlowScene extends GridScene {
 
   @Override
   public void preSetup(Grid grid) {
-    perlinFlowGenerator = new PerlinFlowComponent(new Bounds(Lusio.WIDTH * 2, Lusio.HEIGHT * 2));
+    perlinFlowGenerator = new PerlinFlowComponent(new Bounds(grid.getWidth() * 2, grid.getHeight() * 2));
     perlinFlowGenerator.setColorProvider(ConstantColorProvider.WHITE);
-    perlinFlowGenerator.setPos(Lusio.WIDTH / 2, Lusio.HEIGHT / 2);
-    perlinFlowGenerator.setFallSpeed(0);
-    perlinFlowGenerator.setNumPoints(300);
-    perlinFlowGenerator.setLineSparsity(0f);
+    perlinFlowGenerator.setPos(grid.getWidth() / 2, grid.getHeight() / 2);
+    perlinFlowGenerator.setFallSpeed(2);
+    perlinFlowGenerator.setNumPoints(200);
+    perlinFlowGenerator.setLineSparsity(1f);
     perlinFlowGenerator.setScrollSpeed(1);
     perlinFlowGenerator.setCircleRadius(300);
-    perlinFlowGenerator.setLineThickness(6);
+    perlinFlowGenerator.setLineThickness(3);
     perlinFlowGenerator.setInterpolation(1);
-    perlinFlowGenerator.setNoiseSpeed1(0);
-    perlinFlowGenerator.setNoiseSpeed2(0);
-    perlinFlowGenerator.setNoiseScale(1000);
+    perlinFlowGenerator.setNoiseSpeed1(0.00f);
+    perlinFlowGenerator.setNoiseSpeed2(0.001f);
+    perlinFlowGenerator.setNoiseScale(500);
     perlinFlowGenerator.setMainSpeed(0.05f);
-    perlinFlowGenerator.setScrambleSpeed(0.0001f);
-    perlinFlowGenerator.setLineLength(50);
+    perlinFlowGenerator.setScrambleSpeed(0);
+    perlinFlowGenerator.setLineLength(20);
+    perlinFlowGenerator.setSnapToGrid(true);
+    perlinFlowGenerator.setGridResolution(grid.getColumns() * 4);
     addComponent(perlinFlowGenerator);
 
     super.preSetup(grid);

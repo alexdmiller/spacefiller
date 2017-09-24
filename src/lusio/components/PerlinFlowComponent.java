@@ -25,6 +25,8 @@ public class PerlinFlowComponent extends SceneComponent {
   private int numPoints = 50;
   private float scrambleSpeed = 0.01f;
   private float mainSpeed = 0.1f;
+  private boolean snapToGrid = false;
+  private float gridResolution = 10;
 
   float timeStep;
   float scramble = 0;
@@ -147,6 +149,22 @@ public class PerlinFlowComponent extends SceneComponent {
     this.mainSpeed = mainSpeed;
   }
 
+  public boolean isSnapToGrid() {
+    return snapToGrid;
+  }
+
+  public void setSnapToGrid(boolean snapToGrid) {
+    this.snapToGrid = snapToGrid;
+  }
+
+  public float getGridResolution() {
+    return gridResolution;
+  }
+
+  public void setGridResolution(float gridResolution) {
+    this.gridResolution = gridResolution;
+  }
+
   @Override
   public void draw(PGraphics graphics) {
     graphics.pushMatrix();
@@ -165,8 +183,13 @@ public class PerlinFlowComponent extends SceneComponent {
           PVector.mult(position3(j), interpolation),
           PVector.mult(position2(j), (1 - interpolation)));
 
-      for (int i = 0; i < lineLength; i++) {
+      if (snapToGrid) {
+        float cellSize = bounds.getWidth() / gridResolution;
+        p.x = Math.round(p.x / cellSize) * cellSize;
+        p.y = Math.round(p.y / cellSize) * cellSize;
+      }
 
+      for (int i = 0; i < lineLength; i++) {
         float oldX = p.x;
         float oldY = p.y;
         PVector v = getFlow(p.x, p.y);
@@ -207,4 +230,6 @@ public class PerlinFlowComponent extends SceneComponent {
     );
     return p;
   }
+
+
 }

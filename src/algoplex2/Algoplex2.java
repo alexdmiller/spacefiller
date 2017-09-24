@@ -14,9 +14,9 @@ import java.io.*;
 
 public class Algoplex2 extends SceneApplet {
   public static Algoplex2 instance;
-  private static int ROWS = 5;
-  private static int COLS = 8;
-  private static int SPACING = 170;
+  private static int ROWS = 4;
+  private static int COLS = 6;
+  private static int SPACING = 150;
 
   public static void main(String[] args) {
     main("algoplex2.Algoplex2");
@@ -33,9 +33,9 @@ public class Algoplex2 extends SceneApplet {
   }
 
   public void settings() {
-    fullScreen(2);
+    fullScreen(1);
     size(1920, 1080, P3D);
-    PJOGL.profile = 1;
+    PJOGL.profile = 2;
   }
 
   public final void setup() {
@@ -48,17 +48,17 @@ public class Algoplex2 extends SceneApplet {
     graphRenderer = new BasicGraphRenderer(1);
     graphRenderer.setColor(0xFFFFFF00);
 
+    GradientTriangleScene gradientTriangleScene = new GradientTriangleScene();
+    addGridScene(gradientTriangleScene);
+
+    TriangleScene triangleScene = new TriangleScene();
+    addGridScene(triangleScene);
+
     FlowScene flowScene = new FlowScene();
     addGridScene(flowScene);
 
     ContourScene contourScene = new ContourScene();
     addGridScene(contourScene);
-
-    TriangleScene triangleScene = new TriangleScene();
-    addGridScene(triangleScene);
-
-//    ContourScene contourScene = new ContourScene();
-//    addGridScene(contourScene);
 
     PyramidScene pyramidScene = new PyramidScene();
     addGridScene(pyramidScene);
@@ -89,6 +89,9 @@ public class Algoplex2 extends SceneApplet {
     remote.register(this);
 
     remote.printAddresses();
+
+    remote.controller(13).smooth(0.2f).send(remote.target("/GradientTriangleScene/color1Rotation"));
+    remote.controller(14).smooth(0.2f).send(remote.target("/GradientTriangleScene/color2Rotation"));
 
     remote.controller(13).send(remote.target("/ContourScene/contourComponent/resolution"));
     remote.controller(14).send(remote.target("/ContourScene/contourComponent/noiseAmplitude"));

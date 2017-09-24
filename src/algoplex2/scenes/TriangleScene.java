@@ -45,17 +45,17 @@ public class TriangleScene extends GridScene {
 
       int triangleIndex = 0;
       for (Node[] triangle : quad.getTriangles()) {
-//        float v = (float) ((Math.sin(
-//            row * yMod + col * xMod +
-//            triangleIndex / 4f * Math.PI * 2 * triangleMod
-//            + shift) + 1) / 2);
-//
-//        graphics.fill(v * v * 255);
+        float v = (float) ((Math.sin(
+            row * yMod + col * xMod +
+            triangleIndex / 4f * Math.PI * 2 * triangleMod
+            + shift) + 1) / 2);
 
-        graphics.fill(
-            perlin.noise(row + col + triangleIndex, t) * 255,
-            perlin.noise(row + col + triangleIndex + 100, t) * 255,
-            perlin.noise(row + col + triangleIndex + 200, t) * 255);
+        graphics.fill(v * v * 255);
+
+//        graphics.fill(
+//            perlin.noise(row + col + triangleIndex, t) * 255,
+//            perlin.noise(row + col + triangleIndex + 100, t) * 255,
+//            perlin.noise(row + col + triangleIndex + 200, t) * 255);
         graphics.triangle(
             triangle[0].position.x, triangle[0].position.y,
             triangle[1].position.x, triangle[1].position.y,

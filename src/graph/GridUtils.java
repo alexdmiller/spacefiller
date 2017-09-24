@@ -82,7 +82,7 @@ public class GridUtils {
 
         if (col < cols - 1 && row < rows - 2) {
           // bottom triangle
-          grid.addTriangle(nodes[row + 2][col], nodes[row + 1][col], nodes[row + 2][col + 1]);
+          grid.addTriangle(nodes[row + 2][col], nodes[row + 2][col + 1], nodes[row + 1][col]);
         }
 
         if (col < cols - 1 && row < rows - 2 && nodes[row + 1][col] != null) {
