@@ -30,7 +30,7 @@ public class ThreeDeeFlockScene extends LusioScene {
 
   @Override
   public void setup() {
-    particleGenerator2 = new ParticleComponent(200, new Bounds(Lusio.HEIGHT), 3);
+    particleGenerator2 = ParticleComponent.withReflectiveBounds(200, new Bounds(Lusio.HEIGHT), 3);
     particleGenerator2.setPos(Lusio.WIDTH / 2, Lusio.HEIGHT / 2);
     particleGenerator2.addRenderer(new ParticleDotRenderer(10, Lusio.instance));
     particleGenerator2.addRenderer(new ParticleWormRenderer(20, 5, Lusio.instance));

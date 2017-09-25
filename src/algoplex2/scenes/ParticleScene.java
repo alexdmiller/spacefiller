@@ -37,7 +37,7 @@ public class ParticleScene extends GridScene {
   public void preSetup(Grid grid) {
     super.preSetup(grid);
 
-    particleGenerator = new ParticleComponent(500, new Bounds(grid.getWidth(), grid.getHeight()), 2);
+    particleGenerator = ParticleComponent.withReflectiveBounds(500, new Bounds(grid.getWidth(), grid.getHeight()), 2);
     particleGenerator.setPos(grid.getWidth() / 2, grid.getHeight() / 2);
 
     ParticleRenderer particleRenderer = new ParticleDotRenderer(10, ConstantColorProvider.WHITE);

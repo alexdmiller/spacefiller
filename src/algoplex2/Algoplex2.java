@@ -48,29 +48,21 @@ public class Algoplex2 extends SceneApplet {
     graphRenderer = new BasicGraphRenderer(1);
     graphRenderer.setColor(0xFFFFFF00);
 
-    GradientTriangleScene gradientTriangleScene = new GradientTriangleScene();
-    addGridScene(gradientTriangleScene);
+    GridScene[] gridScenes = new GridScene[] {
+        new WormScene(),
+        new ShiftingEdgeScene(),
+        new GradientTriangleScene(),
+        new TriangleScene(),
+        new FlowScene(),
+        new ContourScene(),
+        new PyramidScene(),
+        new ParticleScene(),
+        new PsychScene()
+    };
 
-    TriangleScene triangleScene = new TriangleScene();
-    addGridScene(triangleScene);
-
-    FlowScene flowScene = new FlowScene();
-    addGridScene(flowScene);
-
-    ContourScene contourScene = new ContourScene();
-    addGridScene(contourScene);
-
-    PyramidScene pyramidScene = new PyramidScene();
-    addGridScene(pyramidScene);
-
-    ParticleScene particleScene = new ParticleScene();
-    addGridScene(particleScene);
-
-    PsychScene psychScene = new PsychScene();
-    addGridScene(psychScene);
-
-    BasicGridFitScene basicGridFitScene = new BasicGridFitScene();
-    addGridScene(basicGridFitScene);
+    for (GridScene scene : gridScenes) {
+      addGridScene(scene);
+    }
 
     transformedCanvas = createGraphics(COLS * SPACING, ROWS * SPACING, P3D);
 
@@ -89,6 +81,11 @@ public class Algoplex2 extends SceneApplet {
     remote.register(this);
 
     remote.printAddresses();
+
+    remote.controller(13).send(remote.target("/ShiftingEdgeScene/quadMod"));
+    remote.controller(14).send(remote.target("/ShiftingEdgeScene/triangleMod"));
+    remote.controller(15).send(remote.target("/ShiftingEdgeScene/lineMod"));
+
 
     remote.controller(13).smooth(0.2f).send(remote.target("/GradientTriangleScene/color1Rotation"));
     remote.controller(14).smooth(0.2f).send(remote.target("/GradientTriangleScene/color2Rotation"));

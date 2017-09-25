@@ -20,7 +20,7 @@ public class FlockScene extends LusioScene {
 
   @Override
   public void setup() {
-    particleGenerator = new ParticleComponent(100, new Bounds(Lusio.HEIGHT), 3);
+    particleGenerator = ParticleComponent.withReflectiveBounds(100, new Bounds(Lusio.HEIGHT), 3);
     particleGenerator.setPos(Lusio.WIDTH / 2, Lusio.HEIGHT / 2);
 
     // particleGenerator.addRenderer(new DelaunayRenderer(2));

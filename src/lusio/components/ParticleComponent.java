@@ -1,8 +1,11 @@
 package lusio.components;
 
 import particles.Bounds;
+import particles.Particle;
 import particles.ParticleSystem;
+import particles.behaviors.FatalBounds;
 import particles.behaviors.ParticleBehavior;
+import particles.behaviors.ReflectiveBounds;
 import particles.renderers.ParticleRenderer;
 import processing.core.PGraphics;
 import scene.SceneComponent;
@@ -16,17 +19,28 @@ public class ParticleComponent extends SceneComponent {
   private List<ParticleRenderer> renderers;
   private Quaternion quaternion = new Quaternion();
 
-  // TODO: why does this need to have a max force?
+  public static ParticleComponent withReflectiveBounds(int numParticles, Bounds bounds, int dimension) {
+    ParticleComponent c = new ParticleComponent();
 
-  public ParticleComponent(int numParticles, Bounds bounds) {
-    this(numParticles, bounds, 3);
+    c.particleSystem = new ParticleSystem(bounds, numParticles);
+    c.particleSystem.addBehavior(new ReflectiveBounds());
+    c.particleSystem.fillWithParticles(numParticles, dimension);
+
+    return c;
   }
 
-  public ParticleComponent(int numParticles, Bounds bounds, int dimension) {
-    this.renderers = new ArrayList<>();
+  public static ParticleComponent withFatalBounds(int numParticles, Bounds bounds, int dimension) {
+    ParticleComponent c = new ParticleComponent();
 
-    this.particleSystem = ParticleSystem.boundedSystem(bounds, numParticles);
-    this.particleSystem.fillWithParticles(numParticles, dimension);
+    c.particleSystem = new ParticleSystem(bounds, numParticles);
+    c.particleSystem.addBehavior(new FatalBounds());
+    c.particleSystem.fillWithParticles(numParticles, dimension);
+
+    return c;
+  }
+
+  private ParticleComponent() {
+    this.renderers = new ArrayList<>();
   }
 
   @Override

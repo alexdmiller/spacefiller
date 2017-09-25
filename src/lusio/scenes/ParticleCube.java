@@ -23,7 +23,7 @@ public class ParticleCube extends LusioScene {
 
   @Override
   public void setup() {
-    particleGenerator = new ParticleComponent(200, new Bounds(Lusio.HEIGHT/2), 3);
+    particleGenerator = ParticleComponent.withReflectiveBounds(200, new Bounds(Lusio.HEIGHT/2), 3);
     particleGenerator.setPos(Lusio.WIDTH / 2, Lusio.HEIGHT / 2);
     particleGenerator.addRenderer(new ParticleDotRenderer(10, Lusio.instance));
     particleGenerator.addRenderer(new ParticleWormRenderer(10, 3, Lusio.instance));

@@ -5,7 +5,7 @@ import particles.Particle;
 
 import java.util.List;
 
-public class BoundParticles extends ParticleBehavior {
+public class ReflectiveBounds extends ParticleBehavior {
   @Override
   public void apply(List<Particle> particles) {
     for (Particle p : particles) {

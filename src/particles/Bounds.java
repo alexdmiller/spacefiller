@@ -28,9 +28,9 @@ public class Bounds implements Serializable {
 	}
 
 	public boolean contains(float x, float y, float z) {
-		return 	(x > -width/2 && x < width/2) &&
-				(y > -height/2 && y < height/2) &&
-				(z > -depth/2 && z < depth/2);
+		return 	(x >= -width/2 && x <= width/2) &&
+				(y >= -height/2 && y <= height/2) &&
+				(z >= -depth/2 && z <= depth/2);
 	}
 
 	public boolean contains(PVector p) {

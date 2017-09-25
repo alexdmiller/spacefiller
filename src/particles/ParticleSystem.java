@@ -1,6 +1,6 @@
 package particles;
 
-import particles.behaviors.BoundParticles;
+import particles.behaviors.ReflectiveBounds;
 import particles.behaviors.ParticleBehavior;
 import processing.core.PVector;
 
@@ -11,12 +11,6 @@ import java.util.List;
  * Created by miller on 7/13/17.
  */
 public class ParticleSystem {
-  public static ParticleSystem boundedSystem(Bounds bounds, int maxParticles) {
-    ParticleSystem system = new ParticleSystem(bounds, maxParticles);
-    system.addBehavior(new BoundParticles());
-    return system;
-  }
-
   private Bounds bounds;
   private List<Particle> particles;
   private List<Source> sources;

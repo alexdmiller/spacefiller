@@ -21,7 +21,7 @@ public class FancyParticles extends LusioScene {
 
   @Override
   public void setup() {
-    particleGenerator = new ParticleComponent(50, new Bounds(Lusio.WIDTH, Lusio.HEIGHT), 2);
+    particleGenerator = ParticleComponent.withReflectiveBounds(50, new Bounds(Lusio.WIDTH, Lusio.HEIGHT), 2);
     particleGenerator.setPos(Lusio.WIDTH / 2, Lusio.HEIGHT / 2);
 
     dottedLineGraphRenderer = new DottedLineGraphRenderer();

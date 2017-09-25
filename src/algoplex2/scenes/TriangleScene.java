@@ -52,10 +52,6 @@ public class TriangleScene extends GridScene {
 
         graphics.fill(v * v * 255);
 
-//        graphics.fill(
-//            perlin.noise(row + col + triangleIndex, t) * 255,
-//            perlin.noise(row + col + triangleIndex + 100, t) * 255,
-//            perlin.noise(row + col + triangleIndex + 200, t) * 255);
         graphics.triangle(
             triangle[0].position.x, triangle[0].position.y,
             triangle[1].position.x, triangle[1].position.y,
@@ -70,36 +66,4 @@ public class TriangleScene extends GridScene {
     super.draw(graphics);
   }
 
-//  @Override
-//  public void draw(PGraphics graphics) {
-//    t += speed;
-//
-//    float shift = t + shiftAmount;
-//
-//    graphics.noStroke();
-//    graphics.noFill();
-//    int quadIndex = 0;
-//    for (Quad quad : grid.getSquares()) {
-//      int triangleIndex = 0;
-//      for (Node[] triangle : quad.getTriangles()) {
-//        float v = (float) ((Math.sin(
-//            quadIndex * squareMod +
-//                triangleIndex / 4f * Math.PI * 2 * triangleMod
-//                + shift) + 1) / 2);
-//
-//        graphics.fill(v * v * 255);
-//        graphics.beginShape();
-//        for (Node n : triangle) {
-//          graphics.vertex(n.position.x, n.position.y);
-//        }
-//        graphics.endShape();
-//
-//        triangleIndex++;
-//      }
-//
-//      quadIndex++;
-//    }
-//
-//    super.draw(graphics);
-//  }
 }
