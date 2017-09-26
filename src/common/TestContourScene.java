@@ -1,8 +1,6 @@
 package common;
 
-import algoplex2.Grid;
 import common.components.ContourComponent;
-import org.junit.jupiter.api.Test;
 import particles.Bounds;
 import processing.core.PGraphics;
 import scene.Scene;

@@ -1,7 +1,6 @@
 package algoplex2;
 
 import algoplex2.scenes.*;
-import com.sun.tools.javac.comp.Flow;
 import graph.GridUtils;
 import graph.BasicGraphRenderer;
 import processing.core.PGraphics;
@@ -49,6 +48,11 @@ public class Algoplex2 extends SceneApplet {
     graphRenderer.setColor(0xFFFFFF00);
 
     GridScene[] gridScenes = new GridScene[] {
+        new PerlinTriangles(),
+        new PerlinGrid(),
+        new CrossScene(),
+        new ColorBath(),
+        new VeinScene(),
         new WormScene(),
         new ShiftingEdgeScene(),
         new GradientTriangleScene(),
@@ -82,13 +86,56 @@ public class Algoplex2 extends SceneApplet {
 
     remote.printAddresses();
 
+    remote.controller(13).smooth(0.05f).send(remote.target("/CrossScene/color1Rotation"));
+    remote.controller(14).smooth(0.05f).send(remote.target("/CrossScene/color2Rotation"));
+    remote.controller(15).smooth(0.05f).send(remote.target("/CrossScene/color3Rotation"));
+    remote.controller(16).smooth(0.05f).send(remote.target("/CrossScene/color4Rotation"));
+    remote.controller(17).smooth(0.15f).send(remote.target("/CrossScene/crossSize"));
+    remote.controller(18).smooth(0.15f).send(remote.target("/CrossScene/xSize"));
+    remote.controller(19).smooth(0.15f).invert().send(remote.target("/CrossScene/rotation"));
+
+    remote.controller(13).smooth(0.05f).send(remote.target("/ColorBath/color1Rotation"));
+    remote.controller(14).smooth(0.05f).send(remote.target("/ColorBath/color2Rotation"));
+    remote.controller(15).smooth(0.05f).send(remote.target("/ColorBath/color3Rotation"));
+    remote.controller(16).smooth(0.05f).send(remote.target("/ColorBath/color4Rotation"));
+
+    remote.controller(13).send(remote.target("/VeinScene/addStuff"));
+    remote.controller(14).send(remote.target("/VeinScene/treeComponent/pulsePeriod"));
+    remote.controller(15).send(remote.target("/VeinScene/treeComponent/growthSpeed"));
+    remote.controller(16).send(remote.target("/VeinScene/treeComponent/attractorInfluenceRadius"));
+
+    /*
+    /WormScene/flockParticles/alignmentThreshold
+/WormScene/flockParticles/alignmentWeight
+/WormScene/flockParticles/cohesionThreshold
+/WormScene/flockParticles/cohesionWeight
+/WormScene/flockParticles/desiredSeparation
+/WormScene/flockParticles/maxSpeed
+/WormScene/flockParticles/separationWeight
+/WormScene/followPaths/maxForce
+/WormScene/followPaths/maxSpeed
+/WormScene/followPaths/radius
+/WormScene/particleWebRenderer/lineSize
+/WormScene/particleWebRenderer/lineThreshold
+/WormScene/repelFixedPoints/repelStrength
+/WormScene/repelFixedPoints/repelThreshold
+     */
+    remote.controller(13).send(remote.target("/WormScene/flockParticles/desiredSeparation"));
+    remote.controller(14).send(remote.target("/WormScene/flockParticles/maxSpeed"));
+    remote.controller(15).send(remote.target("/WormScene/flockParticles/cohesionThreshold"));
+    remote.controller(16).send(remote.target("/WormScene/followPaths/maxForce"));
+    remote.controller(17).send(remote.target("/WormScene/followPaths/maxSpeed"));
+    remote.controller(18).send(remote.target("/WormScene/followPaths/radius"));
+    remote.controller(19).send(remote.target("/WormScene/particleWebRenderer/lineThreshold"));
+
     remote.controller(13).send(remote.target("/ShiftingEdgeScene/quadMod"));
     remote.controller(14).send(remote.target("/ShiftingEdgeScene/triangleMod"));
     remote.controller(15).send(remote.target("/ShiftingEdgeScene/lineMod"));
 
-
-    remote.controller(13).smooth(0.2f).send(remote.target("/GradientTriangleScene/color1Rotation"));
+    remote.controller(13).smooth(0.5f).send(remote.target("/GradientTriangleScene/color1Rotation"));
     remote.controller(14).smooth(0.2f).send(remote.target("/GradientTriangleScene/color2Rotation"));
+
+
 
     remote.controller(13).send(remote.target("/ContourScene/contourComponent/resolution"));
     remote.controller(14).send(remote.target("/ContourScene/contourComponent/noiseAmplitude"));
@@ -145,12 +192,13 @@ public class Algoplex2 extends SceneApplet {
     if (showUI) {
       graphTransformer.drawUI(this.canvas);
     }
-
+//
 //    for (Node n : graphTransformer.getPostTransformGrid().getNodes()) {
 //      PVector original = graphTransformer.getPreNode(n).position;
-//      n.position.x = (float) (original.x + (noise(original.x, 0, t) - 0.5) * controller.getValue(0) * 1000);
-//      n.position.y = (float) (original.y + (noise(original.y, 1, t) - 0.5) * controller.getValue(0) * 1000);
+//      n.position.x = (float) (original.x + (noise(original.x, 0, t) - 0.5) * 100);
+//      n.position.y = (float) (original.y + (noise(original.y, 1, t) - 0.5) * 100);
 //    }
+    //t += 0.1f;
   }
 
   @Override

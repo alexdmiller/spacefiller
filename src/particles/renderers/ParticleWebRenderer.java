@@ -1,8 +1,10 @@
 package particles.renderers;
 
+import common.color.ConstantColorProvider;
 import lusio.Lusio;
 import particles.Particle;
 import processing.core.PGraphics;
+import spacefiller.remote.Mod;
 
 import java.util.List;
 
@@ -10,12 +12,16 @@ import java.util.List;
  * Created by miller on 7/12/17.
  */
 public class ParticleWebRenderer extends ParticleRenderer {
-  private float lineThreshold;
-  private float lineSize;
+  @Mod(min = 0, max = 500)
+  public float lineThreshold;
+
+  @Mod(min = 0, max = 10)
+  public float lineSize;
 
   public ParticleWebRenderer(float lineThreshold, float lineSize) {
     this.lineThreshold = lineThreshold;
     this.lineSize = lineSize;
+    this.colorProvider = ConstantColorProvider.WHITE;
   }
 
   public void render(PGraphics graphics) {

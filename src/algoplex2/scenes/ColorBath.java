@@ -2,7 +2,6 @@ package algoplex2.scenes;
 
 import algoplex2.Quad;
 import graph.*;
-import processing.core.PVector;
 import spacefiller.remote.Mod;
 import processing.core.PGraphics;
 import toxi.color.ColorList;
@@ -13,7 +12,7 @@ import toxi.color.theory.ColorTheoryRegistry;
 import toxi.color.theory.ColorTheoryStrategy;
 import toxi.math.noise.PerlinNoise;
 
-public class GradientTriangleScene extends GridScene {
+public class ColorBath extends GridScene {
   private float t = 0;
 
   @Mod(min = -0.1f, max = 0.1f)
@@ -25,10 +24,15 @@ public class GradientTriangleScene extends GridScene {
   @Mod(min = 0, max = 6.2831853f)
   public float color2Rotation;
 
-  private PerlinNoise perlin;
-  public float jitter = 100;
+  @Mod(min = 0, max = 6.2831853f)
+  public float color3Rotation;
 
-  public GradientTriangleScene() {
+  @Mod(min = 0, max = 6.2831853f)
+  public float color4Rotation;
+
+  private PerlinNoise perlin;
+
+  public ColorBath() {
     perlin = new PerlinNoise();
   }
 
@@ -38,33 +42,21 @@ public class GradientTriangleScene extends GridScene {
 
     ReadonlyTColor color1 = TColor.BLUE.getRotatedRYB(color1Rotation);
     TColor color2 = color1.getRotatedRYB(color2Rotation);
+    TColor color3 = color1.getRotatedRYB(color3Rotation);
+    TColor color4 = color1.getRotatedRYB(color4Rotation);
 
-    for (Quad square : grid.getSquares()) {
-      float index = 0;
-
-      for (Node[] tri : square.getTriangles()) {
-        index += Math.PI / 4;
-
-        TColor c1 = color1.getDarkened((float) (Math.sin(t + index) + 1) / 2);
-        TColor c2 = color2.getDarkened((float) (Math.sin(t + Math.PI / 4 + index) + 1) / 2);
-
-        graphics.noStroke();
-        graphics.beginShape();
-        createVertex(tri[0].position, c1.toARGB(), graphics);
-        createVertex(tri[1].position, c2.toARGB(), graphics);
-        createVertex(tri[2].position, c1.toARGB(), graphics);
-        graphics.endShape();
-      }
-    }
+    graphics.beginShape();
+    graphics.fill(color1.toARGB());
+    graphics.vertex(grid.getBoundingQuad().getTopLeft().position.x, grid.getBoundingQuad().getTopLeft().position.y);
+    graphics.fill(color2.toARGB());
+    graphics.vertex(grid.getBoundingQuad().getTopRight().position.x, grid.getBoundingQuad().getTopRight().position.y);
+    graphics.fill(color3.toARGB());
+    graphics.vertex(grid.getBoundingQuad().getBottomRight().position.x, grid.getBoundingQuad().getBottomRight().position.y);
+    graphics.fill(color4.toARGB());
+    graphics.vertex(grid.getBoundingQuad().getBottomLeft().position.x, grid.getBoundingQuad().getBottomLeft().position.y);
+    graphics.endShape();
 
     super.draw(graphics);
-  }
-
-  private void createVertex(PVector p, int color, PGraphics graphics) {
-    graphics.fill(color);
-    graphics.vertex(
-        p.x + (perlin.noise(p.x, p.y, t) - 0.5f) * jitter,
-        p.y + (perlin.noise(p.x, p.y, t) - 0.5f) * jitter);
   }
 
 //  @Override

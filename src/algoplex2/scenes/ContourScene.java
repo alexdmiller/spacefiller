@@ -42,7 +42,6 @@ public class ContourScene extends GridScene {
   @Override
   public void draw(PGraphics graphics) {
     graphics.ortho();
-    System.out.println(contourComponent.resolution);
 //    contourComponent.setColor(0xffffffff);
 //    contourComponent.setNoiseAmplitude(controller.getValue(0) * 5000);
 //    contourComponent.setNoiseScale(controller.getValue(1) * 10 + 0.01f);

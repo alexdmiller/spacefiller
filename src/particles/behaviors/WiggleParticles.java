@@ -13,7 +13,7 @@ public class WiggleParticles extends ParticleBehavior {
   public float wiggleAmplitudeMultiplier = 1;
 
   @Mod(min = 0, max = 10, defaultValue = 1)
-  public float wiggleStepMultiplier = 1;
+  public float wiggleStepMultiplier = 10;
 
   @Override
   public void apply(List<Particle> particles) {

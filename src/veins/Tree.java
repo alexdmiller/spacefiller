@@ -2,10 +2,7 @@ package veins;
 
 import processing.core.PVector;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Tree {
 	public List<Edge> edges;
@@ -78,7 +75,11 @@ public class Tree {
 		nodes.add(new Node(n));
 	}
 
-	public static class Node {
+	public List<Node> getNodes() {
+		return nodes;
+	}
+
+  public static class Node {
 		public PVector v;
 		public int age;
 

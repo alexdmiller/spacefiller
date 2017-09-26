@@ -1,5 +1,7 @@
 package graph;
 
+import processing.core.PVector;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -59,5 +61,13 @@ public class Graph implements Serializable {
     }
 
     return newGraph;
+  }
+
+  public PVector getRandomPointOnEdge() {
+    Edge e = edges.get((int) Math.floor(Math.random() * edges.size()));
+
+    PVector delta = PVector.sub(e.n1.position, e.n2.position);
+    float d = (float) Math.random();
+    return new PVector(e.n1.position.x + delta.x * d, e.n1.position.y + delta.y * d);
   }
 }
