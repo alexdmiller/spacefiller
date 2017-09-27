@@ -26,7 +26,7 @@ public class GradientTriangleScene extends GridScene {
   public float color2Rotation;
 
   private PerlinNoise perlin;
-  public float jitter = 100;
+  public float jitter = 50;
 
   public GradientTriangleScene() {
     perlin = new PerlinNoise();
@@ -51,8 +51,8 @@ public class GradientTriangleScene extends GridScene {
         graphics.noStroke();
         graphics.beginShape();
         createVertex(tri[0].position, c1.toARGB(), graphics);
-        createVertex(tri[1].position, c2.toARGB(), graphics);
-        createVertex(tri[2].position, c1.toARGB(), graphics);
+        createVertex(tri[1].position, c1.toARGB(), graphics);
+        createVertex(tri[2].position, c2.toARGB(), graphics);
         graphics.endShape();
       }
     }

@@ -86,6 +86,24 @@ public class Algoplex2 extends SceneApplet {
 
     remote.printAddresses();
 
+    /*
+    /PerlinTriangles/color1Rotation
+    /PerlinTriangles/color2Rotation
+    /PerlinTriangles/dotResolution
+    /PerlinTriangles/lineResolution
+    /PerlinTriangles/scale1
+    /PerlinTriangles/scale2
+    /PerlinTriangles/speed
+    /PerlinTriangles/threshold
+    */
+
+    remote.controller(13).send(remote.target("/PerlinTriangles/threshold"));
+    remote.controller(14).send(remote.target("/PerlinTriangles/color1Rotation"));
+    remote.controller(15).send(remote.target("/PerlinTriangles/color2Rotation"));
+    remote.controller(16).send(remote.target("/PerlinTriangles/scale1"));
+    remote.controller(17).send(remote.target("/PerlinTriangles/scale2"));
+    remote.controller(18).smooth(0.1send(remote.target("/PerlinTriangles/offset"));
+
     remote.controller(13).smooth(0.05f).send(remote.target("/CrossScene/color1Rotation"));
     remote.controller(14).smooth(0.05f).send(remote.target("/CrossScene/color2Rotation"));
     remote.controller(15).smooth(0.05f).send(remote.target("/CrossScene/color3Rotation"));
@@ -192,13 +210,6 @@ public class Algoplex2 extends SceneApplet {
     if (showUI) {
       graphTransformer.drawUI(this.canvas);
     }
-//
-//    for (Node n : graphTransformer.getPostTransformGrid().getNodes()) {
-//      PVector original = graphTransformer.getPreNode(n).position;
-//      n.position.x = (float) (original.x + (noise(original.x, 0, t) - 0.5) * 100);
-//      n.position.y = (float) (original.y + (noise(original.y, 1, t) - 0.5) * 100);
-//    }
-    //t += 0.1f;
   }
 
   @Override
