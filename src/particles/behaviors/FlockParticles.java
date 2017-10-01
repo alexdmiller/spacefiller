@@ -18,8 +18,8 @@ public class FlockParticles extends ParticleBehavior {
   @Mod
   public float cohesionWeight = 1;
 
-  @Mod(min = 0, max = 300)
-  public float desiredSeparation = 50;
+  @Mod(min = 0, max = 30)
+  public float desiredSeparation = 10;
 
   @Mod(min = 0, max = 300)
   public float alignmentThreshold = 100;
@@ -29,8 +29,8 @@ public class FlockParticles extends ParticleBehavior {
 
   private float maxForce = 1;
 
-  @Mod(min = 0, max = 50)
-  public float maxSpeed = 10;
+  @Mod(min = 0, max = 10)
+  public float maxSpeed = 5;
 
   public FlockParticles(
       float separationWeight,

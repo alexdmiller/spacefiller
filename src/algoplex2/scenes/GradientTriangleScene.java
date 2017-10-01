@@ -25,8 +25,10 @@ public class GradientTriangleScene extends GridScene {
   @Mod(min = 0, max = 6.2831853f)
   public float color2Rotation;
 
+  @Mod(min = 0, max = 100)
+  public float jitter = 100;
+
   private PerlinNoise perlin;
-  public float jitter = 50;
 
   public GradientTriangleScene() {
     perlin = new PerlinNoise();
@@ -43,7 +45,7 @@ public class GradientTriangleScene extends GridScene {
       float index = 0;
 
       for (Node[] tri : square.getTriangles()) {
-        index += Math.PI / 4;
+        index += Math.PI / 10;
 
         TColor c1 = color1.getDarkened((float) (Math.sin(t + index) + 1) / 2);
         TColor c2 = color2.getDarkened((float) (Math.sin(t + Math.PI / 4 + index) + 1) / 2);

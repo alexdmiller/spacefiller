@@ -1,7 +1,7 @@
 package particles.renderers;
 
 import graph.Graph;
-import graph.GraphRenderer;
+import graph.renderer.GraphRenderer;
 import graph.Node;
 import megamu.mesh.Delaunay;
 import particles.Particle;

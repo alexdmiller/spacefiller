@@ -16,8 +16,8 @@ public class FollowPaths extends ParticleBehavior {
   public float radius = 20;
 
   // TODO: why max force AND max speed?
-  @Mod(min =  0, max = 20)
-  public float maxForce = 10;
+  @Mod(min =  0, max = 10)
+  public float maxForce = 5;
 
   @Mod(min =  0, max = 20)
   public float maxSpeed = 10;

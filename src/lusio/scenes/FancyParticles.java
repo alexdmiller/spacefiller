@@ -1,7 +1,6 @@
 package lusio.scenes;
 
-import graph.*;
-import lightcube.Lightcube;
+import graph.renderer.DottedLineGraphRenderer;
 import lusio.Lusio;
 import lusio.components.ParticleComponent;
 import particles.Bounds;
@@ -9,9 +8,6 @@ import particles.behaviors.FlockParticles;
 import particles.renderers.GraphParticleRenderer;
 import particles.renderers.ParticleDotRenderer;
 import processing.core.PGraphics;
-import scene.Scene;
-
-import java.util.Map;
 
 public class FancyParticles extends LusioScene {
   ParticleComponent particleGenerator;

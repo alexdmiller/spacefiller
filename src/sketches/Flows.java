@@ -4,6 +4,7 @@ import spacefiller.remote.Mod;
 import spacefiller.remote.OscRemoteControl;
 import processing.core.PGraphics;
 import processing.core.PVector;
+import spacefiller.remote.VDMXWriter;
 
 public class Flows extends Scene {
 	public static void main(String[] args) {
@@ -56,7 +57,8 @@ public class Flows extends Scene {
 
 	@Override
 	public void doSetup() {
-		new OscRemoteControl(this, 12005);
+		OscRemoteControl remote = new OscRemoteControl(this, 12008);
+		VDMXWriter.exportVDMXJson("flows", remote.getTargetMap(), remote.getPort());
 	}
 
 	@Override

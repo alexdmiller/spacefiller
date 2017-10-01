@@ -1,5 +1,8 @@
-package graph;
+package graph.renderer;
 
+import graph.Edge;
+import graph.Graph;
+import graph.Node;
 import spacefiller.remote.Mod;
 import processing.core.PGraphics;
 import processing.core.PVector;

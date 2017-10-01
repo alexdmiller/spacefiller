@@ -7,7 +7,8 @@ import graph.GridUtils;
 import common.Integrator;
 import common.Integrators;
 import graph.Node;
-import graph.SinGraphRenderer;
+import graph.renderer.CrosshairGraphRenderer;
+import graph.renderer.SinGraphRenderer;
 import spacefiller.remote.Mod;
 import spacefiller.remote.OscRemoteControl;
 import processing.core.PGraphics;
@@ -34,9 +35,13 @@ public class AlgoplexPerformer extends SceneApplet {
   public PsychScene psychScene = new PsychScene();
 
   @Mod
+  public ShiftingEdgeScene shiftingEdgeScene = new ShiftingEdgeScene();
+
+  @Mod
   public TriangleScene triangleScene = new TriangleScene();
 
   public GridScene[] gridScenes = new GridScene[] {
+      shiftingEdgeScene,
       contourScene,
       particleScene,
       // psychScene,
@@ -46,7 +51,7 @@ public class AlgoplexPerformer extends SceneApplet {
   private GraphTransformer graphTransformer;
 
   @Mod
-  public SinGraphRenderer graphRenderer;
+  public CrosshairGraphRenderer graphRenderer;
 
   private PGraphics transformedCanvas;
   private boolean showUI = true;
@@ -98,7 +103,7 @@ public class AlgoplexPerformer extends SceneApplet {
   }
 
   public void settings() {
-    fullScreen(2);
+    // fullScreen(2);
     size(WIDTH, HEIGHT, P3D);
     PJOGL.profile = 1;
   }
@@ -109,11 +114,10 @@ public class AlgoplexPerformer extends SceneApplet {
     int cols = WIDTH / SPACING + 2;
     int rows = HEIGHT / SPACING + 2;
 
-      graphTransformer = GridUtils.createGraphTransformer(rows, cols, SPACING);
+    graphTransformer = GridUtils.createGraphTransformer(rows, cols, SPACING);
 
     //graphRenderer = new BasicGraphRenderer(1);
-    graphRenderer = new SinGraphRenderer();
-    graphRenderer.setThickness(2);
+    graphRenderer = new CrosshairGraphRenderer();
     graphRenderer.setColor(0xffff5ea6);
 
     addGridScenes(gridScenes);
@@ -128,11 +132,6 @@ public class AlgoplexPerformer extends SceneApplet {
     OscRemoteControl remote = new OscRemoteControl(this);
     VDMXWriter.exportVDMXJson("algoplex-performer", remote.getTargetMap(), 9998);
     remote.listen(9998);
-  }
-
-  @Mod(min = 0, max = 10)
-  public void setBorderThickness(float thickness) {
-    graphRenderer.setThickness(thickness);
   }
 
   @Override

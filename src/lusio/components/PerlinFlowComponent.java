@@ -5,28 +5,45 @@ import particles.Bounds;
 import processing.core.PGraphics;
 import processing.core.PVector;
 import scene.SceneComponent;
+import spacefiller.remote.Mod;
 import toxi.math.noise.PerlinNoise;
 
 /**
  * Created by miller on 7/16/17.
  */
 public class PerlinFlowComponent extends SceneComponent {
-  private float flowForce = 20;
-  private float noiseScale = 500f;
-  private float noiseSpeed1 = 0.01f;
+  @Mod(min = 0, max = 15)
+  public float flowForce = 10;
+
+  @Mod(min = 1, max = 1000)
+  public float noiseScale = 500f;
+
+  @Mod(min = 0, max = 100)
+  public float lineLength = 50;
+
+  @Mod(min = 0, max = 1)
+  public float lineSparsity = 0.6f;
+
+  @Mod(min = 0, max = 10)
+  public float scrollSpeed = 1;
+
+  @Mod(min = 0, max = 20)
+  public float fallSpeed = 10;
+
+  @Mod(min = 0f, max = 0.1f)
+  public float noiseSpeed1 = 0.01f;
+
+  @Mod(min = 0, max = 0.1f)
+  public float mainSpeed = 0.1f;
+
   private float noiseSpeed2 = 0.01f;
-  private float lineLength = 100;
-  private float scrollSpeed = 1;
-  private float fallSpeed = 10;
-  private float lineSparsity = 0.6f;
   private float lineThickness = 2;
   private float interpolation = 0f;
   private float circleRadius = 100;
   private int numPoints = 50;
   private float scrambleSpeed = 0.01f;
-  private float mainSpeed = 0.1f;
   private boolean snapToGrid = false;
-  private float gridResolution = 10;
+  private float gridCellSize = 10;
 
   float timeStep;
   float scramble = 0;
@@ -35,6 +52,7 @@ public class PerlinFlowComponent extends SceneComponent {
 
   private Bounds bounds;
   private PerlinNoise perlin;
+  private float gridOffset;
 
   public PerlinFlowComponent(Bounds bounds) {
     this.bounds = bounds;
@@ -157,12 +175,12 @@ public class PerlinFlowComponent extends SceneComponent {
     this.snapToGrid = snapToGrid;
   }
 
-  public float getGridResolution() {
-    return gridResolution;
+  public float getGridCellSize() {
+    return gridCellSize;
   }
 
-  public void setGridResolution(float gridResolution) {
-    this.gridResolution = gridResolution;
+  public void setGridCellSize(float gridCellSize) {
+    this.gridCellSize = gridCellSize;
   }
 
   @Override
@@ -176,33 +194,48 @@ public class PerlinFlowComponent extends SceneComponent {
     graphics.stroke(255);
     graphics.strokeWeight(lineThickness);
 
-    for (int j = 0; j < numPoints; j++) {
-      graphics.stroke(getColorProvider().getColor(j));
-
-      PVector p = PVector.add(
-          PVector.mult(position3(j), interpolation),
-          PVector.mult(position2(j), (1 - interpolation)));
-
-      if (snapToGrid) {
-        float cellSize = bounds.getWidth() / gridResolution;
-        p.x = Math.round(p.x / cellSize) * cellSize;
-        p.y = Math.round(p.y / cellSize) * cellSize;
-      }
-
-      for (int i = 0; i < lineLength; i++) {
-        float oldX = p.x;
-        float oldY = p.y;
-        PVector v = getFlow(p.x, p.y);
-
-        p.x += v.x;
-        p.y += v.y + fallSpeed;
-
-        if (Math.sin(i + (perlin.noise((float) j) * 100.0) + timeStep * scrollSpeed) - lineSparsity < 0) {
-          graphics.line(oldX, oldY, p.x, p.y);
+    if (snapToGrid) {
+      graphics.pushMatrix();
+      graphics.translate(-bounds.getWidth()/2, -bounds.getHeight()/2);
+      int index = 0;
+      for (float x = 0; x < bounds.getWidth(); x += gridCellSize) {
+        for (float y = 0; y < bounds.getHeight(); y += gridCellSize) {
+          index++;
+          graphics.stroke(getColorProvider().getColor(index));
+          PVector p = new PVector(x + gridOffset, y + gridOffset);
+          drawLine(index, p, graphics);
         }
       }
+      graphics.popMatrix();
+    } else {
+      for (int j = 0; j < numPoints; j++) {
+        graphics.stroke(getColorProvider().getColor(j));
+
+        PVector p = PVector.add(
+            PVector.mult(position3(j), interpolation),
+            PVector.mult(position2(j), (1 - interpolation)));
+
+        drawLine(j, p, graphics);
+      }
     }
+
+
     graphics.popMatrix();
+  }
+
+  private void drawLine(int index, PVector p, PGraphics graphics) {
+    for (int i = 0; i < lineLength; i++) {
+      float oldX = p.x;
+      float oldY = p.y;
+      PVector v = getFlow(p.x, p.y);
+
+      p.x += v.x;
+      p.y += v.y + fallSpeed;
+
+      if (Math.sin(i + (perlin.noise((float) index) * 100.0) + timeStep * scrollSpeed) - lineSparsity < 0) {
+        graphics.line(oldX, oldY, p.x, p.y);
+      }
+    }
   }
 
   PVector getFlow(float x, float y) {
@@ -232,4 +265,7 @@ public class PerlinFlowComponent extends SceneComponent {
   }
 
 
+  public void setGridOffset(float gridOffset) {
+    this.gridOffset = gridOffset;
+  }
 }

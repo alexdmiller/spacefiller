@@ -1,14 +1,13 @@
 package lusio.scenes;
 
-import common.color.ConstantColorProvider;
 import graph.*;
-import lightcube.Lightcube;
+import graph.renderer.AnimatedFillGraphRenderer;
+import graph.renderer.DottedLineGraphRenderer;
+import graph.renderer.PipeGraphRenderer;
+import graph.renderer.SinGraphRenderer;
 import lusio.Lusio;
 import lusio.components.GraphComponent;
 import processing.core.PGraphics;
-import scene.Scene;
-
-import java.util.Map;
 
 public class MillerLineScene extends LusioScene {
   //  BasicGraphRenderer sinGraphRenderer;

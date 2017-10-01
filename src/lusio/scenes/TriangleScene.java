@@ -3,11 +3,8 @@ package lusio.scenes;
 import algoplex2.Grid;
 import common.TriangleGridComponent;
 import graph.GridUtils;
-import graph.*;
-import lusio.components.GraphComponent;
+import graph.renderer.BasicGraphRenderer;
 import processing.core.PGraphics;
-
-import java.util.Arrays;
 
 public class TriangleScene extends LusioScene {
   TriangleGridComponent triangleGridComponent;

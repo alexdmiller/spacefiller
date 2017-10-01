@@ -7,10 +7,15 @@ import java.util.*;
 public class Tree {
 	public List<Edge> edges;
 	public List<Node> nodes;
+	private boolean active;
 
 	public Tree() {
 		edges = new ArrayList<Edge>();
 		nodes = new ArrayList<Node>();
+	}
+
+	public boolean isActive() {
+		return active;
 	}
 
 	public void grow(
@@ -18,6 +23,7 @@ public class Tree {
 			float attractorInfluenceRadius,
 			float attractorKillRadius,
 			float growthSpeed) {
+		active = false;
 		Map<Node, PVector> forces = new HashMap<Node, PVector>();
 		List<PVector> attractorsToRemove = new ArrayList<PVector>();
 
@@ -42,6 +48,7 @@ public class Tree {
 			if (closest != null) {
 				if (!forces.containsKey(closest)) {
 					forces.put(closest, new PVector(0, 0));
+					active = true;
 				}
 				PVector diff = new PVector();
 				diff.set(attractor);

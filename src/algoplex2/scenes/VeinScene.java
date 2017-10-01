@@ -60,7 +60,22 @@ public class VeinScene extends GridScene {
 
   @Override
   public void draw(PGraphics graphics) {
+//    System.out.println("nodes = " + treeComponent.numNodes());
+//    System.out.println("attractors = " + treeComponent.numAttractors());
     super.draw(graphics);
+
+    // System.out.println();
+    if (treeComponent.activeArea() < 3000) {
+      System.out.println("NOT ACTIVE");
+      for (int i = 0; i < 100; i++) {
+        treeComponent.addAttractor(grid.getRandomPointOnEdge());
+      }
+
+      if (treeComponent.numNodes() != 0) {
+        treeComponent.clearNodes();
+      }
+      treeComponent.addNode(treeComponent.getRandomAttractorPosition());
+    }
   }
 
   @Override

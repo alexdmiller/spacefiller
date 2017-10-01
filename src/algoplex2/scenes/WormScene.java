@@ -19,7 +19,7 @@ public class WormScene extends GridScene {
   private ParticleComponent particleGenerator;
 
   @Mod
-  public FlockParticles flockParticles = new FlockParticles(1, 2f, 1f, 10, 20, 30, 1f, 2);
+  public FlockParticles flockParticles = new FlockParticles(2, 1f, 1f, 10, 50, 50, 0.5f, 2);
 
   @Mod
   public RepelFixedPoints repelFixedPoints = new RepelFixedPoints(50, 0.01f);;
@@ -38,10 +38,9 @@ public class WormScene extends GridScene {
   public void preSetup(Grid grid) {
     super.preSetup(grid);
 
-    particleGenerator = ParticleComponent.withFatalBounds(500, new Bounds(grid.getWidth(), grid.getHeight()), 2);
+    particleGenerator = ParticleComponent.withFatalBounds(200, new Bounds(grid.getWidth(), grid.getHeight()), 2);
     particleGenerator.setPos(grid.getWidth() / 2, grid.getHeight() / 2);
     particleGenerator.addBehavior(flockParticles);
-    particleGenerator.addBehavior(new WiggleParticles());
 
     followPaths = new FollowPaths();
 
@@ -50,9 +49,9 @@ public class WormScene extends GridScene {
       followPaths.addPathSegment(PVector.sub(e.n1.position, offset), PVector.sub(e.n2.position, offset));
     }
 
-    followPaths.maxForce = 100;
-    followPaths.maxSpeed = 2;
-    followPaths.radius = 5;
+    followPaths.maxForce = 1;
+    followPaths.maxSpeed = 4;
+    followPaths.radius = 7;
     particleGenerator.addBehavior(followPaths);
 
     particleGenerator.getParticleSystem().createSource(0, 0, 1, 2);
@@ -61,7 +60,7 @@ public class WormScene extends GridScene {
     particleWebRenderer = new ParticleWebRenderer(20, 1);
     //particleGenerator.addRenderer(particleWebRenderer);
 
-    particleWormRenderer = new ParticleWormRenderer(10, 2, ConstantColorProvider.WHITE);
+    particleWormRenderer = new ParticleWormRenderer(5, 1, ConstantColorProvider.WHITE);
     particleGenerator.addRenderer(particleWormRenderer);
 
     addComponent(particleGenerator);

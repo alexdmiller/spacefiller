@@ -1,5 +1,7 @@
 package common.components;
 
+import particles.Bounds;
+import processing.core.PConstants;
 import processing.core.PGraphics;
 import processing.core.PVector;
 import scene.SceneComponent;
@@ -34,6 +36,7 @@ public class TreeComponent extends SceneComponent {
 
   private List<PVector> attractors;
   private Tree tree;
+  private float activeArea;
 
   public TreeComponent() {
     attractors = new ArrayList<PVector>();
@@ -56,6 +59,14 @@ public class TreeComponent extends SceneComponent {
     return tree.getNodes().size();
   }
 
+  public PVector getRandomAttractorPosition() {
+    return attractors.get((int) Math.floor(Math.random() * attractors.size()));
+  }
+
+  public float activeArea() {
+    return activeArea;
+  }
+
   @Override
   public void draw(PGraphics graphics) {
     synchronized (tree) {
@@ -68,19 +79,42 @@ public class TreeComponent extends SceneComponent {
   void drawTree(Tree tree, PGraphics graphics) {
     graphics.stroke(255);
 
-    Iterator<Tree.Edge> edges = tree.edges.iterator();
-    while (edges.hasNext()) {
-      Tree.Edge edge = edges.next();
-      if (pulseLife > 0 && edge.age >= pulseLife) {
-        edges.remove();
-      } else {
-        float w = edgeThickness * ageToThickness(edge.age);
-        if (w > 0) {
-          graphics.strokeWeight(w);
-          graphics.line(edge.n1.v.x, edge.n1.v.y, edge.n2.v.x, edge.n2.v.y);
+    activeArea = 0;
+
+    if (!tree.edges.isEmpty()) {
+      PVector topLeft = tree.edges.get(0).n1.v.copy();
+      PVector bottomRight = tree.edges.get(0).n1.v.copy();
+
+      Iterator<Tree.Edge> edges = tree.edges.iterator();
+
+      while (edges.hasNext()) {
+        Tree.Edge edge = edges.next();
+
+        topLeft.x = Math.min(Math.min(edge.n1.v.x, edge.n2.v.x), topLeft.x);
+        topLeft.y = Math.min(Math.min(edge.n1.v.y, edge.n2.v.y), topLeft.y);
+        bottomRight.x = Math.max(Math.max(edge.n1.v.x, edge.n2.v.x), bottomRight.x);
+        bottomRight.y = Math.max(Math.max(edge.n1.v.y, edge.n2.v.y), bottomRight.y);
+
+        if (pulseLife > 0 && edge.age >= pulseLife) {
+          edges.remove();
+        } else {
+          float w = edgeThickness * ageToThickness(edge.age);
+          if (w > 0) {
+            graphics.strokeWeight(w);
+            graphics.line(edge.n1.v.x, edge.n1.v.y, edge.n2.v.x, edge.n2.v.y);
+          }
+          edge.age++;
         }
-        edge.age++;
       }
+
+      graphics.stroke(255);
+      graphics.strokeWeight(1);
+      graphics.noFill();
+      graphics.rectMode(PConstants.CORNERS);
+      graphics.rect(topLeft.x, topLeft.y, bottomRight.x, bottomRight.y);
+      graphics.rectMode(PConstants.CORNER);
+
+      activeArea = (bottomRight.x - topLeft.x) * (bottomRight.y - topLeft.y);
     }
 
     Iterator<Tree.Node> nodes = tree.nodes.iterator();
@@ -108,5 +142,9 @@ public class TreeComponent extends SceneComponent {
 
   public int numAttractors() {
     return attractors.size();
+  }
+
+  public void clearNodes() {
+    tree.nodes.clear();
   }
 }
