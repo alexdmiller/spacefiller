@@ -60,8 +60,13 @@ public class ParticleSystem {
     sources.add(new Source(new PVector(x, y), spawnRate, dimension));
   }
 
+  public List<Source> getSources() {
+    return sources;
+  }
+
   public void update() {
-    for (Source source : sources) {
+    if (particles.size() < maxParticles) {
+      Source source = sources.get((int) Math.floor(Math.random() * sources.size()));
       for (int i = 0; i < source.getSpawnRate() && particles.size() < maxParticles; i++) {
         createParticle(source.getPosition().copy(), source.getDimension());
       }

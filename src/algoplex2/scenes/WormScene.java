@@ -3,11 +3,13 @@ package algoplex2.scenes;
 import algoplex2.Grid;
 import algoplex2.Quad;
 import com.sun.tools.internal.jxc.ap.Const;
+import common.StoredVectorField;
 import common.color.ConstantColorProvider;
 import common.PerlinVectorField;
 import common.VectorField;
 import graph.Edge;
 import lusio.components.ParticleComponent;
+import particles.Source;
 import particles.behaviors.*;
 import spacefiller.remote.Mod;
 import particles.Bounds;
@@ -22,15 +24,15 @@ public class WormScene extends GridScene {
   public FlockParticles flockParticles = new FlockParticles(2, 1f, 1f, 10, 50, 50, 0.5f, 2);
 
   @Mod
-  public RepelFixedPoints repelFixedPoints = new RepelFixedPoints(50, 0.01f);;
-
-  @Mod
   public FollowPaths followPaths;
 
   @Mod
   public ParticleWebRenderer particleWebRenderer;
 
-  ParticleWormRenderer particleWormRenderer;
+  @Mod
+  public RepelFixedPoints repelFixedPoints = new RepelFixedPoints(50, 0.01f);;
+
+  private ParticleWormRenderer particleWormRenderer;
 
   private float t;
 
@@ -42,25 +44,56 @@ public class WormScene extends GridScene {
     particleGenerator.setPos(grid.getWidth() / 2, grid.getHeight() / 2);
     particleGenerator.addBehavior(flockParticles);
 
-    followPaths = new FollowPaths();
+//    followPaths = new FollowPaths();
+//
+//    for (Edge e : grid.getEdges()) {
+//      PVector offset = new PVector(grid.getWidth() / 2, grid.getHeight() / 2);
+//      followPaths.addPathSegment(PVector.sub(e.n1.position, offset), PVector.sub(e.n2.position, offset));
+//    }
+//
+//    followPaths.maxForce = 1;
+//    followPaths.maxSpeed = 4;
+//    followPaths.radius = 7;
+    // particleGenerator.addBehavior(followPaths);
 
-    for (Edge e : grid.getEdges()) {
-      PVector offset = new PVector(grid.getWidth() / 2, grid.getHeight() / 2);
-      followPaths.addPathSegment(PVector.sub(e.n1.position, offset), PVector.sub(e.n2.position, offset));
+    PVector shift = new PVector(
+        -grid.getWidth() / 2,
+        -grid.getHeight() / 2);
+    for (Quad square : grid.getSquares()) {
+      repelFixedPoints.addFixedPoint(PVector.add(square.getBottomRight().position, shift));
+
+      if (square.getTopLeft().position.x == 0 || square.getTopLeft().position.y == 0) {
+        repelFixedPoints.addFixedPoint(PVector.add(square.getTopLeft().position, shift));
+      }
     }
 
-    followPaths.maxForce = 1;
-    followPaths.maxSpeed = 4;
-    followPaths.radius = 7;
-    particleGenerator.addBehavior(followPaths);
+    repelFixedPoints.addFixedPoint(PVector.add(grid.getBoundingQuad().getBottomLeft().position, shift));
+    repelFixedPoints.addFixedPoint(PVector.add(grid.getBoundingQuad().getTopRight().position, shift));
 
-    particleGenerator.getParticleSystem().createSource(0, 0, 1, 2);
+    particleGenerator.addBehavior(repelFixedPoints);
+    repelFixedPoints.repelStrength = 0.01f;
+    repelFixedPoints.repelThreshold = 100;
 
-    // ParticleRenderer particleRenderer = new ParticleWormRenderer(10, 2, ConstantColorProvider.WHITE);
-    particleWebRenderer = new ParticleWebRenderer(20, 1);
-    //particleGenerator.addRenderer(particleWebRenderer);
+//    PerlinVectorField perlinVectorField = new PerlinVectorField(10);
+//    FlowParticles flowParticles = new FlowParticles(perlinVectorField);
+//    flowParticles.maxForce = 5;
+//    particleGenerator.addBehavior(flowParticles);
 
-    particleWormRenderer = new ParticleWormRenderer(5, 1, ConstantColorProvider.WHITE);
+    for (Quad quad : grid.getSquares()) {
+      particleGenerator.getParticleSystem().createSource(
+          quad.getCenter().position.x - grid.getWidth() / 2,
+          quad.getCenter().position.y - grid.getHeight() / 2,
+          1,
+          2);
+    }
+
+    particleWebRenderer = new ParticleWebRenderer(50, 1);
+    particleGenerator.addRenderer(particleWebRenderer);
+
+//    ParticleDotRenderer particleDotRenderer = new ParticleDotRenderer(5);
+//    particleGenerator.addRenderer(particleDotRenderer);
+
+    particleWormRenderer = new ParticleWormRenderer(20, 2, ConstantColorProvider.WHITE);
     particleGenerator.addRenderer(particleWormRenderer);
 
     addComponent(particleGenerator);
@@ -69,8 +102,10 @@ public class WormScene extends GridScene {
   }
 
   @Override
-  public void draw(PGraphics   graphics) {
+  public void draw(PGraphics graphics) {
     t += 0.1f;
+
+    particleWebRenderer.setLineThreshold(flockParticles.desiredSeparation - 5);
 
     super.draw(graphics);
   }

@@ -1,6 +1,7 @@
 package graph.renderer;
 
 import common.color.ColorProvider;
+import common.color.ConstantColorProvider;
 import graph.Edge;
 import graph.Graph;
 import graph.Node;
@@ -25,6 +26,7 @@ public class PipeGraphRenderer implements GraphRenderer {
 
   public PipeGraphRenderer() {
     currentlyAnimating = new ArrayList<>();
+    colorProvider = ConstantColorProvider.WHITE;
   }
 
   public void setDotSize(float dotSize) {

@@ -12,16 +12,16 @@ public class SinGraphRenderer implements GraphRenderer {
   @Mod(min = -0.5f, max = 0.5f)
   public float speed = 0.1f;
 
-  @Mod(min = 0, max = 10)
+  @Mod(min = 0.1f, max = 10)
   public float size = 5;
 
-  @Mod(min = 0, max = 20)
+  @Mod(min = 0.01f, max = 20)
   public float freq = 10;
 
   private float time;
   private float spacing = 5;
   private float thickness = 3;
-  private int color;
+  private int color = 0xFFFFFFFF;
 
   public void setThickness(float thickness) {
     this.thickness = thickness;
@@ -40,7 +40,11 @@ public class SinGraphRenderer implements GraphRenderer {
       graphics.rotate(delta.heading());
 
       for (float t = 0; t < delta.mag(); t += spacing) {
-        graphics.line(t, func(t, delta.mag()), t + spacing, func(t + spacing, delta.mag()));
+        graphics.line(
+            t,
+            func(t, delta.mag()),
+            t + spacing,
+            func(t + spacing, delta.mag()));
       }
 
       graphics.popMatrix();

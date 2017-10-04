@@ -12,7 +12,7 @@ public class DottedLineGraphRenderer implements GraphRenderer {
   private float size = 20;
   private float scrollSpeed = 0.5f;
   private float thickness = 2;
-  private int color;
+  private int color = 0xFFFFFFFF;
 
   @Override
   public void render(PGraphics graphics, Graph graph) {

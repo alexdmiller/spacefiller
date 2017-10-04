@@ -3,6 +3,7 @@ package algoplex2.scenes;
 import algoplex2.Quad;
 import graph.*;
 import processing.core.PConstants;
+import processing.core.PVector;
 import spacefiller.remote.Mod;
 import processing.core.PGraphics;
 import toxi.math.noise.PerlinNoise;
@@ -25,10 +26,14 @@ public class ShiftingEdgeScene extends GridScene {
   @Mod(min = -0.1f, max = 0.1f)
   public float speed = 0.01f;
 
+  public float jitter = 100;
+
   private PerlinNoise perlin;
+  private PerlinNoise jitterPerlin;
 
   public ShiftingEdgeScene() {
     perlin = new PerlinNoise();
+    jitterPerlin = new PerlinNoise();
   }
 
   @Override
@@ -48,17 +53,16 @@ public class ShiftingEdgeScene extends GridScene {
         for (int i = 0; i < triangle.length; i++) {
 
           float v = (float) (Math.sin(shift
-              + quadIndex * quadMod
-              + triangleIndex * triangleMod
-              + i * lineMod) + 1) / 2;
+              + (float) quadIndex * quadMod
+              + (float) triangleIndex * triangleMod
+              + (float) i * lineMod) + 1) / 2;
 
           graphics.stroke((float) (Math.pow(v, 10) *255));
           graphics.strokeWeight(5);
-          graphics.line(
-              triangle[i].position.x,
-              triangle[i].position.y,
-              triangle[(i + 1) % triangle.length].position.x,
-              triangle[(i + 1) % triangle.length].position.y);
+
+          PVector p1 = transform(triangle[i].position);
+          PVector p2 = transform(triangle[(i + 1) % triangle.length].position);
+          graphics.line(p1.x, p1.y, p2.x, p2.y);
         }
         triangleIndex++;
       }
@@ -68,5 +72,10 @@ public class ShiftingEdgeScene extends GridScene {
 
     super.draw(graphics);
     graphics.blendMode(PConstants.BLEND);
+  }
+
+  private PVector transform(PVector p) {
+    return new PVector(p.x + (jitterPerlin.noise(p.x, p.y, t) - 0.5f) * jitter,
+        p.y + (jitterPerlin.noise(p.x, p.y, t) - 0.5f) * jitter);
   }
 }

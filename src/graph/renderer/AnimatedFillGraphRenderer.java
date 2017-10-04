@@ -1,11 +1,13 @@
 package graph.renderer;
 
 import common.color.ColorProvider;
+import common.color.ConstantColorProvider;
 import graph.Edge;
 import graph.Graph;
 import graph.Node;
 import processing.core.PGraphics;
 import processing.core.PVector;
+import spacefiller.remote.Mod;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -16,12 +18,16 @@ import java.util.List;
  */
 public class AnimatedFillGraphRenderer implements GraphRenderer {
   private List<AnimationInfo> currentlyAnimating;
-  private float fillSpeed = 50f;
-  private float thickness = 5;
+  public float fillSpeed = 50f;
+
+  @Mod
+  public float thickness = 5;
+
   private ColorProvider colorProvider;
 
   public AnimatedFillGraphRenderer() {
     currentlyAnimating = new ArrayList<>();
+    colorProvider = ConstantColorProvider.WHITE;
   }
 
   public void setFillSpeed(float fillSpeed) {

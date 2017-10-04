@@ -1,6 +1,7 @@
 package particles.renderers;
 
 import common.color.ColorProvider;
+import common.color.ConstantColorProvider;
 import particles.Particle;
 import processing.core.PGraphics;
 
@@ -9,6 +10,10 @@ import processing.core.PGraphics;
  */
 public class ParticleDotRenderer extends ParticleRenderer {
   private float dotSize;
+
+  public ParticleDotRenderer(float dotSize) {
+    this(dotSize, ConstantColorProvider.WHITE);
+  }
 
   public ParticleDotRenderer(float dotSize, ColorProvider colorProvider) {
     this.dotSize = dotSize;

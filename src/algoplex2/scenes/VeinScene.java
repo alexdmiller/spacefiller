@@ -66,15 +66,16 @@ public class VeinScene extends GridScene {
 
     // System.out.println();
     if (treeComponent.activeArea() < 3000) {
-      System.out.println("NOT ACTIVE");
-      for (int i = 0; i < 100; i++) {
+      for (int i = 0; i < 500; i++) {
         treeComponent.addAttractor(grid.getRandomPointOnEdge());
       }
 
       if (treeComponent.numNodes() != 0) {
         treeComponent.clearNodes();
       }
-      treeComponent.addNode(treeComponent.getRandomAttractorPosition());
+      for (int i = 0; i < 1; i++) {
+        treeComponent.addNode(treeComponent.getRandomAttractorPosition());
+      }
     }
   }
 

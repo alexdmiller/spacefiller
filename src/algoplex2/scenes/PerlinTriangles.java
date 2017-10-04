@@ -44,6 +44,9 @@ public class PerlinTriangles extends GridScene {
   @Mod(min = 0, max = 10)
   public float offset;
 
+  public float lineResolution = 10;
+  public float dotResolution = 10;
+
 
   public PerlinTriangles() {
     perlin = new PerlinNoise();
@@ -66,11 +69,11 @@ public class PerlinTriangles extends GridScene {
 
     pattern1.beginDraw();
     pattern1.clear();
-//    pattern1.stroke(255);
-//    for (float y = 0; y < grid.getHeight(); y += grid.getCellSize() / lineResolution) {
-//      pattern1.line(0, (y + t * 100) % grid.getHeight(), grid.getWidth(), (y + t * 100) % grid.getHeight());
-//    }
-    pattern1.background(color1.toARGB());
+    pattern1.stroke(255);
+    for (float y = 0; y < grid.getHeight(); y += grid.getCellSize() / lineResolution) {
+      pattern1.line(0, (y + t * 100) % grid.getHeight(), grid.getWidth(), (y + t * 100) % grid.getHeight());
+    }
+    //pattern1.background(color1.toARGB());
     pattern1.mask(noiseRender);
     pattern1.endDraw();
 
@@ -79,15 +82,14 @@ public class PerlinTriangles extends GridScene {
     pattern2.beginDraw();
     pattern2.clear();
     drawNoise(scale2, offset + 100);
-//    pattern2.stroke(255);
-//    pattern2.strokeWeight(3);
-//    for (float x = 0; x < grid.getWidth(); x += grid.getCellSize() / dotResolution) {
-//      for (float y = 0; y < grid.getHeight(); y += grid.getCellSize() / dotResolution) {
-//        pattern2.point(x,
-//            ((y - t * 100) % grid.getHeight() + grid.getHeight()) % grid.getHeight());
-//      }
-//    }
-    pattern2.background(color2.toARGB());
+    pattern2.stroke(255);
+    pattern2.strokeWeight(3);
+    for (float x = 0; x < grid.getWidth(); x += grid.getCellSize() / dotResolution) {
+      for (float y = 0; y < grid.getHeight(); y += grid.getCellSize() / dotResolution) {
+        pattern2.point(x,(y + t * 100) % grid.getHeight());
+      }
+    }
+    //pattern2.background(color2.toARGB());
     pattern2.mask(noiseRender);
     pattern2.endDraw();
     graphics.image(pattern2, 0, 0);

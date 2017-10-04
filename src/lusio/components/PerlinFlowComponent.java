@@ -12,31 +12,33 @@ import toxi.math.noise.PerlinNoise;
  * Created by miller on 7/16/17.
  */
 public class PerlinFlowComponent extends SceneComponent {
-  @Mod(min = 0, max = 15)
+  @Mod(min = 0.5f, max = 15)
   public float flowForce = 10;
 
-  @Mod(min = 1, max = 1000)
+  @Mod(min = 100, max = 1000)
   public float noiseScale = 500f;
 
-  @Mod(min = 0, max = 100)
+  @Mod(min = 1, max = 100)
   public float lineLength = 50;
 
   @Mod(min = 0, max = 1)
   public float lineSparsity = 0.6f;
 
-  @Mod(min = 0, max = 10)
-  public float scrollSpeed = 1;
+  @Mod(min = 0, max = 0.5f)
+  public float scrollSpeed = 0.2f;
 
   @Mod(min = 0, max = 20)
   public float fallSpeed = 10;
 
-  @Mod(min = 0f, max = 0.1f)
+  @Mod(min = 0f, max = 0.05f)
   public float noiseSpeed1 = 0.01f;
 
   @Mod(min = 0, max = 0.1f)
   public float mainSpeed = 0.1f;
 
-  private float noiseSpeed2 = 0.01f;
+  @Mod(min = 0, max = 0.02f)
+  public float noiseSpeed2 = 0.01f;
+
   private float lineThickness = 2;
   private float interpolation = 0f;
   private float circleRadius = 100;
@@ -49,6 +51,7 @@ public class PerlinFlowComponent extends SceneComponent {
   float scramble = 0;
   float noise1Pos = 0;
   float noise2Pos = 0;
+  float scrollPos = 0;
 
   private Bounds bounds;
   private PerlinNoise perlin;
@@ -190,6 +193,7 @@ public class PerlinFlowComponent extends SceneComponent {
     scramble += scrambleSpeed;
     noise1Pos += noiseSpeed1;
     noise2Pos += noiseSpeed2;
+    scrollPos += scrollSpeed;
 
     graphics.stroke(255);
     graphics.strokeWeight(lineThickness);
@@ -232,7 +236,7 @@ public class PerlinFlowComponent extends SceneComponent {
       p.x += v.x;
       p.y += v.y + fallSpeed;
 
-      if (Math.sin(i + (perlin.noise((float) index) * 100.0) + timeStep * scrollSpeed) - lineSparsity < 0) {
+      if (Math.sin(i + (perlin.noise((float) index) * 100.0) + scrollPos) - lineSparsity < 0) {
         graphics.line(oldX, oldY, p.x, p.y);
       }
     }

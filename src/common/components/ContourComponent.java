@@ -17,13 +17,13 @@ import java.util.List;
  * Created by miller on 7/22/17.
  */
 public class ContourComponent extends SceneComponent {
-  @Mod(min = 0, max = 5)
+  @Mod(min = 0.1f, max = 10)
   public float noiseAmplitude = 0;
 
-  @Mod(min = 0, max = 0.1f)
-  public float updateSpeed = 0.01f;
+  @Mod(min = 0, max = 0.005f)
+  public float updateSpeed = 0.001f;
 
-  @Mod(min = 0, max = 0.1f)
+  @Mod(min = 0, max = 0.01f)
   public float xSpeed = 0f;
 
   @Mod(min = 0, max = 0.1f)
@@ -35,8 +35,8 @@ public class ContourComponent extends SceneComponent {
   private float xTimeStep = 0;
   private float yTimeStep = 0;
 
-  @Mod(min = 0, max = 10)
-  public float noiseScale = 1;
+  @Mod(min = 5, max = 100)
+  public float noiseScale = 100;
 
   @Mod(min = 0, max = 10)
   public float lineSize = 1;
@@ -53,13 +53,16 @@ public class ContourComponent extends SceneComponent {
   @Mod(min = 0, max = 50)
   public int resolution = 10;
 
-  @Mod(min = 0.001f, max = 0.1f)
-  public float stripeSize;
+  @Mod(min = 0.5f, max = 5)
+  public float stripeSize = 5f;
 
   @Mod(min = -0.1f, max = 0.1f)
-  public float stripeUpdateSpeed;
+  public float stripeUpdateSpeed = 0.1f;
 
   public boolean drawGrid = false;
+
+  @Mod(min = 0, max = 0.5f)
+  public float sinHeight = 0.5f;
 
   public ContourComponent(Bounds bounds) {
     this.bounds = bounds;
@@ -106,15 +109,10 @@ public class ContourComponent extends SceneComponent {
       //graphics.stroke(255);
 
       // TODO: figure out color!
-//      graphics.stroke(graphics.lerpColor(
-//          color,
-//          0xFFFFFFFF,
-//          (float) (Math.sin(i * stripeSize + stripeTimeStep) + 1) / 2));
-
       graphics.stroke(graphics.lerpColor(
           color,
           0xFFFFFFFF,
-          (float) i / slices));
+          (float) (Math.sin(i * stripeSize + stripeTimeStep) + 1) / 2));
 
       drawSlice(
           heightMap, (float) i / slices, bounds.getDepth() * i / slices, bounds.getWidth() / resolution, graphics);
@@ -163,7 +161,12 @@ public class ContourComponent extends SceneComponent {
       for (int c = 0; c < grid[r].length; c++) {
         float x = (float) r / rows * (float) Math.PI;
         float y = (float) c / cols * (float) Math.PI;
-        grid[r][c] = (this.perlin.noise((x + xTimeStep) / noiseScale, (y + yTimeStep) / noiseScale, t) * noiseAmplitude) - noiseAmplitude / 2;
+
+        float adjustedNoiseScale = noiseScale / resolution;
+        grid[r][c] = (float) ((this.perlin.noise(
+                    (x + xTimeStep) * adjustedNoiseScale,
+                    (y + yTimeStep) * adjustedNoiseScale, t) * noiseAmplitude) - noiseAmplitude / 2
+                + Math.sin(r * 50 + t * 10) * sinHeight);
       }
     }
     return grid;

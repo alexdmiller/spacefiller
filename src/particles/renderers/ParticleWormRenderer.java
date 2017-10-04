@@ -26,6 +26,7 @@ public class ParticleWormRenderer extends ParticleRenderer {
 
   @Override
   public void render(PGraphics graphics) {
+
     int i = 0;
     for (IndividualWormRenderer r : individualWormRenderers) {
       graphics.stroke(colorProvider.getColor(i));

@@ -25,17 +25,14 @@ public class CrossScene extends GridScene {
   @Mod(min = 0, max = 6.2831853f)
   public float color1Rotation;
 
-  @Mod(min = 0, max = 6.2831853f)
+  @Mod(min = 0, max = (float) Math.PI)
   public float color2Rotation;
 
-  @Mod(min = 0, max = 6.2831853f)
-  public float color3Rotation;
-
-  @Mod(min = 0, max = 6.2831853f)
-  public float color4Rotation;
-
-  @Mod(min = 0, max = (float) Math.PI)
+  @Mod(min = (float) Math.PI/4, max = (float) Math.PI)
   public float rotation;
+
+  @Mod(min = (float) Math.PI/4, max = (float) Math.PI)
+  public float crossRotation;
 
   private PGraphics crosses;
 
@@ -48,8 +45,8 @@ public class CrossScene extends GridScene {
   public void draw(PGraphics graphics) {
     ReadonlyTColor color1 = TColor.BLUE.getRotatedRYB(color1Rotation);
     TColor color2 = color1.getRotatedRYB(color2Rotation);
-    TColor color3 = color1.getRotatedRYB(color3Rotation);
-    TColor color4 = color1.getRotatedRYB(color4Rotation);
+    TColor color3 = color1.getRotatedRYB(color2Rotation * 2);
+    TColor color4 = color1.getRotatedRYB(color2Rotation * 3);
 
     graphics.beginShape();
     graphics.fill(color1.toARGB());
@@ -71,6 +68,7 @@ public class CrossScene extends GridScene {
         float crossSize = this.crossSize * grid.getCellSize();
         crosses.pushMatrix();
         crosses.translate(square.getTopLeft().position.x, square.getTopLeft().position.y);
+        crosses.rotate(crossRotation);
         //crosses.rotate(rotation);
         crosses.line(-crossSize, 0, crossSize, 0);
         crosses.line(0, -crossSize, 0, crossSize);

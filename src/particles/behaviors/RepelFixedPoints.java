@@ -16,7 +16,7 @@ public class RepelFixedPoints extends ParticleBehavior {
   @Mod(min = 0, max = 200)
   public float repelThreshold;
 
-  @Mod(min = 0, max = 10)
+  @Mod(min = -0.01f, max = 0.01f)
   public float repelStrength;
 
   private List<PVector> fixedPoints;

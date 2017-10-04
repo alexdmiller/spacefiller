@@ -31,8 +31,8 @@ public class Algoplex2 extends SceneApplet {
     Algoplex2.instance = this;
   }
 
-  public void settings() {
-    // fullScreen(1);
+  public void settings( ) {
+    fullScreen(2);
     size(1920, 1080, P3D);
     PJOGL.profile = 2;
   }
@@ -48,20 +48,31 @@ public class Algoplex2 extends SceneApplet {
     graphRenderer.setColor(0xFFFFFF00);
 
     GridScene[] gridScenes = new GridScene[] {
-        new VeinScene(),
-        new FlowScene(),
-        new WormScene(),
-        new GradientTriangleScene(),
-        new ParticleScene(),
-        new PerlinTriangles(),
-        new PerlinGrid(),
-        new CrossScene(),
-        new ColorBath(),
-        new ShiftingEdgeScene(),
-        new TriangleScene(),
+        // round 1
         new ContourScene(),
-        new PyramidScene(),
-        new PsychScene()
+        new CircleScene(),
+        new PerlinGridScene(),
+        new LifeScene(),
+
+        // round 2: parameters finished
+        new WormScene(),
+        new VeinScene(),
+        new TinyTriangleScene(),
+        new FollowEdges(),
+        new TriangleScene(),
+        new FlowScene(),
+
+        // round 3: parameter order
+        new CrossScene(),
+
+        // throw away
+//        new GradientTriangleScene(),
+//        new PsychScene(),
+//        new PyramidScene(),
+//        new ColorBath(),
+//        new ParticleScene()
+//        new ShiftingEdgeScene(),
+
     };
 
     for (GridScene scene : gridScenes) {
@@ -86,12 +97,31 @@ public class Algoplex2 extends SceneApplet {
 
     remote.printAddresses();
 
-    remote.controller(13).send(remote.target("/FlowScene/perlinFlow/flowForce"));
-    remote.controller(14).send(remote.target("/FlowScene/perlinFlow/noiseScale"));
-    remote.controller(15).send(remote.target("/FlowScene/perlinFlow/lineLength"));
+    remote.controller(13).send(remote.target("/LifeScene/addNoise"));
+    remote.controller(14).send(remote.target("/LifeScene/birthChance"));
+    remote.controller(15).send(remote.target("/LifeScene/deathChance"));
+
+    remote.controller(13).send(remote.target("/FollowEdges/wobbler/updateSpeed"));
+    remote.controller(14).send(remote.target("/FollowEdges/wobbler/jitter"));
+    remote.controller(15).send(remote.target("/FollowEdges/wobbler/waveAmp"));
+    remote.controller(16).send(remote.target("/FollowEdges/sinGraphRenderer/speed"));
+    remote.controller(17).send(remote.target("/FollowEdges/sinGraphRenderer/size"));
+    remote.controller(18).send(remote.target("/FollowEdges/sinGraphRenderer/freq"));
+    remote.controller(19).send(remote.target("/FollowEdges/rendererIndex"));
+
+    remote.controller(13).send(remote.target("/TinyTriangleScene/speed"));
+    remote.controller(14).send(remote.target("/TinyTriangleScene/circleScale"));
+    remote.controller(15).send(remote.target("/TinyTriangleScene/interpolation"));
+    remote.controller(16).send(remote.target("/TinyTriangleScene/scale"));
+    remote.controller(17).send(remote.target("/TinyTriangleScene/color1Rotation"));
+    remote.controller(18).send(remote.target("/TinyTriangleScene/color2Rotation"));
+
+    remote.controller(13).smooth(0.1f).send(remote.target("/FlowScene/perlinFlow/flowForce"));
+    remote.controller(14).smooth(0.5f).send(remote.target("/FlowScene/perlinFlow/noiseScale"));
+    remote.controller(15).smooth(0.1f).send(remote.target("/FlowScene/perlinFlow/lineLength"));
     remote.controller(16).send(remote.target("/FlowScene/perlinFlow/lineSparsity"));
     remote.controller(17).send(remote.target("/FlowScene/perlinFlow/scrollSpeed"));
-    remote.controller(18).send(remote.target("/FlowScene/perlinFlow/noiseSpeed1"));
+    remote.controller(18).send(remote.target("/FlowScene/perlinFlow/noiseSpeed2"));
 
     remote.controller(13).send(remote.target("/PerlinTriangles/threshold"));
     remote.controller(14).send(remote.target("/PerlinTriangles/color1Rotation"));
@@ -100,23 +130,24 @@ public class Algoplex2 extends SceneApplet {
     remote.controller(17).send(remote.target("/PerlinTriangles/scale2"));
     remote.controller(18).smooth(0.1f).send(remote.target("/PerlinTriangles/offset"));
 
-    remote.controller(13).smooth(0.05f).send(remote.target("/CrossScene/color1Rotation"));
-    remote.controller(14).smooth(0.05f).send(remote.target("/CrossScene/color2Rotation"));
-    remote.controller(15).smooth(0.05f).send(remote.target("/CrossScene/color3Rotation"));
-    remote.controller(16).smooth(0.05f).send(remote.target("/CrossScene/color4Rotation"));
-    remote.controller(17).smooth(0.15f).send(remote.target("/CrossScene/crossSize"));
-    remote.controller(18).smooth(0.15f).send(remote.target("/CrossScene/xSize"));
-    // remote.controller(19).smooth(0.15f).invert().send(remote.target("/CrossScene/rotation"));
+    remote.controller(13).smooth(0.15f).send(remote.target("/CrossScene/crossSize"));
+    remote.controller(14).smooth(0.15f).send(remote.target("/CrossScene/xSize"));
+    remote.controller(15).smooth(0.15f).invert().send(remote.target("/CrossScene/rotation"));
+    remote.controller(16).smooth(0.15f).invert().send(remote.target("/CrossScene/crossRotation"));
+    remote.controller(17).smooth(0.05f).send(remote.target("/CrossScene/color1Rotation"));
+    remote.controller(18).smooth(0.05f).send(remote.target("/CrossScene/color2Rotation"));
 
     remote.controller(13).smooth(0.05f).send(remote.target("/ColorBath/color1Rotation"));
     remote.controller(14).smooth(0.05f).send(remote.target("/ColorBath/color2Rotation"));
     remote.controller(15).smooth(0.05f).send(remote.target("/ColorBath/color3Rotation"));
     remote.controller(16).smooth(0.05f).send(remote.target("/ColorBath/color4Rotation"));
 
-    remote.controller(13).send(remote.target("/VeinScene/addStuff"));
-    remote.controller(14).send(remote.target("/VeinScene/treeComponent/pulsePeriod"));
-    remote.controller(15).send(remote.target("/VeinScene/treeComponent/growthSpeed"));
-    remote.controller(16).send(remote.target("/VeinScene/treeComponent/attractorInfluenceRadius"));
+    remote.controller(13).send(remote.target("/VeinScene/treeComponent/tree/foodJitter"));
+    remote.controller(14).send(remote.target("/VeinScene/treeComponent/tree/forceJitter"));
+    remote.controller(15).send(remote.target("/VeinScene/treeComponent/pulsePeriod"));
+    remote.controller(16).send(remote.target("/VeinScene/treeComponent/growthSpeed"));
+    remote.controller(17).send(remote.target("/VeinScene/treeComponent/edgeThickness"));
+
 
     /*
     /WormScene/flockParticles/alignmentThreshold
@@ -134,10 +165,13 @@ public class Algoplex2 extends SceneApplet {
 /WormScene/repelFixedPoints/repelStrength
 /WormScene/repelFixedPoints/repelThreshold
      */
-    remote.controller(13).send(remote.target("/WormScene/flockParticles/desiredSeparation"));
-    remote.controller(14).send(remote.target("/WormScene/flockParticles/maxSpeed"));
-    remote.controller(15).send(remote.target("/WormScene/followPaths/maxForce"));
-    remote.controller(16).send(remote.target("/WormScene/followPaths/maxSpeed"));
+
+    remote.controller(13).send(remote.target("/WormScene/flockParticles/maxSpeed"));
+    remote.controller(14).send(remote.target("/WormScene/flockParticles/desiredSeparation"));
+    remote.controller(15).send(remote.target("/WormScene/flockParticles/cohesionThreshold"));
+    remote.controller(16).send(remote.target("/WormScene/flockParticles/alignmentThreshold"));
+    remote.controller(17).send(remote.target("/WormScene/repelFixedPoints/repelThreshold"));
+    remote.controller(18).send(remote.target("/WormScene/repelFixedPoints/repelStrength"));
 
 //    remote.controller(15).send(remote.target("/WormScene/flockParticles/cohesionThreshold"));
 
@@ -151,20 +185,21 @@ public class Algoplex2 extends SceneApplet {
     remote.controller(14).smooth(0.2f).send(remote.target("/GradientTriangleScene/color2Rotation"));
     remote.controller(15).send(remote.target("/GradientTriangleScene/jitter"));
 
-    remote.controller(13).send(remote.target("/ContourScene/contourComponent/resolution"));
-    remote.controller(14).send(remote.target("/ContourScene/contourComponent/noiseAmplitude"));
-    remote.controller(15).send(remote.target("/ContourScene/contourComponent/noiseScale"));
 
-//    remote.controller(13).smooth(0.2f).send(remote.target("/TriangleScene/xMod"));
-//    remote.controller(14).smooth(0.2f).send(remote.target("/TriangleScene/yMod"));
-//    remote.controller(15).smooth(0.1f).send(remote.target("/TriangleScene/triangleMod"));
-//    remote.controller(16).smooth(0.05f).send(remote.target("/TriangleScene/shiftAmount"));
-    remote.controller(13).send(remote.target("/TriangleScene/xMod"));
+    remote.controller(13).send(remote.target("/ContourScene/contourComponent/noiseAmplitude"));
+    remote.controller(14).send(remote.target("/ContourScene/contourComponent/sinHeight"));
+    remote.controller(15).send(remote.target("/ContourScene/setResolution"));
+    remote.controller(16).send(remote.target("/ContourScene/contourComponent/xSpeed"));
+    remote.controller(16).send(remote.target("/ContourScene/contourComponent/updateSpeed"));
+    remote.controller(17).send(remote.target("/ContourScene/setRotation"));
+    remote.controller(18).send(remote.target("/ContourScene/setColor"));
+
+    remote.controller(13).send(remote.target("/TriangleScene/mix"));
     remote.controller(14).send(remote.target("/TriangleScene/yMod"));
-    remote.controller(15).send(remote.target("/TriangleScene/triangleMod"));
-    remote.controller(16).smooth(0.1f).send(remote.target("/TriangleScene/shiftAmount"));
-
-    remote.controller(17).send(remote.target("/TriangleScene/speed"));
+    remote.controller(15).send(remote.target("/TriangleScene/xMod"));
+    remote.controller(16).send(remote.target("/TriangleScene/triangleMod"));
+    remote.controller(17).send(remote.target("/TriangleScene/lineMod"));
+    remote.controller(18).smooth(0.1f).send(remote.target("/TriangleScene/shiftAmount"));
 
     remote.controller(13).send(remote.target("/PyramidScene/speed"));
     remote.controller(14).send(remote.target("/PyramidScene/amplitude"));

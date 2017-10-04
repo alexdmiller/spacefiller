@@ -25,7 +25,7 @@ public class TreeComponent extends SceneComponent {
   @Mod(min=50, max=60)
   public float attractorInfluenceRadius = 50;
 
-  @Mod(min=0, max=20)
+  @Mod(min=1, max=10)
   public float edgeThickness = 5;
 
   @Mod(min=2, max=10)
@@ -35,7 +35,10 @@ public class TreeComponent extends SceneComponent {
   public float pulseLife = 500;
 
   private List<PVector> attractors;
-  private Tree tree;
+
+  @Mod
+  public Tree tree;
+
   private float activeArea;
 
   public TreeComponent() {
@@ -106,13 +109,6 @@ public class TreeComponent extends SceneComponent {
           edge.age++;
         }
       }
-
-      graphics.stroke(255);
-      graphics.strokeWeight(1);
-      graphics.noFill();
-      graphics.rectMode(PConstants.CORNERS);
-      graphics.rect(topLeft.x, topLeft.y, bottomRight.x, bottomRight.y);
-      graphics.rectMode(PConstants.CORNER);
 
       activeArea = (bottomRight.x - topLeft.x) * (bottomRight.y - topLeft.y);
     }

@@ -34,7 +34,6 @@ public class ParticleComponent extends SceneComponent {
 
     c.particleSystem = new ParticleSystem(bounds, numParticles);
     c.particleSystem.addBehavior(new FatalBounds());
-    c.particleSystem.fillWithParticles(numParticles, dimension);
 
     return c;
   }
