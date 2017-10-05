@@ -38,12 +38,11 @@ public class TinyTriangleScene extends GridScene {
   @Mod(min = 0.005f, max = 0.01f)
   public float scale = 0.005f;
 
-  @Mod(min = 0, max = 6.2831853f)
+  @Mod(min = 0, max = 0.6283185307179586f)
   public float color1Rotation;
 
-  @Mod(min = 0, max = 0.7853981f)
+  @Mod(min = 0, max = -0.39269908169872414f)
   public float color2Rotation;
-
 
   @Mod(min = 0.01f, max = 0.1f)
   public float circleScale = 1;

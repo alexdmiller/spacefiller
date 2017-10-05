@@ -16,10 +16,6 @@ public class VeinScene extends GridScene {
   @Mod
   public TreeComponent treeComponent;
 
-  public VeinScene() {
-
-  }
-
   @Override
   public void preSetup(Grid grid) {
     treeComponent = new TreeComponent();

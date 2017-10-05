@@ -26,6 +26,7 @@ public class Algoplex2 extends SceneApplet {
   private BasicGraphRenderer graphRenderer;
   private PGraphics transformedCanvas;
   private boolean showUI = false;
+  private TransitionAnimation transition;
 
   public Algoplex2() {
     Algoplex2.instance = this;
@@ -49,24 +50,26 @@ public class Algoplex2 extends SceneApplet {
 
     GridScene[] gridScenes = new GridScene[] {
         // round 1
-        new ContourScene(),
-        new CircleScene(),
         new PerlinGridScene(),
         new LifeScene(),
+        new TinyTriangleScene(),
+
+        new CircleScene(),
+
 
         // round 2: parameters finished
         new WormScene(),
         new VeinScene(),
-        new TinyTriangleScene(),
         new FollowEdges(),
         new TriangleScene(),
         new FlowScene(),
+        new ContourScene(),
 
         // round 3: parameter order
         new CrossScene(),
 
         // throw away
-//        new GradientTriangleScene(),
+//        new GradientTriangleScene(),ø
 //        new PsychScene(),
 //        new PyramidScene(),
 //        new ColorBath(),
@@ -84,6 +87,8 @@ public class Algoplex2 extends SceneApplet {
     setCanvas(getGraphics());
     setupRemote();
 
+    transition = new TransitionAnimation();
+
     super.setup();
   }
 
@@ -96,6 +101,25 @@ public class Algoplex2 extends SceneApplet {
     remote.register(this);
 
     remote.printAddresses();
+
+
+    /*
+    /CircleScene/bigAmp
+/CircleScene/bigFreq
+/CircleScene/length
+/CircleScene/noiseAmp
+/CircleScene/shiftAmount
+/CircleScene/smallAmp
+/CircleScene/smallFreq
+/CircleScene/spread
+     */
+
+    remote.controller(13).send(remote.target("/CircleScene/bigAmp"));
+    remote.controller(14).send(remote.target("/CircleScene/bigFreq"));
+    remote.controller(15).send(remote.target("/CircleScene/smallAmp"));
+    remote.controller(16).send(remote.target("/CircleScene/smallFreq"));
+    remote.controller(17).send(remote.target("/CircleScene/spread"));
+    remote.controller(18).send(remote.target("/CircleScene/noiseAmp"));
 
     remote.controller(13).send(remote.target("/LifeScene/addNoise"));
     remote.controller(14).send(remote.target("/LifeScene/birthChance"));
@@ -118,9 +142,9 @@ public class Algoplex2 extends SceneApplet {
 
     remote.controller(13).smooth(0.1f).send(remote.target("/FlowScene/perlinFlow/flowForce"));
     remote.controller(14).smooth(0.5f).send(remote.target("/FlowScene/perlinFlow/noiseScale"));
-    remote.controller(15).smooth(0.1f).send(remote.target("/FlowScene/perlinFlow/lineLength"));
-    remote.controller(16).send(remote.target("/FlowScene/perlinFlow/lineSparsity"));
-    remote.controller(17).send(remote.target("/FlowScene/perlinFlow/scrollSpeed"));
+    remote.controller(15).send(remote.target("/FlowScene/perlinFlow/lineSparsity"));
+    remote.controller(16).send(remote.target("/FlowScene/perlinFlow/scrollSpeed"));
+    remote.controller(17).send(remote.target("/FlowScene/perlinFlow/noiseSpeed1"));
     remote.controller(18).send(remote.target("/FlowScene/perlinFlow/noiseSpeed2"));
 
     remote.controller(13).send(remote.target("/PerlinTriangles/threshold"));
@@ -147,24 +171,6 @@ public class Algoplex2 extends SceneApplet {
     remote.controller(15).send(remote.target("/VeinScene/treeComponent/pulsePeriod"));
     remote.controller(16).send(remote.target("/VeinScene/treeComponent/growthSpeed"));
     remote.controller(17).send(remote.target("/VeinScene/treeComponent/edgeThickness"));
-
-
-    /*
-    /WormScene/flockParticles/alignmentThreshold
-/WormScene/flockParticles/alignmentWeight
-/WormScene/flockParticles/cohesionThreshold
-/WormScene/flockParticles/cohesionWeight
-/WormScene/flockParticles/desiredSeparation
-/WormScene/flockParticles/maxSpeed
-/WormScene/flockParticles/separationWeight
-/WormScene/followPaths/maxForce
-/WormScene/followPaths/maxSpeed
-/WormScene/followPaths/radius
-/WormScene/particleWebRenderer/lineSize
-/WormScene/particleWebRenderer/lineThreshold
-/WormScene/repelFixedPoints/repelStrength
-/WormScene/repelFixedPoints/repelThreshold
-     */
 
     remote.controller(13).send(remote.target("/WormScene/flockParticles/maxSpeed"));
     remote.controller(14).send(remote.target("/WormScene/flockParticles/desiredSeparation"));
@@ -234,6 +240,7 @@ public class Algoplex2 extends SceneApplet {
         currentScene.draw(this.transformedCanvas);
       }
     }
+    transition.draw(this.transformedCanvas, graphTransformer.getPreTransformGrid());
     this.transformedCanvas.endDraw();
 
     graphTransformer.drawImage(this.canvas, this.transformedCanvas);
@@ -241,6 +248,7 @@ public class Algoplex2 extends SceneApplet {
     if (showUI) {
       graphTransformer.drawUI(this.canvas);
     }
+
   }
 
   @Override
@@ -305,6 +313,24 @@ public class Algoplex2 extends SceneApplet {
       i.printStackTrace();
     } catch (ClassNotFoundException c) {
       c.printStackTrace();
+    }
+  }
+
+  @Override
+  public void switchScene(int sceneIndex) {
+    if (currentScene != null) {
+      currentScene.teardown();
+    }
+
+    if (sceneIndex < scenes.size()) {
+      Scene scene = scenes.get(sceneIndex);
+      currentSceneIndex = sceneIndex;
+
+      scene.setup();
+
+      currentScene = scene;
+
+      transition.reset();
     }
   }
 }

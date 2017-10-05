@@ -9,12 +9,12 @@ import spacefiller.remote.Mod;
 
 public class CrosshairGraphRenderer implements GraphRenderer {
   @Mod(min = 1, max = 10)
-  public float thickness;
+  public float thickness = 1;
 
   @Mod(min = 0, max = 100)
-  public float size;
+  public float size = 50;
 
-  private int color;
+  private int color = 0xFFFFFFFF;
 
   @Override
   public void render(PGraphics graphics, Graph graph) {

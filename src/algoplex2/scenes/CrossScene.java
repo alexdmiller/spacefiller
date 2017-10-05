@@ -22,10 +22,10 @@ public class CrossScene extends GridScene {
   @Mod(min = 0, max = 1)
   public float xSize = 0.5f;
 
-  @Mod(min = 0, max = 6.2831853f)
+  @Mod(min = 0, max = 0.7853981633974483f)
   public float color1Rotation;
 
-  @Mod(min = 0, max = (float) Math.PI)
+  @Mod(min = 0, max = -0.7853981633974483f)
   public float color2Rotation;
 
   @Mod(min = (float) Math.PI/4, max = (float) Math.PI)

@@ -40,7 +40,7 @@ public class SceneApplet extends PApplet {
     }
   }
 
-  public final void switchScene(int sceneIndex) {
+  public void switchScene(int sceneIndex) {
     if (currentScene != null) {
       currentScene.teardown();
     }

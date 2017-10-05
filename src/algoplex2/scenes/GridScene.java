@@ -22,7 +22,6 @@ public class GridScene extends Scene {
     // Don't clear components
   }
 
-
   public void setGrid(Grid grid) {
     this.grid = grid;
   }
