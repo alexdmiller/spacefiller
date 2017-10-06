@@ -26,7 +26,7 @@ public class TransitionAnimation {
 
     graphics.colorMode(PConstants.RGB);
     crosshairGraphRenderer.setColor(graphics.color(255, 255 - t * 5));
-    crosshairGraphRenderer.size = 20 + t / 10;
+    crosshairGraphRenderer.size = 100 - t;
     crosshairGraphRenderer.thickness = 2;
     crosshairGraphRenderer.render(graphics, grid);
   }

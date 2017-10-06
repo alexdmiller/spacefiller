@@ -17,25 +17,23 @@ import static processing.core.PConstants.P3D;
 
 public class TinyTriangleScene extends GridScene {
   private float t = 0;
+  private float noiseScroll = 0;
 
   @Mod(min = -0.1f, max = 0.1f)
   public float speed = 0.002f;
+
+  @Mod(min = 0, max = 0.1f)
+  public float scrollSpeed = 0.1f;
+
+  @Mod(min = 0, max = 1)
+  public float waveShift = 0;
 
   private PerlinNoise perlin;
 
   @Mod(min = 0.5f, max = 0.6f)
   public float threshold = 0.5f;
 
-  @Mod(min = 0.0005f, max = 0.002f)
-  public float scale1 = 0.001f;
-
-  @Mod(min = 0.0005f, max = 0.002f)
-  public float scale2 = 0.001f;
-
-  @Mod(min = 0, max = 10)
-  public float offset;
-
-  @Mod(min = 0.005f, max = 0.01f)
+  @Mod(min = 0.005f, max = 0.05f)
   public float scale = 0.005f;
 
   @Mod(min = 0, max = 0.6283185307179586f)
@@ -44,7 +42,7 @@ public class TinyTriangleScene extends GridScene {
   @Mod(min = 0, max = -0.39269908169872414f)
   public float color2Rotation;
 
-  @Mod(min = 0.01f, max = 0.1f)
+  @Mod(min = 0.01f, max = 0.5f)
   public float circleScale = 1;
 
   @Mod(min = 0, max = 1)
@@ -63,6 +61,7 @@ public class TinyTriangleScene extends GridScene {
   @Override
   public void draw(PGraphics graphics) {
     t += speed;
+    noiseScroll += scrollSpeed;
 
     ReadonlyTColor color1 = TColor.BLUE.getRotatedRYB(color1Rotation);
     TColor color2 = color1.getRotatedRYB(color2Rotation);
@@ -178,12 +177,12 @@ public class TinyTriangleScene extends GridScene {
 
   private float circle(float x, float y) {
     float dx = x - grid.getWidth() / 2;
-    float dy = y - grid.getHeight() / 2;
+    float dy = (y - grid.getHeight() / 2 + waveShift * grid.getHeight() * 2) % grid.getHeight();
     return (float) Math.sin(Math.sqrt(dx*dx + dy*dy) * circleScale + t);
   }
 
   private float noise(float x, float y) {
-    float n = perlin.noise(x * scale, y * scale, t / 5f);
+    float n = perlin.noise(x * scale, y * scale + noiseScroll, t / 5f);
     if (n > 0.6) {
       return 1;
     } else {
