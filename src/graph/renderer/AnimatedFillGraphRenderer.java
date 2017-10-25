@@ -24,6 +24,7 @@ public class AnimatedFillGraphRenderer implements GraphRenderer {
   public float thickness = 5;
 
   private ColorProvider colorProvider;
+  private boolean restart = true;
 
   public AnimatedFillGraphRenderer() {
     currentlyAnimating = new ArrayList<>();
@@ -40,6 +41,19 @@ public class AnimatedFillGraphRenderer implements GraphRenderer {
 
   public void setColorProvider(ColorProvider colorProvider) {
     this.colorProvider = colorProvider;
+  }
+
+  public boolean isRestart() {
+    return restart;
+  }
+
+  public void setRestart(boolean restart) {
+    this.restart = restart;
+  }
+
+  public void animateEdge(Edge e, Node start, Node end) {
+    AnimationInfo newAnimation = new AnimationInfo(e, start, end);
+    currentlyAnimating.add(newAnimation);
   }
 
   @Override
@@ -129,7 +143,7 @@ public class AnimatedFillGraphRenderer implements GraphRenderer {
       allFinished &= info.finished;
     }
 
-    if (allFinished) {
+    if (allFinished && restart) {
       currentlyAnimating.clear();
     }
   }

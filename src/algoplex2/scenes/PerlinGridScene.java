@@ -20,7 +20,7 @@ public class PerlinGridScene extends GridScene {
   @Mod(min = -0.1f, max = 0.1f)
   public float speed = 0.01f;
 
-  public float noiseAmount = 100;
+  public float noiseAmount = 0;
 
   private PerlinNoise perlin;
   private static final int[][] SQUARE = {{0, 0}, {1, 0}, {1, 1}, {0, 1}};

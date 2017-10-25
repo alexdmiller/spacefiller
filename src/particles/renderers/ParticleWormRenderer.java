@@ -7,18 +7,20 @@ import processing.core.PGraphics;
 import processing.core.PVector;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
  * Created by miller on 7/28/17.
  */
 public class ParticleWormRenderer extends ParticleRenderer {
-  private List<IndividualWormRenderer> individualWormRenderers;
+  private LinkedHashMap<Particle, IndividualWormRenderer> individualWormRenderers;
   private int wormLength;
   private float lineThickness;
 
   public ParticleWormRenderer(int wormLength, float lineThickness, ColorProvider colorProvider) {
-    individualWormRenderers = new ArrayList<>();
+    individualWormRenderers = new LinkedHashMap<>();
     this.wormLength = wormLength;
     this.lineThickness = lineThickness;
     this.colorProvider = colorProvider;
@@ -26,9 +28,8 @@ public class ParticleWormRenderer extends ParticleRenderer {
 
   @Override
   public void render(PGraphics graphics) {
-
     int i = 0;
-    for (IndividualWormRenderer r : individualWormRenderers) {
+    for (IndividualWormRenderer r : individualWormRenderers.values()) {
       graphics.stroke(colorProvider.getColor(i));
       r.draw(graphics);
       i++;
@@ -45,11 +46,11 @@ public class ParticleWormRenderer extends ParticleRenderer {
 
   @Override
   public void particleAdded(Particle particle) {
-    individualWormRenderers.add(new IndividualWormRenderer(particle));
+    individualWormRenderers.put(particle, new IndividualWormRenderer(particle));
   }
 
   public void particleRemoved(Particle particle) {
-    // TODO
+    individualWormRenderers.remove(particle);
   }
 
   public class IndividualWormRenderer {

@@ -17,22 +17,25 @@ import java.util.List;
  */
 public class TreeComponent extends SceneComponent {
   @Mod(min=1, max=10)
-  public float growthSpeed = 5;
+  public float growthSpeed = 1;
 
   @Mod(min=10, max=200)
   public float attractorKillRadius = 5;
 
-  @Mod(min=50, max=60)
-  public float attractorInfluenceRadius = 50;
+  @Mod(min=50, max=100)
+  public float attractorInfluenceRadius = 100;
 
-  @Mod(min=1, max=10)
+  @Mod(min=1, max=5)
   public float edgeThickness = 5;
 
-  @Mod(min=2, max=10)
+  @Mod(min=5, max=20)
   public float pulsePeriod = 5;
 
-  @Mod(min=0, max=1000)
-  public float pulseLife = 500;
+  @Mod(min=0, max=1000, defaultValue = 10)
+  public float pulseLife = 0;
+
+  @Mod(min = 0, max = 1)
+  public float foodBrightness = 0;
 
   private List<PVector> attractors;
 
@@ -49,6 +52,12 @@ public class TreeComponent extends SceneComponent {
   public void addAttractor(PVector pos) {
     synchronized (tree) {
       attractors.add(pos);
+    }
+  }
+
+  public void remoteRandomAttractor() {
+    synchronized (tree) {
+      attractors.remove(Math.floor(Math.random() * attractors.size()));
     }
   }
 
@@ -75,7 +84,7 @@ public class TreeComponent extends SceneComponent {
     synchronized (tree) {
       tree.grow(attractors, attractorInfluenceRadius, attractorKillRadius, growthSpeed);
       drawTree(tree, graphics);
-      // drawAttractors(attractors, graphics);
+      drawAttractors(attractors, graphics);
     }
   }
 
@@ -101,7 +110,7 @@ public class TreeComponent extends SceneComponent {
         if (pulseLife > 0 && edge.age >= pulseLife) {
           edges.remove();
         } else {
-          float w = edgeThickness * ageToThickness(edge.age);
+          float w = edgeThickness * ageToThickness(edge.age) + 1;
           if (w > 0) {
             graphics.strokeWeight(w);
             graphics.line(edge.n1.v.x, edge.n1.v.y, edge.n2.v.x, edge.n2.v.y);
@@ -125,9 +134,9 @@ public class TreeComponent extends SceneComponent {
   }
 
   void drawAttractors(List<PVector> attractors, PGraphics graphics) {
-    graphics.strokeWeight(5);
+    graphics.strokeWeight(2);
     for (PVector attractor : attractors) {
-      graphics.stroke(255);
+      graphics.stroke(255, foodBrightness * 255);
       graphics.point(attractor.x, attractor.y);
     }
   }

@@ -15,7 +15,7 @@ public class SinGraphRenderer implements GraphRenderer {
   @Mod(min = 0.1f, max = 10)
   public float size = 5;
 
-  @Mod(min = 0.01f, max = 20)
+  @Mod(min = 2, max = 20)
   public float freq = 10;
 
   private float time;

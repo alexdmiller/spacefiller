@@ -15,6 +15,7 @@ public class FatalBounds extends ParticleBehavior {
 
       if (!getParticleSystem().getBounds().contains(p.position)) {
         iter.remove();
+        getParticleSystem().notifyRemoved(p);
       }
     }
   }

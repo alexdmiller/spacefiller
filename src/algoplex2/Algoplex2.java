@@ -2,20 +2,21 @@ package algoplex2;
 
 import algoplex2.scenes.*;
 import graph.GridUtils;
+import graph.Node;
 import graph.renderer.BasicGraphRenderer;
 import processing.core.PFont;
 import processing.core.PGraphics;
+import processing.core.PVector;
 import processing.opengl.PJOGL;
 import processing.serial.Serial;
 import scene.Scene;
 import scene.SceneApplet;
 import spacefiller.remote.MidiRemoteControl;
+import spacefiller.remote.Mod;
 import spacefiller.remote.SerialRemoteControl;
 
 import java.io.*;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Algoplex2 extends SceneApplet {
   public static Algoplex2 instance;
@@ -27,15 +28,16 @@ public class Algoplex2 extends SceneApplet {
     main("algoplex2.Algoplex2");
   }
 
-  //private AlgoplexController remote;
-  private MidiRemoteControl remote;
+  private AlgoplexController remote;
   private GraphTransformer graphTransformer;
   private BasicGraphRenderer graphRenderer;
   private PGraphics transformedCanvas;
   private boolean showUI = false;
-  private boolean waitingForSerial = true;
-  private String[] serialPorts;
   private TransitionAnimation transition;
+  private NumberTransition numberTransition;
+
+  private static final String MAC_SERIAL_PORT = "/dev/tty.usbmodem1679111";
+  private static final String WINDOWS_SERIAL_PORT = "COM4";
 
   public Algoplex2() {
     Algoplex2.instance = this;
@@ -43,16 +45,42 @@ public class Algoplex2 extends SceneApplet {
 
   public void settings() {
     fullScreen(2);
+
     size(1920, 1080, P3D);
     PJOGL.profile = 2;
   }
 
   public final void setup() {
-    serialPorts = Serial.list();
-    waitingForSerial = false;
+    noCursor();
 
     setupScenes();
-    setupRemote("");
+
+    String[] availablePorts = Serial.list();
+
+    if (availablePorts.length == 0) {
+      System.out.println("No ports available. Skipping controller setup.");
+    } else {
+      System.out.println("Available ports:");
+      for (int i = 0; i < availablePorts.length; i++) {
+        System.out.println("[" + i + "]: " + availablePorts[i]);
+      }
+
+      System.out.print("Type port number and press enter, my bro: ");
+      Scanner scanner = new Scanner(System.in);
+      int portNum = scanner.nextInt();
+
+      String portName = availablePorts[portNum];
+
+      System.out.println("Using port " + portName);
+      setupRemote(portName);
+    }
+//
+//    List<String> serialPorts = Arrays.asList(Serial.list());
+//    if (serialPorts.contains(MAC_SERIAL_PORT)) {
+//      setupRemote(MAC_SERIAL_PORT);
+//    } else if (serialPorts.contains(WINDOWS_SERIAL_PORT)) {
+//      setupRemote(WINDOWS_SERIAL_PORT);
+//    }
 //
 //    background(0);
 //    PFont f = createDefaultFont(30);
@@ -68,19 +96,21 @@ public class Algoplex2 extends SceneApplet {
       graphTransformer = GridUtils.createGraphTransformer(ROWS, COLS, SPACING);
     }
 
+    crop = graphTransformer.getPostTransformGrid().getBoundingQuad().copy();
+
     graphRenderer = new BasicGraphRenderer(1);
     graphRenderer.setColor(0xFFFFFF00);
 
     GridScene[] gridScenes = new GridScene[] {
-        new TinyTriangleScene(),
-        new PerlinGridScene(),
-        new WormScene(),
-        new VeinScene(),
+        // new PerlinGridScene(),
         new FollowEdges(),
+        new TinyTriangleScene(),
+        new WormScene(),
         new TriangleScene(),
         new FlowScene(),
         new ContourScene(),
         new CrossScene(),
+        new VeinScene(),
         // throw away
 //        new CircleScene(),
 //        new LifeScene(),
@@ -101,23 +131,24 @@ public class Algoplex2 extends SceneApplet {
 
     setCanvas(getGraphics());
     transition = new TransitionAnimation();
-
+    transition.reset();
     super.setup();
   }
 
   private void setupRemote(String portName) {
-    //remote = new AlgoplexController(portName, 9000);
+    try {
+      remote = new AlgoplexController(portName, 9000);
 
-    remote = new MidiRemoteControl("Launch Control XL 8", 13);
+      //remote = new MidiRemoteControl("Launch Control XL 8", 13);
 
-    for (Scene scene : scenes) {
-      remote.register(scene);
-    }
+      for (Scene scene : scenes) {
+        remote.register(scene);
+      }
 
-    remote.register(this);
+      remote.register(this);
+      remote.printAddresses();
 
-    remote.printAddresses();
-
+      remote.controller(6).send(remote.target("/Algoplex2/gotoNextScene"));
 
     /*
     /CircleScene/bigAmp
@@ -130,135 +161,118 @@ public class Algoplex2 extends SceneApplet {
 /CircleScene/spread
      */
 
-    remote.controller(0).send(remote.target("/CircleScene/bigAmp"));
-    remote.controller(1).send(remote.target("/CircleScene/bigFreq"));
-    remote.controller(2).send(remote.target("/CircleScene/smallAmp"));
-    remote.controller(3).send(remote.target("/CircleScene/smallFreq"));
-    remote.controller(4).send(remote.target("/CircleScene/spread"));
-    remote.controller(5).send(remote.target("/CircleScene/noiseAmp"));
+      remote.controller(0).send(remote.target("/CircleScene/bigAmp"));
+      remote.controller(1).send(remote.target("/CircleScene/bigFreq"));
+      remote.controller(2).send(remote.target("/CircleScene/smallAmp"));
+      remote.controller(3).send(remote.target("/CircleScene/smallFreq"));
+      remote.controller(4).send(remote.target("/CircleScene/spread"));
+      remote.controller(5).send(remote.target("/CircleScene/noiseAmp"));
 
-    remote.controller(0).send(remote.target("/LifeScene/addNoise"));
-    remote.controller(1).send(remote.target("/LifeScene/birthChance"));
-    remote.controller(2).send(remote.target("/LifeScene/deathChance"));
+      remote.controller(0).send(remote.target("/LifeScene/addNoise"));
+      remote.controller(1).send(remote.target("/LifeScene/birthChance"));
+      remote.controller(2).send(remote.target("/LifeScene/deathChance"));
 
-    remote.controller(0).send(remote.target("/FollowEdges/wobbler/updateSpeed"));
-    remote.controller(1).send(remote.target("/FollowEdges/wobbler/jitter"));
-    remote.controller(2).send(remote.target("/FollowEdges/wobbler/waveAmp"));
-    remote.controller(3).send(remote.target("/FollowEdges/sinGraphRenderer/speed"));
-    remote.controller(4).send(remote.target("/FollowEdges/sinGraphRenderer/size"));
-    remote.controller(5).send(remote.target("/FollowEdges/sinGraphRenderer/freq"));
-    remote.controller(6).send(remote.target("/FollowEdges/rendererIndex"));
+      remote.controller(0).send(remote.target("/FollowEdges/wobbler/updateSpeed"));
+      remote.controller(1).smooth(0.2f).send(remote.target("/FollowEdges/wobbler/jitter"));
+      remote.controller(2).smooth(0.2f).send(remote.target("/FollowEdges/wobbler/waveAmp"));
+      remote.controller(3).send(remote.target("/FollowEdges/sinGraphRenderer/speed"));
+      remote.controller(4).send(remote.target("/FollowEdges/sinGraphRenderer/size"));
+      remote.controller(5).smooth(0.2f).send(remote.target("/FollowEdges/sinGraphRenderer/freq"));
+      // remote.controller(6).send(remote.target("/FollowEdges/rendererIndex"));
 
-    remote.controller(0).send(remote.target("/TinyTriangleScene/speed"));
-    remote.controller(1).send(remote.target("/TinyTriangleScene/scrollSpeed"));
-    remote.controller(1).send(remote.target("/TinyTriangleScene/waveShift"));
-    remote.controller(2).send(remote.target("/TinyTriangleScene/circleScale"));
-    remote.controller(2).send(remote.target("/TinyTriangleScene/scale"));
-    remote.controller(3).send(remote.target("/TinyTriangleScene/interpolation"));
-    remote.controller(4).send(remote.target("/TinyTriangleScene/color1Rotation"));
-    remote.controller(5).send(remote.target("/TinyTriangleScene/color2Rotation"));
+      remote.controller(0).smooth(0.2f).send(remote.target("/TinyTriangleScene/interpolation"));
+      remote.controller(1).smooth(0.2f).send(remote.target("/TinyTriangleScene/speed"));
+      remote.controller(2).smooth(0.2f).send(remote.target("/TinyTriangleScene/scrollSpeed"));
+      remote.controller(2).smooth(0.5f).send(remote.target("/TinyTriangleScene/waveShift"));
+      remote.controller(3).smooth(0.2f).send(remote.target("/TinyTriangleScene/circleScale"));
+      remote.controller(3).smooth(0.5f).send(remote.target("/TinyTriangleScene/scale"));
+      remote.controller(4).smooth(0.2f).send(remote.target("/TinyTriangleScene/color1Rotation"));
+      remote.controller(5).smooth(0.2f).send(remote.target("/TinyTriangleScene/color2Rotation"));
 
-    remote.controller(0).smooth(0.1f).send(remote.target("/FlowScene/perlinFlow/flowForce"));
-    remote.controller(1).smooth(0.5f).send(remote.target("/FlowScene/perlinFlow/noiseScale"));
-    remote.controller(2).send(remote.target("/FlowScene/perlinFlow/lineSparsity"));
-    remote.controller(3).send(remote.target("/FlowScene/perlinFlow/scrollSpeed"));
-    remote.controller(4).send(remote.target("/FlowScene/perlinFlow/noiseSpeed1"));
-    remote.controller(5).send(remote.target("/FlowScene/perlinFlow/noiseSpeed2"));
+      remote.controller(0).smooth(0.1f).send(remote.target("/FlowScene/perlinFlow/flowForce"));
+      remote.controller(1).smooth(0.5f).send(remote.target("/FlowScene/perlinFlow/noiseScale"));
+      remote.controller(2).send(remote.target("/FlowScene/perlinFlow/lineSparsity"));
+      remote.controller(3).send(remote.target("/FlowScene/perlinFlow/scrollSpeed"));
+      remote.controller(4).send(remote.target("/FlowScene/perlinFlow/noiseSpeed1"));
+      remote.controller(5).send(remote.target("/FlowScene/perlinFlow/noiseSpeed2"));
 
-    remote.controller(0).send(remote.target("/PerlinTriangles/threshold"));
-    remote.controller(1).send(remote.target("/PerlinTriangles/color1Rotation"));
-    remote.controller(2).send(remote.target("/PerlinTriangles/color2Rotation"));
-    remote.controller(3).send(remote.target("/PerlinTriangles/scale1"));
-    remote.controller(4).send(remote.target("/PerlinTriangles/scale2"));
-    remote.controller(5).smooth(0.1f).send(remote.target("/PerlinTriangles/offset"));
+      remote.controller(0).send(remote.target("/PerlinTriangles/threshold"));
+      remote.controller(1).send(remote.target("/PerlinTriangles/color1Rotation"));
+      remote.controller(2).send(remote.target("/PerlinTriangles/color2Rotation"));
+      remote.controller(3).send(remote.target("/PerlinTriangles/scale1"));
+      remote.controller(4).send(remote.target("/PerlinTriangles/scale2"));
+      remote.controller(5).smooth(0.1f).send(remote.target("/PerlinTriangles/offset"));
 
-    remote.controller(0).smooth(0.15f).send(remote.target("/CrossScene/crossSize"));
-    remote.controller(1).smooth(0.15f).send(remote.target("/CrossScene/xSize"));
-    remote.controller(2).smooth(0.15f).invert().send(remote.target("/CrossScene/rotation"));
-    remote.controller(3).smooth(0.15f).invert().send(remote.target("/CrossScene/crossRotation"));
-    remote.controller(4).smooth(0.05f).send(remote.target("/CrossScene/color1Rotation"));
-    remote.controller(5).smooth(0.05f).send(remote.target("/CrossScene/color2Rotation"));
+      remote.controller(0).smooth(0.15f).send(remote.target("/CrossScene/crossSize"));
+      remote.controller(1).smooth(0.15f).send(remote.target("/CrossScene/xSize"));
+      remote.controller(2).smooth(0.15f).invert().send(remote.target("/CrossScene/rotation"));
+      remote.controller(3).smooth(0.15f).invert().send(remote.target("/CrossScene/crossRotation"));
+      remote.controller(4).smooth(0.05f).send(remote.target("/CrossScene/color1Rotation"));
+      remote.controller(5).smooth(0.05f).send(remote.target("/CrossScene/color2Rotation"));
 
-    remote.controller(0).smooth(0.05f).send(remote.target("/ColorBath/color1Rotation"));
-    remote.controller(1).smooth(0.05f).send(remote.target("/ColorBath/color2Rotation"));
-    remote.controller(2).smooth(0.05f).send(remote.target("/ColorBath/color3Rotation"));
-    remote.controller(3).smooth(0.05f).send(remote.target("/ColorBath/color4Rotation"));
+      remote.controller(0).smooth(0.05f).send(remote.target("/ColorBath/color1Rotation"));
+      remote.controller(1).smooth(0.05f).send(remote.target("/ColorBath/color2Rotation"));
+      remote.controller(2).smooth(0.05f).send(remote.target("/ColorBath/color3Rotation"));
+      remote.controller(3).smooth(0.05f).send(remote.target("/ColorBath/color4Rotation"));
 
-    remote.controller(0).send(remote.target("/VeinScene/treeComponent/tree/foodJitter"));
-    remote.controller(1).send(remote.target("/VeinScene/treeComponent/tree/forceJitter"));
-    remote.controller(2).send(remote.target("/VeinScene/treeComponent/pulsePeriod"));
-    remote.controller(3).send(remote.target("/VeinScene/treeComponent/growthSpeed"));
-    remote.controller(4).send(remote.target("/VeinScene/treeComponent/edgeThickness"));
+      remote.controller(0).send(remote.target("/VeinScene/treeComponent/tree/foodJitter"));
+      remote.controller(0).send(remote.target("/VeinScene/treeComponent/foodBrightness"));
+      remote.controller(1).send(remote.target("/VeinScene/treeComponent/tree/forceJitter"));
+      remote.controller(2).send(remote.target("/VeinScene/treeComponent/pulsePeriod"));
+      remote.controller(3).send(remote.target("/VeinScene/treeComponent/growthSpeed"));
+      remote.controller(4).send(remote.target("/VeinScene/treeComponent/edgeThickness"));
+      remote.controller(5).send(remote.target("/VeinScene/treeComponent/attractorInfluenceRadius"));
 
-    remote.controller(0).send(remote.target("/WormScene/flockParticles/maxSpeed"));
-    remote.controller(1).send(remote.target("/WormScene/flockParticles/desiredSeparation"));
-    remote.controller(2).send(remote.target("/WormScene/flockParticles/cohesionThreshold"));
-    remote.controller(3).send(remote.target("/WormScene/flockParticles/alignmentThreshold"));
-    remote.controller(4).send(remote.target("/WormScene/repelFixedPoints/repelThreshold"));
-    remote.controller(5).send(remote.target("/WormScene/repelFixedPoints/repelStrength"));
+      remote.controller(0).send(remote.target("/WormScene/flockParticles/maxSpeed"));
+      remote.controller(1).send(remote.target("/WormScene/flockParticles/desiredSeparation"));
+      remote.controller(2).send(remote.target("/WormScene/flockParticles/cohesionThreshold"));
+      remote.controller(3).send(remote.target("/WormScene/flockParticles/alignmentThreshold"));
+      remote.controller(4).send(remote.target("/WormScene/repelFixedPoints/repelThreshold"));
+      remote.controller(5).send(remote.target("/WormScene/repelFixedPoints/repelStrength"));
 
 //    remote.controller(2).send(remote.target("/WormScene/flockParticles/cohesionThreshold"));
 
 //    remote.controller(6).send(remote.target("/WormScene/particleWebRenderer/lineThreshold"));
 
-    remote.controller(0).send(remote.target("/ShiftingEdgeScene/quadMod"));
-    remote.controller(1).send(remote.target("/ShiftingEdgeScene/triangleMod"));
-    remote.controller(2).send(remote.target("/ShiftingEdgeScene/lineMod"));
+      remote.controller(0).send(remote.target("/ShiftingEdgeScene/quadMod"));
+      remote.controller(1).send(remote.target("/ShiftingEdgeScene/triangleMod"));
+      remote.controller(2).send(remote.target("/ShiftingEdgeScene/lineMod"));
 
-    remote.controller(0).smooth(0.5f).send(remote.target("/GradientTriangleScene/color1Rotation"));
-    remote.controller(1).smooth(0.2f).send(remote.target("/GradientTriangleScene/color2Rotation"));
-    remote.controller(2).send(remote.target("/GradientTriangleScene/jitter"));
+      remote.controller(0).smooth(0.5f).send(remote.target("/GradientTriangleScene/color1Rotation"));
+      remote.controller(1).smooth(0.2f).send(remote.target("/GradientTriangleScene/color2Rotation"));
+      remote.controller(2).send(remote.target("/GradientTriangleScene/jitter"));
 
-    remote.controller(0).send(remote.target("/ContourScene/contourComponent/noiseAmplitude"));
-    remote.controller(1).send(remote.target("/ContourScene/contourComponent/sinHeight"));
-    remote.controller(2).send(remote.target("/ContourScene/setResolution"));
-    remote.controller(3).send(remote.target("/ContourScene/contourComponent/xSpeed"));
-    remote.controller(3).send(remote.target("/ContourScene/contourComponent/updateSpeed"));
-    remote.controller(4).send(remote.target("/ContourScene/setRotation"));
-    remote.controller(5).send(remote.target("/ContourScene/setColor"));
+      remote.controller(0).smooth(0.2f).send(remote.target("/ContourScene/contourComponent/noiseAmplitude"));
+      remote.controller(1).smooth(0.2f).send(remote.target("/ContourScene/contourComponent/sinHeight"));
+      remote.controller(2).send(remote.target("/ContourScene/setResolution"));
+      remote.controller(3).send(remote.target("/ContourScene/contourComponent/xSpeed"));
+      remote.controller(3).send(remote.target("/ContourScene/contourComponent/updateSpeed"));
+      remote.controller(4).smooth(0.5f).send(remote.target("/ContourScene/setRotation"));
+      remote.controller(5).send(remote.target("/ContourScene/setColor"));
 
-    remote.controller(0).send(remote.target("/TriangleScene/mix"));
-    remote.controller(1).send(remote.target("/TriangleScene/yMod"));
-    remote.controller(2).send(remote.target("/TriangleScene/xMod"));
-    remote.controller(3).send(remote.target("/TriangleScene/triangleMod"));
-    remote.controller(4).send(remote.target("/TriangleScene/lineMod"));
-    remote.controller(5).smooth(0.1f).send(remote.target("/TriangleScene/shiftAmount"));
+      remote.controller(0).smooth(0.2f).send(remote.target("/TriangleScene/mix"));
+      remote.controller(1).smooth(0.2f).send(remote.target("/TriangleScene/yMod"));
+      remote.controller(2).smooth(0.2f).send(remote.target("/TriangleScene/xMod"));
+      remote.controller(3).smooth(0.2f).send(remote.target("/TriangleScene/triangleMod"));
+      remote.controller(4).smooth(0.2f).send(remote.target("/TriangleScene/lineMod"));
+      remote.controller(5).smooth(0.1f).send(remote.target("/TriangleScene/shiftAmount"));
 
-    remote.controller(0).send(remote.target("/PyramidScene/speed"));
-    remote.controller(1).send(remote.target("/PyramidScene/amplitude"));
-    // remote.controller(2).send(remote.target("/PyramidScene/rotZ"));
+      remote.controller(0).send(remote.target("/PyramidScene/speed"));
+      remote.controller(1).send(remote.target("/PyramidScene/amplitude"));
+      // remote.controller(2).send(remote.target("/PyramidScene/rotZ"));
 
 
-    remote.controller(0).send(remote.target("/PsychScene/lineThickness"));
-    remote.controller(1).send(remote.target("/PsychScene/numSquares"));
-    remote.controller(2).send(remote.target("/PsychScene/squareSpeed"));
-  }
-
-  private void checkForSerialPort() {
-    if (Serial.list().length > serialPorts.length) {
-      Set<String> oldPorts = new HashSet<String>();
-      for (String s : serialPorts) {
-        oldPorts.add(s);
-      }
-
-      for (String newPort : Serial.list()) {
-        if (!oldPorts.contains(newPort)) {
-          setupRemote(newPort);
-          waitingForSerial = false;
-          break;
-        }
-      }
-
-    } else if (Serial.list().length < serialPorts.length) {
-      serialPorts = Serial.list();
+      remote.controller(0).send(remote.target("/PsychScene/lineThickness"));
+      remote.controller(1).send(remote.target("/PsychScene/numSquares"));
+      remote.controller(2).send(remote.target("/PsychScene/squareSpeed"));
+    } catch (java.lang.RuntimeException e) {
+      System.out.println(e.getMessage());
     }
   }
 
   @Override
   public void draw() {
-    if (waitingForSerial) {
-      checkForSerialPort();
-    } else {
+    if (remote != null) {
       remote.update();
     }
 
@@ -271,8 +285,6 @@ public class Algoplex2 extends SceneApplet {
       }
     }
 
-    //graphRenderer.render(getGraphics(), grid);
-
     this.transformedCanvas.beginDraw();
     this.transformedCanvas.background(0);
     if (currentScene != null) {
@@ -281,16 +293,44 @@ public class Algoplex2 extends SceneApplet {
         currentScene.draw(this.transformedCanvas);
       }
     }
+
     transition.draw(this.transformedCanvas, graphTransformer.getPreTransformGrid());
+
+    if (numberTransition != null) {
+      numberTransition.draw(this.transformedCanvas, graphTransformer.getPreTransformGrid());
+
+      if (numberTransition.isFinished()) {
+        switchScene(numberTransition.getNum());
+        numberTransition = null;
+      }
+    }
+
     this.transformedCanvas.endDraw();
 
     graphTransformer.drawImage(this.canvas, this.transformedCanvas);
 
     if (showUI) {
       graphTransformer.drawUI(this.canvas);
+      text(frameRate, 10, 20);
+    } else {
+      float border = 50;
+      stroke(0);
+      noFill();
+      strokeWeight(border);
+
+      float borderOffset = border / 2 - 2;
+
+      quad(
+          crop.getTopLeft().position.x - borderOffset, crop.getTopLeft().position.y - borderOffset,
+          crop.getTopRight().position.x + borderOffset, crop.getTopRight().position.y - borderOffset,
+          crop.getBottomRight().position.x + borderOffset, crop.getBottomRight().position.y + borderOffset,
+          crop.getBottomLeft().position.x - borderOffset, crop.getBottomLeft().position.y + borderOffset);
     }
   }
 
+  private transient Quad crop;
+  private transient PVector selectedCropNode;
+  private transient boolean showMouse;
 
   @Override
   public void keyPressed() {
@@ -298,25 +338,74 @@ public class Algoplex2 extends SceneApplet {
       showUI = !showUI;
     }
 
-    if (keyCode == RIGHT) {
+    if (key == 'm') {
+      if (showMouse) {
+        showMouse = false;
+        noCursor();
+      } else {
+        showMouse = true;
+        cursor();
+      }
+    }
+
+    if (showUI) {
+      graphTransformer.keyDown(keyCode);
+    } else if (selectedCropNode != null) {
+      if (keyCode == LEFT) {
+        selectedCropNode.x--;
+        System.out.println(selectedCropNode);
+      } else if (keyCode == RIGHT) {
+        selectedCropNode.x++;
+      } else if (keyCode == DOWN) {
+        selectedCropNode.y++;
+      } else if (keyCode == UP) {
+        selectedCropNode.y--;
+      }
+    }
+
+    if (key == 'n') {
       gotoNextScene();
     }
   }
 
+  @Mod
+  public void gotoNextScene() {
+    currentScene = null;
+    numberTransition = new NumberTransition((currentSceneIndex + 1) % scenes.size(), graphTransformer.getPreTransformGrid());
+    transition.reset();
+  }
+
   @Override
   public void mousePressed() {
-    graphTransformer.mouseDown(mouseX, mouseY);
+    if (showUI) {
+      graphTransformer.mouseDown(mouseX, mouseY);
+    } else {
+      PVector mouse = new PVector(mouseX, mouseY);
+
+      for (PVector quadPoint : crop.getVertices()) {
+        float dist = PVector.dist(quadPoint, mouse);
+        if (dist < 10) {
+          selectedCropNode = quadPoint;
+          return;
+        }
+      }
+    }
   }
 
   @Override
   public void mouseReleased() {
-    graphTransformer.mouseUp(mouseX, mouseY);
-    saveGraphs();
+    if (showUI) {
+      graphTransformer.mouseUp(mouseX, mouseY);
+      saveGraphs();
+      crop = graphTransformer.getPostTransformGrid().getBoundingQuad().copy();
+    }
   }
 
   @Override
   public void mouseDragged() {
-    graphTransformer.mouseDragged(mouseX, mouseY);
+    if (showUI) {
+      graphTransformer.mouseDragged(mouseX, mouseY);
+    }
   }
 
   public void addGridScene(GridScene gridScene) {
@@ -371,7 +460,7 @@ public class Algoplex2 extends SceneApplet {
 
       currentScene = scene;
 
-      transition.reset();
+
     }
   }
 }

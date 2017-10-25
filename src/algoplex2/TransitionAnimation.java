@@ -10,6 +10,7 @@ import toxi.color.TColor;
  */
 public class TransitionAnimation {
   private float t;
+  private static final int MID_POINT = 100;
 
   CrosshairGraphRenderer crosshairGraphRenderer;
 
@@ -19,15 +20,19 @@ public class TransitionAnimation {
 
   public void reset() {
     t = 0;
+    crosshairGraphRenderer.size = 100 - t;
   }
 
   public void draw(PGraphics graphics, Grid grid) {
     t++;
 
     graphics.colorMode(PConstants.RGB);
-    crosshairGraphRenderer.setColor(graphics.color(255, 255 - t * 5));
-    crosshairGraphRenderer.size = 100 - t;
-    crosshairGraphRenderer.thickness = 2;
-    crosshairGraphRenderer.render(graphics, grid);
+    if (t < MID_POINT * 2) {
+      int c = graphics.color(200, t < MID_POINT ? t * 2 : MID_POINT * 2 - t);
+      crosshairGraphRenderer.setColor(c);
+      crosshairGraphRenderer.size = 80 - t * 0.3f;
+      crosshairGraphRenderer.thickness = 2;
+      crosshairGraphRenderer.render(graphics, grid);
+    }
   }
 }

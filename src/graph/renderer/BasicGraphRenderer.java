@@ -15,12 +15,10 @@ public class BasicGraphRenderer implements GraphRenderer {
 
   @Override
   public void render(PGraphics graphics, Graph graph) {
-    graphics.noFill();
-    graphics.strokeWeight(thickness);
-    graphics.stroke(color);
+    graphics.fill(color);
 
     for (Node n : graph.getNodes()) {
-      graphics.ellipse(n.position.x, n.position.y, 10, 10);
+      graphics.ellipse(n.position.x, n.position.y, 3, 3);
     }
 
     for (Edge e: graph.getEdges()) {

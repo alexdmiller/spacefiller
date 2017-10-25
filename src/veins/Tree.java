@@ -90,6 +90,10 @@ public class Tree {
     }
 
     nodes.addAll(newNodes);
+
+//    if (edges.size() > 100) {
+//      edges.remove(Math.floor(Math.random() * edges.size()));
+//    }
   }
 
   public void addNode(PVector n) {
@@ -98,6 +102,10 @@ public class Tree {
 
   public List<Node> getNodes() {
     return nodes;
+  }
+
+  public List<Edge> getEdges() {
+    return edges;
   }
 
   public static class Node {

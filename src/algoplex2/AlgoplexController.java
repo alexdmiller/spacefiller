@@ -4,6 +4,7 @@ import processing.serial.Serial;
 import spacefiller.remote.RemoteControl;
 import spacefiller.remote.signal.DataReceiver;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,8 +12,11 @@ import java.util.Map;
 public class AlgoplexController extends RemoteControl {
   private Map<Integer, DataReceiver> serialPatches;
   private final static int MAX_VALUE = 254;
+  private final static int KNOBS = 6;
+  private final static int BUTTON_INDEX = 6;
   private int currentByte = 0;
-  private int[] packet = new int[6];
+  private int[] packet = new int[7];
+  private boolean lastButtonState = false;
 
   public AlgoplexController(String portName, int baudRate) {
     super();
@@ -34,7 +38,6 @@ public class AlgoplexController extends RemoteControl {
     return dataReceiver;
   }
 
-
   public void serialEvent(Serial port) {
     while (port.available() > 0) {
       int v = port.read();
@@ -49,34 +52,26 @@ public class AlgoplexController extends RemoteControl {
         currentByte++;
       }
 
-      //try {
-        if (currentByte == packet.length + 1) {
-          System.out.println(Arrays.toString(packet));
-
-          for (int i = 0; i < packet.length; i++) {
-            // if something changed, then write it
-//          if (packet[i] != knobValues[i]) {
-            if (serialPatches.containsKey(i)) {
-              serialPatches.get(i).setValue((float) packet[i] / MAX_VALUE);
-            }
-//          }
-            // knobValues[i] = packet[i];
+      if (currentByte == packet.length + 1) {
+        for (int i = 0; i < KNOBS; i++) {
+          if (serialPatches.containsKey(i)) {
+            serialPatches.get(i).setValue((float) packet[i] / MAX_VALUE);
           }
-          currentByte = 0;
         }
-//      } catch (Error e) {
-//        System.out.println(e.getStackTrace());
-//      }
 
-       // System.out.println(Arrays.toString(bytes));
-//      System.out.println("knob index = " + currentKnobIndex);
-//      int in = port.read();
-//      System.out.println(in);
-//      //processInt(in);
-//      //serialPatches.get(currentKnobIndex).setValue(in / (float) maxValue);
-//      knobValues[currentKnobIndex] = in / (float) maxValue;
-//      currentKnobIndex = (currentKnobIndex + 1) % knobValues.length;
+        if (packet[BUTTON_INDEX] == 0) {
+          lastButtonState = false;
+        } else if (lastButtonState == false) {
+          serialPatches.get(BUTTON_INDEX).setValue(null);
+          lastButtonState = true;
+        }
+
+        currentByte = 0;
+      }
     }
-    //System.out.println(Arrays.toString(knobValues));
+
+    // System.out.println(Arrays.toString(packet));
   }
+
+
 }

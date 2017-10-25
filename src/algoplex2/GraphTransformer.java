@@ -22,6 +22,7 @@ public class GraphTransformer implements Serializable {
 
   private PVector selectedQuadPoint;
   private Node selectedNode;
+  private Node lastSelectedNode;
 
   public GraphTransformer(Grid grid) {
     this.postTransformGrid = grid;
@@ -51,11 +52,13 @@ public class GraphTransformer implements Serializable {
     }
 
     for (Node node : postTransformGrid.getNodes()) {
-      graphics.noFill();
-      graphics.ellipse(node.position.x, node.position.y, 10, 10);
+      graphics.fill(255);
+      graphics.noStroke();
+      graphics.ellipse(node.position.x, node.position.y, 3 , 3);
     }
 
     for (Edge e : postTransformGrid.getEdges()) {
+      graphics.stroke(255);
       graphics.strokeWeight(1);
       graphics.line(e.n1.position.x, e.n1.position.y, e.n2.position.x, e.n2.position.y);
     }
@@ -76,6 +79,7 @@ public class GraphTransformer implements Serializable {
       float dist = PVector.dist(node.position, mouse);
       if (dist < 10) {
         selectedNode = node;
+        lastSelectedNode = node;
         return;
       }
     }
@@ -197,5 +201,19 @@ public class GraphTransformer implements Serializable {
         postToPre.get(quad.getBottomLeft()),
         postToPre.get(quad.getCenter())
     );
+  }
+
+  public void keyDown(int key) {
+    if (lastSelectedNode != null) {
+      if (key == PConstants.LEFT) {
+        lastSelectedNode.position.x--;
+      } else if (key == PConstants.RIGHT) {
+        lastSelectedNode.position.x++;
+      } else if (key == PConstants.UP) {
+        lastSelectedNode.position.y--;
+      } else if (key == PConstants.DOWN) {
+        lastSelectedNode.position.y++;
+      }
+    }
   }
 }

@@ -36,6 +36,14 @@ public class Graph implements Serializable {
     return n;
   }
 
+  public Node createNode(Node n) {
+    Node newNode = new Node();
+    newNode.position.x = n.position.x;
+    newNode.position.y = n.position.y;
+    nodes.add(newNode);
+    return newNode;
+  }
+
   public Edge createEdge(Node n1, Node n2) {
     Edge e = new Edge(n1, n2);
     edges.add(e);

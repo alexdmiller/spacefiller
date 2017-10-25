@@ -47,7 +47,7 @@ public class ContourScene extends GridScene {
   @Mod(min = 0, max = (float) Math.PI / 2)
   public void setRotation(float angle) {
     contourComponent.setRotation(Quaternion.createFromEuler(0, 0, angle));
-    ortho = angle == 0;
+    ortho = angle <= 0.1f;
   }
 
   @Mod(min = 0, max = 1)

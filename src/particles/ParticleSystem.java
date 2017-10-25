@@ -98,4 +98,10 @@ public class ParticleSystem {
   public void setBounds(Bounds bounds) {
     this.bounds = bounds;
   }
+
+  public void notifyRemoved(Particle p) {
+    for (ParticleEventListener particleEventListener : particleEventListeners) {
+      particleEventListener.particleRemoved(p);
+    }
+  }
 }

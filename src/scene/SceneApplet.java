@@ -56,7 +56,7 @@ public class SceneApplet extends PApplet {
   }
 
   @Mod
-  public final void gotoNextScene() {
+  public void gotoNextScene() {
     switchScene((currentSceneIndex + 1) % scenes.size());
   }
 
