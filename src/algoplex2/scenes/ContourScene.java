@@ -23,7 +23,7 @@ public class ContourScene extends GridScene {
         new Bounds(grid.getWidth(), grid.getHeight(), 500));
     contourComponent.resolution = grid.getColumns();
 
-    contourComponent.setColor(0x00FFFFFF);
+    contourComponent.setColor(0);
     contourComponent.setPos(grid.getWidth() / 2, grid.getHeight() / 2);
     // contourComponent.setRotation(Quaternion.createFromEuler((float) (Math.PI / 2), 0, 0));
     //contourComponent.setCellSize(grid.getCellSize() * 2);
@@ -34,7 +34,7 @@ public class ContourScene extends GridScene {
     ortho = true;
     //contourComponent.setHeightIncrements(2);
 
-    setColor(0);
+    //setColor(0);
 
     addComponent(contourComponent);
   }
@@ -50,11 +50,11 @@ public class ContourScene extends GridScene {
     ortho = angle <= 0.1f;
   }
 
-  @Mod(min = 0, max = 1)
-  public void setColor(float theta) {
-    ReadonlyTColor color1 = TColor.BLUE.getRotatedRYB(theta);
-    contourComponent.setColor(color1.toARGB());
-  }
+//  @Mod(min = 0, max = 1)
+//  public void setColor(float theta) {
+//    ReadonlyTColor color1 = TColor.BLUE.getRotatedRYB(theta);
+//    contourComponent.setColor(color1.toARGB());
+//  }
 
   @Override
   public void draw(PGraphics graphics) {

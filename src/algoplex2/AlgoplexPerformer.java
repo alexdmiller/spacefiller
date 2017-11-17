@@ -54,7 +54,7 @@ public class AlgoplexPerformer extends SceneApplet {
   public CrosshairGraphRenderer graphRenderer;
 
   private PGraphics transformedCanvas;
-  private boolean showUI = true;
+  private boolean showUI = false;
   private SyphonServer server;
 
   private Integrators integrators = new Integrators();

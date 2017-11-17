@@ -30,7 +30,7 @@ public class TriangleScene extends GridScene {
   public float speed = 0.01f;
 
   @Mod(min = 0, max = 1)
-  public float mix;
+  public float mix = 1;
 
   private PerlinNoise perlin;
 
