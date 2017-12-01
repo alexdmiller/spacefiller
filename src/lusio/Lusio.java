@@ -52,7 +52,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
   }
 
   public void settings() {
-    fullScreen(2);
+    //fullScreen(2);
     size(1920, 1080, P3D);
     PJOGL.profile = 1;
   }
@@ -70,9 +70,9 @@ public class Lusio extends SceneApplet implements ColorProvider {
     setCanvas(canvas);
 
     LusioScene[] lusioScenes = new LusioScene[] {
+        new TriangleScene(),
         new MillerLineScene(),
         new NagyLineScene(),
-        new TriangleScene(),
         new ContourScene(),
         new ThreeDeeFlockScene(),
         new FlockScene(),

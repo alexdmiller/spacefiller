@@ -24,6 +24,7 @@ int t = 0;
 
 // orientation/motion vars
 Quaternion quat;           // [w, x, y, z]         quaternion container
+Quaternion lastQuat;           // [w, x, y, z]         quaternion container
 VectorInt16 aa;         // [x, y, z]            accel sensor measurements
 VectorInt16 aaReal;     // [x, y, z]            gravity-free accel sensor measurements
 VectorInt16 aaWorld;    // [x, y, z]            world-frame accel sensor measurements
@@ -50,6 +51,9 @@ uint16_t flipTimer = 0;
 uint16_t timeUntilSwitch = 300;
 uint8_t mode = 0;
 uint8_t lightIndex = 0;
+
+float totalRotation = 0;
+float rotationThreshold = 10;
 
 unsigned long previousMillis = 0;        // will store last time LED was updated
 const long interval = 60;
@@ -200,10 +204,23 @@ void loop() {
     digitalWrite(LED_PIN, blinkState);
   }
 
+
+  lastQuat.x = quat.x;
+  lastQuat.y = quat.y;
+  lastQuat.z = quat.z;
+  lastQuat.w = quat.w;
   
   mpu.dmpGetQuaternion(&quat, fifoBuffer);
   mpu.dmpGetEuler(euler, &quat);
 
+  Quaternion diff = Quaternion(
+    quat.w - lastQuat.w,
+    quat.x - lastQuat.x,
+    quat.y - lastQuat.y,
+    quat.z - lastQuat.z);
+  float rotationalVelocity = diff.getMagnitude();
+  totalRotation += rotationalVelocity;
+  
   transformed = VectorFloat(0, 0, -1);
   transformed.rotate(&quat);
 
@@ -212,7 +229,7 @@ void loop() {
   if (mode == 0) {
     // STABLE MODE: transition between two colors as you flip
     
-    if (flipAmount < 0.1  ) {
+    if (totalRotation > rotationThreshold) {
       // switch to power up mode
       mode = 1;
     }
@@ -221,12 +238,6 @@ void loop() {
     setColor(flipAmount);
     setStableColor(flipAmount);
   } else if (mode == 1) {
-    // POWER UP MODE: color wipe that speeds up
-    if (flipAmount > 0.1) {
-      mode = 0;
-      flipTimer = 0;
-    }
-
     if (flipTimer > timeUntilSwitch) {
       flipTimer = 0;
       mode = 2;
@@ -247,6 +258,7 @@ void loop() {
     mode = 0;
     up = VectorFloat(0, 0, up.z * -1);
     currentColorIndex = (currentColorIndex + 1) % numColors;
+    totalRotation = 0;
   }
 
 //  Serial.println("--------");

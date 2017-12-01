@@ -161,8 +161,8 @@ public class Algoplex2 extends SceneApplet {
 /CircleScene/spread
      */
 
-      remote.controller(0).send(remote.target("/CircleScene/bigAmp"));
       remote.controller(1).send(remote.target("/CircleScene/bigFreq"));
+      remote.controller(0).send(remote.target("/CircleScene/bigAmp"));
       remote.controller(2).send(remote.target("/CircleScene/smallAmp"));
       remote.controller(3).send(remote.target("/CircleScene/smallFreq"));
       remote.controller(4).send(remote.target("/CircleScene/spread"));
