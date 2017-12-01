@@ -52,6 +52,10 @@ public class Lightcube extends PApplet {
     return mode;
   }
 
+  public float getCounter() {
+    return (float) counter / 255;
+  }
+
   public Quaternion getQuaternion() {
     return quaternion;
   }

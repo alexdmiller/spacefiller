@@ -195,7 +195,7 @@ void loop() {
     teapotPacket[13] = color[1];
     teapotPacket[14] = color[2];
     teapotPacket[15] = mode;
-    teapotPacket[16] = ((float) flipTimer / timeUntilSwitch) * 255;
+    teapotPacket[16] = ((float) totalRotation / rotationThreshold) * 255;
     Serial.write(teapotPacket, 19);
     teapotPacket[11]++; // packetCount, loops at 0xFF on purpose
 
@@ -219,7 +219,6 @@ void loop() {
     quat.y - lastQuat.y,
     quat.z - lastQuat.z);
   float rotationalVelocity = diff.getMagnitude();
-  totalRotation += rotationalVelocity;
   
   transformed = VectorFloat(0, 0, -1);
   transformed.rotate(&quat);
@@ -227,6 +226,8 @@ void loop() {
   float flipAmount = (dot(up, transformed) + 1) / 2;
 
   if (mode == 0) {
+    totalRotation += rotationalVelocity;
+
     // STABLE MODE: transition between two colors as you flip
     
     if (totalRotation > rotationThreshold) {

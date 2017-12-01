@@ -61,7 +61,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
   public void setup() {
     graphs = new HashMap<>();
     graphNames = new ArrayList<>();
-    lightcube = Lightcube.wireless();
+    lightcube = Lightcube.usb();
 
     loadGraphs();
 
@@ -71,9 +71,9 @@ public class Lusio extends SceneApplet implements ColorProvider {
 
     LusioScene[] lusioScenes = new LusioScene[] {
         new TriangleScene(),
+        new ContourScene(),
         new MillerLineScene(),
         new NagyLineScene(),
-        new ContourScene(),
         new ThreeDeeFlockScene(),
         new FlockScene(),
         new FancyParticles(),
@@ -202,8 +202,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
     } else {
       canvas.fill(255);
     }
-    float innerRadius = lightcube.getFlipAmount() * 200;
-    canvas.ellipse(0, 0, innerRadius, innerRadius);
+    canvas.arc(0, 0, radius, radius, 0, lightcube.getCounter() * PI * 2);
   }
 
   public void controlEvent(ControlEvent event) {
