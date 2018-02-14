@@ -32,9 +32,9 @@ public class NoiseCircle extends LusioScene {
     perlinFlowGenerator.setNoiseScale(1000 - Math.abs(cube.getEulerRotation()[2]) * 200);
     perlinFlowGenerator.setNoiseSpeed1(cube.getRotationalVelocity() / 1000 + 0.01f);
     perlinFlowGenerator.setNoiseSpeed2(cube.getRotationalVelocity() / 1000 + 0.01f);
-    perlinFlowGenerator.setLineLength(cube.getFlipAmount() * 100 + 100);
+    perlinFlowGenerator.setLineLength(cube.getCounter() * 100 + 100);
     perlinFlowGenerator.setFallSpeed(Math.abs(cube.getEulerRotation()[0]));
-    perlinFlowGenerator.setCircleRadius(200 + cube.getFlipAmount() * 400);
+    perlinFlowGenerator.setCircleRadius(200 + cube.getCounter() * 400);
 
     super.draw(graphics);
   }

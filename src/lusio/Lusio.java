@@ -52,7 +52,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
   }
 
   public void settings() {
-    //fullScreen(2);
+    fullScreen(1);
     size(1920, 1080, P3D);
     PJOGL.profile = 1;
   }
@@ -61,7 +61,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
   public void setup() {
     graphs = new HashMap<>();
     graphNames = new ArrayList<>();
-    lightcube = Lightcube.usb();
+    lightcube = Lightcube.wireless();
 
     loadGraphs();
 
@@ -70,18 +70,17 @@ public class Lusio extends SceneApplet implements ColorProvider {
     setCanvas(canvas);
 
     LusioScene[] lusioScenes = new LusioScene[] {
-        new TriangleScene(),
-        new ContourScene(),
-        new MillerLineScene(),
-        new NagyLineScene(),
-        new ThreeDeeFlockScene(),
-        new FlockScene(),
-        new FancyParticles(),
-        new NoiseSpace(),
-        new NoiseCircle(),
-        new FluidScene(),
         new NestedCubeScene(),
-        new CubeScene()
+        new FluidScene(),
+        new NoiseCircle(),
+        new NoiseSpace(),
+        new FancyParticles(),
+        new FlockScene(),
+        new CubeScene(),
+        new ThreeDeeFlockScene(),
+        new TriangleScene(),
+        new MillerLineScene(),
+        new ContourScene(),
     };
 
     for (int i = 0; i < lusioScenes.length; i++) {

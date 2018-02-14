@@ -40,17 +40,18 @@ public class MillerLineScene extends LusioScene {
 
   @Override
   public void draw(PGraphics graphics) {
-    sinGraphRenderer.setColor(cube.getColor());
-    sinGraphRenderer.setThickness(5);
-    sinGraphRenderer.setFreq(cube.getFlipAmount() * 10 + 1);
-    sinGraphRenderer.setSize(cube.getFlipAmount() * 20);
+    if (sinGraphRenderer != null) {
+      sinGraphRenderer.setColor(cube.getColor());
+      sinGraphRenderer.setThickness(5);
+      sinGraphRenderer.setFreq(cube.getCounter() * 10 + 1);
+      sinGraphRenderer.setSize(cube.getCounter() * 20);
 
-    dottedLineGraphRenderer.setColor(cube.getColor());
-    dottedLineGraphRenderer.setScrollSpeed(cube.getRotationalVelocity() / 10);
-    dottedLineGraphRenderer.setSize(cube.getFlipAmount() * 20 + 5);
+      dottedLineGraphRenderer.setColor(cube.getColor());
+      dottedLineGraphRenderer.setScrollSpeed(cube.getRotationalVelocity() / 10);
+      dottedLineGraphRenderer.setSize(cube.getCounter() * 20 + 5);
 
-    animatedFillGraphRenderer.setFillSpeed(cube.getRotationalVelocity() * 4 + 0.1f);
-
+      animatedFillGraphRenderer.setFillSpeed(cube.getRotationalVelocity() * 4 + 0.1f);
+    }
     super.draw(graphics);
   }
 }

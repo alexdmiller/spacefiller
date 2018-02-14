@@ -53,7 +53,7 @@ uint8_t mode = 0;
 uint8_t lightIndex = 0;
 
 float totalRotation = 0;
-float rotationThreshold = 10;
+float rotationThreshold = 6;
 
 unsigned long previousMillis = 0;        // will store last time LED was updated
 const long interval = 60;
@@ -236,8 +236,8 @@ void loop() {
     }
 
     // stable mode
-    setColor(flipAmount);
-    setStableColor(flipAmount);
+    setColor(totalRotation / rotationThreshold);
+    setStableColor(totalRotation / rotationThreshold);
   } else if (mode == 1) {
     if (flipTimer > timeUntilSwitch) {
       flipTimer = 0;

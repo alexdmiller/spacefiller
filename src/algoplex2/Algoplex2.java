@@ -20,8 +20,8 @@ import java.util.*;
 
 public class Algoplex2 extends SceneApplet {
   public static Algoplex2 instance;
-  private static int ROWS = 5;
-  private static int COLS = 8;
+  private static int ROWS = 4;
+  private static int COLS = 6;
   private static int SPACING = 200;
 
   public static void main(String[] args) {
@@ -44,8 +44,7 @@ public class Algoplex2 extends SceneApplet {
   }
 
   public void settings() {
-    fullScreen(2);
-
+    fullScreen(1);
     size(1920, 1080, P3D);
     PJOGL.profile = 2;
   }
@@ -102,9 +101,17 @@ public class Algoplex2 extends SceneApplet {
     graphRenderer.setColor(0xFFFFFF00);
 
     GridScene[] gridScenes = new GridScene[] {
+//        new CircleScene(),
+//        new LifeScene(),
+//        new GradientTriangleScene(),
+//        new PsychScene(),
+//        new PyramidScene(),
+//        new ColorBath(),
+//        new ParticleScene(),
+//        new ShiftingEdgeScene(),
         // new PerlinGridScene(),
-        new FollowEdges(),
         new TinyTriangleScene(),
+        new FollowEdges(),
         new WormScene(),
         new TriangleScene(),
         new FlowScene(),
@@ -112,14 +119,7 @@ public class Algoplex2 extends SceneApplet {
         new CrossScene(),
         new VeinScene(),
         // throw away
-//        new CircleScene(),
-//        new LifeScene(),
-//        new GradientTriangleScene(),ø
-//        new PsychScene(),
-//        new PyramidScene(),
-//        new ColorBath(),
-//        new ParticleScene()
-//        new ShiftingEdgeScene(),
+
 
     };
 
@@ -223,16 +223,16 @@ public class Algoplex2 extends SceneApplet {
       remote.controller(4).send(remote.target("/VeinScene/treeComponent/edgeThickness"));
       remote.controller(5).send(remote.target("/VeinScene/treeComponent/attractorInfluenceRadius"));
 
-      remote.controller(0).send(remote.target("/WormScene/flockParticles/maxSpeed"));
-      remote.controller(1).send(remote.target("/WormScene/flockParticles/desiredSeparation"));
-      remote.controller(2).send(remote.target("/WormScene/flockParticles/cohesionThreshold"));
-      remote.controller(3).send(remote.target("/WormScene/flockParticles/alignmentThreshold"));
-      remote.controller(4).send(remote.target("/WormScene/repelFixedPoints/repelThreshold"));
-      remote.controller(5).send(remote.target("/WormScene/repelFixedPoints/repelStrength"));
+      remote.controller(0).send(remote.target("/FlowScene/flockParticles/maxSpeed"));
+      remote.controller(1).send(remote.target("/FlowScene/flockParticles/desiredSeparation"));
+      remote.controller(2).send(remote.target("/FlowScene/flockParticles/cohesionThreshold"));
+      remote.controller(3).send(remote.target("/FlowScene/flockParticles/alignmentThreshold"));
+      remote.controller(4).send(remote.target("/FlowScene/repelFixedPoints/repelThreshold"));
+      remote.controller(5).send(remote.target("/FlowScene/repelFixedPoints/repelStrength"));
 
-//    remote.controller(2).send(remote.target("/WormScene/flockParticles/cohesionThreshold"));
+//    remote.controller(2).send(remote.target("/FlowScene/flockParticles/cohesionThreshold"));
 
-//    remote.controller(6).send(remote.target("/WormScene/particleWebRenderer/lineThreshold"));
+//    remote.controller(6).send(remote.target("/FlowScene/particleWebRenderer/lineThreshold"));
 
       remote.controller(0).send(remote.target("/ShiftingEdgeScene/quadMod"));
       remote.controller(1).send(remote.target("/ShiftingEdgeScene/triangleMod"));

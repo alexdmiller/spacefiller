@@ -1,6 +1,8 @@
 package common;
 
 import algoplex2.Algoplex2;
+import processing.core.PApplet;
+import sketches.Worms;
 import spacefiller.remote.Mod;
 import particles.Bounds;
 import processing.core.PVector;
@@ -85,7 +87,7 @@ public class StoredVectorField implements VectorField {
 		float seed = (float) Math.random() * 100;
 		for (float x = 0; x <= getGridWidth(); x++) {
 			for (float y = 0; y <= getGridHeight(); y++) {
-				float theta = (float) (Algoplex2.instance.noise(x, y, seed) * 4 * Math.PI);
+				float theta = (float) (Worms.getInstance().noise(x, y, seed) * 4 * Math.PI);
 				PVector f = new PVector(
 						(float) Math.cos(theta) * 40,
 						(float) Math.sin(theta) * 40);

@@ -41,7 +41,7 @@ public class FancyParticles extends LusioScene {
     dottedLineGraphRenderer.setColor(cube.getColor());
     float[] euler = cube.getNormalizedEuler();
 
-    flockParticles.setMaxSpeed(cube.getFlipAmount() * 20 + 5);
+    flockParticles.setMaxSpeed(cube.getCounter() * 20 + 5);
     flockParticles.setDesiredSeparation(euler[1] * 100 + 10);
     flockParticles.setCohesionThreshold(euler[0] * 100 + 10);
     // particleWebRenderer.setLineThreshold(Math.min(cube.getRotationalVelocity() * 10, 100));

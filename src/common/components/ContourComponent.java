@@ -94,7 +94,6 @@ public class ContourComponent extends SceneComponent {
         (int) (resolution / bounds.getWidth() * bounds.getHeight()) + 1,
         resolution + 1);
 
-
     // drawGrid(heightMap, bounds.getWidth() / resolution, graphics);
 
     graphics.pushMatrix();

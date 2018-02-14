@@ -25,7 +25,7 @@ public class NestedCubeScene extends LusioScene {
   @Override
   public void draw(PGraphics graphics) {
     history[0].set(cube.getQuaternion());
-    sizeHistory[0] = cube.getFlipAmount() * cube.getFlipAmount() * 0.5f + 0.5f;
+    sizeHistory[0] = cube.getCounter() * cube.getCounter() * 0.5f + 0.5f;
 
     for (int i = history.length - 1; i >= 1; i--) {
       history[i].set(history[i - 1]);

@@ -37,22 +37,20 @@ public class NumberTransition {
     numberGraph = new Graph();
 
     Node[] nodes = new Node[NUMBERS[num].length];
-    for (int i = 0; i < NUMBERS[num].length; i++) {
-      nodes[i] = numberGraph.createNode(grid.getNodes().get(NUMBERS[num][i]));
-    }
+//    for (int i = 0; i < NUMBERS[num].length; i++) {
+//      nodes[i] = numberGraph.createNode(grid.getNodes().get(NUMBERS[num][i]));
+//    }
 
-
-
-    for (int i = 0; i < nodes.length - 1; i++) {
-      numberGraph.createEdge(nodes[i], nodes[i + 1]);
-    }
-
-    animatedFillGraphRenderer = new AnimatedFillGraphRenderer();
-    animatedFillGraphRenderer.fillSpeed = 40;
-    animatedFillGraphRenderer.setThickness(20);
-    Edge e = numberGraph.getEdges().get(0);
-    animatedFillGraphRenderer.animateEdge(e, e.n1, e.n2);
-    animatedFillGraphRenderer.setRestart(false);
+//    for (int i = 0; i < nodes.length - 1; i++) {
+//      numberGraph.createEdge(nodes[i], nodes[i + 1]);
+//    }
+//
+//    animatedFillGraphRenderer = new AnimatedFillGraphRenderer();
+//    animatedFillGraphRenderer.fillSpeed = 40;
+//    animatedFillGraphRenderer.setThickness(20);
+//    Edge e = numberGraph.getEdges().get(0);
+//    animatedFillGraphRenderer.animateEdge(e, e.n1, e.n2);
+//    animatedFillGraphRenderer.setRestart(false);
   }
 
   public void draw(PGraphics graphics, Grid grid) {

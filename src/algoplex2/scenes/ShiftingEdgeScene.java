@@ -26,7 +26,7 @@ public class ShiftingEdgeScene extends GridScene {
   @Mod(min = -0.1f, max = 0.1f)
   public float speed = 0.01f;
 
-  public float jitter = 100;
+  public float jitter = 0;
 
   private PerlinNoise perlin;
   private PerlinNoise jitterPerlin;

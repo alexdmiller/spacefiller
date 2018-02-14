@@ -38,7 +38,7 @@ public class NoiseSpace extends LusioScene {
 
   @Override
   public void draw(PGraphics graphics) {
-    scrollSpeed += cube.getFlipAmount() / 10;
+    scrollSpeed += cube.getCounter() / 10;
     scrollSpeed *= 0.9f;
 
     float[] euler = cube.getEulerRotation();
