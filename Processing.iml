@@ -50,5 +50,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="LeapJava" level="project" />
   </component>
 </module>

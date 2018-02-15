@@ -1,14 +1,16 @@
 package algowave;
 
+import algowave.leap.LeapController;
+import algowave.leap.LeapMessage;
 import algowave.scenes.FlowScene;
 import algowave.scenes.WormScene;
 import codeanticode.syphon.SyphonServer;
+import com.leapmotion.leap.Controller;
+import com.leapmotion.leap.Listener;
 import controlP5.ControlP5;
 import processing.core.PApplet;
-import processing.core.PFont;
 import processing.core.PGraphics;
 import processing.opengl.PJOGL;
-import scene.SceneApplet;
 import scene.SceneMixer;
 import spacefiller.remote.Mod;
 
@@ -29,6 +31,7 @@ public class Algowave extends PApplet {
   private SceneMixer mixer;
   private SyphonServer server;
   private ControlP5 controlP5;
+  private LeapController leapController;
 
   public void settings() {
     size(CONTROL_PANEL_WIDTH, CONTROL_PANEL_HEIGHT, P3D);
@@ -48,12 +51,27 @@ public class Algowave extends PApplet {
     mixer.addScene(flowScene);
     mixer.addScene(wormScene);
 
+    leapController = new LeapController();
+    leapController.register(this);
+
+    leapController
+        .controller(LeapMessage.X_AXIS)
+        .send(leapController.target("/Algowave/wormScene/flockParticles/desiredSeparation"));
+    leapController.printAddresses();
+
     controlP5 = new ControlP5(this);
     controlP5.addFrameRate().setInterval(10).setPosition(10, 10);
+    float y = 320;
+    for (LeapMessage message : leapController.getPatchedMessages()) {
+      controlP5
+          .addSlider(message.toString())
+          .setPosition(10, y)
+          .setWidth(CONTROL_PANEL_WIDTH - 100)
+          .setMin(0)
+          .setMax(1);
 
-//    OscRemoteControl remote = new OscRemoteControl(this);
-//    VDMXWriter.exportVDMXJson("algoplex-performer", remote.getTargetMap(), 9998);
-//    remote.listen(9998);
+      y += 10;
+    }
   }
 
   public void draw() {
@@ -74,6 +92,11 @@ public class Algowave extends PApplet {
     stroke(255);
     noFill();
     rect(10, 30, previewWidth, previewHeight);
+
+    for (LeapMessage message : leapController.getPatchedMessages()) {
+      controlP5.get(message.toString()).setValue(
+          (Float) leapController.controller(message).getLastValue());
+    }
   }
 
   public void keyPressed() {
