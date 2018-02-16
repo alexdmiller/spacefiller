@@ -7,12 +7,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7bb3a9e-05bb-464d-967e-9bda287e8f0d" name="Default" comment="Worms and bound changes">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/algowave/leap/LeapController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/algowave/leap/LeapMessage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lab/Leap.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/algowave/PreviewCanvas.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/algowave/leap/LeapVisualizer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Processing.iml" afterPath="$PROJECT_DIR$/Processing.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algowave/Algowave.java" afterPath="$PROJECT_DIR$/src/algowave/Algowave.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algowave/leap/LeapController.java" afterPath="$PROJECT_DIR$/src/algowave/leap/LeapController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scene/SceneMixer.java" afterPath="$PROJECT_DIR$/src/scene/SceneMixer.java" />
     </list>
     <ignored path="Processing.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,14 +46,56 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Algowave.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Algowave.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algowave/Algowave.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+            <state relative-caret-position="244">
+              <caret line="55" column="34" lean-forward="true" selection-start-line="55" selection-start-column="34" selection-end-line="55" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1518715821000" expanded="true" signature="675:785" ph="..." />
+                <marker date="1518752378000" expanded="true" signature="858:968" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PreviewCanvas.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/algowave/PreviewCanvas.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="13" column="3" lean-forward="true" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SceneMixer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scene/SceneMixer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding>
+                <element signature="e#432#433#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LeapVisualizer.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/algowave/leap/LeapVisualizer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="36" column="24" lean-forward="true" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#355#356#0" expanded="true" />
+                <element signature="e#381#382#0" expanded="true" />
+                <element signature="e#411#412#0" expanded="true" />
+                <element signature="e#434#435#0" expanded="true" />
+                <element signature="e#479#480#0" expanded="true" />
+                <element signature="e#509#510#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,41 +114,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SceneMixer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/scene/SceneMixer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AlgoplexController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/algoplex2/AlgoplexController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="11" column="43" lean-forward="false" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/algoplex2/Controller.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="LeapMessage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algowave/leap/LeapMessage.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="497">
-              <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+              <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#316#317#0" expanded="true" />
@@ -137,12 +149,14 @@
       <file leaf-file-name="LeapController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algowave/leap/LeapController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="634">
-              <caret line="54" column="45" lean-forward="false" selection-start-line="54" selection-start-column="45" selection-end-line="54" selection-end-column="45" />
+            <state relative-caret-position="187">
+              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1181#1182#0" expanded="true" />
-                <element signature="e#1218#1219#0" expanded="true" />
+                <element signature="e#920#921#0" expanded="true" />
+                <element signature="e#941#942#0" expanded="true" />
+                <element signature="e#1310#1311#0" expanded="true" />
+                <element signature="e#1347#1348#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -154,22 +168,6 @@
             <state relative-caret-position="241">
               <caret line="18" column="14" lean-forward="false" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Leap.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/lab/Leap.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="27" column="23" lean-forward="false" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#977#978#0" expanded="true" />
-                <element signature="e#1022#1023#0" expanded="true" />
-                <element signature="e#1072#1073#0" expanded="true" />
-                <element signature="e#1123#1124#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -186,7 +184,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Flock</find>
       <find>Osc</find>
       <find>system</find>
       <find>showui</find>
@@ -216,6 +213,7 @@
       <find>noise</find>
       <find>log</find>
       <find>onExit</find>
+      <find>controlp5</find>
     </findStrings>
     <replaceStrings>
       <replace>size</replace>
@@ -241,8 +239,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/algoplex2/AlgoplexPerformer.java" />
-        <option value="$PROJECT_DIR$/src/algoplex2/scenes/ContourScene.java" />
         <option value="$PROJECT_DIR$/src/algoplex2/scenes/TriangleScene.java" />
         <option value="$PROJECT_DIR$/src/particles/behaviors/RepelFixedPoints.java" />
         <option value="$PROJECT_DIR$/src/mapping/Keystone.java" />
@@ -285,12 +281,14 @@
         <option value="$PROJECT_DIR$/src/scene/SceneApplet.java" />
         <option value="$PROJECT_DIR$/src/algowave/scenes/FlowScene.java" />
         <option value="$PROJECT_DIR$/src/scene/SceneList.java" />
-        <option value="$PROJECT_DIR$/src/scene/SceneMixer.java" />
         <option value="$PROJECT_DIR$/src/algowave/scenes/WormScene.java" />
         <option value="$PROJECT_DIR$/src/algowave/LeapController.java" />
         <option value="$PROJECT_DIR$/src/lab/Leap.java" />
-        <option value="$PROJECT_DIR$/src/algowave/leap/LeapController.java" />
         <option value="$PROJECT_DIR$/src/algowave/leap/LeapMessage.java" />
+        <option value="$PROJECT_DIR$/src/algowave/leap/LeapController.java" />
+        <option value="$PROJECT_DIR$/src/scene/SceneMixer.java" />
+        <option value="$PROJECT_DIR$/src/algowave/PreviewCanvas.java" />
+        <option value="$PROJECT_DIR$/src/algowave/leap/LeapVisualizer.java" />
         <option value="$PROJECT_DIR$/src/algowave/Algowave.java" />
       </list>
     </option>
@@ -401,28 +399,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="algowave" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Processing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Processing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="algowave" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scenes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1701,7 +1677,7 @@
       <workItem from="1518543739566" duration="8151000" />
       <workItem from="1518565779379" duration="1876000" />
       <workItem from="1518583922428" duration="5607000" />
-      <workItem from="1518707645932" duration="6887000" />
+      <workItem from="1518707645932" duration="17457000" />
     </task>
     <task id="LOCAL-00001" summary="Worms and bound changes">
       <created>1506356022413</created>
@@ -1714,7 +1690,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1400120000" />
+    <option name="totallyTimeSpent" value="1410690000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1053" extended-state="6" />
@@ -1804,39 +1780,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/lusio/Lusio.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1420">
-          <caret line="71" column="49" lean-forward="true" selection-start-line="71" selection-start-column="49" selection-end-line="71" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algoplex2/Algoplex2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#723#724#0" expanded="false" />
-            <element signature="e#760#761#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algoplex2/GraphTransformer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1620">
-          <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/Processing_Remote_Control_jar/processing_remote_control.jar!/spacefiller/remote/signal/MethodTarget.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/algoplex2/NumberTransition.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="700">
@@ -2136,20 +2079,12 @@
         <state relative-caret-position="242">
           <caret line="27" column="23" lean-forward="false" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#977#978#0" expanded="true" />
-            <element signature="e#1022#1023#0" expanded="true" />
-            <element signature="e#1072#1073#0" expanded="true" />
-            <element signature="e#1123#1124#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#977#978#0" expanded="false" />
+            <element signature="e#1022#1023#0" expanded="false" />
+            <element signature="e#1072#1073#0" expanded="false" />
+            <element signature="e#1123#1124#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scene/SceneMixer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2196,22 +2131,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algowave/leap/LeapController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="54" column="45" lean-forward="false" selection-start-line="54" selection-start-column="45" selection-end-line="54" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1181#1182#0" expanded="true" />
-            <element signature="e#1218#1219#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/algowave/leap/LeapMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="497">
-          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#316#317#0" expanded="true" />
@@ -2228,13 +2151,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algowave/Algowave.java">
+    <entry file="jar:///Applications/Processing.app/Contents/Java/core/library/core.jar!/processing/core/PApplet.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+        <state relative-caret-position="228">
+          <caret line="654" column="19" lean-forward="false" selection-start-line="654" selection-start-column="19" selection-end-line="654" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Applications/Processing.app/Contents/Java/core/library/core.jar!/processing/opengl/PGraphicsOpenGL.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="2432" column="0" lean-forward="false" selection-start-line="2432" selection-start-column="0" selection-end-line="2432" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/SceneMixer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <element signature="e#432#433#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algowave/PreviewCanvas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="3" lean-forward="true" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1518715821000" expanded="true" signature="675:785" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algowave/leap/LeapController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#920#921#0" expanded="true" />
+            <element signature="e#941#942#0" expanded="true" />
+            <element signature="e#1310#1311#0" expanded="true" />
+            <element signature="e#1347#1348#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algowave/Algowave.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="55" column="34" lean-forward="true" selection-start-line="55" selection-start-column="34" selection-end-line="55" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1518752378000" expanded="true" signature="858:968" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algowave/leap/LeapVisualizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="36" column="24" lean-forward="true" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#355#356#0" expanded="true" />
+            <element signature="e#381#382#0" expanded="true" />
+            <element signature="e#411#412#0" expanded="true" />
+            <element signature="e#434#435#0" expanded="true" />
+            <element signature="e#479#480#0" expanded="true" />
+            <element signature="e#509#510#0" expanded="true" />
           </folding>
         </state>
       </provider>

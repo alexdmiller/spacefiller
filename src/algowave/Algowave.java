@@ -2,21 +2,26 @@ package algowave;
 
 import algowave.leap.LeapController;
 import algowave.leap.LeapMessage;
+import algowave.leap.LeapVisualizer;
 import algowave.scenes.FlowScene;
 import algowave.scenes.WormScene;
 import codeanticode.syphon.SyphonServer;
 import com.leapmotion.leap.Controller;
 import com.leapmotion.leap.Listener;
 import controlP5.ControlP5;
+import controlP5.Group;
 import processing.core.PApplet;
 import processing.core.PGraphics;
+import processing.core.PImage;
 import processing.opengl.PJOGL;
 import scene.SceneMixer;
 import spacefiller.remote.Mod;
 
 public class Algowave extends PApplet {
-  private static int CONTROL_PANEL_WIDTH = 500;
+  private static int PADDING = 10;
+  private static int CONTROL_PANEL_WIDTH = 1000 + PADDING * 4;
   private static int CONTROL_PANEL_HEIGHT = 500;
+  private static int COLUMN_WIDTH = 500;
 
   public static void main(String[] args) {
     main("algowave.Algowave");
@@ -32,6 +37,7 @@ public class Algowave extends PApplet {
   private SyphonServer server;
   private ControlP5 controlP5;
   private LeapController leapController;
+  private LeapVisualizer leapVisualizer;
 
   public void settings() {
     size(CONTROL_PANEL_WIDTH, CONTROL_PANEL_HEIGHT, P3D);
@@ -39,9 +45,16 @@ public class Algowave extends PApplet {
   }
 
   public void setup() {
+    leapController = new LeapController();
+    leapController.register(this);
+
     PGraphics mainCanvas = createGraphics(1920, 1080, P3D);
     mixer = new SceneMixer();
     mixer.setOutput(mainCanvas);
+
+    PGraphics vizCanvas = createGraphics(1920 / 2, 1080 / 2, P3D);
+    leapVisualizer = new LeapVisualizer(leapController.getController());
+    leapVisualizer.setOutput(vizCanvas);
 
     server = new SyphonServer(this, this.getClass().getName());
 
@@ -51,52 +64,100 @@ public class Algowave extends PApplet {
     mixer.addScene(flowScene);
     mixer.addScene(wormScene);
 
-    leapController = new LeapController();
-    leapController.register(this);
 
     leapController
-        .controller(LeapMessage.X_AXIS)
+        .controller(LeapMessage.Y_AXIS)
+        .scale(10, 200)
         .send(leapController.target("/Algowave/wormScene/flockParticles/desiredSeparation"));
+
     leapController.printAddresses();
 
     controlP5 = new ControlP5(this);
-    controlP5.addFrameRate().setInterval(10).setPosition(10, 10);
-    float y = 320;
-    for (LeapMessage message : leapController.getPatchedMessages()) {
-      controlP5
-          .addSlider(message.toString())
-          .setPosition(10, y)
-          .setWidth(CONTROL_PANEL_WIDTH - 100)
-          .setMin(0)
-          .setMax(1);
 
-      y += 10;
-    }
+    controlP5.addGroup("leapviz")
+        .setLabel("Leap Visualization")
+        .setPosition(PADDING, 10)
+        .setWidth(COLUMN_WIDTH)
+        .disableCollapse()
+        .addCanvas(new PreviewCanvas(leapVisualizer.getFrame(), COLUMN_WIDTH));
+
+    controlP5.addGroup("output")
+        .setLabel("Output")
+        .setPosition(COLUMN_WIDTH + PADDING * 2, 10)
+        .setWidth(COLUMN_WIDTH)
+        .disableCollapse()
+        .addCanvas(new PreviewCanvas(mixer.getFrame(), COLUMN_WIDTH));
+
+    controlP5.addGroup("scene")
+        .setLabel("Scene")
+        .disableCollapse()
+        .setPosition(COLUMN_WIDTH + PADDING * 2, 300);
+
+
+//    controlP5.addFrameRate().setInterval(10).setPosition(10, 10);
+//
+//    Group leapControls = controlP5.addGroup("leapControls")
+//        .setPosition(PADDING, 300)
+//        .hideBar();
+//
+//    float y = 0;
+//    for (LeapMessage message : leapController.getPatchedMessages()) {
+//      controlP5
+//          .addSlider(message.toString())
+//          .setPosition(0, y)
+//          .setWidth(COLUMN_WIDTH)
+//          .setMin(0)
+//          .setMax(1)
+//          .setGroup(leapControls);
+//
+//      y += 10;
+//    }
   }
 
   public void draw() {
-    // Draw main output
-    mixer.beginDraw();
     mixer.draw();
-    mixer.endDraw();
+    leapVisualizer.draw();
 
+    // Draw main output
     server.sendImage(mixer.getFrame());
 
     // Draw control panel
     background(0);
 
-    float previewWidth = CONTROL_PANEL_WIDTH - 20;
-    float previewHeight = (float) CONTROL_PANEL_WIDTH / mixer.getOutputWidth() * mixer.getOutputHeight();
-    image(mixer.getFrame(), 10, 30, previewWidth, previewHeight);
+//    for (LeapMessage message : leapController.getPatchedMessages()) {
+//      controlP5.get(message.toString()).setValue(
+//          (Float) leapController.controller(message).getLastValue());
+//    }
 
-    stroke(255);
-    noFill();
-    rect(10, 30, previewWidth, previewHeight);
+//
+//    pushMatrix();
+//
+//    // Top
+//    translate(PADDING, PADDING);
+//
+//    // Left column
+//    translate(0, 50);
+//    PImage vizFrame = leapVisualizer.getFrame();
+//    image(vizFrame, 0, 0);
+//    stroke(255);
+//    strokeWeight(2);
+//    noFill();
+//    rect(0, 0, vizFrame.width, vizFrame.height);
+//
 
-    for (LeapMessage message : leapController.getPatchedMessages()) {
-      controlP5.get(message.toString()).setValue(
-          (Float) leapController.controller(message).getLastValue());
-    }
+//
+//
+//    // Right column
+//    translate(COLUMN_WIDTH + PADDING * 2, 0);
+//    int previewHeight = (int) (COLUMN_WIDTH / (float) mixer.getOutputWidth() * mixer.getOutputHeight());
+//    image(mixer.getFrame(), 0, 0, COLUMN_WIDTH, previewHeight);
+//
+//    stroke(255);
+//    noFill();
+//    strokeWeight(2);
+//    rect(0, 0, COLUMN_WIDTH, previewHeight);
+//
+//    popMatrix();
   }
 
   public void keyPressed() {

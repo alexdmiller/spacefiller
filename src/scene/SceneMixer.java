@@ -17,14 +17,6 @@ public class SceneMixer {
     scenes = new ArrayList<>();
   }
 
-  public void beginDraw() {
-    canvas.beginDraw();
-  }
-
-  public void endDraw() {
-    canvas.endDraw();
-  }
-
   public PImage getFrame() {
     return canvas;
   }
@@ -42,10 +34,12 @@ public class SceneMixer {
   }
 
   public void draw() {
+    canvas.beginDraw();
     canvas.background(0);
     if (currentScene != null) {
       currentScene.draw(this.canvas);
     }
+    canvas.endDraw();
   }
 
   public void switchScene(int sceneIndex) {

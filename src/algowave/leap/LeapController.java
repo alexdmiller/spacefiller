@@ -19,6 +19,8 @@ public class LeapController extends RemoteControl implements Runnable {
 
   public LeapController() {
     leap = new Controller();
+    leap.setPolicy(Controller.PolicyFlag.POLICY_BACKGROUND_FRAMES);
+
     leapPatches = new HashMap<>();
 
     for (LeapMessage message : LeapMessage.ALL_MESSAGES) {
@@ -27,6 +29,10 @@ public class LeapController extends RemoteControl implements Runnable {
 
     pollingThread = new Thread(this);
     pollingThread.start();
+  }
+
+  public Controller getController() {
+    return leap;
   }
 
   public DataReceiver controller(LeapMessage message) {
