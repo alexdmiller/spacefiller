@@ -1,18 +1,16 @@
 package algowave;
 
-import algowave.leap.LeapController;
+import algowave.leap.LeapRemoteControl;
 import algowave.leap.LeapMessage;
 import algowave.leap.LeapVisualizer;
 import algowave.scenes.FlowScene;
 import algowave.scenes.WormScene;
 import codeanticode.syphon.SyphonServer;
-import com.leapmotion.leap.Controller;
-import com.leapmotion.leap.Listener;
 import controlP5.ControlP5;
 import controlP5.Group;
+import controlP5.Slider;
 import processing.core.PApplet;
 import processing.core.PGraphics;
-import processing.core.PImage;
 import processing.opengl.PJOGL;
 import scene.SceneMixer;
 import spacefiller.remote.Mod;
@@ -36,7 +34,7 @@ public class Algowave extends PApplet {
   private SceneMixer mixer;
   private SyphonServer server;
   private ControlP5 controlP5;
-  private LeapController leapController;
+  private LeapRemoteControl leapController;
   private LeapVisualizer leapVisualizer;
 
   public void settings() {
@@ -45,7 +43,7 @@ public class Algowave extends PApplet {
   }
 
   public void setup() {
-    leapController = new LeapController();
+    leapController = new LeapRemoteControl();
     leapController.register(this);
 
     PGraphics mainCanvas = createGraphics(1920, 1080, P3D);
@@ -64,7 +62,6 @@ public class Algowave extends PApplet {
     mixer.addScene(flowScene);
     mixer.addScene(wormScene);
 
-
     leapController
         .controller(LeapMessage.Y_AXIS)
         .scale(10, 200)
@@ -74,44 +71,72 @@ public class Algowave extends PApplet {
 
     controlP5 = new ControlP5(this);
 
+    controlP5.setFont(createFont("Input Mono", 12));
+    controlP5.setColorBackground(0);
+    controlP5.setColorForeground(color(0));
+    controlP5.setColorActive(color(255));
+
+    controlP5.addLabel("title")
+        .setText("algowave v0.1")
+        .setFont(createFont("Arial", 15, true))
+        .setPosition(PADDING, PADDING);
+
     controlP5.addGroup("leapviz")
         .setLabel("Leap Visualization")
-        .setPosition(PADDING, 10)
+        .setHeight(20)
+        .setPosition(PADDING, PADDING * 7)
         .setWidth(COLUMN_WIDTH)
         .disableCollapse()
         .addCanvas(new PreviewCanvas(leapVisualizer.getFrame(), COLUMN_WIDTH));
 
+    Group input = controlP5.addGroup("input")
+        .setLabel("Leap Input")
+        .setHeight(20)
+        .setPosition(PADDING, 350)
+        .setWidth(COLUMN_WIDTH)
+        .disableCollapse();
+
+    float y = 5;
+    for (LeapMessage message : leapController.getPatchedMessages()) {
+      controlP5
+          .addSlider(message.toString())
+          .setPosition(0, y)
+          .setHeight(20)
+          .setColorForeground(color(100))
+          .setWidth(COLUMN_WIDTH - 100)
+          .setMin(0)
+          .setMax(1)
+          .setSliderMode(Slider.FLEXIBLE)
+          .setHandleSize(20)
+          .setGroup(input);
+      y += 20;
+    }
+
     controlP5.addGroup("output")
         .setLabel("Output")
-        .setPosition(COLUMN_WIDTH + PADDING * 2, 10)
+        .setHeight(20)
+        .setPosition(COLUMN_WIDTH + PADDING * 2, PADDING * 7)
         .setWidth(COLUMN_WIDTH)
         .disableCollapse()
         .addCanvas(new PreviewCanvas(mixer.getFrame(), COLUMN_WIDTH));
 
     controlP5.addGroup("scene")
-        .setLabel("Scene")
+        .setHeight(20)
+        .setLabel("Scene Parameters")
         .disableCollapse()
-        .setPosition(COLUMN_WIDTH + PADDING * 2, 300);
+        .setWidth(COLUMN_WIDTH)
+        .setPosition(COLUMN_WIDTH + PADDING * 2, 350);
 
 
-//    controlP5.addFrameRate().setInterval(10).setPosition(10, 10);
+
+    controlP5.addFrameRate().setInterval(10).setPosition(PADDING, height - PADDING * 2);
 //
 //    Group leapControls = controlP5.addGroup("leapControls")
 //        .setPosition(PADDING, 300)
 //        .hideBar();
 //
 //    float y = 0;
-//    for (LeapMessage message : leapController.getPatchedMessages()) {
-//      controlP5
-//          .addSlider(message.toString())
-//          .setPosition(0, y)
-//          .setWidth(COLUMN_WIDTH)
-//          .setMin(0)
-//          .setMax(1)
-//          .setGroup(leapControls);
-//
-//      y += 10;
-//    }
+
   }
 
   public void draw() {
@@ -122,12 +147,17 @@ public class Algowave extends PApplet {
     server.sendImage(mixer.getFrame());
 
     // Draw control panel
-    background(0);
+    background(20);
 
-//    for (LeapMessage message : leapController.getPatchedMessages()) {
-//      controlP5.get(message.toString()).setValue(
-//          (Float) leapController.controller(message).getLastValue());
-//    }
+    stroke(255);
+    strokeWeight(1);
+    fill(0);
+    rect(-2, -2, width + 10, PADDING * 4);
+
+    for (LeapMessage message : leapController.getPatchedMessages()) {
+      controlP5.get(message.toString()).setValue(
+          (Float) leapController.controller(message).getLastValue());
+    }
 
 //
 //    pushMatrix();

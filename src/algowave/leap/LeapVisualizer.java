@@ -29,10 +29,18 @@ public class LeapVisualizer {
     canvas.beginDraw();
     canvas.background(0);
     canvas.stroke(255);
+
+    canvas.pushMatrix();
+    //canvas.translate(canvas.width / 2, canvas.height / 2);
+
+    InteractionBox box = leap.frame().interactionBox();
     for (Hand hand : leap.frame().hands()) {
       Vector position = hand.stabilizedPalmPosition();
+      Vector normalizedPosition = box.normalizePoint(position);
       canvas.pushMatrix();
-      canvas.translate(position.getX(), position.getY(), position.getZ());
+      canvas.translate(
+          normalizedPosition.getX() * canvas.width,
+          canvas.height - normalizedPosition.getY() * canvas.height);
       canvas.sphereDetail(20);
       canvas.sphere(10);
       canvas.popMatrix();
@@ -60,7 +68,7 @@ public class LeapVisualizer {
 //      }
 
     }
-
+    canvas.popMatrix();
     canvas.stroke(255);
     canvas.noFill();
     canvas.rect(0, 0, canvas.width, canvas.height);

@@ -1,9 +1,6 @@
 package algowave.leap;
 
-import com.leapmotion.leap.BugReport;
 import com.leapmotion.leap.Controller;
-import com.leapmotion.leap.InteractionBox;
-import com.leapmotion.leap.Listener;
 import spacefiller.remote.RemoteControl;
 import spacefiller.remote.signal.DataReceiver;
 
@@ -11,17 +8,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class LeapController extends RemoteControl implements Runnable {
+public class LeapRemoteControl extends RemoteControl implements Runnable {
   private Controller leap;
   private Map<LeapMessage, DataReceiver> leapPatches;
   private Thread pollingThread;
   private long lastFrameID = 0;
 
-  public LeapController() {
-    leap = new Controller();
-    leap.setPolicy(Controller.PolicyFlag.POLICY_BACKGROUND_FRAMES);
-
-    leapPatches = new HashMap<>();
+  public LeapRemoteControl() {
+    this.leap = new Controller();
+    this.leapPatches = new HashMap<>();
 
     for (LeapMessage message : LeapMessage.ALL_MESSAGES) {
       controller(message);
