@@ -20,7 +20,7 @@ public class WormScene extends Scene {
   private ParticleComponent particleGenerator;
 
   @Mod
-  public FlockParticles flockParticles = new FlockParticles(2, 1f, 1f, 50, 100, 100, 0.5f, 2);
+  public FlockParticles flockParticles = new FlockParticles(2, 1f, 1f, 50, 100, 100, 10, 0);
 
   @Mod
   public FollowPaths followPaths;

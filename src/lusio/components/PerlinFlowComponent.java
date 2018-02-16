@@ -41,7 +41,10 @@ public class PerlinFlowComponent extends SceneComponent {
 
   private float lineThickness = 2;
   private float interpolation = 0f;
-  private float circleRadius = 100;
+
+  @Mod
+  public float circleRadius = 100;
+
   private int numPoints = 50;
   private float scrambleSpeed = 0.01f;
   private boolean snapToGrid = false;
@@ -184,6 +187,10 @@ public class PerlinFlowComponent extends SceneComponent {
 
   public void setGridCellSize(float gridCellSize) {
     this.gridCellSize = gridCellSize;
+  }
+
+  public void setBounds(Bounds bounds) {
+    this.bounds = bounds;
   }
 
   @Override

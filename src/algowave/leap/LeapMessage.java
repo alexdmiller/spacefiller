@@ -27,12 +27,48 @@ public abstract class LeapMessage {
     }
   };
 
-//  public static LeapMessage PITCH = new HandMessage("Pitch") {
-//    @Override
-//    public final float getHandValue(Hand hand, InteractionBox box) {
-//      return hand.
-//    }
-//  };
+  public static LeapMessage Y_VELOCITY = new HandPositionMessage("Velocity Y") {
+    float lastY = 0;
+
+    @Override
+    public float getAxisValue(Vector position) {
+      float currentY = position.getY();
+      float velocity = Math.abs(lastY - currentY);
+      lastY = currentY;
+      return velocity * 3;
+    }
+  };
+
+  public static LeapMessage ROLL = new HandMessage("Roll") {
+    @Override
+    public final float getHandValue(Hand hand, InteractionBox box) {
+      return (float) ((hand.palmNormal().roll() + Math.PI) / (2 * Math.PI));
+    }
+  };
+
+  public static LeapMessage PITCH = new HandMessage("Pitch") {
+    @Override
+    public final float getHandValue(Hand hand, InteractionBox box) {
+      return (float) ((hand.palmNormal().pitch() + Math.PI) / (2 * Math.PI));
+    }
+  };
+
+
+  public static LeapMessage YAW = new HandMessage("Yaw") {
+    @Override
+    public final float getHandValue(Hand hand, InteractionBox box) {
+      return (float) ((hand.palmNormal().yaw() + Math.PI) / (2 * Math.PI));
+    }
+  };
+
+  public static LeapMessage GRAB = new HandMessage("Grab") {
+    @Override
+    public final float getHandValue(Hand hand, InteractionBox box) {
+      return hand.grabStrength();
+    }
+  };
+
+
 
   private static abstract class HandPositionMessage extends HandMessage {
     public HandPositionMessage(String name) {
@@ -49,6 +85,8 @@ public abstract class LeapMessage {
   }
 
   private static abstract class HandMessage extends LeapMessage {
+    private float lastValidValue = 0;
+
     public HandMessage(String name) {
       super(name);
     }
@@ -57,13 +95,18 @@ public abstract class LeapMessage {
     public final float getValue(Controller leap) {
       InteractionBox box = leap.frame().interactionBox();
       Hand hand = leap.frame().hands().frontmost();
-      return getHandValue(hand, box);
+      if (hand.isValid()) {
+        lastValidValue = getHandValue(hand, box);
+        return lastValidValue;
+      } else {
+        return lastValidValue;
+      }
     }
 
     public abstract float getHandValue(Hand hand, InteractionBox box);
   }
 
-  public static LeapMessage[] ALL_MESSAGES = {X_AXIS, Y_AXIS, Z_AXIS};
+  public static LeapMessage[] ALL_MESSAGES = { X_AXIS, Y_AXIS, Z_AXIS, Y_VELOCITY, ROLL, PITCH, YAW, GRAB };
 
   private String name;
 
@@ -76,8 +119,4 @@ public abstract class LeapMessage {
   public String toString() {
     return name;
   }
-
-
-
-
 }

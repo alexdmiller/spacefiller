@@ -15,11 +15,11 @@ public class PreviewCanvas extends Canvas {
 
   @Override
   public void draw(PGraphics pGraphics) {
-    pGraphics.image(image, 0, 0, width, width / pGraphics.width * pGraphics.height);
+    pGraphics.image(image, 0, 0, width, width / image.width * image.height);
     pGraphics.stroke(100);
     pGraphics.strokeWeight(2);
     pGraphics.noFill();
-    pGraphics.rect(1, 1, width - 1, width / pGraphics.width * pGraphics.height - 1);
+    pGraphics.rect(1, 1, width - 1, width / image.width * image.height - 1);
     pGraphics.noStroke();
   }
 }

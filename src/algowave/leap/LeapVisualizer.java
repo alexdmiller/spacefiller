@@ -68,10 +68,24 @@ public class LeapVisualizer {
 //      }
 
     }
+
     canvas.popMatrix();
     canvas.stroke(255);
+
+    if (!leap.isConnected()) {
+      canvas.stroke(100, 0, 0);
+      canvas.strokeWeight(10);
+      canvas.noFill();
+      canvas.rect(4, 4, canvas.width - 4, canvas.height - 4);
+      canvas.line(0, 0, canvas.width, canvas.height);
+      canvas.line(canvas.width, 0, 0, canvas.height);
+    } else if (!leap.frame().hands().isEmpty()) {
+      canvas.stroke(0, 160, 0);
+      canvas.strokeWeight(10);
+      canvas.rect(2, 2, canvas.width - 2, canvas.height - 2);
+    }
+
     canvas.noFill();
-    canvas.rect(0, 0, canvas.width, canvas.height);
     canvas.endDraw();
   }
 }

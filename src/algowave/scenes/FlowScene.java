@@ -16,9 +16,13 @@ public class FlowScene extends Scene {
   @Mod(min = 0, max = 1)
   public float updateSpeed = 0.01f;
 
+  public FlowScene() {
+    perlinFlow = new PerlinFlowComponent(new Bounds(width, height));
+  }
+
   @Override
   public void setup() {
-    perlinFlow = new PerlinFlowComponent(new Bounds(width, height));
+    perlinFlow.setBounds(new Bounds(width, height));
     perlinFlow.setColorProvider(ConstantColorProvider.WHITE);
     perlinFlow.setPos(width / 2, height / 2);
     perlinFlow.setFallSpeed(0);

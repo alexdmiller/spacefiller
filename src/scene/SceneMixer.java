@@ -59,6 +59,7 @@ public class SceneMixer {
     }
   }
 
+  @Mod
   public void gotoNextScene() {
     switchScene((currentSceneIndex + 1) % scenes.size());
   }

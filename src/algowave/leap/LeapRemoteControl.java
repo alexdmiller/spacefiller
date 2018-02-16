@@ -5,6 +5,7 @@ import spacefiller.remote.RemoteControl;
 import spacefiller.remote.signal.DataReceiver;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -16,7 +17,9 @@ public class LeapRemoteControl extends RemoteControl implements Runnable {
 
   public LeapRemoteControl() {
     this.leap = new Controller();
-    this.leapPatches = new HashMap<>();
+    this.leap.setPolicy(Controller.PolicyFlag.POLICY_BACKGROUND_FRAMES);
+
+    this.leapPatches = new LinkedHashMap<>();
 
     for (LeapMessage message : LeapMessage.ALL_MESSAGES) {
       controller(message);

@@ -18,7 +18,7 @@ import spacefiller.remote.Mod;
 public class Algowave extends PApplet {
   private static int PADDING = 10;
   private static int CONTROL_PANEL_WIDTH = 1000 + PADDING * 4;
-  private static int CONTROL_PANEL_HEIGHT = 500;
+  private static int CONTROL_PANEL_HEIGHT = 800;
   private static int COLUMN_WIDTH = 500;
 
   public static void main(String[] args) {
@@ -31,7 +31,9 @@ public class Algowave extends PApplet {
   @Mod
   public WormScene wormScene = new WormScene();
 
-  private SceneMixer mixer;
+  @Mod
+  public SceneMixer mixer;
+
   private SyphonServer server;
   private ControlP5 controlP5;
   private LeapRemoteControl leapController;
@@ -44,7 +46,6 @@ public class Algowave extends PApplet {
 
   public void setup() {
     leapController = new LeapRemoteControl();
-    leapController.register(this);
 
     PGraphics mainCanvas = createGraphics(1920, 1080, P3D);
     mixer = new SceneMixer();
@@ -62,10 +63,35 @@ public class Algowave extends PApplet {
     mixer.addScene(flowScene);
     mixer.addScene(wormScene);
 
+    leapController.register(this);
+
+
+    leapController
+        .controller(LeapMessage.GRAB)
+        .gate(0.9f)
+        .send(leapController.target("/Algowave/mixer/gotoNextScene"));
+
     leapController
         .controller(LeapMessage.Y_AXIS)
-        .scale(10, 200)
+        .scale(0, 200)
         .send(leapController.target("/Algowave/wormScene/flockParticles/desiredSeparation"));
+
+    leapController
+        .controller(LeapMessage.Y_VELOCITY)
+        .smooth(0.2f)
+        .scale(2, 100)
+        .send(leapController.target("/Algowave/wormScene/flockParticles/maxSpeed"));
+
+    leapController
+        .controller(LeapMessage.ROLL)
+        .scale(0, 50)
+        .send(leapController.target("/Algowave/flowScene/perlinFlow/lineLength"));
+
+    leapController
+        .controller(LeapMessage.Y_AXIS)
+        .smooth(0.2f)
+        .scale(10, 500)
+        .send(leapController.target("/Algowave/flowScene/perlinFlow/circleRadius"));
 
     leapController.printAddresses();
 
@@ -92,7 +118,7 @@ public class Algowave extends PApplet {
     Group input = controlP5.addGroup("input")
         .setLabel("Leap Input")
         .setHeight(20)
-        .setPosition(PADDING, 350)
+        .setPosition(PADDING, 390)
         .setWidth(COLUMN_WIDTH)
         .disableCollapse();
 
@@ -125,9 +151,7 @@ public class Algowave extends PApplet {
         .setLabel("Scene Parameters")
         .disableCollapse()
         .setWidth(COLUMN_WIDTH)
-        .setPosition(COLUMN_WIDTH + PADDING * 2, 350);
-
-
+        .setPosition(COLUMN_WIDTH + PADDING * 2, 390);
 
     controlP5.addFrameRate().setInterval(10).setPosition(PADDING, height - PADDING * 2);
 //
@@ -140,6 +164,8 @@ public class Algowave extends PApplet {
   }
 
   public void draw() {
+    leapController.update();
+
     mixer.draw();
     leapVisualizer.draw();
 
