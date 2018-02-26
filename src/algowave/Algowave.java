@@ -9,14 +9,17 @@ import codeanticode.syphon.SyphonServer;
 import controlP5.ControlP5;
 import controlP5.Group;
 import controlP5.Slider;
+import cz.adamh.utils.NativeUtils;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 import processing.opengl.PJOGL;
 import scene.SceneMixer;
 import spacefiller.remote.Mod;
 
+import java.io.IOException;
+
 public class Algowave extends PApplet {
-  private static int PADDING = 10;
+   private static int PADDING = 10;
   private static int CONTROL_PANEL_WIDTH = 1000 + PADDING * 4;
   private static int CONTROL_PANEL_HEIGHT = 800;
   private static int COLUMN_WIDTH = 500;

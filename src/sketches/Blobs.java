@@ -91,7 +91,7 @@ public class Blobs extends PApplet {
 
   @Mod
   public void addNoise() {
-    ca.addNoise(0.2f, 0, 100);
+    ca.addNoise(0.5f, 0, 100);
   }
 
   @Mod

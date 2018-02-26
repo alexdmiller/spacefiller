@@ -29,7 +29,7 @@ public class FlockParticles extends ParticleBehavior {
 
   private float maxForce = 1;
 
-  @Mod(min = 1f, max = 5)
+  @Mod(min = 1f, max = 2)
   public float maxSpeed = 2;
 
   public FlockParticles(
