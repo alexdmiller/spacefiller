@@ -17,14 +17,26 @@ import spacefiller.remote.Mod;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
+import spout.*;
 
 public class Algowave extends PApplet {
+  public static boolean windows = false;
 
   static {
-    try {
-      addLibraryPath(System.getProperty("user.dir") + "/lib");
-    } catch (Exception e) {
-      e.printStackTrace();
+    windows = System.getProperty("os.name").startsWith("Windows");
+
+    if (windows) {
+      try {
+        addLibraryPath(System.getProperty("user.dir") + "\\lib");
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else {
+      try {
+        addLibraryPath(System.getProperty("user.dir") + "/lib");
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
     }
   }
 
@@ -67,6 +79,7 @@ public class Algowave extends PApplet {
   public SceneMixer mixer;
 
   private SyphonServer server;
+  private Spout spout;
   private ControlP5 controlP5;
   private LeapRemoteControl leapController;
   private LeapVisualizer leapVisualizer;
@@ -87,7 +100,12 @@ public class Algowave extends PApplet {
     leapVisualizer = new LeapVisualizer(leapController.getController());
     leapVisualizer.setOutput(vizCanvas);
 
-    server = new SyphonServer(this, this.getClass().getName());
+    if (windows) {
+      spout = new Spout(this);
+      spout.createSender("Algowave");
+    } else {
+      server = new SyphonServer(this, this.getClass().getName());
+    }
 
     flowScene.setAlwaysReset(false);
     wormScene.setAlwaysReset(false);
@@ -202,7 +220,12 @@ public class Algowave extends PApplet {
     leapVisualizer.draw();
 
     // Draw main output
-    server.sendImage(mixer.getFrame());
+    if (windows) {
+      spout.sendTexture(mixer.getFrame());
+
+    } else {
+      server.sendImage(mixer.getFrame());
+    }
 
     // Draw control panel
     background(20);
