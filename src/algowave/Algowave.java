@@ -9,17 +9,46 @@ import codeanticode.syphon.SyphonServer;
 import controlP5.ControlP5;
 import controlP5.Group;
 import controlP5.Slider;
-import cz.adamh.utils.NativeUtils;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 import processing.opengl.PJOGL;
 import scene.SceneMixer;
 import spacefiller.remote.Mod;
 
-import java.io.IOException;
+import java.lang.reflect.Field;
+import java.util.Arrays;
 
 public class Algowave extends PApplet {
-   private static int PADDING = 10;
+
+  static {
+    try {
+      addLibraryPath(System.getProperty("user.dir") + "/lib");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  public static void addLibraryPath(String pathToAdd) throws Exception{
+    final Field usrPathsField = ClassLoader.class.getDeclaredField("usr_paths");
+    usrPathsField.setAccessible(true);
+
+    //get array of paths
+    final String[] paths = (String[])usrPathsField.get(null);
+
+    //check if the path to add is already present
+    for(String path : paths) {
+      if(path.equals(pathToAdd)) {
+        return;
+      }
+    }
+
+    //add the new path
+    final String[] newPaths = Arrays.copyOf(paths, paths.length + 1);
+    newPaths[newPaths.length-1] = pathToAdd;
+    usrPathsField.set(null, newPaths);
+  }
+
+  private static int PADDING = 10;
   private static int CONTROL_PANEL_WIDTH = 1000 + PADDING * 4;
   private static int CONTROL_PANEL_HEIGHT = 800;
   private static int COLUMN_WIDTH = 500;
