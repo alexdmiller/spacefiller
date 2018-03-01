@@ -240,8 +240,8 @@ public class PerlinFlowComponent extends SceneComponent {
       float oldY = p.y;
       PVector v = getFlow(p.x, p.y);
 
-      p.x += v.x;
-      p.y += v.y + fallSpeed;
+      p.x += v.x + fallSpeed;
+      p.y += v.y;
 
       if (Math.sin(i + (perlin.noise((float) index) * 100.0) + scrollPos) - lineSparsity < 0) {
         graphics.line(oldX, oldY, p.x, p.y);
@@ -250,7 +250,7 @@ public class PerlinFlowComponent extends SceneComponent {
   }
 
   PVector getFlow(float x, float y) {
-    float angle = (float) (perlin.noise(x / noiseScale, y / noiseScale - noise1Pos, noise2Pos) * Math.PI * 6);
+    float angle = (float) (perlin.noise(x / noiseScale + noise1Pos, y / noiseScale, noise2Pos) * Math.PI * 6);
     return PVector.fromAngle(angle).setMag(flowForce);
   }
 
@@ -269,8 +269,8 @@ public class PerlinFlowComponent extends SceneComponent {
 
   PVector position3(int i) {
     PVector p = new PVector(
-        perlin.noise(i, 0, scramble) * bounds.getWidth() - bounds.getWidth()/ 2,
-        perlin.noise(i, 1, scramble) * bounds.getHeight() - bounds.getHeight() / 2
+        perlin.noise(i, 0, scramble) * bounds.getWidth() * 2 - bounds.getWidth(),
+        perlin.noise(i, 1, scramble) * bounds.getHeight() * 2 - bounds.getHeight()
     );
     return p;
   }

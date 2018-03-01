@@ -13,6 +13,7 @@ import particles.behaviors.FlockParticles;
 import particles.behaviors.FlowParticles;
 import particles.behaviors.FollowPaths;
 import particles.behaviors.RepelFixedPoints;
+import particles.renderers.DelaunayRenderer;
 import particles.renderers.ParticleDotRenderer;
 import particles.renderers.ParticleWebRenderer;
 import particles.renderers.ParticleWormRenderer;
@@ -26,7 +27,7 @@ public class WormScene extends Scene {
   private ParticleComponent particleGenerator;
 
   @Mod
-  public FlockParticles flockParticles = new FlockParticles(1f, 0.1f, 0.1f, 20, 100, 100, 0.2f, 1f);
+  public FlockParticles flockParticles = new FlockParticles(1f, 0.3f, 0.3f, 30, 50, 50, 0.2f, 1f);
 
   @Mod
   public FollowPaths followPaths;
@@ -35,16 +36,19 @@ public class WormScene extends Scene {
   public ParticleWebRenderer particleWebRenderer;
 
   @Mod
-  public float waterSpeed = 4f;
+  public float waterSpeed = 0.2f;
 
   @Mod
-  public RepelFixedPoints repelFixedPoints = new RepelFixedPoints(50, 1);;
+  public RepelFixedPoints repelFixedPoints = new RepelFixedPoints(50, 1);
 
   private ParticleWormRenderer particleWormRenderer;
 
   PerlinVectorField perlinVectorField;
   FlowParticles flowParticles;
   private float t;
+
+  @Mod
+  public float noiseScroll = 0.1f;
 
   @Override
   public void setup() {
@@ -103,10 +107,10 @@ public class WormScene extends Scene {
 
   @Override
   public void draw(PGraphics graphics) {
-    t += 1f;
+    t += noiseScroll;
 
     for (Particle p : particleGenerator.getParticleSystem().getParticles()) {
-      p.position.x += waterSpeed;
+      p.position.x -= waterSpeed;
     }
 
     flowParticles.x = t;

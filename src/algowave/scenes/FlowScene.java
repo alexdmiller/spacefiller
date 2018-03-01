@@ -25,13 +25,19 @@ public class FlowScene extends Scene {
     perlinFlow.setBounds(new Bounds(width, height));
     perlinFlow.setColorProvider(ConstantColorProvider.WHITE);
     perlinFlow.setPos(width / 2, height / 2);
-    perlinFlow.setFallSpeed(0);
-    perlinFlow.setNoiseSpeed1(0.01f);
-    perlinFlow.setNoiseSpeed2(0);
-    perlinFlow.setFlowForce(10);
-    perlinFlow.setLineLength(20);
+    perlinFlow.setSnapToGrid(true);
+    perlinFlow.setGridCellSize(20);
+    perlinFlow.setFallSpeed(-10);
+    perlinFlow.setNoiseSpeed1(0.001f);
+    perlinFlow.setNoiseSpeed2(0.001f);
+    perlinFlow.setFlowForce(1);
+    perlinFlow.setLineLength(5);
     perlinFlow.setScrollSpeed(0.1f);
     perlinFlow.setMainSpeed(0.01f);
+    perlinFlow.setInterpolation(1);
+    perlinFlow.setLineSparsity(1f);
+    perlinFlow.setLineThickness(1);
+    perlinFlow.setNoiseScale(1000);
     addComponent(perlinFlow);
 
     super.setup();

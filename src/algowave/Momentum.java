@@ -1,12 +1,23 @@
 package algowave;
 
+import spacefiller.remote.Mod;
 import spacefiller.remote.signal.DataReceiver;
 
 public class Momentum extends DataReceiver {
   private float momentum;
-  private float friction;
+
+  @Mod
+  public float friction;
 
   public Momentum(float friction) {
+    this.friction = friction;
+  }
+
+  public void kill() {
+    momentum = 0;
+  }
+
+  public void setFriction(float friction) {
     this.friction = friction;
   }
 

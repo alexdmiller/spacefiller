@@ -39,6 +39,18 @@ public abstract class LeapMessage {
     }
   };
 
+  public static LeapMessage X_VELOCITY = new HandPositionMessage("Velocity X") {
+    float lastX = 0;
+
+    @Override
+    public float getAxisValue(Vector position) {
+      float currentX = position.getX();
+      float velocity = Math.min(currentX - lastX, 0);
+      lastX = currentX;
+      return velocity * 3;
+    }
+  };
+
   public static LeapMessage ROLL = new HandMessage("Roll") {
     @Override
     public final float getHandValue(Hand hand, InteractionBox box) {
@@ -121,7 +133,7 @@ public abstract class LeapMessage {
     public abstract float getHandValue(Hand hand, InteractionBox box);
   }
 
-  public static LeapMessage[] ALL_MESSAGES = { X_AXIS, Y_AXIS, Z_AXIS, Y_VELOCITY, ROLL, PITCH, YAW, GRAB, SPEED };
+  public static LeapMessage[] ALL_MESSAGES = { X_AXIS, Y_AXIS, Z_AXIS, Y_VELOCITY, X_VELOCITY, ROLL, PITCH, YAW, GRAB, SPEED };
 
   private String name;
 

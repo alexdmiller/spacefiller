@@ -17,6 +17,8 @@ import spacefiller.remote.Mod;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
+
+import spacefiller.remote.signal.DataReceiver;
 import spout.*;
 
 public class Algowave extends PApplet {
@@ -86,7 +88,8 @@ public class Algowave extends PApplet {
   private LeapRemoteControl leapController;
   private LeapVisualizer leapVisualizer;
 
-  private Momentum momentum;
+  @Mod
+  public Momentum momentum = new Momentum(0.999f);
 
   public void settings() {
     instance = this;
@@ -117,8 +120,8 @@ public class Algowave extends PApplet {
     flowScene.setAlwaysReset(false);
     wormScene.setAlwaysReset(false);
 
-    mixer.addScene(flowScene);
     mixer.addScene(wormScene);
+    mixer.addScene(flowScene);
 
     leapController.register(this);
 
@@ -128,10 +131,7 @@ public class Algowave extends PApplet {
 //        .gate(0.9f)
 //        .send(leapController.target("/Algowave/mixer/gotoNextScene"));
 
-//    leapController
-//        .controller(LeapMessage.Y_AXIS)
-//        .scale(0, 200)
-//        .send(leapController.target("/Algowave/wormScene/flockParticles/desiredSeparation"));
+
 
 //    leapController
 //        .controller(LeapMessage.Y_VELOCITY)
@@ -150,12 +150,41 @@ public class Algowave extends PApplet {
 //        .scale(10, 500)
 //        .send(leapController.target("/Algowave/flowScene/perlinFlow/circleRadius"));
 
-    momentum = new Momentum(0.999f);
     leapController
         .controller(LeapMessage.SPEED)
-        .scale(0, 0.1f)
-        .send(momentum)
-        .send(leapController.target("/Algowave/wormScene/waterSpeed"));
+        .scale(0, 0.5f)
+        .send(momentum);
+
+    //momentum.send(leapController.target("/Algowave/wormScene/waterSpeed"));
+    momentum.multiply(0.2f).add(0.1f).send(leapController.target("/Algowave/wormScene/flockParticles/maxForce"));
+    momentum.multiply(0.2f).add(0.1f).send(leapController.target("/Algowave/wormScene/flockParticles/maxSpeed"));
+    momentum.multiply(0.1f).add(0.1f).send(leapController.target("/Algowave/wormScene/noiseScroll"));
+    momentum.multiply(1f).add(0.1f).send(leapController.target("/Algowave/wormScene/flowParticles/maxForce"));
+    momentum.multiply(1f).add(0.1f).send(leapController.target("/Algowave/wormScene/flowParticles/weight"));
+    momentum.multiply(0.05f).add(0.5f).send(leapController.target("/Algowave/wormScene/waterSpeed"));
+    momentum.multiply(0.1f).add(10).send(leapController.target("/Algowave/wormScene/flockParticles/desiredSeparation"));
+
+
+
+    momentum.multiply(-0.5f).send(leapController.target("/Algowave/flowScene/perlinFlow/fallSpeed"));
+    momentum.multiply(0.5f).add(0.1f).send(leapController.target("/Algowave/flowScene/perlinFlow/flowForce"));
+    momentum.multiply(0.0002f).send(leapController.target("/Algowave/flowScene/perlinFlow/noiseSpeed1"));
+    momentum.multiply(0.0002f).send(leapController.target("/Algowave/flowScene/perlinFlow/noiseSpeed2"));
+
+
+//    leapController
+//        .controller(LeapMessage.X_VELOCITY)
+//        .smooth(0.5f)
+//        .multiply(100)
+//        .send(leapController.target("/Algowave/wormScene/waterSpeed"));
+
+    leapController
+        .controller(LeapMessage.GRAB)
+        .smooth(0.9f)
+        .invert()
+        .scale(0.8f, 0.999f)
+        .send(leapController.target("/Algowave/momentum/friction"));
+
         //.send(leapController.target("/Algowave/wormScene/flockParticles/maxSpeed"));
 
     leapController.printAddresses();
@@ -225,7 +254,7 @@ public class Algowave extends PApplet {
         .setColorForeground(color(100))
         .setWidth(COLUMN_WIDTH - 100)
         .setMin(0)
-        .setMax(10)
+        .setMax(20)
         .setSliderMode(Slider.FLEXIBLE)
         .setHandleSize(20)
         .setGroup(scene);
@@ -241,6 +270,11 @@ public class Algowave extends PApplet {
   }
 
   public void draw() {
+    if (momentum.getLastValue() != null && (float) momentum.getLastValue() > 20) {
+      momentum.kill();
+      mixer.gotoNextScene();
+    }
+
     leapController.update();
 
     mixer.draw();
