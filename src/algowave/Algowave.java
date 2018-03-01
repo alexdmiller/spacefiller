@@ -102,7 +102,7 @@ public class Algowave extends PApplet {
 
     if (windows) {
       spout = new Spout(this);
-      spout.createSender("Algowave");
+      spout.createSender("Algowave", 1920, 1080);
     } else {
       server = new SyphonServer(this, this.getClass().getName());
     }
@@ -222,7 +222,6 @@ public class Algowave extends PApplet {
     // Draw main output
     if (windows) {
       spout.sendTexture(mixer.getFrame());
-
     } else {
       server.sendImage(mixer.getFrame());
     }
