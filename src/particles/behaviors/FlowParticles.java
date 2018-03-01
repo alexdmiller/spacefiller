@@ -22,8 +22,8 @@ public class FlowParticles extends ParticleBehavior {
   @Mod(min = 0, max = 10)
   public float maxForce;
 
-  @Mod(min = 0, max = 100)
   public float t;
+  public float x;
 
   public FlowParticles(VectorField field) {
     this.field = field;
@@ -45,12 +45,13 @@ public class FlowParticles extends ParticleBehavior {
   public void apply(List<Particle> particles) {
     for (Particle p : particles) {
       PVector pos = p.position;
-      PVector desired = field.at(pos.x, pos.y, pos.z, t).copy();
+      PVector desired = field.at(pos.x + x, pos.y, pos.z, t).copy();
       //desired.limit(10);
 
       PVector steer = PVector.sub(desired, p.velocity);
       steer.limit(maxForce);
       steer.mult(weight);
+
       p.applyForce(steer);
     }
   }

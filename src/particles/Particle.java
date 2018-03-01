@@ -15,6 +15,7 @@ public class Particle {
   private Map<String, Object> userData;
 
   public Color color;
+  private boolean teleportFlag = false;
 
   public PVector forces;
 
@@ -93,4 +94,13 @@ public class Particle {
   public Object getUserData(String key) {
     return userData.get(key);
   }
+
+  public boolean hasTeleported() {
+    return teleportFlag;
+  }
+
+  public void setTeleportFlag(boolean value) {
+    teleportFlag = value;
+  }
+
 }

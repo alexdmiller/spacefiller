@@ -39,17 +39,6 @@ public abstract class LeapMessage {
     }
   };
 
-  public static LeapMessage SPEED = new HandPositionMessage("Speed") {
-    Vector lastPosition = new Vector();
-
-    @Override
-    public float getAxisValue(Vector position) {
-      Vector delta = position.minus(lastPosition);
-      lastPosition = position;
-      return delta.magnitude();
-    }
-  };
-
   public static LeapMessage ROLL = new HandMessage("Roll") {
     @Override
     public final float getHandValue(Hand hand, InteractionBox box) {
@@ -79,8 +68,6 @@ public abstract class LeapMessage {
     }
   };
 
-
-
   private static abstract class HandPositionMessage extends HandMessage {
     public HandPositionMessage(String name) {
       super(name);
@@ -94,6 +81,30 @@ public abstract class LeapMessage {
 
     public abstract float getAxisValue(Vector position);
   }
+
+  public static LeapMessage SPEED = new HandMessage("Speed") {
+    Vector lastPosition;
+
+    @Override
+    public final float getHandValue(Hand hand, InteractionBox box) {
+      if (hand.isValid()) {
+        Vector position = box.normalizePoint(hand.stabilizedPalmPosition());
+
+        if (lastPosition != null) {
+          Vector delta = position.minus(lastPosition);
+          lastPosition = position;
+          return delta.magnitude();
+        } else {
+          lastPosition = position;
+          return 0;
+        }
+      } else {
+        lastPosition = null;
+        return 0;
+      }
+
+    }
+  };
 
   private static abstract class HandMessage extends LeapMessage {
     public HandMessage(String name) {

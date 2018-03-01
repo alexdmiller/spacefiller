@@ -1,8 +1,12 @@
 package particles.renderers;
 
+import algowave.Algowave;
 import common.color.ColorProvider;
 import com.google.common.collect.EvictingQueue;
+import javafx.geometry.Pos;
 import particles.Particle;
+import processing.core.PApplet;
+import processing.core.PConstants;
 import processing.core.PGraphics;
 import processing.core.PVector;
 
@@ -70,6 +74,8 @@ public class ParticleWormRenderer extends ParticleRenderer {
 
     public void draw(PGraphics graphics) {
       graphics.strokeWeight(lineThickness);
+      graphics.stroke(255);
+      graphics.fill(255);
       if (markedForDeath) {
         if (!history.isEmpty()) {
           history.remove();
@@ -78,15 +84,18 @@ public class ParticleWormRenderer extends ParticleRenderer {
           readyToDie = true;
         }
       } else {
+        if (particle.hasTeleported()) {
+          history.clear();
+        }
+
         history.add(particle.position.copy());
       }
-      PVector last = null;
+
+      graphics.beginShape();
       for (PVector p : history) {
-        if (last != null) {
-          graphics.line(last.x, last.y, last.z, p.x, p.y, p.z);
-        }
-        last = p;
+        graphics.vertex(p.x, p.y, p.z);
       }
+      graphics.endShape(PConstants.CLOSE);
     }
 
     public void clear() {

@@ -3,6 +3,7 @@ package lusio.components;
 import particles.Bounds;
 import particles.Particle;
 import particles.ParticleSystem;
+import particles.behaviors.DonutBounds;
 import particles.behaviors.FatalBounds;
 import particles.behaviors.ParticleBehavior;
 import particles.behaviors.ReflectiveBounds;
@@ -34,6 +35,16 @@ public class ParticleComponent extends SceneComponent {
 
     c.particleSystem = new ParticleSystem(bounds, numParticles);
     c.particleSystem.addBehavior(new FatalBounds());
+
+    return c;
+  }
+
+  public static ParticleComponent withDonutBounds(int numParticles, Bounds bounds, int dimension) {
+    ParticleComponent c = new ParticleComponent();
+
+    c.particleSystem = new ParticleSystem(bounds, numParticles);
+    c.particleSystem.addBehavior(new DonutBounds());
+    c.particleSystem.fillWithParticles(numParticles, dimension);
 
     return c;
   }
@@ -80,4 +91,6 @@ public class ParticleComponent extends SceneComponent {
   public ParticleSystem getParticleSystem() {
     return particleSystem;
   }
+
+
 }

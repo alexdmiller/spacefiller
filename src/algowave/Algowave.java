@@ -21,6 +21,7 @@ import spout.*;
 
 public class Algowave extends PApplet {
   public static boolean windows = false;
+  public static PApplet instance;
 
   static {
     windows = System.getProperty("os.name").startsWith("Windows");
@@ -67,6 +68,7 @@ public class Algowave extends PApplet {
 
   public static void main(String[] args) {
     main("algowave.Algowave");
+
   }
 
   @Mod
@@ -84,12 +86,17 @@ public class Algowave extends PApplet {
   private LeapRemoteControl leapController;
   private LeapVisualizer leapVisualizer;
 
+  private Momentum momentum;
+
   public void settings() {
+    instance = this;
+
     size(CONTROL_PANEL_WIDTH, CONTROL_PANEL_HEIGHT, P3D);
     PJOGL.profile = 1;
   }
 
   public void setup() {
+
     leapController = new LeapRemoteControl();
 
     PGraphics mainCanvas = createGraphics(1920, 1080, P3D);
@@ -116,32 +123,40 @@ public class Algowave extends PApplet {
     leapController.register(this);
 
 
-    leapController
-        .controller(LeapMessage.GRAB)
-        .gate(0.9f)
-        .send(leapController.target("/Algowave/mixer/gotoNextScene"));
+//    leapController
+//        .controller(LeapMessage.GRAB)
+//        .gate(0.9f)
+//        .send(leapController.target("/Algowave/mixer/gotoNextScene"));
 
-    leapController
-        .controller(LeapMessage.Y_AXIS)
-        .scale(0, 200)
-        .send(leapController.target("/Algowave/wormScene/flockParticles/desiredSeparation"));
+//    leapController
+//        .controller(LeapMessage.Y_AXIS)
+//        .scale(0, 200)
+//        .send(leapController.target("/Algowave/wormScene/flockParticles/desiredSeparation"));
 
-    leapController
-        .controller(LeapMessage.Y_VELOCITY)
-        .smooth(0.2f)
-        .scale(2, 100)
-        .send(leapController.target("/Algowave/wormScene/flockParticles/maxSpeed"));
+//    leapController
+//        .controller(LeapMessage.Y_VELOCITY)
+//        .smooth(0.2f)
+//        .scale(2, 100)
+//        .send(leapController.target("/Algowave/wormScene/flockParticles/maxSpeed"));
 
-    leapController
-        .controller(LeapMessage.ROLL)
-        .scale(0, 50)
-        .send(leapController.target("/Algowave/flowScene/perlinFlow/lineLength"));
+//    leapController
+//        .controller(LeapMessage.ROLL)
+//        .scale(0, 50)
+//        .send(leapController.target("/Algowave/flowScene/perlinFlow/lineLength"));
+//
+//    leapController
+//        .controller(LeapMessage.Y_AXIS)
+//        .smooth(0.2f)
+//        .scale(10, 500)
+//        .send(leapController.target("/Algowave/flowScene/perlinFlow/circleRadius"));
 
+    momentum = new Momentum(0.999f);
     leapController
-        .controller(LeapMessage.Y_AXIS)
-        .smooth(0.2f)
-        .scale(10, 500)
-        .send(leapController.target("/Algowave/flowScene/perlinFlow/circleRadius"));
+        .controller(LeapMessage.SPEED)
+        .scale(0, 0.1f)
+        .send(momentum)
+        .send(leapController.target("/Algowave/wormScene/waterSpeed"));
+        //.send(leapController.target("/Algowave/wormScene/flockParticles/maxSpeed"));
 
     leapController.printAddresses();
 
@@ -196,12 +211,24 @@ public class Algowave extends PApplet {
         .disableCollapse()
         .addCanvas(new PreviewCanvas(mixer.getFrame(), COLUMN_WIDTH));
 
-    controlP5.addGroup("scene")
+    Group scene = controlP5.addGroup("scene")
         .setHeight(20)
         .setLabel("Scene Parameters")
         .disableCollapse()
         .setWidth(COLUMN_WIDTH)
         .setPosition(COLUMN_WIDTH + PADDING * 2, 390);
+
+    controlP5
+        .addSlider("momentum")
+        .setPosition(0, 0)
+        .setHeight(20)
+        .setColorForeground(color(100))
+        .setWidth(COLUMN_WIDTH - 100)
+        .setMin(0)
+        .setMax(10)
+        .setSliderMode(Slider.FLEXIBLE)
+        .setHandleSize(20)
+        .setGroup(scene);
 
     controlP5.addFrameRate().setInterval(10).setPosition(PADDING, height - PADDING * 2);
 //
@@ -210,7 +237,7 @@ public class Algowave extends PApplet {
 //        .hideBar();
 //
 //    float y = 0;
-
+    mixer.gotoNextScene();
   }
 
   public void draw() {
@@ -238,6 +265,8 @@ public class Algowave extends PApplet {
       controlP5.get(message.toString()).setValue(
           (Float) leapController.controller(message).getLastValue());
     }
+
+    controlP5.get("momentum").setValue((Float) momentum.getLastValue());
 
 //
 //    pushMatrix();
