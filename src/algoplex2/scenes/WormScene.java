@@ -2,7 +2,6 @@ package algoplex2.scenes;
 
 import algoplex2.Grid;
 import algoplex2.Quad;
-import com.sun.tools.internal.jxc.ap.Const;
 import common.StoredVectorField;
 import common.color.ConstantColorProvider;
 import common.PerlinVectorField;
