@@ -7,6 +7,7 @@ import boids.tools.*;
 import spacefiller.remote.Mod;
 import spacefiller.remote.OscRemoteControl;
 import processing.core.PGraphics;
+import spacefiller.remote.VDMXWriter;
 
 import java.io.*;
 import java.nio.file.DirectoryStream;
@@ -52,6 +53,9 @@ public class Worms extends Scene implements EntityEventListener {
 	@Mod
 	public MeshLikeFlockRenderer meshLikeFlockRenderer;
 
+	@Mod
+	public ContourSpaceFlockRenderer contourSpaceFlockRenderer;
+
 	private MagnetBehavior magnets;
 
 	private DebugFlockRenderer debugRenderer;
@@ -63,20 +67,24 @@ public class Worms extends Scene implements EntityEventListener {
 
 	@Override
 	public void doSetup() {
+		set2D();
+
 		fileCache = new byte[SAVE_CATEGORY_COUNT][SAVE_PER_CATEGORY][];
 
-		flock = new Flock((float) WIDTH, (float) HEIGHT, (float) DEPTH);
+		flock = new Flock((float) WIDTH, (float) HEIGHT, 0);
 		flock.addEntityEventListener(this);
 
 		debugRenderer = new DebugFlockRenderer(flock);
+		contourSpaceFlockRenderer = new ContourSpaceFlockRenderer(flock, WIDTH, HEIGHT, 50);
 
 		meshLikeFlockRenderer = new MeshLikeFlockRenderer(flock);
 
 		flockRenderers = new FlockRenderer[] {
+				contourSpaceFlockRenderer,
 				new BoidFlockRenderer(flock, WormBoidRenderer.class),
 				new MeshFlockRenderer(flock),
 				new VoronoiFlockRenderer(flock),
-				meshLikeFlockRenderer
+				meshLikeFlockRenderer,
 		};
 
 		flockingBehavior = new FlockBehavior();
@@ -107,7 +115,8 @@ public class Worms extends Scene implements EntityEventListener {
 
 		loadSave();
 
-		new OscRemoteControl(this, 12002);
+		OscRemoteControl remote = new OscRemoteControl(this, 12002);
+		VDMXWriter.exportVDMXJson("worms", remote.getTargetMap(), remote.getPort());
 	}
 
 	@Mod(min = 0, max = 9)
@@ -122,11 +131,76 @@ public class Worms extends Scene implements EntityEventListener {
 		loadSave();
 	}
 
+	@Mod
+	public void setSaveIndex1() {
+		setSaveIndex(0);
+	}
+
+	@Mod
+	public void setSaveIndex2() {
+		setSaveIndex(1);
+	}
+
+	@Mod
+	public void setSaveIndex3() {
+		setSaveIndex(2);
+	}
+
+	@Mod
+	public void setSaveIndex4() {
+		setSaveIndex(3);
+	}
+
+	@Mod
+	public void setSaveIndex5() {
+		setSaveIndex(4);
+	}
+
+	@Mod
+	public void setSaveIndex6() {
+		setSaveIndex(5);
+	}
+
+	@Mod
+	public void setSaveIndex7() {
+		setSaveIndex(6);
+	}
+
+	@Mod
+	public void setSaveIndex8() {
+		setSaveIndex(7);
+	}
+
 	@Mod(min = 0, max = 4)
-	public void setRenderer(int renderer) {
+	public void setRenderer(float renderer) {
 		renderer = Math.min(Math.max(renderer, 0), flockRenderers.length - 1);
 		flockRenderers[currentRendererIndex].clear();
-		currentRendererIndex = renderer;
+		currentRendererIndex = (int) Math.floor(renderer);
+	}
+
+	@Mod
+	public void setRenderer1() {
+		setRenderer(0);
+	}
+
+	@Mod
+	public void setRenderer2() {
+		setRenderer(1);
+	}
+
+	@Mod
+	public void setRenderer3() {
+		setRenderer(2);
+	}
+
+	@Mod
+	public void setRenderer4() {
+		setRenderer(3);
+	}
+
+	@Mod
+	public void setRenderer5() {
+		setRenderer(4);
 	}
 
 	@Override

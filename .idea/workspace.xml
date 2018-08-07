@@ -7,13 +7,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7bb3a9e-05bb-464d-967e-9bda287e8f0d" name="Default" comment="Worms and bound changes">
-      <change beforePath="$PROJECT_DIR$/lib/processing_remote_control.jar" afterPath="$PROJECT_DIR$/lib/processing_remote_control.jar" />
-      <change beforePath="$PROJECT_DIR$/src/algowave/Algowave.java" afterPath="$PROJECT_DIR$/src/algowave/Algowave.java" />
-      <change beforePath="$PROJECT_DIR$/src/algowave/Momentum.java" afterPath="$PROJECT_DIR$/src/algowave/Momentum.java" />
-      <change beforePath="$PROJECT_DIR$/src/algowave/leap/LeapMessage.java" afterPath="$PROJECT_DIR$/src/algowave/leap/LeapMessage.java" />
-      <change beforePath="$PROJECT_DIR$/src/algowave/scenes/FlowScene.java" afterPath="$PROJECT_DIR$/src/algowave/scenes/FlowScene.java" />
-      <change beforePath="$PROJECT_DIR$/src/algowave/scenes/WormScene.java" afterPath="$PROJECT_DIR$/src/algowave/scenes/WormScene.java" />
-      <change beforePath="$PROJECT_DIR$/src/lusio/components/PerlinFlowComponent.java" afterPath="$PROJECT_DIR$/src/lusio/components/PerlinFlowComponent.java" />
+      <change afterPath="$PROJECT_DIR$/src/boids/renderers/ContourSpaceFlockRenderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common/color/SmoothColorTheme.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sketches/Contours2018.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Processing.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Processing.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algoplex-performer.json" beforeDir="false" afterPath="$PROJECT_DIR$/algoplex-performer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flows.json" beforeDir="false" afterPath="$PROJECT_DIR$/flows.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/behaviors/EmitBehavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boids/behaviors/EmitBehavior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/StoredVectorField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/StoredVectorField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Contours.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Contours.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Flows.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Flows.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Worms.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Worms.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start-worms.sh" beforeDir="false" afterPath="$PROJECT_DIR$/start-worms.sh" afterDir="false" />
     </list>
     <ignored path="Processing.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,150 +53,110 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Algowave.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/algowave/Algowave.java">
+      <file leaf-file-name="AlgoplexController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/algoplex2/AlgoplexController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="174" column="20" lean-forward="true" selection-start-line="174" selection-start-column="20" selection-end-line="174" selection-end-column="20" />
+            <state relative-caret-position="242">
+              <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Flows.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sketches/Flows.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="479">
+              <caret line="80" column="38" selection-start-line="80" selection-end-line="81" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#274#275#0" expanded="true" />
+                <element signature="e#303#304#0" expanded="true" />
+                <element signature="e#1808#1809#0" expanded="true" />
+                <element signature="e#1874#1875#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FlowScene.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/algowave/scenes/FlowScene.java">
+      <file leaf-file-name="ColorTheme.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/color/ColorTheme.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="37" column="32" lean-forward="false" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
-              <folding />
+            <state relative-caret-position="132">
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PerlinFlowComponent.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/lusio/components/PerlinFlowComponent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="18" column="32" lean-forward="false" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="32" />
-              <folding>
-                <element signature="e#1714#1715#0" expanded="true" />
-                <element signature="e#1752#1753#0" expanded="true" />
-                <element signature="e#2468#2469#0" expanded="true" />
-                <element signature="e#2504#2505#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GraphParticleRenderer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/particles/renderers/GraphParticleRenderer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DelaunayRenderer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/particles/renderers/DelaunayRenderer.java">
+      <file leaf-file-name="Worms.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sketches/Worms.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="88">
-              <caret line="5" column="29" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="29" />
-              <folding />
+              <caret line="19" column="29" lean-forward="true" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataReceiver.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/Processing_Remote_Control_jar/processing_remote_control.jar!/spacefiller/remote/signal/DataReceiver.class">
+      <file leaf-file-name="SmoothColorTheme.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/common/color/SmoothColorTheme.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="67" column="22" lean-forward="false" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
-              <folding>
-                <marker date="1519928246000" expanded="false" signature="0:104" ph="/.../" />
-                <marker date="1519928246000" expanded="false" signature="149:219" ph="..." />
-                <marker date="1519928246000" expanded="true" signature="361:366" ph="{}" />
-                <marker date="1519928246000" expanded="false" signature="411:418" ph=" { " />
-                <marker date="1519928246000" expanded="false" signature="446:450" ph=" }" />
-                <marker date="1519928246000" expanded="true" signature="510:749" ph="{...}" />
-                <marker date="1519928246000" expanded="false" signature="781:788" ph=" { " />
-                <marker date="1519928246000" expanded="false" signature="810:814" ph=" }" />
-                <marker date="1519928246000" expanded="true" signature="839:1029" ph="{...}" />
-                <marker date="1519928246000" expanded="true" signature="1083:1226" ph="{...}" />
-                <marker date="1519928246000" expanded="true" signature="1278:1339" ph="{...}" />
-                <marker date="1519928246000" expanded="false" signature="1553:1560" ph=" { " />
-                <marker date="1519928246000" expanded="false" signature="1591:1595" ph=" }" />
-                <marker date="1519928246000" expanded="false" signature="1643:1650" ph=" { " />
-                <marker date="1519928246000" expanded="false" signature="1689:1693" ph=" }" />
-                <marker date="1519928246000" expanded="true" signature="1744:1751" ph=" { " />
-                <marker date="1519928246000" expanded="true" signature="1789:1793" ph=" }" />
-                <marker date="1519928246000" expanded="false" signature="1838:1845" ph=" { " />
-                <marker date="1519928246000" expanded="false" signature="1883:1887" ph=" }" />
-                <marker date="1519928246000" expanded="false" signature="1918:1925" ph=" { " />
-                <marker date="1519928246000" expanded="false" signature="1955:1959" ph=" }" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WormScene.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/algowave/scenes/WormScene.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1217">
-              <caret line="28" column="6" lean-forward="true" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Momentum.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/algowave/Momentum.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="19" column="43" lean-forward="true" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+            <state relative-caret-position="493">
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#237#238#0" expanded="true" />
-                <element signature="e#271#272#0" expanded="true" />
-                <element signature="e#295#296#0" expanded="true" />
-                <element signature="e#317#318#0" expanded="true" />
-                <element signature="e#396#397#0" expanded="true" />
-                <element signature="e#469#470#0" expanded="true" />
-                <element signature="e#505#506#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LeapMessage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/algowave/leap/LeapMessage.java">
+      <file leaf-file-name="Contours2018.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sketches/Contours2018.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="49" column="25" lean-forward="true" selection-start-line="49" selection-start-column="25" selection-end-line="49" selection-end-column="25" />
+            <state relative-caret-position="364">
+              <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
               <folding>
-                <element signature="e#3918#3919#0" expanded="true" />
-                <element signature="e#3944#3945#0" expanded="true" />
-                <element signature="e#4026#4027#0" expanded="true" />
-                <element signature="e#4047#4048#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1769#1770#0" expanded="true" />
+                <element signature="e#1791#1792#0" expanded="true" />
+                <element signature="e#2129#2130#0" expanded="true" />
+                <element signature="e#2173#2174#0" expanded="true" />
+                <element signature="e#2325#2326#0" expanded="true" />
+                <element signature="e#2367#2368#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FlowParticles.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/particles/behaviors/FlowParticles.java">
+      <file leaf-file-name="Quaternion.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/geom/Quaternion.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-              <folding>
-                <element signature="e#530#531#0" expanded="true" />
-                <element signature="e#558#559#0" expanded="true" />
-                <element signature="e#739#740#0" expanded="true" />
-                <element signature="e#759#760#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="217">
+              <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Tubes.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sketches/Tubes.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="143" selection-start-line="143" selection-end-line="149" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Scene.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sketches/Scene.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="401">
+              <caret line="161" column="46" lean-forward="true" selection-start-line="161" selection-start-column="46" selection-end-line="161" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Ani.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/Documents/Processing3/libraries/Ani/library/Ani.jar!/de/looksgood/ani/Ani.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="40" selection-start-line="40" selection-end-line="40" />
             </state>
           </provider>
         </entry>
@@ -206,18 +173,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>onExit</find>
-      <find>controlp5</find>
-      <find>map</find>
-      <find>bounds</find>
-      <find>getBounds</find>
-      <find>update</find>
-      <find>circleRadius</find>
-      <find>CONTROL_PANEL_HEIGHT</find>
-      <find>height</find>
-      <find>load</find>
-      <find>load(</find>
-      <find>WormScene</find>
       <find>de.voidplus</find>
       <find>L:ea</find>
       <find>L:e</find>
@@ -232,10 +187,22 @@
       <find>lerpColor</find>
       <find>stroke</find>
       <find>interpo</find>
-      <find>num</find>
       <find>fallspeed</find>
       <find>scale</find>
+      <find>setRenderer</find>
+      <find>randomize</find>
+      <find>renderer</find>
+      <find>strokeWidth</find>
+      <find>emitter</find>
+      <find>Contou</find>
+      <find>maxThresh</find>
+      <find>println</find>
+      <find>translate</find>
       <find>noiseScale</find>
+      <find>num</find>
+      <find>Col</find>
+      <find>mouse</find>
+      <find>debug</find>
     </findStrings>
     <replaceStrings>
       <replace>size</replace>
@@ -253,22 +220,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GradleLocalSettings">
-    <option name="externalProjectsViewState">
-      <projects_view />
-    </option>
-  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/lab/ProjectionMapping.java" />
-        <option value="$PROJECT_DIR$/src/lab/RemoteExample.java" />
-        <option value="$PROJECT_DIR$/src/lightcube/Lightcube.java" />
-        <option value="$PROJECT_DIR$/src/lightcube/SerialLightcube.java" />
-        <option value="$PROJECT_DIR$/src/lusio/scenes/ContourScene.java" />
-        <option value="$PROJECT_DIR$/src/common/components/ContourComponent.java" />
-        <option value="$PROJECT_DIR$/src/lusio/scenes/MillerLineScene.java" />
-        <option value="$PROJECT_DIR$/src/lusio/scenes/CubeScene.java" />
         <option value="$PROJECT_DIR$/src/lusio/scenes/FancyParticles.java" />
         <option value="$PROJECT_DIR$/src/lusio/scenes/NoiseSpace.java" />
         <option value="$PROJECT_DIR$/src/lusio/scenes/NoiseCircle.java" />
@@ -278,8 +232,6 @@
         <option value="$PROJECT_DIR$/src/lab/Vizstrument.java" />
         <option value="$PROJECT_DIR$/src/lab/Viztrument2.java" />
         <option value="$PROJECT_DIR$/src/common/Circle.java" />
-        <option value="$PROJECT_DIR$/src/sketches/Scene.java" />
-        <option value="$PROJECT_DIR$/src/common/StoredVectorField.java" />
         <option value="$PROJECT_DIR$/frag.glsl" />
         <option value="$PROJECT_DIR$/src/algoplex2/scenes/ShiftingEdgeScene.java" />
         <option value="$PROJECT_DIR$/src/scene/Scene.java" />
@@ -312,6 +264,16 @@
         <option value="$PROJECT_DIR$/src/lusio/components/PerlinFlowComponent.java" />
         <option value="$PROJECT_DIR$/src/algowave/scenes/FlowScene.java" />
         <option value="$PROJECT_DIR$/src/algowave/Algowave.java" />
+        <option value="$PROJECT_DIR$/src/common/StoredVectorField.java" />
+        <option value="$PROJECT_DIR$/src/particles/renderers/ContourSpaceRenderer.java" />
+        <option value="$PROJECT_DIR$/src/sketches/Worms.java" />
+        <option value="$PROJECT_DIR$/src/boids/behaviors/EmitBehavior.java" />
+        <option value="$PROJECT_DIR$/src/boids/renderers/ContourSpaceFlockRenderer.java" />
+        <option value="$PROJECT_DIR$/src/sketches/Contours.java" />
+        <option value="$PROJECT_DIR$/src/common/color/SmoothColorTheme.java" />
+        <option value="$PROJECT_DIR$/src/sketches/Flows.java" />
+        <option value="$PROJECT_DIR$/src/sketches/Scene.java" />
+        <option value="$PROJECT_DIR$/src/sketches/Contours2018.java" />
       </list>
     </option>
   </component>
@@ -321,8 +283,12 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="23" />
+    <option name="x" value="1921" />
+    <option name="y" value="24" />
     <option name="width" value="1920" />
     <option name="height" value="1053" />
   </component>
@@ -346,22 +312,13 @@
     </entry>
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -378,21 +335,13 @@
               <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
               <item name="Processing" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="algowave" type="462c0819:PsiDirectoryNode" />
+              <item name="algoplex2" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
               <item name="Processing" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="algowave" type="462c0819:PsiDirectoryNode" />
-              <item name="leap" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Processing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="algowave" type="462c0819:PsiDirectoryNode" />
-              <item name="scenes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
@@ -404,58 +353,55 @@
               <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
               <item name="Processing" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="particles" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="color" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
               <item name="Processing" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="particles" type="462c0819:PsiDirectoryNode" />
-              <item name="behaviors" type="462c0819:PsiDirectoryNode" />
+              <item name="scene" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
               <item name="Processing" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="particles" type="462c0819:PsiDirectoryNode" />
-              <item name="renderers" type="462c0819:PsiDirectoryNode" />
+              <item name="sketches" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
               <item name="Processing" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="physics" type="462c0819:PsiDirectoryNode" />
+              <item name="veins" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/Processing3/libraries/mesh/library/quickhull3d.1.4.jar!/" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="js-jscs-nodeInterpreter" value="$USER_HOME$/.nvm/v0.8.22/bin/node" />
-    <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.27073553" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="algowave" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/miller/IdeaProjects/Processing/src/scenes/Worms.java" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
-    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
-    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
-    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
-    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
-    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="algowave" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="js-jscs-nodeInterpreter" value="$USER_HOME$/.nvm/v0.8.22/bin/node" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.27073553" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -485,355 +431,184 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Algowave">
+  <component name="RunManager" selected="Application.Contours2018">
     <configuration default="true" type="Applet" factoryName="Applet">
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <module />
     </configuration>
     <configuration name="Algoplex2" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="algoplex2.Algoplex2" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
       <module name="Processing" />
-      <envs />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
     <configuration name="AlgoplexPerformer" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="algoplex2.AlgoplexPerformer" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library:$USER_HOME$/Documents/Processing3/libraries/toxiclibs/library&quot;" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
       <module name="Processing" />
-      <envs />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library:$USER_HOME$/Documents/Processing3/libraries/toxiclibs/library&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
     <configuration name="Algowave" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="algowave.Algowave" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;lib:$USER_HOME$/Documents/Processing3/libraries/Syphon/library:$USER_HOME$/Documents/Processing3/libraries/toxiclibs/library:$USER_HOME$/Projects/LeapDeveloperKit/LeapSDK/lib&quot;" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
       <module name="Processing" />
-      <envs />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;lib:$USER_HOME$/Documents/Processing3/libraries/Syphon/library:$USER_HOME$/Documents/Processing3/libraries/toxiclibs/library:$USER_HOME$/Projects/LeapDeveloperKit/LeapSDK/lib&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
     <configuration name="Blobs" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="sketches.Blobs" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library:$USER_HOME$/Documents/Processing3/libraries/toxiclibs/library&quot;" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
       <module name="Processing" />
-      <envs />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library:$USER_HOME$/Documents/Processing3/libraries/toxiclibs/library&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
     <configuration name="Contours" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+      <option name="MAIN_CLASS_NAME" value="sketches.Contours" />
+      <module name="Processing" />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="scene.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="sketches.Contours" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
+    </configuration>
+    <configuration name="Contours2018" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="sketches.Contours2018" />
       <module name="Processing" />
-      <envs />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="scene.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
     </configuration>
     <configuration name="Evolve" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="lab.Evolve" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
       <module name="Processing" />
-      <envs />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
     <configuration name="Flows" type="Application" factoryName="Application" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="sketches.Flows" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
       <module name="Processing" />
-      <envs />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
     <configuration name="Leap" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="lab.Leap" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Projects/LeapDeveloperKit/LeapSDK/lib&quot;" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
       <module name="Processing" />
-      <envs />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Projects/LeapDeveloperKit/LeapSDK/lib&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
     <configuration name="Lusio" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="lusio.Lusio" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
       <module name="Processing" />
-      <envs />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
     <configuration name="Mapping" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="lab.ProjectionMapping" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
       <module name="Processing" />
-      <envs />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
     <configuration name="RemoteExample" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="lab.RemoteExample" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
       <module name="Processing" />
-      <envs />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
     <configuration name="SpaceFiller" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+      <option name="MAIN_CLASS_NAME" value="sketches.SpaceFiller" />
+      <module name="Processing" />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="scene.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="sketches.SpaceFiller" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Processing" />
-      <envs />
     </configuration>
     <configuration name="TestSceneApplet" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="common.TestSceneApplet" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
       <module name="Processing" />
-      <envs />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
     <configuration name="Topo" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="lab.Topo" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
       <module name="Processing" />
-      <envs />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
     <configuration name="Tubes" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+      <option name="MAIN_CLASS_NAME" value="sketches.Tubes" />
+      <module name="Processing" />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="scene.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="sketches.Tubes" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Processing" />
-      <envs />
     </configuration>
     <configuration name="UncertainWave" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+      <option name="MAIN_CLASS_NAME" value="sketches.UncertainWave" />
+      <module name="Processing" />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="scene.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="sketches.UncertainWave" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Processing" />
-      <envs />
     </configuration>
-    <configuration name="Veins" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+    <configuration name="Veins" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="sketches.Veins" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
       <module name="Processing" />
-      <envs />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
     <configuration name="Viztrument" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="lab.Vizstrument" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
       <module name="Processing" />
-      <envs />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
     <configuration name="Wave" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+      <option name="MAIN_CLASS_NAME" value="sketches.Wave" />
+      <module name="Processing" />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="scene.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="sketches.Wave" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Processing" />
-      <envs />
     </configuration>
     <configuration name="Web" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+      <option name="MAIN_CLASS_NAME" value="sketches.Web" />
+      <module name="Processing" />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="scene.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="sketches.Web" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Processing" />
-      <envs />
     </configuration>
     <configuration name="Worms" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="sketches.Worms" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
       <module name="Processing" />
-      <envs />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
     </configuration>
     <configuration default="true" type="ArquillianJUnit" factoryName="">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
@@ -848,13 +623,38 @@
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="singleModule" />
       </option>
-      <envs />
       <patterns />
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
     </configuration>
     <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
       <setting name="vmparams" value="" />
@@ -866,8 +666,6 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" />
@@ -877,24 +675,44 @@
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="singleModule" />
       </option>
-      <envs />
       <patterns />
     </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <module name="" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="SUITE_NAME" />
@@ -907,51 +725,14 @@
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="singleModule" />
       </option>
       <option name="USE_DEFAULT_REPORTERS" value="false" />
       <option name="PROPERTIES_FILE" />
-      <envs />
       <properties />
       <listeners />
-    </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file id="idea.log" enabled="true" />
-    </configuration>
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
-      <module name="" />
-      <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="PM_INSTALL_OPTIONS" value="" />
-      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <Java />
-      <Profilers>
-        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
-        <option name="GAPID_ENABLED" value="false" />
-        <option name="GAPID_DISABLE_PCS" value="false" />
-        <option name="SUPPORT_LIB_ENABLED" value="true" />
-        <option name="INSTRUMENTATION_ENABLED" value="true" />
-      </Profilers>
-      <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <method />
     </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
@@ -999,39 +780,6 @@
       </Profilers>
       <method />
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-      <method />
-    </configuration>
     <configuration default="true" type="BashConfigurationType" factoryName="Bash">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="INTERPRETER_PATH" value="/bin/bash" />
@@ -1039,28 +787,6 @@
       <option name="PARENT_ENVS" value="true" />
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="Cold Fusion runner description" factoryName="Cold Fusion" custom_browser="" web_path="">
-      <method />
-    </configuration>
-    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="myFilePath" />
-      <option name="GLUE" />
-      <option name="myNameFilter" />
-      <option name="myGeneratedName" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
       <method />
@@ -1083,133 +809,6 @@
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
       <option name="OPTIONS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
-      <option name="BCName" value="" />
-      <option name="IOSSimulatorSdkPath" value="" />
-      <option name="adlOptions" value="" />
-      <option name="airProgramParameters" value="" />
-      <option name="appDescriptorForEmulator" value="Android" />
-      <option name="debugTransport" value="USB" />
-      <option name="debuggerSdkRaw" value="BC SDK" />
-      <option name="emulator" value="NexusOne" />
-      <option name="emulatorAdlOptions" value="" />
-      <option name="fastPackaging" value="true" />
-      <option name="fullScreenHeight" value="0" />
-      <option name="fullScreenWidth" value="0" />
-      <option name="launchUrl" value="false" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
-        </LauncherParameters>
-      </option>
-      <option name="mobileRunTarget" value="Emulator" />
-      <option name="moduleName" value="" />
-      <option name="overriddenMainClass" value="" />
-      <option name="overriddenOutputFileName" value="" />
-      <option name="overrideMainClass" value="false" />
-      <option name="runTrusted" value="true" />
-      <option name="screenDpi" value="0" />
-      <option name="screenHeight" value="0" />
-      <option name="screenWidth" value="0" />
-      <option name="url" value="http://" />
-      <option name="usbDebugPort" value="7936" />
-      <method />
-    </configuration>
-    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
-      <option name="BCName" value="" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
-        </LauncherParameters>
-      </option>
-      <option name="moduleName" value="" />
-      <option name="trusted" value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list />
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <method />
-    </configuration>
-    <configuration default="true" type="JarApplication" factoryName="JAR Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="SCRATCH_FILE_ID" value="0" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
-      <node-interpreter value="project" />
-      <working-dir value="" />
-      <envs />
-      <scope-kind value="ALL" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
-      <config-file value="" />
-      <node-interpreter value="project" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Processing" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
@@ -1259,12 +858,6 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="Tox" factoryName="Tox">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -1276,19 +869,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <module name="Processing" />
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run" />
-      <scripts />
-      <node-interpreter value="project" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
-      <method />
-    </configuration>
-    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Attests">
@@ -1389,40 +969,37 @@
       <arguments />
       <envs />
     </configuration>
-    <list size="21">
-      <item index="0" class="java.lang.String" itemvalue="Application.Contours" />
-      <item index="1" class="java.lang.String" itemvalue="Application.Web" />
-      <item index="2" class="java.lang.String" itemvalue="Application.Flows" />
-      <item index="3" class="java.lang.String" itemvalue="Application.SpaceFiller" />
-      <item index="4" class="java.lang.String" itemvalue="Application.Lusio" />
-      <item index="5" class="java.lang.String" itemvalue="Application.Algoplex2" />
-      <item index="6" class="java.lang.String" itemvalue="Application.AlgoplexPerformer" />
-      <item index="7" class="java.lang.String" itemvalue="Application.TestSceneApplet" />
-      <item index="8" class="java.lang.String" itemvalue="Application.Evolve" />
-      <item index="9" class="java.lang.String" itemvalue="Application.Tubes" />
-      <item index="10" class="java.lang.String" itemvalue="Application.Topo" />
-      <item index="11" class="java.lang.String" itemvalue="Application.Mapping" />
-      <item index="12" class="java.lang.String" itemvalue="Application.RemoteExample" />
-      <item index="13" class="java.lang.String" itemvalue="Application.Viztrument" />
-      <item index="14" class="java.lang.String" itemvalue="Application.Blobs" />
-      <item index="15" class="java.lang.String" itemvalue="Application.Leap" />
-      <item index="16" class="java.lang.String" itemvalue="Application.Algowave" />
-      <item index="17" class="java.lang.String" itemvalue="Application.Veins" />
-      <item index="18" class="java.lang.String" itemvalue="Application.Worms" />
-      <item index="19" class="java.lang.String" itemvalue="Application.Wave" />
-      <item index="20" class="java.lang.String" itemvalue="Application.UncertainWave" />
+    <list>
+      <item itemvalue="Application.Contours" />
+      <item itemvalue="Application.Contours2018" />
+      <item itemvalue="Application.Web" />
+      <item itemvalue="Application.Flows" />
+      <item itemvalue="Application.SpaceFiller" />
+      <item itemvalue="Application.Lusio" />
+      <item itemvalue="Application.Algoplex2" />
+      <item itemvalue="Application.AlgoplexPerformer" />
+      <item itemvalue="Application.TestSceneApplet" />
+      <item itemvalue="Application.Evolve" />
+      <item itemvalue="Application.Tubes" />
+      <item itemvalue="Application.Topo" />
+      <item itemvalue="Application.Mapping" />
+      <item itemvalue="Application.RemoteExample" />
+      <item itemvalue="Application.Viztrument" />
+      <item itemvalue="Application.Blobs" />
+      <item itemvalue="Application.Leap" />
+      <item itemvalue="Application.Algowave" />
+      <item itemvalue="Application.Veins" />
+      <item itemvalue="Application.Worms" />
+      <item itemvalue="Application.Wave" />
+      <item itemvalue="Application.UncertainWave" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Application.Worms" />
-        <item index="1" class="java.lang.String" itemvalue="Application.UncertainWave" />
-        <item index="2" class="java.lang.String" itemvalue="Application.Wave" />
-        <item index="3" class="java.lang.String" itemvalue="Application.Veins" />
+      <list>
+        <item itemvalue="Application.Worms" />
+        <item itemvalue="Application.UncertainWave" />
+        <item itemvalue="Application.Wave" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -1652,7 +1229,39 @@
       <workItem from="1519672801755" duration="5389000" />
       <workItem from="1519755456703" duration="294000" />
       <workItem from="1519767934299" duration="11341000" />
-      <workItem from="1519863216157" duration="19670000" />
+      <workItem from="1519863216157" duration="20183000" />
+      <workItem from="1521001419566" duration="1197000" />
+      <workItem from="1521171740424" duration="218000" />
+      <workItem from="1521172155083" duration="1154000" />
+      <workItem from="1522292811915" duration="289000" />
+      <workItem from="1522523179505" duration="8755000" />
+      <workItem from="1522557902666" duration="455000" />
+      <workItem from="1524452854947" duration="856000" />
+      <workItem from="1524695415444" duration="597000" />
+      <workItem from="1524780309540" duration="597000" />
+      <workItem from="1525801449638" duration="687000" />
+      <workItem from="1525802229236" duration="1071000" />
+      <workItem from="1526797665239" duration="625000" />
+      <workItem from="1527392511942" duration="1081000" />
+      <workItem from="1528135519445" duration="121000" />
+      <workItem from="1528147916724" duration="546000" />
+      <workItem from="1528153637507" duration="671000" />
+      <workItem from="1528325936905" duration="14000" />
+      <workItem from="1528763496270" duration="421000" />
+      <workItem from="1529091995591" duration="1000" />
+      <workItem from="1529203041380" duration="5162000" />
+      <workItem from="1529280330089" duration="643000" />
+      <workItem from="1529450951304" duration="623000" />
+      <workItem from="1529703057514" duration="1855000" />
+      <workItem from="1529778714751" duration="44000" />
+      <workItem from="1529816056493" duration="1221000" />
+      <workItem from="1529881079451" duration="153000" />
+      <workItem from="1529881256940" duration="1344000" />
+      <workItem from="1532881986970" duration="1268000" />
+      <workItem from="1533167284485" duration="640000" />
+      <workItem from="1533311627958" duration="3994000" />
+      <workItem from="1533416214539" duration="780000" />
+      <workItem from="1533576560048" duration="21614000" />
     </task>
     <task id="LOCAL-00001" summary="Worms and bound changes">
       <created>1506356022413</created>
@@ -1665,46 +1274,85 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1474775000" />
+    <option name="totallyTimeSpent" value="1533985000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="1053" extended-state="6" />
+    <frame x="1921" y="24" width="1920" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26096034" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34029227" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293247" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.01171459" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19116081" sideWeight="0.7003222" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38605618" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18300654" sideWeight="0.29967776" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897604" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" x="1540" y="-272" width="1720" height="853" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31737775" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info anchor="right" id="Remote Host" order="4" weight="0.0" />
+      <window_info anchor="right" id="Designer" order="5" />
+      <window_info anchor="bottom" id="Statistic" order="10" weight="0.33054394" />
+      <window_info anchor="right" id="Database" order="6" weight="0.0" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.24959612" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="3" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3858998" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.25941423" />
+      <window_info id="Palette&#9;" order="4" />
+      <window_info id="Image Layers" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23953974" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3293247" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7003222" visible="true" weight="0.1315229" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.31737775" />
+      <window_info anchor="right" id="Theme Preview" order="12" />
+      <window_info id="Favorites" order="6" sideWeight="0.29967776" side_tool="true" weight="0.18300654" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Data View" order="10" weight="0.32897604" />
+      <window_info id="Nl-Palette" order="2" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" x="1540" y="-272" width="1720" height="853" id="Documentation" order="13" type="FLOATING" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" visible="true" weight="0.0" />
+      <window_info anchor="right" id="Properties" order="9" />
+      <window_info anchor="right" id="Coverage" order="11" side_tool="true" visible="true" weight="0.0" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="right" id="Designer" order="5" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Remote Host" order="4" visible="true" weight="0.0" />
+      <window_info id="Image Layers" order="5" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.21282528" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Favorites" order="6" sideWeight="0.29967776" side_tool="true" weight="0.18300654" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3293247" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Statistic" order="10" weight="0.33054394" />
+      <window_info anchor="right" x="1540" y="-272" width="1720" height="853" id="Documentation" order="13" type="FLOATING" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" visible="true" weight="0.0" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
+      <window_info anchor="right" id="Data View" order="10" weight="0.32897604" />
+      <window_info id="Nl-Palette" order="2" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.31737775" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7003222" visible="true" weight="0.13205537" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.26022306" />
+      <window_info anchor="right" id="Database" order="6" weight="0.0" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="Properties" order="9" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info id="Palette&#9;" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="12" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.24959612" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Coverage" order="11" side_tool="true" visible="true" weight="0.0" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3858998" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -1739,554 +1387,403 @@
           <properties />
           <option name="timeStamp" value="55" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/Processing_Remote_Control_jar/processing_remote_control.jar!/spacefiller/remote/OscRemoteControl.class</url>
+          <line>37</line>
+          <properties />
+          <option name="timeStamp" value="126" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="125" />
+      <option name="time" value="127" />
     </breakpoint-manager>
-    <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/graph/GridUtils.java">
+    <entry file="file://$PROJECT_DIR$/src/mapping/Keystone.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state relative-caret-position="374">
+          <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/Blobs.java">
+    <entry file="file://$PROJECT_DIR$/src/mapping/MeshPoint.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1298">
-          <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+        <state relative-caret-position="352">
+          <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algoplex2/Algoplex2.java">
+    <entry file="file://$PROJECT_DIR$/src/particles/Particle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2024">
-          <caret line="112" column="15" lean-forward="false" selection-start-line="112" selection-start-column="15" selection-end-line="112" selection-end-column="15" />
-          <folding />
+        <state relative-caret-position="1826">
+          <caret line="101" column="13" selection-end-line="106" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/WormScene.java">
+    <entry file="file://$PROJECT_DIR$/src/particles/ParticleSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="23" column="50" lean-forward="false" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
-          <folding />
+        <state relative-caret-position="1496">
+          <caret line="77" selection-start-line="77" selection-end-line="77" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/particles/behaviors/FlockParticles.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="11" column="6" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Documents/Processing3/libraries/LeapMotionForProcessing/library/LeapJava.jar!/com/leapmotion/leap/Controller.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algowave/leap/LeapRemoteControl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="643">
-          <caret line="57" column="7" lean-forward="false" selection-start-line="57" selection-start-column="7" selection-end-line="57" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF-OLD/MANIFEST.MF" />
-    <entry file="file://$PROJECT_DIR$/src/algowave/leap/LeapVisualizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="32" column="21" lean-forward="false" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/scijava/nativelib/BaseJniExtractor.java" />
-    <entry file="file://$PROJECT_DIR$/src/algowave/META-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/algowave.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6688">
-          <caret line="304" column="92" lean-forward="false" selection-start-line="304" selection-start-column="92" selection-end-line="304" selection-end-column="92" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algowave/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <element signature="e#357#358#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/native-lib-loader-2.1.1.jar!/org/scijava/nativelib/JniExtractor.class">
+    <entry file="file://$PROJECT_DIR$/src/particles/ParticleUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
-          <caret line="11" column="7" lean-forward="false" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-          <folding>
-            <marker date="1519681268000" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1519681268000" expanded="false" signature="145:186" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/native-lib-loader-2.1.1.jar!/org/scijava/nativelib/NativeLoader.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="16" column="36" lean-forward="false" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
-          <folding>
-            <marker date="1519681268000" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1519681268000" expanded="true" signature="271:276" ph="{}" />
-            <marker date="1519681268000" expanded="true" signature="346:424" ph="{...}" />
-            <marker date="1519681268000" expanded="true" signature="486:529" ph="{...}" />
-            <marker date="1519681268000" expanded="false" signature="577:584" ph=" { " />
-            <marker date="1519681268000" expanded="false" signature="604:608" ph=" }" />
-            <marker date="1519681268000" expanded="false" signature="673:680" ph=" { " />
-            <marker date="1519681268000" expanded="false" signature="708:712" ph=" }" />
-            <marker date="1519681268000" expanded="true" signature="723:1051" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/src.zip!/java/lang/System.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23408">
-          <caret line="1118" column="35" lean-forward="false" selection-start-line="1118" selection-start-column="35" selection-end-line="1118" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/src.zip!/java/lang/Runtime.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18370">
-          <caret line="869" column="27" lean-forward="false" selection-start-line="869" selection-start-column="27" selection-end-line="869" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/src.zip!/java/lang/ClassLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37950">
-          <caret line="1804" column="16" lean-forward="false" selection-start-line="1804" selection-start-column="16" selection-end-line="1804" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mapping/ShapeMapping.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/spout.jar!/spout/Spout.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <marker date="1519789354000" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1519789354000" expanded="false" signature="129:353" ph="..." />
-            <marker date="1519789354000" expanded="true" signature="613:1029" ph="{...}" />
-            <marker date="1519789354000" expanded="false" signature="1054:1061" ph=" { " />
-            <marker date="1519789354000" expanded="false" signature="1076:1080" ph=" }" />
-            <marker date="1519789354000" expanded="false" signature="1105:1112" ph=" { " />
-            <marker date="1519789354000" expanded="false" signature="1132:1136" ph=" }" />
-            <marker date="1519789354000" expanded="true" signature="1183:1272" ph="{...}" />
-            <marker date="1519789354000" expanded="true" signature="1318:1557" ph="{...}" />
-            <marker date="1519789354000" expanded="true" signature="1602:1715" ph="{...}" />
-            <marker date="1519789354000" expanded="true" signature="1780:2189" ph="{...}" />
-            <marker date="1519789354000" expanded="true" signature="2238:2410" ph="{...}" />
-            <marker date="1519789354000" expanded="true" signature="2440:2700" ph="{...}" />
-            <marker date="1519789354000" expanded="true" signature="2730:3403" ph="{...}" />
-            <marker date="1519789354000" expanded="true" signature="3447:4075" ph="{...}" />
-            <marker date="1519789354000" expanded="true" signature="4116:4676" ph="{...}" />
-            <marker date="1519789354000" expanded="true" signature="4740:4829" ph="{...}" />
-            <marker date="1519789354000" expanded="true" signature="4905:4994" ph="{...}" />
-            <marker date="1519789354000" expanded="true" signature="5071:5162" ph="{...}" />
-            <marker date="1519789354000" expanded="true" signature="5262:5351" ph="{...}" />
-            <marker date="1519789354000" expanded="false" signature="5400:5407" ph=" { " />
-            <marker date="1519789354000" expanded="false" signature="5457:5461" ph=" }" />
-            <marker date="1519789354000" expanded="true" signature="5551:5630" ph="{...}" />
-            <marker date="1519789354000" expanded="false" signature="5665:5672" ph=" { " />
-            <marker date="1519789354000" expanded="false" signature="5744:5748" ph=" }" />
-            <marker date="1519789354000" expanded="false" signature="5787:5794" ph=" { " />
-            <marker date="1519789354000" expanded="false" signature="5839:5843" ph=" }" />
-            <marker date="1519789354000" expanded="true" signature="5914:5992" ph="{...}" />
-            <marker date="1519789354000" expanded="true" signature="6067:6149" ph="{...}" />
-            <marker date="1519789354000" expanded="false" signature="6198:6205" ph=" { " />
-            <marker date="1519789354000" expanded="false" signature="6260:6264" ph=" }" />
-            <marker date="1519789354000" expanded="false" signature="6299:6306" ph=" { " />
-            <marker date="1519789354000" expanded="false" signature="6348:6352" ph=" }" />
-            <marker date="1519789354000" expanded="false" signature="6386:6393" ph=" { " />
-            <marker date="1519789354000" expanded="false" signature="6441:6445" ph=" }" />
-            <marker date="1519789354000" expanded="false" signature="6481:6488" ph=" { " />
-            <marker date="1519789354000" expanded="false" signature="6531:6535" ph=" }" />
-            <marker date="1519789354000" expanded="true" signature="6582:7315" ph="{...}" />
-            <marker date="1519789354000" expanded="true" signature="7347:7557" ph="{...}" />
-            <marker date="1519789354000" expanded="true" signature="7593:8515" ph="{...}" />
-            <marker date="1519789354000" expanded="true" signature="8567:9356" ph="{...}" />
-            <marker date="1519789354000" expanded="true" signature="9402:10137" ph="{...}" />
-            <marker date="1519789354000" expanded="true" signature="10182:10871" ph="{...}" />
-            <marker date="1519789354000" expanded="false" signature="10901:10908" ph=" { " />
-            <marker date="1519789354000" expanded="false" signature="10945:10949" ph=" }" />
-            <marker date="1519789354000" expanded="true" signature="10979:11225" ph="{...}" />
-            <marker date="1519789354000" expanded="true" signature="11256:11614" ph="{...}" />
-            <marker date="1519789354000" expanded="true" signature="11654:11749" ph="{...}" />
-            <marker date="1519789354000" expanded="true" signature="11791:12246" ph="{...}" />
-            <marker date="1519789354000" expanded="false" signature="12282:12289" ph=" { " />
-            <marker date="1519789354000" expanded="false" signature="12354:12358" ph=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/Processing_Remote_Control_jar/processing_remote_control.jar!/spacefiller/remote/RemoteControl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="70" column="14" lean-forward="false" selection-start-line="70" selection-start-column="14" selection-end-line="70" selection-end-column="14" />
-          <folding />
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/particles/Source.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
-          <caret line="7" column="18" lean-forward="false" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-          <folding />
+          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/particles/Bounds.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="39" column="14" lean-forward="false" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
-          <folding />
+        <state relative-caret-position="638">
+          <caret line="33" column="3" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/particles/behaviors/ReflectiveBounds.java">
+    <entry file="file://$PROJECT_DIR$/start-flows.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/particles/behaviors/FatalBounds.java">
+    <entry file="file://$PROJECT_DIR$/src/sketches/Blobs.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="20" column="3" lean-forward="true" selection-start-line="9" selection-start-column="2" selection-end-line="20" selection-end-column="3" />
-          <folding />
+        <state relative-caret-position="212">
+          <caret line="50" column="26" selection-start-line="50" selection-start-column="26" selection-end-line="50" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/particles/renderers/ParticleRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="16" column="27" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/particles/ParticleSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="66" column="14" lean-forward="false" selection-start-line="66" selection-start-column="14" selection-end-line="66" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/particles/behaviors/DonutBounds.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="26" column="30" lean-forward="false" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/particles/Particle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="101" column="14" lean-forward="false" selection-start-line="101" selection-start-column="14" selection-end-line="101" selection-end-column="14" />
-          <folding>
-            <element signature="e#1346#1347#0" expanded="false" />
-            <element signature="e#1378#1379#0" expanded="false" />
-            <element signature="e#2294#2295#0" expanded="false" />
-            <element signature="e#2323#2324#0" expanded="false" />
-            <element signature="e#2371#2372#0" expanded="false" />
-            <element signature="e#2401#2402#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/ConstantPropertyField.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/ConstantVectorField.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="31" lean-forward="true" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-          <folding>
-            <element signature="e#172#173#0" expanded="false" />
-            <element signature="e#202#203#0" expanded="false" />
-            <element signature="e#273#274#0" expanded="false" />
-            <element signature="e#296#297#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/StoredVectorField.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="9" column="42" lean-forward="false" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lusio/components/ParticleComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="573">
-          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding>
-            <element signature="e#2652#2653#0" expanded="false" />
-            <element signature="e#2683#2684#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/color/ConstantColorProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="36" lean-forward="false" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/core.jar!/processing/core/PGraphics.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="224" column="26" lean-forward="false" selection-start-line="224" selection-start-column="17" selection-end-line="224" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/core.jar!/processing/core/PApplet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="4978" column="13" lean-forward="false" selection-start-line="4978" selection-start-column="13" selection-end-line="4978" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/guava-19.0-rc2.jar!/com/google/common/collect/ForwardingQueue.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="34" column="11" lean-forward="false" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
-          <folding>
-            <marker date="1519783536000" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1519783536000" expanded="false" signature="149:258" ph="..." />
-            <marker date="1519783536000" expanded="true" signature="400:405" ph="{}" />
-            <marker date="1519783536000" expanded="false" signature="477:484" ph=" { " />
-            <marker date="1519783536000" expanded="false" signature="516:520" ph=" }" />
-            <marker date="1519783536000" expanded="false" signature="539:546" ph=" { " />
-            <marker date="1519783536000" expanded="false" signature="576:580" ph=" }" />
-            <marker date="1519783536000" expanded="false" signature="601:608" ph=" { " />
-            <marker date="1519783536000" expanded="false" signature="640:644" ph=" }" />
-            <marker date="1519783536000" expanded="false" signature="663:670" ph=" { " />
-            <marker date="1519783536000" expanded="false" signature="700:704" ph=" }" />
-            <marker date="1519783536000" expanded="true" signature="726:733" ph=" { " />
-            <marker date="1519783536000" expanded="true" signature="766:770" ph=" }" />
-            <marker date="1519783536000" expanded="true" signature="811:921" ph="{...}" />
-            <marker date="1519783536000" expanded="true" signature="952:1065" ph="{...}" />
-            <marker date="1519783536000" expanded="true" signature="1096:1208" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/VectorField.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="7" column="10" lean-forward="false" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/PerlinVectorField.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/particles/renderers/ParticleWormRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="78" column="24" lean-forward="false" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
-          <folding>
-            <element signature="e#2655#2656#0" expanded="true" />
-            <element signature="e#2684#2685#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/particles/behaviors/FlowParticles.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding>
-            <element signature="e#530#531#0" expanded="true" />
-            <element signature="e#558#559#0" expanded="true" />
-            <element signature="e#739#740#0" expanded="true" />
-            <element signature="e#759#760#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algowave/leap/LeapMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="49" column="25" lean-forward="true" selection-start-line="49" selection-start-column="25" selection-end-line="49" selection-end-column="25" />
-          <folding>
-            <element signature="e#3918#3919#0" expanded="true" />
-            <element signature="e#3944#3945#0" expanded="true" />
-            <element signature="e#4026#4027#0" expanded="true" />
-            <element signature="e#4047#4048#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/particles/renderers/DelaunayRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="5" column="29" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="29" />
-          <folding />
+        <state relative-caret-position="154">
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/particles/renderers/GraphParticleRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/Processing_Remote_Control_jar/processing_remote_control.jar!/spacefiller/remote/signal/DataReceiver.class">
+    <entry file="file://$PROJECT_DIR$/src/particles/renderers/ParticleDotRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="67" column="22" lean-forward="false" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
-          <folding>
-            <marker date="1519928246000" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1519928246000" expanded="false" signature="149:219" ph="..." />
-            <marker date="1519928246000" expanded="true" signature="361:366" ph="{}" />
-            <marker date="1519928246000" expanded="false" signature="411:418" ph=" { " />
-            <marker date="1519928246000" expanded="false" signature="446:450" ph=" }" />
-            <marker date="1519928246000" expanded="true" signature="510:749" ph="{...}" />
-            <marker date="1519928246000" expanded="false" signature="781:788" ph=" { " />
-            <marker date="1519928246000" expanded="false" signature="810:814" ph=" }" />
-            <marker date="1519928246000" expanded="true" signature="839:1029" ph="{...}" />
-            <marker date="1519928246000" expanded="true" signature="1083:1226" ph="{...}" />
-            <marker date="1519928246000" expanded="true" signature="1278:1339" ph="{...}" />
-            <marker date="1519928246000" expanded="false" signature="1553:1560" ph=" { " />
-            <marker date="1519928246000" expanded="false" signature="1591:1595" ph=" }" />
-            <marker date="1519928246000" expanded="false" signature="1643:1650" ph=" { " />
-            <marker date="1519928246000" expanded="false" signature="1689:1693" ph=" }" />
-            <marker date="1519928246000" expanded="true" signature="1744:1751" ph=" { " />
-            <marker date="1519928246000" expanded="true" signature="1789:1793" ph=" }" />
-            <marker date="1519928246000" expanded="false" signature="1838:1845" ph=" { " />
-            <marker date="1519928246000" expanded="false" signature="1883:1887" ph=" }" />
-            <marker date="1519928246000" expanded="false" signature="1918:1925" ph=" { " />
-            <marker date="1519928246000" expanded="false" signature="1955:1959" ph=" }" />
-          </folding>
+        <state relative-caret-position="154">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algowave/Momentum.java">
+    <entry file="file://$PROJECT_DIR$/src/particles/renderers/ParticleWormRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="43" lean-forward="true" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+        <state relative-caret-position="1233">
+          <caret line="78" column="24" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/renderers/BoidFlockRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/particles/renderers/ContourSpaceRenderer.java" />
+    <entry file="file://$PROJECT_DIR$/src/boids/renderers/GravityFlockRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/renderers/DebugFlockRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/renderers/VoronoiFlockRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/renderers/MeshFlockRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/renderers/MeshLikeFlockRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/renderers/FlockRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/Flock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3740">
+          <caret line="196" column="20" selection-start-line="196" selection-start-column="20" selection-end-line="196" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/behaviors/EmitBehavior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/particles/renderers/DelaunayRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/particles/renderers/ParticleWebRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="792">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lightcube/SerialLightcube.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="792">
+          <caret line="40" column="24" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/PerlinVectorField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/serial.jar!/processing/serial/Serial.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lightcube/Lightcube.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/math/noise/PerlinNoise.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/ColorBath.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/renderers/ContourSpaceFlockRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#237#238#0" expanded="true" />
-            <element signature="e#271#272#0" expanded="true" />
-            <element signature="e#295#296#0" expanded="true" />
-            <element signature="e#317#318#0" expanded="true" />
-            <element signature="e#396#397#0" expanded="true" />
-            <element signature="e#469#470#0" expanded="true" />
-            <element signature="e#505#506#0" expanded="true" />
+            <element signature="e#854#855#0" expanded="true" />
+            <element signature="e#920#921#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lusio/components/PerlinFlowComponent.java">
+    <entry file="file://$PROJECT_DIR$/src/sketches/Contours.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="18" column="32" lean-forward="false" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="32" />
+        <state relative-caret-position="2222">
+          <caret line="113" column="3" selection-start-line="75" selection-start-column="2" selection-end-line="113" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/ContourSpace.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1078">
+          <caret line="64" column="14" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sketches/SceneTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/Processing_Remote_Control_jar/processing_remote_control.jar!/spacefiller/remote/RemoteControl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/color/Hue.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="755">
+          <caret line="74" column="9" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
           <folding>
-            <element signature="e#1714#1715#0" expanded="true" />
-            <element signature="e#1752#1753#0" expanded="true" />
-            <element signature="e#2468#2469#0" expanded="true" />
-            <element signature="e#2504#2505#0" expanded="true" />
+            <element signature="e#2395#2396#0" expanded="true" />
+            <element signature="e#2428#2429#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algowave/scenes/WormScene.java">
+    <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/color/ColorRange.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1217">
-          <caret line="28" column="6" lean-forward="true" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
-          <folding />
+        <state relative-caret-position="249">
+          <caret line="199" column="22" selection-start-line="199" selection-start-column="19" selection-end-line="199" selection-end-column="22" />
+          <folding>
+            <element signature="e#9982#9983#0" expanded="true" />
+            <element signature="e#10049#10050#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algowave/scenes/FlowScene.java">
+    <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/color/ColorGradient.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="37" column="32" lean-forward="false" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
-          <folding />
+        <state relative-caret-position="257">
+          <caret line="32" column="19" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algowave/Algowave.java">
+    <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/color/ColorList.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="174" column="20" lean-forward="true" selection-start-line="174" selection-start-column="20" selection-end-line="174" selection-end-column="20" />
+        <state relative-caret-position="274">
+          <caret line="349" column="19" selection-start-line="349" selection-start-column="19" selection-end-line="349" selection-end-column="19" />
+          <folding>
+            <element signature="e#8250#8251#0" expanded="true" />
+            <element signature="e#8316#8317#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/AlgoplexController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/color/ColorTheme.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Documents/Processing3/libraries/Ani/library/Ani.jar!/de/looksgood/ani/Ani.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/color/SmoothColorTheme.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sketches/Worms.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="19" column="29" lean-forward="true" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sketches/Scene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="161" column="46" lean-forward="true" selection-start-line="161" selection-start-column="46" selection-end-line="161" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sketches/Flows.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="479">
+          <caret line="80" column="38" selection-start-line="80" selection-end-line="81" />
+          <folding>
+            <element signature="e#274#275#0" expanded="true" />
+            <element signature="e#303#304#0" expanded="true" />
+            <element signature="e#1808#1809#0" expanded="true" />
+            <element signature="e#1874#1875#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/geom/Quaternion.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sketches/Tubes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="143" selection-start-line="143" selection-end-line="149" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sketches/Contours2018.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1769#1770#0" expanded="true" />
+            <element signature="e#1791#1792#0" expanded="true" />
+            <element signature="e#2129#2130#0" expanded="true" />
+            <element signature="e#2173#2174#0" expanded="true" />
+            <element signature="e#2325#2326#0" expanded="true" />
+            <element signature="e#2367#2368#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2369,7 +1866,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>lib</last-edited>
+          <last-edited>Ani</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

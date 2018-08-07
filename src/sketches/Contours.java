@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import processing.core.PVector;
+import spacefiller.remote.VDMXWriter;
 
 import java.util.Collections;
 
@@ -78,7 +79,8 @@ public class Contours extends Scene {
 
 	@Override
 	public void doSetup() {
-		new OscRemoteControl(this, 12001);
+		OscRemoteControl remote = new OscRemoteControl(this, 12001);
+		VDMXWriter.exportVDMXJson("contours", remote.getTargetMap(), remote.getPort());
 	}
 
 	@Override

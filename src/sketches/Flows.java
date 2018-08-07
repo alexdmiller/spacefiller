@@ -1,42 +1,46 @@
 package sketches;
 
+import common.color.SmoothColorTheme;
 import spacefiller.remote.Mod;
 import spacefiller.remote.OscRemoteControl;
 import processing.core.PGraphics;
 import processing.core.PVector;
 import spacefiller.remote.VDMXWriter;
+import toxi.color.*;
+
+import static java.lang.Math.PI;
 
 public class Flows extends Scene {
-	public static void main(String[] args) {
+  public static void main(String[] args) {
 		main("sketches.Flows");
 	}
 
 	@Mod(min = 0, max = 20)
-	public float flowForce = 20;
+	public float flowForce = 2;
 
-	@Mod(min = 10, max = 1000)
-	public float noiseScale = 500f;
-
-	@Mod(min = -0.05f, max = 0.05f)
-	public float noiseSpeed1 = 0.01f;
+	@Mod(min = 200, max = 1000)
+	public float noiseScale = 500;
 
 	@Mod(min = -0.05f, max = 0.05f)
-	public float noiseSpeed2 = 0.01f;
+	public float noiseSpeed1 = 0.0f;
 
-	@Mod(min = 10, max = 100)
-	public float lineLength = 100;
+	@Mod(min = -0.05f, max = 0.05f)
+	public float noiseSpeed2 = 0.0f;
+
+	@Mod(min = 10, max = 50)
+	public float lineLength = 20;
 
 	@Mod(min = 0, max = 100)
 	public float scrollSpeed = 1;
 
 	@Mod(min = 0, max = 20)
-	public float fallSpeed = 10;
+	public float fallSpeed = 0;
 
 	@Mod(min = -1, max = 1)
-	public float lineSparsity = 0.6f;
+	public float lineSparsity = 1;
 
 	@Mod(min = 1, max = 10)
-	public float lineThickness = 2;
+	public float lineThickness = 4;
 
 	@Mod(min = 0, max = 1)
 	public float interpolation = 0f;
@@ -50,16 +54,37 @@ public class Flows extends Scene {
 	@Mod(min = 0, max = 0.01f)
 	public float scrambleSpeed = 0.01f;
 
-	float timeStep;
+	@Mod(min = 1, max = 20)
+	public float colorSpread = 20;
+
+  @Mod(min = 0, max = 6.283185307179586f)
+	public float colorStart = 0;
+
+  @Mod(min = 0, max = 0.1f)
+  public float colorSpeed = 0;
+
+
+  float timeStep;
 	float scramble = 0;
 	float noise1Pos = 0;
 	float noise2Pos = 0;
+  private float colorPos = 0;
+
+  SmoothColorTheme colors;
 
 	@Override
 	public void doSetup() {
 		OscRemoteControl remote = new OscRemoteControl(this, 12008);
+		set2D();
 		VDMXWriter.exportVDMXJson("flows", remote.getTargetMap(), remote.getPort());
+
+		colors = new SmoothColorTheme(ColorRange.FRESH, 10, 100);
 	}
+
+	@Mod
+  public void switchColors() {
+	  colors = new SmoothColorTheme(ColorRange.BRIGHT, 10, 100);
+  }
 
 	@Override
 	protected void drawCanvas(PGraphics graphics, float mouseX, float mouseY) {
@@ -67,6 +92,7 @@ public class Flows extends Scene {
 		scramble += scrambleSpeed;
 		noise1Pos += noiseSpeed1;
 		noise2Pos += noiseSpeed2;
+		colorPos += colorSpeed;
 
 		graphics.background(0);
 		graphics.stroke(255);
@@ -87,6 +113,7 @@ public class Flows extends Scene {
 				p.y += v.y + fallSpeed;
 
 				if (Math.sin(i + (noise((float) j) * 100.0) + timeStep * scrollSpeed) - lineSparsity < 0) {
+					graphics.stroke(colors.getColor(i / colorSpread + colorStart + colorPos).toARGB());
 					graphics.line(oldX, oldY, p.x, p.y);
 				}
 			}
@@ -112,10 +139,12 @@ public class Flows extends Scene {
 	}
 
 	PVector position3(int i) {
-		PVector p = new PVector(
-				Scene.getInstance().noise(i, 0, scramble) * WIDTH - WIDTH / 2,
-				Scene.getInstance().noise(i, 1, scramble) * HEIGHT - HEIGHT / 2
-		);
+		int cellSize = 100;
+		int cols = WIDTH / cellSize;
+		float x = i % cols * cellSize - WIDTH / 2;
+		float y = i / cols * cellSize - HEIGHT / 2;
+		PVector p = new PVector(x, y);
+
 		return p;
 	}
 

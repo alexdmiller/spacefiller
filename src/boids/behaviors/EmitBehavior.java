@@ -21,11 +21,11 @@ public class EmitBehavior extends Behavior {
 
 	@Override
 	public void apply() {
-		for (Emitter e : getFlock().getEmitters()) {
-			if (Math.random() < e.getEmitChance()) {
-				List<Boid> boids = e.emit(dimension);
-				getFlock().addAllBoids(boids);
-			}
+		List<Emitter> emitters = getFlock().getEmitters();
+		if (emitters.size() > 0) {
+			Emitter e = emitters.get((int) Math.floor(Math.random() * emitters.size()));
+			List<Boid> boids = e.emit(dimension);
+			getFlock().addAllBoids(boids);
 		}
 	}
 }

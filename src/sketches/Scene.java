@@ -1,6 +1,7 @@
 package sketches;
 
 import codeanticode.syphon.SyphonServer;
+import mapping.Keystone;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 import processing.opengl.PJOGL;
@@ -36,11 +37,14 @@ public class Scene extends PApplet {
 
 	private PGraphics canvas;
 	private boolean playing = true;
-	private boolean debug = false;
+	private boolean debug = true;
 	private int currentToolIndex;
 	private List<SceneTool> tools;
 
+	boolean is3D = true;
+
 	public Scene() {
+
 		currentToolIndex = 0;
 		tools = new ArrayList<>();
 
@@ -63,6 +67,14 @@ public class Scene extends PApplet {
 		doSetup();
 	}
 
+	protected void set3D() {
+		is3D = true;
+	}
+
+	protected void set2D() {
+		is3D = false;
+	}
+
 	protected void doSetup() {}
 
 	/**
@@ -75,7 +87,13 @@ public class Scene extends PApplet {
 
 		if (playing) {
 			canvas.beginDraw();
-			canvas.translate(WIDTH / 2, HEIGHT / 2, DEPTH / 2);
+			if (is3D) {
+				canvas.translate(WIDTH / 2, HEIGHT / 2, DEPTH / 2);
+			} else {
+				camera();
+				canvas.translate(WIDTH / 2, HEIGHT / 2, 0);
+			}
+
 
 			canvas.background(0);
 
@@ -104,7 +122,9 @@ public class Scene extends PApplet {
 			canvas.endDraw();
 		}
 
-		image(canvas, 0, 0, width, height);
+		if (debug) {
+			image(canvas, 0, 0, width, height);
+		}
 
 		textSize(16);
 		fill(255);
@@ -132,11 +152,14 @@ public class Scene extends PApplet {
 
 	protected void drawCanvas(PGraphics graphics, float mouseX, float mouseY) {}
 	protected void drawControlPanel(PGraphics graphics, float mouseX, float mouseY) {}
+	protected void doMouseDown(float x , float y) {}
 
-	public final void mousePressed() {
+	public void mousePressed() {
 		if (currentToolIndex < tools.size()) {
 			tools.get(currentToolIndex).mousePressed(mouseX / LOCAL_WINDOW_SCALE - WIDTH / 2, mouseY / LOCAL_WINDOW_SCALE - HEIGHT / 2);
 		}
+
+		doMouseDown(mouseX / LOCAL_WINDOW_SCALE - WIDTH / 2, mouseY / LOCAL_WINDOW_SCALE - HEIGHT / 2);
 	}
 
 	public final void mouseReleased() {
