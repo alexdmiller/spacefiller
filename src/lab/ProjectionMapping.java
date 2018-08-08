@@ -63,16 +63,16 @@ public class ProjectionMapping extends PApplet {
       canvas.ellipse(0, 0, radius * 2, radius * 2);
     }
 
-//    PShape shape = mapping.getSourceShape();
+//    PShape tools = mapping.getSourceShape();
 //
 //    canvas.beginShape(TRIANGLE_FAN);
 //    canvas.noStroke();
 //
 //    TColor rotatedRYB = TColor.BLUE.getRotatedRYB(t / 100f);
 //
-//    for (int i = 0; i < shape.getVertexCount(); i++) {
+//    for (int i = 0; i < tools.getVertexCount(); i++) {
 //      canvas.fill((pow(sin(i / 10f + t / 100) + 1 / 2, 10)) * 255);
-//      canvas.vertex(shape.getVertexX(i), shape.getVertexY(i));
+//      canvas.vertex(tools.getVertexX(i), tools.getVertexY(i));
 //    }
 //    canvas.endShape();
     canvas.endDraw();

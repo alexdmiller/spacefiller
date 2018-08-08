@@ -1,10 +1,12 @@
 package sketches;
 
+import common.color.SmoothColorTheme;
 import lab.Flock;
 import processing.core.PGraphics;
 import spacefiller.remote.Mod;
 import spacefiller.remote.OscRemoteControl;
 import spacefiller.remote.VDMXWriter;
+import toxi.color.ColorRange;
 import toxi.geom.*;
 import toxi.math.ExponentialInterpolation;
 import toxi.math.InterpolateStrategy;
@@ -64,6 +66,8 @@ public class Tubes extends Scene {
 
   public float interpolationSpeed = 0.05f;
 
+  SmoothColorTheme theme;
+
   @Override
   public void doSetup() {
     physics = new VerletPhysics3D();
@@ -75,6 +79,8 @@ public class Tubes extends Scene {
     newWorms(5);
 
     flock = new Flock(0, 0, 1, 0, 0, 200, 10, 10);
+
+    theme = new SmoothColorTheme(ColorRange.BRIGHT, 10, 200);
 
     OscRemoteControl remote = new OscRemoteControl(this, 12010);
     VDMXWriter.exportVDMXJson("tubes", remote.getTargetMap(), 12010);
@@ -121,7 +127,7 @@ public class Tubes extends Scene {
       physics.update();
 
       for (Worm worm : worms) {
-        worm.draw(graphics, physics, t, troughStrength, troughSpacing, springSize, circleSpacing, circleSize, springDeviation, waveStrength);
+        worm.draw(graphics, theme, physics, t, troughStrength, troughSpacing, springSize, circleSpacing, circleSize, springDeviation, waveStrength);
       }
     }
   }
@@ -204,6 +210,7 @@ public class Tubes extends Scene {
 
     public void draw(
         PGraphics graphics,
+        SmoothColorTheme theme,
         VerletPhysics3D physics,
         float t,
         float troughStrength,
@@ -239,6 +246,7 @@ public class Tubes extends Scene {
       graphics.stroke(255);
 
       for (int i = 1; i < segments.length - 1; i++) {
+        graphics.stroke(theme.getColor((float) ((float) i / segments.length * 2 * Math.PI) + t * 10).toARGB());
         VerletSpring3D spring = physics.getSpring(segments[i], segments[i - 1]);
         spring.setRestLength(sin(i / 10f + t * 10) * springDeviation * springSpacing + springSpacing);
 
@@ -264,7 +272,7 @@ public class Tubes extends Scene {
         float[] axis = rotation.toAxisAngle();
         graphics.rotate(axis[0], axis[1], axis[2], axis[3]);
 
-        graphics.stroke(255, 200);
+        //graphics.stroke(255, 200);
 
         graphics.fill(0);
 

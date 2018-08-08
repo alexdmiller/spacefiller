@@ -1,6 +1,7 @@
 package sketches;
 
 import codeanticode.syphon.SyphonServer;
+import common.color.SmoothColorTheme;
 import processing.core.PApplet;
 import processing.opengl.PJOGL;
 import processing.opengl.PShader;
@@ -9,6 +10,9 @@ import spacefiller.remote.OscRemoteControl;
 import processing.core.PGraphics;
 import processing.core.PVector;
 import spacefiller.remote.VDMXWriter;
+import toxi.color.ColorRange;
+import toxi.color.ColorTheme;
+import toxi.color.TColor;
 import toxi.sim.automata.CAMatrix;
 import common.Circle;
 import toxi.sim.automata.CARule;
@@ -47,6 +51,8 @@ public class Blobs extends PApplet {
 
   float simulationStepSpeed = 0.1f;
 
+  SmoothColorTheme theme;
+
   public void settings() {
     size(1920, 1080, P2D);
     PJOGL.profile = 1;
@@ -82,6 +88,8 @@ public class Blobs extends PApplet {
     ca.addNoise(0.5f, 0, 100);
 
     stepSimulation();
+
+    theme = new SmoothColorTheme(ColorRange.BRIGHT, 5, 100);
   }
 
   @Mod
@@ -98,7 +106,6 @@ public class Blobs extends PApplet {
   public void clear() {
     ca.reset();
   }
-
 
   public void draw() {
     background(0);
@@ -151,15 +158,21 @@ public class Blobs extends PApplet {
     shader.set("metaballs", data, 3);
     shader.set("pixelate", round(pixelate));
     shader.set("k", k);
+
     shaderCanvas.beginDraw();
     shaderCanvas.background(0);
     shaderCanvas.shader(shader);
     shaderCanvas.beginShape(QUAD);
     shaderCanvas.textureMode(NORMAL);
     shaderCanvas.textureWrap(REPEAT);
+
+    shaderCanvas.fill(theme.getColor(frameCount / 100f).toARGB());
     shaderCanvas.vertex(0, 0, 0, 0);
-    shaderCanvas.vertex(width / textureDivisor, 0, 1, 0);
+    shaderCanvas.fill(theme.getColor(frameCount / 100f + 1f).toARGB());
+    shaderCanvas.vertex(width / textureDivisor, 0, 1, 0f);
+    shaderCanvas.fill(theme.getColor(frameCount / 100f + 2f).toARGB());
     shaderCanvas.vertex(width / textureDivisor, height / textureDivisor, 1, 1);
+    shaderCanvas.fill(theme.getColor(frameCount / 100f + 3f).toARGB());
     shaderCanvas.vertex(0, height / textureDivisor, 0, 1);
     shaderCanvas.endShape();
     shaderCanvas.endDraw();

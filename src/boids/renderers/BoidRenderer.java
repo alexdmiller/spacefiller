@@ -23,5 +23,5 @@ public abstract class BoidRenderer {
 
 	public void clear() {}
 
-	public abstract void draw(PGraphics graphics);
+	public abstract void draw(PGraphics graphics, float t);
 }

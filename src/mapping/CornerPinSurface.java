@@ -31,7 +31,7 @@ import processing.data.XML;
 
 /**
  * A simple Corner Pin "keystoned" surface. The surface is a quad mesh that can
- * be skewed to an arbitrary shape by moving its four corners.
+ * be skewed to an arbitrary tools by moving its four corners.
  *
  * September-2011 Added JAI library for keystone calculus (@edumo)
  *

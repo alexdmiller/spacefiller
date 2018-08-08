@@ -17,6 +17,7 @@ public class BoidFlockRenderer extends FlockRenderer implements BoidEventListene
 	private List<BoidRenderer> renderers;
 	private Map<Boid, BoidRenderer> boidToRenderer;
 	private Class<? extends BoidRenderer> rendererClass;
+	private float t;
 
 	public BoidFlockRenderer(Flock flock, Class<? extends BoidRenderer> rendererClass) {
 		super(flock);
@@ -29,6 +30,7 @@ public class BoidFlockRenderer extends FlockRenderer implements BoidEventListene
 
 	@Override
 	public void render(PGraphics graphics) {
+		t += 1;
 		graphics.rotateY(flock.getRotation());
 
 		synchronized (renderers) {
@@ -38,7 +40,7 @@ public class BoidFlockRenderer extends FlockRenderer implements BoidEventListene
 				if (renderer.isReadyToDie()) {
 					rendererIterator.remove();
 				}
-				renderer.draw(graphics);
+				renderer.draw(graphics, t);
 			}
 		}
 	}

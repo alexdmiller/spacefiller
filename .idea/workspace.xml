@@ -7,20 +7,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7bb3a9e-05bb-464d-967e-9bda287e8f0d" name="Default" comment="Worms and bound changes">
-      <change afterPath="$PROJECT_DIR$/src/boids/renderers/ContourSpaceFlockRenderer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/color/SmoothColorTheme.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sketches/Contours2018.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sketches/ColorBath.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tools/ShapeEditor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Processing.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Processing.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algoplex-performer.json" beforeDir="false" afterPath="$PROJECT_DIR$/algoplex-performer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contours-2018.json" beforeDir="false" afterPath="$PROJECT_DIR$/contours-2018.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flows.json" beforeDir="false" afterPath="$PROJECT_DIR$/flows.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/boids/behaviors/EmitBehavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boids/behaviors/EmitBehavior.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/StoredVectorField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/StoredVectorField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sketches/Contours.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Contours.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sketches/Flows.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Flows.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sketches/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Scene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sketches/Worms.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Worms.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start-worms.sh" beforeDir="false" afterPath="$PROJECT_DIR$/start-worms.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frag.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/frag.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/renderers/BoidFlockRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boids/renderers/BoidFlockRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/renderers/BoidRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boids/renderers/BoidRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/renderers/MeshFlockRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boids/renderers/MeshFlockRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/renderers/PointBoidRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boids/renderers/PointBoidRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/renderers/VoronoiFlockRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boids/renderers/VoronoiFlockRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lab/ProjectionMapping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab/ProjectionMapping.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/CornerPinSurface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapping/CornerPinSurface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Blobs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Blobs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Contours2018.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Contours2018.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Tubes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Tubes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/worms.json" beforeDir="false" afterPath="$PROJECT_DIR$/worms.json" afterDir="false" />
     </list>
     <ignored path="Processing.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,83 +57,83 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AlgoplexController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/algoplex2/AlgoplexController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Flows.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sketches/Flows.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="80" column="38" selection-start-line="80" selection-end-line="81" />
-              <folding>
-                <element signature="e#274#275#0" expanded="true" />
-                <element signature="e#303#304#0" expanded="true" />
-                <element signature="e#1808#1809#0" expanded="true" />
-                <element signature="e#1874#1875#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ColorTheme.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/color/ColorTheme.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Worms.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sketches/Worms.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="577">
+              <caret line="85" column="17" lean-forward="true" selection-start-line="85" selection-start-column="17" selection-end-line="85" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VoronoiFlockRenderer.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/boids/renderers/VoronoiFlockRenderer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="33" column="9" lean-forward="true" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MeshFlockRenderer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/boids/renderers/MeshFlockRenderer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="22" column="61" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="61" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BoidFlockRenderer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/boids/renderers/BoidFlockRenderer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="685">
+              <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PointBoidRenderer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/boids/renderers/PointBoidRenderer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="19" column="26" lean-forward="true" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WormBoidRenderer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="183">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Wave.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sketches/Wave.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="88">
-              <caret line="19" column="29" lean-forward="true" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SmoothColorTheme.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/common/color/SmoothColorTheme.java">
+      <file leaf-file-name="BoidRenderer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/boids/renderers/BoidRenderer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="440">
+              <caret line="25" column="55" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="55" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Contours2018.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/sketches/Contours2018.java">
+      <file leaf-file-name="frag.glsl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frag.glsl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1769#1770#0" expanded="true" />
-                <element signature="e#1791#1792#0" expanded="true" />
-                <element signature="e#2129#2130#0" expanded="true" />
-                <element signature="e#2173#2174#0" expanded="true" />
-                <element signature="e#2325#2326#0" expanded="true" />
-                <element signature="e#2367#2368#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Quaternion.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/geom/Quaternion.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
+            <state relative-caret-position="220">
+              <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -137,26 +141,8 @@
       <file leaf-file-name="Tubes.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sketches/Tubes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="143" selection-start-line="143" selection-end-line="149" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Scene.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sketches/Scene.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="161" column="46" lean-forward="true" selection-start-line="161" selection-start-column="46" selection-end-line="161" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Ani.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/Documents/Processing3/libraries/Ani/library/Ani.jar!/de/looksgood/ani/Ani.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
+            <state relative-caret-position="486">
+              <caret line="261" column="33" lean-forward="true" selection-start-line="261" selection-start-column="33" selection-end-line="261" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -173,11 +159,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>de.voidplus</find>
-      <find>L:ea</find>
-      <find>L:e</find>
-      <find>L:</find>
-      <find>Lea</find>
       <find>Leap&lt;</find>
       <find>Leap</find>
       <find>LeapMotion</find>
@@ -191,18 +172,23 @@
       <find>scale</find>
       <find>setRenderer</find>
       <find>randomize</find>
-      <find>renderer</find>
       <find>strokeWidth</find>
       <find>emitter</find>
       <find>Contou</find>
       <find>maxThresh</find>
-      <find>println</find>
       <find>translate</find>
       <find>noiseScale</find>
       <find>num</find>
       <find>Col</find>
       <find>mouse</find>
       <find>debug</find>
+      <find>noise</find>
+      <find>ortho</find>
+      <find>tool</find>
+      <find>kind</find>
+      <find>println</find>
+      <find>draw</find>
+      <find>renderer</find>
     </findStrings>
     <replaceStrings>
       <replace>size</replace>
@@ -223,16 +209,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/lusio/scenes/FancyParticles.java" />
-        <option value="$PROJECT_DIR$/src/lusio/scenes/NoiseSpace.java" />
-        <option value="$PROJECT_DIR$/src/lusio/scenes/NoiseCircle.java" />
-        <option value="$PROJECT_DIR$/src/lusio/scenes/NestedCubeScene.java" />
-        <option value="$PROJECT_DIR$/src/algoplex2/NumberTransition.java" />
-        <option value="$PROJECT_DIR$/src/lusio/Lusio.java" />
-        <option value="$PROJECT_DIR$/src/lab/Vizstrument.java" />
-        <option value="$PROJECT_DIR$/src/lab/Viztrument2.java" />
-        <option value="$PROJECT_DIR$/src/common/Circle.java" />
-        <option value="$PROJECT_DIR$/frag.glsl" />
         <option value="$PROJECT_DIR$/src/algoplex2/scenes/ShiftingEdgeScene.java" />
         <option value="$PROJECT_DIR$/src/scene/Scene.java" />
         <option value="$PROJECT_DIR$/src/scene/SceneApplet.java" />
@@ -245,7 +221,6 @@
         <option value="$USER_HOME$/Projects/Processing Remote Control/out/artifacts/Processing_Remote_Control_jar/processing_remote_control.jar!/spacefiller/remote/signal/Ease.class" />
         <option value="$PROJECT_DIR$/src/algowave/leap/LeapRemoteControl.java" />
         <option value="$PROJECT_DIR$/src/algowave/PreviewCanvas.java" />
-        <option value="$PROJECT_DIR$/src/sketches/Blobs.java" />
         <option value="$PROJECT_DIR$/src/algoplex2/Algoplex2.java" />
         <option value="$PROJECT_DIR$/src/particles/behaviors/FlockParticles.java" />
         <option value="$PROJECT_DIR$/src/algowave/leap/LeapVisualizer.java" />
@@ -274,6 +249,17 @@
         <option value="$PROJECT_DIR$/src/sketches/Flows.java" />
         <option value="$PROJECT_DIR$/src/sketches/Scene.java" />
         <option value="$PROJECT_DIR$/src/sketches/Contours2018.java" />
+        <option value="$PROJECT_DIR$/src/tools/ShapeEditor.java" />
+        <option value="$PROJECT_DIR$/src/sketches/ColorBath.java" />
+        <option value="$PROJECT_DIR$/src/sketches/Blobs.java" />
+        <option value="$PROJECT_DIR$/frag.glsl" />
+        <option value="$PROJECT_DIR$/src/sketches/Tubes.java" />
+        <option value="$PROJECT_DIR$/src/boids/renderers/BoidRenderer.java" />
+        <option value="$PROJECT_DIR$/src/boids/renderers/BoidFlockRenderer.java" />
+        <option value="$PROJECT_DIR$/src/boids/renderers/PointBoidRenderer.java" />
+        <option value="$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java" />
+        <option value="$PROJECT_DIR$/src/boids/renderers/MeshFlockRenderer.java" />
+        <option value="$PROJECT_DIR$/src/boids/renderers/VoronoiFlockRenderer.java" />
       </list>
     </option>
   </component>
@@ -287,8 +273,7 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1921" />
-    <option name="y" value="24" />
+    <option name="y" value="23" />
     <option name="width" value="1920" />
     <option name="height" value="1053" />
   </component>
@@ -316,9 +301,24 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Processing" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Processing" type="e9137016:NonAndroidModuleNode" />
+            </path>
+            <path>
+              <item name="Processing" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Processing" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -335,44 +335,7 @@
               <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
               <item name="Processing" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="algoplex2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Processing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="algowave" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Processing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Processing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="color" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Processing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="scene" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Processing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sketches" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Processing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="veins" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -431,7 +394,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Contours2018">
+  <component name="RunManager" selected="Application.Worms">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
     </configuration>
@@ -458,6 +421,18 @@
       <module name="Processing" />
       <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library:$USER_HOME$/Documents/Processing3/libraries/toxiclibs/library&quot;" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+    </configuration>
+    <configuration name="ColorPath" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="sketches.ColorBath" />
+      <module name="Processing" />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="scene.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
     </configuration>
     <configuration name="Contours" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="sketches.Contours" />
@@ -972,6 +947,7 @@
     <list>
       <item itemvalue="Application.Contours" />
       <item itemvalue="Application.Contours2018" />
+      <item itemvalue="Application.ColorPath" />
       <item itemvalue="Application.Web" />
       <item itemvalue="Application.Flows" />
       <item itemvalue="Application.SpaceFiller" />
@@ -996,8 +972,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Worms" />
-        <item itemvalue="Application.UncertainWave" />
         <item itemvalue="Application.Wave" />
+        <item itemvalue="Application.UncertainWave" />
       </list>
     </recent_temporary>
   </component>
@@ -1261,7 +1237,8 @@
       <workItem from="1533167284485" duration="640000" />
       <workItem from="1533311627958" duration="3994000" />
       <workItem from="1533416214539" duration="780000" />
-      <workItem from="1533576560048" duration="21614000" />
+      <workItem from="1533576560048" duration="24094000" />
+      <workItem from="1533743332333" duration="9115000" />
     </task>
     <task id="LOCAL-00001" summary="Worms and bound changes">
       <created>1506356022413</created>
@@ -1274,10 +1251,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1533985000" />
+    <option name="totallyTimeSpent" value="1545580000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1921" y="24" width="1920" height="1053" extended-state="6" />
+    <frame x="0" y="23" width="1920" height="1173" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -1294,15 +1271,15 @@
       <window_info id="UI Designer" order="3" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3858998" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.25941423" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.25929368" />
       <window_info id="Palette&#9;" order="4" />
       <window_info id="Image Layers" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23953974" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.21282528" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3293247" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7003222" visible="true" weight="0.1315229" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.31737775" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7003222" visible="true" weight="0.13258786" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3169456" />
       <window_info anchor="right" id="Theme Preview" order="12" />
       <window_info id="Favorites" order="6" sideWeight="0.29967776" side_tool="true" weight="0.18300654" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1325,7 +1302,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="3" />
-      <window_info id="Favorites" order="6" sideWeight="0.29967776" side_tool="true" weight="0.18300654" />
+      <window_info anchor="right" id="Properties" order="9" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3293247" />
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
@@ -1334,16 +1311,15 @@
       <window_info anchor="bottom" id="Statistic" order="10" weight="0.33054394" />
       <window_info anchor="right" x="1540" y="-272" width="1720" height="853" id="Documentation" order="13" type="FLOATING" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" visible="true" weight="0.0" />
+      <window_info id="Favorites" order="6" sideWeight="0.29967776" side_tool="true" weight="0.18300654" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="right" id="Data View" order="10" weight="0.32897604" />
       <window_info id="Nl-Palette" order="2" />
       <window_info anchor="right" id="Maven Projects" order="8" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.31737775" />
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7003222" visible="true" weight="0.13205537" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.26022306" />
       <window_info anchor="right" id="Database" order="6" weight="0.0" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="right" id="Properties" order="9" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info id="Palette&#9;" order="4" />
       <window_info anchor="right" id="Theme Preview" order="12" />
@@ -1351,6 +1327,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Coverage" order="11" side_tool="true" visible="true" weight="0.0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.31737775" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3858998" />
     </layout-to-restore>
   </component>
@@ -1394,7 +1371,7 @@
           <option name="timeStamp" value="126" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="127" />
+      <option name="time" value="128" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1402,104 +1379,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/mapping/Keystone.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mapping/MeshPoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/particles/Particle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1826">
-          <caret line="101" column="13" selection-end-line="106" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/particles/ParticleSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1496">
-          <caret line="77" selection-start-line="77" selection-end-line="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/particles/ParticleUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/particles/Source.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/particles/Bounds.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="33" column="3" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/start-flows.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/Blobs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="50" column="26" selection-start-line="50" selection-start-column="26" selection-end-line="50" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/particles/renderers/ParticleRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/particles/renderers/GraphParticleRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/particles/renderers/ParticleDotRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/particles/renderers/ParticleWormRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1233">
-          <caret line="78" column="24" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/renderers/BoidFlockRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/particles/renderers/ContourSpaceRenderer.java" />
     <entry file="file://$PROJECT_DIR$/src/boids/renderers/GravityFlockRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1512,27 +1391,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/renderers/VoronoiFlockRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/renderers/MeshFlockRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -1613,13 +1471,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/ColorBath.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/boids/renderers/ContourSpaceFlockRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -1629,27 +1480,6 @@
             <element signature="e#854#855#0" expanded="true" />
             <element signature="e#920#921#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/Contours.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2222">
-          <caret line="113" column="3" selection-start-line="75" selection-start-column="2" selection-end-line="113" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/ContourSpace.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1078">
-          <caret line="64" column="14" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/SceneTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1664,10 +1494,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="755">
           <caret line="74" column="9" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
-          <folding>
-            <element signature="e#2395#2396#0" expanded="true" />
-            <element signature="e#2428#2429#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1675,10 +1501,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
           <caret line="199" column="22" selection-start-line="199" selection-start-column="19" selection-end-line="199" selection-end-column="22" />
-          <folding>
-            <element signature="e#9982#9983#0" expanded="true" />
-            <element signature="e#10049#10050#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1693,10 +1515,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="274">
           <caret line="349" column="19" selection-start-line="349" selection-start-column="19" selection-end-line="349" selection-end-column="19" />
-          <folding>
-            <element signature="e#8250#8251#0" expanded="true" />
-            <element signature="e#8316#8317#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1721,9 +1539,123 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sketches/Flows.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1540">
+          <caret line="80" column="38" selection-start-line="80" selection-end-line="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/geom/Quaternion.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sketches/Contours.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2222">
+          <caret line="113" column="3" selection-start-line="75" selection-start-column="2" selection-end-line="113" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/ContourSpace.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13">
+          <caret line="69" column="14" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/core.jar!/processing/core/PShape.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="960" column="17" selection-start-line="960" selection-start-column="13" selection-end-line="960" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sketches/Contours2018.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="65" selection-start-line="65" selection-end-line="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/core.jar!/processing/core/PApplet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="5520" column="23" lean-forward="true" selection-start-line="5520" selection-start-column="23" selection-end-line="5520" selection-end-column="23" />
+          <folding>
+            <element signature="e#150283#150284#0" expanded="true" />
+            <element signature="e#150327#150328#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/core.jar!/processing/core/PGraphics.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="711" column="16" selection-start-line="711" selection-start-column="16" selection-end-line="711" selection-end-column="16" />
+          <folding>
+            <element signature="e#22365#22366#0" expanded="true" />
+            <element signature="e#22407#22408#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sketches/SceneTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sketches/Scene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="53" column="17" selection-start-line="53" selection-start-column="17" selection-end-line="53" selection-end-column="17" />
+          <folding>
+            <element signature="e#1392#1393#0" expanded="true" />
+            <element signature="e#1414#1415#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/tools/PointEmitterTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+          <folding>
+            <element signature="e#506#507#0" expanded="true" />
+            <element signature="e#538#539#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/tools/PathTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+          <folding>
+            <element signature="e#259#260#0" expanded="true" />
+            <element signature="e#284#285#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/ColorBath.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="94">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/common/color/SmoothColorTheme.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
+        <state relative-caret-position="602">
           <caret line="28" selection-start-line="28" selection-end-line="28" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1731,60 +1663,107 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/Worms.java">
+    <entry file="file://$PROJECT_DIR$/src/sketches/SpaceFiller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
-          <caret line="19" column="29" lean-forward="true" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/Scene.java">
+    <entry file="file://$PROJECT_DIR$/src/sketches/ColorBath.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="161" column="46" lean-forward="true" selection-start-line="161" selection-start-column="46" selection-end-line="161" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/Flows.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="80" column="38" selection-start-line="80" selection-end-line="81" />
+        <state relative-caret-position="514">
+          <caret line="47" column="32" lean-forward="true" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
           <folding>
-            <element signature="e#274#275#0" expanded="true" />
-            <element signature="e#303#304#0" expanded="true" />
-            <element signature="e#1808#1809#0" expanded="true" />
-            <element signature="e#1874#1875#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/geom/Quaternion.class">
+    <entry file="file://$PROJECT_DIR$/src/tools/ShapeEditor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
+        <state relative-caret-position="456">
+          <caret line="67" column="33" selection-start-line="67" selection-start-column="33" selection-end-line="67" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sketches/Blobs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="81" column="41" selection-start-line="81" selection-start-column="41" selection-end-line="81" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frag.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sketches/Tubes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="143" selection-start-line="143" selection-end-line="149" selection-end-column="3" />
+        <state relative-caret-position="486">
+          <caret line="261" column="33" lean-forward="true" selection-start-line="261" selection-start-column="33" selection-end-line="261" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/Contours2018.java">
+    <entry file="file://$PROJECT_DIR$/src/boids/renderers/BoidRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1769#1770#0" expanded="true" />
-            <element signature="e#1791#1792#0" expanded="true" />
-            <element signature="e#2129#2130#0" expanded="true" />
-            <element signature="e#2173#2174#0" expanded="true" />
-            <element signature="e#2325#2326#0" expanded="true" />
-            <element signature="e#2367#2368#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="440">
+          <caret line="25" column="55" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/renderers/PointBoidRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="19" column="26" lean-forward="true" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/renderers/BoidFlockRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="685">
+          <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sketches/Wave.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sketches/Worms.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="577">
+          <caret line="85" column="17" lean-forward="true" selection-start-line="85" selection-start-column="17" selection-end-line="85" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/renderers/MeshFlockRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="22" column="61" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boids/renderers/VoronoiFlockRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="33" column="9" lean-forward="true" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
         </state>
       </provider>
     </entry>

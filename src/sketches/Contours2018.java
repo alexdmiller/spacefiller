@@ -26,10 +26,10 @@ public class Contours2018 extends Scene {
   @Mod(min = 10, max = 100)
   public float maxRadius = 30;
 
-  @Mod(min = 0, max = 0.5f)
+  @Mod(min = 0, max = 1f)
   public float noise = 0;
 
-  @Mod(min = 0.01f, max = 0.1f)
+  @Mod(min = 0.1f, max = 0.5f)
   public float noiseScale = 1;
 
   @Mod(min = 0, max = 0.05f)
@@ -60,20 +60,16 @@ public class Contours2018 extends Scene {
   private Quaternion targetOrientation = new Quaternion();
   private float interpolationAmount = 0;
   private InterpolateStrategy interpolateStrategy = new ExponentialInterpolation(0.8f);
-  public float interpolationSpeed = 0.05f;
 
   @Override
   public void doSetup() {
-
-
-//    ortho();
     Ani.init(this);
 
     set3D();
 
     contourSpace = new ContourSpace(WIDTH + 50, HEIGHT + 50, 50);
 
-    OscRemoteControl remote = new OscRemoteControl(this, 12010);
+    OscRemoteControl remote = new OscRemoteControl(this, 12020);
     VDMXWriter.exportVDMXJson("contours-2018", remote.getTargetMap(), remote.getPort());
 
     bubbles = new ArrayList<>();
@@ -185,15 +181,23 @@ public class Contours2018 extends Scene {
   }
 
   @Mod
+  public void resetOrientation() {
+    orientation = targetOrientation;
+    targetOrientation = Quaternion.createFromEuler(0, 0, 0);
+    interpolationAmount = 0;
+    Ani.to(this, 1, "interpolationAmount", 1);
+  }
+
+  @Mod
   public void newOrientation() {
     orientation = targetOrientation;
     targetOrientation = Quaternion.createFromEuler(
-        floor(random(8)) / 8f * PI * 2,
+        0,
         floor(random(4)) / 4f * PI * 2,
-        floor(random(4)) / 4f * PI * 2);
+        floor(random(4)) / 4f * PI * 2 + PI / 4);
 
     interpolationAmount = 0;
-    Ani.to(this, 1, "interpolationAmount", 1, Ani.SINE_IN_OUT);
+    Ani.to(this, 1, "interpolationAmount", 1);
   }
 
   @Override

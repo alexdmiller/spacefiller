@@ -10,7 +10,7 @@ public class PointBoidRenderer extends BoidRenderer {
 	}
 
 	@Override
-	public void draw(PGraphics graphics) {
+	public void draw(PGraphics graphics, float t) {
 		if (boid.getTeam() == 0) {
 			graphics.point(boid.getPosition().x, boid.getPosition().y);
 		}
