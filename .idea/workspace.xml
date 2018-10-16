@@ -7,24 +7,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7bb3a9e-05bb-464d-967e-9bda287e8f0d" name="Default" comment="Worms and bound changes">
-      <change afterPath="$PROJECT_DIR$/src/sketches/ColorBath.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tools/ShapeEditor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pixel.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pixelate.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/influencer/ContourBlobs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/influencer/CubeGrid.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/influencer/InfluencerScene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/influencer/MarchingSquares.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/influencer/MarchingSquaresGlitch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/influencer/MidiState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/influencer/Rain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/influencer/Scene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/influencer/SceneContainer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/influencer/SceneHost.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/influencer/Vertical.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sketches/FlowsVida.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vert.glsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contours-2018.json" beforeDir="false" afterPath="$PROJECT_DIR$/contours-2018.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flows.json" beforeDir="false" afterPath="$PROJECT_DIR$/flows.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frag.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/frag.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/boids/renderers/BoidFlockRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boids/renderers/BoidFlockRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/boids/renderers/BoidRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boids/renderers/BoidRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/boids/renderers/MeshFlockRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boids/renderers/MeshFlockRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/boids/renderers/PointBoidRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boids/renderers/PointBoidRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/boids/renderers/VoronoiFlockRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boids/renderers/VoronoiFlockRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lab/ProjectionMapping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab/ProjectionMapping.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapping/CornerPinSurface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapping/CornerPinSurface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sketches/Blobs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Blobs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/renderers/ContourSpaceFlockRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boids/renderers/ContourSpaceFlockRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Contours.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Contours.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sketches/Contours2018.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Contours2018.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sketches/Tubes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Tubes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/worms.json" beforeDir="false" afterPath="$PROJECT_DIR$/worms.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Scene.java" afterDir="false" />
     </list>
     <ignored path="Processing.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,104 +47,31 @@
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
     <option name="GROUP_SCHEMA" value="true" />
     <option name="GROUP_CONTENTS" value="false" />
     <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Processing" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Worms.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sketches/Worms.java">
+      <file leaf-file-name="Vertical.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/influencer/Vertical.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="577">
-              <caret line="85" column="17" lean-forward="true" selection-start-line="85" selection-start-column="17" selection-end-line="85" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VoronoiFlockRenderer.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/boids/renderers/VoronoiFlockRenderer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="33" column="9" lean-forward="true" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MeshFlockRenderer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/boids/renderers/MeshFlockRenderer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="22" column="61" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="61" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BoidFlockRenderer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/boids/renderers/BoidFlockRenderer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="685">
-              <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PointBoidRenderer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/boids/renderers/PointBoidRenderer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="19" column="26" lean-forward="true" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WormBoidRenderer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Wave.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sketches/Wave.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BoidRenderer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/boids/renderers/BoidRenderer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="25" column="55" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="frag.glsl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frag.glsl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tubes.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sketches/Tubes.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="261" column="33" lean-forward="true" selection-start-line="261" selection-start-column="33" selection-end-line="261" selection-end-column="33" />
+            <state relative-caret-position="381">
+              <caret line="37" column="70" selection-start-line="37" selection-start-column="70" selection-end-line="37" selection-end-column="70" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -153,17 +82,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Sketch" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Leap&lt;</find>
-      <find>Leap</find>
-      <find>LeapMotion</find>
-      <find>Syphon</find>
-      <find>server.</find>
       <find>friction</find>
       <find>lerpColor</find>
       <find>stroke</find>
@@ -183,12 +108,17 @@
       <find>mouse</find>
       <find>debug</find>
       <find>noise</find>
-      <find>ortho</find>
       <find>tool</find>
       <find>kind</find>
       <find>println</find>
       <find>draw</find>
       <find>renderer</find>
+      <find>scene</find>
+      <find>is3D</find>
+      <find>camera</find>
+      <find>ortho</find>
+      <find>mesh</find>
+      <find>runSketch</find>
     </findStrings>
     <replaceStrings>
       <replace>size</replace>
@@ -209,23 +139,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/algoplex2/scenes/ShiftingEdgeScene.java" />
-        <option value="$PROJECT_DIR$/src/scene/Scene.java" />
-        <option value="$PROJECT_DIR$/src/scene/SceneApplet.java" />
-        <option value="$PROJECT_DIR$/src/scene/SceneList.java" />
-        <option value="$PROJECT_DIR$/src/algowave/LeapController.java" />
-        <option value="$PROJECT_DIR$/src/lab/Leap.java" />
-        <option value="$PROJECT_DIR$/src/algowave/leap/LeapController.java" />
-        <option value="$PROJECT_DIR$/src/algowave/leap/LeapMotion.java" />
-        <option value="$PROJECT_DIR$/src/scene/SceneMixer.java" />
-        <option value="$USER_HOME$/Projects/Processing Remote Control/out/artifacts/Processing_Remote_Control_jar/processing_remote_control.jar!/spacefiller/remote/signal/Ease.class" />
-        <option value="$PROJECT_DIR$/src/algowave/leap/LeapRemoteControl.java" />
-        <option value="$PROJECT_DIR$/src/algowave/PreviewCanvas.java" />
-        <option value="$PROJECT_DIR$/src/algoplex2/Algoplex2.java" />
-        <option value="$PROJECT_DIR$/src/particles/behaviors/FlockParticles.java" />
-        <option value="$PROJECT_DIR$/src/algowave/leap/LeapVisualizer.java" />
-        <option value="$PROJECT_DIR$/src/algowave/Test.java" />
-        <option value="$PROJECT_DIR$/src/mapping/ShapeMapping.java" />
         <option value="$PROJECT_DIR$/src/particles/behaviors/DonutBounds.java" />
         <option value="$PROJECT_DIR$/src/particles/Particle.java" />
         <option value="$PROJECT_DIR$/src/common/PerlinVectorField.java" />
@@ -243,12 +156,8 @@
         <option value="$PROJECT_DIR$/src/particles/renderers/ContourSpaceRenderer.java" />
         <option value="$PROJECT_DIR$/src/sketches/Worms.java" />
         <option value="$PROJECT_DIR$/src/boids/behaviors/EmitBehavior.java" />
-        <option value="$PROJECT_DIR$/src/boids/renderers/ContourSpaceFlockRenderer.java" />
-        <option value="$PROJECT_DIR$/src/sketches/Contours.java" />
         <option value="$PROJECT_DIR$/src/common/color/SmoothColorTheme.java" />
         <option value="$PROJECT_DIR$/src/sketches/Flows.java" />
-        <option value="$PROJECT_DIR$/src/sketches/Scene.java" />
-        <option value="$PROJECT_DIR$/src/sketches/Contours2018.java" />
         <option value="$PROJECT_DIR$/src/tools/ShapeEditor.java" />
         <option value="$PROJECT_DIR$/src/sketches/ColorBath.java" />
         <option value="$PROJECT_DIR$/src/sketches/Blobs.java" />
@@ -260,6 +169,27 @@
         <option value="$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java" />
         <option value="$PROJECT_DIR$/src/boids/renderers/MeshFlockRenderer.java" />
         <option value="$PROJECT_DIR$/src/boids/renderers/VoronoiFlockRenderer.java" />
+        <option value="$PROJECT_DIR$/pixelate.glsl" />
+        <option value="$PROJECT_DIR$/src/sketches/FlowsVida.java" />
+        <option value="$PROJECT_DIR$/src/sketches/Contours.java" />
+        <option value="$PROJECT_DIR$/src/boids/renderers/ContourSpaceFlockRenderer.java" />
+        <option value="$PROJECT_DIR$/src/sketches/Rain.java" />
+        <option value="$PROJECT_DIR$/src/sketches/CubeGrid.java" />
+        <option value="$PROJECT_DIR$/vert.glsl" />
+        <option value="$PROJECT_DIR$/src/sketches/Scene.java" />
+        <option value="$PROJECT_DIR$/src/influencer/MarchingSquares.java" />
+        <option value="$PROJECT_DIR$/src/influencer/MarchingSquaresGlitch.java" />
+        <option value="$PROJECT_DIR$/pixel.glsl" />
+        <option value="$PROJECT_DIR$/src/influencer/Rain.java" />
+        <option value="$PROJECT_DIR$/src/influencer/ContourBlobs.java" />
+        <option value="$PROJECT_DIR$/src/sketches/Contours2018.java" />
+        <option value="$PROJECT_DIR$/src/influencer/CubeGrid.java" />
+        <option value="$PROJECT_DIR$/src/influencer/MidiState.java" />
+        <option value="$PROJECT_DIR$/src/influencer/SceneHost.java" />
+        <option value="$PROJECT_DIR$/src/influencer/SceneContainer.java" />
+        <option value="$PROJECT_DIR$/src/influencer/InfluencerScene.java" />
+        <option value="$PROJECT_DIR$/src/influencer/Scene.java" />
+        <option value="$PROJECT_DIR$/src/influencer/Vertical.java" />
       </list>
     </option>
   </component>
@@ -272,10 +202,10 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="23" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="22" />
     <option name="width" value="1920" />
-    <option name="height" value="1053" />
+    <option name="height" value="1178" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -302,23 +232,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Processing" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Processing" type="e9137016:NonAndroidModuleNode" />
-            </path>
-            <path>
-              <item name="Processing" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Processing" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -335,7 +248,30 @@
               <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
               <item name="Processing" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="influencer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Processing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sketches" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Processing" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Processing" type="e9137016:NonAndroidModuleNode" />
+            </path>
+            <path>
+              <item name="Processing" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Processing" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
             </path>
           </expand>
           <select />
@@ -367,9 +303,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src/mapping" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="mapping" />
+      <recent name="emitter" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -377,9 +313,9 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="algowave.scenes" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="mapping" />
-      <recent name="emitter" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/mapping" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -394,7 +330,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Worms">
+  <component name="RunManager" selected="Application.Vertical">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
     </configuration>
@@ -434,6 +370,18 @@
         </pattern>
       </extension>
     </configuration>
+    <configuration name="ContourBlobs" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="influencer.ContourBlobs" />
+      <module name="Processing" />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="influencer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
     <configuration name="Contours" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="sketches.Contours" />
       <module name="Processing" />
@@ -458,6 +406,18 @@
         </pattern>
       </extension>
     </configuration>
+    <configuration name="CubeGrid" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="influencer.CubeGrid" />
+      <module name="Processing" />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="influencer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
     <configuration name="Evolve" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="lab.Evolve" />
       <module name="Processing" />
@@ -468,6 +428,15 @@
       <module name="Processing" />
       <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+    </configuration>
+    <configuration name="FlowsVida" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="sketches.FlowsVida" />
+      <module name="Processing" />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <RunnerSettings RunnerId="Debug with VisualVM">
+        <option name="visualVMId" value="261524209833295" />
+      </RunnerSettings>
     </configuration>
     <configuration name="Leap" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="lab.Leap" />
@@ -485,6 +454,30 @@
       <option name="MAIN_CLASS_NAME" value="lab.ProjectionMapping" />
       <module name="Processing" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+    </configuration>
+    <configuration name="MarchingSquares" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="influencer.MarchingSquares" />
+      <module name="Processing" />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="influencer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration name="Rain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="influencer.Rain" />
+      <module name="Processing" />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="influencer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
     </configuration>
     <configuration name="RemoteExample" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="lab.RemoteExample" />
@@ -543,6 +536,18 @@
       <module name="Processing" />
       <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+    </configuration>
+    <configuration name="Vertical" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="influencer.Vertical" />
+      <module name="Processing" />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="influencer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
     </configuration>
     <configuration name="Viztrument" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="lab.Vizstrument" />
@@ -950,6 +955,7 @@
       <item itemvalue="Application.ColorPath" />
       <item itemvalue="Application.Web" />
       <item itemvalue="Application.Flows" />
+      <item itemvalue="Application.FlowsVida" />
       <item itemvalue="Application.SpaceFiller" />
       <item itemvalue="Application.Lusio" />
       <item itemvalue="Application.Algoplex2" />
@@ -965,12 +971,19 @@
       <item itemvalue="Application.Leap" />
       <item itemvalue="Application.Algowave" />
       <item itemvalue="Application.Veins" />
+      <item itemvalue="Application.Vertical" />
+      <item itemvalue="Application.ContourBlobs" />
+      <item itemvalue="Application.MarchingSquares" />
       <item itemvalue="Application.Worms" />
       <item itemvalue="Application.Wave" />
       <item itemvalue="Application.UncertainWave" />
+      <item itemvalue="Application.Rain" />
+      <item itemvalue="Application.CubeGrid" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CubeGrid" />
+        <item itemvalue="Application.Rain" />
         <item itemvalue="Application.Worms" />
         <item itemvalue="Application.Wave" />
         <item itemvalue="Application.UncertainWave" />
@@ -1238,7 +1251,33 @@
       <workItem from="1533311627958" duration="3994000" />
       <workItem from="1533416214539" duration="780000" />
       <workItem from="1533576560048" duration="24094000" />
-      <workItem from="1533743332333" duration="9115000" />
+      <workItem from="1533743332333" duration="9711000" />
+      <workItem from="1533795209984" duration="313000" />
+      <workItem from="1533828621735" duration="1485000" />
+      <workItem from="1533958301291" duration="2783000" />
+      <workItem from="1534023619666" duration="1267000" />
+      <workItem from="1534189074081" duration="36000" />
+      <workItem from="1535169534937" duration="741000" />
+      <workItem from="1535246584007" duration="605000" />
+      <workItem from="1535662374744" duration="2029000" />
+      <workItem from="1535683619696" duration="1328000" />
+      <workItem from="1536271943803" duration="118000" />
+      <workItem from="1536683366562" duration="3701000" />
+      <workItem from="1536702434966" duration="2894000" />
+      <workItem from="1536767550079" duration="1207000" />
+      <workItem from="1537302713845" duration="257000" />
+      <workItem from="1537467588662" duration="1070000" />
+      <workItem from="1537486534453" duration="74000" />
+      <workItem from="1537677705020" duration="3715000" />
+      <workItem from="1537722727998" duration="12000" />
+      <workItem from="1537725119598" duration="6032000" />
+      <workItem from="1537989247715" duration="1830000" />
+      <workItem from="1538063000260" duration="22000" />
+      <workItem from="1539279427074" duration="23463000" />
+      <workItem from="1539324826619" duration="4328000" />
+      <workItem from="1539365198016" duration="27479000" />
+      <workItem from="1539543562994" duration="29607000" />
+      <workItem from="1539710103374" duration="2054000" />
     </task>
     <task id="LOCAL-00001" summary="Worms and bound changes">
       <created>1506356022413</created>
@@ -1251,14 +1290,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1545580000" />
+    <option name="totallyTimeSpent" value="1664626000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="1173" extended-state="6" />
+    <frame x="0" y="22" width="1920" height="1178" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5005325" side_tool="true" weight="0.49163568" />
       <window_info anchor="right" id="Maven Projects" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info id="Capture Tool" order="7" />
@@ -1271,34 +1310,35 @@
       <window_info id="UI Designer" order="3" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3858998" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.25929368" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.25598335" />
       <window_info id="Palette&#9;" order="4" />
       <window_info id="Image Layers" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.21282528" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946752" visible="true" weight="0.3293247" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3293247" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7003222" visible="true" weight="0.13258786" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3169456" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7003222" visible="true" weight="0.16719915" />
+      <window_info anchor="bottom" id="Run with VisualVM" order="12" />
       <window_info anchor="right" id="Theme Preview" order="12" />
       <window_info id="Favorites" order="6" sideWeight="0.29967776" side_tool="true" weight="0.18300654" />
+      <window_info anchor="bottom" id="Debug with VisualVM" order="12" />
+      <window_info id="Nl-Palette" order="2" />
+      <window_info anchor="right" id="Coverage" order="11" side_tool="true" visible="true" weight="0.0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" x="1540" y="-272" width="1720" height="853" id="Documentation" order="13" type="FLOATING" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Properties" order="9" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" visible="true" weight="0.0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3169456" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Data View" order="10" weight="0.32897604" />
-      <window_info id="Nl-Palette" order="2" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="right" x="1540" y="-272" width="1720" height="853" id="Documentation" order="13" type="FLOATING" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" visible="true" weight="0.0" />
-      <window_info anchor="right" id="Properties" order="9" />
-      <window_info anchor="right" id="Coverage" order="11" side_tool="true" visible="true" weight="0.0" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Designer" order="5" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Remote Host" order="4" visible="true" weight="0.0" />
-      <window_info id="Image Layers" order="5" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.21282528" />
+      <window_info anchor="right" id="Remote Host" order="4" weight="0.0" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946752" visible="true" weight="0.1748179" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="3" />
@@ -1307,27 +1347,30 @@
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5005325" side_tool="true" weight="0.49163568" />
       <window_info anchor="bottom" id="Statistic" order="10" weight="0.33054394" />
+      <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" x="1540" y="-272" width="1720" height="853" id="Documentation" order="13" type="FLOATING" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" visible="true" weight="0.0" />
-      <window_info id="Favorites" order="6" sideWeight="0.29967776" side_tool="true" weight="0.18300654" />
+      <window_info anchor="bottom" id="Run with VisualVM" order="13" />
+      <window_info anchor="right" id="Theme Preview" order="12" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="right" id="Data View" order="10" weight="0.32897604" />
       <window_info id="Nl-Palette" order="2" />
       <window_info anchor="right" id="Maven Projects" order="8" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7003222" visible="true" weight="0.13205537" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.26022306" />
-      <window_info anchor="right" id="Database" order="6" weight="0.0" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7003222" visible="true" weight="0.1656017" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.25598335" />
+      <window_info anchor="right" id="Database" order="6" visible="true" weight="0.0" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Debug with VisualVM" order="14" />
+      <window_info id="Image Layers" order="5" />
       <window_info id="Palette&#9;" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="12" />
+      <window_info id="Favorites" order="6" sideWeight="0.29967776" side_tool="true" weight="0.18300654" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24959612" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Coverage" order="11" side_tool="true" visible="true" weight="0.0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.31737775" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3169456" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3858998" />
     </layout-to-restore>
   </component>
@@ -1371,7 +1414,7 @@
           <option name="timeStamp" value="126" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="128" />
+      <option name="time" value="129" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1379,106 +1422,299 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/particles/renderers/ContourSpaceRenderer.java" />
-    <entry file="file://$PROJECT_DIR$/src/boids/renderers/GravityFlockRenderer.java">
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/Algoplex2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        <state relative-caret-position="1980">
+          <caret line="110" column="34" selection-start-line="110" selection-start-column="34" selection-end-line="110" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/renderers/DebugFlockRenderer.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/src.zip!/java/io/PrintStream.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        <state relative-caret-position="6688">
+          <caret line="333" column="16" selection-start-line="333" selection-start-column="16" selection-end-line="333" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/renderers/MeshLikeFlockRenderer.java">
+    <entry file="jar://$PROJECT_DIR$/lib/core.jar!/processing/core/PConstants.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state relative-caret-position="1870">
+          <caret line="88" column="6" selection-start-line="88" selection-start-column="6" selection-end-line="88" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/renderers/FlockRenderer.java">
+    <entry file="file://$PROJECT_DIR$/pixelate.glsl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        <state relative-caret-position="286">
+          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/particles/Source.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/particles/ParticleSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/boids/Flock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3740">
-          <caret line="196" column="20" selection-start-line="196" selection-start-column="20" selection-end-line="196" selection-end-column="20" />
+        <state relative-caret-position="88">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/behaviors/EmitBehavior.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/particles/renderers/DelaunayRenderer.java">
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/FlowScene.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+          <caret line="21" column="29" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/particles/renderers/ParticleWebRenderer.java">
+    <entry file="file://$PROJECT_DIR$/src/lusio/components/PerlinFlowComponent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        <state relative-caret-position="1232">
+          <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lightcube/SerialLightcube.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="40" column="24" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/PerlinVectorField.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/serial.jar!/processing/serial/Serial.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lightcube/Lightcube.java">
+    <entry file="file://$PROJECT_DIR$/src/lusio/components/PerlinLine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/math/noise/PerlinNoise.class">
+    <entry file="file://$PROJECT_DIR$/src/sketches/Flows.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
+        <state relative-caret-position="110">
+          <caret line="13" column="27" selection-start-line="13" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sketches/FlowsVida.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1958">
+          <caret line="104" selection-start-line="104" selection-end-line="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sketches/Worms.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="858">
+          <caret line="56" column="27" selection-start-line="56" selection-start-column="27" selection-end-line="56" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/ContourSpace.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sketches/Contours.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="20" column="2" selection-end-line="347" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/boids/renderers/ContourSpaceFlockRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+        <state relative-caret-position="42">
+          <caret line="47" column="51" selection-start-line="47" selection-start-column="51" selection-end-line="47" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/core.jar!/processing/opengl/PGraphicsOpenGL.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="2799" column="3" selection-start-line="2799" selection-start-column="3" selection-end-line="2799" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/core.jar!/processing/opengl/PGraphics3D.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="33" column="11" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/processing/ToxiclibsSupport.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="691">
+          <caret line="289" column="24" lean-forward="true" selection-start-line="262" selection-start-column="4" selection-end-line="289" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/core.jar!/processing/core/PGraphics.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="2394" column="14" selection-start-line="2394" selection-start-column="14" selection-end-line="2394" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/volume/IsoSurface.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Scene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/influencer/MarchingSquaresGlitch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+          <folding>
+            <element signature="e#362#363#0" expanded="true" />
+            <element signature="e#406#407#0" expanded="true" />
+            <element signature="e#1152#1153#0" expanded="true" />
+            <element signature="e#1214#1215#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vert.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pixel.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="40" lean-forward="true" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/math/InterpolateStrategy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sketches/Contours2018.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="200" column="46" lean-forward="true" selection-start-line="193" selection-end-line="200" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/influencer/MarchingSquares.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="43" column="22" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#854#855#0" expanded="true" />
-            <element signature="e#920#921#0" expanded="true" />
+            <element signature="e#107#108#0" expanded="true" />
+            <element signature="e#151#152#0" expanded="true" />
+            <element signature="e#307#308#0" expanded="true" />
+            <element signature="e#330#331#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sketches/ColorBath.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sketches/Blobs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sketches/Tubes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sketches/Scene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="84" column="28" lean-forward="true" selection-start-line="57" selection-end-line="84" selection-end-column="28" />
+          <folding>
+            <element signature="e#1795#1796#0" expanded="true" />
+            <element signature="e#1814#1815#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/core.jar!/processing/core/PSurface.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="61">
+          <caret line="7" column="25" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/core.jar!/processing/core/PApplet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="5108" column="24" lean-forward="true" selection-start-line="5108" selection-start-column="24" selection-end-line="5108" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/influencer/Rain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Documents/Processing3/libraries/themidibus/library/themidibus.jar!/themidibus/MidiListener.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Documents/Processing3/libraries/themidibus/library/themidibus.jar!/themidibus/MidiBus.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="568" column="7" lean-forward="true" selection-start-line="560" selection-start-column="6" selection-end-line="568" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/Syphon.jar!/codeanticode/syphon/SyphonServer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/influencer/SceneHost.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="20" column="22" lean-forward="true" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#195#196#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1490,280 +1726,104 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/color/Hue.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="755">
-          <caret line="74" column="9" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/color/ColorRange.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="199" column="22" selection-start-line="199" selection-start-column="19" selection-end-line="199" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/color/ColorGradient.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="32" column="19" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/color/ColorList.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="349" column="19" selection-start-line="349" selection-start-column="19" selection-end-line="349" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algoplex2/AlgoplexController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/color/ColorTheme.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Documents/Processing3/libraries/Ani/library/Ani.jar!/de/looksgood/ani/Ani.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/Flows.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1540">
-          <caret line="80" column="38" selection-start-line="80" selection-end-line="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/geom/Quaternion.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/Contours.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2222">
-          <caret line="113" column="3" selection-start-line="75" selection-start-column="2" selection-end-line="113" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/ContourSpace.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13">
-          <caret line="69" column="14" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/core.jar!/processing/core/PShape.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="960" column="17" selection-start-line="960" selection-start-column="13" selection-end-line="960" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/Contours2018.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="65" selection-start-line="65" selection-end-line="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/core.jar!/processing/core/PApplet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="5520" column="23" lean-forward="true" selection-start-line="5520" selection-start-column="23" selection-end-line="5520" selection-end-column="23" />
-          <folding>
-            <element signature="e#150283#150284#0" expanded="true" />
-            <element signature="e#150327#150328#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/core.jar!/processing/core/PGraphics.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="711" column="16" selection-start-line="711" selection-start-column="16" selection-end-line="711" selection-end-column="16" />
-          <folding>
-            <element signature="e#22365#22366#0" expanded="true" />
-            <element signature="e#22407#22408#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/SceneTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/Scene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="53" column="17" selection-start-line="53" selection-start-column="17" selection-end-line="53" selection-end-column="17" />
-          <folding>
-            <element signature="e#1392#1393#0" expanded="true" />
-            <element signature="e#1414#1415#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/tools/PointEmitterTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
-          <folding>
-            <element signature="e#506#507#0" expanded="true" />
-            <element signature="e#538#539#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/tools/PathTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-          <folding>
-            <element signature="e#259#260#0" expanded="true" />
-            <element signature="e#284#285#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/ColorBath.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/color/SmoothColorTheme.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="602">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/SpaceFiller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/ColorBath.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="47" column="32" lean-forward="true" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tools/ShapeEditor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="67" column="33" selection-start-line="67" selection-start-column="33" selection-end-line="67" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/Blobs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="81" column="41" selection-start-line="81" selection-start-column="41" selection-end-line="81" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frag.glsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/Tubes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="261" column="33" lean-forward="true" selection-start-line="261" selection-start-column="33" selection-end-line="261" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/renderers/BoidRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="25" column="55" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/renderers/PointBoidRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="19" column="26" lean-forward="true" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/renderers/BoidFlockRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="685">
-          <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/Wave.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/Worms.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="577">
-          <caret line="85" column="17" lean-forward="true" selection-start-line="85" selection-start-column="17" selection-end-line="85" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/renderers/MeshFlockRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="22" column="61" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/renderers/VoronoiFlockRenderer.java">
+    <entry file="jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/processing_remote_control_jar/processing_remote_control.jar!/spacefiller/remote/MidiRemoteControl.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
-          <caret line="33" column="9" lean-forward="true" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
+          <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/influencer/Scene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#404#405#0" expanded="true" />
+            <element signature="e#451#452#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/influencer/ContourBlobs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="143" selection-start-line="143" selection-end-line="143" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/influencer/InfluencerScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/influencer/MidiState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="634">
+          <caret line="41" column="32" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/influencer/CubeGrid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="634">
+          <caret line="46" column="30" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/influencer/SceneContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/processing_remote_control_jar/processing_remote_control.jar!/spacefiller/remote/signal/SignalUpdater.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="73" column="9" lean-forward="true" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/processing_remote_control_jar/processing_remote_control.jar!/spacefiller/remote/signal/Ease.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/processing_remote_control_jar/processing_remote_control.jar!/spacefiller/remote/signal/DataReceiver.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="94" column="26" selection-start-line="94" selection-start-column="26" selection-end-line="94" selection-end-column="26" />
+          <folding>
+            <element signature="e#1985#1986#0" expanded="true" />
+            <element signature="e#2033#2034#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/influencer/Vertical.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="37" column="70" selection-start-line="37" selection-start-column="70" selection-end-line="37" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

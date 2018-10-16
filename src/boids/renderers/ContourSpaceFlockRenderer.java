@@ -6,6 +6,7 @@ import processing.core.PGraphics;
 import processing.core.PVector;
 import spacefiller.ContourSpace;
 import spacefiller.LineSegment;
+import spacefiller.Vector;
 import spacefiller.remote.Mod;
 
 import java.util.List;
@@ -43,7 +44,8 @@ public class ContourSpaceFlockRenderer extends FlockRenderer {
     List<Boid> boids = flock.getBoids();
     PVector offset = new PVector(width / 2, height / 2);
     for (Boid b : boids) {
-      contourSpace.addMetaBall(PVector.add(b.getPosition(), offset), boidRadius, 1);
+      PVector v = PVector.add(b.getPosition(), offset);
+      contourSpace.addMetaBall(new Vector(v.x, v.y), boidRadius, 1);
     }
 
     contourSpace.clearLineSegments();

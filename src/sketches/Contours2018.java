@@ -8,6 +8,7 @@ import processing.core.PGraphics;
 import processing.core.PVector;
 import spacefiller.ContourSpace;
 import spacefiller.LineSegment;
+import spacefiller.Vector;
 import spacefiller.remote.Mod;
 import spacefiller.remote.OscRemoteControl;
 import spacefiller.remote.VDMXWriter;
@@ -149,7 +150,7 @@ public class Contours2018 extends Scene {
     contourSpace.clearLineSegments();
 
     for (Bubble b : bubbles) {
-      contourSpace.addMetaBall(b.position, b.radius * maxRadius, 1);
+      contourSpace.addMetaBall(new Vector(b.position.x, b.position.y), b.radius * maxRadius, 1);
     }
 
     contourSpace.addNoise(noiseScale, noise, noisePosition);

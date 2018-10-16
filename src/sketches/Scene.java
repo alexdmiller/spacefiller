@@ -137,14 +137,6 @@ public class Scene extends PApplet {
 		pushMatrix();
 		translate(width / 2, height - 20);
 		noStroke();
-		if (playing) {
-			fill(0, 255, 0);
-			triangle(-10, -10, 10, 0, -10, 10);
-		} else {
-			fill(255, 0, 0);
-			rectMode(CORNER);
-			rect(-10, -10, 20, 20);
-		}
 		popMatrix();
 
 		server.sendImage(canvas);
@@ -195,4 +187,8 @@ public class Scene extends PApplet {
 	}
 
 	protected void doKeyPressed() {}
+
+	public PGraphics getCanvas() {
+		return canvas;
+	}
 }
