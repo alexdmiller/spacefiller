@@ -115,8 +115,10 @@ public class Worms extends Scene implements EntityEventListener {
 
 		loadSave();
 
-		OscRemoteControl remote = new OscRemoteControl(this, 12002);
-		VDMXWriter.exportVDMXJson("worms", remote.getTargetMap(), remote.getPort());
+		OscRemoteControl remote = new OscRemoteControl(12002);
+		remote.autoRoute(this);
+		System.out.println(remote.availableAddresses());
+		// VDMXWriter.exportVDMXJson("worms", remote.getTargetNodes(), remote.getPort());
 	}
 
 	@Mod(min = 0, max = 9)

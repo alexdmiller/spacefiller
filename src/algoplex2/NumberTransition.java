@@ -1,12 +1,13 @@
 package algoplex2;
 
-import graph.Edge;
-import graph.Graph;
-import graph.Node;
-import graph.renderer.AnimatedFillGraphRenderer;
-import graph.renderer.BasicGraphRenderer;
-import graph.renderer.GraphRenderer;
+import spacefiller.graph.Edge;
+import spacefiller.graph.Graph;
+import spacefiller.graph.Node;
+import spacefiller.graph.renderer.AnimatedFillGraphRenderer;
+import spacefiller.graph.renderer.BasicGraphRenderer;
+import spacefiller.graph.renderer.GraphRenderer;
 import processing.core.PGraphics;
+import spacefiller.mapping.Grid;
 
 /**
  * Created by miller on 10/9/17.

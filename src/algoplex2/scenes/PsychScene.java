@@ -1,9 +1,6 @@
 package algoplex2.scenes;
 
-import algoplex2.Algoplex2;
-import algoplex2.Grid;
-import algoplex2.Quad;
-import graph.Node;
+import spacefiller.mapping.Quad;
 import spacefiller.remote.Mod;
 import processing.core.PConstants;
 import processing.core.PGraphics;

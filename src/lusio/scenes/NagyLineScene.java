@@ -1,10 +1,10 @@
 package lusio.scenes;
 
-import graph.*;
-import graph.renderer.AnimatedFillGraphRenderer;
-import graph.renderer.DottedLineGraphRenderer;
-import graph.renderer.PipeGraphRenderer;
-import graph.renderer.SinGraphRenderer;
+import spacefiller.graph.*;
+import spacefiller.graph.renderer.AnimatedFillGraphRenderer;
+import spacefiller.graph.renderer.DottedLineGraphRenderer;
+import spacefiller.graph.renderer.PipeGraphRenderer;
+import spacefiller.graph.renderer.SinGraphRenderer;
 import lusio.Lusio;
 import lusio.components.GraphComponent;
 import processing.core.PGraphics;

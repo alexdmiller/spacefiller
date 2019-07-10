@@ -1,7 +1,7 @@
 package sketches;
 
 import codeanticode.syphon.SyphonServer;
-import common.color.SmoothColorTheme;
+import spacefiller.color.SmoothColorTheme;
 import processing.core.PApplet;
 import processing.opengl.PGraphicsOpenGL;
 import processing.opengl.PJOGL;
@@ -67,7 +67,6 @@ public class FlowsVida extends PApplet {
 
   @Mod(min = 0, max = 0.1f)
   public float colorSpeed = 0.01f;
-
 
   float timeStep;
   float scramble = 0;

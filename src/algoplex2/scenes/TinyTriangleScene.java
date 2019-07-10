@@ -1,19 +1,12 @@
 package algoplex2.scenes;
 
-import algoplex2.Algoplex2;
-import algoplex2.Quad;
-import graph.*;
-import processing.core.PConstants;
 import processing.core.PVector;
+import spacefiller.mapping.Quad;
 import spacefiller.remote.Mod;
 import processing.core.PGraphics;
 import toxi.color.ReadonlyTColor;
 import toxi.color.TColor;
 import toxi.math.noise.PerlinNoise;
-
-import static processing.core.PConstants.BLEND;
-import static processing.core.PConstants.P2D;
-import static processing.core.PConstants.P3D;
 
 public class TinyTriangleScene extends GridScene {
   private float t = 0;

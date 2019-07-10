@@ -1,16 +1,11 @@
 package algoplex2.scenes;
 
-import algoplex2.Grid;
-import algoplex2.Quad;
-import graph.*;
+import spacefiller.mapping.Grid;
 import spacefiller.remote.Mod;
 import processing.core.PGraphics;
 import toxi.math.noise.PerlinNoise;
 import toxi.sim.automata.CAMatrix;
-import toxi.sim.automata.CARule;
 import toxi.sim.automata.CARule2D;
-
-import java.util.Arrays;
 
 public class LifeScene extends GridScene {
   private float t = 0;

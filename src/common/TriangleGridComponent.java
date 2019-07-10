@@ -1,12 +1,11 @@
 package common;
 
-import algoplex2.Grid;
-import algoplex2.Quad;
-import graph.Node;
 import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PGraphics;
 import scene.SceneComponent;
+import spacefiller.mapping.Grid;
+import spacefiller.mapping.Quad;
 import spacefiller.remote.Mod;
 
 import java.util.Arrays;
@@ -107,27 +106,27 @@ public class TriangleGridComponent extends SceneComponent {
     graphics.noFill();
 
     int quadIndex = 0;
-    for (Quad quad : grid.getSquares()) {
-      float row = quadIndex / grid.getColumns() - grid.getRows() / 2f;
-      float col = quadIndex % grid.getColumns() - grid.getColumns() / 2f;
-
-      int triangleIndex = 0;
-      for (Node[] triangle : quad.getTriangles()) {
-        float v = (float) ((Math.sin(
-            row * yMod + col * xMod +
-                triangleIndex / 4f * Math.PI * 2 * triangleMod
-                + shift) + 1) / 2);
-
-
-        graphics.fill(graphics.lerpColor(color1, color2, v));
-        graphics.triangle(
-            triangle[0].position.x, triangle[0].position.y,
-            triangle[1].position.x, triangle[1].position.y,
-            triangle[2].position.x, triangle[2].position.y);
-        triangleIndex++;
-      }
-
-      quadIndex++;
-    }
+//    for (Quad quad : grid.getSquares()) {
+//      float row = quadIndex / grid.getColumns() - grid.getRows() / 2f;
+//      float col = quadIndex % grid.getColumns() - grid.getColumns() / 2f;
+//
+//      int triangleIndex = 0;
+//      for (Node[] triangle : quad.getTriangles()) {
+//        float v = (float) ((Math.sin(
+//            row * yMod + col * xMod +
+//                triangleIndex / 4f * Math.PI * 2 * triangleMod
+//                + shift) + 1) / 2);
+//
+//
+//        graphics.fill(graphics.lerpColor(color1, color2, v));
+//        graphics.triangle(
+//            triangle[0].position.x, triangle[0].position.y,
+//            triangle[1].position.x, triangle[1].position.y,
+//            triangle[2].position.x, triangle[2].position.y);
+//        triangleIndex++;
+//      }
+//
+//      quadIndex++;
+//    }
   }
 }

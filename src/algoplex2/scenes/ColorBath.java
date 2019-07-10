@@ -1,15 +1,9 @@
 package algoplex2.scenes;
 
-import algoplex2.Quad;
-import graph.*;
 import spacefiller.remote.Mod;
 import processing.core.PGraphics;
-import toxi.color.ColorList;
-import toxi.color.ColorRange;
 import toxi.color.ReadonlyTColor;
 import toxi.color.TColor;
-import toxi.color.theory.ColorTheoryRegistry;
-import toxi.color.theory.ColorTheoryStrategy;
 import toxi.math.noise.PerlinNoise;
 
 public class ColorBath extends GridScene {

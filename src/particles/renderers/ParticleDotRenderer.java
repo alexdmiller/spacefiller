@@ -1,7 +1,7 @@
 package particles.renderers;
 
-import common.color.ColorProvider;
-import common.color.ConstantColorProvider;
+import spacefiller.color.ColorProvider;
+import spacefiller.color.ConstantColorProvider;
 import particles.Particle;
 import processing.core.PGraphics;
 

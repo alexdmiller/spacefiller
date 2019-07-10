@@ -1,14 +1,14 @@
 package lusio;
 
-import common.color.ColorProvider;
-import common.color.TwoColorProvider;
+import spacefiller.color.ColorProvider;
+import spacefiller.color.TwoColorProvider;
 import controlP5.ControlEvent;
 import controlP5.ControlP5;
 import controlP5.DropdownList;
 import controlP5.Textfield;
-import graph.renderer.BasicGraphRenderer;
-import graph.Graph;
-import graph.Node;
+import spacefiller.graph.renderer.BasicGraphRenderer;
+import spacefiller.graph.Graph;
+import spacefiller.graph.Node;
 import lightcube.Lightcube;
 import lusio.scenes.*;
 import processing.core.PGraphics;

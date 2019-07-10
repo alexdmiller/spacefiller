@@ -1,7 +1,7 @@
 package sketches;
 
 import codeanticode.syphon.SyphonServer;
-import common.color.SmoothColorTheme;
+import spacefiller.color.SmoothColorTheme;
 import processing.core.PApplet;
 import processing.opengl.PJOGL;
 import processing.opengl.PShader;
@@ -61,8 +61,8 @@ public class Blobs extends PApplet {
   public void setup() {
     server = new SyphonServer(this, "Blobs");
 
-    OscRemoteControl remote = new OscRemoteControl(this, 12011);
-    VDMXWriter.exportVDMXJson("blobs", remote.getTargetMap(), remote.getPort());
+//    OscRemoteControl remote = new OscRemoteControl(this, 12011);
+//    VDMXWriter.exportVDMXJson("blobs", remote.getTargetMap(), remote.getPort());
 
     shader = loadShader("frag.glsl");
 

@@ -1,6 +1,5 @@
 package common;
 
-import algoplex2.Algoplex2;
 import processing.core.PVector;
 import toxi.math.noise.PerlinNoise;
 

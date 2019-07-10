@@ -1,189 +1,98 @@
 package influencer;
 
 import de.looksgood.ani.Ani;
-import processing.core.PGraphics;
-import sketches.Scene;
-import themidibus.MidiBus;
-import themidibus.MidiListener;
-import toxi.geom.Quaternion;
-import toxi.math.ExponentialInterpolation;
-import toxi.math.InterpolateStrategy;
+import spacefiller.remote.signal.FloatNode;
+import spacefiller.remote.signal.IntNode;
 
-public class CubeGrid extends Scene implements MidiListener {
-  private float fadeSpeed = 0.07f;
-
+public class CubeGrid extends InfluencerScene {
   public static void main(String[] args) {
-    main("influencer.CubeGrid");
+    SceneHost.getInstance().start(new CubeGrid());
   }
 
-  MidiBus myBus;
-  float[] notes;
-  float[] drums;
-  float[] controllers;
+  private IntNode rowsIn = mainSlider.scale(1, 11).toInt();
+  private IntNode colsIn = mainSlider.scale(1, 11).toInt();
+  private FloatNode camX = mainSlider.scale(0, 500).smooth(0.1f).toFloat();
+  private FloatNode camY = control.controller(14).scale(0, 1000).smooth(0.1f).toFloat();
+  private FloatNode camZ = control.controller(15).scale(0, 1000).smooth(0.1f).toFloat();
 
-  int rows = 10;
-  int cols = 10;
-  float cellSize = 50;
-
-  private Quaternion orientation = new Quaternion();
-  private Quaternion targetOrientation = new Quaternion();
-  private float interpolationAmount = 0;
-  private InterpolateStrategy interpolateStrategy = new ExponentialInterpolation(0.8f);
+  private float cellSize = 50;
 
   @Override
-  protected void doSetup() {
-    println(MidiBus.availableInputs());
-
-    myBus = new MidiBus(this, "UM-ONE", "UM-ONE");
-    notes = new float[127];
-    drums = new float[127];
-    controllers = new float[127];
-
+  public void setup() {
     Ani.init(this);
   }
 
-  public void controllerChange(int channel, int controller, int value) {
-    println(controller);
-    if (controllers != null) {
-      controllers[controller] = value / 127f;
-    }
-  }
-
-
-  public void noteOn(int channel, int pitch, int velocity) {
-    if (notes != null) {
-      if (channel == 0) {
-        drums[pitch % notes.length] = 1;
-      } else {
-        notes[pitch % notes.length] = 1;
-      }
-    }
-
-  }
-
-  public void noteOff(int channel, int pitch, int velocity) {
-//    notes[pitch % notes.length] = false;
+  @Override
+  public void mousePressed() {
+    // Ani.to(this, 1, "interpolationAmount", 1);
   }
 
   @Override
-  protected void doMouseDown(float x, float y) {
-    orientation = targetOrientation;
-    targetOrientation = Quaternion.createFromEuler(
-        0,
-        floor(random(4)) / 4f * PI * 2,
-        floor(random(4)) / 4f * PI * 2 + PI / 4);
+  public void draw() {
+    background(0);
+    ortho();
 
-    interpolationAmount = 0;
-    Ani.to(this, 1, "interpolationAmount", 1);
-  }
+    int rows = rowsIn.get();
+    int cols = colsIn.get();
+    float gridWidth = cols * cellSize;
+    float gridHeight = rows * cellSize;
 
-  @Override
-  protected void drawCanvas(PGraphics graphics, float mouseX, float mouseY) {
-    rows = (int) (controllers[48] * 10 + 1);
-    cols = (int) (controllers[48] * 10 + 1);
+    camera(-camX.get(), -camY.get(), camZ.get(), 0, 0, 0, 0, 1, 0);
+    scale(2f);
 
-    Quaternion current = orientation;
+    translate(-gridWidth / 2f, -gridHeight / 2f);
 
-    if (!orientation.equals(targetOrientation)) {
-      if (interpolationAmount < 1) {
-        current = orientation.interpolateTo(targetOrientation, interpolationAmount, interpolateStrategy);
-      }
+    noFill();
+    stroke(100);
+    strokeWeight(2);
+    pushMatrix();
 
-      if (interpolationAmount >= 1) {
-        interpolationAmount = 0;
-        orientation = targetOrientation;
-        current = orientation;
-      }
-    }
+    float kick = kickDecay.get();
+    float snare = snareDecay.get();
 
-    //graphics.camera((cols * cellSize)/2f, (rows*cellSize)/2f, 100, (cols * cellSize)/2f, (rows*cellSize)/2f, 0, 0, 0, -1);
-    graphics.translate(-(cols * cellSize)/2f, -(rows*cellSize)/2f);
-//    graphics.rotateX((controllers[48]) * PI/10f);
-//    graphics.rotateY((controllers[48]) * PI/10f);
+    translate(0, 0, + 50 + kick * 30);
 
-    float[] axis = current.toAxisAngle();
-    graphics.rotate(axis[0], axis[1], axis[2], axis[3]);
-    graphics.translate((cols * cellSize)/2f, (rows*cellSize)/2f);
-
-//
-//    graphics.scale(2);
-//
-    graphics.ortho();
-
-    graphics.background(0);
-    graphics.noFill();
-    graphics.stroke(255);
-
-
-//    graphics.translate((cols * cellSize)/2f, (cols * cellSize)/2f);
-//    graphics.rotateZ(frameCount / 200f);
-//    graphics.translate(-(cols * cellSize)/2f, -(cols * cellSize)/2f);
-
-
-    graphics.stroke(100);
-    graphics.strokeWeight(2);
-    graphics.pushMatrix();
-
-    graphics.translate(0, 0, +50 + drums[48] * 30);
-
-    if (drums[50] > 0) {
-      graphics.stroke(lerpColor(color(255), color(0, 255, 255), drums[50]));
-    } else if (drums[48] > 0) {
-      graphics.stroke(lerpColor(color(255), color(255, 0, 255), drums[48]));
+    int strokeColor;
+    if (snare > 0) {
+      strokeColor = lerpColor(color(255), color(0, 255, 255), snare);
+    } else if (kick > 0) {
+      strokeColor = lerpColor(color(255), color(255, 0, 255), kick);
     } else {
-      graphics.stroke(255);
+      strokeColor = color(255);
     }
 
+    stroke(strokeColor);
     for (int x = 0; x <= cols; x++) {
-      graphics.line(x * cellSize, 0, x * cellSize, rows * cellSize);
+      line(x * cellSize, 0, x * cellSize, rows * cellSize);
     }
 
     for (int y = 0; y <= rows; y++) {
-      graphics.line(0, y * cellSize, cols * cellSize, y * cellSize);
+      line(0, y * cellSize, cols * cellSize, y * cellSize);
     }
 
-    graphics.popMatrix();
+    popMatrix();
 
-    graphics.stroke(255);
-    graphics.strokeWeight(2);
-    graphics.fill(0);
+    stroke(255);
+    strokeWeight(2);
+    fill(0);
 
-    graphics.translate(0, 0, -100 - drums[48] * 30);
+    translate(0, 0, -100 - kick * 30);
 
-    if (drums[50] > 0) {
-      graphics.stroke(lerpColor(color(255), color(0, 255, 255), drums[50]));
-    } else if (drums[48] > 0) {
-      graphics.stroke(lerpColor(color(255), color(255, 0, 255), drums[48]));
-    } else {
-      graphics.stroke(255);
-    }
+    stroke(strokeColor);
 
+    float[] notes = decayedNotes.getArray();
     for (int i = 0; i < notes.length; i++) {
-      graphics.pushMatrix();
+      pushMatrix();
 
       int c = i % (cols*rows);
       int x = c % cols;
       int y = c / cols;
 
-      graphics.fill(255 * notes[i]);
+      fill(255 * notes[i]);
       float height = notes[i] * notes[i] * cellSize * 2;
-      graphics.translate(x * cellSize + cellSize/2, y * cellSize + cellSize/2, height/2);
-      graphics.box(cellSize, cellSize, height);
-      graphics.popMatrix();
-
-      if (notes[i] > 0) {
-        notes[i] -= fadeSpeed;
-      }
+      translate(x * cellSize + cellSize/2, y * cellSize + cellSize/2, height/2);
+      box(cellSize, cellSize, height);
+      popMatrix();
     }
-
-    for (int i = 0; i < drums.length; i++) {
-
-
-      if (drums[i] > 0) {
-        drums[i] -= fadeSpeed;
-      }
-    }
-
-    //camera();
   }
 }

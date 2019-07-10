@@ -1,6 +1,6 @@
 package lusio.scenes;
 
-import graph.Graph;
+import spacefiller.graph.Graph;
 import lightcube.Lightcube;
 import scene.Scene;
 

@@ -1,6 +1,6 @@
 package sketches;
 
-import common.color.SmoothColorTheme;
+import spacefiller.color.SmoothColorTheme;
 import de.looksgood.ani.Ani;
 import de.looksgood.ani.AniSequence;
 import processing.core.PApplet;
@@ -70,8 +70,8 @@ public class Contours2018 extends Scene {
 
     contourSpace = new ContourSpace(WIDTH + 50, HEIGHT + 50, 50);
 
-    OscRemoteControl remote = new OscRemoteControl(this, 12020);
-    VDMXWriter.exportVDMXJson("contours-2018", remote.getTargetMap(), remote.getPort());
+//    OscRemoteControl remote = new OscRemoteControl(this, 12020);
+//    VDMXWriter.exportVDMXJson("contours-2018", remote.getTargetMap(), remote.getPort());
 
     bubbles = new ArrayList<>();
 

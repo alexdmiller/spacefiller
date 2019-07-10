@@ -1,9 +1,9 @@
 package algoplex2.scenes;
 
-import algoplex2.Grid;
-import common.color.ConstantColorProvider;
+import spacefiller.color.ConstantColorProvider;
 import lusio.components.PerlinFlowComponent;
 import particles.Bounds;
+import spacefiller.mapping.Grid;
 import spacefiller.remote.Mod;
 import processing.core.PGraphics;
 

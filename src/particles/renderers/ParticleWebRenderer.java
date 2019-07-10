@@ -1,12 +1,9 @@
 package particles.renderers;
 
-import common.color.ConstantColorProvider;
-import lusio.Lusio;
+import spacefiller.color.ConstantColorProvider;
 import particles.Particle;
 import processing.core.PGraphics;
 import spacefiller.remote.Mod;
-
-import java.util.List;
 
 /**
  * Created by miller on 7/12/17.

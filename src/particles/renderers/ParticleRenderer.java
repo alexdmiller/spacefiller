@@ -1,6 +1,6 @@
 package particles.renderers;
 
-import common.color.ColorProvider;
+import spacefiller.color.ColorProvider;
 import particles.Particle;
 import particles.ParticleEventListener;
 import processing.core.PGraphics;

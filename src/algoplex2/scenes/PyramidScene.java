@@ -1,12 +1,8 @@
 package algoplex2.scenes;
 
-import algoplex2.Algoplex2;
-import algoplex2.Grid;
-import algoplex2.Quad;
-import graph.Node;
-import processing.core.PConstants;
 import processing.core.PGraphics;
 import processing.core.PVector;
+import spacefiller.mapping.Quad;
 import spacefiller.remote.Mod;
 
 public class PyramidScene extends GridScene {

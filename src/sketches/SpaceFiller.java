@@ -50,7 +50,8 @@ public class SpaceFiller extends Scene {
 
 	@Override
 	public void doSetup() {
-		new OscRemoteControl(this, 8888);
+
+		//new OscRemoteControl(this, 8888);
 	}
 
 	@Override

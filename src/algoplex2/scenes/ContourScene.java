@@ -1,12 +1,10 @@
 package algoplex2.scenes;
 
-import algoplex2.Grid;
 import common.components.ContourComponent;
+import spacefiller.mapping.Grid;
 import spacefiller.remote.Mod;
 import particles.Bounds;
 import processing.core.PGraphics;
-import toxi.color.ReadonlyTColor;
-import toxi.color.TColor;
 import toxi.geom.Quaternion;
 
 public class ContourScene extends GridScene {

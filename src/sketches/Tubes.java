@@ -1,6 +1,6 @@
 package sketches;
 
-import common.color.SmoothColorTheme;
+import spacefiller.color.SmoothColorTheme;
 import lab.Flock;
 import processing.core.PGraphics;
 import spacefiller.remote.Mod;
@@ -81,9 +81,11 @@ public class Tubes extends Scene {
     flock = new Flock(0, 0, 1, 0, 0, 200, 10, 10);
 
     theme = new SmoothColorTheme(ColorRange.BRIGHT, 10, 200);
+    // theme = new Sm
 
-    OscRemoteControl remote = new OscRemoteControl(this, 12010);
-    VDMXWriter.exportVDMXJson("tubes", remote.getTargetMap(), 12010);
+    OscRemoteControl remote = new OscRemoteControl(12010);
+    remote.autoRoute(this);
+    // VDMXWriter.exportVDMXJson("tubes", remote.getTargetNodes(), 12010);
   }
 
   private void separate(List<VerletParticle3D> particles) {

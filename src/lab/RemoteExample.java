@@ -42,8 +42,8 @@ public class RemoteExample extends PApplet {
   }
 
   public void setup() {
-    OscRemoteControl remote = new OscRemoteControl(this, 10008);
-    VDMXWriter.exportVDMXJson("remote", remote.getTargetMap(), 10008);
+//    OscRemoteControl remote = new OscRemoteControl(this, 10008);
+//    VDMXWriter.exportVDMXJson("remote", remote.getTargetMap(), 10008);
   }
 
   public void draw() {

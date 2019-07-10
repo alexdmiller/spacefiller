@@ -1,6 +1,6 @@
 package lusio.scenes;
 
-import graph.renderer.DottedLineGraphRenderer;
+import spacefiller.graph.renderer.DottedLineGraphRenderer;
 import lusio.Lusio;
 import lusio.components.ParticleComponent;
 import particles.Bounds;

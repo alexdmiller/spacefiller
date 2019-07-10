@@ -59,7 +59,7 @@ public class Web extends Scene {
 
 	@Override
 	public void doSetup() {
-		new OscRemoteControl(this, 12003);
+		// new OscRemoteControl(this, 12003);
 		particles = new ArrayList<>();
 
 		for (int i = 0; i < NUM_PARTICLES; i++) {

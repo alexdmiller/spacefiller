@@ -1,6 +1,6 @@
 package sketches;
 
-import common.color.SmoothColorTheme;
+import spacefiller.color.SmoothColorTheme;
 import de.looksgood.ani.Ani;
 import processing.core.PGraphics;
 import processing.core.PShape;
@@ -32,8 +32,8 @@ public class ColorBath extends Scene {
 
     addSceneTool(new ShapeEditor(shapes, this));
 
-    OscRemoteControl remote = new OscRemoteControl(this, 12021);
-    VDMXWriter.exportVDMXJson("color-bath", remote.getTargetMap(), remote.getPort());
+//    OscRemoteControl remote = new OscRemoteControl(this, 12021);
+//    VDMXWriter.exportVDMXJson("color-bath", remote.getTargetMap(), remote.getPort());
   }
 
   @Override

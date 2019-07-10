@@ -1,7 +1,7 @@
 package algoplex2;
 
-import graph.Edge;
-import graph.Node;
+import spacefiller.graph.Edge;
+import spacefiller.graph.Node;
 import processing.core.*;
 
 import javax.media.jai.PerspectiveTransform;
@@ -63,6 +63,7 @@ public class GraphTransformer implements Serializable {
       graphics.line(e.n1.position.x, e.n1.position.y, e.n2.position.x, e.n2.position.y);
     }
   }
+
 
   public void mouseDown(float mouseX, float mouseY) {
     PVector mouse = new PVector(mouseX, mouseY);
@@ -162,10 +163,6 @@ public class GraphTransformer implements Serializable {
 
   private void makeGraphCopy() {
     preTransformGrid = new Grid();
-
-    preTransformGrid.setCellSize(postTransformGrid.getCellSize());
-    preTransformGrid.setColumns(postTransformGrid.getColumns());
-    preTransformGrid.setRows(postTransformGrid.getRows());
 
     for (Node postNode : postTransformGrid.getNodes()) {
       Node preNode = preTransformGrid.createNode(postNode.position.x, postNode.position.y);

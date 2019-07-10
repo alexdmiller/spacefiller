@@ -13,10 +13,11 @@ import processing.core.PVector;
 import java.util.List;
 
 public class RepelFixedPoints extends ParticleBehavior {
+
   @Mod(min = 0, max = 200)
   public float repelThreshold;
 
-  @Mod(min = -0.1f, max = 0.1f)
+  @Mod(min = -0.01f, max = 0.01f)
   public float repelStrength;
 
   private List<PVector> fixedPoints;

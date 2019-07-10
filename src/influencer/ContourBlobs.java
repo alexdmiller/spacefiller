@@ -1,24 +1,15 @@
 package influencer;
 
-import processing.core.PApplet;
 import processing.core.PGraphics;
 import processing.core.PVector;
-import processing.opengl.PGraphicsOpenGL;
 import processing.opengl.PShader;
-import sketches.Scene;
-import spacefiller.particles.Particle;
-import spacefiller.particles.ParticleSystem;
-import themidibus.MidiBus;
-import themidibus.MidiListener;
-import com.jogamp.opengl.GL;
-import com.jogamp.opengl.GL2ES2;
+import spacefiller.remote.signal.FloatNode;
 import toxi.geom.Vec3D;
 import toxi.geom.mesh.Face;
 import toxi.geom.mesh.Mesh3D;
 import toxi.geom.mesh.TriangleMesh;
 import toxi.math.noise.SimplexNoise;
 import toxi.processing.ToxiclibsSupport;
-import toxi.volume.ArrayIsoSurface;
 import toxi.volume.HashIsoSurface;
 import toxi.volume.IsoSurface;
 import toxi.volume.VolumetricSpaceArray;
@@ -30,18 +21,19 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class ContourBlobs extends Scene implements MidiListener {
-  private float fadeSpeed = 0.05f;
-
+public class ContourBlobs extends InfluencerScene {
   public static void main(String[] args) {
-    main("influencer.ContourBlobs");
+    SceneHost.getInstance().start(new ContourBlobs());
   }
 
-  MidiBus myBus;
-  float[] notes;
-  float[] controllers;
+  private FloatNode noiseSize = control.controller(14).scale(1f, 3f).smooth(0.02f).toFloat();
+  private FloatNode morph = mainSlider.smooth(0.1f).toFloat();
+  private FloatNode smoothKick = kickDecay.smooth(0.5f).toFloat();
+  private FloatNode orientation = control.controller(15).smooth(0.05f).toFloat();
+  private FloatNode rotationSpeed = control.controller(16).scale(0, 0.3f).smooth(0.1f).toFloat();
 
-  PShader shader;
+  private PShader shader;
+  private float rotation;
 
   static int DIMX=32;
   static int DIMY=32;
@@ -51,9 +43,6 @@ public class ContourBlobs extends Scene implements MidiListener {
   float NS=0.03f;
   Vec3D SCALE=new Vec3D(1,1,1).scaleSelf(1000);
 
-  boolean isWireframe=false;
-  float currScale=1;
-
   VolumetricSpaceArray volume=new VolumetricSpaceArray(SCALE,DIMX,DIMY,DIMZ);
   IsoSurface surface = new HashIsoSurface(volume);
 
@@ -62,30 +51,11 @@ public class ContourBlobs extends Scene implements MidiListener {
   ExecutorService pool;
 
   @Override
-  protected void doSetup() {
-    myBus = new MidiBus(this, "UM-ONE", "UM-ONE");
-    notes = new float[127];
-    controllers = new float[127];
-
+  public void setup() {
     shader = loadShader("pixel.glsl", "vert.glsl");
-    gfx = new ToxiclibsSupport(this, getCanvas());
+    gfx = new ToxiclibsSupport(this, getGraphics());
 
     this.pool = Executors.newFixedThreadPool(8);
-  }
-
-  public void noteOn(int channel, int pitch, int velocity) {
-    println(pitch);
-    notes[pitch % notes.length] = 1;
-  }
-
-  public void controllerChange(int channel, int controller, int value) {
-    println(controller);
-    println(value);
-    controllers[controller] = value;
-  }
-
-  public void noteOff(int channel, int pitch, int velocity) {
-//    notes[pitch % notes.length] = false;
   }
 
   private TriangleMesh computeMesh(Mesh3D mesh) throws InterruptedException {
@@ -98,13 +68,7 @@ public class ContourBlobs extends Scene implements MidiListener {
 
     float[] volumeData=volume.getData();
     for (int z=0; z<DIMZ; z++) {
-      runnables.add(Executors.callable(new ProcessCell(z, DIMX, DIMY, DIMZ, volumeData, particles)));//
-////          volumeData[index] = x / 4f * y /4f + sin(z / 4f + frameCount / 100f) * 10;
-//
-//
-//
-//          index++;
-
+      runnables.add(Executors.callable(new ProcessCell(z, DIMX, DIMY, DIMZ, volumeData, particles)));
     }
 
     pool.invokeAll(runnables);
@@ -114,9 +78,8 @@ public class ContourBlobs extends Scene implements MidiListener {
     // store in IsoSurface and compute surface mesh for the given threshold value
 
     surface.reset();
-    return (TriangleMesh) surface.computeSurfaceMesh(mesh, 0.2f - notes[48] * 0.1f); //notes[48] * 0.1f);
+    return (TriangleMesh) surface.computeSurfaceMesh(mesh, 0.2f - smoothKick.get() * 0.1f); //notes[48] * 0.1f);
   }
-
 
   private void drawMesh(Mesh3D mesh, PGraphics canvas) {
     canvas.beginShape(9);
@@ -146,27 +109,24 @@ public class ContourBlobs extends Scene implements MidiListener {
   }
 
   @Override
-  protected void drawCanvas(PGraphics graphics, float mouseX, float mouseY) {
-
-    for (int i = 0; i < notes.length; i++) {
-      if (notes[i] > 0) {
-        notes[i] -= fadeSpeed;
-      }
-    }
-
-    //graphics.camera(0, 0, 500, WIDTH/2, HEIGHT/2, DEPTH/2, 0, -1, 0);
-    //graphics.camera(width/2f, height/2f, (height/2f) / tan((float) (PI*30.0 / 180.0)), width/2f, height/2f, 0, 0, 1, 0);
-    graphics.ortho();
-    graphics.pushMatrix();
+  public void draw() {
+    background(0);
+    translate(width / 2, height / 2);
+    //camera(0, 0, 500, WIDTH/2, HEIGHT/2, DEPTH/2, 0, -1, 0);
+    //camera(width/2f, height/2f, (height/2f) / tan((float) (PI*30.0 / 180.0)), width/2f, height/2f, 0, 0, 1, 0);
+    ortho();
+    pushMatrix();
 
 
-    graphics.translate(0, -200, -1000);
-    graphics.rotateX(-PI/4);
-//    graphics.translate(graphics.width/2,graphics.height/2,0);
+    //translate(0, -200, -1000);
+    rotateX(-PI/2 * orientation.get());
+//    translate(width/2,height/2,0);
     //canvas.rotateX(mouseY*0.01);
-    graphics.rotateY(frameCount / 100f);
-//    graphics.translate(-graphics.width/2,-graphics.height/2,0);
-    graphics.scale(1f);
+    rotation += + rotationSpeed.get();
+    rotateY(rotation);
+//    rotateY(frameCount / 100f);
+//    translate(-width/2,-height/2,0);
+    scale(1.5f);
 
 
     try {
@@ -175,38 +135,42 @@ public class ContourBlobs extends Scene implements MidiListener {
       e.printStackTrace();
     }
 
-//    graphics.stroke(255);
-//    graphics.noFill();
-//    graphics.strokeWeight(1);
-    graphics.fill(0);
-    graphics.noStroke();
+//    stroke(255);
+//    noFill();
+//    strokeWeight(1);
+    fill(0);
+    noStroke();
 
     shader.set("spacing", 100f);
     shader.set("dimensions", 0.5f, 0f, 0.5f);
 
-    graphics.shader(shader);
-    if (notes[50] > 0) {
-      graphics.fill(lerpColor(color(0, 0, 0), color(0, 255, 255), notes[50]));
-    } else if (notes[48] > 0) {
-      graphics.fill(lerpColor(color(0, 0, 0), color(255, 0, 255), notes[48]));
+    shader(shader);
+
+    float kick = kickDecay.get();
+    float snare = snareDecay.get();
+
+    if (snare > 0) {
+      fill(lerpColor(color(255), color(0, 255, 255), snare));
+    } else if (kick > 0) {
+      fill(lerpColor(color(255), color(255, 0, 255), kick));
     } else {
-      graphics.fill(0);
+      fill(255);
     }
 
-//    graphics.fill(color(255, 0, 255));
+//    fill(color(255, 0, 255));
 
-    drawMesh(mesh1, graphics);
+    drawMesh(mesh1, getGraphics());
 
-    graphics.noFill();
-    graphics.stroke(255);
-    graphics.strokeWeight(1);
-    graphics.box(SCALE.x, SCALE.y, SCALE.z);
+    noFill();
+    stroke(255);
+    strokeWeight(4);
+    //box(SCALE.x, SCALE.y, SCALE.z);
 
-    graphics.popMatrix();
+    popMatrix();
 
     //camera();
-  }
 
+  }
 
   private class ProcessCell implements Runnable {
     private int z, dimx, dimy, dimz;
@@ -227,15 +191,22 @@ public class ContourBlobs extends Scene implements MidiListener {
       for(int y=0; y<dimy; y++) {
         for (int x = 0; x < dimx; x++) {
           int i = z * (dimx * dimy) + y * (dimx) + x;
-//          PVector pos = new PVector(x, y, z);
-//          volumeData[i] = 0;
-//          for (int j = 0; j < particles.length; j++) {
-//            volumeData[i] += 0.1 / pos.dist(particles[j]);
-//          }
-//          volumeData[i] += (float) (y*y) / dimx / 200f;
+          PVector pos = new PVector(x, y, z);
 
+          float blobs = 0;
 
-          volumeData[i] = (float) ((float) SimplexNoise.noise(x * NS * controllers[48] / 127f, y * NS * controllers[48] / 127f, z * NS / (controllers[48] / 127f + 0.1f), frameCount * NS / 20f) * 0.5);
+          for (int j = 0; j < particles.length; j++) {
+            blobs += 0.1 / pos.dist(particles[j]);
+          }
+          blobs += (float) (y*y) / dimx / 200f;
+
+          float noise = (float) SimplexNoise.noise(
+              x * NS * noiseSize.get(),
+              y * NS * noiseSize.get(),
+              z * NS * noiseSize.get(),
+              frameCount * NS / 20f) * 0.5f;
+
+          volumeData[i] = lerp(blobs, noise, morph.get());
         }
       }
     }

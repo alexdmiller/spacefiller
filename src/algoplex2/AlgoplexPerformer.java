@@ -3,19 +3,17 @@ package algoplex2;
 import algoplex2.scenes.*;
 import algoplex2.scenes.ContourScene;
 import codeanticode.syphon.SyphonServer;
-import graph.GridUtils;
 import common.Integrator;
 import common.Integrators;
-import graph.Node;
-import graph.renderer.CrosshairGraphRenderer;
-import graph.renderer.SinGraphRenderer;
+import spacefiller.graph.GridUtils;
+import spacefiller.graph.Node;
+import spacefiller.graph.renderer.CrosshairGraphRenderer;
+import spacefiller.mapping.GraphTransformer;
 import spacefiller.remote.Mod;
-import spacefiller.remote.OscRemoteControl;
 import processing.core.PGraphics;
 import processing.core.PVector;
 import processing.opengl.PJOGL;
 import scene.SceneApplet;
-import spacefiller.remote.VDMXWriter;
 
 public class AlgoplexPerformer extends SceneApplet {
   public static AlgoplexPerformer instance;
@@ -129,9 +127,9 @@ public class AlgoplexPerformer extends SceneApplet {
 
     perlinT.setSpeed(0.1f);
 
-    OscRemoteControl remote = new OscRemoteControl(this);
-    VDMXWriter.exportVDMXJson("algoplex-performer", remote.getTargetMap(), 9998);
-    remote.listen(9998);
+//    OscRemoteControl remote = new OscRemoteControl(this);
+//    VDMXWriter.exportVDMXJson("algoplex-performer", remote.getTargetMap(), 9998);
+//    remote.listen(9998);
   }
 
   @Override
@@ -157,10 +155,10 @@ public class AlgoplexPerformer extends SceneApplet {
     }
     this.transformedCanvas.endDraw();
 
-    graphTransformer.drawImage(this.canvas, this.transformedCanvas);
+    graphTransformer.drawImage(this.transformedCanvas);
 
     if (showUI) {
-      graphTransformer.drawUI(this.canvas);
+      // graphTransformer.drawUI(this.canvas);
     }
 
     graphRenderer.render(this.canvas, this.graphTransformer.getPostTransformGrid());

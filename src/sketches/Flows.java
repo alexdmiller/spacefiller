@@ -1,6 +1,6 @@
 package sketches;
 
-import common.color.SmoothColorTheme;
+import spacefiller.color.SmoothColorTheme;
 import spacefiller.remote.Mod;
 import spacefiller.remote.OscRemoteControl;
 import processing.core.PGraphics;
@@ -74,9 +74,11 @@ public class Flows extends Scene {
 
 	@Override
 	public void doSetup() {
-		OscRemoteControl remote = new OscRemoteControl(this, 12008);
+		OscRemoteControl remote = new OscRemoteControl(12080);
+		remote.autoRoute(this);
+
 		set2D();
-		VDMXWriter.exportVDMXJson("flows", remote.getTargetMap(), remote.getPort());
+		// VDMXWriter.exportVDMXJson("flows", remote.getTargetNodes(), 12080);
 
 		colors = new SmoothColorTheme(ColorRange.FRESH, 10, 100);
 	}
@@ -125,11 +127,11 @@ public class Flows extends Scene {
 		return PVector.fromAngle(angle).setMag(flowForce);
 	}
 
-	PVector position1(int i) {
+	PVector position2(int i) {
 		return new PVector(((float) WIDTH / numPoints) * i - WIDTH / 2, -HEIGHT / 2);
 	}
 
-	PVector position2(int i) {
+	PVector position1(int i) {
 		float theta = 2 * PI * (float) i / numPoints + timeStep;
 		PVector p = new PVector(
 				cos(theta) * circleRadius,

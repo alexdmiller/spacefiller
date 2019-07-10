@@ -1,9 +1,9 @@
 package algoplex2;
 
-import graph.renderer.CrosshairGraphRenderer;
+import spacefiller.graph.renderer.CrosshairGraphRenderer;
 import processing.core.PConstants;
 import processing.core.PGraphics;
-import toxi.color.TColor;
+import spacefiller.mapping.Grid;
 
 /**
  * Created by miller on 10/4/17.

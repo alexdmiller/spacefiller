@@ -11,14 +11,6 @@ public class Scene extends PApplet {
     PJOGL.profile = 1;
   }
 
-  public void setup() {
-
-  }
-
-  public void draw() {
-
-  }
-
   protected final MidiRemoteControl midi(String name) {
     return new MidiRemoteControl(name);
   }

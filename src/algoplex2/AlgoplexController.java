@@ -1,16 +1,17 @@
 package algoplex2;
 
+import processing.core.PApplet;
 import processing.serial.Serial;
-import spacefiller.remote.RemoteControl;
-import spacefiller.remote.signal.DataReceiver;
+import spacefiller.remote.signal.Node;
+import spacefiller.remote.signal.PassThrough;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AlgoplexController extends RemoteControl {
-  private Map<Integer, DataReceiver> serialPatches;
+public class AlgoplexController extends PApplet {
+  private Map<Integer, Node> serialPatches;
   private final static int MAX_VALUE = 254;
   private final static int KNOBS = 6;
   private final static int BUTTON_INDEX = 6;
@@ -29,13 +30,12 @@ public class AlgoplexController extends RemoteControl {
     new Serial(this, portName, baudRate);
   }
 
-  public DataReceiver controller(int number) {
-    DataReceiver dataReceiver = serialPatches.get(number);
-    if (dataReceiver == null) {
-      dataReceiver = createReceiver();
-      serialPatches.put(number, dataReceiver);
+  public Node controller(int number) {
+    if (!serialPatches.containsKey(number)) {
+      serialPatches.put(number, new PassThrough());
     }
-    return dataReceiver;
+
+    return serialPatches.get(number);
   }
 
   public void serialEvent(Serial port) {
@@ -62,8 +62,8 @@ public class AlgoplexController extends RemoteControl {
         if (packet[BUTTON_INDEX] == 0) {
           lastButtonState = false;
         } else if (lastButtonState == false) {
-          serialPatches.get(BUTTON_INDEX).setValue(null);
-          lastButtonState = true;
+          //serialPatches.get(BUTTON_INDEX).setValue();
+          //lastButtonState = true;
         }
 
         currentByte = 0;

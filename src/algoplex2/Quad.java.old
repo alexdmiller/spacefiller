@@ -1,6 +1,6 @@
 package algoplex2;
 
-import graph.Node;
+import spacefiller.graph.Node;
 import processing.core.PVector;
 
 import java.io.Serializable;
@@ -11,7 +11,8 @@ import java.util.List;
 /**
  * Created by miller on 8/21/17.
  */
-public class Quad implements Serializable {
+public class 
+Quad implements Serializable {
   private Node topLeft;
   private Node topRight;
   private Node bottomLeft;

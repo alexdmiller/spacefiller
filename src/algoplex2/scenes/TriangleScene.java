@@ -1,9 +1,9 @@
 package algoplex2.scenes;
 
-import algoplex2.Quad;
-import graph.*;
+import spacefiller.graph.*;
 import processing.core.PConstants;
 import processing.core.PVector;
+import spacefiller.mapping.Quad;
 import spacefiller.remote.Mod;
 import processing.core.PGraphics;
 import toxi.math.noise.PerlinNoise;

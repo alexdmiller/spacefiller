@@ -1,23 +1,14 @@
 package influencer;
 
-import spacefiller.remote.MidiRemoteControl;
-import spacefiller.remote.signal.FloatDataReceiver;
+import spacefiller.remote.signal.FloatNode;
 import themidibus.MidiListener;
 
-public class Vertical extends Scene implements MidiListener {
+public class Vertical extends InfluencerScene implements MidiListener {
   public static void main(String[] args) {
     SceneHost.getInstance().start(new Vertical());
   }
 
-  private MidiRemoteControl midi;
-  private FloatDataReceiver lineWidth;
-
-  @Override
-  public void setup() {
-    midi = midi("Launch Control XL 8");
-
-    lineWidth = midi.controller(16).smooth(0.1f).scale(1, 100).toFloat();
-  }
+  private FloatNode lineWidth = control.controller(16).smooth(0.1f).scale(1, 100).toFloat();
 
   @Override
   public void draw() {
@@ -35,14 +26,13 @@ public class Vertical extends Scene implements MidiListener {
     stroke(255);
     strokeWeight(5);
 
-    // TODO: figure out how to get lists of notes from midi controller
-//    for (int i = 0; i < notes.length; i++) {
-//      float x = (float) (i - 30) / notes.length * width;
-//      if (notes[i] > 0) {
-//        stroke(255 * notes[i]);
-//        line(x, 0, x, height);
-//        notes[i] -= fallSpeed;
-//      }
-//    }
+    float[] notes = decayedNotes.getArray();
+    for (int i = 0; i < notes.length; i++) {
+      float x = (float) i * width / notes.length;
+      if (notes[i] > 0) {
+        stroke(255 * notes[i]);
+        line(x, 0, x, height);
+      }
+    }
   }
 }

@@ -1,11 +1,11 @@
 package algoplex2.scenes;
 
-import algoplex2.Grid;
-import algoplex2.Quad;
-import common.color.ConstantColorProvider;
+import spacefiller.color.ConstantColorProvider;
 import common.PerlinVectorField;
 import common.VectorField;
 import lusio.components.ParticleComponent;
+import spacefiller.mapping.Grid;
+import spacefiller.mapping.Quad;
 import spacefiller.remote.Mod;
 import particles.Bounds;
 import particles.behaviors.FlockParticles;

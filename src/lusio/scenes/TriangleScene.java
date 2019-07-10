@@ -1,10 +1,10 @@
 package lusio.scenes;
 
-import algoplex2.Grid;
 import common.TriangleGridComponent;
-import graph.GridUtils;
-import graph.renderer.BasicGraphRenderer;
+import spacefiller.graph.GridUtils;
+import spacefiller.graph.renderer.BasicGraphRenderer;
 import processing.core.PGraphics;
+import spacefiller.mapping.Grid;
 
 public class TriangleScene extends LusioScene {
   TriangleGridComponent triangleGridComponent;
@@ -13,7 +13,7 @@ public class TriangleScene extends LusioScene {
 
   @Override
   public void setup() {
-    grid = GridUtils.createGrid(4, 7, 280);
+    grid = GridUtils.createTriangleGrid(4, 7, 280);
 
     triangleGridComponent = new TriangleGridComponent(grid);
     renderer = new BasicGraphRenderer(2);

@@ -7,26 +7,109 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7bb3a9e-05bb-464d-967e-9bda287e8f0d" name="Default" comment="Worms and bound changes">
-      <change afterPath="$PROJECT_DIR$/pixel.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pixelate.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/influencer/ContourBlobs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/influencer/CubeGrid.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/influencer/InfluencerScene.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/influencer/MarchingSquares.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/influencer/MarchingSquaresGlitch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/influencer/MidiState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/influencer/Rain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/influencer/Scene.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/influencer/SceneContainer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/influencer/SceneHost.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/influencer/Vertical.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sketches/FlowsVida.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vert.glsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/boids/renderers/ContourSpaceFlockRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boids/renderers/ContourSpaceFlockRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sketches/Contours.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Contours.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Processing.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Processing.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flows.json" beforeDir="false" afterPath="$PROJECT_DIR$/flows.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/processing_remote_control.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/Algoplex2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/Algoplex2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/AlgoplexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/AlgoplexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/AlgoplexPerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/AlgoplexPerformer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/GraphTransformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/GraphTransformer.java.old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/Grid.java.old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/NumberTransition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/NumberTransition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/Quad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/Quad.java.old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/TransitionAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/TransitionAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/CircleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/CircleScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/ColorBath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/ColorBath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/ContourScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/ContourScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/CrossScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/CrossScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/FlowScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/FlowScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/FollowEdges.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/FollowEdges.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/GradientTriangleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/GradientTriangleScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/GridScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/GridScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/LifeScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/LifeScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/ParticleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/ParticleScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/PerlinGridScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/PerlinGridScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/PerlinTriangles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/PerlinTriangles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/PsychScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/PsychScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/PyramidScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/PyramidScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/ShiftingEdgeScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/ShiftingEdgeScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/TinyTriangleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/TinyTriangleScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/TriangleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/TriangleScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/VeinScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/VeinScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/WormScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/WormScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/renderers/MeshFlockRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boids/renderers/MeshFlockRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/renderers/VoronoiFlockRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boids/renderers/VoronoiFlockRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/PerlinVectorField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/PerlinVectorField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/StoredVectorField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/StoredVectorField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/TestSceneApplet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/TestSceneApplet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/TriangleGridComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/TriangleGridComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/color/ColorProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/color/ConstantColorProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/color/SmoothColorTheme.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/color/TwoColorProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/Edge.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/Graph.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/GraphWobbler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/GridUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/Node.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/renderer/AnimatedFillGraphRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/renderer/BasicGraphRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/renderer/CrosshairGraphRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/renderer/DottedLineGraphRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/renderer/GraphRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/renderer/PipeGraphRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/renderer/SinGraphRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/influencer/ContourBlobs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/influencer/ContourBlobs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/influencer/CubeGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/influencer/CubeGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/influencer/InfluencerScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/influencer/InfluencerScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/influencer/MarchingSquares.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/influencer/MarchingSquares.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/influencer/MarchingSquaresGlitch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/influencer/MarchingSquaresGlitch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/influencer/MidiState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/influencer/Rain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/influencer/Rain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/influencer/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/influencer/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/influencer/Vertical.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/influencer/Vertical.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lab/RemoteExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab/RemoteExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lightcube/MidiLightcube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lightcube/MidiLightcube.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lightcube/SerialLightcube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lightcube/SerialLightcube.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/Lusio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/Lusio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/components/GraphComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/components/GraphComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/CubeScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/CubeScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/FancyParticles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/FancyParticles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/FlockScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/FlockScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/FluidScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/FluidScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/LusioScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/LusioScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/MillerLineScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/MillerLineScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/NagyLineScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/NagyLineScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/NestedCubeScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/NestedCubeScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/NoiseCircle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/NoiseCircle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/NoiseSpace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/NoiseSpace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/ParticleCube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/ParticleCube.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/ThreeDeeFlockScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/ThreeDeeFlockScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/TriangleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/TriangleScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/behaviors/FlockParticles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/particles/behaviors/FlockParticles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/behaviors/RepelFixedPoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/particles/behaviors/RepelFixedPoints.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/renderers/GraphParticleRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/particles/renderers/GraphParticleRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/renderers/ParticleDotRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/particles/renderers/ParticleDotRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/renderers/ParticleRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/particles/renderers/ParticleRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/renderers/ParticleWebRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/particles/renderers/ParticleWebRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/renderers/ParticleWormRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/particles/renderers/ParticleWormRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/SceneApplet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/SceneApplet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/SceneComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/SceneComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Blobs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Blobs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/ColorBath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/ColorBath.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sketches/Contours2018.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Contours2018.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sketches/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Flows.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Flows.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/FlowsVida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/FlowsVida.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/SpaceFiller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/SpaceFiller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Tubes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Tubes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/UncertainWave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/UncertainWave.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Wave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Wave.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Web.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Web.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Worms.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Worms.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/worms.json" beforeDir="false" afterPath="$PROJECT_DIR$/worms.json" afterDir="false" />
     </list>
     <ignored path="Processing.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,11 +147,119 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Vertical.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/influencer/Vertical.java">
+      <file leaf-file-name="LifeScene.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/LifeScene.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="37" column="70" selection-start-line="37" selection-start-column="70" selection-end-line="37" selection-end-column="70" />
+            <state relative-caret-position="241">
+              <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PsychScene.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/PsychScene.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="593">
+              <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShiftingEdgeScene.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/ShiftingEdgeScene.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="49" column="11" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TriangleScene.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/TriangleScene.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="52" column="10" selection-start-line="52" selection-start-column="10" selection-end-line="52" selection-end-column="10" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PyramidScene.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/PyramidScene.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="131">
+              <caret line="33" column="10" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CrossScene.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/CrossScene.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="241">
+              <caret line="57" column="10" selection-start-line="57" selection-start-column="10" selection-end-line="57" selection-end-column="10" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PerlinTriangles.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/PerlinTriangles.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="395">
+              <caret line="101" column="10" selection-start-line="101" selection-start-column="10" selection-end-line="101" selection-end-column="10" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TinyTriangleScene.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/TinyTriangleScene.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="64" column="10" selection-start-line="64" selection-start-column="10" selection-end-line="64" selection-end-column="10" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Algoplex2.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/algoplex2/Algoplex2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="439" column="29" lean-forward="true" selection-start-line="439" selection-start-column="29" selection-end-line="439" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AlgoplexController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/algoplex2/AlgoplexController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="914">
+              <caret line="65" column="12" selection-start-line="65" selection-start-column="12" selection-end-line="65" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -89,15 +280,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>friction</find>
-      <find>lerpColor</find>
-      <find>stroke</find>
-      <find>interpo</find>
-      <find>fallspeed</find>
-      <find>scale</find>
-      <find>setRenderer</find>
-      <find>randomize</find>
-      <find>strokeWidth</find>
       <find>emitter</find>
       <find>Contou</find>
       <find>maxThresh</find>
@@ -119,6 +301,15 @@
       <find>ortho</find>
       <find>mesh</find>
       <find>runSketch</find>
+      <find>graphics.</find>
+      <find>load</find>
+      <find>SmoothColorTheme</find>
+      <find>normalize</find>
+      <find>drawUI</find>
+      <find>save</find>
+      <find>graph</find>
+      <find>graph.</find>
+      <find>common.color</find>
     </findStrings>
     <replaceStrings>
       <replace>size</replace>
@@ -128,9 +319,13 @@
       <replace>graphics.triangle\(</replace>
       <replace>triangle</replace>
       <replace>0</replace>
+      <replace>spacefiller.graph.</replace>
+      <replace>spacefiller.color</replace>
     </replaceStrings>
     <dirStrings>
       <dir>/Applications/Processing.app/Contents/Java/core/library/core.jar!/processing/opengl</dir>
+      <dir>$PROJECT_DIR$/src/lightcube</dir>
+      <dir>$PROJECT_DIR$/src/</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -139,57 +334,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/particles/behaviors/DonutBounds.java" />
-        <option value="$PROJECT_DIR$/src/particles/Particle.java" />
+        <option value="$PROJECT_DIR$/src/scene/Scene.java" />
+        <option value="$PROJECT_DIR$/src/common/TriangleGridComponent.java" />
+        <option value="$PROJECT_DIR$/src/particles/renderers/GraphParticleRenderer.java" />
         <option value="$PROJECT_DIR$/src/common/PerlinVectorField.java" />
-        <option value="$PROJECT_DIR$/src/common/ConstantVectorField.java" />
-        <option value="$PROJECT_DIR$/src/lusio/components/ParticleComponent.java" />
-        <option value="$PROJECT_DIR$/src/particles/renderers/ParticleWormRenderer.java" />
-        <option value="$PROJECT_DIR$/src/particles/behaviors/FlowParticles.java" />
-        <option value="$PROJECT_DIR$/src/algowave/leap/LeapMessage.java" />
-        <option value="$PROJECT_DIR$/src/algowave/Momentum.java" />
-        <option value="$PROJECT_DIR$/src/algowave/scenes/WormScene.java" />
-        <option value="$PROJECT_DIR$/src/lusio/components/PerlinFlowComponent.java" />
-        <option value="$PROJECT_DIR$/src/algowave/scenes/FlowScene.java" />
-        <option value="$PROJECT_DIR$/src/algowave/Algowave.java" />
-        <option value="$PROJECT_DIR$/src/common/StoredVectorField.java" />
-        <option value="$PROJECT_DIR$/src/particles/renderers/ContourSpaceRenderer.java" />
-        <option value="$PROJECT_DIR$/src/sketches/Worms.java" />
-        <option value="$PROJECT_DIR$/src/boids/behaviors/EmitBehavior.java" />
-        <option value="$PROJECT_DIR$/src/common/color/SmoothColorTheme.java" />
-        <option value="$PROJECT_DIR$/src/sketches/Flows.java" />
-        <option value="$PROJECT_DIR$/src/tools/ShapeEditor.java" />
-        <option value="$PROJECT_DIR$/src/sketches/ColorBath.java" />
-        <option value="$PROJECT_DIR$/src/sketches/Blobs.java" />
-        <option value="$PROJECT_DIR$/frag.glsl" />
         <option value="$PROJECT_DIR$/src/sketches/Tubes.java" />
-        <option value="$PROJECT_DIR$/src/boids/renderers/BoidRenderer.java" />
-        <option value="$PROJECT_DIR$/src/boids/renderers/BoidFlockRenderer.java" />
-        <option value="$PROJECT_DIR$/src/boids/renderers/PointBoidRenderer.java" />
-        <option value="$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java" />
-        <option value="$PROJECT_DIR$/src/boids/renderers/MeshFlockRenderer.java" />
-        <option value="$PROJECT_DIR$/src/boids/renderers/VoronoiFlockRenderer.java" />
-        <option value="$PROJECT_DIR$/pixelate.glsl" />
+        <option value="$PROJECT_DIR$/src/sketches/Flows.java" />
+        <option value="$PROJECT_DIR$/src/sketches/Worms.java" />
+        <option value="$PROJECT_DIR$/src/lusio/scenes/LusioScene.java" />
+        <option value="$PROJECT_DIR$/src/lusio/scenes/FluidScene.java" />
+        <option value="$PROJECT_DIR$/src/lusio/scenes/FancyParticles.java" />
+        <option value="$PROJECT_DIR$/src/lusio/scenes/NestedCubeScene.java" />
+        <option value="$PROJECT_DIR$/src/lusio/scenes/MillerLineScene.java" />
+        <option value="$PROJECT_DIR$/src/lusio/scenes/NagyLineScene.java" />
+        <option value="$PROJECT_DIR$/src/lusio/scenes/ParticleCube.java" />
+        <option value="$PROJECT_DIR$/src/lusio/scenes/CubeScene.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/AlgoplexController.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/GraphTransformer.java" />
+        <option value="$PROJECT_DIR$/src/lusio/scenes/FlockScene.java" />
+        <option value="$PROJECT_DIR$/src/lusio/scenes/NoiseCircle.java" />
+        <option value="$PROJECT_DIR$/src/lusio/Lusio.java" />
+        <option value="$PROJECT_DIR$/src/lusio/scenes/ThreeDeeFlockScene.java" />
+        <option value="$PROJECT_DIR$/src/lusio/scenes/NoiseSpace.java" />
+        <option value="$PROJECT_DIR$/src/lusio/components/GraphComponent.java" />
+        <option value="$PROJECT_DIR$/src/lusio/scenes/TriangleScene.java" />
         <option value="$PROJECT_DIR$/src/sketches/FlowsVida.java" />
-        <option value="$PROJECT_DIR$/src/sketches/Contours.java" />
-        <option value="$PROJECT_DIR$/src/boids/renderers/ContourSpaceFlockRenderer.java" />
-        <option value="$PROJECT_DIR$/src/sketches/Rain.java" />
-        <option value="$PROJECT_DIR$/src/sketches/CubeGrid.java" />
-        <option value="$PROJECT_DIR$/vert.glsl" />
-        <option value="$PROJECT_DIR$/src/sketches/Scene.java" />
-        <option value="$PROJECT_DIR$/src/influencer/MarchingSquares.java" />
-        <option value="$PROJECT_DIR$/src/influencer/MarchingSquaresGlitch.java" />
-        <option value="$PROJECT_DIR$/pixel.glsl" />
-        <option value="$PROJECT_DIR$/src/influencer/Rain.java" />
-        <option value="$PROJECT_DIR$/src/influencer/ContourBlobs.java" />
-        <option value="$PROJECT_DIR$/src/sketches/Contours2018.java" />
-        <option value="$PROJECT_DIR$/src/influencer/CubeGrid.java" />
-        <option value="$PROJECT_DIR$/src/influencer/MidiState.java" />
-        <option value="$PROJECT_DIR$/src/influencer/SceneHost.java" />
-        <option value="$PROJECT_DIR$/src/influencer/SceneContainer.java" />
-        <option value="$PROJECT_DIR$/src/influencer/InfluencerScene.java" />
-        <option value="$PROJECT_DIR$/src/influencer/Scene.java" />
-        <option value="$PROJECT_DIR$/src/influencer/Vertical.java" />
+        <option value="$PROJECT_DIR$/src/scene/SceneComponent.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/AlgoplexPerformer.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/Quad.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/scenes/ColorBath.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/scenes/GradientTriangleScene.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/scenes/PerlinGridScene.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/scenes/CircleScene.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/Grid.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/TransitionAnimation.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/scenes/GridScene.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/NumberTransition.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/scenes/LifeScene.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/scenes/ContourScene.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/scenes/ParticleScene.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/scenes/FlowScene.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/scenes/FollowEdges.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/scenes/WormScene.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/scenes/VeinScene.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/scenes/PsychScene.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/scenes/ShiftingEdgeScene.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/scenes/TriangleScene.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/scenes/PyramidScene.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/scenes/CrossScene.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/scenes/PerlinTriangles.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/scenes/TinyTriangleScene.java" />
+        <option value="$PROJECT_DIR$/src/algoplex2/Algoplex2.java" />
       </list>
     </option>
   </component>
@@ -202,10 +397,10 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="22" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="23" />
     <option name="width" value="1920" />
-    <option name="height" value="1178" />
+    <option name="height" value="1177" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -231,36 +426,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Processing" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Processing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Processing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="influencer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Processing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sketches" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -277,6 +442,23 @@
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Processing" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -303,9 +485,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="mapping" />
-      <recent name="emitter" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/mapping" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -313,9 +495,9 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="algowave.scenes" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src/mapping" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="mapping" />
+      <recent name="emitter" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -330,7 +512,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Vertical">
+  <component name="RunManager" selected="Application.Algoplex2">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
     </configuration>
@@ -457,6 +639,18 @@
     </configuration>
     <configuration name="MarchingSquares" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="influencer.MarchingSquares" />
+      <module name="Processing" />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="influencer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration name="MarchingSquaresGlitch" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="influencer.MarchingSquaresGlitch" />
       <module name="Processing" />
       <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$USER_HOME$/Documents/Processing3/libraries/Syphon/library&quot;" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -974,6 +1168,7 @@
       <item itemvalue="Application.Vertical" />
       <item itemvalue="Application.ContourBlobs" />
       <item itemvalue="Application.MarchingSquares" />
+      <item itemvalue="Application.MarchingSquaresGlitch" />
       <item itemvalue="Application.Worms" />
       <item itemvalue="Application.Wave" />
       <item itemvalue="Application.UncertainWave" />
@@ -983,10 +1178,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.CubeGrid" />
-        <item itemvalue="Application.Rain" />
-        <item itemvalue="Application.Worms" />
-        <item itemvalue="Application.Wave" />
         <item itemvalue="Application.UncertainWave" />
+        <item itemvalue="Application.Worms" />
+        <item itemvalue="Application.Rain" />
+        <item itemvalue="Application.Wave" />
       </list>
     </recent_temporary>
   </component>
@@ -1277,7 +1472,47 @@
       <workItem from="1539324826619" duration="4328000" />
       <workItem from="1539365198016" duration="27479000" />
       <workItem from="1539543562994" duration="29607000" />
-      <workItem from="1539710103374" duration="2054000" />
+      <workItem from="1539710103374" duration="9189000" />
+      <workItem from="1539822547274" duration="4096000" />
+      <workItem from="1539883887994" duration="18683000" />
+      <workItem from="1539930560897" duration="854000" />
+      <workItem from="1540148871765" duration="6326000" />
+      <workItem from="1540250606761" duration="12770000" />
+      <workItem from="1540317142372" duration="4000" />
+      <workItem from="1540340260414" duration="3297000" />
+      <workItem from="1541611984472" duration="5967000" />
+      <workItem from="1542041437074" duration="858000" />
+      <workItem from="1542597861181" duration="23000" />
+      <workItem from="1542827175640" duration="639000" />
+      <workItem from="1543883475015" duration="614000" />
+      <workItem from="1543950157162" duration="597000" />
+      <workItem from="1544053501532" duration="3309000" />
+      <workItem from="1544480638839" duration="715000" />
+      <workItem from="1544481570120" duration="607000" />
+      <workItem from="1544492197595" duration="5535000" />
+      <workItem from="1544655224077" duration="140000" />
+      <workItem from="1545520377533" duration="3351000" />
+      <workItem from="1545549690096" duration="122000" />
+      <workItem from="1545630208623" duration="3346000" />
+      <workItem from="1545673558843" duration="1489000" />
+      <workItem from="1545958355940" duration="6000" />
+      <workItem from="1546129857808" duration="1000" />
+      <workItem from="1547064519809" duration="1019000" />
+      <workItem from="1547098970793" duration="2574000" />
+      <workItem from="1547168357099" duration="5000" />
+      <workItem from="1548889119068" duration="627000" />
+      <workItem from="1549143599936" duration="31000" />
+      <workItem from="1549672898034" duration="1445000" />
+      <workItem from="1549750467344" duration="9000" />
+      <workItem from="1549750495168" duration="603000" />
+      <workItem from="1549826251449" duration="2956000" />
+      <workItem from="1549865262690" duration="597000" />
+      <workItem from="1549922508059" duration="598000" />
+      <workItem from="1550114899118" duration="598000" />
+      <workItem from="1550420532914" duration="16000" />
+      <workItem from="1558277212742" duration="694000" />
+      <workItem from="1558451868839" duration="8000" />
+      <workItem from="1562787842054" duration="5880000" />
     </task>
     <task id="LOCAL-00001" summary="Worms and bound changes">
       <created>1506356022413</created>
@@ -1290,11 +1525,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1664626000" />
+    <option name="totallyTimeSpent" value="1762770000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1920" height="1178" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1920" height="1177" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5005325" side_tool="true" weight="0.49163568" />
@@ -1308,17 +1542,18 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.24959612" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="3" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3858998" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.38482887" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.25598335" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.28611112" />
       <window_info id="Palette&#9;" order="4" />
       <window_info id="Image Layers" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946752" visible="true" weight="0.4287037" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946752" visible="true" weight="0.3293247" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3293247" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7003222" visible="true" weight="0.16719915" />
-      <window_info anchor="bottom" id="Run with VisualVM" order="12" />
+      <window_info anchor="bottom" id="Run with VisualVM" order="12" weight="0.3293247" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7003222" visible="true" weight="0.2768903" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3169456" />
       <window_info anchor="right" id="Theme Preview" order="12" />
       <window_info id="Favorites" order="6" sideWeight="0.29967776" side_tool="true" weight="0.18300654" />
       <window_info anchor="bottom" id="Debug with VisualVM" order="12" />
@@ -1329,7 +1564,6 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Properties" order="9" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" visible="true" weight="0.0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3169456" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Data View" order="10" weight="0.32897604" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1338,6 +1572,7 @@
       <window_info anchor="right" id="Designer" order="5" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Remote Host" order="4" weight="0.0" />
+      <window_info id="Image Layers" order="5" />
       <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946752" visible="true" weight="0.1748179" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -1349,7 +1584,6 @@
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5005325" side_tool="true" weight="0.49163568" />
       <window_info anchor="bottom" id="Statistic" order="10" weight="0.33054394" />
-      <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" x="1540" y="-272" width="1720" height="853" id="Documentation" order="13" type="FLOATING" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" visible="true" weight="0.0" />
       <window_info anchor="bottom" id="Run with VisualVM" order="13" />
@@ -1363,7 +1597,7 @@
       <window_info anchor="right" id="Database" order="6" visible="true" weight="0.0" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug with VisualVM" order="14" />
-      <window_info id="Image Layers" order="5" />
+      <window_info anchor="bottom" id="TODO" order="6" />
       <window_info id="Palette&#9;" order="4" />
       <window_info id="Favorites" order="6" sideWeight="0.29967776" side_tool="true" weight="0.18300654" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24959612" />
@@ -1408,13 +1642,19 @@
           <option name="timeStamp" value="55" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/Processing_Remote_Control_jar/processing_remote_control.jar!/spacefiller/remote/OscRemoteControl.class</url>
-          <line>37</line>
+          <url>jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/processing_remote_control_jar/processing_remote_control.jar!/spacefiller/remote/VDMXWriter.class</url>
+          <line>31</line>
           <properties />
-          <option name="timeStamp" value="126" />
+          <option name="timeStamp" value="138" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/processing_remote_control_jar/processing_remote_control.jar!/spacefiller/remote/VDMXWriter.class</url>
+          <line>60</line>
+          <properties />
+          <option name="timeStamp" value="139" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="129" />
+      <option name="time" value="140" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1422,405 +1662,445 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/algoplex2/Algoplex2.java">
+    <entry file="file://$PROJECT_DIR$/src/lusio/scenes/LusioScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1980">
-          <caret line="110" column="34" selection-start-line="110" selection-start-column="34" selection-end-line="110" selection-end-column="34" />
+        <state relative-caret-position="88">
+          <caret line="4" column="19" lean-forward="true" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/src.zip!/java/io/PrintStream.java">
+    <entry file="file://$PROJECT_DIR$/src/lusio/scenes/FluidScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6688">
-          <caret line="333" column="16" selection-start-line="333" selection-start-column="16" selection-end-line="333" selection-end-column="16" />
+        <state relative-caret-position="44">
+          <caret line="2" column="31" lean-forward="true" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/core.jar!/processing/core/PConstants.class">
+    <entry file="file://$PROJECT_DIR$/src/lusio/scenes/FancyParticles.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1870">
-          <caret line="88" column="6" selection-start-line="88" selection-start-column="6" selection-end-line="88" selection-end-column="6" />
+        <state relative-caret-position="44">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pixelate.glsl">
+    <entry file="file://$PROJECT_DIR$/src/lusio/scenes/NestedCubeScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+        <state relative-caret-position="44">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/particles/Source.java">
+    <entry file="file://$PROJECT_DIR$/src/lusio/scenes/ParticleCube.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lusio/scenes/CubeScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lusio/scenes/FlockScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lusio/scenes/NoiseCircle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lusio/scenes/ThreeDeeFlockScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lusio/scenes/NoiseSpace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lusio/components/GraphComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/graph/GridUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-628">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lusio/scenes/TriangleScene.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
-          <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+          <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/particles/ParticleSystem.java">
+    <entry file="file://$PROJECT_DIR$/src/lusio/scenes/NagyLineScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        <state relative-caret-position="132">
+          <caret line="45" column="60" lean-forward="true" selection-start-line="45" selection-start-column="60" selection-end-line="45" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/Flock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/FlowScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="21" column="29" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lusio/components/PerlinFlowComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1232">
-          <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lusio/components/PerlinLine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/Flows.java">
+    <entry file="file://$PROJECT_DIR$/src/common/color/ColorProvider.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
-          <caret line="13" column="27" selection-start-line="13" selection-end-line="16" />
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lusio/Lusio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lusio/scenes/MillerLineScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="26" column="45" selection-start-line="26" selection-start-column="45" selection-end-line="26" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/graph/renderer/AnimatedFillGraphRenderer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="37" column="35" lean-forward="true" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
+          <folding>
+            <element signature="e#1095#1096#0" expanded="true" />
+            <element signature="e#1139#1140#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/color/ColorProvider.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sketches/FlowsVida.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1958">
-          <caret line="104" selection-start-line="104" selection-end-line="104" />
+        <state relative-caret-position="66">
+          <caret line="3" column="7" lean-forward="true" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/Worms.java">
+    <entry file="file://$PROJECT_DIR$/src/scene/SceneComponent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="858">
-          <caret line="56" column="27" selection-start-line="56" selection-start-column="27" selection-end-line="56" selection-end-column="27" />
+        <state relative-caret-position="44">
+          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/ContourSpace.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/Contours.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="20" column="2" selection-end-line="347" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boids/renderers/ContourSpaceFlockRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="47" column="51" selection-start-line="47" selection-start-column="51" selection-end-line="47" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/core.jar!/processing/opengl/PGraphicsOpenGL.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="2799" column="3" selection-start-line="2799" selection-start-column="3" selection-end-line="2799" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/core.jar!/processing/opengl/PGraphics3D.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="33" column="11" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/processing/ToxiclibsSupport.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="691">
-          <caret line="289" column="24" lean-forward="true" selection-start-line="262" selection-start-column="4" selection-end-line="289" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/core.jar!/processing/core/PGraphics.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="2394" column="14" selection-start-line="2394" selection-start-column="14" selection-end-line="2394" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/volume/IsoSurface.class">
+    <entry file="jar://$USER_HOME$/Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/mapping/Grid.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
-          <caret line="9" column="27" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="27" />
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scene/Scene.java">
+    <entry file="jar://$USER_HOME$/Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/mapping/GraphTransformer.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/influencer/MarchingSquaresGlitch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+        <state relative-caret-position="-950">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
           <folding>
-            <element signature="e#362#363#0" expanded="true" />
-            <element signature="e#406#407#0" expanded="true" />
-            <element signature="e#1152#1153#0" expanded="true" />
-            <element signature="e#1214#1215#0" expanded="true" />
+            <element signature="e#2178#2179#0" expanded="true" />
+            <element signature="e#2216#2217#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vert.glsl">
+    <entry file="jar://$USER_HOME$/Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/graph/Graph.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="22" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="22" />
+        <state relative-caret-position="-226">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pixel.glsl">
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/GraphTransformer.java.old">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="40" lean-forward="true" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
+        <state relative-caret-position="241">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/toxiclibs.jar!/toxi/math/InterpolateStrategy.class">
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/Quad.java.old">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/Contours2018.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="200" column="46" lean-forward="true" selection-start-line="193" selection-end-line="200" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/influencer/MarchingSquares.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="43" column="22" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#107#108#0" expanded="true" />
-            <element signature="e#151#152#0" expanded="true" />
-            <element signature="e#307#308#0" expanded="true" />
-            <element signature="e#330#331#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/ColorBath.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/Blobs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/Tubes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sketches/Scene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="84" column="28" lean-forward="true" selection-start-line="57" selection-end-line="84" selection-end-column="28" />
-          <folding>
-            <element signature="e#1795#1796#0" expanded="true" />
-            <element signature="e#1814#1815#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/core.jar!/processing/core/PSurface.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/core.jar!/processing/core/PApplet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="5108" column="24" lean-forward="true" selection-start-line="5108" selection-start-column="24" selection-end-line="5108" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/influencer/Rain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Documents/Processing3/libraries/themidibus/library/themidibus.jar!/themidibus/MidiListener.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Documents/Processing3/libraries/themidibus/library/themidibus.jar!/themidibus/MidiBus.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="568" column="7" lean-forward="true" selection-start-line="560" selection-start-column="6" selection-end-line="568" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/Syphon.jar!/codeanticode/syphon/SyphonServer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/influencer/SceneHost.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="20" column="22" lean-forward="true" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#195#196#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/Processing_Remote_Control_jar/processing_remote_control.jar!/spacefiller/remote/RemoteControl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/processing_remote_control_jar/processing_remote_control.jar!/spacefiller/remote/MidiRemoteControl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/influencer/Scene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#404#405#0" expanded="true" />
-            <element signature="e#451#452#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/influencer/ContourBlobs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="143" selection-start-line="143" selection-end-line="143" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/influencer/InfluencerScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/influencer/MidiState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="41" column="32" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/influencer/CubeGrid.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="46" column="30" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/influencer/SceneContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
+        <state relative-caret-position="241">
           <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/ColorBath.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/GradientTriangleScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="39" column="10" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/processing_remote_control_jar/processing_remote_control.jar!/spacefiller/remote/signal/SignalUpdater.class">
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/PerlinGridScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="73" column="9" lean-forward="true" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
+        <state relative-caret-position="132">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/processing_remote_control_jar/processing_remote_control.jar!/spacefiller/remote/signal/Ease.class">
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/AlgoplexPerformer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+        <state relative-caret-position="438">
+          <caret line="218" column="20" selection-start-line="218" selection-start-column="20" selection-end-line="218" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/processing_remote_control_jar/processing_remote_control.jar!/spacefiller/remote/signal/DataReceiver.class">
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/Grid.java.old">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="22" column="12" lean-forward="true" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/TransitionAnimation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/NumberTransition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="34" column="36" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/ContourScene.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
-          <caret line="94" column="26" selection-start-line="94" selection-start-column="26" selection-end-line="94" selection-end-column="26" />
+          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
           <folding>
-            <element signature="e#1985#1986#0" expanded="true" />
-            <element signature="e#2033#2034#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/influencer/Vertical.java">
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/ParticleScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="37" column="70" selection-start-line="37" selection-start-column="70" selection-end-line="37" selection-end-column="70" />
+        <state relative-caret-position="659">
+          <caret line="55" column="12" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/FlowScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="20" column="35" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/FollowEdges.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/WormScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/VeinScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/GridScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#311#312#0" expanded="true" />
+            <element signature="e#334#335#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/CircleScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="64" column="47" selection-start-line="64" selection-start-column="47" selection-end-line="64" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/LifeScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/PsychScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="593">
+          <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/ShiftingEdgeScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="49" column="11" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/TriangleScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="52" column="10" selection-start-line="52" selection-start-column="10" selection-end-line="52" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/PyramidScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="33" column="10" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/CrossScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="57" column="10" selection-start-line="57" selection-start-column="10" selection-end-line="57" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/PerlinTriangles.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="101" column="10" selection-start-line="101" selection-start-column="10" selection-end-line="101" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/TinyTriangleScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="64" column="10" selection-start-line="64" selection-start-column="10" selection-end-line="64" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/AlgoplexController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="914">
+          <caret line="65" column="12" selection-start-line="65" selection-start-column="12" selection-end-line="65" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoplex2/Algoplex2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="439" column="29" lean-forward="true" selection-start-line="439" selection-start-column="29" selection-end-line="439" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1905,7 +2185,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Ani</last-edited>
+          <last-edited>org.glassfish:javax.json:1.0.4</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

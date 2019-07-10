@@ -1,6 +1,6 @@
 package scene;
 
-import common.color.ColorProvider;
+import spacefiller.color.ColorProvider;
 import processing.core.PGraphics;
 
 public abstract class SceneComponent {

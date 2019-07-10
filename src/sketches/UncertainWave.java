@@ -130,7 +130,7 @@ public class UncertainWave extends Scene {
 				oceanRenderer
 		};
 
-		new OscRemoteControl(this, 12000);
+		//new OscRemoteControl(this, 12000);
 	}
 
 	private float waveFunction(float x, float y, float t) {

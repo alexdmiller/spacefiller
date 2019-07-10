@@ -3,7 +3,7 @@ package boids.renderers;
 import boids.Boid;
 import boids.renderers.BoidRenderer;
 import com.google.common.collect.EvictingQueue;
-import common.color.SmoothColorTheme;
+import spacefiller.color.SmoothColorTheme;
 import processing.core.PGraphics;
 import processing.core.PVector;
 import toxi.color.ColorRange;

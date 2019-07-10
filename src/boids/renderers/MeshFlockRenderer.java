@@ -4,7 +4,7 @@ import boids.Boid;
 import boids.Flock;
 import boids.BoidEventListener;
 import boids.behaviors.Behavior;
-import common.color.SmoothColorTheme;
+import spacefiller.color.SmoothColorTheme;
 import megamu.mesh.Delaunay;
 import processing.core.PGraphics;
 import processing.core.PVector;

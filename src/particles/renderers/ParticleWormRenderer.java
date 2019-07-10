@@ -1,7 +1,6 @@
 package particles.renderers;
 
-import algowave.Algowave;
-import common.color.ColorProvider;
+import spacefiller.color.ColorProvider;
 import com.google.common.collect.EvictingQueue;
 import javafx.geometry.Pos;
 import particles.Particle;
@@ -75,7 +74,7 @@ public class ParticleWormRenderer extends ParticleRenderer {
     public void draw(PGraphics graphics) {
       graphics.strokeWeight(lineThickness);
       graphics.stroke(255);
-      graphics.fill(255);
+      graphics.noFill();
       if (markedForDeath) {
         if (!history.isEmpty()) {
           history.remove();
@@ -95,7 +94,7 @@ public class ParticleWormRenderer extends ParticleRenderer {
       for (PVector p : history) {
         graphics.vertex(p.x, p.y, p.z);
       }
-      graphics.endShape(PConstants.CLOSE);
+      graphics.endShape();
     }
 
     public void clear() {

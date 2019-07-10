@@ -1,15 +1,10 @@
 package algoplex2.scenes;
 
-import algoplex2.Grid;
-import algoplex2.Quad;
-import common.StoredVectorField;
-import common.color.ConstantColorProvider;
-import common.PerlinVectorField;
-import common.VectorField;
-import graph.Edge;
+import spacefiller.color.ConstantColorProvider;
 import lusio.components.ParticleComponent;
-import particles.Source;
 import particles.behaviors.*;
+import spacefiller.mapping.Grid;
+import spacefiller.mapping.Quad;
 import spacefiller.remote.Mod;
 import particles.Bounds;
 import particles.renderers.*;
@@ -20,7 +15,7 @@ public class WormScene extends GridScene {
   private ParticleComponent particleGenerator;
 
   @Mod
-  public FlockParticles flockParticles = new FlockParticles(2, 1f, 1f, 10, 50, 50, 0.5f, 2);
+  public FlockParticles flockParticles = new FlockParticles(2, 1f, 1f, 10, 50, 50, 0.1f, 2);
 
   @Mod
   public FollowPaths followPaths;
@@ -70,7 +65,7 @@ public class WormScene extends GridScene {
     repelFixedPoints.addFixedPoint(PVector.add(grid.getBoundingQuad().getTopRight().position, shift));
 
     particleGenerator.addBehavior(repelFixedPoints);
-    repelFixedPoints.repelStrength = 0.01f;
+    repelFixedPoints.repelStrength = 0.001f;
     repelFixedPoints.repelThreshold = 100;
 
 //    PerlinVectorField perlinVectorField = new PerlinVectorField(10);

@@ -1,11 +1,11 @@
 package particles.renderers;
 
-import graph.Graph;
-import graph.renderer.GraphRenderer;
-import graph.Node;
 import megamu.mesh.Delaunay;
 import particles.Particle;
 import processing.core.PGraphics;
+import spacefiller.graph.Graph;
+import spacefiller.graph.Node;
+import spacefiller.graph.renderer.GraphRenderer;
 
 import java.util.List;
 

@@ -1,6 +1,5 @@
 package common;
 
-import algoplex2.scenes.GridScene;
 import processing.opengl.PJOGL;
 import scene.SceneApplet;
 

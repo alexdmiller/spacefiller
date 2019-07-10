@@ -1,6 +1,5 @@
 package scene;
 
-import graph.Graph;
 import lightcube.Lightcube;
 import processing.core.PGraphics;
 

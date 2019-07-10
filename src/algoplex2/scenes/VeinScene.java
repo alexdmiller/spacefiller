@@ -1,16 +1,10 @@
 package algoplex2.scenes;
 
-import algoplex2.Grid;
-import algoplex2.Quad;
 import common.components.TreeComponent;
-import graph.*;
 import processing.core.PVector;
+import spacefiller.mapping.Grid;
 import spacefiller.remote.Mod;
 import processing.core.PGraphics;
-import toxi.math.noise.PerlinNoise;
-import veins.Tree;
-
-import java.util.List;
 
 public class VeinScene extends GridScene {
   @Mod

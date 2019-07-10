@@ -1,9 +1,8 @@
 package algoplex2.scenes;
 
 import algoplex2.Controller;
-import algoplex2.Grid;
-import graph.Graph;
 import scene.Scene;
+import spacefiller.mapping.Grid;
 
 /**
  * Created by miller on 8/22/17.

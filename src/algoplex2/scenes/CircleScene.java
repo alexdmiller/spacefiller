@@ -1,7 +1,7 @@
 package algoplex2.scenes;
 
-import algoplex2.Quad;
 import processing.core.PGraphics;
+import spacefiller.mapping.Quad;
 import spacefiller.remote.Mod;
 import toxi.math.noise.PerlinNoise;
 

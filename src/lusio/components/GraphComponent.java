@@ -1,7 +1,7 @@
 package lusio.components;
 
-import graph.*;
-import graph.renderer.GraphRenderer;
+import spacefiller.graph.*;
+import spacefiller.graph.renderer.GraphRenderer;
 import processing.core.PGraphics;
 import scene.SceneComponent;
 

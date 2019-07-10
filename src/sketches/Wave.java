@@ -24,7 +24,8 @@ public class Wave extends Scene {
 
 	@Override
 	public void doSetup() {
-		new OscRemoteControl(this, 12000);
+
+		//new OscRemoteControl(this, 12000);
 	}
 
 	@Mod(address = "/Velocity1")

@@ -1,8 +1,8 @@
 package algoplex2;
 
-import graph.Edge;
-import graph.Graph;
-import graph.Node;
+import spacefiller.graph.Graph;
+import spacefiller.graph.Node;
+import spacefiller.mapping.Quad;
 
 import java.util.ArrayList;
 import java.util.List;

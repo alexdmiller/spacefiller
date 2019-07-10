@@ -1,11 +1,9 @@
 package algoplex2.scenes;
 
-import algoplex2.Grid;
-import graph.Graph;
-import graph.GraphWobbler;
-import graph.renderer.*;
-import lusio.components.GraphComponent;
+import spacefiller.graph.GraphWobbler;
+import spacefiller.graph.renderer.*;
 import processing.core.PGraphics;
+import spacefiller.mapping.Grid;
 import spacefiller.remote.Mod;
 
 /**

@@ -6,19 +6,17 @@ import processing.core.PShape;
 import processing.core.PVector;
 import sketches.Scene;
 
-public class MarchingSquaresGlitch extends Scene {
-  private float cellSize = 10;
+public class MarchingSquaresGlitch extends InfluencerScene {
+  public static void main(String[] args) {
+    SceneHost.getInstance().start(new MarchingSquaresGlitch());
+  }
+
+  private float cellSize = 20;
   private PVector[][] templates;
   private float threshold = 0.5f;
 
-  public static void main(String[] args) {
-    main("influencer.MarchingSquaresGlitch");
-  }
-
   @Override
-  protected void doSetup() {
-    set2D();
-
+  public void setup() {
     templates = new PVector[16][];
 
     for (int i = 0; i < 16; i++) {
@@ -55,46 +53,39 @@ public class MarchingSquaresGlitch extends Scene {
   }
 
   private float f(float x, float y) {
-    return noise(x / 100f, y/ 10f, frameCount / 50f) * 2;
+    float dx = x - width / 2;
+    float dy = y - height / 2;
+    float dist = sqrt(dx * dx + dy * dy);
+    return dist / ((sin(frameCount / 20f)+ 1) / 2 * 800) + noise(x / 100f, y/ 100f, frameCount / 50f);
   }
 
   @Override
-  protected void drawCanvas(PGraphics graphics, float mouseX, float mouseY) {
-    graphics.stroke(255);
-
-//    graphics.beginShape(LINES);
-//    graphics.vertex(30, 20);
-//    graphics.vertex(85, 20);
-//    graphics.vertex(85, 75);
-//    graphics.vertex(30, 75);
-//    graphics.endShape();
-
-
-    graphics.translate(-WIDTH/2, -HEIGHT/2);
-    graphics.noStroke();
-    for (int x = 0; x < WIDTH / cellSize; x++) {
-      for (int y = 0; y < HEIGHT / cellSize; y++) {
+  public void draw() {
+    background(0);
+    stroke(255);
+    noStroke();
+    for (int x = 0; x < width / cellSize; x++) {
+      for (int y = 0; y < height / cellSize; y++) {
         PVector noiseSpace = new PVector(x * cellSize, y * cellSize);
 
-        int tl = (int) f(noiseSpace.x - cellSize/2f, noiseSpace.y - cellSize/2f);
-        int tr = (int) f(noiseSpace.x + cellSize/2f, noiseSpace.y - cellSize/2f);
-        int br = (int) f(noiseSpace.x + cellSize/2f, noiseSpace.y + cellSize/2f);
-        int bl = (int) f(noiseSpace.x - cellSize/2f, noiseSpace.y + cellSize/2f);
+        int tl = f(noiseSpace.x - cellSize/2f, noiseSpace.y - cellSize/2f) > 1 ? 1 : 0;
+        int tr = f(noiseSpace.x + cellSize/2f, noiseSpace.y - cellSize/2f) > 1 ? 1 : 0;
+        int br = f(noiseSpace.x + cellSize/2f, noiseSpace.y + cellSize/2f) > 1 ? 1 : 0;
+        int bl = f(noiseSpace.x - cellSize/2f, noiseSpace.y + cellSize/2f) > 1 ? 1 : 0;
 
         int index = tl + tr * 2 + br * 4 + bl * 8;
 
         PVector[] template = templates[index];
 
-
-        graphics.noFill();
-        graphics.beginShape(LINES);
-        graphics.stroke(255);
-        graphics.strokeWeight(2);
+        noFill();
+        beginShape(LINES);
+        stroke(255);
+        strokeWeight(3);
         for (PVector p : template) {
-          graphics.vertex(noiseSpace.x + p.x * cellSize, noiseSpace.y + p.y * cellSize);
+          vertex(noiseSpace.x + p.x * cellSize, noiseSpace.y + p.y * cellSize);
           //graphics.point(noiseSpace.x, noiseSpace.y);
         }
-        graphics.endShape();
+        endShape();
       }
     }
   }

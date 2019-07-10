@@ -1,7 +1,5 @@
 package scene;
 
-import com.google.common.collect.Lists;
-import lusio.scenes.LusioScene;
 import spacefiller.remote.Mod;
 import processing.core.PApplet;
 import processing.core.PGraphics;

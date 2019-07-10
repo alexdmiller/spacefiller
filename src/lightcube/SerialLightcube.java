@@ -1,6 +1,5 @@
 package lightcube;
 
-import lusio.Lusio;
 import processing.serial.Serial;
 import toxi.geom.Quaternion;
 
@@ -71,7 +70,7 @@ public class SerialLightcube extends Lightcube {
             rotationalVelocity = Math.max(quaternion.sub(previousQuaternion).magnitude() * 500, rotationalVelocity);
 
             // get color from data packet
-            color = Lusio.instance.color(teapotPacket[12], teapotPacket[13], teapotPacket[14]);
+            //color = Lusio.instance.color(teapotPacket[12], teapotPacket[13], teapotPacket[14]);
 
             if (mode == 2 && teapotPacket[15] == 0) {
               transitionScene = true;
