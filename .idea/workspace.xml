@@ -7,109 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7bb3a9e-05bb-464d-967e-9bda287e8f0d" name="Default" comment="Worms and bound changes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Processing.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Processing.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flows.json" beforeDir="false" afterPath="$PROJECT_DIR$/flows.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/processing_remote_control.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/algoplex2/Algoplex2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/Algoplex2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/AlgoplexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/AlgoplexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/AlgoplexPerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/AlgoplexPerformer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/GraphTransformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/GraphTransformer.java.old" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/Grid.java.old" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/NumberTransition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/NumberTransition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/Quad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/Quad.java.old" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/TransitionAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/TransitionAnimation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/CircleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/CircleScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/ColorBath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/ColorBath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/ContourScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/ContourScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/CrossScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/CrossScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/FlowScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/FlowScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/FollowEdges.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/FollowEdges.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/GradientTriangleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/GradientTriangleScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/GridScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/GridScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/LifeScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/LifeScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/ParticleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/ParticleScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/PerlinGridScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/PerlinGridScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/PerlinTriangles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/PerlinTriangles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/PsychScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/PsychScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/PyramidScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/PyramidScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/ShiftingEdgeScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/ShiftingEdgeScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/TinyTriangleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/TinyTriangleScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/TriangleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/TriangleScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/VeinScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/VeinScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/WormScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/WormScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/boids/renderers/MeshFlockRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boids/renderers/MeshFlockRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/boids/renderers/VoronoiFlockRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boids/renderers/VoronoiFlockRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/PerlinVectorField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/PerlinVectorField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/StoredVectorField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/StoredVectorField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/TestSceneApplet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/TestSceneApplet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/TriangleGridComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/TriangleGridComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/color/ColorProvider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/color/ConstantColorProvider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/color/SmoothColorTheme.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/color/TwoColorProvider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/Edge.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/Graph.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/GraphWobbler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/GridUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/Node.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/renderer/AnimatedFillGraphRenderer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/renderer/BasicGraphRenderer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/renderer/CrosshairGraphRenderer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/renderer/DottedLineGraphRenderer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/renderer/GraphRenderer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/renderer/PipeGraphRenderer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/renderer/SinGraphRenderer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/influencer/ContourBlobs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/influencer/ContourBlobs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/influencer/CubeGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/influencer/CubeGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/influencer/InfluencerScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/influencer/InfluencerScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/influencer/MarchingSquares.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/influencer/MarchingSquares.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/influencer/MarchingSquaresGlitch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/influencer/MarchingSquaresGlitch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/influencer/MidiState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/influencer/Rain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/influencer/Rain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/influencer/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/influencer/Scene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/influencer/Vertical.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/influencer/Vertical.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lab/RemoteExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab/RemoteExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lightcube/MidiLightcube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lightcube/MidiLightcube.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lightcube/SerialLightcube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lightcube/SerialLightcube.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lusio/Lusio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/Lusio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lusio/components/GraphComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/components/GraphComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/CubeScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/CubeScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/FancyParticles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/FancyParticles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/FlockScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/FlockScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/FluidScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/FluidScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/LusioScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/LusioScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/MillerLineScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/MillerLineScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/NagyLineScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/NagyLineScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/NestedCubeScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/NestedCubeScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/NoiseCircle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/NoiseCircle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/NoiseSpace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/NoiseSpace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/ParticleCube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/ParticleCube.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/ThreeDeeFlockScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/ThreeDeeFlockScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/TriangleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/TriangleScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/particles/behaviors/FlockParticles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/particles/behaviors/FlockParticles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/particles/behaviors/RepelFixedPoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/particles/behaviors/RepelFixedPoints.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/particles/renderers/GraphParticleRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/particles/renderers/GraphParticleRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/particles/renderers/ParticleDotRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/particles/renderers/ParticleDotRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/particles/renderers/ParticleRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/particles/renderers/ParticleRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/particles/renderers/ParticleWebRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/particles/renderers/ParticleWebRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/particles/renderers/ParticleWormRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/particles/renderers/ParticleWormRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Scene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/SceneApplet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/SceneApplet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/SceneComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/SceneComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sketches/Blobs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Blobs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sketches/ColorBath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/ColorBath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sketches/Contours2018.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Contours2018.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sketches/Flows.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Flows.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sketches/FlowsVida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/FlowsVida.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sketches/SpaceFiller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/SpaceFiller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sketches/Tubes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Tubes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sketches/UncertainWave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/UncertainWave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sketches/Wave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Wave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sketches/Web.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Web.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sketches/Worms.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sketches/Worms.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/worms.json" beforeDir="false" afterPath="$PROJECT_DIR$/worms.json" afterDir="false" />
     </list>
     <ignored path="Processing.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -147,66 +45,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LifeScene.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/LifeScene.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PsychScene.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/PsychScene.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="593">
-              <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ShiftingEdgeScene.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/ShiftingEdgeScene.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="49" column="11" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="11" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TriangleScene.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/TriangleScene.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="52" column="10" selection-start-line="52" selection-start-column="10" selection-end-line="52" selection-end-column="10" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PyramidScene.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/PyramidScene.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="33" column="10" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CrossScene.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algoplex2/scenes/CrossScene.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -243,14 +81,59 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="GridUtils.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/graph/GridUtils.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="59">
+              <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Algoplex2.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algoplex2/Algoplex2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="439" column="29" lean-forward="true" selection-start-line="439" selection-start-column="29" selection-end-line="439" selection-end-column="29" />
+            <state relative-caret-position="174">
+              <caret line="138" column="21" lean-forward="true" selection-start-line="138" selection-start-column="21" selection-end-line="138" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Mapper.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/mapping/Mapper.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="54" selection-start-line="54" selection-end-line="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BasicGraphRenderer.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/graph/renderer/BasicGraphRenderer.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="212">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GraphTransformer.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/mapping/GraphTransformer.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="114" column="14" selection-start-line="114" selection-start-column="14" selection-end-line="114" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GraphRenderer.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/graph/renderer/GraphRenderer.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -448,6 +331,17 @@
             <path>
               <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
               <item name="Processing" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Processing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Processing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="algoplex2" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
@@ -1512,7 +1406,7 @@
       <workItem from="1550420532914" duration="16000" />
       <workItem from="1558277212742" duration="694000" />
       <workItem from="1558451868839" duration="8000" />
-      <workItem from="1562787842054" duration="5880000" />
+      <workItem from="1562787842054" duration="13684000" />
     </task>
     <task id="LOCAL-00001" summary="Worms and bound changes">
       <created>1506356022413</created>
@@ -1525,10 +1419,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1762770000" />
+    <option name="totallyTimeSpent" value="1770574000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1177" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5005325" side_tool="true" weight="0.49163568" />
@@ -1542,7 +1437,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.24959612" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="3" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.38482887" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.38425925" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.28611112" />
       <window_info id="Palette&#9;" order="4" />
@@ -1654,7 +1549,7 @@
           <option name="timeStamp" value="139" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="140" />
+      <option name="time" value="143" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1662,27 +1557,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/lusio/scenes/LusioScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="19" lean-forward="true" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lusio/scenes/FluidScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="31" lean-forward="true" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lusio/scenes/FancyParticles.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/lusio/scenes/NestedCubeScene.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
@@ -1736,13 +1610,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/graph/GridUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-628">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1829,17 +1696,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/mapping/GraphTransformer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-950">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-          <folding>
-            <element signature="e#2178#2179#0" expanded="true" />
-            <element signature="e#2216#2217#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2097,10 +1953,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$USER_HOME$/Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/graph/renderer/GraphRenderer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/graph/GridUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/graph/renderer/BasicGraphRenderer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/mapping/GraphTransformer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="114" column="14" selection-start-line="114" selection-start-column="14" selection-end-line="114" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/mapping/Mapper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/algoplex2/Algoplex2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="439" column="29" lean-forward="true" selection-start-line="439" selection-start-column="29" selection-end-line="439" selection-end-column="29" />
+        <state relative-caret-position="174">
+          <caret line="138" column="21" lean-forward="true" selection-start-line="138" selection-start-column="21" selection-end-line="138" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

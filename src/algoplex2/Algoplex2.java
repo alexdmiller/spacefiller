@@ -12,6 +12,7 @@ import processing.serial.Serial;
 import scene.Scene;
 import scene.SceneApplet;
 import spacefiller.mapping.GraphTransformer;
+import spacefiller.mapping.Mapper;
 import spacefiller.mapping.Quad;
 import spacefiller.remote.MidiRemoteControl;
 import spacefiller.remote.Mod;
@@ -32,6 +33,7 @@ public class Algoplex2 extends SceneApplet {
 
   private AlgoplexController remote;
   private GraphTransformer graphTransformer;
+  private Mapper mapper;
   private BasicGraphRenderer graphRenderer;
   private PGraphics transformedCanvas;
   private boolean showUI = false;
@@ -56,6 +58,8 @@ public class Algoplex2 extends SceneApplet {
   }
 
   public final void setup() {
+
+
     noCursor();
 
     setupScenes();
@@ -95,11 +99,19 @@ public class Algoplex2 extends SceneApplet {
   }
 
   private void setupScenes() {
-    loadGraphs();
+    transformedCanvas = createGraphics(COLS * SPACING, ROWS * SPACING, P3D);
+
+    mapper = new Mapper(this);
+
+
+    // loadGraphs();
 
     if (graphTransformer == null) {
       graphTransformer = GridUtils.createGraphTransformer(ROWS, COLS, SPACING);
     }
+
+    graphTransformer.setCanvas(transformedCanvas);
+    mapper.addTransformable(graphTransformer);
 
     crop = graphTransformer.getPostTransformGrid().getBoundingQuad().copy();
 
@@ -125,15 +137,11 @@ public class Algoplex2 extends SceneApplet {
         new CrossScene(),
         new VeinScene(),
         // throw away
-
-
     };
 
     for (GridScene scene : gridScenes) {
       addGridScene(scene);
     }
-
-    transformedCanvas = createGraphics(COLS * SPACING, ROWS * SPACING, P3D);
 
     setCanvas(getGraphics());
     transition = new TransitionAnimation();
@@ -293,6 +301,7 @@ public class Algoplex2 extends SceneApplet {
 
     this.transformedCanvas.beginDraw();
     this.transformedCanvas.background(0);
+
     if (currentScene != null) {
       GridScene gridScene = (GridScene) currentScene;
       if (gridScene.isTransformed()) {
@@ -311,12 +320,10 @@ public class Algoplex2 extends SceneApplet {
       }
     }
 
-    this.transformedCanvas.endDraw();
-
-    graphTransformer.drawImage(this.transformedCanvas);
+    //this.transformedCanvas.endDraw();
 
     if (showUI) {
-      // graphTransformer.drawUI(this.canvas);
+      graphTransformer.renderUI(getGraphics());
       text(frameRate, 10, 20);
     } else {
       float border = 50;
@@ -332,6 +339,10 @@ public class Algoplex2 extends SceneApplet {
           crop.getBottomRight().position.x + borderOffset, crop.getBottomRight().position.y + borderOffset,
           crop.getBottomLeft().position.x - borderOffset, crop.getBottomLeft().position.y + borderOffset);
     }
+
+    this.transformedCanvas.endDraw();
+    graphTransformer.drawImage(this.canvas);
+
   }
 
   @Override
