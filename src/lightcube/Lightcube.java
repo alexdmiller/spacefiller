@@ -13,11 +13,14 @@ public class Lightcube extends PApplet {
   public static Lightcube usb() {
     return new SerialLightcube(USB_PORT_NAME, BAUD_RATE);
   }
+
   public static Lightcube wireless() {
     return new SerialLightcube(XBEE_PORT_NAME, BAUD_RATE);
   }
 
-  public static Lightcube midi() { return new MidiLightcube(); }
+  public static Lightcube midi() {
+    return new MidiLightcube();
+  }
 
   protected Quaternion quaternion = new Quaternion(1, 0, 0, 0);
   protected Quaternion previousQuaternion;
@@ -36,6 +39,8 @@ public class Lightcube extends PApplet {
     } else {
       rotationalVelocity = 0;
     }
+
+    updateLightcube();
   }
 
   public boolean readTransitionScene() {
@@ -46,6 +51,10 @@ public class Lightcube extends PApplet {
 
   public int getColor() {
     return color;
+  }
+
+  public void setMode(int mode) {
+    this.mode = mode;
   }
 
   public int getMode() {
@@ -61,7 +70,7 @@ public class Lightcube extends PApplet {
   }
 
   public float[] getEulerRotation() {
-    return new float[] {
+    return new float[]{
         (float) Math.atan2(
             2 * quaternion.y * quaternion.w - 2 * quaternion.x * quaternion.z,
             1 - 2 * quaternion.y * quaternion.y - 2 * quaternion.z * quaternion.z),
@@ -73,7 +82,7 @@ public class Lightcube extends PApplet {
   }
 
   public float[] getNormalizedEuler() {
-    return new float[] {
+    return new float[]{
         (float) (Math.atan2(
             2 * quaternion.y * quaternion.w - 2 * quaternion.x * quaternion.z,
             1 - 2 * quaternion.y * quaternion.y - 2 * quaternion.z * quaternion.z) / Math.PI + 1) / 2,
@@ -162,4 +171,6 @@ public class Lightcube extends PApplet {
     }
     graphics.popMatrix();
   }
+
+  public void updateLightcube() { }
 }

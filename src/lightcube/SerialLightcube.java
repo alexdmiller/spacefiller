@@ -16,6 +16,7 @@ public class SerialLightcube extends Lightcube {
   private char[] teapotPacket = new char[19];  // InvenSense Teapot packet
   private int serialCount = 0;                 // current packet byte position
   private int aligned = 0;
+  private int updateCounter = 0;
 
   public SerialLightcube(String portName, int baudRate) {
     try {
@@ -26,6 +27,19 @@ public class SerialLightcube extends Lightcube {
       System.out.println(e);
       port = null;
     }
+  }
+
+  public void updateLightcube() {
+    if (updateCounter >= 10) {
+      updateCounter = 0;
+
+      if (port != null) {
+        port.write(mode);
+      }
+    }
+//    port.write(0);
+
+    updateCounter++;
   }
 
   public void serialEvent(Serial port) {
@@ -70,13 +84,6 @@ public class SerialLightcube extends Lightcube {
 
             rotationalVelocity = Math.max(quaternion.sub(previousQuaternion).magnitude() * 500, rotationalVelocity);
 
-            // get color from data packet
-            color = Lusio.instance.color(teapotPacket[12], teapotPacket[13], teapotPacket[14]);
-
-            if (mode == 2 && teapotPacket[15] == 0) {
-              transitionScene = true;
-            }
-            mode = teapotPacket[15];
             counter = teapotPacket[16];
           }
         }
