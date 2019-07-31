@@ -52,8 +52,8 @@ public class Lusio extends SceneApplet implements ColorProvider {
   }
 
   public void settings() {
-    fullScreen(1);
-    size(1920, 1080, P3D);
+    fullScreen(P3D);
+//    size(1920, 1080, P3D);
     PJOGL.profile = 1;
   }
 
@@ -127,6 +127,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
 
   @Override
   public final void draw() {
+    background(0);
     canvas.beginDraw();
 
     if (lightcube.getMode() == 1) {

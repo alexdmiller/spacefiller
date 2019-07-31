@@ -14,6 +14,7 @@ import scene.SceneApplet;
 import spacefiller.mapping.GraphTransformer;
 import spacefiller.mapping.Mapper;
 import spacefiller.mapping.Quad;
+import spacefiller.mapping.Surface;
 import spacefiller.remote.MidiRemoteControl;
 import spacefiller.remote.Mod;
 import spacefiller.remote.SerialRemoteControl;
@@ -32,10 +33,9 @@ public class Algoplex2 extends SceneApplet {
   }
 
   private AlgoplexController remote;
-  private GraphTransformer graphTransformer;
   private Mapper mapper;
+  private Surface surface;
   private BasicGraphRenderer graphRenderer;
-  private PGraphics transformedCanvas;
   private boolean showUI = false;
   private TransitionAnimation transition;
   private NumberTransition numberTransition;
@@ -58,10 +58,7 @@ public class Algoplex2 extends SceneApplet {
   }
 
   public final void setup() {
-
-
     noCursor();
-
     setupScenes();
 
     String[] availablePorts = Serial.list();
@@ -78,10 +75,12 @@ public class Algoplex2 extends SceneApplet {
       Scanner scanner = new Scanner(System.in);
       int portNum = scanner.nextInt();
 
-      String portName = availablePorts[portNum];
+      if (portNum > 0) {
+        String portName = availablePorts[portNum];
 
-      System.out.println("Using port " + portName);
-      setupRemote(portName);
+        System.out.println("Using port " + portName);
+        setupRemote(portName);
+      }
     }
 //
 //    List<String> serialPorts = Arrays.asList(Serial.list());
@@ -99,21 +98,13 @@ public class Algoplex2 extends SceneApplet {
   }
 
   private void setupScenes() {
-    transformedCanvas = createGraphics(COLS * SPACING, ROWS * SPACING, P3D);
-
     mapper = new Mapper(this);
-
 
     // loadGraphs();
 
-    if (graphTransformer == null) {
-      graphTransformer = GridUtils.createGraphTransformer(ROWS, COLS, SPACING);
+    if (surface == null) {
+      surface = mapper.createSurface(ROWS, COLS, SPACING);
     }
-
-    graphTransformer.setCanvas(transformedCanvas);
-    mapper.addTransformable(graphTransformer);
-
-    crop = graphTransformer.getPostTransformGrid().getBoundingQuad().copy();
 
     graphRenderer = new BasicGraphRenderer(5);
     graphRenderer.setColor(0xFFFFFF00);
@@ -286,63 +277,29 @@ public class Algoplex2 extends SceneApplet {
 
   @Override
   public void draw() {
-//    if (remote != null) {
-//      remote.update();
-//    }
-
     this.canvas.background(0);
 
-    if (currentScene != null) {
-      GridScene gridScene = (GridScene) currentScene;
-      if (!gridScene.isTransformed()) {
-        currentScene.draw(this.canvas);
+    surface.drawToCanvas(graphics -> {
+      graphics.background(0);
+
+      if (currentScene != null) {
+        GridScene gridScene = (GridScene) currentScene;
+        if (gridScene.isTransformed()) {
+          currentScene.draw(graphics);
+        }
       }
-    }
 
-    this.transformedCanvas.beginDraw();
-    this.transformedCanvas.background(0);
+      transition.draw(graphics, surface.getPreTransformGrid());
 
-    if (currentScene != null) {
-      GridScene gridScene = (GridScene) currentScene;
-      if (gridScene.isTransformed()) {
-        currentScene.draw(this.transformedCanvas);
+      if (numberTransition != null) {
+        numberTransition.draw(graphics, surface.getPreTransformGrid());
+
+        if (numberTransition.isFinished()) {
+          switchScene(numberTransition.getNum());
+          numberTransition = null;
+        }
       }
-    }
-
-    transition.draw(this.transformedCanvas, graphTransformer.getPreTransformGrid());
-
-    if (numberTransition != null) {
-      numberTransition.draw(this.transformedCanvas, graphTransformer.getPreTransformGrid());
-
-      if (numberTransition.isFinished()) {
-        switchScene(numberTransition.getNum());
-        numberTransition = null;
-      }
-    }
-
-    //this.transformedCanvas.endDraw();
-
-    if (showUI) {
-      graphTransformer.renderUI(getGraphics());
-      text(frameRate, 10, 20);
-    } else {
-      float border = 50;
-      stroke(0);
-      noFill();
-      strokeWeight(border);
-
-      float borderOffset = border / 2 - 2;
-
-      quad(
-          crop.getTopLeft().position.x - borderOffset, crop.getTopLeft().position.y - borderOffset,
-          crop.getTopRight().position.x + borderOffset, crop.getTopRight().position.y - borderOffset,
-          crop.getBottomRight().position.x + borderOffset, crop.getBottomRight().position.y + borderOffset,
-          crop.getBottomLeft().position.x - borderOffset, crop.getBottomLeft().position.y + borderOffset);
-    }
-
-    this.transformedCanvas.endDraw();
-    graphTransformer.drawImage(this.canvas);
-
+    });
   }
 
   @Override
@@ -351,7 +308,7 @@ public class Algoplex2 extends SceneApplet {
       showUI = !showUI;
     }
 
-    if (key == 'm') {
+    if (key == 'n') {
       if (showMouse) {
         showMouse = false;
         noCursor();
@@ -378,7 +335,7 @@ public class Algoplex2 extends SceneApplet {
       }
     }
 
-    if (key == 'n') {
+    if (key == '>') {
       gotoNextScene();
     }
   }
@@ -386,7 +343,7 @@ public class Algoplex2 extends SceneApplet {
   @Mod
   public void gotoNextScene() {
     currentScene = null;
-    numberTransition = new NumberTransition((currentSceneIndex + 1) % scenes.size(), graphTransformer.getPreTransformGrid());
+    numberTransition = new NumberTransition((currentSceneIndex + 1) % scenes.size(), surface.getPreTransformGrid());
     transition.reset();
   }
 
@@ -398,71 +355,71 @@ public class Algoplex2 extends SceneApplet {
     } else {
       PVector mouse = new PVector(mouseX, mouseY);
 
-      for (PVector quadPoint : crop.getVertices()) {
-        float dist = PVector.dist(quadPoint, mouse);
-        if (dist < 10) {
-          selectedCropNode = quadPoint;
-          return;
-        }
-      }
+//      for (PVector quadPoint : crop.getVertices()) {
+//        float dist = PVector.dist(quadPoint, mouse);
+//        if (dist < 10) {
+//          selectedCropNode = quadPoint;
+//          return;
+//        }
+//      }
     }
   }
 
-  @Override
-  public void mouseReleased() {
-    if (showUI) {
-      // TODO: switch to Mapper
-      // graphTransformer.mouseUp(mouseX, mouseY);
-      saveGraphs();
-      crop = graphTransformer.getPostTransformGrid().getBoundingQuad().copy();
-    }
-  }
-
-  @Override
-  public void mouseDragged() {
-    if (showUI) {
-      // TODO: switch to Mapper
-      // graphTransformer.mouseDragged(mouseX, mouseY);
-    }
-  }
+//  @Override
+//  public void mouseReleased() {
+//    if (showUI) {
+//      // TODO: switch to Mapper
+//      // graphTransformer.mouseUp(mouseX, mouseY);
+//      saveGraphs();
+//      crop = graphTransformer.getPostTransformGrid().getBoundingQuad().copy();
+//    }
+//  }
+//
+//  @Override
+//  public void mouseDragged() {
+//    if (showUI) {
+//      // TODO: switch to Mapper
+//      // graphTransformer.mouseDragged(mouseX, mouseY);
+//    }
+//  }
 
   public void addGridScene(GridScene gridScene) {
     if (gridScene.isTransformed()) {
-      gridScene.preSetup(graphTransformer.getPreTransformGrid());
+      gridScene.preSetup(surface.getPreTransformGrid());
     } else {
-      gridScene.preSetup(graphTransformer.getPostTransformGrid());
+      gridScene.preSetup(surface.getPostTransformGrid());
     }
     addScene(gridScene);
   }
 
-  private void saveGraphs() {
-    try {
-      FileOutputStream fileOut =
-          new FileOutputStream("algoplex2.ser");
-      ObjectOutputStream out = new ObjectOutputStream(fileOut);
-      out.writeObject(graphTransformer);
-      out.close();
-      fileOut.close();
-    } catch (IOException i) {
-      i.printStackTrace();
-    }
-  }
-
-  private void loadGraphs() {
-    try {
-      FileInputStream fileIn = new FileInputStream("algoplex2.ser");
-      ObjectInputStream in = new ObjectInputStream(fileIn);
-      graphTransformer = (GraphTransformer) in.readObject();
-      in.close();
-      fileIn.close();
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
-    } catch (IOException i) {
-      i.printStackTrace();
-    } catch (ClassNotFoundException c) {
-      c.printStackTrace();
-    }
-  }
+//  private void saveGraphs() {
+//    try {
+//      FileOutputStream fileOut =
+//          new FileOutputStream("algoplex2.ser");
+//      ObjectOutputStream out = new ObjectOutputStream(fileOut);
+//      out.writeObject(graphTransformer);
+//      out.close();
+//      fileOut.close();
+//    } catch (IOException i) {
+//      i.printStackTrace();
+//    }
+//  }
+//
+//  private void loadGraphs() {
+//    try {
+//      FileInputStream fileIn = new FileInputStream("algoplex2.ser");
+//      ObjectInputStream in = new ObjectInputStream(fileIn);
+//      graphTransformer = (GraphTransformer) in.readObject();
+//      in.close();
+//      fileIn.close();
+//    } catch (FileNotFoundException e) {
+//      e.printStackTrace();
+//    } catch (IOException i) {
+//      i.printStackTrace();
+//    } catch (ClassNotFoundException c) {
+//      c.printStackTrace();
+//    }
+//  }
 
   @Override
   public void switchScene(int sceneIndex) {

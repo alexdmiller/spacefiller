@@ -1,3 +1,30 @@
 Manifest-Version: 1.0
-Main-Class: algowave.Algowave
+Class-Path: apiviz-1.3.1.GA.jar args4j-2.0.8.jar controlP5.jar core.ja
+ r doapamine.jar gluegen-rt.jar gluegen-rt-natives-linux-aarch64.jar g
+ luegen-rt-natives-linux-amd64.jar gluegen-rt-natives-linux-armv6hf.ja
+ r gluegen-rt-natives-linux-i586.jar gluegen-rt-natives-macosx-univers
+ al.jar gluegen-rt-natives-windows-amd64.jar gluegen-rt-natives-window
+ s-i586.jar guava-19.0-rc2.jar themidibus.jar quickhull3d.1.4.jar java
+ x.json-1.0.4.jar processing_remote_control.jar controlP5.jar core.jar
+  jssc.jar mesh.jar oscP5.jar spout.jar serial.jar Syphon.jar jsyphon.
+ jar jogl-all.jar LeapJava.jar controlP5.jar doapamine.jar toxiclibs.j
+ ar gluegen-rt.jar themidibus.jar umlgraph5.2.jar args4j-2.0.8.jar gua
+ va-19.0-rc2.jar jai_core-1.1.3.jar apiviz-1.3.1.GA.jar quickhull3d.1.
+ 4.jar native-lib-loader-2.1.1.jar jogl-all-natives-linux-i586.jar jog
+ l-all-natives-linux-amd64.jar gluegen-rt-natives-linux-i586.jar jogl-
+ all-natives-windows-i586.jar gluegen-rt-natives-linux-amd64.jar jogl-
+ all-natives-linux-aarch64.jar jogl-all-natives-linux-armv6hf.jar jogl
+ -all-natives-windows-amd64.jar gluegen-rt-natives-windows-i586.jar gl
+ uegen-rt-natives-linux-aarch64.jar gluegen-rt-natives-linux-armv6hf.j
+ ar gluegen-rt-natives-windows-amd64.jar jogl-all-natives-macosx-unive
+ rsal.jar gluegen-rt-natives-macosx-universal.jar keystone.jar Ani.jar
+  processing_remote_control.jar gson-2.7.jar jogl-all.jar jogl-all-nat
+ ives-linux-aarch64.jar jogl-all-natives-linux-amd64.jar jogl-all-nati
+ ves-linux-armv6hf.jar jogl-all-natives-linux-i586.jar jogl-all-native
+ s-macosx-universal.jar jogl-all-natives-windows-amd64.jar jogl-all-na
+ tives-windows-i586.jar jssc.jar jsyphon.jar LeapJava.jar mesh.jar nat
+ ive-lib-loader-2.1.1.jar oscP5.jar quickhull3d.1.4.jar serial.jar Syp
+ hon.jar themidibus.jar toxiclibs.jar umlgraph5.2.jar javax.json-api-1
+ .0.jar spacefillerlib.jar
+Main-Class: algoplex2.Algoplex2
 

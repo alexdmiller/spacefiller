@@ -75,7 +75,7 @@ public class Flows extends Scene {
 	@Override
 	public void doSetup() {
 		OscRemoteControl remote = new OscRemoteControl(12080);
-		remote.autoRoute(this);
+		//remote.autoRoute(this);
 
 		set2D();
 		// VDMXWriter.exportVDMXJson("flows", remote.getTargetNodes(), 12080);
