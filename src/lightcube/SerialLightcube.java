@@ -18,14 +18,25 @@ public class SerialLightcube extends Lightcube {
   private int aligned = 0;
   private int updateCounter = 0;
 
+  private String portName;
+  private int baudRate;
+
   public SerialLightcube(String portName, int baudRate) {
+    this.portName = portName;
+    this.baudRate = baudRate;
+    connect();
+  }
+
+  @Override
+  public void connect() {
     try {
       System.out.println(Arrays.toString(Serial.list()));
       System.out.println("Opening port " + portName + " with baud rate " + baudRate);
       port = new Serial(this, portName, baudRate);
+      connected = true;
     } catch (RuntimeException e) {
       System.out.println(e);
-      port = null;
+      connected = false;
     }
   }
 

@@ -2,15 +2,17 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="algoplex2:jar" />
+      <artifact name="algoplex1:jar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7bb3a9e-05bb-464d-967e-9bda287e8f0d" name="Default" comment="Worms and bound changes">
-      <change afterPath="$PROJECT_DIR$/src/lusio/Platform.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manifests/lusio/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lightcube/Lightcube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lightcube/Lightcube.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lightcube/SerialLightcube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lightcube/SerialLightcube.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lusio/Lusio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/Lusio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/ThreeDeeFlockScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/ThreeDeeFlockScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/Platform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/Platform.java" afterDir="false" />
     </list>
     <ignored path="Processing.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,22 +53,8 @@
       <file leaf-file-name="SerialStringRemoteControl.class" pinned="false" current-in-tab="false">
         <entry file="jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/processing_remote_control_jar/processing_remote_control.jar!/spacefiller/remote/SerialStringRemoteControl.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Node.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/processing_remote_control_jar/processing_remote_control.jar!/spacefiller/remote/signal/Node.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="75" selection-start-line="75" selection-end-line="75" />
-              <folding>
-                <element signature="e#1040#1041#0" expanded="true" />
-                <element signature="e#1095#1096#0" expanded="true" />
-                <element signature="e#3854#3855#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="259">
+              <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -75,7 +63,7 @@
         <entry file="file://$PROJECT_DIR$/src/scene/SceneApplet.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="466">
-              <caret line="52" column="7" lean-forward="true" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="7" />
+              <caret line="52" column="7" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="7" />
               <folding>
                 <element signature="e#1242#1243#0" expanded="true" />
                 <element signature="e#1304#1305#0" expanded="true" />
@@ -84,11 +72,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ThreeDeeFlockScene.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ThreeDeeFlockScene.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lusio/scenes/ThreeDeeFlockScene.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="34" column="51" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+            <state relative-caret-position="594">
+              <caret line="43" selection-start-line="43" selection-end-line="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Lightcube.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/lightcube/Lightcube.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="99" column="36" lean-forward="true" selection-start-line="98" selection-start-column="28" selection-end-line="99" selection-end-column="36" />
+              <folding>
+                <element signature="e#407#408#0" expanded="true" />
+                <element signature="e#469#470#0" expanded="true" />
+                <element signature="e#509#510#0" expanded="true" />
+                <element signature="e#572#573#0" expanded="true" />
+                <element signature="e#608#609#0" expanded="true" />
+                <element signature="e#644#645#0" expanded="true" />
+                <element signature="e#1349#1350#0" expanded="true" />
+                <element signature="e#1371#1372#0" expanded="true" />
+                <element signature="e#5354#5355#0" expanded="true" />
+                <element signature="e#5380#5381#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SerialLightcube.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/lightcube/SerialLightcube.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -105,8 +123,8 @@
       <file leaf-file-name="Lusio.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lusio/Lusio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="140" column="17" lean-forward="true" selection-start-line="140" selection-start-column="17" selection-end-line="140" selection-end-column="17" />
+            <state relative-caret-position="585">
+              <caret line="218" column="20" selection-start-line="218" selection-start-column="20" selection-end-line="218" selection-end-column="20" />
               <folding>
                 <element signature="e#1381#1382#0" expanded="true" />
                 <element signature="e#1412#1413#0" expanded="true" />
@@ -142,22 +160,17 @@
       <file leaf-file-name="Platform.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lusio/Platform.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="32" column="3" lean-forward="true" selection-start-line="32" selection-start-column="3" selection-end-line="32" selection-end-column="3" />
+            <state relative-caret-position="271">
+              <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#968#969#0" expanded="true" />
+                <element signature="e#1004#1005#0" expanded="true" />
+                <element signature="e#1034#1035#0" expanded="true" />
+                <element signature="e#1045#1046#0" expanded="true" />
                 <element signature="e#832#833#0" expanded="true" />
                 <element signature="e#865#866#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FloatNode.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/processing_remote_control_jar/processing_remote_control.jar!/spacefiller/remote/signal/FloatNode.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="26" selection-start-line="26" selection-end-line="26" />
             </state>
           </provider>
         </entry>
@@ -275,11 +288,11 @@
         <option value="$PROJECT_DIR$/src/algoplex2/scenes/TinyTriangleScene.java" />
         <option value="$PROJECT_DIR$/src/sketches/Flows.java" />
         <option value="$PROJECT_DIR$/src/algoplex2/Algoplex2.java" />
-        <option value="$PROJECT_DIR$/src/lightcube/SerialLightcube.java" />
+        <option value="$PROJECT_DIR$/src/lusio/scenes/ThreeDeeFlockScene.java" />
         <option value="$PROJECT_DIR$/src/lightcube/Lightcube.java" />
+        <option value="$PROJECT_DIR$/src/lightcube/SerialLightcube.java" />
         <option value="$PROJECT_DIR$/src/lusio/Lusio.java" />
         <option value="$PROJECT_DIR$/src/lusio/Platform.java" />
-        <option value="$PROJECT_DIR$/src/lusio/scenes/ThreeDeeFlockScene.java" />
       </list>
     </option>
   </component>
@@ -294,7 +307,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
-    <option name="width" value="1920" />
+    <option name="width" value="960" />
     <option name="height" value="1177" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -372,13 +385,6 @@
               <item name="Processing" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="lusio" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Processing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="lusio" type="462c0819:PsiDirectoryNode" />
-              <item name="scenes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
@@ -1467,7 +1473,7 @@
       <workItem from="1564532553319" duration="433000" />
       <workItem from="1564534598243" duration="7000" />
       <workItem from="1564606014281" duration="6020000" />
-      <workItem from="1564630936436" duration="4425000" />
+      <workItem from="1564630936436" duration="9892000" />
     </task>
     <task id="LOCAL-00001" summary="Worms and bound changes">
       <created>1506356022413</created>
@@ -1480,10 +1486,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1805064000" />
+    <option name="totallyTimeSpent" value="1810531000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="1057" extended-state="6" />
+    <frame x="0" y="23" width="1920" height="1177" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -1505,9 +1511,9 @@
       <window_info id="Image Layers" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946752" visible="true" weight="0.375" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946752" visible="true" weight="0.33333334" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3293247" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7003222" visible="true" weight="0.31309903" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7003222" visible="true" weight="0.31309903" />
       <window_info anchor="bottom" id="Run with VisualVM" order="12" weight="0.3293247" />
       <window_info anchor="right" id="Theme Preview" order="12" />
       <window_info id="Favorites" order="6" sideWeight="0.29967776" side_tool="true" weight="0.18300654" />
@@ -1617,13 +1623,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/processing_remote_control_jar/processing_remote_control.jar!/spacefiller/remote/SerialStringRemoteControl.class</url>
-          <line>48</line>
+          <line>71</line>
           <properties />
           <option name="timeStamp" value="150" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/processing_remote_control_jar/processing_remote_control.jar!/spacefiller/remote/SerialStringRemoteControl.class</url>
-          <line>45</line>
+          <line>68</line>
           <properties />
           <option name="timeStamp" value="151" />
         </line-breakpoint>
@@ -1902,30 +1908,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lightcube/SerialLightcube.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="44" column="40" selection-start-line="44" selection-start-column="2" selection-end-line="44" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lightcube/Lightcube.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-          <folding>
-            <element signature="e#407#408#0" expanded="true" />
-            <element signature="e#469#470#0" expanded="true" />
-            <element signature="e#509#510#0" expanded="true" />
-            <element signature="e#572#573#0" expanded="true" />
-            <element signature="e#608#609#0" expanded="true" />
-            <element signature="e#644#645#0" expanded="true" />
-            <element signature="e#1349#1350#0" expanded="true" />
-            <element signature="e#1371#1372#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/processing_remote_control_jar/processing_remote_control.jar!/spacefiller/remote/signal/Gate.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="261">
@@ -1966,13 +1948,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/processing_remote_control_jar/processing_remote_control.jar!/spacefiller/remote/SerialStringRemoteControl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/lusio/scenes/FluidScene.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="431">
@@ -1980,33 +1955,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lusio/Platform.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="32" column="3" lean-forward="true" selection-start-line="32" selection-start-column="3" selection-end-line="32" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#832#833#0" expanded="true" />
-            <element signature="e#865#866#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lusio/Lusio.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="140" column="17" lean-forward="true" selection-start-line="140" selection-start-column="17" selection-end-line="140" selection-end-column="17" />
-          <folding>
-            <element signature="e#1381#1382#0" expanded="true" />
-            <element signature="e#1412#1413#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/scene/SceneApplet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="466">
-          <caret line="52" column="7" lean-forward="true" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="7" />
+          <caret line="52" column="7" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="7" />
           <folding>
             <element signature="e#1242#1243#0" expanded="true" />
             <element signature="e#1304#1305#0" expanded="true" />
@@ -2029,8 +1981,68 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lusio/scenes/ThreeDeeFlockScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="34" column="51" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+        <state relative-caret-position="594">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lightcube/SerialLightcube.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lusio/Lusio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="218" column="20" selection-start-line="218" selection-start-column="20" selection-end-line="218" selection-end-column="20" />
+          <folding>
+            <element signature="e#1381#1382#0" expanded="true" />
+            <element signature="e#1412#1413#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lusio/Platform.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#968#969#0" expanded="true" />
+            <element signature="e#1004#1005#0" expanded="true" />
+            <element signature="e#1034#1035#0" expanded="true" />
+            <element signature="e#1045#1046#0" expanded="true" />
+            <element signature="e#832#833#0" expanded="true" />
+            <element signature="e#865#866#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Projects/Processing Remote Control/out/artifacts/processing_remote_control_jar/processing_remote_control.jar!/spacefiller/remote/SerialStringRemoteControl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lightcube/Lightcube.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="99" column="36" lean-forward="true" selection-start-line="98" selection-start-column="28" selection-end-line="99" selection-end-column="36" />
+          <folding>
+            <element signature="e#407#408#0" expanded="true" />
+            <element signature="e#469#470#0" expanded="true" />
+            <element signature="e#509#510#0" expanded="true" />
+            <element signature="e#572#573#0" expanded="true" />
+            <element signature="e#608#609#0" expanded="true" />
+            <element signature="e#644#645#0" expanded="true" />
+            <element signature="e#1349#1350#0" expanded="true" />
+            <element signature="e#1371#1372#0" expanded="true" />
+            <element signature="e#5354#5355#0" expanded="true" />
+            <element signature="e#5380#5381#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2040,7 +2052,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>algoplex2:jar</last-edited>
+          <last-edited>algoplex1:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -15,7 +15,7 @@ public class Platform {
   private List<CubePlacedListener> listeners;
 
   public Platform(String portName, int baudRate) {
-    remote = new SerialStringRemoteControl(NUM_SLOTS);
+    remote = new SerialStringRemoteControl(portName, baudRate, NUM_SLOTS);
     listeners = new ArrayList<>();
 
     for (int i = 0; i < NUM_SLOTS; i++) {
@@ -29,8 +29,17 @@ public class Platform {
       });
     }
 
-    remote.listen(portName, baudRate);
+    remote.connect();
   }
+
+  public boolean isConnected() {
+    return remote.isConnected();
+  }
+
+  public void connect() {
+    remote.connect();
+  }
+
 
   public void onCubePlaced(CubePlacedListener listener) {
     listeners.add(listener);

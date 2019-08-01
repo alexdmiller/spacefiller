@@ -195,13 +195,31 @@ public class Lusio extends SceneApplet implements ColorProvider {
     }
 
     //lightcube.drawDebug(canvas, 200, 100);
-
-    image(canvas, 0, 0);
-
+    canvas.endDraw();
     drawFlipGuide(200, 200, 200);
 
+    image(canvas, 0, 0);
     image(logoImage, WIDTH - logoImage.width - 30, HEIGHT - logoImage.height - 20);
-    canvas.endDraw();
+
+
+    if (!lightcube.isConnected()) {
+      fill(255, 0, 0);
+      text("CUBE DISCONNECTED", 20, 20);
+
+      if (frameCount % 60 == 0) {
+        lightcube.connect();
+      }
+    }
+
+    if (!platform.isConnected()) {
+      fill(255, 0, 0);
+      text("PLATFORM DISCONNECTED", 20, 40);
+
+      if (frameCount % 60 == 0) {
+        platform.connect();
+      }
+    }
+
   }
 
   public Graph selectedGraph() {

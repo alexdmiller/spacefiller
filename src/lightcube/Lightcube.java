@@ -30,6 +30,7 @@ public class Lightcube extends PApplet {
   protected int mode = 0;
   protected boolean transitionScene = false;
   protected int counter = 0;
+  protected boolean connected = false;
 
   private float decay = 0.95f;
 
@@ -181,4 +182,10 @@ public class Lightcube extends PApplet {
   }
 
   public void updateLightcube() { }
+
+  public boolean isConnected() {
+    return connected;
+  }
+
+  public void connect() { }
 }
