@@ -39,6 +39,7 @@ public class ThreeDeeFlockScene extends LusioScene {
     particleGenerator2.addBehavior(new AttractParticles(100, 0.5f));
     particleGenerator2.addBehavior(new ParticleFriction(0.9f));
     addComponent(particleGenerator2);
+    super.setup();
   }
 
   @Override

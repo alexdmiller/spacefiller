@@ -16,6 +16,8 @@ import processing.core.PImage;
 import processing.core.PVector;
 import processing.opengl.PJOGL;
 import scene.SceneApplet;
+import spacefiller.remote.SerialStringRemoteControl;
+import spacefiller.remote.signal.Gate;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -39,6 +41,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
   private boolean creatingEdge;
   private boolean graphsVisible = false;
   private Lightcube lightcube;
+  private Platform platform;
   private boolean modeSwitchFlag = false;
 
   public static int WIDTH = 1920;
@@ -62,6 +65,13 @@ public class Lusio extends SceneApplet implements ColorProvider {
     graphs = new HashMap<>();
     graphNames = new ArrayList<>();
     lightcube = Lightcube.wireless();
+    platform = new Platform("/dev/cu.usbmodem14101", 115200);
+    platform.onCubePlaced(slot -> switchScene(slot));
+
+//    gate.print();
+//    gate.onGateTriggered(
+//    gate.print();
+
 
     loadGraphs();
 
@@ -71,13 +81,14 @@ public class Lusio extends SceneApplet implements ColorProvider {
 
     LusioScene[] lusioScenes = new LusioScene[] {
         new NestedCubeScene(),
+        new ThreeDeeFlockScene(),
+
         new FluidScene(),
         new NoiseCircle(),
         new NoiseSpace(),
         new FancyParticles(),
         new FlockScene(),
         new CubeScene(),
-        new ThreeDeeFlockScene(),
         new TriangleScene(),
         new MillerLineScene(),
         new ContourScene(),
@@ -123,6 +134,12 @@ public class Lusio extends SceneApplet implements ColorProvider {
 
     logoImage = loadImage("logo-2.png");
 
+  }
+
+  @Override
+  public void switchScene(int sceneIndex) {
+    super.switchScene(sceneIndex);
+    lightcube.setMode(sceneIndex);
   }
 
   @Override
@@ -245,8 +262,6 @@ public class Lusio extends SceneApplet implements ColorProvider {
 
     if (keyCode == DOWN) {
       gotoNextScene();
-      lightcube.setMode((lightcube.getMode() + 1) % 2);
-
     }
 
     if (key == ' ') {
