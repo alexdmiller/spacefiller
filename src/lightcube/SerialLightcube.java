@@ -30,7 +30,7 @@ public class SerialLightcube extends Lightcube {
   }
 
   public void updateLightcube() {
-    if (updateCounter >= 10) {
+    if (updateCounter >= 2) {
       updateCounter = 0;
 
       if (port != null) {

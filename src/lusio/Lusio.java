@@ -246,6 +246,7 @@ public class Lusio extends SceneApplet implements ColorProvider {
     if (keyCode == DOWN) {
       gotoNextScene();
       lightcube.setMode((lightcube.getMode() + 1) % 2);
+
     }
 
     if (key == ' ') {

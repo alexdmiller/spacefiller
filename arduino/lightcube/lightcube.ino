@@ -6,7 +6,7 @@
 MPU6050 mpu;
 
 #define PIN 6
-#define NUM_PIXELS 36 * 3
+#define NUM_PIXELS 16 * 16
 
 #define LED_PIN 13 // (Arduino is 13, Teensy is 11, Teensy++ is 6)
 bool blinkState = false;
@@ -205,62 +205,80 @@ void loop() {
   }
 
 
-  lastQuat.x = quat.x;
-  lastQuat.y = quat.y;
-  lastQuat.z = quat.z;
-  lastQuat.w = quat.w;
-  
-  mpu.dmpGetQuaternion(&quat, fifoBuffer);
-  mpu.dmpGetEuler(euler, &quat);
+//  lastQuat.x = quat.x;
+//  lastQuat.y = quat.y;
+//  lastQuat.z = quat.z;
+//  lastQuat.w = quat.w;
+//  
+//  mpu.dmpGetQuaternion(&quat, fifoBuffer);
+//  mpu.dmpGetEuler(euler, &quat);
 
-  Quaternion diff = Quaternion(
-    quat.w - lastQuat.w,
-    quat.x - lastQuat.x,
-    quat.y - lastQuat.y,
-    quat.z - lastQuat.z);
-  float rotationalVelocity = diff.getMagnitude();
-  
-  transformed = VectorFloat(0, 0, -1);
-  transformed.rotate(&quat);
+//  Quaternion diff = Quaternion(
+//    quat.w - lastQuat.w,
+//    quat.x - lastQuat.x,
+//    quat.y - lastQuat.y,
+//    quat.z - lastQuat.z);
+//  float rotationalVelocity = diff.getMagnitude();
+//  
+//  transformed = VectorFloat(0, 0, -1);
+//  transformed.rotate(&quat);
+//
+//  float flipAmount = (dot(up, transformed) + 1) / 2;
 
-  float flipAmount = (dot(up, transformed) + 1) / 2;
+//  if (mode == 0) {
+//    totalRotation += rotationalVelocity;
+//
+//    // STABLE MODE: transition between two colors as you flip
+//    
+//    if (totalRotation > rotationThreshold) {
+//      // switch to power up mode
+//      mode = 1;
+//    }
+//
+//    // stable mode
+////    setColor(totalRotation / rotationThreshold);
+//  } else if (mode == 1) {
+//    if (flipTimer > timeUntilSwitch) {
+//      flipTimer = 0;
+//      mode = 2;
+//      FastLED.clear();
+//    }
+//    
+//    // power up mode
+//    uint8_t c = cos8(flipTimer * flipTimer * 0.01f);
+//    //uint8_t c = cos8(flipTimer * 10);
+//    color[0] = color[1] = color[2] = c;
+//
+//    flipTimer++;
+//
+//    colorWipe();
+//  } else if (mode == 2) {
+//    // TRANSITION MODE: nothing here yet
+//    
+//    mode = 0;
+//    up = VectorFloat(0, 0, up.z * -1);
+//    currentColorIndex = (currentColorIndex + 1) % numColors;
+//    totalRotation = 0;
+//  }
 
-  if (mode == 0) {
-    totalRotation += rotationalVelocity;
 
-    // STABLE MODE: transition between two colors as you flip
-    
-    if (totalRotation > rotationThreshold) {
-      // switch to power up mode
-      mode = 1;
+  while (Serial.available() > 0) {
+    int mode = Serial.read();
+    switch (mode) {
+      case 0:
+        color[0] = 255;
+        color[1] = 0;
+        color[2] = 0;
+        break;
+      case 1:
+        color[0] = 255;
+        color[1] = 255;
+        color[2] = 0;
+        break;        
     }
-
-    // stable mode
-    setColor(totalRotation / rotationThreshold);
-    setStableColor(totalRotation / rotationThreshold);
-  } else if (mode == 1) {
-    if (flipTimer > timeUntilSwitch) {
-      flipTimer = 0;
-      mode = 2;
-      FastLED.clear();
-    }
-    
-    // power up mode
-    uint8_t c = cos8(flipTimer * flipTimer * 0.01f);
-    //uint8_t c = cos8(flipTimer * 10);
-    color[0] = color[1] = color[2] = c;
-
-    flipTimer++;
-
-    colorWipe();
-  } else if (mode == 2) {
-    // TRANSITION MODE: nothing here yet
-    
-    mode = 0;
-    up = VectorFloat(0, 0, up.z * -1);
-    currentColorIndex = (currentColorIndex + 1) % numColors;
-    totalRotation = 0;
   }
+
+  setStableColor();
 
 //  Serial.println("--------");
 //  Serial.println(mode);
@@ -281,7 +299,7 @@ float setColor(float flipAmount) {
   color[2] = primaryColor[2] + (secondaryColor[2] - primaryColor[2]) * flipAmount;
 }
 
-void setStableColor(float flipAmount) {
+void setStableColor() {
   unsigned long currentMillis = millis();
 
   if (currentMillis - previousMillis > interval) {
@@ -331,5 +349,3 @@ void colorWipe() {
     FastLED.show();
   }
 }
-
-

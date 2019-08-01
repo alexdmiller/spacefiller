@@ -55,6 +55,14 @@ public class Lightcube extends PApplet {
 
   public void setMode(int mode) {
     this.mode = mode;
+    switch (mode) {
+      case 0:
+        color = color(255, 0, 0);
+        break;
+      case 1:
+        color = color(255, 255, 0);
+        break;
+    }
   }
 
   public int getMode() {

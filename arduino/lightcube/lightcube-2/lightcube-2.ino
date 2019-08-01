@@ -224,21 +224,21 @@ void loop() {
   transformed = VectorFloat(0, 0, -1);
   transformed.rotate(&quat);
 
-  while (Serial.available() > 0) {
-    int mode = Serial.read();
-    switch (mode) {
-      case 0:
-        color[0] = 255;
-        color[1] = 0;
-        color[2] = 0;
-        break;
-      case 1:
-        color[0] = 255;
-        color[1] = 255;
-        color[2] = 0;
-        break;        
-    }
-  }
+//  while (Serial.available() > 0) {
+//    int mode = Serial.read();
+//    switch (mode) {
+//      case 0:
+//        color[0] = 255;
+//        color[1] = 0;
+//        color[2] = 0;
+//        break;
+//      case 1:
+//        color[0] = 255;
+//        color[1] = 255;
+//        color[2] = 0;
+//        break;        
+//    }
+//  }
 
   for (int i = 0; i < NUM_PIXELS; i++) {
     //       float interpolation = cos8(i * 5 + offset) / 255.0;

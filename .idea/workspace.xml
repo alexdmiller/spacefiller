@@ -9,6 +9,7 @@
     <list default="true" id="b7bb3a9e-05bb-464d-967e-9bda287e8f0d" name="Default" comment="Worms and bound changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/arduino/lightcube/lightcube-2/lightcube-2.ino" beforeDir="false" afterPath="$PROJECT_DIR$/arduino/lightcube/lightcube-2/lightcube-2.ino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/arduino/lightcube/lightcube.ino" beforeDir="false" afterPath="$PROJECT_DIR$/arduino/lightcube/lightcube.ino" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lightcube/Lightcube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lightcube/Lightcube.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lightcube/SerialLightcube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lightcube/SerialLightcube.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lusio/Lusio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/Lusio.java" afterDir="false" />
@@ -71,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Lusio.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Lusio.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/lusio/Lusio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="253" column="3" lean-forward="true" selection-start-line="253" selection-start-column="3" selection-end-line="253" selection-end-column="3" />
+            <state relative-caret-position="182">
+              <caret line="246" column="22" selection-start-line="246" selection-start-column="22" selection-end-line="246" selection-end-column="22" />
               <folding>
                 <element signature="e#1381#1382#0" expanded="true" />
                 <element signature="e#1412#1413#0" expanded="true" />
@@ -100,29 +101,37 @@
       <file leaf-file-name="Lightcube.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lightcube/Lightcube.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-280">
-              <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+            <state relative-caret-position="319">
+              <caret line="63" column="12" lean-forward="true" selection-start-line="63" selection-start-column="12" selection-end-line="63" selection-end-column="12" />
               <folding>
                 <element signature="e#407#408#0" expanded="true" />
                 <element signature="e#469#470#0" expanded="true" />
-                <element signature="e#508#509#0" expanded="true" />
-                <element signature="e#571#572#0" expanded="true" />
+                <element signature="e#509#510#0" expanded="true" />
+                <element signature="e#572#573#0" expanded="true" />
                 <element signature="e#608#609#0" expanded="true" />
                 <element signature="e#644#645#0" expanded="true" />
                 <element signature="e#1349#1350#0" expanded="true" />
                 <element signature="e#1371#1372#0" expanded="true" />
-                <element signature="e#1406#1407#0" expanded="true" />
-                <element signature="e#1432#1433#0" expanded="true" />
+                <element signature="e#1458#1459#0" expanded="true" />
+                <element signature="e#1479#1480#0" expanded="true" />
+                <element signature="e#1510#1511#0" expanded="true" />
+                <element signature="e#1548#1549#0" expanded="true" />
+                <element signature="e#1587#1588#0" expanded="true" />
+                <element signature="e#1614#1615#0" expanded="true" />
+                <element signature="e#3126#3127#0" expanded="true" />
+                <element signature="e#3163#3164#0" expanded="true" />
+                <element signature="e#3205#3206#0" expanded="true" />
+                <element signature="e#3255#3256#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SerialLightcube.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SerialLightcube.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lightcube/SerialLightcube.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+            <state relative-caret-position="303">
+              <caret line="48" column="24" lean-forward="true" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -176,10 +185,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>num</find>
-      <find>Col</find>
-      <find>mouse</find>
-      <find>debug</find>
       <find>noise</find>
       <find>tool</find>
       <find>kind</find>
@@ -206,6 +211,10 @@
       <find>draw</find>
       <find>gotoNextScene</find>
       <find>gotoNext</find>
+      <find>update</find>
+      <find>setMode</find>
+      <find>set</find>
+      <find>goto</find>
     </findStrings>
     <replaceStrings>
       <replace>size</replace>
@@ -278,9 +287,9 @@
         <option value="$PROJECT_DIR$/src/algoplex2/scenes/TinyTriangleScene.java" />
         <option value="$PROJECT_DIR$/src/sketches/Flows.java" />
         <option value="$PROJECT_DIR$/src/algoplex2/Algoplex2.java" />
+        <option value="$PROJECT_DIR$/src/lightcube/SerialLightcube.java" />
         <option value="$PROJECT_DIR$/src/lightcube/Lightcube.java" />
         <option value="$PROJECT_DIR$/src/lusio/Lusio.java" />
-        <option value="$PROJECT_DIR$/src/lightcube/SerialLightcube.java" />
       </list>
     </option>
   </component>
@@ -1479,7 +1488,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1796490000" />
+    <option name="totallyTimeSpent" value="1799794000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1177" extended-state="6" />
@@ -1503,11 +1512,11 @@
       <window_info id="Palette&#9;" order="4" />
       <window_info id="Image Layers" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946752" visible="true" weight="0.33333334" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946752" visible="true" weight="0.33333334" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3293247" />
       <window_info anchor="bottom" id="Run with VisualVM" order="12" weight="0.3293247" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7003222" visible="true" weight="0.30990416" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7003222" visible="true" weight="0.30990416" />
       <window_info anchor="right" id="Theme Preview" order="12" />
       <window_info id="Favorites" order="6" sideWeight="0.29967776" side_tool="true" weight="0.18300654" />
       <window_info anchor="bottom" id="Debug with VisualVM" order="12" />
@@ -1877,9 +1886,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
           <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1964,40 +1970,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lusio/Lusio.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="253" column="3" lean-forward="true" selection-start-line="253" selection-start-column="3" selection-end-line="253" selection-end-column="3" />
-          <folding>
-            <element signature="e#1381#1382#0" expanded="true" />
-            <element signature="e#1412#1413#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/lightcube/Lightcube.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-280">
-          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+        <state relative-caret-position="319">
+          <caret line="63" column="12" lean-forward="true" selection-start-line="63" selection-start-column="12" selection-end-line="63" selection-end-column="12" />
           <folding>
             <element signature="e#407#408#0" expanded="true" />
             <element signature="e#469#470#0" expanded="true" />
-            <element signature="e#508#509#0" expanded="true" />
-            <element signature="e#571#572#0" expanded="true" />
+            <element signature="e#509#510#0" expanded="true" />
+            <element signature="e#572#573#0" expanded="true" />
             <element signature="e#608#609#0" expanded="true" />
             <element signature="e#644#645#0" expanded="true" />
             <element signature="e#1349#1350#0" expanded="true" />
             <element signature="e#1371#1372#0" expanded="true" />
-            <element signature="e#1406#1407#0" expanded="true" />
-            <element signature="e#1432#1433#0" expanded="true" />
+            <element signature="e#1458#1459#0" expanded="true" />
+            <element signature="e#1479#1480#0" expanded="true" />
+            <element signature="e#1510#1511#0" expanded="true" />
+            <element signature="e#1548#1549#0" expanded="true" />
+            <element signature="e#1587#1588#0" expanded="true" />
+            <element signature="e#1614#1615#0" expanded="true" />
+            <element signature="e#3126#3127#0" expanded="true" />
+            <element signature="e#3163#3164#0" expanded="true" />
+            <element signature="e#3205#3206#0" expanded="true" />
+            <element signature="e#3255#3256#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lightcube/SerialLightcube.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+        <state relative-caret-position="303">
+          <caret line="48" column="24" lean-forward="true" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lusio/Lusio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="246" column="22" selection-start-line="246" selection-start-column="22" selection-end-line="246" selection-end-column="22" />
+          <folding>
+            <element signature="e#1381#1382#0" expanded="true" />
+            <element signature="e#1412#1413#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
