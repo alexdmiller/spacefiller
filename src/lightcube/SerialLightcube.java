@@ -79,6 +79,13 @@ public class SerialLightcube extends Lightcube {
         if (serialCount > 0 || ch == '$') {
           teapotPacket[serialCount++] = (char)ch;
           if (serialCount == 19) {
+
+            for (char c : teapotPacket) {
+              System.out.print((byte) c);
+              System.out.print(" ");
+            }
+            System.out.println();
+
             serialCount = 0; // restart packet byte position
 
             // get quaternion from data packet

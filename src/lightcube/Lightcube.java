@@ -182,7 +182,7 @@ public class Lightcube extends PApplet {
 
   public void updateLightcube() { }
 
-  public boolean isConnected() {
+  public boolean isActive() {
     return connected;
   }
 
