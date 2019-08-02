@@ -5,7 +5,7 @@ import processing.core.PGraphics;
 import toxi.geom.*;
 import processing.core.PApplet;
 
-public class Lightcube extends PApplet {
+public class Lightcube {
   private static final int BAUD_RATE = 57600;
   private static final String USB_PORT_NAME = "/dev/cu.usbmodem14201";
 
@@ -29,7 +29,6 @@ public class Lightcube extends PApplet {
   protected int mode = 0;
   protected boolean transitionScene = false;
   protected int counter = 0;
-  protected boolean connected = false;
 
   private float decay = 0.95f;
 
@@ -57,10 +56,10 @@ public class Lightcube extends PApplet {
     this.mode = mode;
     switch (mode) {
       case 0:
-        color = color(255, 0, 0);
+        color = 0xffff0000;
         break;
       case 1:
-        color = color(255, 255, 0);
+        color = 0xffffff00;
         break;
     }
   }
@@ -182,9 +181,9 @@ public class Lightcube extends PApplet {
 
   public void updateLightcube() { }
 
-  public boolean isConnected() {
-    return connected;
-  }
-
   public void connect() { }
+
+  public boolean isActive() {
+    return false;
+  }
 }
