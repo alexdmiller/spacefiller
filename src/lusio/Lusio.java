@@ -1,5 +1,6 @@
 package lusio;
 
+import processing.serial.Serial;
 import spacefiller.color.ColorProvider;
 import spacefiller.color.TwoColorProvider;
 import controlP5.ControlEvent;
@@ -28,8 +29,26 @@ import java.util.Map;
 public class Lusio extends SceneApplet implements ColorProvider {
   public static Lusio instance;
 
+  private static String lightcubeSerialPort;
+  private static String platformSerialPort;
+
   public static void main(String[] args) {
-    main("lusio.Lusio");
+    if (args.length == 2) {
+      lightcubeSerialPort = args[0];
+      platformSerialPort = args[1];
+      println("lightcube port = " + lightcubeSerialPort);
+      println("platform port = " + platformSerialPort);
+      main("lusio.Lusio");
+    } else {
+      println("usage:");
+      println("java -Djava.library.path=\"linux64\" -jar algoplex1.jar [lightcube port] [platform port]");
+      println();
+      println("available ports:");
+      for (String port : Serial.list()) {
+        println(port);
+      }
+    }
+
   }
 
   private Map<String, Graph> graphs;
@@ -56,7 +75,6 @@ public class Lusio extends SceneApplet implements ColorProvider {
 
   public void settings() {
     fullScreen(P3D);
-//    size(1920, 1080, P3D);
     PJOGL.profile = 1;
   }
 
@@ -64,14 +82,9 @@ public class Lusio extends SceneApplet implements ColorProvider {
   public void setup() {
     graphs = new HashMap<>();
     graphNames = new ArrayList<>();
-    lightcube = Lightcube.wireless();
-    platform = new Platform("/dev/cu.usbmodem14101", 115200);
+    lightcube = Lightcube.wireless(lightcubeSerialPort);
+    platform = new Platform(platformSerialPort, 115200);
     platform.onCubePlaced(slot -> switchScene(slot));
-
-//    gate.print();
-//    gate.onGateTriggered(
-//    gate.print();
-
 
     loadGraphs();
 

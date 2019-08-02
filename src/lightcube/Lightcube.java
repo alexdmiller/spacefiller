@@ -8,14 +8,13 @@ import processing.core.PApplet;
 public class Lightcube extends PApplet {
   private static final int BAUD_RATE = 57600;
   private static final String USB_PORT_NAME = "/dev/cu.usbmodem14201";
-  private static final String XBEE_PORT_NAME = "/dev/tty.SLAB_USBtoUART";
 
   public static Lightcube usb() {
     return new SerialLightcube(USB_PORT_NAME, BAUD_RATE);
   }
 
-  public static Lightcube wireless() {
-    return new SerialLightcube(XBEE_PORT_NAME, BAUD_RATE);
+  public static Lightcube wireless(String portName) {
+    return new SerialLightcube(portName, BAUD_RATE);
   }
 
   public static Lightcube midi() {
