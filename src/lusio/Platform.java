@@ -32,14 +32,9 @@ public class Platform {
     remote.connect();
   }
 
-  public boolean isConnected() {
-    return remote.isConnected();
+  public boolean isActive() {
+    return remote.isActive();
   }
-
-  public void connect() {
-    remote.connect();
-  }
-
 
   public void onCubePlaced(CubePlacedListener listener) {
     listeners.add(listener);

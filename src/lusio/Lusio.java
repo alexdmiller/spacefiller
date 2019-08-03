@@ -215,22 +215,14 @@ public class Lusio extends SceneApplet implements ColorProvider {
     image(logoImage, WIDTH - logoImage.width - 30, HEIGHT - logoImage.height - 20);
 
 
-    if (!lightcube.isConnected()) {
+    if (!lightcube.isActive()) {
       fill(255, 0, 0);
       text("CUBE DISCONNECTED", 20, 20);
-
-      if (frameCount % 60 == 0) {
-        lightcube.connect();
-      }
     }
 
-    if (!platform.isConnected()) {
+    if (!platform.isActive()) {
       fill(255, 0, 0);
       text("PLATFORM DISCONNECTED", 20, 40);
-
-      if (frameCount % 60 == 0) {
-        platform.connect();
-      }
     }
 
   }

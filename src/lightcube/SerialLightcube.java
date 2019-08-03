@@ -82,10 +82,10 @@ public class SerialLightcube extends Lightcube implements Serial.ByteEventListen
   public void onBytes(byte[] teapotPacket) {
     if (teapotPacket.length == 18) {
       // get quaternion from data packet
-      q[0] = ((teapotPacket[2] << 8) | teapotPacket[3]) / 16384.0f;
-      q[1] = ((teapotPacket[4] << 8) | teapotPacket[5]) / 16384.0f;
-      q[2] = ((teapotPacket[6] << 8) | teapotPacket[7]) / 16384.0f;
-      q[3] = ((teapotPacket[8] << 8) | teapotPacket[9]) / 16384.0f;
+      q[0] = (((teapotPacket[2] & 0xFF) << 8) | (teapotPacket[3]& 0xFF)) / 16384.0f;
+      q[1] = (((teapotPacket[4]& 0xFF) << 8) | (teapotPacket[5]& 0xFF)) / 16384.0f;
+      q[2] = (((teapotPacket[6]& 0xFF) << 8) | (teapotPacket[7]& 0xFF)) / 16384.0f;
+      q[3] = (((teapotPacket[8]& 0xFF) << 8) | (teapotPacket[9]& 0xFF)) / 16384.0f;
       for (int i = 0; i < 4; i++) if (q[i] >= 2) q[i] = -4 + q[i];
 
       previousQuaternion = quaternion;
