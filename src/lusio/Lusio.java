@@ -218,10 +218,6 @@ public class Lusio extends SceneApplet implements ColorProvider {
     if (!lightcube.isActive()) {
       fill(255, 0, 0);
       text("CUBE DISCONNECTED", 20, 20);
-
-      if (frameCount % 60 == 0) {
-        lightcube.connect();
-      }
     }
 
     if (!platform.isActive()) {

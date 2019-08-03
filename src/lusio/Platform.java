@@ -28,14 +28,16 @@ public class Platform {
         }
       });
     }
-  }
 
-  public void onCubePlaced(CubePlacedListener listener) {
-    listeners.add(listener);
+    remote.connect();
   }
 
   public boolean isActive() {
     return remote.isActive();
+  }
+
+  public void onCubePlaced(CubePlacedListener listener) {
+    listeners.add(listener);
   }
 
   public interface CubePlacedListener {
