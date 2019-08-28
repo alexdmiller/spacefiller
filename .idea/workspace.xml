@@ -8,9 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b7bb3a9e-05bb-464d-967e-9bda287e8f0d" name="Default" comment="Worms and bound changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Processing.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Processing.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/Algoplex2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/Algoplex2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/TriangleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/scenes/TriangleScene.java" afterDir="false" />
     </list>
     <ignored path="Processing.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,7 +63,7 @@
         <entry file="file://$PROJECT_DIR$/src/sketches/Contours2018.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="560">
-              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -77,8 +74,8 @@
       <file leaf-file-name="TriangleScene.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/lusio/scenes/TriangleScene.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="15" column="53" selection-start-line="15" selection-start-column="53" selection-end-line="15" selection-end-column="53" />
+            <state relative-caret-position="100">
+              <caret line="9" column="46" lean-forward="true" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -329,6 +326,24 @@
               <item name="Processing" type="462c0819:PsiDirectoryNode" />
               <item name="arduino" type="462c0819:PsiDirectoryNode" />
               <item name="knob-controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Processing" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Processing" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="serial.jar" type="ab9368bb:PsiFileNode" />
+            </path>
+            <path>
+              <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Processing" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="serial.jar" type="ab9368bb:PsiFileNode" />
+              <item name="processing" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Processing" type="b2602c69:ProjectViewProjectNode" />
@@ -1464,7 +1479,7 @@
       <workItem from="1566926893508" duration="2207000" />
       <workItem from="1566932392223" duration="11867000" />
       <workItem from="1566964381222" duration="3407000" />
-      <workItem from="1567013217694" duration="227000" />
+      <workItem from="1567013217694" duration="1757000" />
     </task>
     <task id="LOCAL-00001" summary="Worms and bound changes">
       <created>1506356022413</created>
@@ -1477,11 +1492,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1857883000" />
+    <option name="totallyTimeSpent" value="1859413000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1177" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5005325" side_tool="true" weight="0.49163568" />
@@ -1497,15 +1511,15 @@
       <window_info id="UI Designer" order="3" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.38425925" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.2851852" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.2851852" />
       <window_info id="Palette&#9;" order="4" />
       <window_info id="Image Layers" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946752" weight="0.31851852" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946752" visible="true" weight="0.31851852" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3293247" />
       <window_info anchor="bottom" id="Run with VisualVM" order="12" weight="0.3293247" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7003222" visible="true" weight="0.23162939" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7003222" visible="true" weight="0.23162939" />
       <window_info anchor="right" id="Theme Preview" order="12" />
       <window_info id="Favorites" order="6" sideWeight="0.29967776" side_tool="true" weight="0.18300654" />
       <window_info anchor="bottom" id="Debug with VisualVM" order="12" />
@@ -1739,6 +1753,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="18" selection-end-line="241" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1782,6 +1799,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
           <caret line="29" column="14" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
+          <folding>
+            <element signature="e#1602#1603#0" expanded="true" />
+            <element signature="e#1632#1633#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1975,7 +1996,7 @@
     <entry file="file://$PROJECT_DIR$/src/sketches/Contours2018.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1984,8 +2005,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lusio/scenes/TriangleScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="15" column="53" selection-start-line="15" selection-start-column="53" selection-end-line="15" selection-end-column="53" />
+        <state relative-caret-position="100">
+          <caret line="9" column="46" lean-forward="true" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
         </state>
       </provider>
     </entry>
