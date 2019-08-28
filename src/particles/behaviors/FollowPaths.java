@@ -1,6 +1,6 @@
 package particles.behaviors;
 
-import javafx.util.Pair;
+import boids.PathSegment;
 import particles.Particle;
 import particles.ParticleUtils;
 import processing.core.PVector;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FollowPaths extends ParticleBehavior {
-  private List<Pair<PVector, PVector>> pathSegments;
+  private List<PathSegment> pathSegments;
 
   @Mod(min = 10, max = 100, defaultValue = 20)
   public float radius = 20;
@@ -27,7 +27,7 @@ public class FollowPaths extends ParticleBehavior {
   }
 
   public void addPathSegment(PVector start, PVector end) {
-    pathSegments.add(new Pair<>(start, end));
+    pathSegments.add(new PathSegment(start, end));
   }
 
   @Override
@@ -36,9 +36,9 @@ public class FollowPaths extends ParticleBehavior {
       PVector closestNormalPoint = null;
       float closestDistance = 0;
 
-      for (Pair<PVector, PVector> p : pathSegments) {
+      for (PathSegment p : pathSegments) {
         if (p != null) {
-          PVector normalPoint = getNormalPoint(p.getKey(), p.getValue(), particle);
+          PVector normalPoint = getNormalPoint(p.p1, p.p2, particle);
           float distance = PVector.sub(particle.position, normalPoint).mag();
           if (closestNormalPoint == null || distance < closestDistance) {
             closestNormalPoint = normalPoint;

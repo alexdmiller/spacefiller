@@ -2,7 +2,7 @@ package boids.behaviors;
 
 import boids.Boid;
 import boids.BoidUtils;
-import javafx.util.Pair;
+import boids.PathSegment;
 import processing.core.PVector;
 import spacefiller.remote.Mod;
 
@@ -29,9 +29,9 @@ public class FollowPathBehavior extends Behavior {
 			PVector closestNormalPoint = null;
 			float closestDistance = 0;
 
-			for (Pair<PVector, PVector> p : getFlock().getPathSegments()) {
+			for (PathSegment p : getFlock().getPathSegments()) {
 				if (p != null) {
-					PVector normalPoint = getNormalPoint(p.getKey(), p.getValue(), boid);
+					PVector normalPoint = getNormalPoint(p.p1, p.p2, boid);
 					float distance = PVector.sub(boid.getPosition(), normalPoint).mag();
 					if (closestNormalPoint == null || distance < closestDistance) {
 						closestNormalPoint = normalPoint;

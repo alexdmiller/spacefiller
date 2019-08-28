@@ -2,12 +2,12 @@ package boids.renderers;
 
 import boids.Flock;
 import boids.Magnet;
+import boids.PathSegment;
 import boids.emitter.Emitter;
 import boids.emitter.LineEmitter;
 import boids.emitter.PointEmitter;
 import particles.Bounds;
 import common.StoredVectorField;
-import javafx.util.Pair;
 import processing.core.PConstants;
 import processing.core.PGraphics;
 import processing.core.PVector;
@@ -57,14 +57,14 @@ public class DebugFlockRenderer extends FlockRenderer {
 		}
 	}
 
-	private void renderFollowPathBehavior(PGraphics canvas, List<Pair<PVector, PVector>> pathPoints) {
+	private void renderFollowPathBehavior(PGraphics canvas, List<PathSegment> pathPoints) {
 		canvas.noFill();
 		canvas.stroke(255);
 		canvas.strokeCap(PConstants.ROUND);
 		canvas.strokeWeight(5);
-		for (Pair<PVector, PVector> pair : pathPoints) {
-			PVector p1 = pair.getKey();
-			PVector p2 = pair.getValue();
+		for (PathSegment pair : pathPoints) {
+			PVector p1 = pair.p1;
+			PVector p2 = pair.p2;
 			canvas.line(p1.x, p1.y, p2.x, p2.y);
 		}
 	}

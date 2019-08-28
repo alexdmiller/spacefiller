@@ -3,7 +3,6 @@ package boids;
 import boids.behaviors.Behavior;
 import boids.emitter.Emitter;
 import common.*;
-import javafx.util.Pair;
 import particles.Bounds;
 import processing.core.PVector;
 import spacefiller.remote.Mod;
@@ -36,7 +35,7 @@ public class Flock implements Serializable {
 	private transient List<Boid> boids;
 
 	private List<Emitter> emitters;
-	private List<Pair<PVector, PVector>> pathSegments;
+	private List<PathSegment> pathSegments;
 	private List<Magnet> magnets;
 
 	private float time;
@@ -162,12 +161,12 @@ public class Flock implements Serializable {
 		notifyEntitiesUpdated();
 	}
 
-	public List<Pair<PVector, PVector>> getPathSegments() {
+	public List<PathSegment> getPathSegments() {
 		return new ArrayList<>(pathSegments);
 	}
 
 	public void addPathSegment(PVector p1, PVector p2) {
-		this.pathSegments.add(new Pair<>(p1, p2));
+		this.pathSegments.add(new PathSegment(p1, p2));
 		notifyEntitiesUpdated();
 	}
 

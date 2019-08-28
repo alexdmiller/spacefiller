@@ -2,7 +2,6 @@ package particles.renderers;
 
 import spacefiller.color.ColorProvider;
 import com.google.common.collect.EvictingQueue;
-import javafx.geometry.Pos;
 import particles.Particle;
 import processing.core.PApplet;
 import processing.core.PConstants;
