@@ -18,8 +18,10 @@ import spacefiller.mapping.Surface;
 import spacefiller.remote.MidiRemoteControl;
 import spacefiller.remote.Mod;
 import spacefiller.remote.SerialRemoteControl;
+import spacefiller.remote.SerialStringRemoteControl;
 
 import java.io.*;
+import java.lang.reflect.Field;
 import java.util.*;
 
 public class Algoplex2 extends SceneApplet {
@@ -28,11 +30,26 @@ public class Algoplex2 extends SceneApplet {
   private static int COLS = 6;
   private static int SPACING = 200;
 
+  private static String controllerSerialPort;
+
   public static void main(String[] args) {
-    main("algoplex2.Algoplex2");
+    if (args.length == 1) {
+      controllerSerialPort = args[0];
+      println("controller port = " + controllerSerialPort);
+      main("algoplex2.Algoplex2");
+    } else {
+      println("usage:");
+      println("java -Djava.library.path=\"linux64\" -jar algoplex2.jar [controller port]");
+      println();
+      println("available ports:");
+
+      for (String port : Serial.list()) {
+        println(port);
+      }
+    }
   }
 
-  private AlgoplexController remote;
+  // private AlgoplexController remote;
   private Mapper mapper;
   private Surface surface;
   private BasicGraphRenderer graphRenderer;
@@ -40,109 +57,107 @@ public class Algoplex2 extends SceneApplet {
   private TransitionAnimation transition;
   private NumberTransition numberTransition;
 
-  private static final String MAC_SERIAL_PORT = "/dev/tty.usbmodem1679111";
-  private static final String WINDOWS_SERIAL_PORT = "COM4";
-
   private transient Quad crop;
   private transient PVector selectedCropNode;
   private transient boolean showMouse;
 
+  private SerialStringRemoteControl remote;
   public Algoplex2() {
     Algoplex2.instance = this;
   }
 
   public void settings() {
-    fullScreen(21);
-    size(1920, 1080, P3D);
+    fullScreen(P3D);
     PJOGL.profile = 1;
   }
 
   public final void setup() {
-    noCursor();
-    setupScenes();
+    mapper = Mapper.load("algoplex2", this);
+    mapper.manageCursor();
 
-    String[] availablePorts = Serial.list();
+    surface = mapper.createSurface("main_surface", ROWS, COLS, SPACING);
 
-    if (availablePorts.length == 0) {
-      System.out.println("No ports available. Skipping controller setup.");
-    } else {
-      System.out.println("Available ports:");
-      for (int i = 0; i < availablePorts.length; i++) {
-        System.out.println("[" + i + "]: " + availablePorts[i]);
-      }
+    remote = new SerialStringRemoteControl(controllerSerialPort, 9600, 7);
 
-      System.out.print("Type port number and press enter: ");
-      Scanner scanner = new Scanner(System.in);
-      int portNum = scanner.nextInt();
 
-      if (portNum > 0) {
-        String portName = availablePorts[portNum];
+    FollowEdges followEdges = new FollowEdges();
+    addGridScene(followEdges);
+    remote.controller(0).scale(0, 0.02f).toField(followEdges.wobbler, "updateSpeed");
+    remote.controller(1).scale(0, 100).toField(followEdges.wobbler, "jitter");
+    remote.controller(2).scale(0, 10).toField(followEdges.wobbler, "waveAmp");
+    remote.controller(3).scale(0, 1f).toField(followEdges.sinGraphRenderer, "speed");
+    remote.controller(4).scale(0, 10).toField(followEdges.sinGraphRenderer, "size");
+    remote.controller(5).scale(1, 10).toField(followEdges.sinGraphRenderer, "freq");
 
-        System.out.println("Using port " + portName);
-        setupRemote(portName);
-      }
-    }
-//
-//    List<String> serialPorts = Arrays.asList(Serial.list());
-//    if (serialPorts.contains(MAC_SERIAL_PORT)) {
-//      setupRemote(MAC_SERIAL_PORT);
-//    } else if (serialPorts.contains(WINDOWS_SERIAL_PORT)) {
-//      setupRemote(WINDOWS_SERIAL_PORT);
-//    }
-//
-//    background(0);
-//    PFont f = createDefaultFont(30);
-//    textFont(f);
-//    text("ALGOPLEX II", 100, 100);
-//    text("Plug in controller to start.", 100, 200);
-  }
+    FlowScene flowScene = new FlowScene();
+    addGridScene(flowScene);
+    remote.controller(0).scale(0.5f, 15).smooth(0.1f).toField(flowScene.perlinFlow, "flowForce");
+    remote.controller(1).scale(100, 1000).smooth(0.5f).toField(flowScene.perlinFlow, "noiseScale");
+    remote.controller(2).scale(0, 1).toField(flowScene.perlinFlow, "lineSparsity");
+    remote.controller(3).scale(0f, 0.5f).toField(flowScene.perlinFlow, "scrollSpeed");
+    remote.controller(4).scale(0f, 0.05f).toField(flowScene.perlinFlow, "noiseSpeed1");
+    remote.controller(5).scale(0, 0.02f).toField(flowScene.perlinFlow, "noiseSpeed2");
 
-  private void setupScenes() {
-    mapper = new Mapper(this);
+    WormScene wormScene = new WormScene();
+    addGridScene(wormScene);
+    remote.controller(0).scale(0, 2).toField(wormScene.flockParticles, "maxSpeed");
+    remote.controller(1).scale(10, 50).toField(wormScene.flockParticles, "desiredSeparation");
+    remote.controller(2).scale(0, 300).toField(wormScene.flockParticles, "cohesionThreshold");
+    remote.controller(3).scale(0, 300).toField(wormScene.flockParticles, "alignmentThreshold");
+    remote.controller(4).scale(0, 200).toField(wormScene.repelFixedPoints, "repelThreshold");
+    remote.controller(5).scale(-.01f, 0.01f).toField(wormScene.repelFixedPoints, "repelStrength");
 
-    // loadGraphs();
+    TinyTriangleScene tinyTriangleScene = new TinyTriangleScene();
+    addGridScene(tinyTriangleScene);
+    remote.controller(0).smooth(0.2f).scale(0, 1).toField(tinyTriangleScene, "interpolation");
+    remote.controller(1).smooth(0.2f).scale(-.1f, .1f).toField(tinyTriangleScene, "speed"); //.send(remote.target("/TinyTriangleScene/speed"));
+    remote.controller(2).smooth(0.2f).scale(0, 0.1f).toField(tinyTriangleScene, "scrollSpeed");
+    remote.controller(2).smooth(0.5f).scale(0, 1).toField(tinyTriangleScene, "waveShift");
+    remote.controller(3).smooth(0.2f).scale(0.01f, 0.5f).toField(tinyTriangleScene, "circleScale");
+    remote.controller(3).smooth(0.5f).scale(0.005f, 0.05f).toField(tinyTriangleScene, "scale");
+    remote.controller(4).smooth(0.2f).scale(0, 0.6283185307179586f).toField(tinyTriangleScene, "color1Rotation");
+    remote.controller(5).smooth(0.2f).scale(0, -0.39269908169872414f).toField(tinyTriangleScene, "color2Rotation");
 
-    if (surface == null) {
-      surface = mapper.createSurface(ROWS, COLS, SPACING);
-    }
 
-    graphRenderer = new BasicGraphRenderer(5);
-    graphRenderer.setColor(0xFFFFFF00);
 
-    GridScene[] gridScenes = new GridScene[] {
-//        new CircleScene(),
-//        new LifeScene(),
-//        new GradientTriangleScene(),
-//        new PsychScene(),
-//        new PyramidScene(),
-//        new ColorBath(),
-//        new ParticleScene(),
-//        new ShiftingEdgeScene(),
-        // new PerlinGridScene(),
-        new WormScene(),
-        new ContourScene(),
-        new TinyTriangleScene(),
-        new FollowEdges(),
-        new TriangleScene(),
-        new FlowScene(),
-        new CrossScene(),
-        new VeinScene(),
-        // throw away
-    };
+    TriangleScene triangleScene = new TriangleScene();
+    addGridScene(triangleScene);
+    remote.controller(0).scale(0, 1).smooth(0.2f).toField(triangleScene, "mix");
+    remote.controller(1).scale(0, 5).smooth(0.2f).toField(triangleScene, "yMod");
+    remote.controller(2).scale(0, 5).smooth(0.2f).toField(triangleScene, "xMod");
+    remote.controller(3).scale(0, 10).smooth(0.2f).toField(triangleScene, "triangleMod");
+    remote.controller(4).scale(0, 10).smooth(0.2f).toField(triangleScene, "lineMod");
+    remote.controller(5).scale(0, 20).smooth(0.1f).toField(triangleScene, "shiftAmount");
 
-    for (GridScene scene : gridScenes) {
-      addGridScene(scene);
-    }
 
-    setCanvas(getGraphics());
+
+    remote.connect();
+
+
     transition = new TransitionAnimation();
     transition.reset();
+
     super.setup();
   }
 
+//  private void setupScenes() {
+//    GridScene[] gridScenes = new GridScene[] {
+//        new WormScene(),
+//        new TinyTriangleScene(),
+//        new FollowEdges(),
+//        new TriangleScene(),
+//        new FlowScene(),
+//    };
+//
+//
+//    transition = new TransitionAnimation();
+//    transition.reset();
+//    super.setup();
+//  }
+
   private void setupRemote(String portName) {
     try {
-      remote = new AlgoplexController(portName, 9000);
+//      remote = new AlgoplexController(portName, 9000);
 
       //remote = new MidiRemoteControl("Launch Control XL 8", 13);
 
@@ -177,29 +192,10 @@ public class Algoplex2 extends SceneApplet {
 //      remote.controller(1).send(remote.target("/LifeScene/birthChance"));
 //      remote.controller(2).send(remote.target("/LifeScene/deathChance"));
 //
-//      remote.controller(0).send(remote.target("/FollowEdges/wobbler/updateSpeed"));
-//      remote.controller(1).smooth(0.2f).send(remote.target("/FollowEdges/wobbler/jitter"));
-//      remote.controller(2).smooth(0.2f).send(remote.target("/FollowEdges/wobbler/waveAmp"));
-//      remote.controller(3).send(remote.target("/FollowEdges/sinGraphRenderer/speed"));
-//      remote.controller(4).send(remote.target("/FollowEdges/sinGraphRenderer/size"));
-//      remote.controller(5).smooth(0.2f).send(remote.target("/FollowEdges/sinGraphRenderer/freq"));
-//      // remote.controller(6).send(remote.target("/FollowEdges/rendererIndex"));
+
 //
-//      remote.controller(0).smooth(0.2f).send(remote.target("/TinyTriangleScene/interpolation"));
-//      remote.controller(1).smooth(0.2f).send(remote.target("/TinyTriangleScene/speed"));
-//      remote.controller(2).smooth(0.2f).send(remote.target("/TinyTriangleScene/scrollSpeed"));
-//      remote.controller(2).smooth(0.5f).send(remote.target("/TinyTriangleScene/waveShift"));
-//      remote.controller(3).smooth(0.2f).send(remote.target("/TinyTriangleScene/circleScale"));
-//      remote.controller(3).smooth(0.5f).send(remote.target("/TinyTriangleScene/scale"));
-//      remote.controller(4).smooth(0.2f).send(remote.target("/TinyTriangleScene/color1Rotation"));
-//      remote.controller(5).smooth(0.2f).send(remote.target("/TinyTriangleScene/color2Rotation"));
+
 //
-//      remote.controller(0).smooth(0.1f).send(remote.target("/FlowScene/perlinFlow/flowForce"));
-//      remote.controller(1).smooth(0.5f).send(remote.target("/FlowScene/perlinFlow/noiseScale"));
-//      remote.controller(2).send(remote.target("/FlowScene/perlinFlow/lineSparsity"));
-//      remote.controller(3).send(remote.target("/FlowScene/perlinFlow/scrollSpeed"));
-//      remote.controller(4).send(remote.target("/FlowScene/perlinFlow/noiseSpeed1"));
-//      remote.controller(5).send(remote.target("/FlowScene/perlinFlow/noiseSpeed2"));
 //
 //      remote.controller(0).send(remote.target("/PerlinTriangles/threshold"));
 //      remote.controller(1).send(remote.target("/PerlinTriangles/color1Rotation"));
@@ -277,16 +273,14 @@ public class Algoplex2 extends SceneApplet {
 
   @Override
   public void draw() {
-    this.canvas.background(0);
+    background(0);
 
-    surface.drawToCanvas(graphics -> {
+    surface.drawToSurface(graphics -> {
       graphics.background(0);
 
       if (currentScene != null) {
         GridScene gridScene = (GridScene) currentScene;
-        if (gridScene.isTransformed()) {
-          currentScene.draw(graphics);
-        }
+        currentScene.draw(graphics);
       }
 
       transition.draw(graphics, surface.getPreTransformGrid());
@@ -304,20 +298,6 @@ public class Algoplex2 extends SceneApplet {
 
   @Override
   public void keyPressed() {
-    if (key == ' ') {
-      showUI = !showUI;
-    }
-
-    if (key == 'n') {
-      if (showMouse) {
-        showMouse = false;
-        noCursor();
-      } else {
-        showMouse = true;
-        cursor();
-      }
-    }
-
     if (showUI) {
 
       // TODO: switch to Mapper
@@ -347,79 +327,10 @@ public class Algoplex2 extends SceneApplet {
     transition.reset();
   }
 
-  @Override
-  public void mousePressed() {
-    if (showUI) {
-      // TODO: switch to Mapper
-      // graphTransformer.mouseDown(mouseX, mouseY);
-    } else {
-      PVector mouse = new PVector(mouseX, mouseY);
-
-//      for (PVector quadPoint : crop.getVertices()) {
-//        float dist = PVector.dist(quadPoint, mouse);
-//        if (dist < 10) {
-//          selectedCropNode = quadPoint;
-//          return;
-//        }
-//      }
-    }
-  }
-
-//  @Override
-//  public void mouseReleased() {
-//    if (showUI) {
-//      // TODO: switch to Mapper
-//      // graphTransformer.mouseUp(mouseX, mouseY);
-//      saveGraphs();
-//      crop = graphTransformer.getPostTransformGrid().getBoundingQuad().copy();
-//    }
-//  }
-//
-//  @Override
-//  public void mouseDragged() {
-//    if (showUI) {
-//      // TODO: switch to Mapper
-//      // graphTransformer.mouseDragged(mouseX, mouseY);
-//    }
-//  }
-
   public void addGridScene(GridScene gridScene) {
-    if (gridScene.isTransformed()) {
-      gridScene.preSetup(surface.getPreTransformGrid());
-    } else {
-      gridScene.preSetup(surface.getPostTransformGrid());
-    }
+    gridScene.preSetup(surface.getPreTransformGrid());
     addScene(gridScene);
   }
-
-//  private void saveGraphs() {
-//    try {
-//      FileOutputStream fileOut =
-//          new FileOutputStream("algoplex2.ser");
-//      ObjectOutputStream out = new ObjectOutputStream(fileOut);
-//      out.writeObject(graphTransformer);
-//      out.close();
-//      fileOut.close();
-//    } catch (IOException i) {
-//      i.printStackTrace();
-//    }
-//  }
-//
-//  private void loadGraphs() {
-//    try {
-//      FileInputStream fileIn = new FileInputStream("algoplex2.ser");
-//      ObjectInputStream in = new ObjectInputStream(fileIn);
-//      graphTransformer = (GraphTransformer) in.readObject();
-//      in.close();
-//      fileIn.close();
-//    } catch (FileNotFoundException e) {
-//      e.printStackTrace();
-//    } catch (IOException i) {
-//      i.printStackTrace();
-//    } catch (ClassNotFoundException c) {
-//      c.printStackTrace();
-//    }
-//  }
 
   @Override
   public void switchScene(int sceneIndex) {

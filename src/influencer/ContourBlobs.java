@@ -26,11 +26,11 @@ public class ContourBlobs extends InfluencerScene {
     SceneHost.getInstance().start(new ContourBlobs());
   }
 
-  private FloatNode noiseSize = control.controller(14).scale(1f, 3f).smooth(0.02f).toFloat();
-  private FloatNode morph = mainSlider.smooth(0.1f).toFloat();
-  private FloatNode smoothKick = kickDecay.smooth(0.5f).toFloat();
-  private FloatNode orientation = control.controller(15).smooth(0.05f).toFloat();
-  private FloatNode rotationSpeed = control.controller(16).scale(0, 0.3f).smooth(0.1f).toFloat();
+  private FloatNode noiseSize = new FloatNode(); //control.controller(14).scale(1f, 3f).smooth(0.02f).toFloat();
+  private FloatNode morph = new FloatNode(); //mainSlider.smooth(0.1f).toFloat();
+  private FloatNode smoothKick = new FloatNode();//kickDecay.smooth(0.5f).toFloat();
+  private FloatNode orientation = new FloatNode();//control.controller(15).smooth(0.05f).toFloat();
+  private FloatNode rotationSpeed = new FloatNode();//control.controller(16).scale(0, 0.3f).smooth(0.1f).toFloat();
 
   private PShader shader;
   private float rotation;
@@ -52,6 +52,8 @@ public class ContourBlobs extends InfluencerScene {
 
   @Override
   public void setup() {
+    noiseSize.setValue(1f);
+
     shader = loadShader("pixel.glsl", "vert.glsl");
     gfx = new ToxiclibsSupport(this, getGraphics());
 
@@ -146,16 +148,16 @@ public class ContourBlobs extends InfluencerScene {
 
     shader(shader);
 
-    float kick = kickDecay.get();
-    float snare = snareDecay.get();
-
-    if (snare > 0) {
-      fill(lerpColor(color(255), color(0, 255, 255), snare));
-    } else if (kick > 0) {
-      fill(lerpColor(color(255), color(255, 0, 255), kick));
-    } else {
-      fill(255);
-    }
+//    float kick = kickDecay.get();
+//    float snare = snareDecay.get();
+//
+//    if (snare > 0) {
+//      fill(lerpColor(color(255), color(0, 255, 255), snare));
+//    } else if (kick > 0) {
+//      fill(lerpColor(color(255), color(255, 0, 255), kick));
+//    } else {
+//      fill(255);
+//    }
 
 //    fill(color(255, 0, 255));
 
@@ -194,19 +196,19 @@ public class ContourBlobs extends InfluencerScene {
           PVector pos = new PVector(x, y, z);
 
           float blobs = 0;
-
+//
           for (int j = 0; j < particles.length; j++) {
             blobs += 0.1 / pos.dist(particles[j]);
           }
           blobs += (float) (y*y) / dimx / 200f;
 
           float noise = (float) SimplexNoise.noise(
-              x * NS * noiseSize.get(),
-              y * NS * noiseSize.get(),
-              z * NS * noiseSize.get(),
+              x * NS * 2,
+              y * NS * 2,
+              z * NS * 2,
               frameCount * NS / 20f) * 0.5f;
 
-          volumeData[i] = lerp(blobs, noise, morph.get());
+          volumeData[i] = noise;
         }
       }
     }

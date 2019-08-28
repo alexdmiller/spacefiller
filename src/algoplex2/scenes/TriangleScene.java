@@ -34,7 +34,6 @@ public class TriangleScene extends GridScene {
 
   private PerlinNoise perlin;
 
-
   public TriangleScene() {
     perlin = new PerlinNoise();
   }

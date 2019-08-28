@@ -26,7 +26,7 @@ public class SerialLightcube extends Lightcube implements Serial.ByteEventListen
     if (updateCounter >= 2) {
       updateCounter = 0;
 
-      if (port != null) {
+      if (port != null && port.active()) {
         port.write(mode);
       }
     }

@@ -9,16 +9,6 @@ import processing.core.PVector;
 import java.util.List;
 
 public class FlockParticles extends ParticleBehavior {
-
-  /**
-   * remote.controller(0).send(remote.target("/WormScene/flockParticles/maxSpeed"));
-   *       remote.controller(1).send(remote.target("/WormScene/flockParticles/desiredSeparation"));
-   *       remote.controller(2).send(remote.target("/WormScene/flockParticles/cohesionThreshold"));
-   *       remote.controller(3).send(remote.target("/WormScene/flockParticles/alignmentThreshold"));
-   *       remote.controller(4).send(remote.target("/WormScene/repelFixedPoints/repelThreshold"));
-   *       remote.controller(5).send(remote.target("/WormScene/repelFixedPoints/repelStrength"));
-   */
-
   @Mod
   public float separationWeight = 1;
 

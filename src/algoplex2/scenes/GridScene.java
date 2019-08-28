@@ -3,6 +3,7 @@ package algoplex2.scenes;
 import algoplex2.Controller;
 import scene.Scene;
 import spacefiller.mapping.Grid;
+import spacefiller.remote.SerialStringRemoteControl;
 
 /**
  * Created by miller on 8/22/17.
@@ -10,7 +11,6 @@ import spacefiller.mapping.Grid;
 public class GridScene extends Scene {
   protected Grid grid;
   protected Controller controller;
-  private boolean transformed = true;
 
   public void preSetup(Grid grid) {
     setGrid(grid);
@@ -27,13 +27,5 @@ public class GridScene extends Scene {
 
   public void setController(Controller controller) {
     this.controller = controller;
-  }
-
-  public void fitToGrid() {
-    transformed = true;
-  }
-
-  public boolean isTransformed() {
-    return transformed;
   }
 }

@@ -22,7 +22,7 @@ public class PsychScene extends GridScene {
   public float squareSpeed = 0;
 
   public PsychScene() {
-    fitToGrid();
+    // fitToGrid();
   }
 
   @Override

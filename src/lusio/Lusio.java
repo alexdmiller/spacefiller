@@ -94,17 +94,17 @@ public class Lusio extends SceneApplet implements ColorProvider {
 
     LusioScene[] lusioScenes = new LusioScene[] {
         new NestedCubeScene(),
+        new ParticleCube(),
         new ThreeDeeFlockScene(),
-
+        new ContourScene(),
+        new CubeScene(),
         new FluidScene(),
         new NoiseCircle(),
         new NoiseSpace(),
-        new FancyParticles(),
         new FlockScene(),
-        new CubeScene(),
         new TriangleScene(),
         new MillerLineScene(),
-        new ContourScene(),
+        new FancyParticles(),
     };
 
     for (int i = 0; i < lusioScenes.length; i++) {

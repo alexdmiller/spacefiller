@@ -213,7 +213,7 @@ public class PerlinFlowComponent extends SceneComponent {
         for (float y = 0; y < bounds.getHeight(); y += gridCellSize) {
           index++;
           graphics.stroke(getColorProvider().getColor(index));
-          PVector p = new PVector(x + gridOffset, y + gridOffset);
+          PVector p = new PVector(x + gridOffset, y + gridOffset + gridCellSize/2f);
           drawLine(index, p, graphics);
         }
       }

@@ -21,6 +21,7 @@ public class FlowScene extends GridScene {
   public void preSetup(Grid grid) {
     perlinFlow = new PerlinFlowComponent(new Bounds(grid.getWidth() * 2, grid.getHeight() * 2));
     perlinFlow.setColorProvider(ConstantColorProvider.WHITE);
+
     perlinFlow.setPos(grid.getWidth() / 2 + grid.getCellSize() / 2, grid.getHeight() / 2);
     perlinFlow.setFallSpeed(0);
     perlinFlow.setNoiseSpeed1(0);
@@ -29,6 +30,7 @@ public class FlowScene extends GridScene {
     perlinFlow.setLineLength(100);
     perlinFlow.setSnapToGrid(true);
     perlinFlow.setGridCellSize(grid.getCellSize());
+
     addComponent(perlinFlow);
 
     super.preSetup(grid);

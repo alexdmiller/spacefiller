@@ -14,13 +14,15 @@ varying vec3 vertLightDir;
 
 varying float fragHeight;
 varying float fragWidth;
+varying vec3 k;
 
 void main() {
   gl_Position = transform * position;
   vertColor = color;
   vertNormal = normalize(normalMatrix * normal);
   vertLightDir = -lightNormal;
-  // k = gl_Position.xyz;
+
+  k = gl_Position.xyz;
   fragHeight = height;
   fragWidth = width;
 }

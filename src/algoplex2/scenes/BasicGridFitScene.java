@@ -6,7 +6,7 @@ public class BasicGridFitScene extends GridScene {
   float t = 0;
 
   public BasicGridFitScene() {
-    fitToGrid();
+    // fitToGrid();
   }
 
   @Override

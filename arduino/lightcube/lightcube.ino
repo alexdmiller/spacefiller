@@ -35,25 +35,11 @@ float euler[3];         // [psi, theta, phi]    Euler angle container
 float ypr[3];           // [yaw, pitch, roll]   yaw/pitch/roll container and gravity vector
 
 // packet structure for InvenSense teapot demo
-//                                      orientation                     color     mode    counter
-uint8_t teapotPacket[19] = { '$', 0x02, 0,0, 0,0, 0,0, 0,0, 0x00, 0x00, 0, 0, 0,  0,      0,       '\r', '\n' };
+//                                      orientation                     
+uint8_t teapotPacket[19] = { '$', 0x02, 0,0, 0,0, 0,0, 0,0, 0x00, 0x00, '\r', '\n' };
 uint8_t color[3] = { 0, 0, 0 };
-
-uint8_t currentColorIndex = 0;
-
-const uint8_t numColors = 2;
-uint8_t colors[numColors][4][3] = {
-  { { 0, 255, 255 }, { 100, 100, 255 }, { 255, 255, 0 }, { 255, 50, 200 } },
-  { { 255, 0, 255 }, { 100, 100, 255 }, { 255, 100, 50 }, { 240, 255, 95 } },
-};
-
-uint16_t flipTimer = 0;
-uint16_t timeUntilSwitch = 300;
 uint8_t mode = 0;
 uint8_t lightIndex = 0;
-
-float totalRotation = 0;
-float rotationThreshold = 6;
 
 unsigned long previousMillis = 0;        // will store last time LED was updated
 const long interval = 60;
@@ -61,19 +47,12 @@ bool sendColors = false;
 
 CRGB leds[NUM_PIXELS];
 
-// ================================================================
-// ===               INTERRUPT DETECTION ROUTINE                ===
-// ================================================================
 
 volatile bool mpuInterrupt = false;     // indicates whether MPU interrupt pin has gone high
+
 void dmpDataReady() {
     mpuInterrupt = true;
 }
-
-
-// ================================================================
-// ===                      INITIAL SETUP                       ===
-// ================================================================
 
 void setup() {
   up = VectorFloat(0, 0, -1);
@@ -129,12 +108,6 @@ void setup() {
   pinMode(LED_PIN, OUTPUT);
 }
 
-
-
-// ================================================================
-// ===                    MAIN PROGRAM LOOP                     ===
-// ================================================================
-
 void loop() {
   unsigned long currentMillis = millis();
   
@@ -189,78 +162,13 @@ void loop() {
     teapotPacket[7] = fifoBuffer[9];
     teapotPacket[8] = fifoBuffer[12];
     teapotPacket[9] = fifoBuffer[13];
-    // 10 - blank?
-    // 11 - counter?
-    teapotPacket[12] = color[0];
-    teapotPacket[13] = color[1];
-    teapotPacket[14] = color[2];
-    teapotPacket[15] = mode;
-    teapotPacket[16] = ((float) totalRotation / rotationThreshold) * 255;
-    Serial.write(teapotPacket, 19);
+    Serial.write(teapotPacket, 14);
     teapotPacket[11]++; // packetCount, loops at 0xFF on purpose
 
     // blink LED to indicate activity
     blinkState = !blinkState;
     digitalWrite(LED_PIN, blinkState);
   }
-
-
-//  lastQuat.x = quat.x;
-//  lastQuat.y = quat.y;
-//  lastQuat.z = quat.z;
-//  lastQuat.w = quat.w;
-//  
-//  mpu.dmpGetQuaternion(&quat, fifoBuffer);
-//  mpu.dmpGetEuler(euler, &quat);
-
-//  Quaternion diff = Quaternion(
-//    quat.w - lastQuat.w,
-//    quat.x - lastQuat.x,
-//    quat.y - lastQuat.y,
-//    quat.z - lastQuat.z);
-//  float rotationalVelocity = diff.getMagnitude();
-//  
-//  transformed = VectorFloat(0, 0, -1);
-//  transformed.rotate(&quat);
-//
-//  float flipAmount = (dot(up, transformed) + 1) / 2;
-
-//  if (mode == 0) {
-//    totalRotation += rotationalVelocity;
-//
-//    // STABLE MODE: transition between two colors as you flip
-//    
-//    if (totalRotation > rotationThreshold) {
-//      // switch to power up mode
-//      mode = 1;
-//    }
-//
-//    // stable mode
-////    setColor(totalRotation / rotationThreshold);
-//  } else if (mode == 1) {
-//    if (flipTimer > timeUntilSwitch) {
-//      flipTimer = 0;
-//      mode = 2;
-//      FastLED.clear();
-//    }
-//    
-//    // power up mode
-//    uint8_t c = cos8(flipTimer * flipTimer * 0.01f);
-//    //uint8_t c = cos8(flipTimer * 10);
-//    color[0] = color[1] = color[2] = c;
-//
-//    flipTimer++;
-//
-//    colorWipe();
-//  } else if (mode == 2) {
-//    // TRANSITION MODE: nothing here yet
-//    
-//    mode = 0;
-//    up = VectorFloat(0, 0, up.z * -1);
-//    currentColorIndex = (currentColorIndex + 1) % numColors;
-//    totalRotation = 0;
-//  }
-
 
   while (Serial.available() > 0) {
     int mode = Serial.read();
@@ -279,71 +187,17 @@ void loop() {
   }
 
   setStableColor();
-
-//  Serial.println("--------");
-//  Serial.println(mode);
-//  Serial.println(flipAmount);
-//  Serial.println(flipTimer);
-//  Serial.println(sin8(flipTimer * flipTimer * 0.05f));
 }
 
-float dot(VectorFloat v1, VectorFloat v2) {
-  return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
-}
-
-float setColor(float flipAmount) {
-  uint8_t * primaryColor = colors[currentColorIndex][0];
-  uint8_t * secondaryColor = colors[currentColorIndex][2];
-  color[0] = primaryColor[0] + (secondaryColor[0] - primaryColor[0]) * flipAmount;
-  color[1] = primaryColor[1] + (secondaryColor[1] - primaryColor[1]) * flipAmount;
-  color[2] = primaryColor[2] + (secondaryColor[2] - primaryColor[2]) * flipAmount;
-}
 
 void setStableColor() {
   unsigned long currentMillis = millis();
 
   if (currentMillis - previousMillis > interval) {
-//    uint8_t * primaryColor1 = colors[currentColorIndex][0];
-//    uint8_t * primaryColor2 = colors[currentColorIndex][1];
-//    uint8_t * secondaryColor1 = colors[currentColorIndex][2];
-//    uint8_t * secondaryColor2 = colors[currentColorIndex][3];
-//
-//    uint8_t color1[3];
-//    uint8_t color2[3];
-//    uint8_t finalColor[3];
-//
-//     interpolate(flipAmount, primaryColor1, secondaryColor1, color1);
-//     interpolate(flipAmount, primaryColor2, secondaryColor2, color2);
-
     previousMillis = currentMillis; 
-
-    int offset = currentMillis / 5.0;
-    
+    int offset = currentMillis / 5.0;    
     for (int i = 0; i < NUM_PIXELS; i++) {
-//       float interpolation = cos8(i * 5 + offset) / 255.0;
-//       interpolate(interpolation, color1, color2, finalColor);
       leds[i].setRGB(color[0], color[1], color[2]);
-    }
-  
-    FastLED.show();
-  }
-}
-
-void interpolate(float amount, uint8_t * a, uint8_t * b, uint8_t * result) {
-  result[0] = a[0] + (b[0] - a[0]) * amount;
-  result[1] = a[1] + (b[1] - a[1]) * amount;
-  result[2] = a[2] + (b[2] - a[2]) * amount;
-}
-
-void colorWipe() {
-  unsigned long currentMillis = millis();
-
-  if (currentMillis - previousMillis > interval) {
-    previousMillis = currentMillis;
-    
-    for (int i = 0; i < NUM_PIXELS; i++) {
-      uint8_t v = cos8((float) i * 10 + flipTimer * flipTimer / 15);
-      leds[i].setRGB(v, v, v);
     }
   
     FastLED.show();
