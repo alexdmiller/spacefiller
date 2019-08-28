@@ -13,7 +13,7 @@ public class TriangleScene extends LusioScene {
 
   @Override
   public void setup() {
-    grid = GridUtils.createTriangleGrid(4, 7, 280);
+    grid = GridUtils.createTriangleGrid("triangles", 4, 7, 280);
 
     triangleGridComponent = new TriangleGridComponent(grid);
     renderer = new BasicGraphRenderer(2);

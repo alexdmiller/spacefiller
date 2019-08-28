@@ -79,7 +79,6 @@ public class Algoplex2 extends SceneApplet {
 
     remote = new SerialStringRemoteControl(controllerSerialPort, 9600, 7);
 
-
     FollowEdges followEdges = new FollowEdges();
     addGridScene(followEdges);
     remote.controller(0).scale(0, 0.02f).toField(followEdges.wobbler, "updateSpeed");
@@ -111,13 +110,12 @@ public class Algoplex2 extends SceneApplet {
     addGridScene(tinyTriangleScene);
     remote.controller(0).smooth(0.2f).scale(0, 1).toField(tinyTriangleScene, "interpolation");
     remote.controller(1).smooth(0.2f).scale(-.1f, .1f).toField(tinyTriangleScene, "speed"); //.send(remote.target("/TinyTriangleScene/speed"));
-    remote.controller(2).smooth(0.2f).scale(0, 0.1f).toField(tinyTriangleScene, "scrollSpeed");
+    remote.controller(2).smooth(0.5f).scale(0, 0.1f).toField(tinyTriangleScene, "scrollSpeed");
     remote.controller(2).smooth(0.5f).scale(0, 1).toField(tinyTriangleScene, "waveShift");
     remote.controller(3).smooth(0.2f).scale(0.01f, 0.5f).toField(tinyTriangleScene, "circleScale");
     remote.controller(3).smooth(0.5f).scale(0.005f, 0.05f).toField(tinyTriangleScene, "scale");
     remote.controller(4).smooth(0.2f).scale(0, 0.6283185307179586f).toField(tinyTriangleScene, "color1Rotation");
     remote.controller(5).smooth(0.2f).scale(0, -0.39269908169872414f).toField(tinyTriangleScene, "color2Rotation");
-
 
 
     TriangleScene triangleScene = new TriangleScene();
@@ -129,7 +127,9 @@ public class Algoplex2 extends SceneApplet {
     remote.controller(4).scale(0, 10).smooth(0.2f).toField(triangleScene, "lineMod");
     remote.controller(5).scale(0, 20).smooth(0.1f).toField(triangleScene, "shiftAmount");
 
-
+    remote.controller(6).gate(0.5f).onGateTriggered(() -> {
+      gotoNextScene();
+    });
 
     remote.connect();
 
