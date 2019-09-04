@@ -63,7 +63,7 @@ public class NumberTransition {
 
     frame++;
 
-    if (frame > 100) {
+    if (frame > 30) {
       finished = true;
     }
   }
