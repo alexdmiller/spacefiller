@@ -9,7 +9,7 @@ import processing.core.PGraphics;
 import toxi.math.noise.PerlinNoise;
 
 public class TriangleScene extends GridScene {
-  private float t = 0;
+  private long t = 0;
 
   @Mod(min = 0, max = 20)
   public float shiftAmount = 0;
@@ -42,9 +42,9 @@ public class TriangleScene extends GridScene {
   public void draw(PGraphics graphics) {
     graphics.blendMode(PConstants.ADD);
 
-    t += speed;
+    t += speed * 100;
 
-    float shift = t + shiftAmount;
+    float shift = t / 100f + shiftAmount;
 
     graphics.noStroke();
     graphics.noFill();

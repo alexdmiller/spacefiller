@@ -9,7 +9,7 @@ import toxi.color.TColor;
 import toxi.math.noise.PerlinNoise;
 
 public class TinyTriangleScene extends GridScene {
-  private float t = 0;
+  private long longT = 0;
   private float noiseScroll = 0;
 
   @Mod(min = -0.1f, max = 0.1f)
@@ -53,7 +53,9 @@ public class TinyTriangleScene extends GridScene {
 
   @Override
   public void draw(PGraphics graphics) {
-    t += speed;
+    longT++;
+    float t = longT / 10f;
+
     noiseScroll += scrollSpeed;
 
     ReadonlyTColor color1 = TColor.BLUE.getRotatedRYB(color1Rotation);
@@ -165,17 +167,21 @@ public class TinyTriangleScene extends GridScene {
   }
 
   private float sample(float x, float y) {
-    return circle(x, y) * interpolation + noise(x, y) * (1 - interpolation);
+    return circle(x, y) * interpolation + line(x, y) * (1 - interpolation);
   }
 
   private float circle(float x, float y) {
     float dx = x - grid.getWidth() / 2;
     float dy = (y - grid.getHeight() / 2 + waveShift * grid.getHeight() * 2) % grid.getHeight();
-    return (float) Math.sin(Math.sqrt(dx*dx + dy*dy) * circleScale + t);
+    return (float) Math.sin(Math.sqrt(dx*dx + dy*dy) * circleScale + longT / 10f);
+  }
+
+  private float line(float x, float y) {
+    return (float) Math.sin(x * scale + longT / 10f);
   }
 
   private float noise(float x, float y) {
-    float n = perlin.noise(x * scale, y * scale + noiseScroll, t / 5f);
+    float n = perlin.noise(x * scale, y * scale + noiseScroll, longT / 10f / 5f);
     if (n > 0.6) {
       return 1;
     } else {

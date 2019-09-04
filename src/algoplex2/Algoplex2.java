@@ -79,19 +79,29 @@ public class Algoplex2 extends SceneApplet {
 
     remote = new SerialStringRemoteControl(controllerSerialPort, 9600, 7);
 
+    CrossScene crossScene = new CrossScene();
+    addGridScene(crossScene);
+    remote.controller(0).smooth(0.15f).toField(crossScene, "crossSize");
+    remote.controller(1).smooth(0.15f).toField(crossScene, "xSize");
+    remote.controller(2).smooth(0.15f).toField(crossScene, "rotation");
+    remote.controller(3).smooth(0.15f).toField(crossScene, "crossRotation");
+    remote.controller(4).smooth(0.05f).toField(crossScene, "color1Rotation");
+    remote.controller(5).smooth(0.05f).toField(crossScene, "color2Rotation");
+
+
     FollowEdges followEdges = new FollowEdges();
     addGridScene(followEdges);
     remote.controller(0).scale(0, 0.02f).toField(followEdges.wobbler, "updateSpeed");
     remote.controller(1).scale(0, 100).toField(followEdges.wobbler, "jitter");
-    remote.controller(2).scale(0, 10).toField(followEdges.wobbler, "waveAmp");
-    remote.controller(3).scale(0, 1f).toField(followEdges.sinGraphRenderer, "speed");
-    remote.controller(4).scale(0, 10).toField(followEdges.sinGraphRenderer, "size");
-    remote.controller(5).scale(1, 10).toField(followEdges.sinGraphRenderer, "freq");
+    remote.controller(2).scale(0, 50).toField(followEdges.wobbler, "waveAmp");
+    remote.controller(3).smooth(0.5f).scale(0, 1f).toField(followEdges.sinGraphRenderer, "speed");
+    remote.controller(4).smooth(0.5f).scale(0, 10).toField(followEdges.sinGraphRenderer, "size");
+    remote.controller(5).smooth(0.5f).scale(1, 10).toField(followEdges.sinGraphRenderer, "freq");
 
     FlowScene flowScene = new FlowScene();
     addGridScene(flowScene);
     remote.controller(0).scale(0.5f, 15).smooth(0.1f).toField(flowScene.perlinFlow, "flowForce");
-    remote.controller(1).scale(100, 1000).smooth(0.5f).toField(flowScene.perlinFlow, "noiseScale");
+    remote.controller(1).scale(100, 1000).smooth(0.01f).toField(flowScene.perlinFlow, "noiseScale");
     remote.controller(2).scale(0, 1).toField(flowScene.perlinFlow, "lineSparsity");
     remote.controller(3).scale(0f, 0.5f).toField(flowScene.perlinFlow, "scrollSpeed");
     remote.controller(4).scale(0f, 0.05f).toField(flowScene.perlinFlow, "noiseSpeed1");
@@ -99,20 +109,21 @@ public class Algoplex2 extends SceneApplet {
 
     WormScene wormScene = new WormScene();
     addGridScene(wormScene);
-    remote.controller(0).scale(0, 2).toField(wormScene.flockParticles, "maxSpeed");
+    remote.controller(0).scale(1, 10).toField(wormScene.flockParticles, "maxSpeed");
     remote.controller(1).scale(10, 50).toField(wormScene.flockParticles, "desiredSeparation");
     remote.controller(2).scale(0, 300).toField(wormScene.flockParticles, "cohesionThreshold");
     remote.controller(3).scale(0, 300).toField(wormScene.flockParticles, "alignmentThreshold");
     remote.controller(4).scale(0, 200).toField(wormScene.repelFixedPoints, "repelThreshold");
     remote.controller(5).scale(-.01f, 0.01f).toField(wormScene.repelFixedPoints, "repelStrength");
 
+
     TinyTriangleScene tinyTriangleScene = new TinyTriangleScene();
     addGridScene(tinyTriangleScene);
     remote.controller(0).smooth(0.2f).scale(0, 1).toField(tinyTriangleScene, "interpolation");
-    remote.controller(1).smooth(0.2f).scale(-.1f, .1f).toField(tinyTriangleScene, "speed"); //.send(remote.target("/TinyTriangleScene/speed"));
-    remote.controller(2).smooth(0.5f).scale(0, 0.1f).toField(tinyTriangleScene, "scrollSpeed");
-    remote.controller(2).smooth(0.5f).scale(0, 1).toField(tinyTriangleScene, "waveShift");
-    remote.controller(3).smooth(0.2f).scale(0.01f, 0.5f).toField(tinyTriangleScene, "circleScale");
+    remote.controller(1).smooth(0.2f).scale(0.1f, .2f).toField(tinyTriangleScene, "speed"); //.send(remote.target("/TinyTriangleScene/speed"));
+    remote.controller(2).smooth(0.1f).scale(0, 0.1f).toField(tinyTriangleScene, "scrollSpeed");
+    remote.controller(2).smooth(0.1f).scale(0, 1).toField(tinyTriangleScene, "waveShift");
+    remote.controller(3).smooth(0.01f).scale(0.01f, 0.5f).toField(tinyTriangleScene, "circleScale");
     remote.controller(3).smooth(0.5f).scale(0.005f, 0.05f).toField(tinyTriangleScene, "scale");
     remote.controller(4).smooth(0.2f).scale(0, 0.6283185307179586f).toField(tinyTriangleScene, "color1Rotation");
     remote.controller(5).smooth(0.2f).scale(0, -0.39269908169872414f).toField(tinyTriangleScene, "color2Rotation");
@@ -123,8 +134,8 @@ public class Algoplex2 extends SceneApplet {
     remote.controller(0).scale(0, 1).smooth(0.2f).toField(triangleScene, "mix");
     remote.controller(1).scale(0, 5).smooth(0.2f).toField(triangleScene, "yMod");
     remote.controller(2).scale(0, 5).smooth(0.2f).toField(triangleScene, "xMod");
-    remote.controller(3).scale(0, 10).smooth(0.2f).toField(triangleScene, "triangleMod");
-    remote.controller(4).scale(0, 10).smooth(0.2f).toField(triangleScene, "lineMod");
+    remote.controller(3).scale(0, 10).smooth(0.05f).toField(triangleScene, "triangleMod");
+    remote.controller(4).scale(0, 10).smooth(0.05f).toField(triangleScene, "lineMod");
     remote.controller(5).scale(0, 20).smooth(0.1f).toField(triangleScene, "shiftAmount");
 
     remote.controller(6).gate(0.8f).onGateTriggered(() -> {

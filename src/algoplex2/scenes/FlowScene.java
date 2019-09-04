@@ -8,7 +8,7 @@ import spacefiller.remote.Mod;
 import processing.core.PGraphics;
 
 public class FlowScene extends GridScene {
-  private float t;
+  private long t;
 
   @Mod
   public PerlinFlowComponent perlinFlow;

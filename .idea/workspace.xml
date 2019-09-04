@@ -8,10 +8,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b7bb3a9e-05bb-464d-967e-9bda287e8f0d" name="Default" comment="Worms and bound changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arduino/knob-controller/knob-controller.ino" beforeDir="false" afterPath="$PROJECT_DIR$/arduino/knob-controller/knob-controller.ino" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/algoplex2/Algoplex2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/Algoplex2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/NumberTransition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/NumberTransition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/TransitionAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/TransitionAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/FlowScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/FlowScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/TinyTriangleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/TinyTriangleScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/TriangleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/TriangleScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/WormScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/WormScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/components/PerlinFlowComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/components/PerlinFlowComponent.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,56 +52,6 @@
         <option value="Class" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>normalize</find>
-      <find>drawUI</find>
-      <find>save</find>
-      <find>graph</find>
-      <find>graph.</find>
-      <find>common.color</find>
-      <find>canvas</find>
-      <find>wireless</find>
-      <find>draw</find>
-      <find>gotoNextScene</find>
-      <find>gotoNext</find>
-      <find>update</find>
-      <find>setMode</find>
-      <find>set</find>
-      <find>goto</find>
-      <find>gotoNex</find>
-      <find>cursor</find>
-      <find>noCursor</find>
-      <find>mapper</find>
-      <find>setup()</find>
-      <find>wormScene</find>
-      <find>/WormScen3</find>
-      <find>flock</find>
-      <find>TinyTriangleScene</find>
-      <find>FollowEd</find>
-      <find>TriangleScene</find>
-      <find>FlowScene</find>
-      <find>snapToGrid</find>
-      <find>speed</find>
-      <find>this.time</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>size</replace>
-      <replace>spacefiller.remote.Mod</replace>
-      <replace>spacefiller.remote.OscRemoteControl</replace>
-      <replace>OscRemoteControl</replace>
-      <replace>graphics.triangle\(</replace>
-      <replace>triangle</replace>
-      <replace>0</replace>
-      <replace>spacefiller.graph.</replace>
-      <replace>spacefiller.color</replace>
-    </replaceStrings>
-    <dirStrings>
-      <dir>/Applications/Processing.app/Contents/Java/core/library/core.jar!/processing/opengl</dir>
-      <dir>$PROJECT_DIR$/src/lightcube</dir>
-      <dir>$PROJECT_DIR$/src/</dir>
-    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

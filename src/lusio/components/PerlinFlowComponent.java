@@ -50,7 +50,7 @@ public class PerlinFlowComponent extends SceneComponent {
   private boolean snapToGrid = false;
   private float gridCellSize = 10;
 
-  float timeStep;
+  long timeStep;
   float scramble = 0;
   float noise1Pos = 0;
   float noise2Pos = 0;
@@ -196,7 +196,7 @@ public class PerlinFlowComponent extends SceneComponent {
   @Override
   public void draw(PGraphics graphics) {
     graphics.pushMatrix();
-    timeStep += mainSpeed;
+    timeStep += mainSpeed * 10;
     scramble += scrambleSpeed;
     noise1Pos += noiseSpeed1;
     noise2Pos += noiseSpeed2;
@@ -213,7 +213,7 @@ public class PerlinFlowComponent extends SceneComponent {
         for (float y = 0; y < bounds.getHeight(); y += gridCellSize) {
           index++;
           graphics.stroke(getColorProvider().getColor(index));
-          PVector p = new PVector(x + gridOffset, y + gridOffset + gridCellSize/2f);
+          PVector p = new PVector(x + gridOffset, y + gridOffset);
           drawLine(index, p, graphics);
         }
       }
@@ -259,7 +259,7 @@ public class PerlinFlowComponent extends SceneComponent {
   }
 
   PVector position2(int i) {
-    float theta = (float) (2 * Math.PI * (float) i / numPoints + timeStep);
+    float theta = (float) (2 * Math.PI * (float) i / numPoints + timeStep / 10f);
     PVector p = new PVector(
         (float) Math.cos(theta) * circleRadius,
         (float) Math.sin(theta) * circleRadius

@@ -15,7 +15,7 @@ public class WormScene extends GridScene {
   private ParticleComponent particleGenerator;
 
   @Mod
-  public FlockParticles flockParticles = new FlockParticles(2, 1f, 1f, 10, 50, 50, 0.1f, 2);
+  public FlockParticles flockParticles = new FlockParticles(2, 1f, 1f, 10, 50, 50, 0.2f, 2);
 
   @Mod
   public FollowPaths followPaths;
