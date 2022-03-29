@@ -1,54 +1,360 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ArtifactsWorkspaceSettings">
-    <artifacts-to-build>
-      <artifact name="algoplex2:jar" />
-    </artifacts-to-build>
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7bb3a9e-05bb-464d-967e-9bda287e8f0d" name="Default" comment="Worms and bound changes">
+    <list default="true" id="b2cb381b-660e-4513-bab4-010ac84200e2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/spacefiller.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/spacefiller/apps/TestApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/miller.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/com_google_code_gson_gson_2_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/javax_json_javax_json_api_1_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/org_glassfish_javax_json_1_0_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/Algoplex2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/Algoplex2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/FlowScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/FlowScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/TinyTriangleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/TinyTriangleScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/TriangleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/TriangleScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/WormScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algoplex2/scenes/WormScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lusio/components/PerlinFlowComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lusio/components/PerlinFlowComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Processing.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Untitled-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/algoplex-performer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/algowave.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/algowave.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/Algowave" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/LeapJava.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/Processing.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/Processing.jar.old.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/Syphon" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/Syphon.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/controlP5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/core.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/gluegen-rt-natives-linux-amd64.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/gluegen-rt-natives-linux-armv6hf.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/gluegen-rt-natives-linux-i586.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/gluegen-rt-natives-macosx-universal.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/gluegen-rt-natives-windows-amd64.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/gluegen-rt-natives-windows-i586.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/gluegen-rt.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/gson-2.7.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/guava-19.0-rc2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/jai_core-1.1.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/javax.json-1.0.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/javax.json-api-1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/jogl-all-natives-linux-amd64.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/jogl-all-natives-linux-armv6hf.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/jogl-all-natives-linux-i586.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/jogl-all-natives-macosx-universal.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/jogl-all-natives-windows-amd64.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/jogl-all-natives-windows-i586.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/jogl-all.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/jssc.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/jsyphon.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/keystone.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/libJSyphon.jnilib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/libLeap.dylib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/libLeapJava.dylib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/mesh.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/oscP5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/processing_remote_control.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/quickhull3d.1.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/serial.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/themidibus.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.app/toxiclibs.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Algowave.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/arduino/knob-controller/knob-controller.ino" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/arduino/lightcube/lightcube-2/lightcube-2.ino" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/arduino/lightcube/lightcube.ino" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/arduino/platform/platform.ino" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blobs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/algowave-windows/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/color-bath.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/contours-2018.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/contours.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/contours_modified.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flows.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flows.json.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frag.glsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Ani.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/JNISpout_64.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/LeapJava.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Syphon" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Syphon.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/apiviz-1.3.1.GA.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/args4j-2.0.8.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/controlP5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/doapamine.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/gluegen-rt-natives-linux-aarch64.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/gluegen-rt-natives-linux-amd64.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/gluegen-rt-natives-linux-armv6hf.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/gluegen-rt-natives-linux-i586.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/gluegen-rt-natives-macosx-universal.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/gluegen-rt-natives-windows-amd64.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/gluegen-rt-natives-windows-i586.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/gluegen-rt.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/guava-19.0-rc2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jai_core-1.1.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jogl-all-natives-linux-aarch64.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jogl-all-natives-linux-amd64.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jogl-all-natives-linux-armv6hf.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jogl-all-natives-linux-i586.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jogl-all-natives-macosx-universal.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jogl-all-natives-windows-amd64.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jogl-all-natives-windows-i586.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jogl-all.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jssc.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jsyphon.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/libJSyphon.jnilib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/libLeap.dylib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/libLeapJava.dylib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/linux-arm64/libjSSC-2.8.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/linux64/libjSSC-2.8.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mesh.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/native-lib-loader-2.1.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/oscP5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/processing_remote_control.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/quickhull3d.1.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/serial.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/spacefillerlib.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/spout.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/themidibus.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/toxiclibs.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/umlgraph5.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logo-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logo-2.psd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logo-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logo.psd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lusio.Lusio.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manifests/lusio/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module_processing.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pixel.glsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pixelate.glsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/remote.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes.Contours.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes.Flows.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes.SpaceFiller.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes.UncertainWave.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes.Wave.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes.Web.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes.Worms.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes.Worms.out.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/start-algoplex1.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/start-algoplex2.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sketches.Flows.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sketches.Worms.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/Algoplex2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/AlgoplexController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/AlgoplexPerformer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/Controller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/NumberTransition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/TransitionAnimation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/BasicGridFitScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/CircleScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/ColorBath.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/ContourScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/CrossScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/FlowScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/FollowEdges.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/GradientTriangleScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/GridScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/LifeScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/ParticleScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/PerlinGridScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/PerlinTriangles.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/PsychScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/PyramidScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/ShiftingEdgeScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/SimpleDotScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/TinyTriangleScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/TriangleScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/VeinScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algoplex2/scenes/WormScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algowave/Algowave.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algowave/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algowave/Momentum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algowave/PreviewCanvas.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algowave/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algowave/leap/LeapMessage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algowave/leap/LeapRemoteControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algowave/leap/LeapVisualizer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algowave/scenes/FlowScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algowave/scenes/WormScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/Boid.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/BoidEventListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/BoidUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/EntityEventListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/Flock.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/Magnet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/PathSegment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/behaviors/Behavior.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/behaviors/EmitBehavior.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/behaviors/FlockBehavior.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/behaviors/FlowFieldBehavior.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/behaviors/FollowPathBehavior.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/behaviors/MagnetBehavior.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/behaviors/WiggleBehavior.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/emitter/Emitter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/emitter/LineEmitter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/emitter/PointEmitter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/renderers/BoidFlockRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/renderers/BoidRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/renderers/ContourSpaceFlockRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/renderers/DebugFlockRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/renderers/FlockRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/renderers/GravityFlockRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/renderers/MeshFlockRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/renderers/MeshLikeFlockRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/renderers/PointBoidRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/renderers/VoronoiFlockRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/renderers/WormBoidRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/tools/FlowFieldTool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/tools/LineEmitterTool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/tools/MagnetTool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/tools/PathTool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boids/tools/PointEmitterTool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/Circle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/ConstantPropertyField.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/ConstantVectorField.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/Integrator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/Integrators.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/PerlinVectorField.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/ScalarField.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/StoredVectorField.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/TestContourScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/TestSceneApplet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/TriangleGridComponent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/VectorField.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/WavePropertyField.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/components/ContourComponent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/components/TreeComponent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/influencer/ContourBlobs.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/influencer/CubeGrid.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/influencer/InfluencerScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/influencer/MarchingSquares.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/influencer/MarchingSquaresGlitch.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/influencer/Rain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/influencer/Scene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/influencer/SceneContainer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/influencer/SceneHost.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/influencer/Vertical.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lab/Evolve.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lab/Flock.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lab/Leap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lab/ProjectionMapping.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lab/RemoteExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lab/Topo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lab/Vizstrument.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lab/Viztrument2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lightcube/Lightcube.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lightcube/MidiLightcube.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lightcube/SerialLightcube.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/Lusio.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/Platform.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/components/FluidBoxComponent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/components/GraphComponent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/components/OscillatorComponent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/components/ParticleComponent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/components/PerlinFlowComponent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/components/PerlinLine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/ContourScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/CubeScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/FancyParticles.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/FlockScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/FluidScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/LusioScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/MillerLineScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/NagyLineScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/NestedCubeScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/NoiseCircle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/NoiseSpace.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/ParticleCube.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/ThreeDeeFlockScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lusio/scenes/TriangleScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/CircleMapping.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/CornerPinSurface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/Draggable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/Keystone.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/MeshPoint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/Quad.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/ShapeMapping.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/Bounds.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/Particle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/ParticleEventListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/ParticleSystem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/ParticleUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/Source.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/behaviors/AttractParticles.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/behaviors/DonutBounds.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/behaviors/FatalBounds.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/behaviors/FlockParticles.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/behaviors/FlowParticles.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/behaviors/FollowPaths.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/behaviors/JitterParticles.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/behaviors/ParticleBehavior.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/behaviors/ParticleFriction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/behaviors/ReflectiveBounds.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/behaviors/RepelFixedPoints.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/behaviors/RepelParticles.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/behaviors/WiggleParticles.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/renderers/DelaunayRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/renderers/GraphParticleRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/renderers/ParticleDotRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/renderers/ParticleRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/renderers/ParticleWebRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/particles/renderers/ParticleWormRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/physics/Chain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/Scene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/SceneApplet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/SceneComponent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/SceneMixer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Blobs.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/ColorBath.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Contours.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Contours2018.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Flows.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/FlowsVida.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Scene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/SceneTool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/SpaceFiller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Tubes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/UncertainWave.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Veins.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Wave.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Web.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sketches/Worms.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tools/ShapeEditor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/veins/Tree.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/veins/tools/FoodTool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/veins/tools/VeinTool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/waves/LineRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/waves/OceanRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/waves/UncertainWaveRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/start-algo-performer.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/start-blobs.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/start-contour-2018.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/start-contour.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/start-cube.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/start-flows.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/start-tubes.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/start-wave.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/start-web.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/start-worms.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tubes.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vert.glsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/worms.json" beforeDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Processing$Lusio.coverage" NAME="Lusio Coverage Results" MODIFIED="1503167883759" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-  </component>
-  <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="" />
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand />
-    <select />
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="Processing" />
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="Sketch" />
         <option value="Class" />
       </list>
     </option>
@@ -56,438 +362,29 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
-  <component name="NodePackageJsonFileManager">
-    <packageJsonPaths />
-  </component>
-  <component name="ProjectId" id="1Q44oJHYrcNEIi3LqSmmkdGfeiB" />
-  <component name="ProjectInspectionProfilesVisibleTreeState">
-    <entry key="Project Default">
-      <profile-state>
-        <expanded-state>
-          <State>
-            <id />
-          </State>
-          <State>
-            <id>General</id>
-          </State>
-        </expanded-state>
-        <selected-state>
-          <State>
-            <id>Duplicates</id>
-          </State>
-        </selected-state>
-      </profile-state>
-    </entry>
+  <component name="ProjectId" id="274QHUCfiMHyfk6ljNZL6Ak9Jsv" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="Downloaded.Files.Path.Enabled" value="true" />
-    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
-    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
-    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
-    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="algowave" />
-    <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="Repository.Attach.Sources" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/miller/IdeaProjects/Processing/src/scenes/Worms.java" />
-    <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="js-jscs-nodeInterpreter" value="$PROJECT_DIR$/../.nvm/v0.8.22/bin/node" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.27073553" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src/mapping" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="algowave.scenes" />
-    </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="mapping" />
-      <recent name="emitter" />
-    </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Application.Algoplex2">
-    <configuration default="true" type="ArquillianJUnit" factoryName="">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <properties />
-      <listeners />
-    </configuration>
-    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="INTERPRETER_PATH" value="/bin/bash" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Processing" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
-      <setting name="vmparams" value="" />
-      <setting name="cmdLine" value="run-app" />
-      <setting name="passParentEnv" value="true" />
-      <setting name="launchBrowser" value="true" />
-      <setting name="launchBrowserUrl" value="" />
-      <setting name="depsClasspath" value="false" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-    </configuration>
-    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Processing" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="ADDITIONAL_ARGS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="PyLettuceRunConfigurationType" factoryName="Lettuce">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Processing" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="ADDITIONAL_ARGS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Processing" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Tox" factoryName="Tox">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <module name="Processing" />
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Attests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Processing" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Doctests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Processing" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Nosetests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Processing" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="_new_regexPattern" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;.&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Unittests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Processing" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;.&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="py.test">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Processing" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;.&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidRunConfigurationType">
-      <option name="DEPLOY" value="true" />
-      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
-      <option name="DEPLOY_AS_INSTANT" value="false" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="PM_INSTALL_OPTIONS" value="" />
-      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
-      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <Java />
-      <Profilers>
-        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
-        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
-        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
-      </Profilers>
-      <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <method v="2">
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType">
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="EXTRA_OPTIONS" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <Java />
-      <Profilers>
-        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
-        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
-        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
-      </Profilers>
-      <method v="2">
-        <option name="Make" enabled="true" />
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Applet">
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Algoplex2" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="algoplex2.Algoplex2" />
-      <module name="Processing" />
-      <option name="PROGRAM_PARAMETERS" value="/dev/ttyACM0" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;lib/linux64&quot;" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AlgoplexPerformer" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="algoplex2.AlgoplexPerformer" />
-      <module name="Processing" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$PROJECT_DIR$/../Documents/Processing3/libraries/Syphon/library:$PROJECT_DIR$/../Documents/Processing3/libraries/toxiclibs/library&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Algowave" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="algowave.Algowave" />
-      <module name="Processing" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;lib:$PROJECT_DIR$/../Documents/Processing3/libraries/Syphon/library:$PROJECT_DIR$/../Documents/Processing3/libraries/toxiclibs/library:$PROJECT_DIR$/../Projects/LeapDeveloperKit/LeapSDK/lib&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Blobs" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="sketches.Blobs" />
-      <module name="Processing" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$PROJECT_DIR$/../Documents/Processing3/libraries/Syphon/library:$PROJECT_DIR$/../Documents/Processing3/libraries/toxiclibs/library&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ColorPath" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="sketches.ColorBath" />
-      <module name="Processing" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$PROJECT_DIR$/../Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+  <component name="RunManager">
+    <configuration name="TestApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="spacefiller.apps.TestApp" />
+      <module name="spacefiller" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="scene.*" />
+          <option name="PATTERN" value="spacefiller.apps.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -495,859 +392,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ContourBlobs" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="influencer.ContourBlobs" />
-      <module name="Processing" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$PROJECT_DIR$/../Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="influencer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Contours" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="sketches.Contours" />
-      <module name="Processing" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$PROJECT_DIR$/../Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="scene.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Contours2018" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="sketches.Contours2018" />
-      <module name="Processing" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$PROJECT_DIR$/../Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="scene.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CubeGrid" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="influencer.CubeGrid" />
-      <module name="Processing" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$PROJECT_DIR$/../Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="influencer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Evolve" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="lab.Evolve" />
-      <module name="Processing" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Flows" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="sketches.Flows" />
-      <module name="Processing" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$PROJECT_DIR$/../Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FlowsVida" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="sketches.FlowsVida" />
-      <module name="Processing" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$PROJECT_DIR$/../Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <RunnerSettings RunnerId="Debug with VisualVM">
-        <option name="visualVMId" value="261524209833295" />
-      </RunnerSettings>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Leap" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="lab.Leap" />
-      <module name="Processing" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$PROJECT_DIR$/../Projects/LeapDeveloperKit/LeapSDK/lib&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Lusio" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="lusio.Lusio" />
-      <module name="Processing" />
-      <option name="PROGRAM_PARAMETERS" value="/dev/tty.SLAB_USBtoUART /dev/cu.usbmodem14101" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$PROJECT_DIR$/../Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Mapping" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="lab.ProjectionMapping" />
-      <module name="Processing" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MarchingSquares" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="influencer.MarchingSquares" />
-      <module name="Processing" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$PROJECT_DIR$/../Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="influencer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MarchingSquaresGlitch" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="influencer.MarchingSquaresGlitch" />
-      <module name="Processing" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$PROJECT_DIR$/../Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="influencer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Rain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="influencer.Rain" />
-      <module name="Processing" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$PROJECT_DIR$/../Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="influencer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RemoteExample" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="lab.RemoteExample" />
-      <module name="Processing" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SpaceFiller" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="sketches.SpaceFiller" />
-      <module name="Processing" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$PROJECT_DIR$/../Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="scene.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestSceneApplet" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="common.TestSceneApplet" />
-      <module name="Processing" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$PROJECT_DIR$/../Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Topo" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="lab.Topo" />
-      <module name="Processing" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Tubes" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="sketches.Tubes" />
-      <module name="Processing" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$PROJECT_DIR$/../Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="scene.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UncertainWave" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="sketches.UncertainWave" />
-      <module name="Processing" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$PROJECT_DIR$/../Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="scene.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Veins" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="sketches.Veins" />
-      <module name="Processing" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$PROJECT_DIR$/../Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Vertical" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="influencer.Vertical" />
-      <module name="Processing" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$PROJECT_DIR$/../Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="influencer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Viztrument" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="lab.Vizstrument" />
-      <module name="Processing" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$PROJECT_DIR$/../Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Viztrument2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="lab.Viztrument2" />
-      <module name="Processing" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="lab.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Web" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="sketches.Web" />
-      <module name="Processing" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$PROJECT_DIR$/../Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="scene.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Worms" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="sketches.Worms" />
-      <module name="Processing" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$PROJECT_DIR$/../Documents/Processing3/libraries/Syphon/library&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="TEST_OBJECT" value="class" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <module name="" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="TestNG">
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.Contours" />
-      <item itemvalue="Application.Contours2018" />
-      <item itemvalue="Application.ColorPath" />
-      <item itemvalue="Application.Web" />
-      <item itemvalue="Application.Flows" />
-      <item itemvalue="Application.FlowsVida" />
-      <item itemvalue="Application.SpaceFiller" />
-      <item itemvalue="Application.Lusio" />
-      <item itemvalue="Application.Algoplex2" />
-      <item itemvalue="Application.AlgoplexPerformer" />
-      <item itemvalue="Application.TestSceneApplet" />
-      <item itemvalue="Application.Evolve" />
-      <item itemvalue="Application.Tubes" />
-      <item itemvalue="Application.Topo" />
-      <item itemvalue="Application.Mapping" />
-      <item itemvalue="Application.RemoteExample" />
-      <item itemvalue="Application.Viztrument" />
-      <item itemvalue="Application.Blobs" />
-      <item itemvalue="Application.Leap" />
-      <item itemvalue="Application.Algowave" />
-      <item itemvalue="Application.Veins" />
-      <item itemvalue="Application.Vertical" />
-      <item itemvalue="Application.ContourBlobs" />
-      <item itemvalue="Application.MarchingSquares" />
-      <item itemvalue="Application.MarchingSquaresGlitch" />
-      <item itemvalue="Application.Worms" />
-      <item itemvalue="Application.UncertainWave" />
-      <item itemvalue="Application.Rain" />
-      <item itemvalue="Application.CubeGrid" />
-      <item itemvalue="Application.Viztrument2" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Viztrument2" />
-        <item itemvalue="Application.CubeGrid" />
-        <item itemvalue="Application.UncertainWave" />
-        <item itemvalue="Application.Rain" />
+        <item itemvalue="Application.TestApp" />
       </list>
     </recent_temporary>
   </component>
-  <component name="ServiceViewManager">
-    <option name="allServicesViewState">
-      <serviceView>
-        <treeState>
-          <expand />
-          <select />
-        </treeState>
-      </serviceView>
-    </option>
-  </component>
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b7bb3a9e-05bb-464d-967e-9bda287e8f0d" name="Default" comment="" />
-      <created>1471238294229</created>
+      <changelist id="b2cb381b-660e-4513-bab4-010ac84200e2" name="Changes" comment="" />
+      <created>1648576790221</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1471238294229</updated>
-      <workItem from="1471238295443" duration="5902000" />
-      <workItem from="1471305478046" duration="10698000" />
-      <workItem from="1471398335183" duration="9990000" />
-      <workItem from="1471454300780" duration="244000" />
-      <workItem from="1471473817039" duration="2077000" />
-      <workItem from="1471479995995" duration="3362000" />
-      <workItem from="1471564492632" duration="3454000" />
-      <workItem from="1471649894488" duration="21063000" />
-      <workItem from="1471758710423" duration="641000" />
-      <workItem from="1471796835188" duration="23764000" />
-      <workItem from="1471887365129" duration="390000" />
-      <workItem from="1471998536010" duration="6320000" />
-      <workItem from="1472104374788" duration="4775000" />
-      <workItem from="1472150377801" duration="69000" />
-      <workItem from="1472150637582" duration="296000" />
-      <workItem from="1472183490684" duration="8745000" />
-      <workItem from="1472226913703" duration="10000" />
-      <workItem from="1472257630598" duration="10792000" />
-      <workItem from="1472308076209" duration="13599000" />
-      <workItem from="1472409844318" duration="14727000" />
-      <workItem from="1472494208397" duration="65000" />
-      <workItem from="1472593021236" duration="664000" />
-      <workItem from="1472595212735" duration="623000" />
-      <workItem from="1472606459060" duration="2876000" />
-      <workItem from="1472611283520" duration="2237000" />
-      <workItem from="1472707143330" duration="3341000" />
-      <workItem from="1472749934277" duration="3000" />
-      <workItem from="1472749942904" duration="2000" />
-      <workItem from="1472832175900" duration="13415000" />
-      <workItem from="1472962912482" duration="1175000" />
-      <workItem from="1473136162695" duration="152000" />
-      <workItem from="1473188174403" duration="3000" />
-      <workItem from="1473211574720" duration="2339000" />
-      <workItem from="1473304001116" duration="2258000" />
-      <workItem from="1473384337877" duration="3466000" />
-      <workItem from="1473442631392" duration="320000" />
-      <workItem from="1473474390421" duration="9159000" />
-      <workItem from="1473501367313" duration="628000" />
-      <workItem from="1473532531986" duration="10272000" />
-      <workItem from="1473641335849" duration="6792000" />
-      <workItem from="1473695927219" duration="45000" />
-      <workItem from="1473732260112" duration="3893000" />
-      <workItem from="1473883860050" duration="21000" />
-      <workItem from="1473916742215" duration="1333000" />
-      <workItem from="1473971954353" duration="214000" />
-      <workItem from="1473972704525" duration="8743000" />
-      <workItem from="1474299737899" duration="7875000" />
-      <workItem from="1474397278770" duration="6056000" />
-      <workItem from="1474905876272" duration="57000" />
-      <workItem from="1475090160938" duration="13372000" />
-      <workItem from="1475182592880" duration="9126000" />
-      <workItem from="1475258752595" duration="12000" />
-      <workItem from="1475352661536" duration="1835000" />
-      <workItem from="1475515484519" duration="151000" />
-      <workItem from="1475549020113" duration="627000" />
-      <workItem from="1475600877553" duration="550000" />
-      <workItem from="1475977218562" duration="5565000" />
-      <workItem from="1476118656018" duration="14000" />
-      <workItem from="1476547888258" duration="2802000" />
-      <workItem from="1476648918972" duration="177000" />
-      <workItem from="1476649237666" duration="1000" />
-      <workItem from="1476655514530" duration="1436000" />
-      <workItem from="1476725263717" duration="136000" />
-      <workItem from="1476940428874" duration="1906000" />
-      <workItem from="1477010121816" duration="37000" />
-      <workItem from="1477030933570" duration="301000" />
-      <workItem from="1477077786030" duration="117000" />
-      <workItem from="1477162817034" duration="1061000" />
-      <workItem from="1477173491815" duration="11217000" />
-      <workItem from="1477365433239" duration="4473000" />
-      <workItem from="1477626821198" duration="1224000" />
-      <workItem from="1477773737609" duration="8236000" />
-      <workItem from="1477795689559" duration="370000" />
-      <workItem from="1477854667336" duration="96000" />
-      <workItem from="1477935914614" duration="1000" />
-      <workItem from="1480553075858" duration="334000" />
-      <workItem from="1480704454008" duration="317000" />
-      <workItem from="1481606150338" duration="25000" />
-      <workItem from="1481649299456" duration="11000" />
-      <workItem from="1487730180058" duration="2295000" />
-      <workItem from="1488405465828" duration="41000" />
-      <workItem from="1488748698644" duration="2388000" />
-      <workItem from="1488921657758" duration="64000" />
-      <workItem from="1489026296082" duration="5711000" />
-      <workItem from="1489610218656" duration="66000" />
-      <workItem from="1489755913030" duration="23235000" />
-      <workItem from="1489966238273" duration="5112000" />
-      <workItem from="1490132802710" duration="1146000" />
-      <workItem from="1490217602075" duration="144000" />
-      <workItem from="1490396563093" duration="2549000" />
-      <workItem from="1490637005717" duration="7000" />
-      <workItem from="1491026858594" duration="11104000" />
-      <workItem from="1491197254202" duration="2694000" />
-      <workItem from="1491259955108" duration="4000" />
-      <workItem from="1491372938827" duration="306000" />
-      <workItem from="1491428098235" duration="2000" />
-      <workItem from="1491428105200" duration="1000" />
-      <workItem from="1492043377077" duration="3581000" />
-      <workItem from="1492124872432" duration="41000" />
-      <workItem from="1492145650614" duration="2871000" />
-      <workItem from="1492186186095" duration="44000" />
-      <workItem from="1492220302270" duration="1437000" />
-      <workItem from="1492447098192" duration="5000" />
-      <workItem from="1496197921939" duration="7646000" />
-      <workItem from="1496243802534" duration="6136000" />
-      <workItem from="1496522954470" duration="10550000" />
-      <workItem from="1496871012049" duration="74000" />
-      <workItem from="1497587219730" duration="2952000" />
-      <workItem from="1499195797098" duration="1549000" />
-      <workItem from="1499727647462" duration="1498000" />
-      <workItem from="1499869056193" duration="14937000" />
-      <workItem from="1500232789393" duration="47244000" />
-      <workItem from="1500434730656" duration="74505000" />
-      <workItem from="1501013765262" duration="15684000" />
-      <workItem from="1501041836591" duration="118000" />
-      <workItem from="1501046728425" duration="4117000" />
-      <workItem from="1501190608693" duration="1667000" />
-      <workItem from="1501205922324" duration="128809000" />
-      <workItem from="1502054772105" duration="43973000" />
-      <workItem from="1502322895619" duration="14981000" />
-      <workItem from="1502406868761" duration="21171000" />
-      <workItem from="1502561905107" duration="6287000" />
-      <workItem from="1502578610680" duration="4992000" />
-      <workItem from="1503059191032" duration="18973000" />
-      <workItem from="1503274330960" duration="19775000" />
-      <workItem from="1503522668564" duration="14304000" />
-      <workItem from="1503680807478" duration="21346000" />
-      <workItem from="1504026699321" duration="10474000" />
-      <workItem from="1504108225542" duration="30762000" />
-      <workItem from="1504317054460" duration="18060000" />
-      <workItem from="1504625772304" duration="13025000" />
-      <workItem from="1504654164646" duration="753000" />
-      <workItem from="1504655451107" duration="691000" />
-      <workItem from="1504821251130" duration="2128000" />
-      <workItem from="1504840897375" duration="3027000" />
-      <workItem from="1505005060293" duration="1069000" />
-      <workItem from="1505069950984" duration="158000" />
-      <workItem from="1505070122258" duration="20676000" />
-      <workItem from="1505249229021" duration="20766000" />
-      <workItem from="1505686201387" duration="14288000" />
-      <workItem from="1506008885483" duration="7080000" />
-      <workItem from="1506106507477" duration="14609000" />
-      <workItem from="1506206040187" duration="3921000" />
-      <workItem from="1506276949655" duration="14076000" />
-      <workItem from="1506355825992" duration="15146000" />
-      <workItem from="1506411057549" duration="1029000" />
-      <workItem from="1506448746241" duration="13563000" />
-      <workItem from="1506530347200" duration="11439000" />
-      <workItem from="1506793534692" duration="7127000" />
-      <workItem from="1506807815989" duration="109000" />
-      <workItem from="1506880767252" duration="71989000" />
-      <workItem from="1507224817628" duration="18561000" />
-      <workItem from="1507323565486" duration="8216000" />
-      <workItem from="1507399376704" duration="2246000" />
-      <workItem from="1507514386081" duration="21331000" />
-      <workItem from="1507740798318" duration="12544000" />
-      <workItem from="1507864643738" duration="218000" />
-      <workItem from="1508001930418" duration="1794000" />
-      <workItem from="1508015515914" duration="11221000" />
-      <workItem from="1508532471850" duration="51000" />
-      <workItem from="1508869316617" duration="3058000" />
-      <workItem from="1508889606087" duration="13527000" />
-      <workItem from="1509132518801" duration="24063000" />
-      <workItem from="1509482205396" duration="3186000" />
-      <workItem from="1509566208184" duration="3828000" />
-      <workItem from="1509596185064" duration="1143000" />
-      <workItem from="1509646782341" duration="4476000" />
-      <workItem from="1509662029959" duration="2139000" />
-      <workItem from="1509679538503" duration="104000" />
-      <workItem from="1509912512802" duration="207000" />
-      <workItem from="1510362651082" duration="117000" />
-      <workItem from="1510441004784" duration="72000" />
-      <workItem from="1510441227090" duration="1901000" />
-      <workItem from="1510513758363" duration="4916000" />
-      <workItem from="1510547073417" duration="979000" />
-      <workItem from="1510890905894" duration="206000" />
-      <workItem from="1510894011764" duration="1741000" />
-      <workItem from="1510899290696" duration="3453000" />
-      <workItem from="1510940482672" duration="18563000" />
-      <workItem from="1511036793448" duration="17474000" />
-      <workItem from="1511128071794" duration="8876000" />
-      <workItem from="1511236244147" duration="170000" />
-      <workItem from="1511245932629" duration="879000" />
-      <workItem from="1511381061450" duration="13000" />
-      <workItem from="1511383506181" duration="1469000" />
-      <workItem from="1511731314058" duration="275000" />
-      <workItem from="1511736901374" duration="2572000" />
-      <workItem from="1511797695394" duration="3614000" />
-      <workItem from="1511811484196" duration="2749000" />
-      <workItem from="1512086964047" duration="7699000" />
-      <workItem from="1512166916245" duration="1044000" />
-      <workItem from="1512178330850" duration="510000" />
-      <workItem from="1512598241485" duration="315000" />
-      <workItem from="1512762352924" duration="717000" />
-      <workItem from="1512776488129" duration="1682000" />
-      <workItem from="1512787762294" duration="5733000" />
-      <workItem from="1512959380328" duration="196000" />
-      <workItem from="1513022556032" duration="185000" />
-      <workItem from="1513627643609" duration="10225000" />
-      <workItem from="1513751639085" duration="584000" />
-      <workItem from="1518379860850" duration="8181000" />
-      <workItem from="1518543739566" duration="8151000" />
-      <workItem from="1518565779379" duration="1876000" />
-      <workItem from="1518583922428" duration="5607000" />
-      <workItem from="1518707645932" duration="18831000" />
-      <workItem from="1518805124214" duration="13648000" />
-      <workItem from="1518991597420" duration="33000" />
-      <workItem from="1518992003301" duration="789000" />
-      <workItem from="1518993446583" duration="96000" />
-      <workItem from="1519331540453" duration="76000" />
-      <workItem from="1519332973627" duration="1803000" />
-      <workItem from="1519351697771" duration="1234000" />
-      <workItem from="1519605711916" duration="412000" />
-      <workItem from="1519607064465" duration="5972000" />
-      <workItem from="1519616658656" duration="1954000" />
-      <workItem from="1519672801755" duration="5389000" />
-      <workItem from="1519755456703" duration="294000" />
-      <workItem from="1519767934299" duration="11341000" />
-      <workItem from="1519863216157" duration="20183000" />
-      <workItem from="1521001419566" duration="1197000" />
-      <workItem from="1521171740424" duration="218000" />
-      <workItem from="1521172155083" duration="1154000" />
-      <workItem from="1522292811915" duration="289000" />
-      <workItem from="1522523179505" duration="8755000" />
-      <workItem from="1522557902666" duration="455000" />
-      <workItem from="1524452854947" duration="856000" />
-      <workItem from="1524695415444" duration="597000" />
-      <workItem from="1524780309540" duration="597000" />
-      <workItem from="1525801449638" duration="687000" />
-      <workItem from="1525802229236" duration="1071000" />
-      <workItem from="1526797665239" duration="625000" />
-      <workItem from="1527392511942" duration="1081000" />
-      <workItem from="1528135519445" duration="121000" />
-      <workItem from="1528147916724" duration="546000" />
-      <workItem from="1528153637507" duration="671000" />
-      <workItem from="1528325936905" duration="14000" />
-      <workItem from="1528763496270" duration="421000" />
-      <workItem from="1529091995591" duration="1000" />
-      <workItem from="1529203041380" duration="5162000" />
-      <workItem from="1529280330089" duration="643000" />
-      <workItem from="1529450951304" duration="623000" />
-      <workItem from="1529703057514" duration="1855000" />
-      <workItem from="1529778714751" duration="44000" />
-      <workItem from="1529816056493" duration="1221000" />
-      <workItem from="1529881079451" duration="153000" />
-      <workItem from="1529881256940" duration="1344000" />
-      <workItem from="1532881986970" duration="1268000" />
-      <workItem from="1533167284485" duration="640000" />
-      <workItem from="1533311627958" duration="3994000" />
-      <workItem from="1533416214539" duration="780000" />
-      <workItem from="1533576560048" duration="24094000" />
-      <workItem from="1533743332333" duration="9711000" />
-      <workItem from="1533795209984" duration="313000" />
-      <workItem from="1533828621735" duration="1485000" />
-      <workItem from="1533958301291" duration="2783000" />
-      <workItem from="1534023619666" duration="1267000" />
-      <workItem from="1534189074081" duration="36000" />
-      <workItem from="1535169534937" duration="741000" />
-      <workItem from="1535246584007" duration="605000" />
-      <workItem from="1535662374744" duration="2029000" />
-      <workItem from="1535683619696" duration="1328000" />
-      <workItem from="1536271943803" duration="118000" />
-      <workItem from="1536683366562" duration="3701000" />
-      <workItem from="1536702434966" duration="2894000" />
-      <workItem from="1536767550079" duration="1207000" />
-      <workItem from="1537302713845" duration="257000" />
-      <workItem from="1537467588662" duration="1070000" />
-      <workItem from="1537486534453" duration="74000" />
-      <workItem from="1537677705020" duration="3715000" />
-      <workItem from="1537722727998" duration="12000" />
-      <workItem from="1537725119598" duration="6032000" />
-      <workItem from="1537989247715" duration="1830000" />
-      <workItem from="1538063000260" duration="22000" />
-      <workItem from="1539279427074" duration="23463000" />
-      <workItem from="1539324826619" duration="4328000" />
-      <workItem from="1539365198016" duration="27479000" />
-      <workItem from="1539543562994" duration="29607000" />
-      <workItem from="1539710103374" duration="9189000" />
-      <workItem from="1539822547274" duration="4096000" />
-      <workItem from="1539883887994" duration="18683000" />
-      <workItem from="1539930560897" duration="854000" />
-      <workItem from="1540148871765" duration="6326000" />
-      <workItem from="1540250606761" duration="12770000" />
-      <workItem from="1540317142372" duration="4000" />
-      <workItem from="1540340260414" duration="3297000" />
-      <workItem from="1541611984472" duration="5967000" />
-      <workItem from="1542041437074" duration="858000" />
-      <workItem from="1542597861181" duration="23000" />
-      <workItem from="1542827175640" duration="639000" />
-      <workItem from="1543883475015" duration="614000" />
-      <workItem from="1543950157162" duration="597000" />
-      <workItem from="1544053501532" duration="3309000" />
-      <workItem from="1544480638839" duration="715000" />
-      <workItem from="1544481570120" duration="607000" />
-      <workItem from="1544492197595" duration="5535000" />
-      <workItem from="1544655224077" duration="140000" />
-      <workItem from="1545520377533" duration="3351000" />
-      <workItem from="1545549690096" duration="122000" />
-      <workItem from="1545630208623" duration="3346000" />
-      <workItem from="1545673558843" duration="1489000" />
-      <workItem from="1545958355940" duration="6000" />
-      <workItem from="1546129857808" duration="1000" />
-      <workItem from="1547064519809" duration="1019000" />
-      <workItem from="1547098970793" duration="2574000" />
-      <workItem from="1547168357099" duration="5000" />
-      <workItem from="1548889119068" duration="627000" />
-      <workItem from="1549143599936" duration="31000" />
-      <workItem from="1549672898034" duration="1445000" />
-      <workItem from="1549750467344" duration="9000" />
-      <workItem from="1549750495168" duration="603000" />
-      <workItem from="1549826251449" duration="2956000" />
-      <workItem from="1549865262690" duration="597000" />
-      <workItem from="1549922508059" duration="598000" />
-      <workItem from="1550114899118" duration="598000" />
-      <workItem from="1550420532914" duration="16000" />
-      <workItem from="1558277212742" duration="694000" />
-      <workItem from="1558451868839" duration="8000" />
-      <workItem from="1562787842054" duration="15257000" />
-      <workItem from="1563130255591" duration="3353000" />
-      <workItem from="1563313906702" duration="25000" />
-      <workItem from="1563398165200" duration="801000" />
-      <workItem from="1563400788358" duration="3163000" />
-      <workItem from="1563504827379" duration="3000" />
-      <workItem from="1563844475274" duration="2296000" />
-      <workItem from="1564112546434" duration="2477000" />
-      <workItem from="1564430232467" duration="59000" />
-      <workItem from="1564520225823" duration="5706000" />
-      <workItem from="1564532553319" duration="433000" />
-      <workItem from="1564534598243" duration="7000" />
-      <workItem from="1564606014281" duration="6020000" />
-      <workItem from="1564630936436" duration="17495000" />
-      <workItem from="1564795160083" duration="901000" />
-      <workItem from="1564796089388" duration="553000" />
-      <workItem from="1564796664992" duration="1680000" />
-      <workItem from="1565206442540" duration="2074000" />
-      <workItem from="1565209564562" duration="52000" />
-      <workItem from="1565211346056" duration="8000" />
-      <workItem from="1565211506702" duration="3960000" />
-      <workItem from="1565222395366" duration="1402000" />
-      <workItem from="1565225309474" duration="3000" />
-      <workItem from="1565229888236" duration="720000" />
-      <workItem from="1565310528401" duration="3842000" />
-      <workItem from="1565457752316" duration="698000" />
-      <workItem from="1565763252029" duration="1694000" />
-      <workItem from="1565816480953" duration="1819000" />
-      <workItem from="1565831753045" duration="599000" />
-      <workItem from="1566771114833" duration="633000" />
-      <workItem from="1566872293952" duration="1117000" />
-      <workItem from="1566873445757" duration="63000" />
-      <workItem from="1566875264782" duration="36000" />
-      <workItem from="1566926893508" duration="2207000" />
-      <workItem from="1566932392223" duration="11867000" />
-      <workItem from="1566964381222" duration="3407000" />
-      <workItem from="1567013217694" duration="1757000" />
+      <updated>1648576790221</updated>
     </task>
-    <task id="LOCAL-00001" summary="Worms and bound changes">
-      <created>1506356022413</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1506356022413</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1859413000" />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
-  </component>
-  <component name="Vcs.Log.UiProperties">
-    <option name="RECENTLY_FILTERED_USER_GROUPS">
-      <collection />
-    </option>
-    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-      <collection />
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Worms and bound changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Worms and bound changes" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/boids/emitter/PointEmitter.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/lusio/scenes/NagyLineScene.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="55" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$PROJECT_DIR$/../Projects/Processing Remote Control/out/artifacts/processing_remote_control_jar/processing_remote_control.jar!/spacefiller/remote/VDMXWriter.class</url>
-          <line>31</line>
-          <option name="timeStamp" value="138" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$PROJECT_DIR$/../Projects/Processing Remote Control/out/artifacts/processing_remote_control_jar/processing_remote_control.jar!/spacefiller/remote/VDMXWriter.class</url>
-          <line>60</line>
-          <option name="timeStamp" value="139" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$PROJECT_DIR$/../Projects/Processing Remote Control/out/artifacts/processing_remote_control_jar/processing_remote_control.jar!/spacefiller/remote/signal/Gate.class</url>
-          <line>29</line>
-          <option name="timeStamp" value="149" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$PROJECT_DIR$/../Projects/spacefillerlib/out/artifacts/spacefillerlib_jar/spacefillerlib.jar!/spacefiller/mapping/Surface.class</url>
-          <line>135</line>
-          <option name="timeStamp" value="155" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
   </component>
 </project>
