@@ -7,9 +7,11 @@ public class FlowBehavior extends LocalBehavior {
   public static final String FIELD_FORCE_KEY = "field_force";
 
   private FlowField field;
+  private float killVelocity;
 
-  public FlowBehavior(FlowField field) {
+  public FlowBehavior(FlowField field, float killVelocity) {
     this.field = field;
+    this.killVelocity = killVelocity;
   }
 
   @Override
@@ -18,7 +20,7 @@ public class FlowBehavior extends LocalBehavior {
     particle.applyForce(forceFromField);
     particle.setUserData(FIELD_FORCE_KEY, forceFromField);
 
-    if (forceFromField.magnitude() > Params.f(PName.DANGEROUS_FLUID_VELOCITY)) {
+    if (forceFromField.magnitude() > killVelocity) {
       particle.setUserData("kill", true);
     }
   }
