@@ -1,10 +1,10 @@
-package spacefiller.apps;
+package spacefiller.apps.tests;
 
 import processing.core.PApplet;
 
 public class TestApp extends PApplet {
     public static void main(String[] args) {
-        PApplet.main("spacefiller.apps.TestApp");
+        PApplet.main("spacefiller.apps.tests.TestApp");
     }
 
     public void settings() {
