@@ -14,7 +14,7 @@ public class ParticleApp extends PApplet {
     ParticleSystem system;
 
     public void settings() {
-        size(500, 500);
+        size(500, 500, P2D);
     }
 
     public void setup() {
@@ -23,6 +23,7 @@ public class ParticleApp extends PApplet {
         system.addBehavior(new SoftBounds());
         system.addBehavior(new ParticleFriction(0.99f));
         system.addBehavior(new RepelParticles(20, 1));
+        frameRate(60);
     }
 
     public void draw() {

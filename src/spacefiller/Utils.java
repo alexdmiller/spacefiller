@@ -32,32 +32,8 @@ public class Utils {
     return pApplet.loadShader(filename);
   }
 
-  public static float noise(float x) {
-    return pApplet.noise(x);
-  }
-
-  public static float noise(float x, float y) {
-    return pApplet.noise(x, y);
-  }
-
-  public static float noise(float x, float y, float z) {
-    return pApplet.noise(x, y, z);
-  }
-
-  public static Vector toVector(PVector p) {
-    return new Vector(p.x, p.y, p.z);
-  }
-
-  public static PVector toVector(Vector v) {
-    return new PVector(v.x, v.y, v.z);
-  }
-
   public static float getMillis() {
     return pApplet.millis();
-  }
-
-  public static int lerpColor(int from, int to, float amount) {
-    return pApplet.lerpColor(from, to, amount);
   }
 
   public static PShader loadShader(String s) {

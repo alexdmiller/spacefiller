@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2cb381b-660e-4513-bab4-010ac84200e2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spacefiller.iml" beforeDir="false" afterPath="$PROJECT_DIR$/spacefiller.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spacefiller/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/Utils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spacefiller/apps/tests/ParticleApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/apps/tests/ParticleApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/particles/behaviors/FlowBehavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/particles/behaviors/FlowBehavior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spacefiller/math/Metaballs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/math/Metaballs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spacefiller/math/PerlinNoise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/math/PerlinNoise.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,14 +40,31 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.26960784" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="Application.ParticleApp">
+  <component name="RunManager" selected="Application.Poster">
     <configuration name="ParticleApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="/Applications/Processing.app/Contents/PlugIns/jdk1.8.0_202.jdk/Contents/Home/jre" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="spacefiller.apps.tests.ParticleApp" />
+      <module name="spacefiller" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="spacefiller.apps.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Poster" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="/Applications/Processing.app/Contents/PlugIns/jdk1.8.0_202.jdk/Contents/Home/jre" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="spacefiller.apps.spaceplants.Poster" />
       <module name="spacefiller" />
       <extension name="coverage">
         <pattern>
@@ -68,8 +89,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Poster" />
+      <item itemvalue="Application.ParticleApp" />
+      <item itemvalue="Application.TestApp" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Poster" />
         <item itemvalue="Application.ParticleApp" />
         <item itemvalue="Application.TestApp" />
       </list>

@@ -16,28 +16,28 @@ public class PerlinNoise {
 
     private static final float PERLIN_MIN_AMPLITUDE = 0.001f;
 
-    protected int perlin_octaves = 4; // default to medium smooth
+    protected static int perlin_octaves = 4; // default to medium smooth
 
-    protected float perlin_amp_falloff = 0.5f; // 50% reduction/octave
+    protected static float perlin_amp_falloff = 0.5f; // 50% reduction/octave
 
     // [toxi 031112]
     // new vars needed due to recent change of cos table in PGraphics
-    protected int perlin_TWOPI, perlin_PI;
+    protected static int perlin_TWOPI, perlin_PI;
 
-    protected float[] perlin_cosTable;
+    protected static float[] perlin_cosTable;
 
-    protected float perlin[];
+    protected static float perlin[];
 
-    protected Random perlinRandom;
+    protected static Random perlinRandom;
 
-    public PerlinNoise() {
+    {
         noiseSeed(System.nanoTime());
     }
 
     /**
      * Computes the Perlin noise function value at point x.
      */
-    public float noise(float x) {
+    public static float noise(float x) {
         // is this legit? it's a dumb way to do it (but repair it later)
         return noise(x, 0f, 0f);
     }
@@ -45,14 +45,14 @@ public class PerlinNoise {
     /**
      * Computes the Perlin noise function value at the point x, y.
      */
-    public float noise(float x, float y) {
+    public static float noise(float x, float y) {
         return noise(x, y, 0f);
     }
 
     /**
      * Computes the Perlin noise function value at x, y, z.
      */
-    public float noise(float x, float y, float z) {
+    public static float noise(float x, float y, float z) {
         if (perlin == null) {
             if (perlinRandom == null) {
                 perlinRandom = new Random();
@@ -146,7 +146,7 @@ public class PerlinNoise {
     // [toxi 031112]
     // now adjusts to the size of the cosLUT used via
     // the new variables, defined above
-    private float noise_fsc(float i) {
+    private static float noise_fsc(float i) {
         // using bagel's cosine table instead
         return 0.5f * (1.0f - perlin_cosTable[(int) ((i + 0.5f) * perlin_PI)
                 % perlin_TWOPI]);
@@ -157,13 +157,13 @@ public class PerlinNoise {
     // for different levels of detail. lower values will produce
     // smoother results as higher octaves are surpressed
 
-    public void noiseDetail(int lod) {
+    public static void noiseDetail(int lod) {
         if (lod > 0) {
             perlin_octaves = lod;
         }
     }
 
-    public void noiseDetail(int lod, float falloff) {
+    public static void noiseDetail(int lod, float falloff) {
         if (lod > 0) {
             perlin_octaves = lod;
         }
@@ -172,7 +172,7 @@ public class PerlinNoise {
         }
     }
 
-    public void noiseSeed(long what) {
+    public static void noiseSeed(long what) {
         if (perlinRandom == null) {
             perlinRandom = new Random();
         }

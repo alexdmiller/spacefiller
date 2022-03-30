@@ -1,12 +1,9 @@
 package spacefiller.math;
 
-import processing.core.PGraphics;
-import spacefiller.Utils;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import static spacefiller.Utils.noise;
+import static spacefiller.math.PerlinNoise.noise;
 
 public class Metaballs implements FloatField2 {
   public static class Ball {
