@@ -13,10 +13,8 @@ public class DustSystem implements System {
   private ParticleSystem particleSystem;
   private ArrayList<Dust> dustParts;
   private float lightLevel;
-  private int dustCount = 500;
 
   public DustSystem(ParticleSystem particleSystem, int dustCount, float width, float height) {
-    this.dustCount = dustCount;
     this.particleSystem = particleSystem;
     particleSystem.addBehavior(new ParticleFriction(0.7f), ParticleTag.DUST);
     this.dustParts = new ArrayList<>();

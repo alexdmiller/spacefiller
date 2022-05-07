@@ -1,0 +1,15 @@
+max_frames: 300
+max_particles: 1000
+sim_size:
+  width: 300
+  height: 300
+render_size:
+  width: 1000
+  height: 1000
+plants:
+  min: 5
+  max: 5
+dust:
+  count: 300
+circle_constraint:
+  radius: 150

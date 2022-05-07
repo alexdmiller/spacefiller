@@ -19,6 +19,7 @@ import spacefiller.spaceplants.planets.Planet;
 import spacefiller.spaceplants.plants.PlantDNA;
 import spacefiller.spaceplants.plants.PlantSystem;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -34,8 +35,8 @@ public class Poster extends PApplet {
   // poster dimensions
 //  public static final int SIMULATION_WIDTH = 18 * 14;
 //  public static final int SIMULATION_HEIGHT = 24 * 14;
-  public static final int SIMULATION_WIDTH = (int) (22.666666 * 30);
-  public static final int SIMULATION_HEIGHT = (int) (10.4166666667 * 30);
+  public static final int SIMULATION_WIDTH = 250;
+  public static final int SIMULATION_HEIGHT = 250;
 
   public static final int RENDER_SCALE = 7;
   public static final int PREVIEW_SCALE = 2;
@@ -221,13 +222,15 @@ public class Poster extends PApplet {
     //    particleSystem.addBehavior(new ParticleFriction(0.9f));
     //    particleSystem.addBehavior(new RepelParticles(20, 5));
 
+    particleSystem.addBehavior(new CircleBounds(width / 5, 1, 0.1f));
+
     particleSystem.addBehavior(new SoftBounds(10, 5, 3));
     plantSystem = new PlantSystem(particleSystem);
 
 
     switch (mode) {
       case 0: {
-          int numPlants = 15;
+          int numPlants = 5;
           for (int i = 0; i < numPlants; i++) {
             //      plantSystem.createSeed(particleSystem.getBounds().getRandomPointInside(2), new PlantDNA().setAliveBranchColor(0xffffffff)
             //          .setBranchingFactor(1)
@@ -237,7 +240,7 @@ public class Poster extends PApplet {
             plantSystem.createSeed(particleSystem.getBounds().getRandomPointInside(2));
           }
 
-          int numHives = (int) Math.round(Math.random() * 2) + 8;
+          int numHives = (int) Math.round(Math.random() * 2) + 4;
           for (int i = 0; i < numHives; i++) {
             beeSystem.createHive(particleSystem.getBounds().getRandomPointInside(2));
           }
@@ -250,7 +253,7 @@ public class Poster extends PApplet {
         }
         break;
       case 1: {
-          int grayPlants = (int) Math.round(Math.random() * 2 + 3);
+          int grayPlants = (int) Math.round(Math.random() * 2 );
           for (int i = 0; i < grayPlants; i++) {
               plantSystem.createSeed(particleSystem.getBounds().getRandomPointInside(2), new PlantDNA().setAliveBranchColor(0xff333333)
                   .setBranchingFactor(4)
@@ -260,7 +263,7 @@ public class Poster extends PApplet {
                   .setFlowerSize(2).setAliveFlowerColor(0xff0000ff));
           }
 
-        int purplePlants = (int) Math.round(Math.random() * 4);
+        int purplePlants = (int) Math.round(Math.random() * 2);
         for (int i = 0; i < purplePlants; i++) {
             plantSystem.createSeed(particleSystem.getBounds().getRandomPointInside(2), new PlantDNA()
                 .setAliveBranchColor(0xff220022)
@@ -307,6 +310,7 @@ public class Poster extends PApplet {
   @Override
   public void draw() {
     if (frameCount > maxFrames) {
+      System.out.println("RENDERING");
       renderLarge();
       exit();
       return;
@@ -318,7 +322,7 @@ public class Poster extends PApplet {
       selected.getPosition().set(mouseX / PREVIEW_SCALE, mouseY / PREVIEW_SCALE);
     }
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 1; i++) {
       plantSystem.update();
       dustSystem.update();
       beeSystem.update();

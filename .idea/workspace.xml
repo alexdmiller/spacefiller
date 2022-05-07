@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2cb381b-660e-4513-bab4-010ac84200e2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/config.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/CLI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/Config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spacefiller.iml" beforeDir="false" afterPath="$PROJECT_DIR$/spacefiller.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/apps/tests/ParticleApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/apps/tests/ParticleApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/math/Metaballs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/math/Metaballs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/math/PerlinNoise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/math/PerlinNoise.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/Poster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/Poster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spacefiller/spaceplants/dust/DustSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/spaceplants/dust/DustSystem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,12 +42,28 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.26960784" />
+    <property name="project.structure.side.proportion" value="0.37744534" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="Application.Poster">
+  <component name="RunManager" selected="Application.CLI">
+    <configuration name="CLI" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="/Applications/Processing.app/Contents/PlugIns/jdk1.8.0_202.jdk/Contents/Home/jre" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="spacefiller.apps.spaceplants.CLI" />
+      <module name="spacefiller" />
+      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/render.png" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="spacefiller.apps.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ParticleApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="/Applications/Processing.app/Contents/PlugIns/jdk1.8.0_202.jdk/Contents/Home/jre" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -91,6 +109,7 @@
     </configuration>
     <list>
       <item itemvalue="Application.Poster" />
+      <item itemvalue="Application.CLI" />
       <item itemvalue="Application.ParticleApp" />
       <item itemvalue="Application.TestApp" />
     </list>
