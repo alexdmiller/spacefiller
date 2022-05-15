@@ -1,8 +1,8 @@
 max_frames: 300
 max_particles: 1000
 sim_size:
-  width: 300
-  height: 300
+  width: 200
+  height: 200
 render_size:
   width: 1000
   height: 1000
@@ -12,4 +12,4 @@ plants:
 dust:
   count: 300
 circle_constraint:
-  radius: 150
+  radius: 80
