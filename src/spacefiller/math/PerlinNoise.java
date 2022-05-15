@@ -27,13 +27,7 @@ public class PerlinNoise {
     protected static float[] perlin_cosTable;
 
     protected static float perlin[];
-
-    protected static Random perlinRandom;
-
-    {
-        noiseSeed(System.nanoTime());
-    }
-
+    
     /**
      * Computes the Perlin noise function value at point x.
      */
@@ -54,12 +48,9 @@ public class PerlinNoise {
      */
     public static float noise(float x, float y, float z) {
         if (perlin == null) {
-            if (perlinRandom == null) {
-                perlinRandom = new Random();
-            }
             perlin = new float[PERLIN_SIZE + 1];
             for (int i = 0; i < PERLIN_SIZE + 1; i++) {
-                perlin[i] = perlinRandom.nextFloat(); // (float)Math.random();
+                perlin[i] = Rnd.random.nextFloat(); // (float)Rnd.random.nextDouble();
             }
             // [toxi 031112]
             // noise broke due to recent change of cos table in PGraphics
@@ -170,13 +161,5 @@ public class PerlinNoise {
         if (falloff > 0) {
             perlin_amp_falloff = falloff;
         }
-    }
-
-    public static void noiseSeed(long what) {
-        if (perlinRandom == null) {
-            perlinRandom = new Random();
-        }
-        perlinRandom.setSeed(what);
-        perlin = null;
     }
 }

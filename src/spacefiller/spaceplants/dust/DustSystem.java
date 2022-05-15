@@ -1,6 +1,7 @@
 package spacefiller.spaceplants.dust;
 
 import processing.core.PGraphics;
+import spacefiller.math.Rnd;
 import spacefiller.spaceplants.System;
 import spacefiller.particles.Particle;
 import spacefiller.particles.ParticleSystem;
@@ -60,11 +61,11 @@ class Dust {
     this.particleSystem = particleSystem;
     this.width = width;
     this.height = height;
-    this.particle = particleSystem.createParticle((float)Math.random()*width, (float)Math.random()*height);
+    this.particle = particleSystem.createParticle((float) Rnd.random.nextDouble()*width, (float)Rnd.random.nextDouble()*height);
     this.particle.setMass(1.0f);
     this.particle.addTag(ParticleTag.DUST);
     this.particle.addTag(ParticleTag.GLOBAL_REPEL);
-    this.age = (float) Math.random()*100.0f;
+    this.age = (float) Rnd.random.nextDouble()*100.0f;
     this.bright = 1.0f;
   }
 
@@ -78,7 +79,7 @@ class Dust {
   public void update() {
 //    this.bright = (float) (Math.cos(this.age/(2.0*Math.PI))*0.5+0.5);
 //    if (this.bright < 0.001) {
-//      this.particleSystem.setPosition(particle, new Vector((float)Math.random()*width, (float)Math.random()*height));
+//      this.particleSystem.setPosition(particle, new Vector((float)Rnd.random.nextDouble()*width, (float)Rnd.random.nextDouble()*height));
 //      particle.setVelocity(new Vector());
 //    }
 //    this.age += 0.01;

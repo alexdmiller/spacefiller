@@ -2,6 +2,7 @@ package spacefiller.spaceplants.bees;
 
 import processing.core.PConstants;
 import processing.core.PGraphics;
+import spacefiller.math.Rnd;
 import spacefiller.math.Vector;
 import spacefiller.particles.*;
 import spacefiller.spaceplants.PName;
@@ -170,12 +171,12 @@ public class BeeEntity {
   private void updateState(float lightLevel, Particle closestFlower) {
     switch (mode) {
       case BABY:
-        if (head.getLife() > particles.size() * Params.i(PName.BEE_GROWTH_TIMER) && Math.random() < 0.5) {
+        if (head.getLife() > particles.size() * Params.i(PName.BEE_GROWTH_TIMER) && Rnd.random.nextDouble() < 0.5) {
           Particle last = particles.get(particles.size() - 1);
 
           Particle next = particleSystem.createParticle(
-                  (float) (last.getPosition().x + Math.random() * 3 - 1.5f),
-                  (float) (last.getPosition().y + Math.random() * 3 - 1.5f));
+                  (float) (last.getPosition().x + Rnd.random.nextDouble() * 3 - 1.5f),
+                  (float) (last.getPosition().y + Rnd.random.nextDouble() * 3 - 1.5f));
 
           next.addTag(ParticleTag.BEE);
           next.addTag(ParticleTag.BABY);
@@ -215,10 +216,10 @@ public class BeeEntity {
             } else if (closestFlower != null
                 && motherHive != null
                 && motherHive.getFoodCount() < Params.i(PName.MAX_HIVE_FOOD)
-                && Math.random() < Params.f(PName.GRAB_FLOWER_CHANCE)) {
+                && Rnd.random.nextDouble() < Params.f(PName.GRAB_FLOWER_CHANCE)) {
               mode = Mode.SEARCH_FOR_FOOD;
               target = closestFlower;
-            }  else if (lightLevel < Params.f(PName.NIGHT_THRESHOLD) && Math.random() < 0.01) {
+            }  else if (lightLevel < Params.f(PName.NIGHT_THRESHOLD) && Rnd.random.nextDouble() < 0.01) {
               // go to sleep
               if (particleSystem.getNeighbors(head.getPosition(), ParticleTag.BEE)
                   .filter(particle -> particle.getTeam() == head.getTeam())
@@ -272,7 +273,7 @@ public class BeeEntity {
           float distanceToHive = head.getPosition().dist(motherHive.getPosition());
 
           // enter the hive
-          if (head.getVelocity().magnitude() < 0.1f && Math.random() < 0.1) {
+          if (head.getVelocity().magnitude() < 0.1f && Rnd.random.nextDouble() < 0.1) {
             Vector delta = Vector.sub(motherHive.getPosition(), head.getPosition());
             delta.normalize();
             delta.mult(3f);
@@ -296,7 +297,7 @@ public class BeeEntity {
         float distanceToHive = head.getPosition().dist(currentHive.getPosition());
 
         // push through wall
-        if (Math.random() < 0.1) {
+        if (Rnd.random.nextDouble() < 0.1) {
           Vector delta = Vector.sub(head.getPosition(), currentHive.getPosition());
           delta.normalize();
           head.applyForce(delta);
@@ -314,7 +315,7 @@ public class BeeEntity {
           Stream<Particle> foodNeighbors = head.getNeighbors(ParticleTag.FLOWER);
 
           // wake up
-          if (foodNeighbors.count() > 0 || neighbors.count() > 0 || (lightLevel > Params.f(PName.NIGHT_THRESHOLD) && Math.random() < 0.1f)) {
+          if (foodNeighbors.count() > 0 || neighbors.count() > 0 || (lightLevel > Params.f(PName.NIGHT_THRESHOLD) && Rnd.random.nextDouble() < 0.1f)) {
             mode = Mode.FLOCKING;
             head.addTag(ParticleTag.BEE_FLOCK);
             head.removeTag(ParticleTag.BEE_HUDDLE);

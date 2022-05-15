@@ -1,5 +1,6 @@
 package spacefiller.particles;
 
+import spacefiller.math.Rnd;
 import spacefiller.math.Vector;
 
 import java.util.*;
@@ -165,10 +166,10 @@ public class Particle {
   public void setRandomVelocity(float min, float max, int dimension) {
     if (dimension == 3) {
       this.setVelocity(Vector.random3D());
-      this.getVelocity().setMag((float) Math.random() * (max - min) + min);
+      this.getVelocity().setMag((float) Rnd.random.nextDouble() * (max - min) + min);
     } else if (dimension == 2) {
       this.setVelocity(Vector.random2D());
-      this.getVelocity().setMag((float) Math.random() * (max - min) + min);
+      this.getVelocity().setMag((float) Rnd.random.nextDouble() * (max - min) + min);
     }
   }
 

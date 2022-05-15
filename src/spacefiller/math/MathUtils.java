@@ -83,11 +83,6 @@ public final class MathUtils {
 
     private final static double SIN_B = 4d / PI;
     private final static double SIN_P = 9d / 40;
-    /**
-     * Default random number generator used by random methods of this class
-     * which don't use a passed in {@link Random} instance.
-     */
-    public static Random RND = new Random();
 
     /**
      * @param x
@@ -257,7 +252,7 @@ public final class MathUtils {
     }
 
     public static final boolean flipCoin() {
-        return RND.nextBoolean();
+        return Rnd.random.nextBoolean();
     }
 
     public static final boolean flipCoin(Random rnd) {
@@ -464,7 +459,7 @@ public final class MathUtils {
      * @return random float
      */
     public static final float normalizedRandom() {
-        return RND.nextFloat() * 2 - 1;
+        return Rnd.random.nextFloat() * 2 - 1;
     }
 
     /**
@@ -486,19 +481,19 @@ public final class MathUtils {
     }
 
     public static final float random(float max) {
-        return RND.nextFloat() * max;
+        return Rnd.random.nextFloat() * max;
     }
 
     public static final float random(float min, float max) {
-        return RND.nextFloat() * (max - min) + min;
+        return Rnd.random.nextFloat() * (max - min) + min;
     }
 
     public static final int random(int max) {
-        return (int) (RND.nextFloat() * max);
+        return (int) (Rnd.random.nextFloat() * max);
     }
 
     public static final int random(int min, int max) {
-        return (int) (RND.nextFloat() * (max - min)) + min;
+        return (int) (Rnd.random.nextFloat() * (max - min)) + min;
     }
 
     public static final double random(Random rnd, double max) {
@@ -526,11 +521,11 @@ public final class MathUtils {
     }
 
     public static final boolean randomChance(double chance) {
-        return RND.nextDouble() < chance;
+        return Rnd.random.nextDouble() < chance;
     }
 
     public static final boolean randomChance(float chance) {
-        return RND.nextFloat() < chance;
+        return Rnd.random.nextFloat() < chance;
     }
 
     public static final boolean randomChance(Random rnd, double chance) {
@@ -615,7 +610,7 @@ public final class MathUtils {
      * @param rnd
      */
     public static void setDefaultRandomGenerator(Random rnd) {
-        RND = rnd;
+        Rnd.random = rnd;
     }
 
     public static int sign(double x) {

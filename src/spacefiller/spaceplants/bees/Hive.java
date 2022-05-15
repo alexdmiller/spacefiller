@@ -1,6 +1,7 @@
 package spacefiller.spaceplants.bees;
 
 import processing.core.PGraphics;
+import spacefiller.math.Rnd;
 import spacefiller.math.Vector;
 import spacefiller.particles.*;
 import spacefiller.spaceplants.PName;
@@ -197,9 +198,9 @@ public class Hive {
   }
 
   public void grow() {
-    if (Math.random() < 0.1) {
+    if (Rnd.random.nextDouble() < 0.1) {
       if (innerParticles.size() < Params.i(PName.MAX_HIVE_SIZE)) {
-        int index = (int) (Math.random() * (innerParticles.size() - 2)) + 1;
+        int index = (int) (Rnd.random.nextDouble() * (innerParticles.size() - 2)) + 1;
 
         Particle center = innerParticles.get(index);
 
@@ -248,13 +249,13 @@ public class Hive {
         Params.i(PName.HIVE_LIFETIME) : Params.i(PName.HIVE_LIFETIME);
 
     if (life > lifetime) {
-      particles.get((int) (Math.random() * particles.size())).setUserData("kill", true);
+      particles.get((int) (Rnd.random.nextDouble() * particles.size())).setUserData("kill", true);
     }
 
     if (!hiveBroken) {
        grow();
     } else {
-      particles.get((int) (Math.random() * particles.size())).setUserData("kill", true);
+      particles.get((int) (Rnd.random.nextDouble() * particles.size())).setUserData("kill", true);
     }
 
     this.lightLevel = lightLevel;
@@ -370,7 +371,7 @@ public class Hive {
     if (true) { // lightLevel < Params.f(PName.NIGHT_THRESHOLD)) {
       // digest food
       int numBees = particleSystem.getParticlesWithTag(ParticleTag.HEAD).size();
-      if (numBees < Params.i(PName.MAX_BEES) && Math.random() < Params.f(PName.FOOD_TO_WORM_CHANCE)) {
+      if (numBees < Params.i(PName.MAX_BEES) && Rnd.random.nextDouble() < Params.f(PName.FOOD_TO_WORM_CHANCE)) {
         if (!capturedFood.isEmpty()) {
           PlantNode f = capturedFood.remove(0);
           f.getParticle().setRemoveFlag(true);
@@ -378,13 +379,13 @@ public class Hive {
 
           int numNewBees = Math.max(1, Math.round((Params.i(PName.MAX_BEES) - numBees) / 100f));
           for (int i = 0; i < numNewBees; i++) {
-            beeSystem.createBee(Vector.add(position, new Vector(Math.random() - 0.5, Math.random() - 0.5)), this);
+            beeSystem.createBee(Vector.add(position, new Vector(Rnd.random.nextDouble() - 0.5, Rnd.random.nextDouble() - 0.5)), this);
           }
 
           // if there are literally no more plants present, then as an emergency measure,
           // the hive will produce seeds from flowers
           int numPlants = particleSystem.getParticlesWithTag(ParticleTag.PLANT).size();
-          if (Math.random() < 0.1 && numPlants == 0) {
+          if (Rnd.random.nextDouble() < 0.1 && numPlants == 0) {
             SeedNode seed = plantSystem.createSeed(position.copy());
             seed.getParticle().applyForce(Vector.random2D());
           }

@@ -2,9 +2,10 @@ package spacefiller.particles;
 
 import processing.core.PGraphics;
 import processing.core.PVector;
+import spacefiller.math.Rnd;
 import spacefiller.math.Vector;
 
-import spacefiller.particles.behaviors.AssymetricParticleBehavior;
+import spacefiller.particles.behaviors.AsymmetricParticleBehavior;
 import spacefiller.particles.behaviors.LocalBehavior;
 import spacefiller.particles.behaviors.SymmetricBehavior;
 import spacefiller.particles.sources.AreaSource;
@@ -29,7 +30,7 @@ public class ParticleSystem {
 
   private Bounds bounds;
   private List<Source> sources;
-  private List<AssymetricParticleBehavior> assymetricBehaviors;
+  private List<AsymmetricParticleBehavior> assymetricBehaviors;
   private List<SymmetricBehavior> symmetricBehaviors;
   private List<LocalBehavior> localBehaviors;
   private float maxForce = 10;
@@ -309,7 +310,7 @@ public class ParticleSystem {
         }
       }
 
-      for (AssymetricParticleBehavior behavior : assymetricBehaviors) {
+      for (AsymmetricParticleBehavior behavior : assymetricBehaviors) {
         if (behavior.getTag() == null || p.hasTag(behavior.getTag())) {
           if (behavior.isGlobal()) {
             behavior.apply(p, grid.getParticlesWithTag(behavior.getNeighborFilter()).stream().filter(p2 -> p != p2));
@@ -369,7 +370,7 @@ public class ParticleSystem {
     for (int i = 0; i < numParticles; i++) {
       Particle p = createParticle(bounds.getRandomPointInside(dimension), dimension, -1);
       p.setRandomVelocity(1, 2, dimension);
-      p.setTeam((int) (Math.random() * teams));
+      p.setTeam((int) (Rnd.random.nextDouble() * teams));
       newParticles.add(p);
     }
     return newParticles;
@@ -499,17 +500,17 @@ public class ParticleSystem {
     return grid.getParticles();
   }
 
-  public void addBehavior(AssymetricParticleBehavior behavior) {
+  public void addBehavior(AsymmetricParticleBehavior behavior) {
     behavior.setParticleSystem(this);
     this.assymetricBehaviors.add(behavior);
   }
 
-  public void addBehavior(AssymetricParticleBehavior behavior, ParticleTag tag) {
+  public void addBehavior(AsymmetricParticleBehavior behavior, ParticleTag tag) {
     behavior.setTagConstraint(tag);
     addBehavior(behavior);
   }
 
-  public void addBehavior(AssymetricParticleBehavior behavior, ParticleTag applicationFilter, ParticleTag neighborFilter) {
+  public void addBehavior(AsymmetricParticleBehavior behavior, ParticleTag applicationFilter, ParticleTag neighborFilter) {
     behavior.setTagConstraint(applicationFilter);
     behavior.setNeighborFilter(neighborFilter);
     addBehavior(behavior);
@@ -596,8 +597,8 @@ public class ParticleSystem {
     }
 
     java.lang.System.out.println("ASYMMETRIC BEHAVIORS");
-    for (AssymetricParticleBehavior assymetricBehavior : assymetricBehaviors) {
-      java.lang.System.out.println(assymetricBehavior.getClass().getSimpleName() + " - " + assymetricBehavior.getTag() + " - " + assymetricBehavior.getNeighborFilter());
+    for (AsymmetricParticleBehavior asymmetricBehavior : assymetricBehaviors) {
+      java.lang.System.out.println(asymmetricBehavior.getClass().getSimpleName() + " - " + asymmetricBehavior.getTag() + " - " + asymmetricBehavior.getNeighborFilter());
     }
 
     java.lang.System.out.println("LOCAL BEHAVIORS");

@@ -5,7 +5,7 @@ import spacefiller.particles.Particle;
 
 import java.util.stream.Stream;
 
-public class RepelParticles extends AssymetricParticleBehavior {
+public class RepelParticles extends AsymmetricParticleBehavior {
   private float repelThreshold;
   private float repelStrength;
   private boolean teams = false;

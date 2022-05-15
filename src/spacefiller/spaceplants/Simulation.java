@@ -2,6 +2,7 @@ package spacefiller.spaceplants;
 
 import processing.core.PApplet;
 import processing.core.PGraphics;
+import spacefiller.math.Rnd;
 import spacefiller.spaceplants.bees.BeeSystem;
 import spacefiller.spaceplants.dust.DustSystem;
 import spacefiller.math.Vector;
@@ -141,10 +142,10 @@ public class Simulation {
 
     framesSinceLastInteraction++;
 
-    if (Math.random() < 0) {
+    if (Rnd.random.nextDouble() < 0) {
       Vector safePoint = findSafePoint(1);
       if (safePoint != null) {
-        if (Math.random() < 0.5) {
+        if (Rnd.random.nextDouble() < 0.5) {
           plantSystem.createSeed(safePoint);
         } else {
           beeSystem.createHive(safePoint);
@@ -162,17 +163,17 @@ public class Simulation {
     }
 
     for (int i = 0; i < 3; i++) {
-      beeSystem.createHive(new Vector(width / 2 + Math.random() * 100 - 50, height / 2+ Math.random() * 100 - 50));
+      beeSystem.createHive(new Vector(width / 2 + Rnd.random.nextDouble() * 100 - 50, height / 2+ Rnd.random.nextDouble() * 100 - 50));
     }
     for (int i = 0; i < 5; i++) {
-      plantSystem.createSeed(new Vector(width / 2 + Math.random() * 100 - 50, height / 2+ Math.random() * 100 - 50));
+      plantSystem.createSeed(new Vector(width / 2 + Rnd.random.nextDouble() * 100 - 50, height / 2+ Rnd.random.nextDouble() * 100 - 50));
     }
   }
 
   public Vector findSafePoint(int maxTries) {
     Vector position = new Vector(
-        (float) (Math.random() * (particleSystem.getBounds().getWidth() - 100) + 50),
-        (float) (Math.random() * (particleSystem.getBounds().getHeight() - 100) + 50));
+        (float) (Rnd.random.nextDouble() * (particleSystem.getBounds().getWidth() - 100) + 50),
+        (float) (Rnd.random.nextDouble() * (particleSystem.getBounds().getHeight() - 100) + 50));
     float density = particleSystem.getDensity(position);
 
     for (int i = 0; i < maxTries; i++) {
@@ -180,8 +181,8 @@ public class Simulation {
         return position;
       }
       position = new Vector(
-          (float) Math.random() * particleSystem.getBounds().getWidth(),
-          (float) Math.random() * particleSystem.getBounds().getHeight());
+          (float) Rnd.random.nextDouble() * particleSystem.getBounds().getWidth(),
+          (float) Rnd.random.nextDouble() * particleSystem.getBounds().getHeight());
       density = particleSystem.getDensity(position);
     }
 

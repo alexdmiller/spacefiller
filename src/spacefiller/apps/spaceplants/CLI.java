@@ -8,6 +8,7 @@ import processing.core.PGraphics;
 import processing.opengl.PGraphicsOpenGL;
 import processing.opengl.PJOGL;
 import spacefiller.Utils;
+import spacefiller.math.Rnd;
 import spacefiller.spaceplants.System;
 import spacefiller.spaceplants.bees.BeeSystem;
 import spacefiller.spaceplants.dust.DustSystem;
@@ -24,9 +25,11 @@ import java.util.*;
 public class CLI extends PApplet {
   private static String outputPath;
   private static Config config;
+  private static Long seed;
 
   public static void main(String[] args) {
     outputPath = args[0];
+    Rnd.init(args.length == 2 ? new Random(Long.valueOf(args[1])) : new Random());
 
     String configPath = "config.yml";
 
@@ -116,7 +119,7 @@ public class CLI extends PApplet {
       systems.add(plantSystem);
 
       int numPlants = (int) Math.round(
-          config.plants.min + Math.random() * (config.plants.max - config.plants.min));
+          config.plants.min + Rnd.random.nextDouble() * (config.plants.max - config.plants.min));
       for (int i = 0; i < numPlants; i++) {
         plantSystem.createSeed(particleSystem.getBounds().getRandomPointInside(2));
       }

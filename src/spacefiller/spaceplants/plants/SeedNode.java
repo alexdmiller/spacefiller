@@ -2,6 +2,7 @@ package spacefiller.spaceplants.plants;
 
 import processing.core.PApplet;
 import processing.core.PGraphics;
+import spacefiller.math.Rnd;
 import spacefiller.spaceplants.PName;
 import spacefiller.spaceplants.Params;
 import spacefiller.Utils;
@@ -23,7 +24,7 @@ public class SeedNode extends PlantNode {
     particle.addTag(SEED);
     particle.setMass(1f);
 
-    growthCounter = (int) Math.round(dna.getSeedBranchingFactor() + (Math.random() * 0.5) * dna.getBranchingFactorDeviation());
+    growthCounter = (int) Math.round(dna.getSeedBranchingFactor() + (Rnd.random.nextDouble() * 0.5) * dna.getBranchingFactorDeviation());
   }
 
   public void grow() {
@@ -43,11 +44,11 @@ public class SeedNode extends PlantNode {
       float angle = (float) (noise(
                 particle.getPosition().x/40f,
                 particle.getPosition().y/40f,
-                Utils.getMillis() / 100000f + dna.getPlantEntropy() * 100) * 12 * Math.PI);
+                dna.getPlantEntropy() * 100) * 12 * Math.PI);
       float mag = 0.1f * noise(
                 particle.getPosition().x,
                 particle.getPosition().y,
-                Utils.getMillis() / 1000f + 100 + dna.getPlantEntropy() * 100);
+                100 + dna.getPlantEntropy() * 100);
 
       particle.applyForce(Vector.fromAngle(angle).mult(mag));
     }

@@ -33,7 +33,7 @@ public class Utils {
   }
 
   public static float getMillis() {
-    return pApplet.millis();
+    return 0;
   }
 
   public static PShader loadShader(String s) {

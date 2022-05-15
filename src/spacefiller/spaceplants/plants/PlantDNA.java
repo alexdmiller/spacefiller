@@ -1,13 +1,14 @@
 package spacefiller.spaceplants.plants;
 
+import spacefiller.math.Rnd;
 import spacefiller.spaceplants.PName;
 import spacefiller.spaceplants.Params;
 
 public class PlantDNA {
   public static PlantDNA createNewDNA() {
-    float r = (float) Math.random();
+    float r = (float) Rnd.random.nextDouble();
     if (r < 0.25) {
-      if (Math.random() < 0.5f) {
+      if (Rnd.random.nextDouble() < 0.5f) {
         return new PlantDNA()
             .setBranchChance(0.1f)
             .setAliveBranchColor(0xff77BF00)
@@ -28,12 +29,12 @@ public class PlantDNA {
           0xff2BA637, 0xff23872D, 0xff318723
       };
 
-      float flowerSize = (float) (3 + Math.random() * 4);
+      float flowerSize = (float) (3 + Rnd.random.nextDouble() * 4);
 
       // small fractal standard
       return new PlantDNA()
-          .setAliveFlowerColor(summerColors[(int) (Math.random() * summerColors.length)])
-          .setAliveBranchColor(summerBranchColors[(int) (Math.random() * summerBranchColors.length)])
+          .setAliveFlowerColor(summerColors[(int) (Rnd.random.nextDouble() * summerColors.length)])
+          .setAliveBranchColor(summerBranchColors[(int) (Rnd.random.nextDouble() * summerBranchColors.length)])
           .setFlowerSize(flowerSize)
           .setBudMaxSize(flowerSize);
     } else if (r < 0.75) {
@@ -45,7 +46,7 @@ public class PlantDNA {
             .setBranchChance(0.5f);
     } else {
       // long blue dudes
-      if (Math.random() < 0.2) {
+      if (Rnd.random.nextDouble() < 0.2) {
         return new PlantDNA()
             .setMaxDepth(40)
             .setMaxDepthDeviation(10)
@@ -64,7 +65,7 @@ public class PlantDNA {
             .setMaxDepth(3)
             .setMaxDepthDeviation(2)
             .setAliveBranchColor(0xff5FC786)
-            .setAliveFlowerColor(winterFlowerColor[(int) (Math.random() * winterFlowerColor.length)])
+            .setAliveFlowerColor(winterFlowerColor[(int) (Rnd.random.nextDouble() * winterFlowerColor.length)])
             .setSeedBranchingFactor(20)
             .setBranchingFactorDeviation(10)
             .setBranchChance(0)
@@ -74,7 +75,7 @@ public class PlantDNA {
     }
   }
 
-  private float plantEntropy = (float) Math.random();
+  private float plantEntropy = (float) Rnd.random.nextDouble();
   private float particleMass = 1;
   private int aliveBranchColor = 0xff53982D;
   private int dyingBranchColor = 0xff333333;
@@ -89,7 +90,7 @@ public class PlantDNA {
   private int budColorNight = 0xff071C00;
   private int seedColor = 0xff93ca5d;
   private int maxAge = (int) (Params.i(PName.MAX_PLANT_AGE)
-      - Math.round(Math.random() * Params.i(PName.MAX_PLANT_AGE) * Params.f(PName.PLANT_AGE_RANDOMNESS)));
+      - Math.round(Rnd.random.nextDouble() * Params.i(PName.MAX_PLANT_AGE) * Params.f(PName.PLANT_AGE_RANDOMNESS)));
   private int timeToPlant = Params.i(PName.TIME_TO_PLANT);
   private float connectionLength = 10;
   private int branchingFactor = 7;

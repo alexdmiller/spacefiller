@@ -3,6 +3,7 @@ package spacefiller.spaceplants.plants;
 import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PGraphics;
+import spacefiller.math.Rnd;
 import spacefiller.spaceplants.PName;
 import spacefiller.spaceplants.Params;
 import spacefiller.Utils;
@@ -107,7 +108,7 @@ public class PlantNode {
     boolean plantTooOld = particle.getLife() > dna.getMaxAge() && !particle.hasTag(ParticleTag.HIVE_FOOD);
 
     // if the plant node has been condemned, then add a small amount of randomness to let it maybe live a little longer
-    boolean plantCondemned = (condemned && Math.random() < Params.f(PName.CONDEMNED_DEATH_CHANCE));
+    boolean plantCondemned = (condemned && Rnd.random.nextDouble() < Params.f(PName.CONDEMNED_DEATH_CHANCE));
 
     boolean markedForKill = particle.hasUserData("kill") && (boolean) particle.getUserData("kill");
 
@@ -148,9 +149,9 @@ public class PlantNode {
 
   protected void doGrow() {
     int numPlants = plantSystem.getParticleSystem().getParticlesWithTag(ParticleTag.PLANT).size();
-    if (!condemned && growthCounter > 0 && Math.random() < Params.f(PName.GROWTH_PROBABILITY)
+    if (!condemned && growthCounter > 0 && Rnd.random.nextDouble() < Params.f(PName.GROWTH_PROBABILITY)
         && numPlants < Params.i(PName.MAX_PLANT_PARTICLES)) {
-      float angle = (float) (Math.random() * Math.PI * 6f);
+      float angle = (float) (Rnd.random.nextDouble() * Math.PI * 6f);
 
       Vector offset = new Vector(
               (float) Math.cos(angle) * dna.getConnectionLength() / 2f,
@@ -167,8 +168,8 @@ public class PlantNode {
         newParticle.setTeam(particle.getTeam());
 
         synchronized (springs) {
-          if (depthCounter < (dna.getMaxDepth() + (Math.random() - 0.5) * dna.getMaxDepthDeviation())) {
-            float r = (float) Math.random();
+          if (depthCounter < (dna.getMaxDepth() + (Rnd.random.nextDouble() - 0.5) * dna.getMaxDepthDeviation())) {
+            float r = (float) Rnd.random.nextDouble();
 
             if (r < dna.getBranchChance()) {
               // create a branch node

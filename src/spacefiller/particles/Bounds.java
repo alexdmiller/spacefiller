@@ -1,5 +1,6 @@
 package spacefiller.particles;
 
+import spacefiller.math.Rnd;
 import spacefiller.math.Vector;
 
 import java.io.Serializable;
@@ -76,9 +77,9 @@ public class Bounds implements Serializable {
 
   public Vector getRandomPointInside(int dimension) {
     return new Vector(
-        (float) Math.random() * getWidth() + topBackLeft.x,
-        (float) Math.random() * getHeight() + topBackLeft.y,
-        dimension == 3 ? (float) Math.random() * getHeight() + topBackLeft.z : 0);
+        (float) Rnd.random.nextDouble() * getWidth() + topBackLeft.x,
+        (float) Rnd.random.nextDouble() * getHeight() + topBackLeft.y,
+        dimension == 3 ? (float) Rnd.random.nextDouble() * getHeight() + topBackLeft.z : 0);
   }
 
   public float getWidth() {

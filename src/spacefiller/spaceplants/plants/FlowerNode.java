@@ -3,6 +3,7 @@ package spacefiller.spaceplants.plants;
 import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PGraphics;
+import spacefiller.math.Rnd;
 import spacefiller.spaceplants.PName;
 import spacefiller.spaceplants.Params;
 import spacefiller.Utils;
@@ -37,11 +38,11 @@ public class FlowerNode extends PlantNode {
 
     if (particle.hasTag(ParticleTag.DEAD_FLOWER) && detachedTimer > Params.i(PName.FLOWER_DETACHED_LIFESPAN)) {
       // randomize a little bit so all flowers don't die at the exact same moment
-      if (Math.random() < 1f) {
+      if (Rnd.random.nextDouble() < 1f) {
         destroy();
 
         int numPlants = plantSystem.getParticleSystem().getParticlesWithTag(ParticleTag.PLANT).size();
-        if (numPlants < Params.i(PName.MAX_PLANT_PARTICLES) && Math.random() < Params.f(PName.FLOWER_TO_SEED_CHANCE)) {
+        if (numPlants < Params.i(PName.MAX_PLANT_PARTICLES) && Rnd.random.nextDouble() < Params.f(PName.FLOWER_TO_SEED_CHANCE)) {
           plantSystem.createSeed(particle.getPosition().copy().add(Vector.random2D()));
         }
       }

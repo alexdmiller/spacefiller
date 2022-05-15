@@ -45,13 +45,13 @@ public class Vector {
   }
 
   public static Vector random2D() {
-    return fromAngle((float) (Math.random() * Math.PI*2));
+    return fromAngle((float) (Rnd.random.nextDouble() * Math.PI*2));
   }
 
   // based on Daniel Shiffman's PVector class
   public static Vector random3D() {
-    float angle = (float) (Math.random()*Math.PI*2);
-    float vz = (float) (Math.random()*2-1);
+    float angle = (float) (Rnd.random.nextDouble()*Math.PI*2);
+    float vz = (float) (Rnd.random.nextDouble()*2-1);
     float vx = (float) (Math.sqrt(1-vz*vz)*Math.cos(angle));
     float vy = (float) (Math.sqrt(1-vz*vz)*Math.sin(angle));
     Vector target = new Vector(vx, vy, vz);

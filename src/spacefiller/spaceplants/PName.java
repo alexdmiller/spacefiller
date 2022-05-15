@@ -8,7 +8,7 @@ public enum PName {
   In the comments below, ppf stands for "probability-per-frame". This
   refers to the following common pattern in this code:
 
-  if (Math.random() < THRESHOLD) { ... }
+  if (Rnd.random.nextDouble() < THRESHOLD) { ... }
 
   The system is updated a maximum of 60 fps.
 

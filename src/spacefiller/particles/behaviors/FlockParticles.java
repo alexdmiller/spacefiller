@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class FlockParticles extends AssymetricParticleBehavior {
+public class FlockParticles extends AsymmetricParticleBehavior {
   public enum TeamMode {
     ALL, DIFFERENT, SAME
   }

@@ -7,6 +7,7 @@ import processing.event.MouseEvent;
 import processing.opengl.PGraphicsOpenGL;
 import processing.opengl.PJOGL;
 import spacefiller.Utils;
+import spacefiller.math.Rnd;
 import spacefiller.spaceplants.bees.BeeSystem;
 import spacefiller.spaceplants.dust.DustSystem;
 import spacefiller.math.FloatField2;
@@ -126,7 +127,7 @@ public class Poster extends PApplet {
 
   @Override
   public void setup() {
-    posterName = "" + Math.round(Math.random() * 1000000);
+    posterName = "" + Math.round(Rnd.random.nextDouble() * 1000000);
 
     Utils.init(this);
     noSmooth();
@@ -240,7 +241,7 @@ public class Poster extends PApplet {
             plantSystem.createSeed(particleSystem.getBounds().getRandomPointInside(2));
           }
 
-          int numHives = (int) Math.round(Math.random() * 2) + 4;
+          int numHives = (int) Math.round(Rnd.random.nextDouble() * 2) + 4;
           for (int i = 0; i < numHives; i++) {
             beeSystem.createHive(particleSystem.getBounds().getRandomPointInside(2));
           }
@@ -253,7 +254,7 @@ public class Poster extends PApplet {
         }
         break;
       case 1: {
-          int grayPlants = (int) Math.round(Math.random() * 2 );
+          int grayPlants = (int) Math.round(Rnd.random.nextDouble() * 2 );
           for (int i = 0; i < grayPlants; i++) {
               plantSystem.createSeed(particleSystem.getBounds().getRandomPointInside(2), new PlantDNA().setAliveBranchColor(0xff333333)
                   .setBranchingFactor(4)
@@ -263,7 +264,7 @@ public class Poster extends PApplet {
                   .setFlowerSize(2).setAliveFlowerColor(0xff0000ff));
           }
 
-        int purplePlants = (int) Math.round(Math.random() * 2);
+        int purplePlants = (int) Math.round(Rnd.random.nextDouble() * 2);
         for (int i = 0; i < purplePlants; i++) {
             plantSystem.createSeed(particleSystem.getBounds().getRandomPointInside(2), new PlantDNA()
                 .setAliveBranchColor(0xff220022)
@@ -274,7 +275,7 @@ public class Poster extends PApplet {
                 .setAliveFlowerColor(0xff111111));
         }
 
-        int whitePlants = (int) Math.round(Math.random() * 2 + 1);
+        int whitePlants = (int) Math.round(Rnd.random.nextDouble() * 2 + 1);
         for (int i = 0; i < whitePlants; i++) {
           plantSystem.createSeed(particleSystem.getBounds().getRandomPointInside(2), new PlantDNA().setAliveBranchColor(0xffffffff)
               .setBranchingFactor(1)
@@ -290,7 +291,7 @@ public class Poster extends PApplet {
 //                .setFlowerSize(4)
 //                .setMaxDepth(50));
 //          }
-//          int numHives = (int) Math.round(Math.random() * 2) + 2;
+//          int numHives = (int) Math.round(Rnd.random.nextDouble() * 2) + 2;
 //          for (int i = 0; i < numHives; i++) {
 //            beeSystem.createHive(particleSystem.getBounds().getRandomPointInside(2));
 //          }

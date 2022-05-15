@@ -6,7 +6,7 @@ import spacefiller.particles.ParticleTag;
 
 import java.util.stream.Stream;
 
-public abstract class AssymetricParticleBehavior {
+public abstract class AsymmetricParticleBehavior {
   private ParticleSystem particleSystem;
   private ParticleTag applyTo;
   private ParticleTag filterNeighborsTo;

@@ -5,7 +5,7 @@ import spacefiller.particles.Particle;
 
 import java.util.stream.Stream;
 
-public class AttractParticles extends AssymetricParticleBehavior {
+public class AttractParticles extends AsymmetricParticleBehavior {
   private float attractThreshold;
   private float attractStrength;
 
