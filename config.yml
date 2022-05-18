@@ -9,6 +9,10 @@ render_size:
 plants:
   min: 5
   max: 5
+hives:
+  min: 4
+  max: 5
+  bees_per_hive: 10
 dust:
   count: 300
 circle_constraint:

@@ -32,6 +32,10 @@ public class Params {
     }
   }
 
+  public static void set(PName name, int value) {
+    parameterMap.put(name, value);
+  }
+
   public static float getStrokeWeight(float brightness) {
     return 2;
   }

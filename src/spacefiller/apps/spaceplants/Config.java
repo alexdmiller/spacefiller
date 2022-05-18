@@ -21,6 +21,9 @@ public class Config {
   @JsonProperty("dust")
   public Dust dust;
 
+  @JsonProperty("hives")
+  public Hives hives;
+
   @JsonProperty("circle_constraint")
   public CircleConstraint circleConstraint;
 }
@@ -43,6 +46,15 @@ class Plants {
   public int min;
   @JsonProperty
   public int max;
+}
+
+class Hives {
+  @JsonProperty
+  public int min;
+  @JsonProperty
+  public int max;
+  @JsonProperty("bees_per_hive")
+  public int beesPerHive;
 }
 
 class Dust {

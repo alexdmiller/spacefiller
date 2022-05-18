@@ -9,6 +9,8 @@ import processing.opengl.PGraphicsOpenGL;
 import processing.opengl.PJOGL;
 import spacefiller.Utils;
 import spacefiller.math.Rnd;
+import spacefiller.spaceplants.PName;
+import spacefiller.spaceplants.Params;
 import spacefiller.spaceplants.System;
 import spacefiller.spaceplants.bees.BeeSystem;
 import spacefiller.spaceplants.dust.DustSystem;
@@ -23,6 +25,8 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class CLI extends PApplet {
+  private static final boolean RENDER_PREVIEW = true;
+
   private static String outputPath;
   private static Config config;
   private static Long seed;
@@ -50,18 +54,6 @@ public class CLI extends PApplet {
   private SymmetricRepel symmetricRepel;
   private DustSystem dustSystem;
   private BeeSystem beeSystem;
-
-  private Planet selected;
-  private int debugIndex = -1;
-  private boolean drawOutlines = true;
-
-  private float noiseScale = 0.01f;
-  private float noiseAmount = 1;
-
-  private List<Planet> planets;
-  private List<FollowGradient> gradients;
-  private int selectedTag;
-  private boolean saveFrame;
 
   private List<System> systems = new ArrayList<>();
 
@@ -98,9 +90,6 @@ public class CLI extends PApplet {
       systems.add(dustSystem);
     }
 
-    beeSystem = new BeeSystem(particleSystem, plantSystem);
-    systems.add(beeSystem);
-
     RepelParticles repelDust = new RepelParticles(10, 0.1f);
     particleSystem.addBehavior(repelDust, ParticleTag.DUST);
 
@@ -113,7 +102,6 @@ public class CLI extends PApplet {
 
     particleSystem.addBehavior(new SoftBounds(10, 5, 3));
 
-
     if (config.plants != null) {
       plantSystem = new PlantSystem(particleSystem);
       systems.add(plantSystem);
@@ -125,41 +113,65 @@ public class CLI extends PApplet {
       }
     }
 
-    for (int i = 0; i < config.maxFrames; i++) {
-      systems.forEach((system -> system.update()));
-      particleSystem.update();
+    if (config.hives != null) {
+      beeSystem = new BeeSystem(particleSystem, plantSystem);
+      systems.add(beeSystem);
+      Params.set(PName.MAX_BEES_CREATED, config.hives.beesPerHive);
 
-      canvas.beginDraw();
-      canvas.background(0);
-
-      canvas.noStroke();
-      canvas.fill(255);
-
-      beeSystem.setLightLevel(1);
-      plantSystem.setLightLevel(1);
-
-      systems.forEach((system -> system.draw(canvas)));
-
-      canvas.endDraw();
-
-      finalRender.beginDraw();
-      finalRender.clear();
-
-      finalRender.image(canvas,
-          0, 0,
-          config.renderSize.width,
-          config.renderSize.height);
-      finalRender.blendMode(PConstants.BLEND);
-
-      finalRender.endDraw();
+      int numHives = (int) Math.round(
+          config.hives.min + Rnd.random.nextDouble() * (config.hives.max - config.hives.min));
+      for (int i = 0; i < numHives; i++) {
+        beeSystem.createHive(particleSystem.getBounds().getRandomPointInside(2));
+      }
     }
 
-    renderLarge();
+    if (!RENDER_PREVIEW) {
+      for (int i = 0; i < config.maxFrames; i++) {
+        stepSimulation();
+      }
+      renderLarge();
+    }
   }
 
   @Override
   public void draw() {
-    exit();
+    if (RENDER_PREVIEW) {
+      if (frameCount < config.maxFrames) {
+        stepSimulation();
+      }
+      image(canvas, 0, 0, canvas.width, canvas.height);
+    } else {
+      exit();
+    }
+  }
+
+  private void stepSimulation() {
+    systems.forEach((system -> system.update()));
+    particleSystem.update();
+
+    canvas.beginDraw();
+    canvas.background(0);
+
+    canvas.noStroke();
+    canvas.fill(255);
+
+    beeSystem.setLightLevel(1);
+    plantSystem.setLightLevel(1);
+
+    systems.forEach((system -> system.draw(canvas)));
+
+    canvas.endDraw();
+
+    finalRender.beginDraw();
+    finalRender.clear();
+
+    finalRender.image(canvas,
+        0, 0,
+        config.renderSize.width,
+        config.renderSize.height);
+    finalRender.blendMode(PConstants.BLEND);
+
+    finalRender.endDraw();
   }
 
   private void renderLarge() {
@@ -167,7 +179,6 @@ public class CLI extends PApplet {
 
     finalRender.clear();
 
-    // finalRender.blendMode(PConstants.ADD);
     finalRender.image(canvas,
         0, 0,
         config.renderSize.width,
