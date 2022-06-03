@@ -14,7 +14,6 @@
       <change beforePath="$PROJECT_DIR$/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/CLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/CLI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/spaceplants/Params.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/spaceplants/Params.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -59,7 +59,7 @@ public class CLI extends PApplet {
 
   @Override
   public void settings() {
-    size(config.simSize.width, config.simSize.height, P2D);
+    size(config.renderSize.width, config.renderSize.height, P2D);
     PJOGL.profile = 1;
   }
 
@@ -96,8 +96,10 @@ public class CLI extends PApplet {
     RepelParticles repelBees = new RepelParticles(10, 0.1f);
     particleSystem.addBehavior(repelBees, ParticleTag.BEE);
 
-    if (config.circleConstraint != null) {
-      particleSystem.addBehavior(new CircleBounds(config.circleConstraint.radius, 1, 0.1f));
+    if (config.circleConstraints != null) {
+      for (CircleConstraint constraint : config.circleConstraints) {
+        particleSystem.addBehavior(new CircleBounds(constraint.radius, 1, 0.1f), constraint.tag);
+      }
     }
 
     particleSystem.addBehavior(new SoftBounds(10, 5, 3));
@@ -139,7 +141,7 @@ public class CLI extends PApplet {
       if (frameCount < config.maxFrames) {
         stepSimulation();
       }
-      image(canvas, 0, 0, canvas.width, canvas.height);
+      image(canvas, 0, 0, width, height);
     } else {
       exit();
     }

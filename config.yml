@@ -1,4 +1,4 @@
-max_frames: 300
+max_frames: 500
 max_particles: 1000
 sim_size:
   width: 200
@@ -7,13 +7,20 @@ render_size:
   width: 1000
   height: 1000
 plants:
-  min: 5
-  max: 5
+  min: 3
+  max: 4
 hives:
-  min: 4
-  max: 5
-  bees_per_hive: 10
+  min: 1
+  max: 2
+  bees_per_hive: 50
 dust:
   count: 300
-circle_constraint:
-  radius: 80
+circle_constraints:
+  - radius: 70
+    tag: PLANT
+  - radius: 70
+    tag: HIVE
+  - radius: 95
+    tag: BEE
+  - radius: 95
+    tag: DUST

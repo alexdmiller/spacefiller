@@ -1,6 +1,7 @@
 package spacefiller.apps.spaceplants;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import spacefiller.particles.ParticleTag;
 
 public class Config {
   @JsonProperty("max_frames")
@@ -24,8 +25,8 @@ public class Config {
   @JsonProperty("hives")
   public Hives hives;
 
-  @JsonProperty("circle_constraint")
-  public CircleConstraint circleConstraint;
+  @JsonProperty("circle_constraints")
+  public CircleConstraint[] circleConstraints;
 }
 
 class Size {
@@ -64,5 +65,8 @@ class Dust {
 class CircleConstraint {
   @JsonProperty
   public float radius;
+
+  @JsonProperty
+  public ParticleTag tag;
 }
 
