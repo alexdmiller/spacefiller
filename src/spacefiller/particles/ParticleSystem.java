@@ -71,8 +71,6 @@ public class ParticleSystem {
 
   public ParticleSystem(float width, float height, float cellSize) {
     this(new Bounds(width, height), 8000, cellSize);
-    java.lang.System.out.println(width + ", " + height);
-
   }
 
   public void update() {

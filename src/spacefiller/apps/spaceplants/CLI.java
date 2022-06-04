@@ -9,33 +9,37 @@ import processing.opengl.PGraphicsOpenGL;
 import processing.opengl.PJOGL;
 import spacefiller.Utils;
 import spacefiller.math.Rnd;
+import spacefiller.particles.Bounds;
 import spacefiller.spaceplants.PName;
 import spacefiller.spaceplants.Params;
 import spacefiller.spaceplants.System;
+import spacefiller.spaceplants.bees.BeeColor;
 import spacefiller.spaceplants.bees.BeeSystem;
 import spacefiller.spaceplants.dust.DustSystem;
 import spacefiller.particles.ParticleSystem;
 import spacefiller.particles.ParticleTag;
 import spacefiller.particles.behaviors.*;
 import spacefiller.spaceplants.planets.Planet;
+import spacefiller.spaceplants.plants.PlantDNA;
 import spacefiller.spaceplants.plants.PlantSystem;
 
+import javax.rmi.CORBA.Util;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class CLI extends PApplet {
   private static final boolean RENDER_PREVIEW = true;
 
   private static String outputPath;
+  private static String configPath;
   private static Config config;
-  private static Long seed;
 
   public static void main(String[] args) {
     outputPath = args[0];
     Rnd.init(args.length == 2 ? new Random(Long.valueOf(args[1])) : new Random());
-
-    String configPath = "config.yml";
+    configPath = "config.yml";
 
     try {
       ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
@@ -54,8 +58,8 @@ public class CLI extends PApplet {
   private SymmetricRepel symmetricRepel;
   private DustSystem dustSystem;
   private BeeSystem beeSystem;
-
   private List<System> systems = new ArrayList<>();
+  private int localFrameCount = 0;
 
   @Override
   public void settings() {
@@ -83,7 +87,26 @@ public class CLI extends PApplet {
 
     frameRate(60);
 
-    particleSystem = new ParticleSystem(canvas.width, canvas.height,15);
+    setupSimulation();
+
+    if (!RENDER_PREVIEW) {
+      for (int i = 0; i < config.maxFrames; i++) {
+        stepSimulation();
+      }
+      renderLarge();
+    }
+  }
+
+  private void setupSimulation() {
+    try {
+      ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+      config = mapper.readValue(Paths.get(configPath).toFile(), Config.class);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+    systems.clear();
+    particleSystem = new ParticleSystem(new Bounds(canvas.width, canvas.height), config.maxParticles, 15);
 
     if (config.dust != null) {
       dustSystem = new DustSystem(particleSystem, config.dust.count, canvas.width, canvas.height);
@@ -98,7 +121,9 @@ public class CLI extends PApplet {
 
     if (config.circleConstraints != null) {
       for (CircleConstraint constraint : config.circleConstraints) {
-        particleSystem.addBehavior(new CircleBounds(constraint.radius, 1, 0.1f), constraint.tag);
+        particleSystem.addBehavior(new CircleBounds(
+            (float) (constraint.radius + Math.random() * constraint.deviation - constraint.deviation / 2),
+            1, 0.1f), constraint.tag);
       }
     }
 
@@ -111,7 +136,21 @@ public class CLI extends PApplet {
       int numPlants = (int) Math.round(
           config.plants.min + Rnd.random.nextDouble() * (config.plants.max - config.plants.min));
       for (int i = 0; i < numPlants; i++) {
-        plantSystem.createSeed(particleSystem.getBounds().getRandomPointInside(2));
+        int choice = (int) Math.floor(config.plants.types.length * Math.random());
+        PlantConfig plantConfig = config.plants.types[choice];
+        PlantDNA dna = new PlantDNA();
+        dna.setAliveBranchColor((int) plantConfig.aliveBranchColor);
+        dna.setAliveFlowerColor((int) plantConfig.aliveFlowerColor);
+        dna.setBranchChance(plantConfig.branchChance);
+        dna.setBranchingFactor((int) plantConfig.branchingFactor);
+        dna.setBranchingFactorDeviation((int) plantConfig.branchingFactorDeviation);
+        dna.setBranchingFactorFalloff(plantConfig.branchingFactorFalloff);
+        dna.setConnectionLength((int) plantConfig.connectionLength);
+        dna.setFlowerSize(plantConfig.flowerSize);
+        dna.setMaxDepth((int) plantConfig.maxDepth);
+        dna.setMaxDepthDeviation((int) plantConfig.maxDepthDeviation);
+        dna.setSeedBranchingFactor((int) plantConfig.seedBranchingFactor);
+        plantSystem.createSeed(particleSystem.getBounds().getRandomPointInside(2), dna);
       }
     }
 
@@ -119,6 +158,16 @@ public class CLI extends PApplet {
       beeSystem = new BeeSystem(particleSystem, plantSystem);
       systems.add(beeSystem);
       Params.set(PName.MAX_BEES_CREATED, config.hives.beesPerHive);
+      Params.set(PName.STARTING_BABIES_PER_HIVE, config.hives.startingBeesPerHive);
+      Params.set(PName.MAX_HIVE_SIZE, config.hives.hiveSize);
+
+      if (config.hives.colors != null) {
+        List<BeeColor> colors = Arrays.stream(config.hives.colors)
+            .map(c -> new BeeColor(
+                (int) c.hiveColor, (int) c.hiveColor, (int) c.beeColor, (int) c.beeColor))
+            .collect(Collectors.toList());
+        beeSystem.setColors(colors.toArray(new BeeColor[colors.size()]));
+      }
 
       int numHives = (int) Math.round(
           config.hives.min + Rnd.random.nextDouble() * (config.hives.max - config.hives.min));
@@ -127,19 +176,16 @@ public class CLI extends PApplet {
       }
     }
 
-    if (!RENDER_PREVIEW) {
-      for (int i = 0; i < config.maxFrames; i++) {
-        stepSimulation();
-      }
-      renderLarge();
-    }
   }
 
   @Override
   public void draw() {
     if (RENDER_PREVIEW) {
-      if (frameCount < config.maxFrames) {
-        stepSimulation();
+      if (localFrameCount < config.maxFrames) {
+        for (int i = 0; i < 10; i++) {
+          stepSimulation();
+          localFrameCount++;
+        }
       }
       image(canvas, 0, 0, width, height);
     } else {
@@ -188,5 +234,13 @@ public class CLI extends PApplet {
     finalRender.blendMode(PConstants.BLEND);
 
     finalRender.save(outputPath);
+  }
+
+  @Override
+  public void keyPressed() {
+    if (key == 'r' && RENDER_PREVIEW) {
+      setupSimulation();
+      localFrameCount = 0;
+    }
   }
 }

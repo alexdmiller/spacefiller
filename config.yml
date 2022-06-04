@@ -1,5 +1,5 @@
-max_frames: 500
-max_particles: 1000
+max_frames: 2000
+max_particles: 5000
 sim_size:
   width: 200
   height: 200
@@ -8,19 +8,85 @@ render_size:
   height: 1000
 plants:
   min: 3
-  max: 4
+  max: 5
+  types:
+    - branch_color: 0xff00ff00
+      flower_color: 0xff00ffff
+      connection_length: 5
+      branching_factor: 2
+      branching_falloff: 0.1
+      seed_branching_factor: 4
+      branching_factor_deviation: 0
+      max_depth: 2
+      max_depth_deviation: 1
+      branch_chance: 1.0f
+      flower_size: 4
+    - branch_color: 0xff00ff00
+      flower_color: 0xff00ff00
+      connection_length: 5
+      branching_factor: 2
+      branching_falloff: 0.1
+      seed_branching_factor: 4
+      branching_factor_deviation: 0
+      max_depth: 2
+      max_depth_deviation: 1
+      branch_chance: 1.0f
+      flower_size: 4
+    - branch_color: 0xff333333
+      flower_color: 0xffffffff
+      connection_length: 5
+      branching_factor: 2
+      branching_falloff: 0.1
+      seed_branching_factor: 4
+      branching_factor_deviation: 0
+      max_depth: 2
+      max_depth_deviation: 1
+      branch_chance: 1.0f
+      flower_size: 4
+    - branch_color: 0xffbbff00
+      flower_color: 0xffffffff
+      connection_length: 20
+      branching_factor: 1
+      branching_falloff: 0
+      seed_branching_factor: 1
+      branching_factor_deviation: 0
+      max_depth: 20
+      max_depth_deviation: 5
+      branch_chance: 1.0f
+      flower_size: 2
+    - branch_color: 0xffff00ff
+      flower_color: 0xffff0000
+      connection_length: 1
+      branching_factor: 1
+      branching_falloff: 0
+      seed_branching_factor: 4
+      branching_factor_deviation: 0
+      max_depth: 1
+      max_depth_deviation: 0
+      branch_chance: 1.0f
+      flower_size: 2
 hives:
   min: 1
-  max: 2
-  bees_per_hive: 50
+  max: 5
+  bees_per_hive: 20
+  initial_bees_per_hive: 20
+  colors:
+    - bee_color: 0xffffffff
+      hive_color: 0xffffffff
+    - bee_color: 0xff999999
+      hive_color: 0xff999999
 dust:
-  count: 300
+  count: 150
 circle_constraints:
   - radius: 70
+    deviation: 10
     tag: PLANT
   - radius: 70
+    deviation: 10
     tag: HIVE
-  - radius: 95
+  - radius: 80
+    deviation: 10
     tag: BEE
-  - radius: 95
+  - radius: 90
+    deviation: 10
     tag: DUST

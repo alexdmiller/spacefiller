@@ -9,6 +9,7 @@ import spacefiller.particles.behaviors.*;
 import spacefiller.spaceplants.plants.PlantSystem;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -194,5 +195,10 @@ public class BeeSystem implements System {
           plantSystem,
           this));
     }
+  }
+
+  public void setColors(BeeColor[] colors) {
+    java.lang.System.out.println(Arrays.toString(colors));
+    this.colors = colors;
   }
 }
