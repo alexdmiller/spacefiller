@@ -1,14 +1,14 @@
-max_frames: 500
-max_particles: 20000
+max_frames: 2000
+max_particles: 5000
 sim_size:
-  width: 500
-  height: 500
+  width: 200
+  height: 200
 render_size:
   width: 3000
   height: 3000
 plants:
-  min: 20
-  max: 30
+  min: 4
+  max: 6
   types:
     - branch_color: 0xff00ff00
       flower_color: 0xff00ffff
@@ -17,8 +17,8 @@ plants:
       branching_falloff: 0.1
       seed_branching_factor: 4
       branching_factor_deviation: 0
-      max_depth: 5
-      max_depth_deviation: 0
+      max_depth: 2
+      max_depth_deviation: 1
       branch_chance: 1.0f
       flower_size: 4
     - branch_color: 0xff00ff00
@@ -66,28 +66,27 @@ plants:
       branch_chance: 1.0f
       flower_size: 2
 hives:
-  min: 10
-  max: 10
+  min: 1
+  max: 5
   bees_per_hive: 20
   initial_bees_per_hive: 20
-  hive_size: 20
   colors:
     - bee_color: 0xffffffff
       hive_color: 0xffffffff
     - bee_color: 0xff999999
       hive_color: 0xff999999
 dust:
-  count: 500
+  count: 75
 circle_constraints:
-  - radius: 180
+  - radius: 60
     deviation: 10
     tag: PLANT
-  - radius: 220
-    deviation: 10
-    tag: DUST
-  - radius: 220
-    deviation: 10
-    tag: BEE
-  - radius: 130
+  - radius: 70
     deviation: 10
     tag: HIVE
+  - radius: 80
+    deviation: 10
+    tag: BEE
+  - radius: 90
+    deviation: 10
+    tag: DUST

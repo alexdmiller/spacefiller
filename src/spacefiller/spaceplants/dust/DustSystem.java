@@ -71,7 +71,7 @@ class Dust {
 
   public void draw(PGraphics graphics) {
     graphics.strokeWeight(3f);
-    graphics.fill(255, 100);
+    graphics.fill(255, 255);
     graphics.noStroke();
     graphics.rect(this.particle.getPosition().x, this.particle.getPosition().y, 1, 1);
   }

@@ -30,7 +30,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class CLI extends PApplet {
-  private static final boolean RENDER_PREVIEW = true;
+  private static final boolean RENDER_PREVIEW = false;
 
   private static String outputPath;
   private static String configPath;
@@ -88,13 +88,6 @@ public class CLI extends PApplet {
     frameRate(60);
 
     setupSimulation();
-
-    if (!RENDER_PREVIEW) {
-      for (int i = 0; i < config.maxFrames; i++) {
-        stepSimulation();
-      }
-      renderLarge();
-    }
   }
 
   private void setupSimulation() {
@@ -189,6 +182,13 @@ public class CLI extends PApplet {
       }
       image(canvas, 0, 0, width, height);
     } else {
+      for (int i = 0; i < config.maxFrames; i++) {
+        stepSimulation();
+        if (i % 100 == 0) {
+          java.lang.System.out.println(i + " / " + config.maxFrames + " steps computed");
+        }
+      }
+      renderLarge();
       exit();
     }
   }
@@ -198,7 +198,7 @@ public class CLI extends PApplet {
     particleSystem.update();
 
     canvas.beginDraw();
-    canvas.background(0);
+    canvas.clear();
 
     canvas.noStroke();
     canvas.fill(255);
