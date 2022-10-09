@@ -58,8 +58,12 @@ class Plants {
 class PlantConfig {
   @JsonProperty("branch_color")
   public long aliveBranchColor = 0xff53982D;
+  @JsonProperty("branch_colors")
+  public long[] branchColors = null;
   @JsonProperty("flower_color")
   public long aliveFlowerColor = 0xfff5198b;
+  @JsonProperty("flower_colors")
+  public long[] flowerColors = null;
   @JsonProperty("connection_length")
   public float connectionLength = 10;
   @JsonProperty("branching_factor")
@@ -78,6 +82,10 @@ class PlantConfig {
   public float branchChance = 0.5f;
   @JsonProperty("flower_size")
   public float flowerSize = 4;
+  @JsonProperty("flower_deviation")
+  public float flowerDeviation = 0;
+  @JsonProperty("mass")
+  public float mass = 1;
 }
 
 class Hives {
@@ -91,6 +99,8 @@ class Hives {
   public int startingBeesPerHive = 10;
   @JsonProperty("hive_size")
   public int hiveSize = 10;
+  @JsonProperty("hive_size_deviation")
+  public int hiveSizeDeviation = 0;
   @JsonProperty("colors")
   public HiveColor[] colors;
 }

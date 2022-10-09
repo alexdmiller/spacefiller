@@ -7,6 +7,7 @@ import processing.event.MouseEvent;
 import processing.opengl.PGraphicsOpenGL;
 import processing.opengl.PJOGL;
 import spacefiller.Utils;
+import spacefiller.spaceplants.Params;
 import spacefiller.spaceplants.bees.BeeSystem;
 import spacefiller.spaceplants.dust.DustSystem;
 import spacefiller.math.FloatField2;
@@ -292,7 +293,7 @@ public class EP extends PApplet {
     if (event.isShiftDown()) {
       switch (Tool.values()[selectedTag]) {
         case HIVE:
-          beeSystem.createHive(mouse);
+          // beeSystem.createHive(mouse, Params);
           break;
         case SEED:
           plantSystem.createSeed(mouse);
@@ -336,9 +337,9 @@ public class EP extends PApplet {
         }
 
         for (int i = 0; i < 5; i++) {
-          beeSystem.createHive(new Vector(
-              random(canvas.width),
-              random(canvas.width)));
+//          beeSystem.createHive(new Vector(
+//              random(canvas.width),
+//              random(canvas.width)));
         }
 
 

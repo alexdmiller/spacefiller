@@ -185,7 +185,7 @@ public class BeeSystem implements System {
     return lightLevel;
   }
 
-  public void createHive(Vector safePoint) {
+  public void createHive(Vector safePoint, int hiveSize) {
     synchronized (hives) {
       hives.add(new Hive(
           hives.size(),
@@ -193,7 +193,8 @@ public class BeeSystem implements System {
           safePoint,
           particleSystem,
           plantSystem,
-          this));
+          this,
+          hiveSize));
     }
   }
 

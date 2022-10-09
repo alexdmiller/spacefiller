@@ -1,93 +1,76 @@
 max_frames: 500
 max_particles: 20000
 sim_size:
-  width: 500
-  height: 500
+  width: 300
+  height: 300
 render_size:
-  width: 3000
-  height: 3000
+  width: 900
+  height: 900
 plants:
-  min: 20
-  max: 30
+  min: 4
+  max: 4
   types:
-    - branch_color: 0xff00ff00
-      flower_color: 0xff00ffff
-      connection_length: 5
-      branching_factor: 2
-      branching_falloff: 0.1
-      seed_branching_factor: 4
-      branching_factor_deviation: 0
-      max_depth: 5
-      max_depth_deviation: 0
-      branch_chance: 1.0f
-      flower_size: 4
-    - branch_color: 0xff00ff00
-      flower_color: 0xff00ff00
-      connection_length: 5
-      branching_factor: 2
-      branching_falloff: 0.1
-      seed_branching_factor: 4
-      branching_factor_deviation: 0
-      max_depth: 2
-      max_depth_deviation: 1
-      branch_chance: 1.0f
-      flower_size: 4
-    - branch_color: 0xff333333
-      flower_color: 0xffffffff
-      connection_length: 5
-      branching_factor: 2
-      branching_falloff: 0.1
-      seed_branching_factor: 4
-      branching_factor_deviation: 0
-      max_depth: 2
-      max_depth_deviation: 1
-      branch_chance: 1.0f
-      flower_size: 4
-    - branch_color: 0xffbbff00
-      flower_color: 0xffffffff
-      connection_length: 20
-      branching_factor: 1
-      branching_falloff: 0
-      seed_branching_factor: 1
-      branching_factor_deviation: 0
+    - branch_chance: 0.1f
+      branch_color: 0xff77BF00
+      flower_color: 0xff52FF00
       max_depth: 20
-      max_depth_deviation: 5
-      branch_chance: 1.0f
-      flower_size: 2
-    - branch_color: 0xffff00ff
-      flower_color: 0xffff0000
-      connection_length: 1
-      branching_factor: 1
-      branching_falloff: 0
+      branching_factor: 2
+    - branch_color: 0xff43BF00
+      branch_chance: 0.4f
+    - flower_colors: [0xffFF3737, 0xffF5FF37, 0xff37FFC9, 0xffB75CFF]
+      branch_colors: [0xff2BA637, 0xff23872D, 0xff318723]
+      flower_size: 3
+      flower_deviation: 4
+    - max_depth: 10
+      branching_factor: 4
       seed_branching_factor: 4
-      branching_factor_deviation: 0
-      max_depth: 1
-      max_depth_deviation: 0
-      branch_chance: 1.0f
-      flower_size: 2
+      branching_falloff: -1
+      branch_chance: 0.5
+    - max_depth: 40
+      max_depth_deviation: 10
+      mass: 0.5f
+      branch_color: 0xff0052CC
+      flower_color: 0xff24C4FF
+      seed_branching_factor: 5
+      branch_chance: 0
+      flower_size: 10
+    - flower_colors: [0xff5FC786, 0xffC72E9C]
+      max_depth: 3
+      max_depth_deviation: 2
+      branch_color: 0xff5FC786
+      seed_branching_factor: 20
+      branching_factor_deviation: 10
+      branch_chance: 0
+      flower_size: 6
+    - branch_color: 0xffffffff
+      branching_factor: 1
+      branch_chance: 0.1f
+      flower_size: 4
+      max_depth: 40
 hives:
-  min: 10
-  max: 10
-  bees_per_hive: 20
+  min: 2
+  max: 3
+  bees_per_hive: 30
   initial_bees_per_hive: 20
-  hive_size: 20
+  hive_size: 10
+  hive_size_deviation: 10
   colors:
-    - bee_color: 0xffffffff
-      hive_color: 0xffffffff
-    - bee_color: 0xff999999
-      hive_color: 0xff999999
+    - bee_color: 0xffffff99
+      hive_color: 0xffffff99
+    - bee_color: 0xffffffcc
+      hive_color: 0xffffffcc
 dust:
-  count: 500
+  count: 250
 circle_constraints:
-  - radius: 180
-    deviation: 10
+  - radius: 117
+    deviation: 0
     tag: PLANT
-  - radius: 220
-    deviation: 10
-    tag: DUST
-  - radius: 220
-    deviation: 10
-    tag: BEE
-  - radius: 130
-    deviation: 10
+  - radius: 117
+    deviation: 0
     tag: HIVE
+  - radius: 142
+    deviation: 0
+    tag: BEE
+  - radius: 142
+    deviation: 0
+    tag: DUST

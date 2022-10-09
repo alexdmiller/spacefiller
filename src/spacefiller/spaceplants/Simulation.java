@@ -148,7 +148,7 @@ public class Simulation {
         if (Rnd.random.nextDouble() < 0.5) {
           plantSystem.createSeed(safePoint);
         } else {
-          beeSystem.createHive(safePoint);
+//          beeSystem.createHive(safePoint);
         }
       }
     }
@@ -163,7 +163,7 @@ public class Simulation {
     }
 
     for (int i = 0; i < 3; i++) {
-      beeSystem.createHive(new Vector(width / 2 + Rnd.random.nextDouble() * 100 - 50, height / 2+ Rnd.random.nextDouble() * 100 - 50));
+//      beeSystem.createHive(new Vector(width / 2 + Rnd.random.nextDouble() * 100 - 50, height / 2+ Rnd.random.nextDouble() * 100 - 50));
     }
     for (int i = 0; i < 5; i++) {
       plantSystem.createSeed(new Vector(width / 2 + Rnd.random.nextDouble() * 100 - 50, height / 2+ Rnd.random.nextDouble() * 100 - 50));

@@ -42,13 +42,15 @@ public class Hive {
   private boolean hiveBroken = false;
   private int beesCreated = 0;
   private int life;
+  private int hiveSize;
 
   public Hive(int hiveIndex,
               BeeColor color,
               Vector position,
               ParticleSystem system,
               PlantSystem plantSystem,
-              BeeSystem beeSystem) {
+              BeeSystem beeSystem,
+              int hiveSize) {
     this.hiveIndex = hiveIndex;
     this.color = color;
     this.position = position;
@@ -56,6 +58,8 @@ public class Hive {
     this.capturedFood = new ArrayList<>();
     this.plantSystem = plantSystem;
     this.beeSystem = beeSystem;
+    // TODO:
+    this.hiveSize = hiveSize;
 
     createParticles(position, (int) 3, 1, hiveIndex, SPRING_LENGTH, SPRING_K);
 
@@ -199,7 +203,7 @@ public class Hive {
 
   public void grow() {
     if (Rnd.random.nextDouble() < 0.1) {
-      if (innerParticles.size() < Params.i(PName.MAX_HIVE_SIZE)) {
+      if (innerParticles.size() < hiveSize) {
         int index = (int) (Rnd.random.nextDouble() * (innerParticles.size() - 2)) + 1;
 
         Particle center = innerParticles.get(index);

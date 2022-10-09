@@ -150,7 +150,7 @@ public class SDFText extends PApplet {
 
     int numHives = 2;
     for (int i = 0; i < numHives; i++) {
-      beeSystem.createHive(particleSystem.getBounds().getRandomPointInside(2));
+//      beeSystem.createHive(particleSystem.getBounds().getRandomPointInside(2));
     }
 
     plantSystem.createSeed(particleSystem.getBounds().getRandomPointInside(2), new PlantDNA().setAliveBranchColor(0xffffffff)

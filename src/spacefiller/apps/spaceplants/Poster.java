@@ -243,7 +243,7 @@ public class Poster extends PApplet {
 
           int numHives = (int) Math.round(Rnd.random.nextDouble() * 2) + 4;
           for (int i = 0; i < numHives; i++) {
-            beeSystem.createHive(particleSystem.getBounds().getRandomPointInside(2));
+            // beeSystem.createHive(particleSystem.getBounds().getRandomPointInside(2));
           }
 
           plantSystem.createSeed(particleSystem.getBounds().getRandomPointInside(2), new PlantDNA().setAliveBranchColor(0xffffffff)
@@ -430,7 +430,7 @@ public class Poster extends PApplet {
     if (event.isShiftDown()) {
       switch (Tool.values()[selectedTag]) {
         case HIVE:
-          beeSystem.createHive(mouse);
+//          beeSystem.createHive(mouse);
           break;
         case SEED:
           plantSystem.createSeed(mouse);
@@ -474,9 +474,9 @@ public class Poster extends PApplet {
         }
 
         for (int i = 0; i < 5; i++) {
-          beeSystem.createHive(new Vector(
-              random(canvas.width),
-              random(canvas.width)));
+//          beeSystem.createHive(new Vector(
+//              random(canvas.width),
+//              random(canvas.width)));
         }
 
         for (int i = 0; i < 2; i++) {
