@@ -30,17 +30,17 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class CLI extends PApplet {
-  private static final boolean RENDER_PREVIEW = false;
-
   private static String outputPath;
   private static String configPath;
   private static Config config;
+  private static boolean renderPreview = true;
 
   public static void main(String[] args) {
     outputPath = args[0];
-    Rnd.init(args.length == 2 ? new Random(Long.valueOf(args[1])) : new Random());
+    configPath = args[1];
+    Rnd.init(args.length == 3 ? new Random(Long.valueOf(args[2])) : new Random());
 
-    configPath = "config.yml";
+    renderPreview = java.lang.System.getenv().containsKey("RENDER_PREVIEW");
 
     try {
       readConfig();
@@ -83,14 +83,16 @@ public class CLI extends PApplet {
     frameRate(60);
 
     setupSimulation();
+    drawSimulation(false);
 
-    if (!RENDER_PREVIEW) {
+    if (!renderPreview) {
       for (int i = 0; i < config.maxFrames; i++) {
         stepSimulation();
         if (i % 100 == 0) {
           java.lang.System.out.println("Computed " + i + " / " + config.maxFrames + " steps");
         }
       }
+      drawSimulation(false);
       renderLarge();
       exit();
     }
@@ -208,32 +210,30 @@ public class CLI extends PApplet {
 
   @Override
   public void draw() {
-    if (RENDER_PREVIEW) {
+    if (renderPreview) {
       if (localFrameCount < config.maxFrames) {
         for (int i = 0; i < 10; i++) {
           stepSimulation();
           localFrameCount++;
         }
+        drawSimulation(true);
       }
       image(canvas, 0, 0, width, height);
-    } else {
-      for (int i = 0; i < config.maxFrames; i++) {
-        stepSimulation();
-        if (i % 100 == 0) {
-          java.lang.System.out.println(i + " / " + config.maxFrames + " steps computed");
-        }
-      }
-      renderLarge();
-      exit();
     }
   }
 
   private void stepSimulation() {
     systems.forEach((system -> system.update()));
     particleSystem.update();
+  }
 
+  private void drawSimulation(boolean background) {
     canvas.beginDraw();
     canvas.clear();
+
+    if (background) {
+      canvas.background(0);
+    }
 
     canvas.noStroke();
     canvas.fill(255);
@@ -268,12 +268,13 @@ public class CLI extends PApplet {
         config.renderSize.height);
     finalRender.blendMode(PConstants.BLEND);
 
+    java.lang.System.out.println("Saving...");
     finalRender.save(outputPath);
   }
 
   @Override
   public void keyPressed() {
-    if (key == 'r' && RENDER_PREVIEW) {
+    if (key == 'r' && renderPreview) {
       setupSimulation();
       localFrameCount = 0;
     }

@@ -1,4 +1,4 @@
-max_frames: 500
+max_frames: 2000
 max_particles: 20000
 sim_size:
   width: 300
