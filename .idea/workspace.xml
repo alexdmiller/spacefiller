@@ -14,12 +14,6 @@
       <change beforePath="$PROJECT_DIR$/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/CLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/CLI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/EP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/EP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/Poster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/Poster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/SDFText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/SDFText.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/spaceplants/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/spaceplants/Simulation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/spaceplants/bees/BeeSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/spaceplants/bees/BeeSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/spaceplants/bees/Hive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/spaceplants/bees/Hive.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,9 +59,12 @@
     <configuration name="CLI" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="/Applications/Processing.app/Contents/PlugIns/jdk1.8.0_202.jdk/Contents/Home/jre" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <envs>
+        <env name="RENDER_PREVIEW" value="1" />
+      </envs>
       <option name="MAIN_CLASS_NAME" value="spacefiller.apps.spaceplants.CLI" />
       <module name="spacefiller" />
-      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/render.png 21039481294" />
+      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/render.png config.yml 21039481294" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="spacefiller.apps.tests.*" />

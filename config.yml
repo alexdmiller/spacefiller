@@ -1,5 +1,7 @@
 max_frames: 2000
 max_particles: 20000
+background_on: true
+background_color: 0xff000000
 sim_size:
   width: 300
   height: 300

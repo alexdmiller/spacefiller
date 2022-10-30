@@ -83,7 +83,7 @@ public class CLI extends PApplet {
     frameRate(60);
 
     setupSimulation();
-    drawSimulation(false);
+    drawSimulation();
 
     if (!renderPreview) {
       for (int i = 0; i < config.maxFrames; i++) {
@@ -92,7 +92,7 @@ public class CLI extends PApplet {
           java.lang.System.out.println("Computed " + i + " / " + config.maxFrames + " steps");
         }
       }
-      drawSimulation(false);
+      drawSimulation();
       renderLarge();
       exit();
     }
@@ -210,13 +210,14 @@ public class CLI extends PApplet {
 
   @Override
   public void draw() {
+    clear();
     if (renderPreview) {
       if (localFrameCount < config.maxFrames) {
         for (int i = 0; i < 10; i++) {
           stepSimulation();
           localFrameCount++;
         }
-        drawSimulation(true);
+        drawSimulation();
       }
       image(canvas, 0, 0, width, height);
     }
@@ -227,12 +228,12 @@ public class CLI extends PApplet {
     particleSystem.update();
   }
 
-  private void drawSimulation(boolean background) {
+  private void drawSimulation() {
     canvas.beginDraw();
     canvas.clear();
 
-    if (background) {
-      canvas.background(0);
+    if (config.backgroundOn) {
+      canvas.background((int) config.backgroundColor);
     }
 
     canvas.noStroke();

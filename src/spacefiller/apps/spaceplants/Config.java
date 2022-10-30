@@ -30,6 +30,12 @@ public class Config {
 
   @JsonProperty("circle_constraints")
   public CircleConstraint[] circleConstraints;
+
+  @JsonProperty("background_color")
+  public long backgroundColor = 0x00000000;
+
+  @JsonProperty("background_on")
+  public boolean backgroundOn = false;
 }
 
 class Size {
