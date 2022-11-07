@@ -33,14 +33,11 @@ public class CLI extends PApplet {
   private static String outputPath;
   private static String configPath;
   private static Config config;
-  private static boolean renderPreview = true;
 
   public static void main(String[] args) {
     outputPath = args[0];
     configPath = args[1];
     Rnd.init(args.length == 3 ? new Random(Long.valueOf(args[2])) : new Random());
-
-    renderPreview = java.lang.System.getenv().containsKey("RENDER_PREVIEW");
 
     try {
       readConfig();
@@ -85,15 +82,19 @@ public class CLI extends PApplet {
     setupSimulation();
     drawSimulation();
 
-    if (!renderPreview) {
+    if (!config.renderPreview) {
       for (int i = 0; i < config.maxFrames; i++) {
         stepSimulation();
+        if (config.renderFrames) {
+          drawSimulation();
+          saveLargeFrame(outputPath + "/" + String.format("%04d", i) + ".tif");
+        }
         if (i % 100 == 0) {
           java.lang.System.out.println("Computed " + i + " / " + config.maxFrames + " steps");
         }
       }
       drawSimulation();
-      renderLarge();
+      saveLargeFrame(outputPath);
       exit();
     }
   }
@@ -211,16 +212,27 @@ public class CLI extends PApplet {
   @Override
   public void draw() {
     clear();
-    if (renderPreview) {
-      if (localFrameCount < config.maxFrames) {
+    if (config.maxFrames == -1 || localFrameCount < config.maxFrames) {
+      if (config.renderFrames) {
+        stepSimulation();
+        if (localFrameCount % 100 == 0) {
+          java.lang.System.out.println("Computed " + localFrameCount + " / " + config.maxFrames + " steps");
+        }
+        localFrameCount++;
+        drawSimulation();
+        saveLargeFrame(outputPath + "/" + String.format("%04d", localFrameCount) + ".tif");
+      } else {
         for (int i = 0; i < 10; i++) {
           stepSimulation();
+          if (localFrameCount % 100 == 0) {
+            java.lang.System.out.println("Computed " + localFrameCount + " / " + config.maxFrames + " steps");
+          }
           localFrameCount++;
         }
         drawSimulation();
       }
-      image(canvas, 0, 0, width, height);
     }
+    image(canvas, 0, 0, width, height);
   }
 
   private void stepSimulation() {
@@ -239,8 +251,13 @@ public class CLI extends PApplet {
     canvas.noStroke();
     canvas.fill(255);
 
-    beeSystem.setLightLevel(1);
-    plantSystem.setLightLevel(1);
+    if (beeSystem != null) {
+      beeSystem.setLightLevel(1);
+    }
+
+    if (plantSystem != null) {
+      plantSystem.setLightLevel(1);
+    }
 
     systems.forEach((system -> system.draw(canvas)));
 
@@ -258,9 +275,7 @@ public class CLI extends PApplet {
     finalRender.endDraw();
   }
 
-  private void renderLarge() {
-    java.lang.System.out.println("Rendering image to " + outputPath);
-
+  private void saveLargeFrame(String filename) {
     finalRender.clear();
 
     finalRender.image(canvas,
@@ -269,13 +284,12 @@ public class CLI extends PApplet {
         config.renderSize.height);
     finalRender.blendMode(PConstants.BLEND);
 
-    java.lang.System.out.println("Saving...");
-    finalRender.save(outputPath);
+    finalRender.save(filename);
   }
 
   @Override
   public void keyPressed() {
-    if (key == 'r' && renderPreview) {
+    if (key == 'r' && config.renderPreview) {
       setupSimulation();
       localFrameCount = 0;
     }

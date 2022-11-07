@@ -8,7 +8,7 @@ import spacefiller.spaceplants.Params;
 
 public class Config {
   @JsonProperty("max_frames")
-  public int maxFrames = 100;
+  public int maxFrames = -1;
 
   @JsonProperty("max_particles")
   public int maxParticles = 1000;
@@ -36,6 +36,12 @@ public class Config {
 
   @JsonProperty("background_on")
   public boolean backgroundOn = false;
+
+  @JsonProperty("render_preview")
+  public boolean renderPreview = true;
+
+  @JsonProperty("render_frames")
+  public boolean renderFrames = false;
 }
 
 class Size {

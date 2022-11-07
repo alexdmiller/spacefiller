@@ -50,18 +50,21 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.37744534" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.CLI">
     <configuration name="CLI" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="/Applications/Processing.app/Contents/PlugIns/jdk1.8.0_202.jdk/Contents/Home/jre" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <envs>
-        <env name="RENDER_PREVIEW" value="1" />
-      </envs>
       <option name="MAIN_CLASS_NAME" value="spacefiller.apps.spaceplants.CLI" />
       <module name="spacefiller" />
       <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/render.png config.yml 21039481294" />

@@ -1,4 +1,6 @@
 max_frames: 2000
+render_frames: true
+render_preview: true
 max_particles: 20000
 background_on: true
 background_color: 0xff000000
@@ -6,8 +8,8 @@ sim_size:
   width: 300
   height: 300
 render_size:
-  width: 900
-  height: 900
+  width: 3000
+  height: 3000
 plants:
   min: 4
   max: 4
@@ -19,7 +21,7 @@ plants:
       branching_factor: 2
     - branch_color: 0xff43BF00
       branch_chance: 0.4f
-    - flower_colors: [0xffFF3737, 0xffF5FF37, 0xff37FFC9, 0xffB75CFF]
+    - flower_colors: [0xffF5FF37, 0xff37FFC9, 0xffB75CFF]
       branch_colors: [0xff2BA637, 0xff23872D, 0xff318723]
       flower_size: 3
       flower_deviation: 4
@@ -50,8 +52,8 @@ plants:
       flower_size: 4
       max_depth: 40
 hives:
-  min: 2
-  max: 3
+  min: 3
+  max: 4
   bees_per_hive: 30
   initial_bees_per_hive: 20
   hive_size: 10
