@@ -202,6 +202,7 @@ public class CLI extends PApplet {
           dna.setMaxDepthDeviation((int) plantConfig.maxDepthDeviation);
           dna.setSeedBranchingFactor((int) plantConfig.seedBranchingFactor);
           dna.setMass(plantConfig.mass);
+          dna.setBranchThickness(plantConfig.branchThickness);
 
           plantSystem.createSeed(particleSystem.getBounds().getRandomPointInside(2), dna);
         }
@@ -230,6 +231,7 @@ public class CLI extends PApplet {
               particleSystem.getBounds().getRandomPointInside(2), size, config.hives.spikes);
           hive.setFlatteningForce(config.hives.hiveFlatteningForce);
           hive.setInnerRepelForce(config.hives.hiveInnerRepelForce);
+          hive.setLineThickness(config.hives.lineThickness);
         }
       }
     } catch (IOException e) {

@@ -104,6 +104,7 @@ public class PlantDNA {
   private float budMaxSize = 3;
   private float flowerSize = 4;
   private float seedSize = 3;
+  private float branchThickness = 2;
 
   public PlantDNA setMass(float value) {
     this.particleMass = value;
@@ -356,5 +357,17 @@ public class PlantDNA {
 
   public float getBranchingFactorFalloff() {
     return branchingFactorFalloff;
+  }
+
+  public void setParticleMass(float particleMass) {
+    this.particleMass = particleMass;
+  }
+
+  public float getBranchThickness() {
+    return branchThickness;
+  }
+
+  public void setBranchThickness(float branchThickness) {
+    this.branchThickness = branchThickness;
   }
 }

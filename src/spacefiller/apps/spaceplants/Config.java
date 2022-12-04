@@ -103,6 +103,8 @@ class PlantConfig {
   public float flowerDeviation = 0;
   @JsonProperty("mass")
   public float mass = 1;
+  @JsonProperty("branch_thickness")
+  public float branchThickness = 2;
 }
 
 class Hives {
@@ -128,6 +130,8 @@ class Hives {
   public boolean spikes = true;
   @JsonProperty("colors")
   public HiveColor[] colors;
+  @JsonProperty("line_thickness")
+  public float lineThickness;
 }
 
 class HiveColor {

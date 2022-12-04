@@ -47,6 +47,7 @@ public class Hive {
   private float flatteningForce = 0;
   private float innerRepelForce = 0.02f;
   private boolean spikes = false;
+  private float lineThickness = 2;
 
   public Hive(int hiveIndex,
               BeeColor color,
@@ -96,7 +97,13 @@ public class Hive {
     this.innerRepelForce = innerRepelForce;
   }
 
+  public float getLineThickness() {
+    return lineThickness;
+  }
 
+  public void setLineThickness(float lineThickness) {
+    this.lineThickness = lineThickness;
+  }
 
   private void createParticles(Vector center, int num, float radius, int team, float springLength, float springK) {
     particles = new ArrayList<>();
@@ -176,7 +183,7 @@ public class Hive {
     graphics.translate(0, 0, -10);
     graphics.stroke(color.getHiveColor());
     graphics.fill(0, 40);
-    graphics.strokeWeight(1);
+    graphics.strokeWeight(lineThickness);
 
     for (Spring s : innerSprings) {
       graphics.line(

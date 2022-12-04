@@ -68,7 +68,7 @@ public class PlantNode {
   protected void drawSprings(PGraphics graphics, int color) {
     synchronized (springs) {
       for (Spring spring : springs) {
-        graphics.strokeWeight(1);
+        graphics.strokeWeight(dna.getBranchThickness());
 
         float b = (float) ((Math.sin(
             Utils.getMillis() / (float) Params.i(PName.PLANT_LIGHT_PERIOD)
