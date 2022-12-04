@@ -1,7 +1,7 @@
 package spacefiller.particles.behaviors;
 
-import spacefiller.math.FloatField2;
-import spacefiller.math.FloatField3;
+import spacefiller.math.sdf.FloatField2;
+import spacefiller.math.sdf.FloatField3;
 import spacefiller.math.Vector;
 import spacefiller.particles.Particle;
 import spacefiller.particles.ParticleUtils;

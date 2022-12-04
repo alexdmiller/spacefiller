@@ -1,10 +1,10 @@
 package spacefiller.particles.behaviors;
 
-import spacefiller.math.FloatField2;
+import spacefiller.math.sdf.FloatField2;
 import spacefiller.math.Vector;
 import spacefiller.particles.Particle;
 
-import static spacefiller.math.FloatField2.gradient;
+import static spacefiller.math.sdf.FloatField2.gradient;
 
 public class FollowGradient extends LocalBehavior {
   private FloatField2 field;

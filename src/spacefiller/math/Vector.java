@@ -94,6 +94,17 @@ public class Vector {
     return (float) Math.sqrt(dx * dx + dy * dy + dz * dz);
   }
 
+  public float dist(float ox, float oy) {
+    return dist(ox, oy, 0);
+  }
+
+  public float dist(float ox, float oy, float oz) {
+    float dx = ox - x;
+    float dy = oy - y;
+    float dz = oz - z;
+    return (float) Math.sqrt(dx * dx + dy * dy + dz * dz);
+  }
+
   public Vector sub(Vector other) {
     x -= other.x;
     y -= other.y;

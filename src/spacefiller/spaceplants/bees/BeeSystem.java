@@ -57,6 +57,10 @@ public class BeeSystem implements System {
   };
 
   public BeeSystem(ParticleSystem particleSystem, PlantSystem plantSystem) {
+    this(particleSystem, plantSystem, 20);
+  }
+
+  public BeeSystem(ParticleSystem particleSystem, PlantSystem plantSystem, float globalHiveRepelThreshold) {
     this.particleSystem = particleSystem;
     this.plantSystem = plantSystem;
 
@@ -67,10 +71,10 @@ public class BeeSystem implements System {
     beeDeletionQueue = new ArrayList<>();
     beeEntities = Collections.synchronizedList(new ArrayList<>());
 
-    flockParticles = new FlockParticles().setParameters(AWAKE_PARAMS);
-    flockParticles.setTeamMode(FlockParticles.TeamMode.SAME);
+    flockParticles = new FlockParticles().setParameters(ASLEEP_PARAMS);
+    flockParticles.setTeamMode(FlockParticles.TeamMode.ALL);
     sleepFlock = new FlockParticles().setParameters(ASLEEP_PARAMS);
-    sleepFlock.setTeamMode(FlockParticles.TeamMode.SAME);
+    sleepFlock.setTeamMode(FlockParticles.TeamMode.ALL);
 
     particleSystem.addBehavior(flockParticles, ParticleTag.BEE_FLOCK, ParticleTag.BEE);
     particleSystem.addBehavior(sleepFlock, ParticleTag.BEE_HUDDLE, ParticleTag.BEE_HUDDLE);
@@ -85,7 +89,7 @@ public class BeeSystem implements System {
     //particleSystem.addBehavior(new RepelParticles(20, 0.4f), ParticleTag.BEE_FLOCK, ParticleTag.HIVE);
 
     particleSystem.addBehavior(new RepelParticles(5, 1f), ParticleTag.HIVE);
-    particleSystem.addBehavior(new RepelParticles(20, 1f), ParticleTag.HIVE, ParticleTag.HIVE);
+    particleSystem.addBehavior(new RepelParticles(globalHiveRepelThreshold, 1f), ParticleTag.HIVE, ParticleTag.HIVE);
     particleSystem.addBehavior(new RepelParticles(20, 3f), ParticleTag.HIVE, ParticleTag.FLYTRAP);
     particleSystem.addBehavior(new RepelParticles(15, 1f), ParticleTag.HIVE, ParticleTag.PLANT);
     particleSystem.addBehavior(new RepelParticles(20, 3f), ParticleTag.HIVE, ParticleTag.SEED);
@@ -185,16 +189,19 @@ public class BeeSystem implements System {
     return lightLevel;
   }
 
-  public void createHive(Vector safePoint, int hiveSize) {
+  public Hive createHive(Vector safePoint, int hiveSize, boolean spikes) {
     synchronized (hives) {
-      hives.add(new Hive(
+      Hive hive = new Hive(
           hives.size(),
           colors[hives.size() % colors.length],
           safePoint,
           particleSystem,
           plantSystem,
           this,
-          hiveSize));
+          hiveSize,
+          spikes);
+      hives.add(hive);
+      return hive;
     }
   }
 

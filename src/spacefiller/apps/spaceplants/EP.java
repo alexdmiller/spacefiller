@@ -7,10 +7,9 @@ import processing.event.MouseEvent;
 import processing.opengl.PGraphicsOpenGL;
 import processing.opengl.PJOGL;
 import spacefiller.Utils;
-import spacefiller.spaceplants.Params;
 import spacefiller.spaceplants.bees.BeeSystem;
 import spacefiller.spaceplants.dust.DustSystem;
-import spacefiller.math.FloatField2;
+import spacefiller.math.sdf.FloatField2;
 import spacefiller.math.Metaballs;
 import spacefiller.math.Vector;
 import spacefiller.particles.ParticleSystem;
@@ -23,8 +22,7 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static spacefiller.math.FloatField2.debugDraw;
-import static spacefiller.math.FloatField2.gradient;
+import static spacefiller.math.sdf.FloatField2.debugDraw;
 
 public class EP extends PApplet {
   public static final int SIMULATION_WIDTH = 18 * 10;

@@ -1,6 +1,7 @@
-package spacefiller.math;
+package spacefiller.math.sdf;
 
 import processing.core.PGraphics;
+import spacefiller.math.Vector;
 
 public interface FloatField2 {
   float GRADIENT_OFFSET = 1;

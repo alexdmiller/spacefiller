@@ -6,7 +6,7 @@ import processing.opengl.PJOGL;
 import spacefiller.Utils;
 import spacefiller.spaceplants.bees.BeeSystem;
 import spacefiller.spaceplants.dust.DustSystem;
-import spacefiller.math.FloatField2;
+import spacefiller.math.sdf.FloatField2;
 import spacefiller.math.Vector;
 import spacefiller.particles.ParticleSystem;
 import spacefiller.particles.ParticleTag;
@@ -14,7 +14,6 @@ import spacefiller.particles.behaviors.FollowGradient;
 import spacefiller.particles.behaviors.RepelParticles;
 import spacefiller.particles.behaviors.SoftBounds;
 import spacefiller.particles.behaviors.SymmetricRepel;
-import spacefiller.spaceplants.planets.Planet;
 import spacefiller.spaceplants.plants.PlantDNA;
 import spacefiller.spaceplants.plants.PlantSystem;
 
@@ -22,9 +21,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
-import static spacefiller.math.FloatField2.debugDraw;
-import static spacefiller.math.FloatField2.gradient;
 
 public class SDFText extends PApplet {
   public static void main(String[] args) {

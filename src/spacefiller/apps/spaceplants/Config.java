@@ -42,6 +42,9 @@ public class Config {
 
   @JsonProperty("render_frames")
   public boolean renderFrames = false;
+
+  @JsonProperty("render_frames_skip")
+  public int renderFramesSkip = 1;
 }
 
 class Size {
@@ -113,6 +116,14 @@ class Hives {
   public int hiveSize = 10;
   @JsonProperty("hive_size_deviation")
   public int hiveSizeDeviation = 0;
+  @JsonProperty("hive_flattening_force")
+  public float hiveFlatteningForce = 0;
+  @JsonProperty("hive_inner_repel_force")
+  public float hiveInnerRepelForce = 0.02f;
+  @JsonProperty("global_repel_threshold")
+  public float globalRepelThreshold = 20;
+  @JsonProperty("spikes")
+  public boolean spikes = true;
   @JsonProperty("colors")
   public HiveColor[] colors;
 }
@@ -137,5 +148,8 @@ class CircleConstraint {
 
   @JsonProperty
   public ParticleTag tag;
+
+  @JsonProperty
+  public float force = 0.01f;
 }
 

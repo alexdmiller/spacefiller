@@ -1,5 +1,7 @@
 package spacefiller.math;
 
+import spacefiller.math.sdf.FloatField2;
+
 import java.util.ArrayList;
 import java.util.List;
 

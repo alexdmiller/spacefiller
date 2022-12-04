@@ -1,7 +1,9 @@
 package spacefiller.spaceplants.dust;
 
+import processing.core.PConstants;
 import processing.core.PGraphics;
 import spacefiller.math.Rnd;
+import spacefiller.math.Vector;
 import spacefiller.spaceplants.System;
 import spacefiller.particles.Particle;
 import spacefiller.particles.ParticleSystem;
@@ -9,6 +11,7 @@ import spacefiller.particles.ParticleTag;
 import spacefiller.particles.behaviors.*;
 
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 public class DustSystem implements System {
   private ParticleSystem particleSystem;
@@ -74,6 +77,20 @@ class Dust {
     graphics.fill(255, 255);
     graphics.noStroke();
     graphics.rect(this.particle.getPosition().x, this.particle.getPosition().y, 1, 1);
+//    graphics.blendMode(PConstants.ADD);
+//    graphics.stroke(255);
+//    graphics.strokeWeight(1);
+//    Stream<Particle> neighbors = particleSystem.getNeighbors(particle.getPosition(), ParticleTag.DUST);
+//    neighbors.forEach(n -> {
+//      Vector p1 = particle.getPosition();
+//      Vector p2 = n.getPosition();
+//      float distance = p1.dist(p2);
+//      if (p1.dist(p2) < 10) {
+//        graphics.stroke((10 - distance) / distance * 255);
+//        graphics.line(p1.x, p1.y, p2.x, p2.y);
+//      }
+//    });
+    // graphics.colorMode(PConstants.BLEND);
   }
 
   public void update() {

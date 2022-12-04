@@ -8,15 +8,21 @@ public class CircleBounds extends LocalBehavior {
   private float radius;
   private float slope;
   private float maxForce;
+  private float force;
 
   public CircleBounds() {
-    this(100, 2, 2);
+    this(100, 2, 2, 0.01f);
   }
 
   public CircleBounds(float radius, float slope, float maxForce) {
+    this(radius, slope, maxForce, 0.01f);
+  }
+
+  public CircleBounds(float radius, float slope, float maxForce, float force) {
     this.radius = radius;
     this.slope = slope;
     this.maxForce = maxForce;
+    this.force = force;
   }
 
   @Override
@@ -25,8 +31,14 @@ public class CircleBounds extends LocalBehavior {
 
     Vector sub = center.sub(particle.getPosition());
     float dist = sub.magnitude();
-    if (dist > radius) {
-      particle.applyForce(sub.mult(0.01f));
+    if (force > 0) {
+      if (dist > radius) {
+        particle.applyForce(sub.mult(force));
+      }
+    } else {
+      if (dist < radius) {
+        particle.applyForce(sub.mult(force));
+      }
     }
   }
 

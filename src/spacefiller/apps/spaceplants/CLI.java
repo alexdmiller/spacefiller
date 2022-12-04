@@ -8,6 +8,7 @@ import processing.core.PGraphics;
 import processing.opengl.PGraphicsOpenGL;
 import processing.opengl.PJOGL;
 import spacefiller.Utils;
+import spacefiller.math.sdf.*;
 import spacefiller.math.Rnd;
 import spacefiller.particles.Bounds;
 import spacefiller.spaceplants.PName;
@@ -15,19 +16,20 @@ import spacefiller.spaceplants.Params;
 import spacefiller.spaceplants.System;
 import spacefiller.spaceplants.bees.BeeColor;
 import spacefiller.spaceplants.bees.BeeSystem;
+import spacefiller.spaceplants.bees.Hive;
 import spacefiller.spaceplants.dust.DustSystem;
 import spacefiller.particles.ParticleSystem;
 import spacefiller.particles.ParticleTag;
 import spacefiller.particles.behaviors.*;
-import spacefiller.spaceplants.planets.Planet;
 import spacefiller.spaceplants.plants.PlantDNA;
 import spacefiller.spaceplants.plants.PlantSystem;
 
-import javax.rmi.CORBA.Util;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import static spacefiller.math.sdf.FieldVisualizer.drawField;
 
 public class CLI extends PApplet {
   private static String outputPath;
@@ -61,6 +63,11 @@ public class CLI extends PApplet {
   private BeeSystem beeSystem;
   private List<System> systems = new ArrayList<>();
   private int localFrameCount = 0;
+  private int nextFrameId = 0;
+
+  private FloatField2 field = (x, y) -> 0.5f;
+
+  private FloatField2 circle;
 
   @Override
   public void settings() {
@@ -70,6 +77,20 @@ public class CLI extends PApplet {
 
   @Override
   public void setup() {
+    FloatField2[] planets = new FloatField2[10];
+    for (int i = 0; i < 10; i++) {
+      planets[i] = new Circle(
+          (float) (config.simSize.width * Math.random()),
+          (float) (config.simSize.height * Math.random()),
+          (float) (Math.random() * 150 + 10));
+    }
+    circle = new Normalize(
+        config.simSize.width,
+        config.simSize.height,
+        20,
+        new Floor(new NoiseDistort(new Union(planets))));
+
+
     Utils.init(this);
     noSmooth();
 
@@ -85,9 +106,10 @@ public class CLI extends PApplet {
     if (!config.renderPreview) {
       for (int i = 0; i < config.maxFrames; i++) {
         stepSimulation();
-        if (config.renderFrames) {
+        if (config.renderFrames && (i % config.renderFramesSkip) == 0) {
           drawSimulation();
-          saveLargeFrame(outputPath + "/" + String.format("%04d", i) + ".tif");
+          saveLargeFrame(outputPath + "/" + String.format("%04d", nextFrameId) + ".tif");
+          nextFrameId++;
         }
         if (i % 100 == 0) {
           java.lang.System.out.println("Computed " + i + " / " + config.maxFrames + " steps");
@@ -121,19 +143,28 @@ public class CLI extends PApplet {
         systems.add(dustSystem);
       }
 
-      RepelParticles repelDust = new RepelParticles(10, 0.1f);
+      RepelParticles repelDust = new RepelParticles(5, 0.1f);
       particleSystem.addBehavior(repelDust, ParticleTag.DUST);
 
       RepelParticles repelBees = new RepelParticles(10, 0.1f);
       particleSystem.addBehavior(repelBees, ParticleTag.BEE);
 
-      if (config.circleConstraints != null) {
-        for (CircleConstraint constraint : config.circleConstraints) {
-          particleSystem.addBehavior(new CircleBounds(
-              (float) (constraint.radius + Math.random() * constraint.deviation - constraint.deviation / 2),
-              1, 0.1f), constraint.tag);
-        }
-      }
+//      if (config.circleConstraints != null) {
+//        for (CircleConstraint constraint : config.circleConstraints) {
+//          particleSystem.addBehavior(
+//            new CircleBounds(
+//              (float) (constraint.radius + Math.random() * constraint.deviation - constraint.deviation / 2),
+//              1,
+//              0.1f,
+//              constraint.force),
+//            constraint.tag);
+//        }
+//      }
+
+      particleSystem.addBehavior(new FollowGradient(circle, 0.5f, true), ParticleTag.DUST);
+      particleSystem.addBehavior(new FollowGradient(circle, 0.5f, true), ParticleTag.HIVE);
+//      particleSystem.addBehavior(new FollowGradient(circle, 0.5f, true), ParticleTag.PLANT);
+
 
       particleSystem.addBehavior(new SoftBounds(10, 5, 3));
 
@@ -182,7 +213,7 @@ public class CLI extends PApplet {
       }
 
       if (config.hives != null) {
-        beeSystem = new BeeSystem(particleSystem, plantSystem);
+        beeSystem = new BeeSystem(particleSystem, plantSystem, config.hives.globalRepelThreshold);
         systems.add(beeSystem);
         Params.set(PName.MAX_BEES_CREATED, config.hives.beesPerHive);
         Params.set(PName.STARTING_BABIES_PER_HIVE, config.hives.startingBeesPerHive);
@@ -200,7 +231,10 @@ public class CLI extends PApplet {
             config.hives.min + Rnd.random.nextDouble() * (config.hives.max - config.hives.min));
         for (int i = 0; i < numHives; i++) {
           int size = (int) (config.hives.hiveSize + Rnd.random.nextDouble() * config.hives.hiveSizeDeviation);
-          beeSystem.createHive(particleSystem.getBounds().getRandomPointInside(2), size);
+          Hive hive = beeSystem.createHive(
+              particleSystem.getBounds().getRandomPointInside(2), size, config.hives.spikes);
+          hive.setFlatteningForce(config.hives.hiveFlatteningForce);
+          hive.setInnerRepelForce(config.hives.hiveInnerRepelForce);
         }
       }
     } catch (IOException e) {
@@ -213,14 +247,18 @@ public class CLI extends PApplet {
   public void draw() {
     clear();
     if (config.maxFrames == -1 || localFrameCount < config.maxFrames) {
+      java.lang.System.out.println(localFrameCount + " % " + config.renderFramesSkip);
       if (config.renderFrames) {
         stepSimulation();
         if (localFrameCount % 100 == 0) {
           java.lang.System.out.println("Computed " + localFrameCount + " / " + config.maxFrames + " steps");
         }
         localFrameCount++;
-        drawSimulation();
-        saveLargeFrame(outputPath + "/" + String.format("%04d", localFrameCount) + ".tif");
+        if (localFrameCount % config.renderFramesSkip == 0) {
+          drawSimulation();
+          saveLargeFrame(outputPath + "/" + String.format("%04d", nextFrameId) + ".tif");
+          nextFrameId++;
+        }
       } else {
         for (int i = 0; i < 10; i++) {
           stepSimulation();
@@ -247,6 +285,8 @@ public class CLI extends PApplet {
     if (config.backgroundOn) {
       canvas.background((int) config.backgroundColor);
     }
+
+    // drawField(circle, canvas, 5, 0, 1);
 
     canvas.noStroke();
     canvas.fill(255);
@@ -276,6 +316,7 @@ public class CLI extends PApplet {
   }
 
   private void saveLargeFrame(String filename) {
+    java.lang.System.out.println("Saving " + filename);
     finalRender.clear();
 
     finalRender.image(canvas,

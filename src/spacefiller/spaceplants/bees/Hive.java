@@ -44,13 +44,18 @@ public class Hive {
   private int life;
   private int hiveSize;
 
+  private float flatteningForce = 0;
+  private float innerRepelForce = 0.02f;
+  private boolean spikes = false;
+
   public Hive(int hiveIndex,
               BeeColor color,
               Vector position,
               ParticleSystem system,
               PlantSystem plantSystem,
               BeeSystem beeSystem,
-              int hiveSize) {
+              int hiveSize,
+              boolean spikes) {
     this.hiveIndex = hiveIndex;
     this.color = color;
     this.position = position;
@@ -60,6 +65,7 @@ public class Hive {
     this.beeSystem = beeSystem;
     // TODO:
     this.hiveSize = hiveSize;
+    this.spikes = spikes;
 
     createParticles(position, (int) 3, 1, hiveIndex, SPRING_LENGTH, SPRING_K);
 
@@ -73,6 +79,24 @@ public class Hive {
     particleDeletionQueue = new ArrayList<>();
     springDeletionQueue = new ArrayList<>();
   }
+
+  public float getFlatteningForce() {
+    return flatteningForce;
+  }
+
+  public void setFlatteningForce(float flatteningForce) {
+    this.flatteningForce = flatteningForce;
+  }
+
+  public float getInnerRepelForce() {
+    return innerRepelForce;
+  }
+
+  public void setInnerRepelForce(float innerRepelForce) {
+    this.innerRepelForce = innerRepelForce;
+  }
+
+
 
   private void createParticles(Vector center, int num, float radius, int team, float springLength, float springK) {
     particles = new ArrayList<>();
@@ -106,16 +130,18 @@ public class Hive {
 
     springs.addAll(innerSprings);
 
-    for (int i = 0; i < num; i++) {
-      float theta = (float) (2f * Math.PI / num) * i;
-      Particle n = particles.get(i);
-      Particle p = particleSystem.createParticle(
-          (float) (center.x + Math.cos(theta) * (radius + 1)),
-          (float) (center.y + Math.sin(theta) * (radius + 1)));
+    if (spikes) {
+      for (int i = 0; i < num; i++) {
+        float theta = (float) (2f * Math.PI / num) * i;
+        Particle n = particles.get(i);
+        Particle p = particleSystem.createParticle(
+            (float) (center.x + Math.cos(theta) * (radius + 1)),
+            (float) (center.y + Math.sin(theta) * (radius + 1)));
 
-      outerSprings.add(particleSystem.createSpring(n, p, springLength, springK));
-      outerParticles.add(p);
-      particles.add(p);
+        outerSprings.add(particleSystem.createSpring(n, p, springLength, springK));
+        outerParticles.add(p);
+        particles.add(p);
+      }
     }
 
     springs.addAll(outerSprings);
@@ -150,7 +176,7 @@ public class Hive {
     graphics.translate(0, 0, -10);
     graphics.stroke(color.getHiveColor());
     graphics.fill(0, 40);
-    graphics.strokeWeight(2);
+    graphics.strokeWeight(1);
 
     for (Spring s : innerSprings) {
       graphics.line(
@@ -223,12 +249,14 @@ public class Hive {
         newParticle.addTag(ParticleTag.GLOBAL_REPEL);
 
         // add outer particle
-        Particle p = particleSystem.createParticle(Vector.add(center.getPosition(), Vector.mult(tangent, 4)));
-        p.addTag(ParticleTag.HIVE);
-        p.addTag(ParticleTag.GLOBAL_REPEL);
-        outerSprings.add(particleSystem.createSpring(newParticle, p, SPRING_LENGTH, SPRING_K));
-        outerParticles.add(p);
-        particles.add(p);
+        if (spikes) {
+          Particle p = particleSystem.createParticle(Vector.add(center.getPosition(), Vector.mult(tangent, 4)));
+          p.addTag(ParticleTag.HIVE);
+          p.addTag(ParticleTag.GLOBAL_REPEL);
+          outerSprings.add(particleSystem.createSpring(newParticle, p, SPRING_LENGTH, SPRING_K));
+          outerParticles.add(p);
+          particles.add(p);
+        }
 
         Spring s1 = particleSystem.createSpring(center, newParticle, SPRING_LENGTH, SPRING_K);
         Spring s2 = particleSystem.createSpring(newParticle, right, SPRING_LENGTH, SPRING_K);
@@ -337,7 +365,7 @@ public class Hive {
         Vector delta = Vector.sub(p1.getPosition(), p2.getPosition());
         float mag = delta.magnitude();
         if (mag==0.0) continue;
-        delta.mult(0.02f / (mag * mag));
+        delta.mult(innerRepelForce / (mag * mag));
         p1.applyForce(delta);
         p2.applyForce(Vector.mult(delta, -1));
       }
@@ -345,19 +373,19 @@ public class Hive {
 
     // each particle is pushed towards the average position of the
     // connected particles. this flattens out the loops.
-//    for (Particle p : particles) {
-//      Vector avg = new Vector(0, 0);
-//      for (Spring s : p.getConnections()) {
-//        Particle n2 = s.other(p);
-//        avg.add(n2.getPosition());
-//      }
-//
-//      avg.div(p.getConnections().size());
-//
-//      Vector delta = Vector.sub(avg, p.getPosition());
-//      delta.mult((float) Math.sin(Utils.getMillis() / 10000f) * 0.01f);
-//      p.applyForce(delta);
-//    }
+    for (Particle p : innerParticles) {
+      Vector avg = new Vector(0, 0);
+      for (Spring s : p.getConnections()) {
+        Particle n2 = s.other(p);
+        avg.add(n2.getPosition());
+      }
+
+      avg.div(p.getConnections().size());
+
+      Vector delta = Vector.sub(avg, p.getPosition());
+      delta.mult(flatteningForce);
+      p.applyForce(delta);
+    }
 
 //    Stream<Particle> neighbors = particleSystem.getNeighbors(position, ParticleTag.BEE_FLOCK);
 //    neighbors.forEach(p -> p.getAvoidanceVector(position, 2));

@@ -10,8 +10,7 @@ import spacefiller.Utils;
 import spacefiller.math.Rnd;
 import spacefiller.spaceplants.bees.BeeSystem;
 import spacefiller.spaceplants.dust.DustSystem;
-import spacefiller.math.FloatField2;
-import spacefiller.math.Metaballs;
+import spacefiller.math.sdf.FloatField2;
 import spacefiller.math.Vector;
 import spacefiller.particles.ParticleSystem;
 import spacefiller.particles.ParticleTag;
@@ -20,17 +19,14 @@ import spacefiller.spaceplants.planets.Planet;
 import spacefiller.spaceplants.plants.PlantDNA;
 import spacefiller.spaceplants.plants.PlantSystem;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.function.Function;
 
-import static spacefiller.math.FloatField2.debugDraw;
+import static spacefiller.math.sdf.FloatField2.debugDraw;
 
 public class Poster extends PApplet {
   // poster dimensions

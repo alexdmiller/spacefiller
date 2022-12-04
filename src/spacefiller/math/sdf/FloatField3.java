@@ -1,4 +1,4 @@
-package spacefiller.math;
+package spacefiller.math.sdf;
 
 public interface FloatField3 {
   float get(float x, float y, float z);
