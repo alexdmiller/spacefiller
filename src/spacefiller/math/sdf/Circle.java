@@ -11,6 +11,10 @@ public class Circle implements FloatField2 {
     this.radius = radius;
   }
 
+  public void setPosition(Vector position) {
+    this.position.set(position);
+  }
+
   @Override
   public float get(float x, float y) {
     return position.dist(x, y) - radius;

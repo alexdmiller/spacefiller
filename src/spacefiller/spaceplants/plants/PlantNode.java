@@ -30,7 +30,7 @@ public class PlantNode {
   // how many growths can come out of this node
   protected int growthCounter = 1;
 
-  protected PlantSystem plantSystem;
+  protected PlantSPSystem plantSystem;
 
   // counter that keeps track of how far this node is from the seed
   protected int depthCounter;
@@ -44,7 +44,7 @@ public class PlantNode {
   // a detached node is an orphan and doesn't belong to any other node
   protected boolean detached = false;
 
-  public PlantNode(Particle particle, PlantDNA dna, PlantSystem plantSystem, int depthCounter) {
+  public PlantNode(Particle particle, PlantDNA dna, PlantSPSystem plantSystem, int depthCounter) {
     particle.addTag(ParticleTag.PLANT);
 
     this.particle = particle;

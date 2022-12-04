@@ -2,7 +2,7 @@ package spacefiller.spaceplants.plants;
 
 import processing.core.PGraphics;
 import spacefiller.math.Vector;
-import spacefiller.spaceplants.System;
+import spacefiller.spaceplants.SPSystem;
 import spacefiller.particles.Particle;
 import spacefiller.particles.ParticleSystem;
 import spacefiller.particles.ParticleTag;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class PlantSystem implements System {
+public class PlantSPSystem implements SPSystem {
   // the maximum nodes allowed in the system; otherwise it gets too slow.
   private static final int MAX_PLANT_NODES = 10000;
   private final SymmetricRepel symmetricRepel;
@@ -35,7 +35,7 @@ public class PlantSystem implements System {
     return symmetricRepel;
   }
 
-  public PlantSystem(ParticleSystem particleSystem) {
+  public PlantSPSystem(ParticleSystem particleSystem) {
     this.particleSystem = particleSystem;
 
     symmetricRepel = new SymmetricRepel(15, 1f);

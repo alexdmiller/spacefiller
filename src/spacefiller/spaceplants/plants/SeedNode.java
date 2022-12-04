@@ -1,15 +1,12 @@
 package spacefiller.spaceplants.plants;
 
-import processing.core.PApplet;
 import processing.core.PGraphics;
 import spacefiller.math.Rnd;
 import spacefiller.spaceplants.PName;
 import spacefiller.spaceplants.Params;
-import spacefiller.Utils;
 import spacefiller.math.Vector;
 import spacefiller.particles.Particle;
 import spacefiller.particles.ParticleTag;
-import spacefiller.particles.Spring;
 
 import static spacefiller.math.PerlinNoise.noise;
 import static spacefiller.particles.ParticleTag.SEED;
@@ -17,7 +14,7 @@ import static spacefiller.particles.ParticleTag.SEED;
 public class SeedNode extends PlantNode {
   private boolean planted = false;
 
-  public SeedNode(Particle particle, PlantDNA dna, PlantSystem plantSystem, int depthCounter) {
+  public SeedNode(Particle particle, PlantDNA dna, PlantSPSystem plantSystem, int depthCounter) {
     super(particle, dna, plantSystem, depthCounter);
 
     particle.removeTag(ParticleTag.PLANT);

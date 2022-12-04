@@ -2,7 +2,7 @@ package spacefiller.spaceplants;
 
 import processing.core.PGraphics;
 
-public interface System {
+public interface SPSystem {
   void update();
   void draw(PGraphics graphics);
 }

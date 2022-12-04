@@ -8,7 +8,7 @@ import spacefiller.spaceplants.dust.DustSystem;
 import spacefiller.math.Vector;
 import spacefiller.particles.ParticleTag;
 import spacefiller.particles.behaviors.*;
-import spacefiller.spaceplants.plants.PlantSystem;
+import spacefiller.spaceplants.plants.PlantSPSystem;
 import spacefiller.particles.ParticleSystem;
 
 import java.util.ArrayList;
@@ -26,9 +26,9 @@ public class Simulation {
   private final SymmetricRepel symmetricRepel;
   private int frame;
 
-  private List<System> systems;
+  private List<SPSystem> SPSystems;
   private ParticleSystem particleSystem;
-  private PlantSystem plantSystem;
+  private PlantSPSystem plantSystem;
   private BeeSystem beeSystem;
   private DustSystem dustSystem;
   private float lightLevel;
@@ -45,7 +45,7 @@ public class Simulation {
     return dustBounds;
   }
 
-  public PlantSystem getPlantSystem() {
+  public PlantSPSystem getPlantSystem() {
     return plantSystem;
   }
 
@@ -66,17 +66,17 @@ public class Simulation {
 
     this.width = width;
     this.height = height;
-    this.systems = new ArrayList<>();
+    this.SPSystems = new ArrayList<>();
     this.particleSystem = new ParticleSystem(width, height, 20);
 
-    this.plantSystem = new PlantSystem(particleSystem);
+    this.plantSystem = new PlantSPSystem(particleSystem);
     this.beeSystem = new BeeSystem(particleSystem, plantSystem);
 
     this.dustSystem = new DustSystem(particleSystem, width, height);
 
-    systems.add(dustSystem);
-    systems.add(plantSystem);
-    systems.add(beeSystem);
+    SPSystems.add(dustSystem);
+    SPSystems.add(plantSystem);
+    SPSystems.add(beeSystem);
 
 //    systems.add(flytrapSystem);
 //    systems.add(trashSystem);
@@ -153,7 +153,7 @@ public class Simulation {
       }
     }
 
-    systems.forEach(System::update);
+    SPSystems.forEach(SPSystem::update);
     particleSystem.update();
   }
 
@@ -191,7 +191,7 @@ public class Simulation {
 
 
   public void draw(PGraphics graphics) {
-    systems.forEach(s -> s.draw(graphics));
+    SPSystems.forEach(s -> s.draw(graphics));
   }
 
   public void preDraw(PGraphics graphics) {

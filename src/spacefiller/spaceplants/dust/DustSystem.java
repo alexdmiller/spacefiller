@@ -1,19 +1,16 @@
 package spacefiller.spaceplants.dust;
 
-import processing.core.PConstants;
 import processing.core.PGraphics;
 import spacefiller.math.Rnd;
-import spacefiller.math.Vector;
-import spacefiller.spaceplants.System;
+import spacefiller.spaceplants.SPSystem;
 import spacefiller.particles.Particle;
 import spacefiller.particles.ParticleSystem;
 import spacefiller.particles.ParticleTag;
 import spacefiller.particles.behaviors.*;
 
 import java.util.ArrayList;
-import java.util.stream.Stream;
 
-public class DustSystem implements System {
+public class DustSystem implements SPSystem {
   private ParticleSystem particleSystem;
   private ArrayList<Dust> dustParts;
   private float lightLevel;
@@ -25,7 +22,6 @@ public class DustSystem implements System {
     for (int i=0; i<dustCount; i++) {
       dustParts.add(new Dust(particleSystem, width, height));
     }
-
   }
 
   public DustSystem(ParticleSystem particleSystem, float width, float height) {

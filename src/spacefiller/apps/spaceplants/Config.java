@@ -45,6 +45,8 @@ public class Config {
 
   @JsonProperty("render_frames_skip")
   public int renderFramesSkip = 1;
+
+  public Planets planets;
 }
 
 class Size {
@@ -137,6 +139,9 @@ class HiveColor {
 
 class Dust {
   public int count;
+
+  @JsonProperty("repel_threshold")
+  public float repelThreshold = 10;
 }
 
 class CircleConstraint {
@@ -153,3 +158,28 @@ class CircleConstraint {
   public float force = 0.01f;
 }
 
+class Planets {
+  public int min;
+  public int max;
+
+  @JsonProperty("min_radius")
+  public float minRadius = 10;
+
+  @JsonProperty("max_radius")
+  public float maxRadius = 1000;
+
+  @JsonProperty("repel_threshold")
+  public float repelThreshold = 20;
+
+  @JsonProperty("attraction_threshold")
+  public float attractionThreshold = 400;
+
+  @JsonProperty("noise_amplitude")
+  public float noiseAmplitude = 0;
+
+  @JsonProperty("noise_scale")
+  public float noiseScale = 0;
+
+  @JsonProperty("sdf_smooth")
+  public float sdfSmooth = 0.1f;
+}

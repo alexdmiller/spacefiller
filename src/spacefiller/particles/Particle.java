@@ -27,6 +27,7 @@ public class Particle {
   private float mass = 1f;
   private boolean active = true;
   private Vector queuedPosition = null;
+  private float radius = 1;
 
   protected List<Spring> connections;
   protected boolean staticBody;
@@ -295,5 +296,13 @@ public class Particle {
 
   public Vector getLastPosition() {
     return lastPosition;
+  }
+
+  public float getRadius() {
+    return radius;
+  }
+
+  public void setRadius(float radius) {
+    this.radius = radius;
   }
 }

@@ -1,19 +1,19 @@
 package spacefiller.spaceplants.bees;
 
 import processing.core.PGraphics;
-import spacefiller.spaceplants.System;
+import spacefiller.spaceplants.SPSystem;
 import spacefiller.math.Vector;
 import spacefiller.particles.ParticleSystem;
 import spacefiller.particles.ParticleTag;
 import spacefiller.particles.behaviors.*;
-import spacefiller.spaceplants.plants.PlantSystem;
+import spacefiller.spaceplants.plants.PlantSPSystem;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class BeeSystem implements System {
+public class BeeSystem implements SPSystem {
   private static final FlockParticles.Parameters AWAKE_PARAMS =
           new FlockParticles.Parameters(
                   1,
@@ -38,7 +38,7 @@ public class BeeSystem implements System {
 
   // underlying particle system for basic particle physics
   private ParticleSystem particleSystem;
-  private PlantSystem plantSystem;
+  private PlantSPSystem plantSystem;
 
   private List<BeeEntity> beeEntities;
   private List<BeeEntity> beeCreationQueue;
@@ -56,11 +56,11 @@ public class BeeSystem implements System {
       new BeeColor(0xffffffcc, 0xff999999, 0xffffffcc, 0xff555555),
   };
 
-  public BeeSystem(ParticleSystem particleSystem, PlantSystem plantSystem) {
-    this(particleSystem, plantSystem, 20);
+  public BeeSystem(ParticleSystem particleSystem, PlantSPSystem plantSystem) {
+    this(particleSystem, plantSystem, 10);
   }
 
-  public BeeSystem(ParticleSystem particleSystem, PlantSystem plantSystem, float globalHiveRepelThreshold) {
+  public BeeSystem(ParticleSystem particleSystem, PlantSPSystem plantSystem, float globalHiveRepelThreshold) {
     this.particleSystem = particleSystem;
     this.plantSystem = plantSystem;
 

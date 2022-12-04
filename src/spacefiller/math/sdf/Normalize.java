@@ -1,5 +1,7 @@
 package spacefiller.math.sdf;
 
+import spacefiller.particles.Bounds;
+
 public class Normalize implements FloatField2 {
   private float width;
   private float height;
@@ -9,16 +11,21 @@ public class Normalize implements FloatField2 {
   private float min;
   private float max;
 
+  public Normalize(Bounds bounds, float sampleResolution, FloatField2 field) {
+    this(bounds.getWidth(), bounds.getHeight(), sampleResolution, field);
+  }
+
   public Normalize(float width, float height, float sampleResolution, FloatField2 field) {
     this.width = width;
     this.height = height;
     this.sampleResolution = sampleResolution;
     this.field = field;
-
     this.recompute();
   }
 
   public void recompute() {
+    if (field == null) return;
+
     // TODO: use min?
     min = 0;
     max = 0;

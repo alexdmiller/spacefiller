@@ -1,5 +1,6 @@
 package spacefiller.particles;
 
+import processing.core.PConstants;
 import processing.core.PGraphics;
 import processing.core.PVector;
 import spacefiller.math.Rnd;
@@ -582,7 +583,16 @@ public class ParticleSystem {
       synchronized (grid) {
         for (int i = 0; i < grid.getParticles().size(); i++) {
           Particle p = grid.getParticles().get(i);
-          graphics.point(p.getPosition().x, p.getPosition().y);
+          graphics.rectMode(PConstants.CORNER);
+          graphics.fill(255);
+          graphics.noStroke();
+          graphics.rect(p.getPosition().x, p.getPosition().y, 1, 1);
+          if (p.getRadius() > 1) {
+            graphics.stroke(255);
+            graphics.noFill();
+            graphics.ellipseMode(PConstants.CENTER);
+            graphics.ellipse(p.getPosition().x, p.getPosition().y, p.getRadius() * 2, p.getRadius() * 2);
+          }
         }
       }
     }

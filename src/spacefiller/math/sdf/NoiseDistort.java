@@ -7,8 +7,10 @@ public class NoiseDistort implements FloatField2 {
   private float amplitude = 50;
   private float scale = 0.01f;
 
-  public NoiseDistort(FloatField2 field) {
+  public NoiseDistort(FloatField2 field, float amplitude, float scale) {
     this.field = field;
+    this.amplitude = amplitude;
+    this.scale = scale;
   }
 
   @Override

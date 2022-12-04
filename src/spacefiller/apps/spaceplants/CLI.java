@@ -8,12 +8,11 @@ import processing.core.PGraphics;
 import processing.opengl.PGraphicsOpenGL;
 import processing.opengl.PJOGL;
 import spacefiller.Utils;
-import spacefiller.math.sdf.*;
 import spacefiller.math.Rnd;
 import spacefiller.particles.Bounds;
 import spacefiller.spaceplants.PName;
 import spacefiller.spaceplants.Params;
-import spacefiller.spaceplants.System;
+import spacefiller.spaceplants.SPSystem;
 import spacefiller.spaceplants.bees.BeeColor;
 import spacefiller.spaceplants.bees.BeeSystem;
 import spacefiller.spaceplants.bees.Hive;
@@ -21,15 +20,14 @@ import spacefiller.spaceplants.dust.DustSystem;
 import spacefiller.particles.ParticleSystem;
 import spacefiller.particles.ParticleTag;
 import spacefiller.particles.behaviors.*;
+import spacefiller.spaceplants.planets.PlanetSystem;
 import spacefiller.spaceplants.plants.PlantDNA;
-import spacefiller.spaceplants.plants.PlantSystem;
+import spacefiller.spaceplants.plants.PlantSPSystem;
 
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
-
-import static spacefiller.math.sdf.FieldVisualizer.drawField;
 
 public class CLI extends PApplet {
   private static String outputPath;
@@ -57,18 +55,14 @@ public class CLI extends PApplet {
   private ParticleSystem particleSystem;
   private PGraphics canvas;
   private PGraphics finalRender;
-  private PlantSystem plantSystem;
+  private PlantSPSystem plantSystem;
   private SymmetricRepel symmetricRepel;
   private DustSystem dustSystem;
   private BeeSystem beeSystem;
-  private List<System> systems = new ArrayList<>();
+  private PlanetSystem planetSystem;
+  private List<SPSystem> systems = new ArrayList<>();
   private int localFrameCount = 0;
   private int nextFrameId = 0;
-
-  private FloatField2 field = (x, y) -> 0.5f;
-
-  private FloatField2 circle;
-  private FloatField2 plantCircleField;
 
   @Override
   public void settings() {
@@ -78,34 +72,6 @@ public class CLI extends PApplet {
 
   @Override
   public void setup() {
-    FloatField2[] planets = new FloatField2[10];
-    for (int i = 0; i < 10; i++) {
-      planets[i] = new Circle(
-          (float) (config.simSize.width * Math.random()),
-          (float) (config.simSize.height * Math.random()),
-          (float) (Math.random() * 150 + 10));
-    }
-    circle = new Normalize(
-        config.simSize.width,
-        config.simSize.height,
-        20,
-        new Floor(new NoiseDistort(new Union(planets))));
-
-
-    FloatField2[] plantCircles = new FloatField2[10];
-    for (int i = 0; i < 10; i++) {
-      plantCircles[i] = new Circle(
-          (float) (config.simSize.width * Math.random()),
-          (float) (config.simSize.height * Math.random()),
-          (float) (Math.random() * 150 + 10));
-    }
-    plantCircleField = new Normalize(
-        config.simSize.width,
-        config.simSize.height,
-        20,
-        new Floor(new NoiseDistort(new Union(plantCircles))));
-
-
     Utils.init(this);
     // noSmooth();
 
@@ -141,14 +107,14 @@ public class CLI extends PApplet {
       readConfig();
 
       canvas = createGraphics(config.simSize.width, config.simSize.height, P2D);
-//      canvas.noSmooth();
-//      canvas.hint(DISABLE_TEXTURE_MIPMAPS);
-//      ((PGraphicsOpenGL)canvas).textureSampling(3);
+      canvas.noSmooth();
+      canvas.hint(DISABLE_TEXTURE_MIPMAPS);
+      ((PGraphicsOpenGL)canvas).textureSampling(3);
 //
       finalRender = createGraphics(config.renderSize.width, config.renderSize.height, P2D);
-//      finalRender.noSmooth();
-//      finalRender.hint(DISABLE_TEXTURE_MIPMAPS);
-//      ((PGraphicsOpenGL)finalRender).textureSampling(3);
+      finalRender.noSmooth();
+      finalRender.hint(DISABLE_TEXTURE_MIPMAPS);
+      ((PGraphicsOpenGL)finalRender).textureSampling(3);
 
       systems.clear();
       particleSystem = new ParticleSystem(new Bounds(canvas.width, canvas.height), config.maxParticles, 15);
@@ -156,35 +122,49 @@ public class CLI extends PApplet {
       if (config.dust != null) {
         dustSystem = new DustSystem(particleSystem, config.dust.count, canvas.width, canvas.height);
         systems.add(dustSystem);
+
+        RepelParticles repelDust = new RepelParticles(config.dust.repelThreshold, 0.1f);
+        particleSystem.addBehavior(repelDust, ParticleTag.DUST);
       }
 
-      RepelParticles repelDust = new RepelParticles(5, 0.1f);
-      particleSystem.addBehavior(repelDust, ParticleTag.DUST);
 
-      RepelParticles repelBees = new RepelParticles(10, 0.1f);
+      RepelParticles repelBees = new RepelParticles(5, 0.1f);
       particleSystem.addBehavior(repelBees, ParticleTag.BEE);
 
-//      if (config.circleConstraints != null) {
-//        for (CircleConstraint constraint : config.circleConstraints) {
-//          particleSystem.addBehavior(
-//            new CircleBounds(
-//              (float) (constraint.radius + Math.random() * constraint.deviation - constraint.deviation / 2),
-//              1,
-//              0.1f,
-//              constraint.force),
-//            constraint.tag);
-//        }
-//      }
 
-      particleSystem.addBehavior(new FollowGradient(circle, 0.5f, true), ParticleTag.DUST);
-      particleSystem.addBehavior(new FollowGradient(circle, 0.5f, true), ParticleTag.HIVE);
-      particleSystem.addBehavior(new FollowGradient(plantCircleField, 0.5f, true), ParticleTag.PLANT);
-
+      if (config.circleConstraints != null) {
+        for (CircleConstraint constraint : config.circleConstraints) {
+          particleSystem.addBehavior(
+            new CircleBounds(
+              (float) (constraint.radius + Math.random() * constraint.deviation - constraint.deviation / 2),
+              1,
+              0.1f,
+              constraint.force),
+            constraint.tag);
+        }
+      }
 
       particleSystem.addBehavior(new SoftBounds(10, 5, 3));
 
+      if (config.planets != null) {
+        Planets planets = config.planets;
+        planetSystem = new PlanetSystem(
+            particleSystem,
+            planets.repelThreshold,
+            planets.attractionThreshold,
+            planets.noiseAmplitude,
+            planets.noiseScale,
+            planets.sdfSmooth);
+        systems.add(planetSystem);
+        int num = (int) (Math.random() * (planets.max - planets.min) + planets.min);
+        for (int i = 0; i < num; i++) {
+          planetSystem.createPlanet(
+              (float) (Math.random() * (planets.maxRadius - planets.minRadius) + planets.minRadius));
+        }
+      }
+
       if (config.plants != null) {
-        plantSystem = new PlantSystem(particleSystem);
+        plantSystem = new PlantSPSystem(particleSystem);
         systems.add(plantSystem);
 
         int numPlants = (int) Math.round(
@@ -285,12 +265,15 @@ public class CLI extends PApplet {
         drawSimulation();
       }
     }
-    image(canvas, 0, 0, canvas.width, canvas.height);
+    image(canvas, 0, 0, width, height);
   }
 
   private void stepSimulation() {
     systems.forEach((system -> system.update()));
     particleSystem.update();
+    if (planetSystem != null) {
+      planetSystem.update();
+    }
   }
 
   private void drawSimulation() {
@@ -299,6 +282,10 @@ public class CLI extends PApplet {
 
     if (config.backgroundOn) {
       canvas.background((int) config.backgroundColor);
+    }
+
+    if (planetSystem != null) {
+      planetSystem.draw(canvas);
     }
 
     // drawField(circle, canvas, 5, 0, 1);

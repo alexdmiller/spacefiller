@@ -45,7 +45,6 @@ public interface FloatField2 {
       return value;
     }
   }
-
 }
 
 

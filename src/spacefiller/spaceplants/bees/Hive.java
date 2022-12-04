@@ -7,7 +7,7 @@ import spacefiller.particles.*;
 import spacefiller.spaceplants.PName;
 import spacefiller.spaceplants.Params;
 import spacefiller.spaceplants.plants.PlantNode;
-import spacefiller.spaceplants.plants.PlantSystem;
+import spacefiller.spaceplants.plants.PlantSPSystem;
 import spacefiller.spaceplants.plants.SeedNode;
 
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class Hive {
 
   private List<PlantNode> capturedFood;
 
-  private PlantSystem plantSystem;
+  private PlantSPSystem plantSystem;
   private BeeSystem beeSystem;
   private float lightLevel;
   private BeeColor color;
@@ -52,7 +52,7 @@ public class Hive {
               BeeColor color,
               Vector position,
               ParticleSystem system,
-              PlantSystem plantSystem,
+              PlantSPSystem plantSystem,
               BeeSystem beeSystem,
               int hiveSize,
               boolean spikes) {

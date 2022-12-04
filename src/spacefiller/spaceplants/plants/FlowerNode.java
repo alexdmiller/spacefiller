@@ -1,7 +1,6 @@
 package spacefiller.spaceplants.plants;
 
 import processing.core.PApplet;
-import processing.core.PConstants;
 import processing.core.PGraphics;
 import spacefiller.math.Rnd;
 import spacefiller.spaceplants.PName;
@@ -16,7 +15,7 @@ import static processing.core.PConstants.RGB;
 public class FlowerNode extends PlantNode {
   private int detachedTimer;
 
-  public FlowerNode(Particle particle, PlantDNA dna, PlantSystem plantSystem, int depthCounter) {
+  public FlowerNode(Particle particle, PlantDNA dna, PlantSPSystem plantSystem, int depthCounter) {
     super(particle, dna, plantSystem, depthCounter);
     particle.setUserData("plant_node", this);
   }

@@ -19,6 +19,11 @@ public class Union implements FloatField2 {
     this.operands = operands;
   }
 
+  public Union(List<FloatField2> operands, float smooth) {
+    this.operands = operands.toArray(new FloatField2[] {});
+    this.k = smooth;
+  }
+
   @Override
   public float get(float x, float y) {
     float res = 0;
