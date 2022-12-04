@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hive {
-
   private int hiveIndex;
   private Vector position;
   private float radius = 0;

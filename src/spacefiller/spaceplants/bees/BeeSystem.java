@@ -49,7 +49,6 @@ public class BeeSystem implements SPSystem {
   private float lightLevel;
 
   private FlockParticles flockParticles;
-  private FlockParticles sleepFlock;
 
   private BeeColor[] colors = new BeeColor[] {
       new BeeColor(0xffffff99, 0xff666666, 0xffffff99, 0xff444444),
@@ -71,13 +70,10 @@ public class BeeSystem implements SPSystem {
     beeDeletionQueue = new ArrayList<>();
     beeEntities = Collections.synchronizedList(new ArrayList<>());
 
-    flockParticles = new FlockParticles().setParameters(ASLEEP_PARAMS);
+    flockParticles = new FlockParticles().setParameters(AWAKE_PARAMS);
     flockParticles.setTeamMode(FlockParticles.TeamMode.ALL);
-    sleepFlock = new FlockParticles().setParameters(ASLEEP_PARAMS);
-    sleepFlock.setTeamMode(FlockParticles.TeamMode.ALL);
 
     particleSystem.addBehavior(flockParticles, ParticleTag.BEE_FLOCK, ParticleTag.BEE);
-    particleSystem.addBehavior(sleepFlock, ParticleTag.BEE_HUDDLE, ParticleTag.BEE_HUDDLE);
     particleSystem.addBehavior(new SteerBounds(5f, 1f, 0.1f), ParticleTag.BEE);
     particleSystem.addBehavior(new ParticleFriction(0.90f), ParticleTag.BEE);
 
@@ -110,6 +106,9 @@ public class BeeSystem implements SPSystem {
 //    }
   }
 
+  public void setFlockParameters(FlockParticles.Parameters params) {
+    flockParticles.setParameters(params);
+  }
 
   public void createBee(Vector position, Hive hive) {
     beeCreationQueue.add(new BeeEntity(particleSystem,

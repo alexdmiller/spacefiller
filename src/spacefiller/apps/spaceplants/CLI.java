@@ -210,6 +210,19 @@ public class CLI extends PApplet {
 
       if (config.hives != null) {
         beeSystem = new BeeSystem(particleSystem, plantSystem, config.hives.globalRepelThreshold);
+        if (config.hives.flocking != null) {
+          Flocking flocking = config.hives.flocking;
+          beeSystem.setFlockParameters(new FlockParticles.Parameters(
+              flocking.separationWeight,
+              flocking.alignmentWeight,
+              flocking.cohesionWeight,
+              flocking.alignmentThreshold ,
+              flocking.cohesionThreshold ,
+              flocking.desiredThreshold ,
+              flocking.maxSpeed,
+              flocking.maxForce
+          ));
+        }
         systems.add(beeSystem);
         Params.set(PName.MAX_BEES_CREATED, config.hives.beesPerHive);
         Params.set(PName.STARTING_BABIES_PER_HIVE, config.hives.startingBeesPerHive);

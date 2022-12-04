@@ -131,7 +131,8 @@ class Hives {
   @JsonProperty("colors")
   public HiveColor[] colors;
   @JsonProperty("line_thickness")
-  public float lineThickness;
+  public float lineThickness = 2;
+  public Flocking flocking = new Flocking();
 }
 
 class HiveColor {
@@ -139,6 +140,25 @@ class HiveColor {
   public long hiveColor;
   @JsonProperty("bee_color")
   public long beeColor;
+}
+
+class Flocking {
+  @JsonProperty("separation_weight")
+  public float separationWeight = 1;
+  @JsonProperty("alignment_weight")
+  public float alignmentWeight = 2;
+  @JsonProperty("cohesion_weight")
+  public float cohesionWeight = 1;
+  @JsonProperty("alignment_threshold")
+  public float alignmentThreshold = 20;
+  @JsonProperty("cohesion_threshold")
+  public float cohesionThreshold = 20;
+  @JsonProperty("desired_threshold")
+  public float desiredThreshold = 17;
+  @JsonProperty("max_speed")
+  public float maxSpeed = 2f;
+  @JsonProperty("max_force")
+  public float maxForce = 0.1f;
 }
 
 class Dust {
