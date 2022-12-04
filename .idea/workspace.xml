@@ -9,31 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2cb381b-660e-4513-bab4-010ac84200e2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/spacefiller/math/sdf/Circle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/spacefiller/math/sdf/FieldVisualizer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/spacefiller/math/sdf/Floor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/spacefiller/math/sdf/NoiseDistort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/spacefiller/math/sdf/Normalize.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/spacefiller/math/sdf/Union.java" afterDir="false" />
+    <list default="true" id="b2cb381b-660e-4513-bab4-010ac84200e2" name="Changes" comment="h">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/CLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/CLI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/EP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/EP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/Poster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/Poster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/SDFText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/SDFText.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/math/FloatField2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/math/sdf/FloatField2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/math/FloatField3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/math/sdf/FloatField3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/math/Metaballs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/math/Metaballs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/math/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/math/Vector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/particles/behaviors/CircleBounds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/particles/behaviors/CircleBounds.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/particles/behaviors/FlockParticles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/particles/behaviors/FlockParticles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/particles/behaviors/FollowGradient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/particles/behaviors/FollowGradient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/spaceplants/bees/BeeSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/spaceplants/bees/BeeSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/spaceplants/bees/Hive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/spaceplants/bees/Hive.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/spaceplants/dust/DustSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/spaceplants/dust/DustSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/spaceplants/plants/PlantNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/spaceplants/plants/PlantNode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

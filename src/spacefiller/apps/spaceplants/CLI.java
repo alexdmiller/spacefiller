@@ -68,6 +68,7 @@ public class CLI extends PApplet {
   private FloatField2 field = (x, y) -> 0.5f;
 
   private FloatField2 circle;
+  private FloatField2 plantCircleField;
 
   @Override
   public void settings() {
@@ -91,8 +92,22 @@ public class CLI extends PApplet {
         new Floor(new NoiseDistort(new Union(planets))));
 
 
+    FloatField2[] plantCircles = new FloatField2[10];
+    for (int i = 0; i < 10; i++) {
+      plantCircles[i] = new Circle(
+          (float) (config.simSize.width * Math.random()),
+          (float) (config.simSize.height * Math.random()),
+          (float) (Math.random() * 150 + 10));
+    }
+    plantCircleField = new Normalize(
+        config.simSize.width,
+        config.simSize.height,
+        20,
+        new Floor(new NoiseDistort(new Union(plantCircles))));
+
+
     Utils.init(this);
-    noSmooth();
+    // noSmooth();
 
 
     hint(DISABLE_TEXTURE_MIPMAPS);
@@ -126,14 +141,14 @@ public class CLI extends PApplet {
       readConfig();
 
       canvas = createGraphics(config.simSize.width, config.simSize.height, P2D);
-      canvas.noSmooth();
-      canvas.hint(DISABLE_TEXTURE_MIPMAPS);
-      ((PGraphicsOpenGL)canvas).textureSampling(3);
-
+//      canvas.noSmooth();
+//      canvas.hint(DISABLE_TEXTURE_MIPMAPS);
+//      ((PGraphicsOpenGL)canvas).textureSampling(3);
+//
       finalRender = createGraphics(config.renderSize.width, config.renderSize.height, P2D);
-      finalRender.noSmooth();
-      finalRender.hint(DISABLE_TEXTURE_MIPMAPS);
-      ((PGraphicsOpenGL)finalRender).textureSampling(3);
+//      finalRender.noSmooth();
+//      finalRender.hint(DISABLE_TEXTURE_MIPMAPS);
+//      ((PGraphicsOpenGL)finalRender).textureSampling(3);
 
       systems.clear();
       particleSystem = new ParticleSystem(new Bounds(canvas.width, canvas.height), config.maxParticles, 15);
@@ -163,7 +178,7 @@ public class CLI extends PApplet {
 
       particleSystem.addBehavior(new FollowGradient(circle, 0.5f, true), ParticleTag.DUST);
       particleSystem.addBehavior(new FollowGradient(circle, 0.5f, true), ParticleTag.HIVE);
-//      particleSystem.addBehavior(new FollowGradient(circle, 0.5f, true), ParticleTag.PLANT);
+      particleSystem.addBehavior(new FollowGradient(plantCircleField, 0.5f, true), ParticleTag.PLANT);
 
 
       particleSystem.addBehavior(new SoftBounds(10, 5, 3));
@@ -270,7 +285,7 @@ public class CLI extends PApplet {
         drawSimulation();
       }
     }
-    image(canvas, 0, 0, width, height);
+    image(canvas, 0, 0, canvas.width, canvas.height);
   }
 
   private void stepSimulation() {
@@ -303,16 +318,16 @@ public class CLI extends PApplet {
 
     canvas.endDraw();
 
-    finalRender.beginDraw();
-    finalRender.clear();
-
-    finalRender.image(canvas,
-        0, 0,
-        config.renderSize.width,
-        config.renderSize.height);
-    finalRender.blendMode(PConstants.BLEND);
-
-    finalRender.endDraw();
+//    finalRender.beginDraw();
+//    finalRender.clear();
+//
+//    finalRender.image(canvas,
+//        0, 0,
+//        config.renderSize.width,
+//        config.renderSize.height);
+//    finalRender.blendMode(PConstants.BLEND);
+//
+//    finalRender.endDraw();
   }
 
   private void saveLargeFrame(String filename) {
