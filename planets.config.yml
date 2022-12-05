@@ -13,8 +13,8 @@ render_size:
 plants:
   min: 5
   max: 5
-#  min: 0
-#  max: 0
+  #  min: 0
+  #  max: 0
   types:
     - branch_chance: 0.1f
       branch_color: 0xff77BF00
@@ -64,8 +64,8 @@ hives:
   min: 130
   max: 130
   line_thickness: 1
-#  min: 0
-#  max: 0
+  #  min: 0
+  #  max: 0
   global_repel_threshold: 10
   bees_per_hive: 0
   initial_bees_per_hive: 2
@@ -78,7 +78,7 @@ hives:
     - bee_color: 0xffffff99
       hive_color: 0xffffff99
     - bee_color: 0xffffffcc
-      hi1ve_color: 0xffffffcc
+      hive_color: 0xffffffcc
 dust:
   count: 2000
   repel_threshold: 10

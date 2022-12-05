@@ -125,6 +125,8 @@ public class CLI extends PApplet {
 
         RepelParticles repelDust = new RepelParticles(config.dust.repelThreshold, 0.1f);
         particleSystem.addBehavior(repelDust, ParticleTag.DUST);
+
+        particleSystem.addBehavior(new RepelParticles(10, 0.3f), ParticleTag.DUST, ParticleTag.HIVE);
       }
 
 
@@ -320,16 +322,16 @@ public class CLI extends PApplet {
 
     canvas.endDraw();
 
-//    finalRender.beginDraw();
-//    finalRender.clear();
-//
-//    finalRender.image(canvas,
-//        0, 0,
-//        config.renderSize.width,
-//        config.renderSize.height);
-//    finalRender.blendMode(PConstants.BLEND);
-//
-//    finalRender.endDraw();
+    finalRender.beginDraw();
+    finalRender.clear();
+
+    finalRender.image(canvas,
+        0, 0,
+        config.renderSize.width,
+        config.renderSize.height);
+    finalRender.blendMode(PConstants.BLEND);
+
+    finalRender.endDraw();
   }
 
   private void saveLargeFrame(String filename) {
