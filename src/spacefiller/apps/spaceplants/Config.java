@@ -166,6 +166,9 @@ class Dust {
 
   @JsonProperty("repel_threshold")
   public float repelThreshold = 10;
+
+  @JsonProperty("repel_hive_threshold")
+  public float repelHiveThreshold = 10;
 }
 
 class CircleConstraint {

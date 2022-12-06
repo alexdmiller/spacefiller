@@ -1,44 +1,70 @@
 max_frames: 2000
-render_frames: false
+render_frames: true
 render_preview: true
 max_particles: 100000
 background_on: true
 background_color: 0xff000000
 sim_size:
-  width: 540
-  height: 720
+  width: 720
+  height: 1080
 render_size:
-  width: 540
-  height: 720
+  width: 720
+  height: 1080
+plants:
+  min: 0
+  max: 10
+  types:
+    - branch_color: 0xffffffff
+      flower_color: 0xffffffff
+      connection_length: 2
+      branching_factor: 2
+      branching_falloff: 0.1
+      seed_branching_factor: 10
+      branching_factor_deviation: 2
+      max_depth: 2
+      max_depth_deviation: 3
+      branch_chance: 0
+      flower_size: 3
+      branch_thickness: 1
 hives:
-  min: 500
-  max: 500
+  min: 400
+  max: 600
   line_thickness: 1
 #  min: 0
 #  max: 0
-  global_repel_threshold: 5
-  bees_per_hive: 0
+  global_repel_threshold: 10
+  bees_per_hive: 1
   initial_bees_per_hive: 0
-  hive_size: 0
+  hive_size: 10
   hive_size_deviation: 25
   hive_flattening_force: 0.5
   hive_inner_repel_force: 0.02
   spikes: false
   colors:
-    - bee_color: 0xffffff99
+    - bee_color: 0xffffffff
       hive_color: 0xffffffff
-    - bee_color: 0xffffffcc
-      hive_color: 0xffffffff
+    - bee_color: 0xffffffff
+      hive_color: 0x00000000
+  flocking:
+    separation_weight: 1
+    alignment_weight: 1
+    cohesion_weight: 1
+    alignment_threshold: 40
+    cohesion_threshold: 40
+    desired_threshold: 10
+    max_speed: 1
+    max_force: 0.1f
 dust:
-  count: 10000
+  count: 5000
   repel_threshold: 10
+  repel_hive_threshold: 1
 planets:
-  min: 4
-  max: 4
-  min_radius: 100
-  max_radius: 200
-  repel_threshold: 40
-  attraction_threshold: 200
-  noise_amplitude: 0
+  min: 5
+  max: 8
+  min_radius: 20
+  max_radius: 300
+  repel_threshold: 100
+  attraction_threshold: 400
+  noise_amplitude: 40
   noise_scale: 0.01
   sdf_smooth: 0.1

@@ -8,7 +8,7 @@ import spacefiller.spaceplants.dust.DustSystem;
 import spacefiller.math.Vector;
 import spacefiller.particles.ParticleTag;
 import spacefiller.particles.behaviors.*;
-import spacefiller.spaceplants.plants.PlantSPSystem;
+import spacefiller.spaceplants.plants.PlantSystem;
 import spacefiller.particles.ParticleSystem;
 
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public class Simulation {
 
   private List<SPSystem> SPSystems;
   private ParticleSystem particleSystem;
-  private PlantSPSystem plantSystem;
+  private PlantSystem plantSystem;
   private BeeSystem beeSystem;
   private DustSystem dustSystem;
   private float lightLevel;
@@ -45,7 +45,7 @@ public class Simulation {
     return dustBounds;
   }
 
-  public PlantSPSystem getPlantSystem() {
+  public PlantSystem getPlantSystem() {
     return plantSystem;
   }
 
@@ -69,10 +69,10 @@ public class Simulation {
     this.SPSystems = new ArrayList<>();
     this.particleSystem = new ParticleSystem(width, height, 20);
 
-    this.plantSystem = new PlantSPSystem(particleSystem);
+    this.plantSystem = new PlantSystem(particleSystem);
     this.beeSystem = new BeeSystem(particleSystem, plantSystem);
 
-    this.dustSystem = new DustSystem(particleSystem, width, height);
+    this.dustSystem = new DustSystem(particleSystem);
 
     SPSystems.add(dustSystem);
     SPSystems.add(plantSystem);

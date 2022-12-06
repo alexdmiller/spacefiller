@@ -14,7 +14,7 @@ import static spacefiller.particles.ParticleTag.SEED;
 public class SeedNode extends PlantNode {
   private boolean planted = false;
 
-  public SeedNode(Particle particle, PlantDNA dna, PlantSPSystem plantSystem, int depthCounter) {
+  public SeedNode(Particle particle, PlantDNA dna, PlantSystem plantSystem, int depthCounter) {
     super(particle, dna, plantSystem, depthCounter);
 
     particle.removeTag(ParticleTag.PLANT);

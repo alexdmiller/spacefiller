@@ -9,7 +9,7 @@ import spacefiller.particles.Particle;
 import spacefiller.particles.ParticleSystem;
 
 public class BranchNode extends PlantNode {
-  public BranchNode(Particle node, PlantDNA dna, PlantSPSystem plantSystem, int depthCounter) {
+  public BranchNode(Particle node, PlantDNA dna, PlantSystem plantSystem, int depthCounter) {
     super(node, dna, plantSystem, depthCounter);
     growthCounter = (int) Math.round((dna.getBranchingFactor() + (Rnd.random.nextDouble() * 0.5) * dna.getBranchingFactorDeviation()) + dna.getBranchingFactorFalloff() * depthCounter);
   }

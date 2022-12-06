@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 
 public class PlanetSystem implements SPSystem {
   private List<Planet> planetList;
+  private FloatField2 rawSdf;
   private Wrapper finalSdfOutput;
   private ParticleSystem particleSystem;
   private ParticleSystem planetParticleSystem;
@@ -66,10 +67,10 @@ public class PlanetSystem implements SPSystem {
 
   private void recomputeSdf() {
     List<FloatField2> circles = planetList.stream().map(planet -> planet.sdf).collect(Collectors.toList());
-    FloatField2 sdf = new Union(circles, sdfSmooth);
-    sdf = new NoiseDistort(sdf, noiseAmplitude, noiseScale);
-    sdf = new Floor(sdf);
-//    sdf = new Normalize(planetParticleSystem.getBounds(), 10, sdf);
+    rawSdf = new Union(circles, sdfSmooth);
+    rawSdf = new NoiseDistort(rawSdf, noiseAmplitude, noiseScale);
+    FloatField2 sdf = new Floor(rawSdf);
+    sdf = new Normalize(planetParticleSystem.getBounds(), 10, sdf);
     finalSdfOutput.setField(sdf);
   }
 
@@ -86,5 +87,17 @@ public class PlanetSystem implements SPSystem {
 //    FieldVisualizer.drawField(finalSdfOutput, graphics, 10, 0, 1);
 //    planetParticleSystem.setDebugDraw(true);
     planetParticleSystem.draw(graphics);
+  }
+
+  public FloatField2 getSdf() {
+    return finalSdfOutput;
+  }
+
+  public FloatField2 getRawSdf() {
+    return rawSdf;
+  }
+
+  public void setRawSdf(FloatField2 rawSdf) {
+    this.rawSdf = rawSdf;
   }
 }

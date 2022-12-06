@@ -2,6 +2,7 @@ package spacefiller.math.sdf;
 
 import processing.core.PGraphics;
 import spacefiller.math.Vector;
+import spacefiller.particles.Bounds;
 
 public interface FloatField2 {
   float GRADIENT_OFFSET = 1;
@@ -15,11 +16,11 @@ public interface FloatField2 {
     return new Vector(left - right, top - bottom);
   }
 
-  static void debugDraw(FloatField2 field, float resolution, PGraphics canvas) {
+  static void debugDraw(FloatField2 field, float resolution, PGraphics canvas, float max) {
     canvas.noStroke();
     for (int y = 0; y < canvas.height; y += resolution) {
       for (int x = 0; x < canvas.width; x += resolution) {
-        canvas.fill(0, 0, field.get(x, y) * 255);
+        canvas.fill(0, 0, field.get(x, y) / max * 255);
         canvas.rect(
             x - resolution / 2,
             y - resolution / 2,
@@ -27,6 +28,16 @@ public interface FloatField2 {
             resolution);
       }
     }
+  }
+
+  static Vector sampleRandomPoint(Bounds bounds, FloatField2 field, float threshold) {
+    for (int i = 0; i < 10; i++) {
+      Vector candidate = bounds.getRandomPointInside(2);
+      if (field.get(candidate.x, candidate.y) <= threshold) {
+        return candidate;
+      }
+    }
+    return null;
   }
 
   float get(float x, float y);

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class PlantSPSystem implements SPSystem {
+public class PlantSystem implements SPSystem {
   // the maximum nodes allowed in the system; otherwise it gets too slow.
   private static final int MAX_PLANT_NODES = 10000;
   private final SymmetricRepel symmetricRepel;
@@ -35,7 +35,7 @@ public class PlantSPSystem implements SPSystem {
     return symmetricRepel;
   }
 
-  public PlantSPSystem(ParticleSystem particleSystem) {
+  public PlantSystem(ParticleSystem particleSystem) {
     this.particleSystem = particleSystem;
 
     symmetricRepel = new SymmetricRepel(15, 1f);

@@ -9,6 +9,8 @@ import processing.opengl.PGraphicsOpenGL;
 import processing.opengl.PJOGL;
 import spacefiller.Utils;
 import spacefiller.math.Rnd;
+import spacefiller.math.Vector;
+import spacefiller.math.sdf.*;
 import spacefiller.particles.Bounds;
 import spacefiller.spaceplants.PName;
 import spacefiller.spaceplants.Params;
@@ -22,17 +24,20 @@ import spacefiller.particles.ParticleTag;
 import spacefiller.particles.behaviors.*;
 import spacefiller.spaceplants.planets.PlanetSystem;
 import spacefiller.spaceplants.plants.PlantDNA;
-import spacefiller.spaceplants.plants.PlantSPSystem;
+import spacefiller.spaceplants.plants.PlantSystem;
 
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static spacefiller.math.sdf.FloatField2.sampleRandomPoint;
+
 public class CLI extends PApplet {
   private static String outputPath;
   private static String configPath;
   private static Config config;
+
 
   public static void main(String[] args) {
     outputPath = args[0];
@@ -55,7 +60,7 @@ public class CLI extends PApplet {
   private ParticleSystem particleSystem;
   private PGraphics canvas;
   private PGraphics finalRender;
-  private PlantSPSystem plantSystem;
+  private PlantSystem plantSystem;
   private SymmetricRepel symmetricRepel;
   private DustSystem dustSystem;
   private BeeSystem beeSystem;
@@ -63,6 +68,9 @@ public class CLI extends PApplet {
   private List<SPSystem> systems = new ArrayList<>();
   private int localFrameCount = 0;
   private int nextFrameId = 0;
+  private int numHives;
+
+  private FloatField2 repelField;
 
   @Override
   public void settings() {
@@ -119,20 +127,8 @@ public class CLI extends PApplet {
       systems.clear();
       particleSystem = new ParticleSystem(new Bounds(canvas.width, canvas.height), config.maxParticles, 15);
 
-      if (config.dust != null) {
-        dustSystem = new DustSystem(particleSystem, config.dust.count, canvas.width, canvas.height);
-        systems.add(dustSystem);
-
-        RepelParticles repelDust = new RepelParticles(config.dust.repelThreshold, 0.1f);
-        particleSystem.addBehavior(repelDust, ParticleTag.DUST);
-
-        particleSystem.addBehavior(new RepelParticles(10, 0.3f), ParticleTag.DUST, ParticleTag.HIVE);
-      }
-
-
       RepelParticles repelBees = new RepelParticles(5, 0.1f);
       particleSystem.addBehavior(repelBees, ParticleTag.BEE);
-
 
       if (config.circleConstraints != null) {
         for (CircleConstraint constraint : config.circleConstraints) {
@@ -163,10 +159,33 @@ public class CLI extends PApplet {
           planetSystem.createPlanet(
               (float) (Math.random() * (planets.maxRadius - planets.minRadius) + planets.minRadius));
         }
+
+        repelField = new NoiseDistort(planetSystem.getRawSdf(), 100, 0.01f);
+        repelField = new MapToRange(repelField, -100, 0, 5, 15);
+      }
+
+      if (config.dust != null) {
+        dustSystem = new DustSystem(particleSystem);
+        systems.add(dustSystem);
+
+        if (repelField != null) {
+          particleSystem.addBehavior(
+              new RepelParticles(15, 0.5f, false), ParticleTag.DUST);
+        } else {
+          particleSystem.addBehavior(
+              new RepelParticles(config.dust.repelThreshold, 0.1f, false), ParticleTag.DUST);
+        }
+
+        particleSystem.addBehavior(
+            new RepelParticles(config.dust.repelHiveThreshold, 0.3f), ParticleTag.DUST, ParticleTag.HIVE);
+
+        particleSystem.addBehavior(
+            new RepelParticles(15, 1f), ParticleTag.DUST, ParticleTag.PLANT);
+
       }
 
       if (config.plants != null) {
-        plantSystem = new PlantSPSystem(particleSystem);
+        plantSystem = new PlantSystem(particleSystem);
         systems.add(plantSystem);
 
         int numPlants = (int) Math.round(
@@ -238,16 +257,9 @@ public class CLI extends PApplet {
           beeSystem.setColors(colors.toArray(new BeeColor[colors.size()]));
         }
 
-        int numHives = (int) Math.round(
+        numHives = (int) Math.round(
             config.hives.min + Rnd.random.nextDouble() * (config.hives.max - config.hives.min));
-        for (int i = 0; i < numHives; i++) {
-          int size = (int) (config.hives.hiveSize + Rnd.random.nextDouble() * config.hives.hiveSizeDeviation);
-          Hive hive = beeSystem.createHive(
-              particleSystem.getBounds().getRandomPointInside(2), size, config.hives.spikes);
-          hive.setFlatteningForce(config.hives.hiveFlatteningForce);
-          hive.setInnerRepelForce(config.hives.hiveInnerRepelForce);
-          hive.setLineThickness(config.hives.lineThickness);
-        }
+
       }
     } catch (IOException e) {
       e.printStackTrace();
@@ -286,6 +298,32 @@ public class CLI extends PApplet {
   }
 
   private void stepSimulation() {
+    // TODO: make sure this works when planets aren't present
+
+    if (beeSystem.getHives().size() < numHives) {
+      for (int i = 0; i < 1; i++) {
+        int size = (int) (config.hives.hiveSize + Rnd.random.nextDouble() * config.hives.hiveSizeDeviation);
+        Vector point = sampleRandomPoint(particleSystem.getBounds(), planetSystem.getSdf(), 0);
+        // Vector point = particleSystem.getBounds().getRandomPointInside(2);
+        if (point != null) {
+          Hive hive = beeSystem.createHive(
+              point, size, Math.random() < 0.1f);
+          hive.setFlatteningForce(config.hives.hiveFlatteningForce);
+          hive.setInnerRepelForce(config.hives.hiveInnerRepelForce);
+          hive.setLineThickness(config.hives.lineThickness);
+        }
+      }
+    }
+
+    if (dustSystem.getNumDust() < config.dust.count) {
+      for (int i = 0; i < 50; i++) {
+        Vector point = sampleRandomPoint(particleSystem.getBounds(), planetSystem.getSdf(), 0);
+        if (point != null) {
+          dustSystem.createDust(point);
+        }
+      }
+    }
+
     systems.forEach((system -> system.update()));
     particleSystem.update();
     if (planetSystem != null) {
@@ -305,7 +343,7 @@ public class CLI extends PApplet {
       planetSystem.draw(canvas);
     }
 
-    // drawField(circle, canvas, 5, 0, 1);
+//    debugDraw(repelField, 5, canvas, 15);
 
     canvas.noStroke();
     canvas.fill(255);

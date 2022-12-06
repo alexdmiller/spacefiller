@@ -1,21 +1,29 @@
 package spacefiller.particles.behaviors;
 
 import spacefiller.math.Vector;
+import spacefiller.math.sdf.FloatField2;
 import spacefiller.particles.Particle;
 
 import java.util.stream.Stream;
 
 public class RepelParticles extends AsymmetricParticleBehavior {
-  private float repelThreshold;
+//  private float repelThreshold;
   private float repelStrength;
   private boolean teams = false;
   private boolean respectRadius = false;
+  private FloatField2 repelThreshold;
 
   public RepelParticles(float repelThreshold, float repelStrength) {
     this(repelThreshold, repelStrength, false);
   }
 
   public RepelParticles(float repelThreshold, float repelStrength, boolean respectRadius) {
+    this.repelThreshold = (x, y) -> repelThreshold;
+    this.repelStrength = repelStrength;
+    this.respectRadius = respectRadius;
+  }
+
+  public RepelParticles(FloatField2 repelThreshold, float repelStrength, boolean respectRadius) {
     this.repelThreshold = repelThreshold;
     this.repelStrength = repelStrength;
     this.respectRadius = respectRadius;
@@ -28,7 +36,9 @@ public class RepelParticles extends AsymmetricParticleBehavior {
         Vector delta = Vector.sub(particle.getPosition(), p2.getPosition());
         float mag = delta.magnitude();
 
-        float localRepelThreshold = repelThreshold;
+
+        float localRepelThreshold = repelThreshold.get(
+            particle.getPosition().x, particle.getPosition().y);
         if (respectRadius) {
           localRepelThreshold += particle.getRadius() + p2.getRadius();
         }
@@ -40,14 +50,6 @@ public class RepelParticles extends AsymmetricParticleBehavior {
         }
       }
     });
-  }
-
-  public float getRepelThreshold() {
-    return repelThreshold;
-  }
-
-  public void setRepelThreshold(float repelThreshold) {
-    this.repelThreshold = repelThreshold;
   }
 
   public float getRepelStrength() {

@@ -6,7 +6,7 @@ import spacefiller.math.Vector;
 import spacefiller.particles.ParticleSystem;
 import spacefiller.particles.ParticleTag;
 import spacefiller.particles.behaviors.*;
-import spacefiller.spaceplants.plants.PlantSPSystem;
+import spacefiller.spaceplants.plants.PlantSystem;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,7 +38,7 @@ public class BeeSystem implements SPSystem {
 
   // underlying particle system for basic particle physics
   private ParticleSystem particleSystem;
-  private PlantSPSystem plantSystem;
+  private PlantSystem plantSystem;
 
   private List<BeeEntity> beeEntities;
   private List<BeeEntity> beeCreationQueue;
@@ -55,11 +55,11 @@ public class BeeSystem implements SPSystem {
       new BeeColor(0xffffffcc, 0xff999999, 0xffffffcc, 0xff555555),
   };
 
-  public BeeSystem(ParticleSystem particleSystem, PlantSPSystem plantSystem) {
+  public BeeSystem(ParticleSystem particleSystem, PlantSystem plantSystem) {
     this(particleSystem, plantSystem, 10);
   }
 
-  public BeeSystem(ParticleSystem particleSystem, PlantSPSystem plantSystem, float globalHiveRepelThreshold) {
+  public BeeSystem(ParticleSystem particleSystem, PlantSystem plantSystem, float globalHiveRepelThreshold) {
     this.particleSystem = particleSystem;
     this.plantSystem = plantSystem;
 

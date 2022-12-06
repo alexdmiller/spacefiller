@@ -15,7 +15,7 @@ import spacefiller.particles.behaviors.RepelParticles;
 import spacefiller.particles.behaviors.SoftBounds;
 import spacefiller.particles.behaviors.SymmetricRepel;
 import spacefiller.spaceplants.plants.PlantDNA;
-import spacefiller.spaceplants.plants.PlantSPSystem;
+import spacefiller.spaceplants.plants.PlantSystem;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -42,7 +42,7 @@ public class SDFText extends PApplet {
   private int[] map;
   private ParticleSystem particleSystem;
   private PGraphics finalRender;
-  private PlantSPSystem plantSystem;
+  private PlantSystem plantSystem;
   private SymmetricRepel symmetricRepel;
   private DustSystem dustSystem;
   private BeeSystem beeSystem;
@@ -121,7 +121,7 @@ public class SDFText extends PApplet {
     image(image, 0, 0);
 
     particleSystem = new ParticleSystem(canvas.width, canvas.height,15);
-    dustSystem = new DustSystem(particleSystem, 250, canvas.width, canvas.height);
+    dustSystem = new DustSystem(particleSystem);
     beeSystem = new BeeSystem(particleSystem, plantSystem);
 
     RepelParticles repelDust = new RepelParticles(10, 0.1f);
@@ -131,7 +131,7 @@ public class SDFText extends PApplet {
     particleSystem.addBehavior(repelBees, ParticleTag.BEE);
 
     particleSystem.addBehavior(new SoftBounds(10, 5, 3));
-    plantSystem = new PlantSPSystem(particleSystem);
+    plantSystem = new PlantSystem(particleSystem);
 
     particleSystem.addBehavior(new FollowGradient(field, 1f, true), ParticleTag.HIVE);
     particleSystem.addBehavior(new FollowGradient(field, 1f, true), ParticleTag.PLANT);

@@ -102,8 +102,8 @@ public class BeeEntity {
   }
 
   public void draw(PGraphics graphics) {
-      graphics.stroke(color.getWormColor());
-    graphics.strokeWeight(1);
+    graphics.stroke(color.getWormColor());
+    graphics.strokeWeight(2);
     graphics.noFill();
 
     graphics.blendMode(PConstants.BLEND);
