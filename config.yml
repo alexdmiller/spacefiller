@@ -1,5 +1,5 @@
 max_frames: 2000
-render_frames: true
+render_frames: false
 render_preview: true
 max_particles: 100000
 background_on: true
@@ -46,7 +46,7 @@ hives:
     - bee_color: 0xffffffff
       hive_color: 0x00000000
   flocking:
-    separation_weight: 1
+    separation_weight: 1.5
     alignment_weight: 1
     cohesion_weight: 1
     alignment_threshold: 40

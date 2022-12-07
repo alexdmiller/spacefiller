@@ -127,9 +127,6 @@ public class CLI extends PApplet {
       systems.clear();
       particleSystem = new ParticleSystem(new Bounds(canvas.width, canvas.height), config.maxParticles, 15);
 
-      RepelParticles repelBees = new RepelParticles(5, 0.1f);
-      particleSystem.addBehavior(repelBees, ParticleTag.BEE);
-
       if (config.circleConstraints != null) {
         for (CircleConstraint constraint : config.circleConstraints) {
           particleSystem.addBehavior(
