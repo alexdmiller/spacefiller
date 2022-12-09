@@ -21,6 +21,14 @@ public class Circle implements FloatField2 {
     this.position.set(position);
   }
 
+  public void setRadius(float radius) {
+    this.radius = radius;
+  }
+
+  public float getRadius() {
+    return radius;
+  }
+
   @Override
   public float get(float x, float y) {
     return position.dist(x, y) - radius;

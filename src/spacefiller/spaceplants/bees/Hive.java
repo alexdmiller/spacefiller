@@ -71,6 +71,11 @@ public class Hive {
 
     particles.forEach(p -> {
       p.addTag(ParticleTag.HIVE);
+      if (color.getHiveColor() == 0) {
+        p.addTag(ParticleTag.HIVE_DARK);
+      } else {
+        p.addTag(ParticleTag.HIVE_LIGHT);
+      }
       p.addTag(ParticleTag.GLOBAL_REPEL);
     });
 
@@ -254,10 +259,22 @@ public class Hive {
         newParticle.addTag(ParticleTag.HIVE);
         newParticle.addTag(ParticleTag.GLOBAL_REPEL);
 
+        // TODO: do this in a more general way
+        if (color.getHiveColor() == 0) {
+          newParticle.addTag(ParticleTag.HIVE_DARK);
+        } else {
+          newParticle.addTag(ParticleTag.HIVE_LIGHT);
+        }
+
         // add outer particle
         if (spikes) {
           Particle p = particleSystem.createParticle(Vector.add(center.getPosition(), Vector.mult(tangent, 4)));
           p.addTag(ParticleTag.HIVE);
+          if (color.getHiveColor() == 0) {
+            newParticle.addTag(ParticleTag.HIVE_DARK);
+          } else {
+            newParticle.addTag(ParticleTag.HIVE_LIGHT);
+          }
           p.addTag(ParticleTag.GLOBAL_REPEL);
           outerSprings.add(particleSystem.createSpring(newParticle, p, SPRING_LENGTH, SPRING_K));
           outerParticles.add(p);

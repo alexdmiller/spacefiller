@@ -79,7 +79,7 @@ public class BeeSystem implements SPSystem {
 
     // TODO: why is this so different from the other version of repel?
     // TODO: create LocalEffect that doesn't take any neighbors (for steering and particle friction)
-    // particleSystem.addBehavior(new SymmetricRepel(5, 1), ParticleTag.BEE);
+    particleSystem.addBehavior(new SymmetricRepel(2, 1), ParticleTag.BEE);
     particleSystem.addBehavior(new RepelParticles(10, 0.8f), ParticleTag.BEE, ParticleTag.PLANT);
 
     //particleSystem.addBehavior(new RepelParticles(20, 0.4f), ParticleTag.BEE_FLOCK, ParticleTag.HIVE);
@@ -188,11 +188,21 @@ public class BeeSystem implements SPSystem {
     return lightLevel;
   }
 
-  public Hive createHive(Vector safePoint, int hiveSize, boolean spikes) {
+  public Hive createHive(
+      Vector safePoint,
+      int hiveSize,
+      boolean spikes,
+      ParticleTag type) {
+    BeeColor color = null;
+    if (type == ParticleTag.HIVE_LIGHT) {
+      color = colors[0];
+    } else {
+      color = colors[1];
+    }
     synchronized (hives) {
       Hive hive = new Hive(
           hives.size(),
-          colors[hives.size() % colors.length],
+          color,
           safePoint,
           particleSystem,
           plantSystem,

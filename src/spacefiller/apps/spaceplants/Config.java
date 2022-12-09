@@ -1,10 +1,7 @@
 package spacefiller.apps.spaceplants;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import spacefiller.math.Rnd;
 import spacefiller.particles.ParticleTag;
-import spacefiller.spaceplants.PName;
-import spacefiller.spaceplants.Params;
 
 public class Config {
   @JsonProperty("max_frames")
@@ -46,7 +43,8 @@ public class Config {
   @JsonProperty("render_frames_skip")
   public int renderFramesSkip = 1;
 
-  public Planets planets;
+  @JsonProperty("planet_system")
+  public Planets planetSystem;
 }
 
 class Size {
@@ -186,14 +184,8 @@ class CircleConstraint {
 }
 
 class Planets {
-  public int min;
-  public int max;
-
-  @JsonProperty("min_radius")
-  public float minRadius = 10;
-
-  @JsonProperty("max_radius")
-  public float maxRadius = 1000;
+  @JsonProperty
+  public PlanetConfig[] planets;
 
   @JsonProperty("repel_threshold")
   public float repelThreshold = 20;
@@ -209,4 +201,13 @@ class Planets {
 
   @JsonProperty("sdf_smooth")
   public float sdfSmooth = 0.1f;
+}
+
+class PlanetConfig {
+  public ParticleTag[] tags;
+
+  @JsonProperty("min_radius")
+  public float minRadius = 10;
+  @JsonProperty("max_radius")
+  public float maxRadius = 1000;
 }

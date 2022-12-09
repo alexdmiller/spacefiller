@@ -11,18 +11,20 @@ import spacefiller.particles.behaviors.*;
 import spacefiller.spaceplants.SPSystem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class PlanetSystem implements SPSystem {
   private List<Planet> planetList;
-  private FloatField2 rawSdf;
-  private Wrapper finalSdfOutput;
   private ParticleSystem particleSystem;
   private ParticleSystem planetParticleSystem;
   private float noiseAmplitude;
   private float noiseScale;
   private float sdfSmooth;
+
+  private Map<ParticleTag, Wrapper> particleSdfs;
 
   public PlanetSystem(
       ParticleSystem particleSystem,
@@ -32,11 +34,18 @@ public class PlanetSystem implements SPSystem {
       float noiseScale,
       float sdfSmooth) {
     planetList = new ArrayList<>();
-    planetParticleSystem = new ParticleSystem(particleSystem.getBounds(), 200, 200);
+    planetParticleSystem = new ParticleSystem(particleSystem.getBounds(), 200, 400);
     this.particleSystem = particleSystem;
     this.noiseAmplitude = noiseAmplitude;
     this.noiseScale = noiseScale;
     this.sdfSmooth = sdfSmooth;
+    this.particleSdfs = new HashMap<>();
+
+    for (ParticleTag tag : ParticleTag.values()) {
+      Wrapper wrapper = new Wrapper(new FloatField2.Constant(0));
+      particleSdfs.put(tag, wrapper);
+      particleSystem.addBehavior(new FollowGradient(wrapper, 1f, true), tag);
+    }
 
 //    planetSystem = new ParticleSystem(new Bounds(canvas.width, canvas.height), config.maxParticles, 200);
 //    planetSystem.setDebugDraw(true);
@@ -46,32 +55,34 @@ public class PlanetSystem implements SPSystem {
 //      p.setRadius((float) (Math.random() * 200));
 //    }
 //
-    planetParticleSystem.addBehavior(new SoftBounds(10, 5, 3));
+    planetParticleSystem.addBehavior(new SoftBounds(10, 5, 1));
     planetParticleSystem.addBehavior(new ParticleFriction(0.95f));
     planetParticleSystem.addBehavior(new RepelParticles(repelThreshold, 2f, true));
     planetParticleSystem.addBehavior(new AttractParticles(attractThreshold, 0.0001f));
-
-    finalSdfOutput = new Wrapper();
-
-    particleSystem.addBehavior(new FollowGradient(finalSdfOutput, 1f, true), ParticleTag.DUST);
-    particleSystem.addBehavior(new FollowGradient(finalSdfOutput, 0.5f, true), ParticleTag.HIVE);
 //    particleSystem.addBehavior(new FollowGradient(finalSdfOutput, 0.5f, true), ParticleTag.PLANT);
   }
 
-  public void createPlanet(float radius) {
+  public void createPlanet(float radius, ParticleTag[] tags) {
     Vector position = planetParticleSystem.getBounds().getRandomPointInside(2);
     Planet p = new Planet(position, radius, planetParticleSystem);
+    p.addFriends(tags);
     planetList.add(p);
     recomputeSdf();
   }
 
   private void recomputeSdf() {
-    List<FloatField2> circles = planetList.stream().map(planet -> planet.sdf).collect(Collectors.toList());
-    rawSdf = new Union(circles, sdfSmooth);
-    rawSdf = new NoiseDistort(rawSdf, noiseAmplitude, noiseScale);
-    FloatField2 sdf = new Floor(rawSdf);
-    sdf = new Normalize(planetParticleSystem.getBounds(), 10, sdf);
-    finalSdfOutput.setField(sdf);
+    for (ParticleTag tag : ParticleTag.values()) {
+      List<FloatField2> circles = planetList.stream()
+          .filter(planet -> planet.isFriendly(tag))
+          .map(planet -> planet.sdf).collect(Collectors.toList());
+      if (circles.size() > 0) {
+        FloatField2 sdf = new Union(circles, sdfSmooth);
+        sdf = new NoiseDistort(sdf, noiseAmplitude, noiseScale);
+        sdf = new Floor(sdf);
+        sdf = new Normalize(planetParticleSystem.getBounds(), 10, sdf);
+        particleSdfs.get(tag).setField(sdf);
+      }
+    }
   }
 
   @Override
@@ -84,20 +95,12 @@ public class PlanetSystem implements SPSystem {
 
   @Override
   public void draw(PGraphics graphics) {
-//    FieldVisualizer.drawField(finalSdfOutput, graphics, 10, 0, 1);
+//    FieldVisualizer.drawField(particleSdfs.get(ParticleTag.DUST), graphics, 10, 0, 1);
 //    planetParticleSystem.setDebugDraw(true);
     planetParticleSystem.draw(graphics);
   }
 
-  public FloatField2 getSdf() {
-    return finalSdfOutput;
-  }
-
-  public FloatField2 getRawSdf() {
-    return rawSdf;
-  }
-
-  public void setRawSdf(FloatField2 rawSdf) {
-    this.rawSdf = rawSdf;
+  public FloatField2 getSdf(ParticleTag tag) {
+    return particleSdfs.get(tag);
   }
 }

@@ -9,6 +9,7 @@ public enum ParticleTag {
   BEE,
   HEAD,
   HIVE,
+  HIVE_DARK,
   BABY,
 
   // fly traps
@@ -19,5 +20,5 @@ public enum ParticleTag {
   PLANT,
   FLOWER,
   EXCITED, DANGEROUS_MOUTH, DEAD_FLOWER, DUST, HIVE_FOOD, BECOME_TRASH, SNAKE,
-  TENDRIL, MARBLE, SEED, BEE_2;
+  TENDRIL, MARBLE, SEED, BEE_2, HIVE_LIGHT;
 }

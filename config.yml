@@ -11,9 +11,21 @@ render_size:
   width: 720
   height: 1080
 plants:
-  min: 0
-  max: 10
+  min: 10
+  max: 40
   types:
+    - branch_color: 0xffffffff
+      flower_color: 0xffffffff
+      connection_length: 5
+      branching_factor: 2
+      branching_falloff: 0.1
+      seed_branching_factor: 3
+      branching_factor_deviation: 0
+      max_depth: 2
+      max_depth_deviation: 3
+      branch_chance: 0.5
+      flower_size: 3
+      branch_thickness: 1
     - branch_color: 0xffffffff
       flower_color: 0xffffffff
       connection_length: 2
@@ -26,8 +38,20 @@ plants:
       branch_chance: 0
       flower_size: 3
       branch_thickness: 1
+    - branch_color: 0xffffffff
+      flower_color: 0xffffffff
+      connection_length: 2
+      branching_factor: 2
+      branching_falloff: 0.1
+      seed_branching_factor: 0
+      branching_factor_deviation: 2
+      max_depth: 20
+      max_depth_deviation: 3
+      branch_chance: 0
+      flower_size: 5
+      branch_thickness: 1
 hives:
-  min: 400
+  min: 500
   max: 600
   line_thickness: 1
 #  min: 0
@@ -46,25 +70,76 @@ hives:
     - bee_color: 0xffffffff
       hive_color: 0x00000000
   flocking:
-    separation_weight: 1.5
+    separation_weight: 2
     alignment_weight: 1
     cohesion_weight: 1
     alignment_threshold: 40
     cohesion_threshold: 40
-    desired_threshold: 10
+    desired_threshold: 20
     max_speed: 1
-    max_force: 0.1f
+    max_force: 0.01f
 dust:
   count: 5000
-  repel_threshold: 10
+  repel_threshold: 6
   repel_hive_threshold: 1
-planets:
-  min: 5
-  max: 8
-  min_radius: 20
-  max_radius: 300
-  repel_threshold: 100
+planet_system:
+  repel_threshold: 0
   attraction_threshold: 400
-  noise_amplitude: 40
+  noise_amplitude: 50
   noise_scale: 0.01
-  sdf_smooth: 0.1
+  sdf_smooth: 0.2
+  planets:
+    - min_radius: 150
+      max_radius: 250
+      tags: [DUST, HIVE_LIGHT, HIVE_DARK]
+    - min_radius: 100
+      max_radius: 200
+      tags: [DUST, HIVE_LIGHT, HIVE_DARK]
+
+    - min_radius: 150
+      max_radius: 250
+      tags: [DUST, HIVE_LIGHT]
+
+    - min_radius: 100
+      max_radius: 200
+      tags: [DUST, HIVE_DARK]
+    - min_radius: 50
+      max_radius: 100
+      tags: [DUST, HIVE_DARK]
+
+    - min_radius: 50
+      max_radius: 100
+      tags: [HIVE_LIGHT]
+
+    - min_radius: 50
+      max_radius: 100
+      tags: [PLANT]
+#    - min_radius: 200
+#      max_radius: 400
+#      tags: [DUST, HIVE_DARK, HIVE_LIGHT]
+#    - min_radius: 100
+#      max_radius: 300
+#      tags: [DUST, HIVE_DARK, HIVE_LIGHT]
+#    - min_radius: 100
+#      max_radius: 200
+#      tags: [DUST, HIVE, HIVE_DARK, HIVE_LIGHT]
+
+#    - min_radius: 50
+#      max_radius: 100
+#      tags: [HIVE_LIGHT]
+#    - min_radius: 50
+#      max_radius: 100
+#      tags: [HIVE_LIGHT]
+
+#    - min_radius: 30
+#      max_radius: 50
+#      tags: [HIVE_LIGHT]
+#    - min_radius: 30
+#      max_radius: 50
+#      tags: [HIVE]
+#    - min_radius: 50
+#      max_radius: 100
+#      tags: [PLANT]
+    - min_radius: 50
+      max_radius: 100
+      tags: [PLANT]

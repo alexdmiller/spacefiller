@@ -141,8 +141,8 @@ public class CLI extends PApplet {
 
       particleSystem.addBehavior(new SoftBounds(10, 5, 3));
 
-      if (config.planets != null) {
-        Planets planets = config.planets;
+      if (config.planetSystem != null) {
+        Planets planets = config.planetSystem;
         planetSystem = new PlanetSystem(
             particleSystem,
             planets.repelThreshold,
@@ -151,27 +151,21 @@ public class CLI extends PApplet {
             planets.noiseScale,
             planets.sdfSmooth);
         systems.add(planetSystem);
-        int num = (int) (Math.random() * (planets.max - planets.min) + planets.min);
-        for (int i = 0; i < num; i++) {
-          planetSystem.createPlanet(
-              (float) (Math.random() * (planets.maxRadius - planets.minRadius) + planets.minRadius));
-        }
 
-        repelField = new NoiseDistort(planetSystem.getRawSdf(), 100, 0.01f);
-        repelField = new MapToRange(repelField, -100, 0, 5, 15);
+
+        for (PlanetConfig config : planets.planets) {
+          planetSystem.createPlanet(
+              (float) (Math.random() * (config.maxRadius - config.minRadius) + config.minRadius),
+              config.tags);
+        }
       }
 
       if (config.dust != null) {
         dustSystem = new DustSystem(particleSystem);
         systems.add(dustSystem);
 
-        if (repelField != null) {
-          particleSystem.addBehavior(
-              new RepelParticles(15, 0.5f, false), ParticleTag.DUST);
-        } else {
-          particleSystem.addBehavior(
-              new RepelParticles(config.dust.repelThreshold, 0.1f, false), ParticleTag.DUST);
-        }
+        particleSystem.addBehavior(
+            new RepelParticles(config.dust.repelThreshold, 0.1f, false), ParticleTag.DUST);
 
         particleSystem.addBehavior(
             new RepelParticles(config.dust.repelHiveThreshold, 0.3f), ParticleTag.DUST, ParticleTag.HIVE);
@@ -294,29 +288,46 @@ public class CLI extends PApplet {
     image(canvas, 0, 0, width, height);
   }
 
+  private Vector sampleRandomPoint(Bounds bounds, FloatField2 field, float threshold) {
+    for (int i = 0; i < 10; i++) {
+      Vector candidate = FloatField2.sampleRandomPoint(bounds, field, threshold);
+      if (candidate != null && particleSystem.getDensity(candidate) < 0.05) {
+        return candidate;
+      }
+    }
+    return null;
+  }
+
   private void stepSimulation() {
     // TODO: make sure this works when planets aren't present
 
-    if (beeSystem.getHives().size() < numHives) {
-      for (int i = 0; i < 1; i++) {
-        int size = (int) (config.hives.hiveSize + Rnd.random.nextDouble() * config.hives.hiveSizeDeviation);
-        Vector point = sampleRandomPoint(particleSystem.getBounds(), planetSystem.getSdf(), 0);
-        // Vector point = particleSystem.getBounds().getRandomPointInside(2);
-        if (point != null) {
-          Hive hive = beeSystem.createHive(
-              point, size, Math.random() < 0.1f);
-          hive.setFlatteningForce(config.hives.hiveFlatteningForce);
-          hive.setInnerRepelForce(config.hives.hiveInnerRepelForce);
-          hive.setLineThickness(config.hives.lineThickness);
+    if (localFrameCount > 500) {
+      if (beeSystem.getHives().size() < numHives) {
+        for (int i = 0; i < 1; i++) {
+          int size = (int) (config.hives.hiveSize + Rnd.random.nextDouble() * config.hives.hiveSizeDeviation);
+          ParticleTag type = ParticleTag.HIVE_LIGHT;
+          if (Math.random() < 0.5) {
+            type = ParticleTag.HIVE_DARK;
+          }
+          Vector point = sampleRandomPoint(particleSystem.getBounds(), planetSystem.getSdf(type), 0);
+
+          if (point != null) {
+            Hive hive = beeSystem.createHive(
+                point, size, Math.random() < 0.1f, type);
+            hive.setFlatteningForce(config.hives.hiveFlatteningForce);
+            hive.setInnerRepelForce(config.hives.hiveInnerRepelForce);
+            hive.setLineThickness(config.hives.lineThickness);
+          }
+
         }
       }
-    }
 
-    if (dustSystem.getNumDust() < config.dust.count) {
-      for (int i = 0; i < 50; i++) {
-        Vector point = sampleRandomPoint(particleSystem.getBounds(), planetSystem.getSdf(), 0);
-        if (point != null) {
-          dustSystem.createDust(point);
+      if (dustSystem.getNumDust() < config.dust.count) {
+        for (int i = 0; i < 50; i++) {
+          Vector point = sampleRandomPoint(particleSystem.getBounds(), planetSystem.getSdf(ParticleTag.DUST), 0);
+          if (point != null) {
+            dustSystem.createDust(point);
+          }
         }
       }
     }
