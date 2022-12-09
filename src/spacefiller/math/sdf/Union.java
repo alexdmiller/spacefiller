@@ -15,7 +15,8 @@ public class Union implements FloatField2 {
   private FloatField2[] operands;
   private float k = 0.1f;
 
-  public Union(FloatField2... operands) {
+  public Union(float smooth, FloatField2... operands) {
+    this.k = smooth;
     this.operands = operands;
   }
 

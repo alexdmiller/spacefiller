@@ -83,6 +83,21 @@ public class PlanetSystem implements SPSystem {
         particleSdfs.get(tag).setField(sdf);
       }
     }
+
+    List<FloatField2> allCircles = planetList.stream().map(planet -> planet.sdf).collect(Collectors.toList());
+    FloatField2 sdf = new Union(allCircles, sdfSmooth);
+    sdf = new NoiseDistort(sdf, noiseAmplitude, noiseScale);
+
+    FloatField2 ring = new Add(sdf, -35);
+    ring = new Floor(ring);
+    ring = new Normalize(planetParticleSystem.getBounds(), 10, ring);
+
+
+    FloatField2 hole = new Normalize(planetParticleSystem.getBounds(), 10, new Floor(new Multiply(sdf, -1)));
+    sdf = new Union(10f, hole, ring);
+    sdf = new Add(sdf, 0.1f);
+    sdf = new Normalize(planetParticleSystem.getBounds(), 10, sdf);
+    particleSdfs.get(ParticleTag.HEAD).setField(sdf);
   }
 
   @Override
@@ -95,7 +110,7 @@ public class PlanetSystem implements SPSystem {
 
   @Override
   public void draw(PGraphics graphics) {
-//    FieldVisualizer.drawField(particleSdfs.get(ParticleTag.DUST), graphics, 10, 0, 1);
+//    FieldVisualizer.drawField(particleSdfs.get(ParticleTag.BEE), graphics, 10, 0, 1);
 //    planetParticleSystem.setDebugDraw(true);
     planetParticleSystem.draw(graphics);
   }

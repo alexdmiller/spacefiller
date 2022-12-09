@@ -49,7 +49,7 @@ public class BeeEntity {
     this.team = motherHive.getIndex();
     this.color = motherHive.getColor();
     captured = false;
-    this.beeSegments = 3;
+    this.beeSegments = 2;
 
     uid++;
 
@@ -103,7 +103,7 @@ public class BeeEntity {
 
   public void draw(PGraphics graphics) {
     graphics.stroke(color.getWormColor());
-    graphics.strokeWeight(2);
+    graphics.strokeWeight(1);
     graphics.noFill();
 
     graphics.blendMode(PConstants.BLEND);
