@@ -1,15 +1,15 @@
 max_frames: 5000
-render_frames: true
-render_preview: true
+render_frames: false
+render_preview: false
 max_particles: 100000
 background_on: true
 background_color: 0xff000000
 sim_size:
   width: 720
-  height: 1080
+  height: 960
 render_size:
-  width: 720
-  height: 1080
+  width: 5400
+  height: 7200
 plants:
   min: 10
   max: 40
@@ -57,7 +57,7 @@ hives:
 #  min: 0
 #  max: 0
   global_repel_threshold: 10
-  bees_per_hive: 1
+  bees_per_hive: 3
   initial_bees_per_hive: 0
   hive_size: 10
   hive_size_deviation: 25

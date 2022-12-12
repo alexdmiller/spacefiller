@@ -42,7 +42,10 @@ public class CLI extends PApplet {
   public static void main(String[] args) {
     outputPath = args[0];
     configPath = args[1];
-    Rnd.init(args.length == 3 ? new Random(Long.valueOf(args[2])) : new Random());
+
+    // TODO: Figure out why this doesn't work
+    // Rnd.init(args.length == 3 ? new Random(Long.valueOf(args[2])) : new Random());
+    Rnd.init(new Random());
 
     try {
       readConfig();
@@ -103,6 +106,7 @@ public class CLI extends PApplet {
         if (i % 100 == 0) {
           java.lang.System.out.println("Computed " + i + " / " + config.maxFrames + " steps");
         }
+        localFrameCount++;
       }
       drawSimulation();
       saveLargeFrame(outputPath);
@@ -139,7 +143,7 @@ public class CLI extends PApplet {
         }
       }
 
-      particleSystem.addBehavior(new SoftBounds(10, 5, 3));
+      particleSystem.addBehavior(new SoftBounds(1, 5, 3));
 
       if (config.planetSystem != null) {
         Planets planets = config.planetSystem;

@@ -49,7 +49,7 @@ public class BeeEntity {
     this.team = motherHive.getIndex();
     this.color = motherHive.getColor();
     captured = false;
-    this.beeSegments = 2;
+    this.beeSegments = 1;
 
     uid++;
 
@@ -171,7 +171,7 @@ public class BeeEntity {
   private void updateState(float lightLevel, Particle closestFlower) {
     switch (mode) {
       case BABY:
-        if (head.getLife() > particles.size() * Params.i(PName.BEE_GROWTH_TIMER) && Rnd.random.nextDouble() < 0.5) {
+        if (particles.size() < beeSegments && head.getLife() > particles.size() * Params.i(PName.BEE_GROWTH_TIMER) && Rnd.random.nextDouble() < 0.5) {
           Particle last = particles.get(particles.size() - 1);
 
           Particle next = particleSystem.createParticle(
@@ -185,15 +185,14 @@ public class BeeEntity {
           next.setUserData("bee",this);
           particles.add(next);
           springs.add(particleSystem.createSpring(last, next, 0.5f, 0.1f));
-
-          if (particles.size() == beeSegments) {
-            particles.forEach(p -> {
-              p.removeTag(ParticleTag.BABY);
-              p.addTag(ParticleTag.GLOBAL_REPEL);
-            });
-            head.addTag(ParticleTag.BEE_FLOCK);
-            mode = Mode.FLOCKING;
-          }
+        }
+        if (particles.size() >= beeSegments) {
+          particles.forEach(p -> {
+            p.removeTag(ParticleTag.BABY);
+            p.addTag(ParticleTag.GLOBAL_REPEL);
+          });
+          head.addTag(ParticleTag.BEE_FLOCK);
+          mode = Mode.FLOCKING;
         }
         break;
       case FLOCKING: {
