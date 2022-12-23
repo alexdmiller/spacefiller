@@ -68,10 +68,10 @@ public class PlanetSystem implements SPSystem {
     Planet p = new Planet(position, radius, planetParticleSystem);
     p.addFriends(tags);
     planetList.add(p);
-    recomputeSdf();
   }
 
-  private void recomputeSdf() {
+  public void recomputeSdf() {
+    System.out.println("PlanetSystem: Recomputing SDF");
     for (ParticleTag tag : ParticleTag.values()) {
       List<FloatField2> circles = planetList.stream()
           .filter(planet -> planet.isFriendly(tag))

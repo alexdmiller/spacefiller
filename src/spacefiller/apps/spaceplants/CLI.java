@@ -1,3 +1,19 @@
+/*
+
+TODO: why are plants drawn using the wrong colors?
+TODO: create frame renderer and output renderer
+preview_renderer:
+  render_size: 100, 100
+  planets: on
+frame_renderer:
+  type: TIFF
+  render_size: ...
+output_renderer:
+  type: SVG
+  render_size: ...
+TODO: experiment with planet only simulation to get the shape of planets & meta planets right
+*/
+
 package spacefiller.apps.spaceplants;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -5,6 +21,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PGraphics;
+import processing.core.PImage;
 import processing.opengl.PGraphicsOpenGL;
 import processing.opengl.PJOGL;
 import spacefiller.Utils;
@@ -25,6 +42,8 @@ import spacefiller.particles.behaviors.*;
 import spacefiller.spaceplants.planets.PlanetSystem;
 import spacefiller.spaceplants.plants.PlantDNA;
 import spacefiller.spaceplants.plants.PlantSystem;
+import spacefiller.spaceplants.rendering.PixelatedRenderer;
+import spacefiller.spaceplants.rendering.Renderer;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -61,55 +80,53 @@ public class CLI extends PApplet {
   }
 
   private ParticleSystem particleSystem;
-  private PGraphics canvas;
-  private PGraphics finalRender;
   private PlantSystem plantSystem;
-  private SymmetricRepel symmetricRepel;
   private DustSystem dustSystem;
   private BeeSystem beeSystem;
   private PlanetSystem planetSystem;
   private PlanetSystem metaPlanetSystem;
   private List<SPSystem> systems = new ArrayList<>();
   private int localFrameCount = 0;
-  private int nextFrameId = 0;
   private int numHives;
   private boolean setup;
 
-  private FloatField2 repelField;
+  private Renderer previewRenderer;
+  private Renderer finalRenderer;
 
   @Override
   public void settings() {
+    System.out.println("Settings");
     size(config.renderSize.width, config.renderSize.height, P2D);
     PJOGL.profile = 1;
   }
 
   @Override
   public void setup() {
+    System.out.println("Initializing utils");
     Utils.init(this);
 
     hint(DISABLE_TEXTURE_MIPMAPS);
     ((PGraphicsOpenGL)g).textureSampling(3);
 
+    System.out.println("Setting framerate");
     frameRate(60);
   }
 
   private void doSetup() {
+    System.out.println("Running setup");
+
     setupSimulation();
+
 //    drawSimulation();
     if (!config.renderPreview) {
       for (int i = 0; i < config.maxFrames; i++) {
         stepSimulation();
-        if (config.renderFrames && (i % config.renderFramesSkip) == 0) {
-//          drawSimulation();
-//          saveLargeFrame(outputPath + "/" + String.format("%04d", nextFrameId) + ".tif");
-          nextFrameId++;
-        }
         if (i % 100 == 0) {
           java.lang.System.out.println("Computed " + i + " / " + config.maxFrames + " steps");
         }
         localFrameCount++;
       }
-      drawSimulation();
+//      drawSimulation();
 //      saveLargeFrame(outputPath);
       exit();
     }
@@ -118,27 +135,13 @@ public class CLI extends PApplet {
 
   private void setupSimulation() {
     try {
+      System.out.println("Reading configuration");
       readConfig();
 
-      canvas = createGraphics(
-          config.simSize.width,
-          config.simSize.height,
-          SVG,
-          "/Users/alex/projects/spacefiller/output.svg");
-
-//      canvas = createGraphics(config.simSize.width, config.simSize.height, P2D);
-//      canvas.noSmooth();
-//      canvas.hint(DISABLE_TEXTURE_MIPMAPS);
-//      ((PGraphicsOpenGL)canvas).textureSampling(3);
-
-
-      finalRender = createGraphics(config.renderSize.width, config.renderSize.height, P2D);
-      finalRender.noSmooth();
-      finalRender.hint(DISABLE_TEXTURE_MIPMAPS);
-      ((PGraphicsOpenGL)finalRender).textureSampling(3);
-
       systems.clear();
-      particleSystem = new ParticleSystem(new Bounds(canvas.width, canvas.height), config.maxParticles, 15);
+
+      System.out.println("Creating particle system");
+      particleSystem = new ParticleSystem(new Bounds(config.simSize.width, config.simSize.height), config.maxParticles, 15);
 
       if (config.circleConstraints != null) {
         for (CircleConstraint constraint : config.circleConstraints) {
@@ -154,6 +157,7 @@ public class CLI extends PApplet {
 
       particleSystem.addBehavior(new SoftBounds(1, 5, 3));
 
+      System.out.println("Initializing planet system");
       if (config.planetSystem != null) {
         Planets planets = config.planetSystem;
         planetSystem = new PlanetSystem(
@@ -171,7 +175,9 @@ public class CLI extends PApplet {
               (float) (Math.random() * (config.maxRadius - config.minRadius) + config.minRadius),
               config.tags);
         }
+        planetSystem.recomputeSdf();
 
+        System.out.println("Initializing meta planet system");
         metaPlanetSystem = new PlanetSystem(
             planetSystem.getParticleSystem(),
             0,
@@ -185,8 +191,10 @@ public class CLI extends PApplet {
         metaPlanetSystem.createPlanet(400, new ParticleTag[]{ParticleTag.PLANET});
         metaPlanetSystem.createPlanet(200, new ParticleTag[]{ParticleTag.PLANET});
         metaPlanetSystem.createPlanet(200, new ParticleTag[]{ParticleTag.PLANET});
+        metaPlanetSystem.recomputeSdf();
       }
 
+      System.out.println("Initializing dust");
       if (config.dust != null) {
         dustSystem = new DustSystem(particleSystem);
         systems.add(dustSystem);
@@ -202,6 +210,7 @@ public class CLI extends PApplet {
 
       }
 
+      System.out.println("Initializing plants");
       if (config.plants != null) {
         plantSystem = new PlantSystem(particleSystem);
         systems.add(plantSystem);
@@ -247,6 +256,7 @@ public class CLI extends PApplet {
         }
       }
 
+      System.out.println("Initializing hives");
       if (config.hives != null) {
         beeSystem = new BeeSystem(particleSystem, plantSystem, config.hives.globalRepelThreshold);
         if (config.hives.flocking != null) {
@@ -277,6 +287,12 @@ public class CLI extends PApplet {
             config.hives.min + Rnd.random.nextDouble() * (config.hives.max - config.hives.min));
 
       }
+
+      System.out.println("Set up renderer");
+      previewRenderer = new PixelatedRenderer(this,
+          config.simSize.width, config.simSize.height,
+          config.renderSize.width, config.renderSize.height,
+          config.backgroundOn, (int) config.backgroundColor);
     } catch (IOException e) {
       e.printStackTrace();
       exit();
@@ -287,6 +303,15 @@ public class CLI extends PApplet {
   public void draw() {
     if (!setup) {
       doSetup();
+    }
+
+    for (int i = 0; i < 10; i++) {
+      stepSimulation();
+      localFrameCount++;
+    }
+
+    if (previewRenderer != null) {
+      image(previewRenderer.render(systems), 0, 0);
     }
 
 //    clear();
@@ -367,32 +392,8 @@ public class CLI extends PApplet {
     particleSystem.update();
   }
 
-  private void drawSimulation() {
-    canvas.beginDraw();
-//    canvas.clear();
-
-    if (config.backgroundOn) {
-      canvas.background((int) config.backgroundColor);
-    }
-
-//    debugDraw(repelField, 5, canvas, 15);
-
-    canvas.noStroke();
-    canvas.fill(255);
-
-    if (beeSystem != null) {
-      beeSystem.setLightLevel(1);
-    }
-
-    if (plantSystem != null) {
-      plantSystem.setLightLevel(1);
-    }
-
-    systems.forEach((system -> system.draw(canvas)));
-    canvas.dispose();
-    canvas.endDraw();
-
-//    finalRender.beginDraw();
+  private void saveLargeFrame(String filename) {
+//    java.lang.System.out.println("Saving " + filename);
 //    finalRender.clear();
 //
 //    finalRender.image(canvas,
@@ -401,20 +402,7 @@ public class CLI extends PApplet {
 //        config.renderSize.height);
 //    finalRender.blendMode(PConstants.BLEND);
 //
-//    finalRender.endDraw();
-  }
-
-  private void saveLargeFrame(String filename) {
-    java.lang.System.out.println("Saving " + filename);
-    finalRender.clear();
-
-    finalRender.image(canvas,
-        0, 0,
-        config.renderSize.width,
-        config.renderSize.height);
-    finalRender.blendMode(PConstants.BLEND);
-
-    finalRender.save(filename);
+//    finalRender.save(filename);
   }
 
   @Override

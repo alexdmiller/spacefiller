@@ -1,6 +1,6 @@
 max_frames: 5000
 render_frames: false
-render_preview: false
+render_preview: true
 max_particles: 100000
 background_on: true
 background_color: 0xff000000
@@ -8,8 +8,8 @@ sim_size:
   width: 1440
   height: 1920
 render_size:
-  width: 720
-  height: 960
+  width: 1440
+  height: 1920
 plants:
   min: 10
   max: 40

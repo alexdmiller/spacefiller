@@ -46,7 +46,7 @@ public class BeeSystem implements SPSystem {
 
   private List<Hive> hives;
   private List<Hive> hiveDeletionQueue;
-  private float lightLevel;
+  private float lightLevel = 1;
 
   private FlockParticles flockParticles;
 

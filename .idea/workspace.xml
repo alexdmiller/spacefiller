@@ -10,19 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2cb381b-660e-4513-bab4-010ac84200e2" name="Changes" comment="h">
-      <change afterPath="$PROJECT_DIR$/poster.config.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/spacefiller/apps/tests/SVGTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/spacefiller/spaceplants/rendering/SVGRenderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/spacefiller/spaceplants/rendering/PixelatedRenderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/spacefiller/spaceplants/rendering/Renderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spacefiller.iml" beforeDir="false" afterPath="$PROJECT_DIR$/spacefiller.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/CLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/CLI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/particles/ParticleSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/particles/ParticleSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/particles/ParticleTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/particles/ParticleTag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/particles/behaviors/FollowGradient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/particles/behaviors/FollowGradient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/particles/behaviors/SoftBounds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/particles/behaviors/SoftBounds.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/spaceplants/planets/Planet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/spaceplants/planets/Planet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spacefiller/spaceplants/bees/BeeSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/spaceplants/bees/BeeSystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spacefiller/spaceplants/planets/PlanetSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/spaceplants/planets/PlanetSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spacefiller/spaceplants/plants/PlantSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/spaceplants/plants/PlantSystem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +27,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>

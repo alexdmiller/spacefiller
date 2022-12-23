@@ -29,7 +29,7 @@ public class PlantSystem implements SPSystem {
 
   private PlantColor plantColor;
 
-  private float lightLevel;
+  private float lightLevel = 1;
 
   public SymmetricRepel getSymmetricRepel() {
     return symmetricRepel;
