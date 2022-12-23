@@ -23,10 +23,10 @@ public class SoftBounds extends LocalBehavior {
     Vector topBackLeft = getParticleSystem().getBounds().getTopBackLeft();
     Vector bottomFrontRight = getParticleSystem().getBounds().getBottomFrontRight();
 
-    applySoftBoundary(particle, particle.getPosition().x - particle.getRadius()/2 - topBackLeft.x, new Vector(1, 0));
-    applySoftBoundary(particle, bottomFrontRight.x - particle.getRadius()/2 - particle.getPosition().x, new Vector(-1, 0));
-    applySoftBoundary(particle, particle.getPosition().y - particle.getRadius()/2 - topBackLeft.y, new Vector(0, 1));
-    applySoftBoundary(particle, bottomFrontRight.y - particle.getRadius()/2 - particle.getPosition().y, new Vector(0, -1));
+    applySoftBoundary(particle, particle.getPosition().x - particle.getRadius() - topBackLeft.x, new Vector(1, 0));
+    applySoftBoundary(particle, bottomFrontRight.x - particle.getRadius() - particle.getPosition().x, new Vector(-1, 0));
+    applySoftBoundary(particle, particle.getPosition().y - particle.getRadius() - topBackLeft.y, new Vector(0, 1));
+    applySoftBoundary(particle, bottomFrontRight.y - particle.getRadius() - particle.getPosition().y, new Vector(0, -1));
   }
 
   private void applySoftBoundary(Particle p, float dist, Vector direction) {

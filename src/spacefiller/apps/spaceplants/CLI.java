@@ -68,10 +68,12 @@ public class CLI extends PApplet {
   private DustSystem dustSystem;
   private BeeSystem beeSystem;
   private PlanetSystem planetSystem;
+  private PlanetSystem metaPlanetSystem;
   private List<SPSystem> systems = new ArrayList<>();
   private int localFrameCount = 0;
   private int nextFrameId = 0;
   private int numHives;
+  private boolean setup;
 
   private FloatField2 repelField;
 
@@ -84,23 +86,22 @@ public class CLI extends PApplet {
   @Override
   public void setup() {
     Utils.init(this);
-    // noSmooth();
-
 
     hint(DISABLE_TEXTURE_MIPMAPS);
     ((PGraphicsOpenGL)g).textureSampling(3);
 
     frameRate(60);
+  }
 
+  private void doSetup() {
     setupSimulation();
-    drawSimulation();
-
+//    drawSimulation();
     if (!config.renderPreview) {
       for (int i = 0; i < config.maxFrames; i++) {
         stepSimulation();
         if (config.renderFrames && (i % config.renderFramesSkip) == 0) {
-          drawSimulation();
-          saveLargeFrame(outputPath + "/" + String.format("%04d", nextFrameId) + ".tif");
+//          drawSimulation();
+//          saveLargeFrame(outputPath + "/" + String.format("%04d", nextFrameId) + ".tif");
           nextFrameId++;
         }
         if (i % 100 == 0) {
@@ -109,20 +110,28 @@ public class CLI extends PApplet {
         localFrameCount++;
       }
       drawSimulation();
-      saveLargeFrame(outputPath);
+//      saveLargeFrame(outputPath);
       exit();
     }
+    setup = true;
   }
 
   private void setupSimulation() {
     try {
       readConfig();
 
-      canvas = createGraphics(config.simSize.width, config.simSize.height, P2D);
-      canvas.noSmooth();
-      canvas.hint(DISABLE_TEXTURE_MIPMAPS);
-      ((PGraphicsOpenGL)canvas).textureSampling(3);
-//
+      canvas = createGraphics(
+          config.simSize.width,
+          config.simSize.height,
+          SVG,
+          "/Users/alex/projects/spacefiller/output.svg");
+
+//      canvas = createGraphics(config.simSize.width, config.simSize.height, P2D);
+//      canvas.noSmooth();
+//      canvas.hint(DISABLE_TEXTURE_MIPMAPS);
+//      ((PGraphicsOpenGL)canvas).textureSampling(3);
+
+
       finalRender = createGraphics(config.renderSize.width, config.renderSize.height, P2D);
       finalRender.noSmooth();
       finalRender.hint(DISABLE_TEXTURE_MIPMAPS);
@@ -154,14 +163,28 @@ public class CLI extends PApplet {
             planets.noiseAmplitude,
             planets.noiseScale,
             planets.sdfSmooth);
+        planetSystem.getParticleSystem().setDebugColor(0xffffffff);
         systems.add(planetSystem);
-
 
         for (PlanetConfig config : planets.planets) {
           planetSystem.createPlanet(
               (float) (Math.random() * (config.maxRadius - config.minRadius) + config.minRadius),
               config.tags);
         }
+
+        metaPlanetSystem = new PlanetSystem(
+            planetSystem.getParticleSystem(),
+            0,
+            planets.attractionThreshold,
+            planets.noiseAmplitude,
+            planets.noiseScale,
+            0.11f);
+        metaPlanetSystem.getParticleSystem().setDebugColor(0xffff0000);
+        systems.add(metaPlanetSystem);
+        metaPlanetSystem.createPlanet(400, new ParticleTag[]{ParticleTag.PLANET});
+        metaPlanetSystem.createPlanet(400, new ParticleTag[]{ParticleTag.PLANET});
+        metaPlanetSystem.createPlanet(200, new ParticleTag[]{ParticleTag.PLANET});
+        metaPlanetSystem.createPlanet(200, new ParticleTag[]{ParticleTag.PLANET});
       }
 
       if (config.dust != null) {
@@ -245,11 +268,9 @@ public class CLI extends PApplet {
         Params.set(PName.MAX_HIVE_SIZE, config.hives.hiveSize);
 
         if (config.hives.colors != null) {
-          List<BeeColor> colors = Arrays.stream(config.hives.colors)
+          beeSystem.setColors(Arrays.stream(config.hives.colors)
               .map(c -> new BeeColor(
-                  (int) c.hiveColor, (int) c.hiveColor, (int) c.beeColor, (int) c.beeColor))
-              .collect(Collectors.toList());
-          beeSystem.setColors(colors.toArray(new BeeColor[colors.size()]));
+                  (int) c.hiveColor, (int) c.hiveColor, (int) c.beeColor, (int) c.beeColor)).toArray(BeeColor[]::new));
         }
 
         numHives = (int) Math.round(
@@ -264,32 +285,36 @@ public class CLI extends PApplet {
 
   @Override
   public void draw() {
-    clear();
-    if (config.maxFrames == -1 || localFrameCount < config.maxFrames) {
-      java.lang.System.out.println(localFrameCount + " % " + config.renderFramesSkip);
-      if (config.renderFrames) {
-        stepSimulation();
-        if (localFrameCount % 100 == 0) {
-          java.lang.System.out.println("Computed " + localFrameCount + " / " + config.maxFrames + " steps");
-        }
-        localFrameCount++;
-        if (localFrameCount % config.renderFramesSkip == 0) {
-          drawSimulation();
-          saveLargeFrame(outputPath + "/" + String.format("%04d", nextFrameId) + ".tif");
-          nextFrameId++;
-        }
-      } else {
-        for (int i = 0; i < 10; i++) {
-          stepSimulation();
-          if (localFrameCount % 100 == 0) {
-            java.lang.System.out.println("Computed " + localFrameCount + " / " + config.maxFrames + " steps");
-          }
-          localFrameCount++;
-        }
-        drawSimulation();
-      }
+    if (!setup) {
+      doSetup();
     }
-    image(canvas, 0, 0, width, height);
+
+//    clear();
+//    if (config.maxFrames == -1 || localFrameCount < config.maxFrames) {
+//      java.lang.System.out.println(localFrameCount + " % " + config.renderFramesSkip);
+//      if (config.renderFrames) {
+//        stepSimulation();
+//        if (localFrameCount % 100 == 0) {
+//          java.lang.System.out.println("Computed " + localFrameCount + " / " + config.maxFrames + " steps");
+//        }
+//        localFrameCount++;
+//        if (localFrameCount % config.renderFramesSkip == 0) {
+//          drawSimulation();
+//          saveLargeFrame(outputPath + "/" + String.format("%04d", nextFrameId) + ".tif");
+//          nextFrameId++;
+//        }
+//      } else {
+//        for (int i = 0; i < 10; i++) {
+//          stepSimulation();
+//          if (localFrameCount % 100 == 0) {
+//            java.lang.System.out.println("Computed " + localFrameCount + " / " + config.maxFrames + " steps");
+//          }
+//          localFrameCount++;
+//        }
+//        drawSimulation();
+//      }
+//    }
+//    image(canvas, 0, 0, width, height);
   }
 
   private Vector sampleRandomPoint(Bounds bounds, FloatField2 field, float threshold) {
@@ -303,9 +328,8 @@ public class CLI extends PApplet {
   }
 
   private void stepSimulation() {
-    // TODO: make sure this works when planets aren't present
-
-    if (localFrameCount > 500) {
+    int threshold = planetSystem == null ? 0 : 500;
+    if (localFrameCount > threshold) {
       if (beeSystem.getHives().size() < numHives) {
         for (int i = 0; i < 1; i++) {
           int size = (int) (config.hives.hiveSize + Rnd.random.nextDouble() * config.hives.hiveSizeDeviation);
@@ -313,8 +337,9 @@ public class CLI extends PApplet {
           if (Math.random() < 0.5) {
             type = ParticleTag.HIVE_DARK;
           }
-          Vector point = sampleRandomPoint(particleSystem.getBounds(), planetSystem.getSdf(type), 0);
-
+          Vector point = planetSystem == null
+              ? particleSystem.getBounds().getRandomPointInside(2)
+              : sampleRandomPoint(particleSystem.getBounds(), planetSystem.getSdf(type), 0);
           if (point != null) {
             Hive hive = beeSystem.createHive(
                 point, size, Math.random() < 0.1f, type);
@@ -322,13 +347,14 @@ public class CLI extends PApplet {
             hive.setInnerRepelForce(config.hives.hiveInnerRepelForce);
             hive.setLineThickness(config.hives.lineThickness);
           }
-
         }
       }
 
       if (dustSystem.getNumDust() < config.dust.count) {
         for (int i = 0; i < 50; i++) {
-          Vector point = sampleRandomPoint(particleSystem.getBounds(), planetSystem.getSdf(ParticleTag.DUST), 0);
+          Vector point = planetSystem == null
+              ? particleSystem.getBounds().getRandomPointInside(2)
+              : sampleRandomPoint(particleSystem.getBounds(), planetSystem.getSdf(ParticleTag.DUST), 0);
           if (point != null) {
             dustSystem.createDust(point);
           }
@@ -336,23 +362,17 @@ public class CLI extends PApplet {
       }
     }
 
-    systems.forEach((system -> system.update()));
+
+    systems.forEach((SPSystem::update));
     particleSystem.update();
-    if (planetSystem != null) {
-      planetSystem.update();
-    }
   }
 
   private void drawSimulation() {
     canvas.beginDraw();
-    canvas.clear();
+//    canvas.clear();
 
     if (config.backgroundOn) {
       canvas.background((int) config.backgroundColor);
-    }
-
-    if (planetSystem != null) {
-      planetSystem.draw(canvas);
     }
 
 //    debugDraw(repelField, 5, canvas, 15);
@@ -369,19 +389,19 @@ public class CLI extends PApplet {
     }
 
     systems.forEach((system -> system.draw(canvas)));
-
+    canvas.dispose();
     canvas.endDraw();
 
-    finalRender.beginDraw();
-    finalRender.clear();
-
-    finalRender.image(canvas,
-        0, 0,
-        config.renderSize.width,
-        config.renderSize.height);
-    finalRender.blendMode(PConstants.BLEND);
-
-    finalRender.endDraw();
+//    finalRender.beginDraw();
+//    finalRender.clear();
+//
+//    finalRender.image(canvas,
+//        0, 0,
+//        config.renderSize.width,
+//        config.renderSize.height);
+//    finalRender.blendMode(PConstants.BLEND);
+//
+//    finalRender.endDraw();
   }
 
   private void saveLargeFrame(String filename) {

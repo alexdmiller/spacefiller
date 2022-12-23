@@ -24,6 +24,7 @@ public class Planet {
     this.targetRadius = radius;
     this.planetSystem = planetSystem;
     this.particle = this.planetSystem.createParticle(position);
+    this.particle.addTag(ParticleTag.PLANET);
     this.particle.setRadius(radius);
     this.sdf = new Circle(position.x, position.y, radius);
     this.friends = new HashSet<>();

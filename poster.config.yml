@@ -5,11 +5,11 @@ max_particles: 100000
 background_on: true
 background_color: 0xff000000
 sim_size:
-  width: 1440
-  height: 1920
-render_size:
   width: 720
   height: 960
+render_size:
+  width: 5400
+  height: 7200
 plants:
   min: 10
   max: 40
@@ -95,42 +95,22 @@ planet_system:
     - min_radius: 100
       max_radius: 200
       tags: [DUST, HIVE_LIGHT, HIVE_DARK]
+
     - min_radius: 150
       max_radius: 250
       tags: [DUST, HIVE_LIGHT]
+
     - min_radius: 100
       max_radius: 200
       tags: [DUST, HIVE_DARK]
     - min_radius: 50
       max_radius: 100
       tags: [DUST, HIVE_DARK]
+
     - min_radius: 50
       max_radius: 100
       tags: [HIVE_LIGHT]
-    - min_radius: 70
-      max_radius: 100
-      tags: [PLANT]
-    - min_radius: 50
-      max_radius: 100
-      tags: [PLANT]
-    - min_radius: 150
-      max_radius: 250
-      tags: [DUST, HIVE_LIGHT, HIVE_DARK]
-    - min_radius: 100
-      max_radius: 200
-      tags: [DUST, HIVE_LIGHT, HIVE_DARK]
-    - min_radius: 150
-      max_radius: 250
-      tags: [DUST, HIVE_LIGHT]
-    - min_radius: 100
-      max_radius: 200
-      tags: [DUST, HIVE_DARK]
-    - min_radius: 50
-      max_radius: 100
-      tags: [DUST, HIVE_DARK]
-    - min_radius: 50
-      max_radius: 100
-      tags: [HIVE_LIGHT]
+
     - min_radius: 70
       max_radius: 100
       tags: [PLANT]

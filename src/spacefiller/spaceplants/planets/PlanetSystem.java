@@ -20,6 +20,7 @@ public class PlanetSystem implements SPSystem {
   private List<Planet> planetList;
   private ParticleSystem particleSystem;
   private ParticleSystem planetParticleSystem;
+
   private float noiseAmplitude;
   private float noiseScale;
   private float sdfSmooth;
@@ -34,7 +35,7 @@ public class PlanetSystem implements SPSystem {
       float noiseScale,
       float sdfSmooth) {
     planetList = new ArrayList<>();
-    planetParticleSystem = new ParticleSystem(particleSystem.getBounds(), 200, 400);
+    planetParticleSystem = new ParticleSystem(particleSystem.getBounds(), 200, 800);
     this.particleSystem = particleSystem;
     this.noiseAmplitude = noiseAmplitude;
     this.noiseScale = noiseScale;
@@ -57,7 +58,7 @@ public class PlanetSystem implements SPSystem {
 //
     planetParticleSystem.addBehavior(new SoftBounds(10, 5, 1));
     planetParticleSystem.addBehavior(new ParticleFriction(0.95f));
-    planetParticleSystem.addBehavior(new RepelParticles(repelThreshold, 2f, true));
+    planetParticleSystem.addBehavior(new RepelParticles(repelThreshold, 10f, true));
     planetParticleSystem.addBehavior(new AttractParticles(attractThreshold, 0.0001f));
 //    particleSystem.addBehavior(new FollowGradient(finalSdfOutput, 0.5f, true), ParticleTag.PLANT);
   }
@@ -117,5 +118,9 @@ public class PlanetSystem implements SPSystem {
 
   public FloatField2 getSdf(ParticleTag tag) {
     return particleSdfs.get(tag);
+  }
+
+  public ParticleSystem getParticleSystem() {
+    return planetParticleSystem;
   }
 }

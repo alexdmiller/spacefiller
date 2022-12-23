@@ -46,6 +46,7 @@ public class ParticleSystem {
   private List<Spring> springCreationQueue;
 
   private boolean drawDebug = false;
+  private int debugColor = 0xffffffff;
 
   public ParticleSystem(Bounds bounds, int maxParticles, float cellSize) {
     this.maxParticles = maxParticles;
@@ -246,6 +247,10 @@ public class ParticleSystem {
         p.setRemoveFlag(true);
       }
     }
+  }
+
+  public void setDebugColor(int color) {
+    this.debugColor = color;
   }
 
   private class CellRunnable implements Runnable {
@@ -577,18 +582,18 @@ public class ParticleSystem {
 
   public void draw(PGraphics graphics) {
     if (drawDebug) {
-      graphics.stroke(255);
+      graphics.stroke(debugColor);
       graphics.strokeWeight(2);
 
       synchronized (grid) {
         for (int i = 0; i < grid.getParticles().size(); i++) {
           Particle p = grid.getParticles().get(i);
           graphics.rectMode(PConstants.CORNER);
-          graphics.fill(255);
+          graphics.fill(debugColor);
           graphics.noStroke();
           graphics.rect(p.getPosition().x, p.getPosition().y, 1, 1);
           if (p.getRadius() > 1) {
-            graphics.stroke(255);
+            graphics.stroke(debugColor);
             graphics.noFill();
             graphics.ellipseMode(PConstants.CENTER);
             graphics.ellipse(p.getPosition().x, p.getPosition().y, p.getRadius() * 2, p.getRadius() * 2);
