@@ -19,23 +19,24 @@ public class PlantColor {
   }
 
   public int getBranchColor(PlantDNA dna, int age) {
-
-    float t = (float) age / dna.getMaxAge();
-    t = t < 0.95f ? 0f : PApplet.map(t, 0.95f, 1f, 0, 1);
-
-    int dayColor = PApplet.lerpColor(dna.getAliveBranchColor(), dna.getDyingBranchColor(), t, RGB);
-    int nightColor = PApplet.lerpColor(dna.getAliveBranchColorNight(), dna.getDyingBranchColorNight(), t, RGB);
-    return PApplet.lerpColor(nightColor, dayColor, lightLevel, RGB);
+    return dna.getAliveBranchColor();
+//    float t = (float) age / dna.getMaxAge();
+//    t = t < 0.95f ? 0f : PApplet.map(t, 0.95f, 1f, 0, 1);
+//
+//    int dayColor = PApplet.lerpColor(dna.getAliveBranchColor(), dna.getDyingBranchColor(), t, RGB);
+//    int nightColor = PApplet.lerpColor(dna.getAliveBranchColorNight(), dna.getDyingBranchColorNight(), t, RGB);
+//    return PApplet.lerpColor(nightColor, dayColor, lightLevel, RGB);
   }
 
   public int getFlowerColor(PlantDNA dna, int age, float excitement) {
-    float t = (float) age / dna.getMaxAge();
-
-    int dayColor = dna.getAliveFlowerColor(); //Utils.lerpColor(dna.getAliveFlowerColor(), dna.getDeadColorFlower(), t);
-    int nightColor = dna.getAliveFlowerColorNight(); //Utils.lerpColor(dna.getAliveFlowerColorNight(), dna.getDeadColorFlowerNight(), t);
-    int normalColor = PApplet.lerpColor(nightColor, dayColor, lightLevel, RGB);
-
-    return PApplet.lerpColor(normalColor, dna.getExcitedFlowerColor(), excitement, RGB);
+    return dna.getAliveFlowerColor();
+//    float t = (float) age / dna.getMaxAge();
+//
+//    int dayColor = dna.getAliveFlowerColor(); //Utils.lerpColor(dna.getAliveFlowerColor(), dna.getDeadColorFlower(), t);
+//    int nightColor = dna.getAliveFlowerColorNight(); //Utils.lerpColor(dna.getAliveFlowerColorNight(), dna.getDeadColorFlowerNight(), t);
+//    int normalColor = PApplet.lerpColor(nightColor, dayColor, lightLevel, RGB);
+//
+//    return PApplet.lerpColor(normalColor, dna.getExcitedFlowerColor(), excitement, RGB);
   }
 
   public int getFlowerLightColor(PlantDNA dna, int age) {

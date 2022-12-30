@@ -1,15 +1,23 @@
 max_frames: 5000
-render_frames: false
-render_preview: true
-max_particles: 100000
-background_on: true
-background_color: 0xff000000
 sim_size:
   width: 1440
   height: 1920
-render_size:
-  width: 1440
-  height: 1920
+on_frame:
+  show_preview:
+    max_width: 1000
+    max_height: 1000
+#  - save_png:
+#      size:
+#        max_width: 1000
+#        max_height: 1000
+#on_complete:
+#  - save_svg:
+#      size:
+#        max_width: 1000
+#        max_height: 1000
+render_frames: false
+render_preview: true
+max_particles: 100000
 plants:
   min: 10
   max: 40

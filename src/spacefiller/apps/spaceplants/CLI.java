@@ -1,17 +1,10 @@
 /*
-
-TODO: why are plants drawn using the wrong colors?
-TODO: create frame renderer and output renderer
-preview_renderer:
-  render_size: 100, 100
-  planets: on
-frame_renderer:
-  type: TIFF
-  render_size: ...
-output_renderer:
-  type: SVG
-  render_size: ...
+TODO: test on frame png
+TODO: implement onComplete renderer
+TODO: add filenames to config
+TODO: add planet renderer ?
 TODO: experiment with planet only simulation to get the shape of planets & meta planets right
+TODO: add more density
 */
 
 package spacefiller.apps.spaceplants;
@@ -43,7 +36,9 @@ import spacefiller.spaceplants.planets.PlanetSystem;
 import spacefiller.spaceplants.plants.PlantDNA;
 import spacefiller.spaceplants.plants.PlantSystem;
 import spacefiller.spaceplants.rendering.PixelatedRenderer;
+import spacefiller.spaceplants.rendering.PngRenderer;
 import spacefiller.spaceplants.rendering.Renderer;
+import spacefiller.spaceplants.rendering.SvgRenderer;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -90,13 +85,31 @@ public class CLI extends PApplet {
   private int numHives;
   private boolean setup;
 
-  private Renderer previewRenderer;
-  private Renderer finalRenderer;
+
+  private List<Renderer> onFrameRenderers;
+  private List<Renderer> onCompleteRenderers;
 
   @Override
   public void settings() {
     System.out.println("Settings");
-    size(config.renderSize.width, config.renderSize.height, P2D);
+    Size simSize = config.simSize;
+    if (config.onFrame != null && config.onFrame.showPreview != null) {
+      PreviewRendererConfig preview = config.onFrame.showPreview;
+
+      int width = 0;
+      int height = 0;
+      if (simSize.width > simSize.height) {
+        width = preview.maxWidth;
+        height = Math.round((float) simSize.height / simSize.width * width);
+      } else {
+        height = preview.maxHeight;
+        width = Math.round((float) simSize.width / simSize.height * height);
+      }
+
+      size(width, height, P2D);
+    } else {
+      size(simSize.width, simSize.height, P2D);
+    }
     PJOGL.profile = 1;
   }
 
@@ -288,15 +301,47 @@ public class CLI extends PApplet {
 
       }
 
-      System.out.println("Set up renderer");
-      previewRenderer = new PixelatedRenderer(this,
-          config.simSize.width, config.simSize.height,
-          config.renderSize.width, config.renderSize.height,
-          config.backgroundOn, (int) config.backgroundColor);
+      onFrameRenderers = setupRenderers(config.simSize, config.onFrame);
+      onCompleteRenderers = setupRenderers(config.simSize, config.onComplete);
     } catch (IOException e) {
       e.printStackTrace();
       exit();
     }
+  }
+
+  private List<Renderer> setupRenderers(Size simSize, RendererConfig config) {
+    List<Renderer> renderers = new ArrayList<>();
+
+    if (config == null) {
+      return renderers;
+    }
+
+    if (config.showPreview != null) {
+      PreviewRendererConfig preview = config.showPreview;
+
+      PixelatedRenderer previewRenderer = new PixelatedRenderer(this,
+          simSize.width, simSize.height,
+          width, height,
+          (int) preview.backgroundColor);
+      renderers.add(previewRenderer);
+    }
+
+    if (config.savePng != null) {
+      SavePngRendererConfig preview = config.savePng;
+      PngRenderer pngRenderer = new PngRenderer(this,
+          simSize.width, simSize.height,
+          simSize.width * preview.scale, simSize.height * preview.scale,
+          (int) preview.backgroundColor, preview.filename);
+      renderers.add(pngRenderer);
+    }
+
+    if (config.saveSvg != null) {
+      SaveSvgRendererConfig preview = config.saveSvg;
+      SvgRenderer svgRenderer = new SvgRenderer(this, simSize.width, simSize.height, (int) preview.backgroundColor, preview.filename);
+      renderers.add(svgRenderer);
+    }
+
+    return renderers;
   }
 
   @Override
@@ -310,8 +355,10 @@ public class CLI extends PApplet {
       localFrameCount++;
     }
 
-    if (previewRenderer != null) {
-      image(previewRenderer.render(systems), 0, 0);
+    if (onFrameRenderers != null) {
+      for (Renderer r : onFrameRenderers) {
+        r.render(systems);
+      }
     }
 
 //    clear();

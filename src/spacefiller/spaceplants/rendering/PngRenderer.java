@@ -2,26 +2,27 @@ package spacefiller.spaceplants.rendering;
 
 import processing.core.PApplet;
 import processing.core.PGraphics;
-import processing.core.PImage;
 import processing.opengl.PGraphicsOpenGL;
 import spacefiller.spaceplants.SPSystem;
 
 import static processing.core.PConstants.DISABLE_TEXTURE_MIPMAPS;
 import static processing.core.PConstants.P2D;
 
-public class PixelatedRenderer implements Renderer {
+public class PngRenderer implements Renderer{
   private PGraphics parentCanvas;
   private PGraphics simCanvas;
   private PGraphics renderCanvas;
   private int backgroundColor;
+  private String filename;
 
-  public PixelatedRenderer(
+  public PngRenderer(
       PApplet parent,
       int simWidth,
       int simHeight,
       int renderWidth,
       int renderHeight,
-      int backgroundColor) {
+      int backgroundColor,
+      String filename) {
     this.parentCanvas = parent.getGraphics();
 
     simCanvas = parent.createGraphics(simWidth, simHeight, P2D);
@@ -35,6 +36,8 @@ public class PixelatedRenderer implements Renderer {
     ((PGraphicsOpenGL) renderCanvas).textureSampling(3);
 
     this.backgroundColor = backgroundColor;
+
+    this.filename = filename;
   }
 
   @Override
@@ -56,6 +59,6 @@ public class PixelatedRenderer implements Renderer {
     renderCanvas.image(simCanvas, 0, 0, renderCanvas.width, renderCanvas.height);
     renderCanvas.endDraw();
 
-    parentCanvas.image(renderCanvas, 0, 0);
+    renderCanvas.save(filename);
   }
 }

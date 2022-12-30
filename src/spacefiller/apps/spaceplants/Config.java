@@ -4,6 +4,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import spacefiller.particles.ParticleTag;
 
 public class Config {
+  @JsonProperty("on_frame")
+  public RendererConfig onFrame;
+
+  @JsonProperty("on_complete")
+  public RendererConfig onComplete;
+
   @JsonProperty("max_frames")
   public int maxFrames = -1;
 
@@ -28,12 +34,6 @@ public class Config {
   @JsonProperty("circle_constraints")
   public CircleConstraint[] circleConstraints;
 
-  @JsonProperty("background_color")
-  public long backgroundColor = 0x00000000;
-
-  @JsonProperty("background_on")
-  public boolean backgroundOn = false;
-
   @JsonProperty("render_preview")
   public boolean renderPreview = true;
 
@@ -45,6 +45,54 @@ public class Config {
 
   @JsonProperty("planet_system")
   public Planets planetSystem;
+}
+
+class RendererConfig {
+  @JsonProperty("show_preview")
+  PreviewRendererConfig showPreview;
+
+  @JsonProperty("save_png")
+  SavePngRendererConfig savePng;
+
+  @JsonProperty("save_svg")
+  SaveSvgRendererConfig saveSvg;
+}
+
+class PreviewRendererConfig {
+  @JsonProperty("max_width")
+  int maxWidth;
+
+  @JsonProperty("max_height")
+  int maxHeight;
+
+  @JsonProperty("background_color")
+  long backgroundColor = 0x00000000;
+}
+
+class SavePngRendererConfig {
+  @JsonProperty("scale")
+  int scale;
+
+  @JsonProperty("background_color")
+  long backgroundColor = 0x00000000;
+
+  @JsonProperty("background_on")
+  boolean backgroundOn = false;
+
+  public String filename;
+}
+
+class SaveSvgRendererConfig {
+  @JsonProperty("scale")
+  int scale;
+
+  @JsonProperty("background_color")
+  long backgroundColor = 0x00000000;
+
+  @JsonProperty("background_on")
+  boolean backgroundOn = false;
+
+  String filename;
 }
 
 class Size {
