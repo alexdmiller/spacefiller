@@ -1,4 +1,4 @@
-max_frames: 5000
+max_frames: 100
 sim_size:
   width: 1440
   height: 1920
@@ -6,11 +6,16 @@ on_frame:
   show_preview:
     max_width: 1000
     max_height: 1000
-#  - save_png:
-#      size:
-#        max_width: 1000
-#        max_height: 1000
-#on_complete:
+    frames_per_render: 10
+#  export_raster:
+#    scale: 2
+#    filename: "/Users/alex/projects/spacefiller/output/frame-%04d.tif"
+on_complete:
+#  export_raster:
+#    scale: 2
+#    filename: "/Users/alex/projects/spacefiller/output.png"
+  export_svg:
+    filename: "/Users/alex/projects/spacefiller/output.svg"
 #  - save_svg:
 #      size:
 #        max_width: 1000

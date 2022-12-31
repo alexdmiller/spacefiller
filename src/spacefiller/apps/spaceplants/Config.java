@@ -49,16 +49,16 @@ public class Config {
 
 class RendererConfig {
   @JsonProperty("show_preview")
-  PreviewRendererConfig showPreview;
+  ShowPreview showPreview;
 
-  @JsonProperty("save_png")
-  SavePngRendererConfig savePng;
+  @JsonProperty("export_raster")
+  ExportRaster exportRaster;
 
-  @JsonProperty("save_svg")
-  SaveSvgRendererConfig saveSvg;
+  @JsonProperty("export_svg")
+  ExportSvg exportSvg;
 }
 
-class PreviewRendererConfig {
+class ShowPreview {
   @JsonProperty("max_width")
   int maxWidth;
 
@@ -67,9 +67,12 @@ class PreviewRendererConfig {
 
   @JsonProperty("background_color")
   long backgroundColor = 0x00000000;
+
+  @JsonProperty("frames_per_render")
+  int framesPerRender = 1;
 }
 
-class SavePngRendererConfig {
+class ExportRaster {
   @JsonProperty("scale")
   int scale;
 
@@ -80,19 +83,23 @@ class SavePngRendererConfig {
   boolean backgroundOn = false;
 
   public String filename;
+
+  @JsonProperty("frames_per_render")
+  int framesPerRender = 1;
 }
 
-class SaveSvgRendererConfig {
-  @JsonProperty("scale")
-  int scale;
-
+class ExportSvg {
   @JsonProperty("background_color")
   long backgroundColor = 0x00000000;
 
   @JsonProperty("background_on")
   boolean backgroundOn = false;
 
+  @JsonProperty
   String filename;
+
+  @JsonProperty("frames_per_render")
+  int framesPerRender = 1;
 }
 
 class Size {

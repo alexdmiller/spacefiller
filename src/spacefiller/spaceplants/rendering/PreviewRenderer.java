@@ -8,21 +8,21 @@ import spacefiller.spaceplants.SPSystem;
 import static processing.core.PConstants.DISABLE_TEXTURE_MIPMAPS;
 import static processing.core.PConstants.P2D;
 
-public class PngRenderer implements Renderer{
+public class PreviewRenderer implements Renderer {
   private PGraphics parentCanvas;
   private PGraphics simCanvas;
   private PGraphics renderCanvas;
   private int backgroundColor;
-  private String filename;
+  private int framesPerRender;
 
-  public PngRenderer(
+  public PreviewRenderer(
       PApplet parent,
       int simWidth,
       int simHeight,
       int renderWidth,
       int renderHeight,
       int backgroundColor,
-      String filename) {
+      int framesPerRender) {
     this.parentCanvas = parent.getGraphics();
 
     simCanvas = parent.createGraphics(simWidth, simHeight, P2D);
@@ -36,29 +36,30 @@ public class PngRenderer implements Renderer{
     ((PGraphicsOpenGL) renderCanvas).textureSampling(3);
 
     this.backgroundColor = backgroundColor;
-
-    this.filename = filename;
+    this.framesPerRender = framesPerRender;
   }
 
   @Override
-  public void render(Iterable<SPSystem> systems) {
-    simCanvas.beginDraw();
-    simCanvas.clear();
+  public void render(Iterable<SPSystem> systems, int localFrameCount) {
+    if (localFrameCount % framesPerRender == 0) {
+      simCanvas.beginDraw();
+      simCanvas.clear();
 
-    simCanvas.background(backgroundColor);
+      simCanvas.background(backgroundColor);
 
-    simCanvas.noStroke();
-    simCanvas.fill(255);
+      simCanvas.noStroke();
+      simCanvas.fill(255);
 
-    systems.forEach((system -> {
-      system.draw(simCanvas);
-    }));
-    simCanvas.endDraw();
+      systems.forEach((system -> {
+        system.draw(simCanvas);
+      }));
+      simCanvas.endDraw();
 
-    renderCanvas.beginDraw();
-    renderCanvas.image(simCanvas, 0, 0, renderCanvas.width, renderCanvas.height);
-    renderCanvas.endDraw();
+      renderCanvas.beginDraw();
+      renderCanvas.image(simCanvas, 0, 0, renderCanvas.width, renderCanvas.height);
+      renderCanvas.endDraw();
 
-    renderCanvas.save(filename);
+      parentCanvas.image(renderCanvas, 0, 0);
+    }
   }
 }

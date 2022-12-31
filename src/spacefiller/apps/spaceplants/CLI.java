@@ -7,14 +7,12 @@ TODO: experiment with planet only simulation to get the shape of planets & meta 
 TODO: add more density
 */
 
+
 package spacefiller.apps.spaceplants;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import processing.core.PApplet;
-import processing.core.PConstants;
-import processing.core.PGraphics;
-import processing.core.PImage;
 import processing.opengl.PGraphicsOpenGL;
 import processing.opengl.PJOGL;
 import spacefiller.Utils;
@@ -35,17 +33,14 @@ import spacefiller.particles.behaviors.*;
 import spacefiller.spaceplants.planets.PlanetSystem;
 import spacefiller.spaceplants.plants.PlantDNA;
 import spacefiller.spaceplants.plants.PlantSystem;
-import spacefiller.spaceplants.rendering.PixelatedRenderer;
-import spacefiller.spaceplants.rendering.PngRenderer;
+import spacefiller.spaceplants.rendering.PreviewRenderer;
+import spacefiller.spaceplants.rendering.RasterExportRenderer;
 import spacefiller.spaceplants.rendering.Renderer;
-import spacefiller.spaceplants.rendering.SvgRenderer;
+import spacefiller.spaceplants.rendering.SvgExportRenderer;
 
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.stream.Collectors;
-
-import static spacefiller.math.sdf.FloatField2.sampleRandomPoint;
 
 public class CLI extends PApplet {
   private static String outputPath;
@@ -94,7 +89,7 @@ public class CLI extends PApplet {
     System.out.println("Settings");
     Size simSize = config.simSize;
     if (config.onFrame != null && config.onFrame.showPreview != null) {
-      PreviewRendererConfig preview = config.onFrame.showPreview;
+      ShowPreview preview = config.onFrame.showPreview;
 
       int width = 0;
       int height = 0;
@@ -317,27 +312,30 @@ public class CLI extends PApplet {
     }
 
     if (config.showPreview != null) {
-      PreviewRendererConfig preview = config.showPreview;
+      ShowPreview preview = config.showPreview;
 
-      PixelatedRenderer previewRenderer = new PixelatedRenderer(this,
+      PreviewRenderer previewRenderer = new PreviewRenderer(this,
           simSize.width, simSize.height,
           width, height,
-          (int) preview.backgroundColor);
+          (int) preview.backgroundColor,
+          preview.framesPerRender);
       renderers.add(previewRenderer);
     }
 
-    if (config.savePng != null) {
-      SavePngRendererConfig preview = config.savePng;
-      PngRenderer pngRenderer = new PngRenderer(this,
+    if (config.exportRaster != null) {
+      ExportRaster export = config.exportRaster;
+      RasterExportRenderer pngRenderer = new RasterExportRenderer(this,
           simSize.width, simSize.height,
-          simSize.width * preview.scale, simSize.height * preview.scale,
-          (int) preview.backgroundColor, preview.filename);
+          simSize.width * export.scale, simSize.height * export.scale,
+          (int) export.backgroundColor, export.filename, export.framesPerRender);
       renderers.add(pngRenderer);
     }
 
-    if (config.saveSvg != null) {
-      SaveSvgRendererConfig preview = config.saveSvg;
-      SvgRenderer svgRenderer = new SvgRenderer(this, simSize.width, simSize.height, (int) preview.backgroundColor, preview.filename);
+    if (config.exportSvg != null) {
+      ExportSvg export = config.exportSvg;
+      SvgExportRenderer svgRenderer = new SvgExportRenderer(
+          this, simSize.width, simSize.height, (int) export.backgroundColor, export.filename,
+           export.framesPerRender);
       renderers.add(svgRenderer);
     }
 
@@ -352,41 +350,25 @@ public class CLI extends PApplet {
 
     for (int i = 0; i < 10; i++) {
       stepSimulation();
+
+      if (onFrameRenderers != null) {
+        for (Renderer r : onFrameRenderers) {
+          r.render(systems, localFrameCount);
+        }
+      }
+
       localFrameCount++;
     }
 
-    if (onFrameRenderers != null) {
-      for (Renderer r : onFrameRenderers) {
-        r.render(systems);
+    if (localFrameCount >= config.maxFrames) {
+      if (onCompleteRenderers != null) {
+        for (Renderer r : onCompleteRenderers) {
+          r.render(systems, localFrameCount);
+        }
       }
-    }
 
-//    clear();
-//    if (config.maxFrames == -1 || localFrameCount < config.maxFrames) {
-//      java.lang.System.out.println(localFrameCount + " % " + config.renderFramesSkip);
-//      if (config.renderFrames) {
-//        stepSimulation();
-//        if (localFrameCount % 100 == 0) {
-//          java.lang.System.out.println("Computed " + localFrameCount + " / " + config.maxFrames + " steps");
-//        }
-//        localFrameCount++;
-//        if (localFrameCount % config.renderFramesSkip == 0) {
-//          drawSimulation();
-//          saveLargeFrame(outputPath + "/" + String.format("%04d", nextFrameId) + ".tif");
-//          nextFrameId++;
-//        }
-//      } else {
-//        for (int i = 0; i < 10; i++) {
-//          stepSimulation();
-//          if (localFrameCount % 100 == 0) {
-//            java.lang.System.out.println("Computed " + localFrameCount + " / " + config.maxFrames + " steps");
-//          }
-//          localFrameCount++;
-//        }
-//        drawSimulation();
-//      }
-//    }
-//    image(canvas, 0, 0, width, height);
+      exit();
+    }
   }
 
   private Vector sampleRandomPoint(Bounds bounds, FloatField2 field, float threshold) {
@@ -437,19 +419,6 @@ public class CLI extends PApplet {
 
     systems.forEach((SPSystem::update));
     particleSystem.update();
-  }
-
-  private void saveLargeFrame(String filename) {
-//    java.lang.System.out.println("Saving " + filename);
-//    finalRender.clear();
-//
-//    finalRender.image(canvas,
-//        0, 0,
-//        config.renderSize.width,
-//        config.renderSize.height);
-//    finalRender.blendMode(PConstants.BLEND);
-//
-//    finalRender.save(filename);
   }
 
   @Override

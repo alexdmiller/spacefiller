@@ -2,26 +2,29 @@ package spacefiller.spaceplants.rendering;
 
 import processing.core.PApplet;
 import processing.core.PGraphics;
-import processing.core.PImage;
 import processing.opengl.PGraphicsOpenGL;
 import spacefiller.spaceplants.SPSystem;
 
 import static processing.core.PConstants.DISABLE_TEXTURE_MIPMAPS;
 import static processing.core.PConstants.P2D;
 
-public class PixelatedRenderer implements Renderer {
+public class RasterExportRenderer implements Renderer {
   private PGraphics parentCanvas;
   private PGraphics simCanvas;
   private PGraphics renderCanvas;
   private int backgroundColor;
+  private String filename;
+  private int framesPerRender;
 
-  public PixelatedRenderer(
+  public RasterExportRenderer(
       PApplet parent,
       int simWidth,
       int simHeight,
       int renderWidth,
       int renderHeight,
-      int backgroundColor) {
+      int backgroundColor,
+      String filename,
+      int framesPerRender) {
     this.parentCanvas = parent.getGraphics();
 
     simCanvas = parent.createGraphics(simWidth, simHeight, P2D);
@@ -34,28 +37,41 @@ public class PixelatedRenderer implements Renderer {
     renderCanvas.hint(DISABLE_TEXTURE_MIPMAPS);
     ((PGraphicsOpenGL) renderCanvas).textureSampling(3);
 
-    this.backgroundColor = backgroundColor;
-  }
-
-  @Override
-  public void render(Iterable<SPSystem> systems) {
     simCanvas.beginDraw();
     simCanvas.clear();
-
-    simCanvas.background(backgroundColor);
-
-    simCanvas.noStroke();
-    simCanvas.fill(255);
-
-    systems.forEach((system -> {
-      system.draw(simCanvas);
-    }));
     simCanvas.endDraw();
 
     renderCanvas.beginDraw();
-    renderCanvas.image(simCanvas, 0, 0, renderCanvas.width, renderCanvas.height);
     renderCanvas.endDraw();
 
-    parentCanvas.image(renderCanvas, 0, 0);
+    this.backgroundColor = backgroundColor;
+
+    this.filename = filename;
+    this.framesPerRender = framesPerRender;
+  }
+
+  @Override
+  public void render(Iterable<SPSystem> systems, int frames) {
+    if (frames % framesPerRender == 0) {
+      simCanvas.beginDraw();
+      simCanvas.clear();
+
+      simCanvas.background(backgroundColor);
+
+      simCanvas.noStroke();
+      simCanvas.fill(255);
+
+      systems.forEach((system -> {
+        system.draw(simCanvas);
+      }));
+      simCanvas.endDraw();
+
+      renderCanvas.beginDraw();
+      renderCanvas.image(simCanvas, 0, 0, renderCanvas.width, renderCanvas.height);
+      renderCanvas.endDraw();
+
+      System.out.println(String.format(filename, frames));
+      renderCanvas.save(String.format(filename, frames));
+    }
   }
 }
