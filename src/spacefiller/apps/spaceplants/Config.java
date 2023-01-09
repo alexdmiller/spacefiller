@@ -265,4 +265,7 @@ class PlanetConfig {
   public float minRadius = 10;
   @JsonProperty("max_radius")
   public float maxRadius = 1000;
+
+  @JsonProperty
+  public int count;
 }

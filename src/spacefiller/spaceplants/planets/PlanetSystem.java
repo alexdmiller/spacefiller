@@ -3,8 +3,6 @@ package spacefiller.spaceplants.planets;
 import processing.core.PGraphics;
 import spacefiller.math.Vector;
 import spacefiller.math.sdf.*;
-import spacefiller.particles.Bounds;
-import spacefiller.particles.Particle;
 import spacefiller.particles.ParticleSystem;
 import spacefiller.particles.ParticleTag;
 import spacefiller.particles.behaviors.*;
@@ -122,5 +120,9 @@ public class PlanetSystem implements SPSystem {
 
   public ParticleSystem getParticleSystem() {
     return planetParticleSystem;
+  }
+
+  public List<Planet> getPlanets() {
+    return planetList;
   }
 }

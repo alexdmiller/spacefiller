@@ -1,12 +1,8 @@
 /*
-TODO: test on frame png
-TODO: implement onComplete renderer
-TODO: add filenames to config
 TODO: add planet renderer ?
 TODO: experiment with planet only simulation to get the shape of planets & meta planets right
 TODO: add more density
 */
-
 
 package spacefiller.apps.spaceplants;
 
@@ -30,6 +26,7 @@ import spacefiller.spaceplants.dust.DustSystem;
 import spacefiller.particles.ParticleSystem;
 import spacefiller.particles.ParticleTag;
 import spacefiller.particles.behaviors.*;
+import spacefiller.spaceplants.planets.Planet;
 import spacefiller.spaceplants.planets.PlanetSystem;
 import spacefiller.spaceplants.plants.PlantDNA;
 import spacefiller.spaceplants.plants.PlantSystem;
@@ -122,22 +119,7 @@ public class CLI extends PApplet {
 
   private void doSetup() {
     System.out.println("Running setup");
-
     setupSimulation();
-
-//    drawSimulation();
-    if (!config.renderPreview) {
-      for (int i = 0; i < config.maxFrames; i++) {
-        stepSimulation();
-        if (i % 100 == 0) {
-          java.lang.System.out.println("Computed " + i + " / " + config.maxFrames + " steps");
-        }
-        localFrameCount++;
-      }
-//      drawSimulation();
-//      saveLargeFrame(outputPath);
-      exit();
-    }
     setup = true;
   }
 
@@ -179,9 +161,11 @@ public class CLI extends PApplet {
         systems.add(planetSystem);
 
         for (PlanetConfig config : planets.planets) {
-          planetSystem.createPlanet(
-              (float) (Math.random() * (config.maxRadius - config.minRadius) + config.minRadius),
-              config.tags);
+          for (int i = 0; i < config.count; i++) {
+            planetSystem.createPlanet(
+                (float) (Math.random() * (config.maxRadius - config.minRadius) + config.minRadius),
+                config.tags);
+          }
         }
         planetSystem.recomputeSdf();
 
@@ -195,10 +179,9 @@ public class CLI extends PApplet {
             0.11f);
         metaPlanetSystem.getParticleSystem().setDebugColor(0xffff0000);
         systems.add(metaPlanetSystem);
-        metaPlanetSystem.createPlanet(400, new ParticleTag[]{ParticleTag.PLANET});
-        metaPlanetSystem.createPlanet(400, new ParticleTag[]{ParticleTag.PLANET});
-        metaPlanetSystem.createPlanet(200, new ParticleTag[]{ParticleTag.PLANET});
-        metaPlanetSystem.createPlanet(200, new ParticleTag[]{ParticleTag.PLANET});
+        for (int i = 0; i < 10; i++) {
+          metaPlanetSystem.createPlanet((float) (Math.random() * 200 + 100), new ParticleTag[]{ParticleTag.PLANET});
+        }
         metaPlanetSystem.recomputeSdf();
       }
 
@@ -369,6 +352,11 @@ public class CLI extends PApplet {
 
       exit();
     }
+
+    if (localFrameCount % 100 == 0) {
+      System.out.println("Computed " + localFrameCount + "/" + config.maxFrames + " frames");
+      System.out.println(particleSystem.getParticles().size() + " particles");
+    }
   }
 
   private Vector sampleRandomPoint(Bounds bounds, FloatField2 field, float threshold) {
@@ -383,6 +371,11 @@ public class CLI extends PApplet {
 
   private void stepSimulation() {
     int threshold = planetSystem == null ? 0 : 500;
+    if (localFrameCount < threshold / 2) {
+      for (Planet p : planetSystem.getPlanets()) {
+        p.particle.setPosition(particleSystem.getBounds().getRandomPointInside(2));
+      }
+    }
     if (localFrameCount > threshold) {
       if (beeSystem.getHives().size() < numHives) {
         for (int i = 0; i < 1; i++) {

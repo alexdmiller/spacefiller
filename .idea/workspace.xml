@@ -15,10 +15,7 @@
       <change beforePath="$PROJECT_DIR$/render.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/CLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/CLI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/apps/spaceplants/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/spaceplants/rendering/PixelatedRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/spaceplants/rendering/PreviewRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/spaceplants/rendering/PngRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/spaceplants/rendering/RasterExportRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/spaceplants/rendering/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/spaceplants/rendering/Renderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spacefiller/spaceplants/rendering/SvgRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/spaceplants/rendering/SvgExportRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spacefiller/spaceplants/planets/PlanetSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spacefiller/spaceplants/planets/PlanetSystem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
