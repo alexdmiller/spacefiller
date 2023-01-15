@@ -1,10 +1,11 @@
 package spacefiller.math;
 
+import java.io.Serializable;
 import java.security.InvalidParameterException;
 
 import static java.lang.Float.NaN;
 
-public class Vector {
+public class Vector implements Serializable {
   public float x, y, z;
 
   public Vector() {
