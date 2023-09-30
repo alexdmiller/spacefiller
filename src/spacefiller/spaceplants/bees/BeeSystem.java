@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class BeeSystem implements System {
-  private static final FlockParticles.Parameters AWAKE_PARAMS =
+  public static final FlockParticles.Parameters AWAKE_PARAMS =
           new FlockParticles.Parameters(
                   1,
                   2,
@@ -25,7 +25,7 @@ public class BeeSystem implements System {
                   2f,
                   0.1f);
 
-  private static final FlockParticles.Parameters ASLEEP_PARAMS =
+  public static final FlockParticles.Parameters ASLEEP_PARAMS =
           new FlockParticles.Parameters(
                   0.5f,
                   0,
@@ -57,6 +57,10 @@ public class BeeSystem implements System {
   };
 
   public BeeSystem(ParticleSystem particleSystem, PlantSystem plantSystem) {
+    this(particleSystem, plantSystem, AWAKE_PARAMS);
+  }
+
+  public BeeSystem(ParticleSystem particleSystem, PlantSystem plantSystem, FlockParticles.Parameters flockParameters) {
     this.particleSystem = particleSystem;
     this.plantSystem = plantSystem;
 
@@ -67,8 +71,9 @@ public class BeeSystem implements System {
     beeDeletionQueue = new ArrayList<>();
     beeEntities = Collections.synchronizedList(new ArrayList<>());
 
-    flockParticles = new FlockParticles().setParameters(AWAKE_PARAMS);
+    flockParticles = new FlockParticles().setParameters(flockParameters);
     flockParticles.setTeamMode(FlockParticles.TeamMode.SAME);
+
     sleepFlock = new FlockParticles().setParameters(ASLEEP_PARAMS);
     sleepFlock.setTeamMode(FlockParticles.TeamMode.SAME);
 

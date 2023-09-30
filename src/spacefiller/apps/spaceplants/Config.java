@@ -113,6 +113,8 @@ class Hives {
   public int hiveSize = 10;
   @JsonProperty("hive_size_deviation")
   public int hiveSizeDeviation = 0;
+  @JsonProperty("bee_mode")
+  public String beeMode = "awake";
   @JsonProperty("colors")
   public HiveColor[] colors;
 }

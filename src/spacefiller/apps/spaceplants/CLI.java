@@ -29,6 +29,9 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static spacefiller.spaceplants.bees.BeeSystem.ASLEEP_PARAMS;
+import static spacefiller.spaceplants.bees.BeeSystem.AWAKE_PARAMS;
+
 public class CLI extends PApplet {
   private static String outputPath;
   private static String configPath;
@@ -182,7 +185,14 @@ public class CLI extends PApplet {
       }
 
       if (config.hives != null) {
-        beeSystem = new BeeSystem(particleSystem, plantSystem);
+        FlockParticles.Parameters flockParameters = null;
+        if (config.hives.beeMode.equals("awake")) {
+          flockParameters = AWAKE_PARAMS;
+        } else if (config.hives.beeMode.equals("asleep")) {
+          flockParameters = ASLEEP_PARAMS;
+        }
+
+        beeSystem = new BeeSystem(particleSystem, plantSystem, flockParameters);
         systems.add(beeSystem);
         Params.set(PName.MAX_BEES_CREATED, config.hives.beesPerHive);
         Params.set(PName.STARTING_BABIES_PER_HIVE, config.hives.startingBeesPerHive);

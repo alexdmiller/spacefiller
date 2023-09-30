@@ -2,10 +2,12 @@ max_frames: 2000
 max_particles: 20000
 sim_size:
   width: 192
-  height: 250
+  height: 256.25
 render_size:
   width: 768
-  height: 1000
+  height: 1025
+render_preview: false
+background_on: true
 plants:
   min: 4
   max: 4
@@ -15,7 +17,7 @@ plants:
       branching_factor: 1
       branch_chance: 0.1f
       flower_size: 4
-      max_depth: 40
+      max_depth: 30
     - max_depth: 10
       branching_factor: 4
       seed_branching_factor: 4
@@ -26,15 +28,17 @@ plants:
     - branch_chance: 0.1f
       branch_color: 0xff539852
       flower_color: 0xff87c38e
-      max_depth: 20
+      max_depth: 15
       branching_factor: 2
     - branch_color: 0xffa7c45a
       flower_color: 0xffffffff
       branch_chance: 0.4f
+      max_depth: 4
     - flower_colors: [0xffd8e9f6, 0xff627dab]
       branch_colors: [0xff87c38e, 0xffc6ffc5]
       flower_size: 3
       flower_deviation: 4
+      max_depth: 3
 #    - max_depth: 40
 #      max_depth_deviation: 10
 #      mass: 0.5f
@@ -53,16 +57,17 @@ plants:
 #      flower_size: 6
 
 hives:
-  min: 2
-  max: 2
+  min: 3
+  max: 3
   bees_per_hive: 20
   initial_bees_per_hive: 20
   hive_size: 10
   hive_size_deviation: 10
+  bee_mode: asleep
   colors:
     - bee_color: 0xffe2e1a2
       hive_color: 0xffe2e1a2
 #    - bee_color: 0xffffc98f
 #      hive_color: 0xffffc98f
 dust:
-  count: 200
+  count: 150
