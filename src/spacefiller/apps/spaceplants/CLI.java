@@ -9,6 +9,8 @@ package spacefiller.apps.spaceplants;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import processing.core.PApplet;
+import processing.core.PConstants;
+import processing.core.PGraphics;
 import processing.opengl.PGraphicsOpenGL;
 import processing.opengl.PJOGL;
 import spacefiller.Utils;
@@ -71,7 +73,6 @@ public class CLI extends PApplet {
   private DustSystem dustSystem;
   private BeeSystem beeSystem;
   private PlanetSystem planetSystem;
-  private PlanetSystem metaPlanetSystem;
   private List<SPSystem> systems = new ArrayList<>();
   private int localFrameCount = 0;
   private int numHives;
@@ -168,21 +169,6 @@ public class CLI extends PApplet {
           }
         }
         planetSystem.recomputeSdf();
-
-        System.out.println("Initializing meta planet system");
-        metaPlanetSystem = new PlanetSystem(
-            planetSystem.getParticleSystem(),
-            0,
-            planets.attractionThreshold,
-            planets.noiseAmplitude,
-            planets.noiseScale,
-            0.11f);
-        metaPlanetSystem.getParticleSystem().setDebugColor(0xffff0000);
-        systems.add(metaPlanetSystem);
-        for (int i = 0; i < 10; i++) {
-          metaPlanetSystem.createPlanet((float) (Math.random() * 200 + 100), new ParticleTag[]{ParticleTag.PLANET});
-        }
-        metaPlanetSystem.recomputeSdf();
       }
 
       System.out.println("Initializing dust");
@@ -278,6 +264,50 @@ public class CLI extends PApplet {
             config.hives.min + Rnd.random.nextDouble() * (config.hives.max - config.hives.min));
 
       }
+
+      systems.add(new SPSystem(){
+        @Override
+        public void update() {
+
+        }
+
+        @Override
+        public void draw(PGraphics graphics) {
+          graphics.noFill();
+          graphics.rectMode(PConstants.CORNERS);
+
+          int borderSize = 16;
+
+          graphics.stroke(0);
+          graphics.strokeWeight(borderSize);
+          graphics.rect(borderSize/2, borderSize/2, graphics.width - borderSize/2, graphics.height - borderSize/2);
+
+          graphics.strokeWeight(1);
+          graphics.stroke(255);
+          graphics.rect(16, 16, graphics.width - 16, graphics.height - 16);
+
+          graphics.strokeWeight(1);
+          graphics.stroke(100);
+
+          for (int x = borderSize; x <= graphics.width - borderSize; x += borderSize) {
+            int lineSize = borderSize/6;
+            if (x % (borderSize * 4) == borderSize) {
+              lineSize = borderSize/2;
+            }
+            graphics.line(x, borderSize/2 - lineSize/2, x, borderSize/2 + lineSize/2);
+            graphics.line(x, graphics.height - (borderSize/2 - lineSize/2), x, graphics.height - (borderSize/2 + lineSize/2));
+          }
+
+          for (int y = borderSize; y <= graphics.height - borderSize; y += borderSize) {
+            int lineSize = borderSize/6;
+            if (y % (borderSize * 4) == borderSize) {
+              lineSize = borderSize/2;
+            }
+            graphics.line(borderSize/2 - lineSize/2, y, borderSize/2 + lineSize/2, y);
+            graphics.line(graphics.width - (borderSize/2 - lineSize/2), y, graphics.width - (borderSize/2 + lineSize/2), y);
+          }
+        }
+      });
 
       onFrameRenderers = setupRenderers(config.simSize, config.onFrame);
       onCompleteRenderers = setupRenderers(config.simSize, config.onComplete);

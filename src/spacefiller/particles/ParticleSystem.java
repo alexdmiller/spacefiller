@@ -583,7 +583,7 @@ public class ParticleSystem {
   public void draw(PGraphics graphics) {
     if (drawDebug) {
       graphics.stroke(debugColor);
-      graphics.strokeWeight(2);
+      graphics.strokeWeight(1);
 
       synchronized (grid) {
         for (int i = 0; i < grid.getParticles().size(); i++) {

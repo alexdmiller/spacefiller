@@ -70,7 +70,7 @@ public class BeeSystem implements SPSystem {
     beeDeletionQueue = new ArrayList<>();
     beeEntities = Collections.synchronizedList(new ArrayList<>());
 
-    flockParticles = new FlockParticles().setParameters(AWAKE_PARAMS);
+    flockParticles = new FlockParticles().setParameters(ASLEEP_PARAMS);
     flockParticles.setTeamMode(FlockParticles.TeamMode.ALL);
 
     particleSystem.addBehavior(flockParticles, ParticleTag.BEE_FLOCK, ParticleTag.BEE);

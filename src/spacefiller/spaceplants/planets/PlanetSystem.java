@@ -87,7 +87,7 @@ public class PlanetSystem implements SPSystem {
     FloatField2 sdf = new Union(allCircles, sdfSmooth);
     sdf = new NoiseDistort(sdf, noiseAmplitude, noiseScale);
 
-    FloatField2 ring = new Add(sdf, -35);
+    FloatField2 ring = new Add(sdf, -100);
     ring = new Floor(ring);
     ring = new Normalize(planetParticleSystem.getBounds(), 10, ring);
 
@@ -110,7 +110,7 @@ public class PlanetSystem implements SPSystem {
   @Override
   public void draw(PGraphics graphics) {
 //    FieldVisualizer.drawField(particleSdfs.get(ParticleTag.BEE), graphics, 10, 0, 1);
-//    planetParticleSystem.setDebugDraw(true);
+    planetParticleSystem.setDebugDraw(false);
     planetParticleSystem.draw(graphics);
   }
 
