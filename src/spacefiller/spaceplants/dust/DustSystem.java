@@ -39,7 +39,7 @@ public class DustSystem implements SPSystem {
   @Override
   public void draw(PGraphics graphics) {
     dustParts.forEach(d -> {
-      graphics.fill(255);
+      graphics.fill(200);
       graphics.noStroke();
 //      graphics.rect(d.getPosition().x, d.getPosition().y, 1, 1);
       graphics.ellipseMode(PConstants.CENTER);

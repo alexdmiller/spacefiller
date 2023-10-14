@@ -146,7 +146,7 @@ public class CLI extends PApplet {
         }
       }
 
-      particleSystem.addBehavior(new SoftBounds(1, 5, 3));
+      particleSystem.addBehavior(new SoftBounds(32, 5, 3));
 
       System.out.println("Initializing planet system");
       if (config.planetSystem != null) {

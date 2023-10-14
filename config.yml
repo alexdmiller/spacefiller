@@ -1,18 +1,18 @@
-max_frames: 2000
+max_frames: 3000
 sim_size:
   width: 480
-  height: 690
+  height: 720
 on_frame:
   show_preview:
     max_width: 1000
     max_height: 1000
     frames_per_render: 10
-#  export_raster:
-#    scale: 2
-#    filename: "/Users/alex/projects/spacefiller/output/frame-%04d.tif"
+  export_raster:
+    scale: 2
+    filename: "/Users/alex/projects/spacefiller/output/frame-%04d.tif"
 on_complete:
   export_raster:
-    scale: 10
+    scale: 20
     filename: "/Users/alex/projects/spacefiller/output.png"
   export_svg:
     filename: "/Users/alex/projects/spacefiller/output.svg"
@@ -27,8 +27,8 @@ plants:
   min: 30
   max: 50
   types:
-    - branch_color: 0xffffffff
-      flower_color: 0xffffffff
+    - flower_colors: [ 0xffd8e9f6, 0xff627dab ]
+      branch_colors: [ 0xff87c38e, 0xffc6ffc5 ]
       connection_length: 5
       branching_factor: 2
       branching_falloff: 0.1
@@ -39,8 +39,8 @@ plants:
       branch_chance: 0.5
       flower_size: 3
       branch_thickness: 1
-    - branch_color: 0xffffffff
-      flower_color: 0xffffffff
+    - branch_color: 0xffa7c45a
+      flower_color: 0xffa7c45a
       connection_length: 2
       branching_factor: 2
       branching_falloff: 0.1
@@ -51,8 +51,8 @@ plants:
       branch_chance: 0
       flower_size: 3
       branch_thickness: 1
-    - branch_color: 0xffeeeeee
-      flower_color: 0xffffffff
+    - branch_color: 0xff539852
+      flower_color: 0xff87c38e
       connection_length: 2
       branching_factor: 2
       branching_falloff: 0.1
@@ -78,9 +78,9 @@ hives:
   hive_inner_repel_force: 0.02
   spikes: false
   colors:
-    - bee_color: 0xffffffff
-      hive_color: 0xffffffff
-    - bee_color: 0xffffffff
+    - bee_color: 0xffe2e1a2
+      hive_color: 0xffe2e1a2
+    - bee_color: 0xffe2e1a2
       hive_color: 0x00000000
   flocking:
     separation_weight: 2
